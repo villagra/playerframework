@@ -147,7 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="build\build-player-framework.bat" />
+    <None Include="Build\build.bat" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -176,7 +176,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>call "$(ProjectDir)build\build-player-framework.bat" "$(ConfigurationName)" "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>call "$(ProjectDir)Build\build.bat" "$(ConfigurationName)" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="AfterBuild">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
