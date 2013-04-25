@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1B94B78-1BEB-4E7B-90D0-53E974CBD434}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework</RootNamespace>
+    <AssemblyName>Microsoft.Web.PlayerFramework.Html5</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\style.css" />
+    <Content Include="html\autoplay.html" />
+    <Content Include="html\accessibility.html" />
+    <Content Include="html\localization.html" />
+    <Content Include="html\fallback.html" />
+    <Content Include="index.html" />
+    <Content Include="html\captions.html" />
+    <Content Include="js\i18n\playerframework.resources.en-US.js" />
+    <Content Include="js\i18n\playerframework.resources.es.js" />
+    <Content Include="js\playerframework.debug.js" />
+    <Content Include="js\playerframework.min.js" />
+    <Content Include="src\css\caption-cues.css" />
+    <Content Include="src\css\chapter-cues.css" />
+    <Content Include="src\css\control-strip.css" />
+    <Content Include="src\css\error-message.css" />
+    <Content Include="src\css\playerframework.css" />
+    <Content Include="src\css\playlist.css" />
+    <Content Include="src\css\throbber.css" />
+    <Content Include="src\css\timeline-cues.css" />
+    <Content Include="src\css\track-selector.css" />
+    <Content Include="html\cues.html" />
+    <Content Include="html\mediarssplaylist.html" />
+    <Content Include="html\javascript.html" />
+    <Content Include="html\declarative.html" />
+    <Content Include="css\prettify.css" />
+    <Content Include="html\advancedfallbacks.html" />
+    <Content Include="js\prettify.js" />
+    <Content Include="html\playlist.html" />
+    <Content Include="src\js\CaptionTrackPlugin.js" />
+    <Content Include="src\js\ChapterTrackControlPlugin.js" />
+    <Content Include="src\js\ChapterTrackPlugin.js" />
+    <Content Include="src\js\Class.js" />
+    <Content Include="src\js\ConsoleLogWriterPlugin.js" />
+    <Content Include="src\js\ControlPlugin.js" />
+    <Content Include="src\js\ControlStripPlugin.js" />
+    <Content Include="src\js\DocumentLogWriterPlugin.js" />
+    <Content Include="src\js\ErrorMessageControlPlugin.js" />
+    <Content Include="src\js\HyperlinkMediaPlugin.js" />
+    <Content Include="src\js\LogWriterPlugin.js" />
+    <Content Include="src\js\MediaPlugin.js" />
+    <Content Include="src\js\MediaRssPlaylistPlugin.js" />
+    <Content Include="src\js\ModulePlugin.js" />
+    <Content Include="src\js\Object.js" />
+    <Content Include="src\js\Player.js" />
+    <Content Include="src\js\PlayerFramework.js" />
+    <Content Include="src\js\PlaylistControlPlugin.js" />
+    <Content Include="src\js\PlaylistPlugin.js" />
+    <Content Include="src\js\Plugin.js" />
+    <Content Include="src\js\SilverlightMediaPlugin.js" />
+    <Content Include="src\js\SilverlightMediaPluginBase.js" />
+    <Content Include="src\js\StaticContentMediaPlugin.js" />
+    <Content Include="src\js\TextTrack.js" />
+    <Content Include="src\js\TextTrackCue.js" />
+    <Content Include="src\js\TextTrackCueList.js" />
+    <Content Include="src\js\ThrobberControlPlugin.js" />
+    <Content Include="src\js\TimelineTrackControlPlugin.js" />
+    <Content Include="src\js\TimelineTrackPlugin.js" />
+    <Content Include="src\js\TrackDataProviderPlugin.js" />
+    <Content Include="src\js\TrackPlugin.js" />
+    <Content Include="src\js\TrackSelectorControlPlugin.js" />
+    <Content Include="src\js\TtmlParser.js" />
+    <Content Include="src\js\VideoElementMediaPlugin.js" />
+    <Content Include="src\js\VideoElementMediaPluginBase.js" />
+    <Content Include="src\js\VideoMediaPlugin.js" />
+    <None Include="README.txt" />
+    <None Include="ThirdPartyNotices.txt" />
+    <Content Include="web.config" />
+    <Content Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+    <Content Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build\build-player-framework.bat" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>44558</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44558/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>call "$(ProjectDir)build\build-player-framework.bat" "$(ConfigurationName)" "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Assembly" />
+    </GetAssemblyIdentity>
+  </Target>
+</Project>

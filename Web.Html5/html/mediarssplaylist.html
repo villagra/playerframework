@@ -1,0 +1,32 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>HTML5 Player Framework - Media RSS Playlist Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<script src="../js/playerframework.min.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Media RSS Playlist Example</h2>
+
+		<div id="myVideoContainer" class="pf-container"></div>
+
+		<script>
+			var myPlayer = new PlayerFramework.Player("myVideoContainer",
+			{
+				mediaPluginFallbackOrder: [ "VideoElementMediaPlugin", "SilverlightMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "SilverlightMediaPlugin", "VideoElementMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "HyperlinkMediaPlugin" ],
+				width: "480px",
+				height: "320px",
+				mediaRssPlaylistUrl: "../media/rss.xml"
+			});
+		</script>
+	</body>
+</html>

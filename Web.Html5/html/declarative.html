@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+	
+		<title>HTML5 Player Framework - Declarative Usage Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<script src="../js/playerframework.min.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Declarative Usage Example</h2>
+
+		<video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png">
+			<source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			<source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
+			<source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
+		</video>
+
+		<script>
+			var myPlayer = new PlayerFramework.Player("myVideo");
+		</script>
+	</body>
+</html>

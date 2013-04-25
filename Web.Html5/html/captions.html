@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+	
+		<title>HTML5 Player Framework - Closed Captions Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<script src="../js/playerframework.min.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Closed Captions Example</h2>
+
+		<video id="myVideo" class="pf-video" width="450" height="255" controls="controls" poster="../media/blackposter.png">
+			<source src="../media/RealPCPride.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			<source src="../media/RealPCPride.ogg" type='video/ogg; codecs="theora, vorbis"' />
+
+			<!-- Option 1: Add track elements directly to the video tag. -->
+			<track src="../media/RealPCPride.en.captions.xml" label="English" kind="captions" default />
+
+		</video>
+
+		<script>
+			var myPlayer = new PlayerFramework.Player("myVideo",
+			{
+				textTracks:
+				[
+					// Option 2: Add tracks via the textTracks option.
+					{
+						label: "Spanish",
+						src: "../media/RealPCPride.es.captions.xml",
+						kind: "captions"
+					}
+				]
+			});
+		</script>
+	</body>
+</html>

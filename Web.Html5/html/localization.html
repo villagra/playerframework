@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>HTML5 Player Framework - Localization Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<!--
+		The following example *explicitly* loads the Spanish (es) resource file.
+		Please note this file is incomplete. Only a few button strings and access keys are provided.
+		By default, the framework uses English for missing resources or if no resource file is specified.
+		
+		Another option is to *dynamically* load a resource file depending on the user's preferred language.
+		For example, in ASP.NET, the value of the Accept-Language header (e.g. es,en-US;q=0.5) can be used
+		to generate the resource file request:
+
+		<script src="../js/i18n/playerframework.resources.<%= Request.UserLanguages.First() %>.js"></script>
+		-->
+
+		<script src="../js/playerframework.min.js"></script>
+		<script src="../js/i18n/playerframework.resources.es.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Localization Example</h2>
+
+		<div id="myVideoContainer" class="pf-container"></div>
+
+		<script>
+			var myPlayer = new PlayerFramework.Player("myVideoContainer",
+			{
+				mediaPluginFallbackOrder: [ "VideoElementMediaPlugin", "SilverlightMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "SilverlightMediaPlugin", "VideoElementMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "HyperlinkMediaPlugin" ],
+				width: "480px",
+				height: "320px",
+				poster: "../media/bigbuck.png",
+				sources:
+				[
+					{
+						src: "http://streams.smooth.vertigo.com/BigBuckBunny_30sec/bigbuck.ism/manifest",
+						type: "text/xml"
+					},
+					{
+						src: "../media/bigbuck.mp4",
+						type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+					},
+					{
+						src: "../media/bigbuck.webm",
+						type: 'video/webm; codecs="vp8, vorbis"'
+					},
+					{
+						src: "../media/bigbuck.ogv",
+						type: 'video/ogg; codecs="theora, vorbis"'
+					}
+				],
+				pluginOptions:
+				{
+					ControlStripPlugin:
+					{
+						strings:
+						{
+							// Override the default mute label.
+							muteTitle: "Lorem ipsum"
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

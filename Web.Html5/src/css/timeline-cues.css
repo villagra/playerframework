@@ -1,0 +1,22 @@
+/* Timeline Cues Control */
+/*****************************************************************/
+.pf-timeline-cues-container
+{
+	position: absolute;
+	left: 0;
+	right: 12px;
+	top: -6px;
+	padding: 0;
+}
+.pf-timeline-cue
+{
+	display: none;
+	position: absolute;
+	width: 0;
+	height: 0;
+	margin-left: 2.5px;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 6px solid #76cde8;
+	border-bottom: 0;
+}

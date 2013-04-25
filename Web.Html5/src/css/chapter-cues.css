@@ -1,0 +1,84 @@
+/* Chapter Cues Control */
+/*****************************************************************/
+/* Skip Back Chapter Control */
+/*****************************************************************/
+.pf-skip-back-chapter-control
+{
+	display: none;
+	position: absolute;	
+	left: 34px;
+	top: 0;	
+	width: 30px;
+	height: 36px;	
+}
+.pf-skip-back-chapter-control span
+{
+	position: absolute;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+}
+.pf-skip-back-chapter-control .pf-skip-back-chapter-arrow
+{
+	top: 13px;
+	left: 9px;
+	width: 0;
+	height: 0;
+	border-left: 0;
+	border-right: 9px solid #fff;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+.pf-skip-back-chapter-control .pf-skip-back-chapter-line
+{
+	top: 13px;
+	left: 20px;
+	width: 2px;
+	height: 10px;
+	background-color: #fff;
+}
+.pf-chapters .pf-skip-back-chapter-control
+{
+	display: block;
+}
+/* Skip Forward Chapter Control */
+/*****************************************************************/
+.pf-skip-forward-chapter-control
+{
+	display: none;
+	position: absolute;	
+	right: 258px;
+	top: 0;	
+	width: 30px;
+	height: 36px;	
+}
+.pf-skip-forward-chapter-control span
+{
+	position: absolute;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+}
+.pf-skip-forward-chapter-control .pf-skip-forward-chapter-line
+{
+	top: 13px;
+	left: 11px;
+	width: 2px;
+	height: 10px;
+	background-color: #fff;
+}
+.pf-skip-forward-chapter-control .pf-skip-forward-chapter-arrow
+{
+	top: 13px;
+	left: 15px;
+	width: 0;
+	height: 0;
+	border-left: 9px solid #fff;
+	border-right: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+}
+.pf-chapters .pf-skip-forward-chapter-control
+{
+	display: block;
+}

@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>HTML5 Player Framework - Playlist Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<script src="../js/playerframework.min.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Playlist Example</h2>
+
+		<div id="myVideoContainer" class="pf-container"></div>
+
+		<script>
+			var myPlaylistItem1 =
+			{
+				title: "Big Buck Bunny",
+				poster: "../media/bigbuck.png",
+				sources:
+				[
+					{
+						src: "http://streams.smooth.vertigo.com/BigBuckBunny_30sec/bigbuck.ism/manifest",
+						type: "text/xml"
+					},
+					{
+						src: "../media/bigbuck.mp4",
+						type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+					},
+					{
+						src: "../media/bigbuck.webm",
+						type: 'video/webm; codecs="vp8, vorbis"'
+					},
+					{
+						src: "../media/bigbuck.ogv",
+						type: 'video/ogg; codecs="theora, vorbis"'
+					}
+				]
+			};
+
+			var myPlaylistItem2 =
+			{
+				title: "DFXP Test",
+				poster: "../media/bigbuck.png",
+				sources:
+				[
+					{
+						src: "../media/dfxptest.mp4",
+						type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+					},
+					{
+						src: "../media/dfxptest.ogv",
+						type: 'video/ogg; codecs="theora, vorbis"'
+					}
+				],
+				timelineCues:
+				[
+					new PlayerFramework.TextTrackCue({
+						startTime: 15,
+						endTime: 20
+					})
+				],
+				chapters:
+				[
+					new PlayerFramework.TextTrackCue(
+					{
+						startTime: 10
+					})
+				]
+			};
+
+			var myPlayer = new PlayerFramework.Player("myVideoContainer",
+			{
+				mediaPluginFallbackOrder: [ "VideoElementMediaPlugin", "SilverlightMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "SilverlightMediaPlugin", "VideoElementMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "HyperlinkMediaPlugin" ],
+				width: "480px",
+				height: "320px",
+				playlist:
+				[
+					myPlaylistItem1,
+					myPlaylistItem2,
+					myPlaylistItem1,
+					myPlaylistItem2,
+					myPlaylistItem1,
+					myPlaylistItem2
+				]
+			});
+		</script>
+	</body>
+</html>

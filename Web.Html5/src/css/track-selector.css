@@ -1,0 +1,64 @@
+/* Track Selector Control */
+/*****************************************************************/
+.pf-track-selector .pf-track-selector-control
+{
+	display: block;
+}
+.pf-track-selector-control
+{
+	position: absolute;
+	top: 0;	
+	width: 35px;
+	height: 36px;
+	display: none;
+	cursor: default;
+}
+.pf-track-selector-control span
+{
+	position: absolute;	
+	color: #fff;
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, Times New Roman;
+	line-height: 12px;
+}
+.pf-track-selector-box
+{
+	top: 11px;
+	left: 11px;
+	height: 12px;
+	width: 16px;
+	border-width: 1px 1px 1px 1px;
+	border-style: solid;
+	border-color: #fff;
+}
+/* Pop Up Control */
+/*****************************************************************/
+.pf-popup-track-selector-control
+{
+	position: absolute;
+	/*left: 250px;*/
+	width: 200px;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.pf-popup-track-selector-option button
+{
+	margin: 2px;
+	padding: 2px;
+	height: 18px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: normal;
+	font-family: Arial, Times New Roman;
+	line-height: 14px;
+	text-align: left;
+}
+.pf-popup-track-selector-option.selected
+{
+	background-color: #76cde8;
+}
+.pf-popup-track-selector-option.selected button
+{
+	color: #000;	
+}

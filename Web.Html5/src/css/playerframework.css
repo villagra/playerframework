@@ -1,0 +1,31 @@
+/* Container and Element Setup */
+/*****************************************************************/
+.pf-container
+{
+	position: relative;
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+}
+.pf-container .pf-video, .pf-container .pf-silverlight
+{
+	width: 100%;
+	height: 100%;
+}
+.pf-video, .pf-silverlight
+{
+	display: block;
+	position: relative;
+	background-color: #000;
+}
+.pf-static
+{
+	color: #999;
+}
+.pf-hyperlinks
+{
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: normal;
+	font-family: Arial, Times New Roman;
+}

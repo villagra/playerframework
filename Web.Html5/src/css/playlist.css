@@ -1,0 +1,118 @@
+/* Playlist Control */
+/*****************************************************************/
+.pf-playlist
+{
+	position: absolute;	
+	left: 0;
+	right: 0;
+	top: -80px; 
+	width: 100%;
+	height: 80px; /* Change to a percentage (e.g. 25%) for variable sizing depending on video dimensions. */
+	background-color: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	overflow: hidden;
+}
+/* Playlist Toggle Button */
+/*****************************************************************/
+.pf-playlist-toggle
+{
+	position: absolute;
+	display: none;
+	left: 50%;
+	top: 0px;
+	width: 80px;
+	height: 20px;
+	margin: 0 0 0 -40px;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-bottom-left-radius: 10px;
+	-moz-border-bottom-right-radius: 10px;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor: pointer;	
+}
+.pf-playlist-toggle-text
+{
+	padding-top: 4px;
+	text-align: center;
+	color: #fff;
+	font-size: 10px;
+	font-weight: normal;
+	font-family: Arial, Times New Roman;
+}
+/* Playlist Items */
+/*****************************************************************/
+.pf-playlist-items-container
+{
+	position: absolute;	
+	left: 35px;
+	right: 35px;
+	height: 100%;
+	margin: -2px 0 0 -2px;		
+	overflow: hidden;
+}
+.pf-playlist-items
+{
+	position: absolute;
+	top: 12.5%;
+	height: 100%;
+}
+.pf-playlist-item
+{
+	position: absolute;
+	height: 75%;
+	margin: 3px 0 0 3px;	
+	background-color: #fff;
+}
+.pf-playlist-item-selected
+{
+	margin: 0;
+	border: 2px solid #76cde8
+}
+/* Playlist Arrows */
+/*****************************************************************/
+.pf-playlist-arrow-control
+{
+	position: absolute;
+	top: 50%;
+	width: 15px;
+	height: 32px;
+	margin-top: -16px;
+}
+.pf-playlist-arrow-control-left
+{
+	left: 10px;
+}
+.pf-playlist-arrow-control-right
+{
+	right: 10px;
+}
+.pf-playlist-arrow
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+}
+.pf-playlist-arrow-control-left .pf-playlist-arrow
+{
+	border-left: 0px solid transparent;
+	border-right: 15px solid #fff;
+}
+.pf-playlist-arrow-control-right .pf-playlist-arrow
+{
+	border-left: 15px solid #fff;
+	border-right: 0px solid transparent;
+}

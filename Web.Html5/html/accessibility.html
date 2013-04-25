@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>HTML5 Player Framework - Accessibility Example</title>
+
+		<link rel="stylesheet" href="../css/playerframework.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<script src="../js/playerframework.min.js"></script>
+	</head>
+	<body>
+		<h1>HTML5 Player Framework</h1>
+		<h2>Accessibility Example</h2>
+
+		<div id="myVideoContainer" class="pf-container"></div>
+
+		<script>
+			var myPlayer = new PlayerFramework.Player("myVideoContainer",
+			{
+				mediaPluginFallbackOrder: [ "VideoElementMediaPlugin", "SilverlightMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "SilverlightMediaPlugin", "VideoElementMediaPlugin" ],
+				//mediaPluginFallbackOrder: [ "HyperlinkMediaPlugin" ],
+				width: "480px",
+				height: "320px",
+				pluginOptions:
+				{
+					// Override the default access keys.
+					ControlStripPlugin:
+					{
+						accessKeys:
+						{
+							toggleKey: "0",
+							playKey: "1",
+							muteKey: "2",
+							fullBrowserKey: "3"
+						}
+					},
+					ChapterTrackControlPlugin:
+					{
+						accessKeys:
+						{
+							skipBackKey: "4",
+							skipForwardKey: "5"
+						}
+					},
+					TrackSelectorControlPlugin:
+					{
+						accessKeys:
+						{
+							trackSelectorKey: "6"
+						}
+					},
+					PlaylistControlPlugin:
+					{
+						accessKeys:
+						{
+							toggleKey: "7",
+							arrowLeftKey: "8",
+							arrowRightKey: "9"
+						}
+					}
+				},
+				playlist:
+				[
+					// A playlist to test all of the access keys...
+					{
+						title: "Real PC Pride",
+						sources:
+						[
+							{
+								src: "../media/RealPCPride.mp4",
+								type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+							},
+							{
+								src: "../media/RealPCPride.ogg",
+								type: 'video/ogg; codecs="theora, vorbis"'
+							}
+						],
+						textTracks:
+						[
+							{
+								label: "English",
+								src: "../media/RealPCPride.en.captions.xml",
+								kind: "captions"
+							},
+							{
+								label: "Spanish",
+								src: "../media/RealPCPride.es.captions.xml",
+								kind: "captions"
+							}
+						],
+						chapters:
+						[
+							new PlayerFramework.TextTrackCue(
+							{
+								startTime: 10
+							}),
+							new PlayerFramework.TextTrackCue(
+							{
+								startTime: 20
+							}),
+							new PlayerFramework.TextTrackCue(
+							{
+								startTime: 30
+							})
+						]
+					},
+					{
+						title: "Big Buck Bunny",
+						sources:
+						[
+							{
+								src: "http://streams.smooth.vertigo.com/BigBuckBunny_30sec/bigbuck.ism/manifest",
+								type: "text/xml"
+							},
+							{
+								src: "../media/bigbuck.mp4",
+								type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+							},
+							{
+								src: "../media/bigbuck.webm",
+								type: 'video/webm; codecs="vp8, vorbis"'
+							},
+							{
+								src: "../media/bigbuck.ogv",
+								type: 'video/ogg; codecs="theora, vorbis"'
+							}
+						]
+					},
+					{
+						title: "DFXP Test",
+						sources:
+						[
+							{
+								src: "../media/dfxptest.mp4",
+								type: 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+							},
+							{
+								src: "../media/dfxptest.ogv",
+								type: 'video/ogg; codecs="theora, vorbis"'
+							}
+						]
+					}
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+The following third-party libraries are utilized by this framework. Required attribution is provided below:
+
+
+Flexible JavaScript Events, John Resig: 
+http://www.quirksmode.org/blog/archives/2005/10/_and_the_winner_1.html)
+
+
+Get Styles, Quicksmode: 
+http://www.quirksmode.org/dom/getstyles.html)
+
+
+Filter and forEach, Mozilla  
+- Code used:
+
+	if (array === void 0 || array === null)
+		throw new TypeError();
+
+	var t = Object(array);
+	var len = t.length >>> 0;
+	if (typeof fun !== "function")
+		throw new TypeError();
+
+	var res = [];
+	var thisp = arguments[2];
+	for (var i = 0; i < len; i++)
+	{
+		if (i in t)
+		{
+		var val = t[i]; // in case fun mutates this
+		if (fun.call(thisp, val, i, t))
+			res.push(val);
+		}
+	}
+
+	return res;
+
+- Any copyright is dedicated to the Public Domain for these post August 20, 2010 posts, see https://developer.mozilla.org/Project:Copyrights
+
+
+requestAnimationFrame 
+Paul Irish at http://paulirish.com/2011/requestanimationframe-for-smart-animating/ 
+licensed under CCO 1.0 Public Domain Dedication, see http://creativecommons.org/publicdomain/zero/1.0/
+
+
+Domready.js, Adam Thurlow:
+/*! * Adaptation of the $(document).ready() function from jQuery * library for use in simple JavaScript scenarios. * * ---------------------------------------------------------------------  * jQuery JavaScript Library v1.4.3 * http://jquery.com/  * * Copyright (c) 2010 John Resig, http://jquery.com/ * * Permission is hereby granted, free of charge, to any person obtaining * a copy of this software and associated documentation files (the * Software"), to deal in the Software without restriction, including * without limitation the rights to use, copy, modify, merge, publish, * distribute, sublicense, and/or sell copies of the Software, and to * permit persons to whom the Software is furnished to do so, subject to * the following conditions: * * The above copyright notice and this permission notice shall be * included in all copies or substantial portions of the Software. * * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. * ---------------------------------------------------------------------- */
+
+
+prettify.js & prettify.css 
+Note: this is used in advancedfallback example to display sample source code and is not used directly by the player framework
+http://code.google.com/p/google-code-prettify/
+
+
+curl.exe
+Note: this is used when you do a release build to aid in minification of the js and css files.
+http://curl.haxx.se/
