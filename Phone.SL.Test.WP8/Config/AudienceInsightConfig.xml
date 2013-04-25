@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <Service>
+    <!--<Url>http://localhost:22269//handler.ashx</Url>-->
+    <Url>http://smf.cloudapp.net/services/audienceinsight.ashx</Url>
+    <WCF>0</WCF>
+    <relative>0</relative>
+    <binaryBinding>0</binaryBinding>
+    <maxOpenTimeSeconds>5</maxOpenTimeSeconds>
+    <maxSendTimeSeconds>5</maxSendTimeSeconds>
+    <maxRecvTimeSeconds>5</maxRecvTimeSeconds>
+    <version>3</version>
+  </Service>
+  <BatchingConfig>
+    <Application>
+      <Id>{D836AA9A-935D-4A42-B641-E738B65CF9EB}</Id>
+      <Name>Logging Sample</Name>
+      <Version>1.0</Version>
+      <Enabled>1</Enabled>
+    </Application>
+    <Queue>
+      <maxLength>200</maxLength>
+      <maxBatchLength>10</maxBatchLength>
+      <maxSendErrors>60</maxSendErrors>
+      <maxSendErrorsThrottled>10</maxSendErrorsThrottled>
+      <pollingIntervalSeconds>10</pollingIntervalSeconds>
+      <pollingIntervalThrottledSeconds>120</pollingIntervalThrottledSeconds>
+      <maxRetries>6</maxRetries>
+    </Queue>
+    <Session>
+      <maxSessionLogs>100000</maxSessionLogs>
+    </Session>
+    <MappingRules>
+      <Log Type="Batch">
+        <Value Name="ApplicationName" Id="app" />
+        <Value Name="ApplicationId" Id="aid" />
+        <Value Name="SessionId" Id="sid" />
+        <Value Name="InstanceId" Id="cid" />
+        <Value Name="BatchId" Id="bid" />
+        <!--<Value Name="ApplicationVersion" Id="apv" />-->
+        <!--<Value Name="LogsDropped" Id="ldp" />-->
+        <!--<Value Name="LogsSent" Id="lst" />-->
+        <!--<Value Name="TotalFailures" Id="ttf" />-->
+        <!--<Value Name="TimeStamp" Id="tik" />-->
+        <!--<Value Name="Type" Id="typ" />-->
+      </Log>
+      <!--application logs-->
+      <Log Type="ApplicationException" Id="ApplicationException">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="Message" Id="msg" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="ApplicationArea" Id="s01" />
+      </Log>
+      <Log Type="ApplicationSessionStart" Id="ApplicationSessionStart">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="StartupParam" Id="s01" Optional="1" />
+      </Log>
+
+      <!--video logs-->
+      <Log Type="AudioTrackSelect" Id="AudioTrackSelect">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="Language" Id="msg" />
+      </Log>
+      <Log Type="CaptionTrackSelect" Id="ClosedCaptionOn" Conditions="Language=*">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <!--<Value Name="Language" Id="msg" />-->
+      </Log>
+      <Log Type="CaptionTrackSelect" Id="ClosedCaptionOff" Conditions="Language=">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+      </Log>
+      <Log Type="FullScreenEntered" Id="FullScreenEntered" Conditions="IsFullScreen=1">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+      </Log>
+      <Log Type="FullScreenExit" Id="FullScreenExit" Conditions="IsFullScreen=0">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+      </Log>
+      <Log Type="ChunkDownloadErrors" Id="ChunkDownloadError">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="SamplingWindowSeconds" Id="s04" />
+        <Value Name="ChunkId" Id="s01" />
+        <Value Name="StartTime" Id="s02" />
+        <Value Name="StreamType" Id="s05" />
+        <Value Name="DownloadErrorCount" Id="s06" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="StreamFailed" Id="MediaFailed">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="Reason" Id="msg" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <!--<Log Type="RetryFailed" Id="RetryFailed">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="RetrySucceeded" Id="RetrySucceeded">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>-->
+      <Log Type="ClipEvent" Id="VideoClipStarted" Conditions="ClipEventType=Started">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="ClipEvent" Id="VideoClipEnded" Conditions="ClipEventType=Ended">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="StreamLoaded" Id="VideoStarted">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="Source" Id="url" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="StreamEvent" Id="VideoEnded" Conditions="StreamEventType=Ended">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+      <Log Type="VideoQuality" Id="VideoQuality">
+        <Value Name="Type" Id="typ" />
+        <Value Name="LogId" Id="lid" />
+        <Value Name="RelatedLogId" Id="rid" Optional="1" />
+        <Value Name="TimeStamp" Id="tik" />
+        <Value Name="VideoId" Id="oid" />
+        <Value Name="VideoSessionId" Id="osd" />
+        <Value Name="VideoSessionDuration" Id="odr" />
+        <Value Name="EdgeIP" Id="s03" />
+        <Value Name="SamplingWindowSeconds" Id="s04" />
+        <Value Name="BitRate" Id="s05" />
+        <Value Name="BitRateChangeCount" Id="s06" />
+        <Value Name="BufferingMilliseconds" Id="s07" />
+        <Value Name="DroppedFrames" Id="s08" />
+        <Value Name="RenderedFrames" Id="s09" />
+        <Value Name="HttpErrorCount" Id="s10" />
+        <Value Name="ProcessCPULoad" Id="s11" />
+        <Value Name="VideoDownloadLatencyMilliseconds" Id="s12" />
+        <Value Name="MaxBitRate" Id="s13" />
+        <Value Name="MaxBitRateMilliseconds" Id="s14" />
+        <!--<Value Name="AudioDownloadLatencyMilliseconds" Id="s15" />-->
+        <!--<Value Name="SystemCPULoad" Id="s16" />-->
+        <!--<Value Name="PerceivedBandwidth" Id="s17" />-->
+        <!--<Value Name="VideoBufferSize" Id="s18" />-->
+        <!--<Value Name="AudioBufferSize" Id="s19" />-->
+        <!--<Value Name="DvrOperationCount" Id="s20" />-->
+        <!--<Value Name="FullScreenChangeCount" Id="s21" />-->
+        <Value Name="IsLive" Id="liv" />
+      </Log>
+
+    </MappingRules>
+  </BatchingConfig>
+</Configuration>

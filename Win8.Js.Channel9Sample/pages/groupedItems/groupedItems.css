@@ -1,0 +1,138 @@
+﻿.groupeditemspage section[role=main] {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+}
+
+.groupeditemspage .groupeditemslist {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+    /* This selector is used to prevent ui-dark/light.css from overwriting changes to .win-surface. */
+    .groupeditemspage .groupeditemslist .win-horizontal.win-viewport .win-surface {
+        margin-bottom: 60px;
+        margin-left: 45px;
+        margin-right: 115px;
+        margin-top: 128px;
+    }
+
+    .groupeditemspage .groupeditemslist .win-groupheader {
+        padding: 5px;
+    }
+
+    .groupeditemspage .groupeditemslist .item {
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: 1fr 90px;
+        display: -ms-grid;
+        width: 250px;
+        height: 240px;
+    }
+
+        /* Resize thumbnail background images so they look consistent */
+        .groupeditemspage .groupeditemslist .item .item-image {
+            -ms-grid-row-span: 1;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 275px auto;
+        }
+
+        .groupeditemspage .groupeditemslist .item .item-overlay {
+            -ms-grid-row: 2;
+            -ms-grid-rows: 1fr 21px;
+            display: -ms-grid;
+            padding: 6px 15px 2px 15px;
+        }
+
+            .groupeditemspage .groupeditemslist .item .item-overlay .item-title {
+                -ms-grid-row: 1;
+                overflow: hidden;
+                width: 220px;
+            }
+
+            .groupeditemspage .groupeditemslist .item .item-overlay .item-date {
+                -ms-grid-row: 2;
+                width: 220px;
+            }
+
+@media screen and (-ms-view-state: fullscreen-landscape), screen and (-ms-view-state: fullscreen-portrait), screen and (-ms-view-state: filled) {
+    .groupeditemspage .groupeditemslist .item .item-overlay {
+        background: rgba(0,0,0,0.65);
+    }
+
+        .groupeditemspage .groupeditemslist .item .item-overlay .item-title {
+            color: rgba(255,255,255,0.87);
+        }
+
+        .groupeditemspage .groupeditemslist .item .item-overlay .item-date {
+            color: rgba(255,255,255,0.6);
+        }
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) and (-ms-high-contrast), screen and (-ms-view-state: fullscreen-portrait) and (-ms-high-contrast), screen and (-ms-view-state: filled) and (-ms-high-contrast) {
+    .groupeditemspage .groupeditemslist .item .item-overlay {
+        color: WindowText;
+    }
+}
+
+@media screen and (-ms-view-state: snapped) {
+    .groupeditemspage section[role=main] {
+        -ms-grid-row: 2;
+        -ms-grid-row-span: 1;
+    }
+
+    .groupeditemspage .groupeditemslist .win-vertical.win-viewport .win-surface {
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+
+    .groupeditemspage .groupeditemslist .win-container {
+        margin-bottom: 15px;
+        margin-left: 13px;
+        margin-right: 27px;
+        padding: 7px;
+    }
+
+    .groupeditemspage .groupeditemslist .item {
+        -ms-grid-columns: 100px 1fr;
+        -ms-grid-rows: 1fr;
+        display: -ms-grid;
+        width: auto;
+        height: 60px;
+    }
+
+        .groupeditemspage .groupeditemslist .item .item-image {
+            -ms-grid-column: 1;
+            -ms-grid-row-span: 1;
+            width: 100px;
+            height: 60px;
+            background-size: 110px auto;
+        }
+
+        .groupeditemspage .groupeditemslist .item .item-overlay {
+            -ms-grid-column: 2;
+            -ms-grid-row: 1;
+            -ms-grid-row-align: stretch;
+            background: transparent;
+            display: inline-block;
+            margin-left: 10px;
+            padding: 0;
+        }
+
+            .groupeditemspage .groupeditemslist .item .item-overlay .item-title {
+                width: auto;
+                max-height: 40px;
+            }
+
+            .groupeditemspage .groupeditemslist .item .item-overlay .item-date {
+                opacity: 0.6;
+                width: auto;
+            }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .groupeditemspage .groupeditemslist .win-horizontal.win-viewport .win-surface {
+        margin-left: 25px;
+    }
+}

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.VideoAnalytics</RootNamespace>
+    <AssemblyName>Microsoft.VideoAnalytics</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Microsoft.VideoAnalytics.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AudienceInsight\BatchAgentFactory.cs" />
+    <Compile Include="AudienceInsight\BatchingConfigFactory.cs" />
+    <Compile Include="AudienceInsight\ResponseDeserializer.cs" />
+    <Compile Include="AudienceInsight\RESTDataClient.cs" />
+    <Compile Include="Config\BatchingConfig.cs" />
+    <Compile Include="Config\AnalyticsConfig.cs" />
+    <Compile Include="Config\LoggingConfig.cs" />
+    <Compile Include="Config\EdgeServerConfig.cs" />
+    <Compile Include="Config\MappingPolicy.cs" />
+    <Compile Include="DataClients\EdgeServerMonitor.cs" />
+    <Compile Include="DataClients\EdgeServerResult.cs" />
+    <Compile Include="DataClients\IEdgeServerMonitor.cs" />
+    <Compile Include="DataClients\IEnvironmentMonitor.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
+    <Compile Include="Extensions\LoggingExtensions.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\Batch.cs" />
+    <Compile Include="Logging\BatchEventArgs.cs" />
+    <Compile Include="Logging\BatchingExceptionEventArgs.cs" />
+    <Compile Include="Logging\BatchingLogAgent.cs" />
+    <Compile Include="Logging\IBatchAgent.cs" />
+    <Compile Include="Logging\ILogFilter.cs" />
+    <Compile Include="Logging\ILoggingSource.cs" />
+    <Compile Include="Logging\ILoggingTarget.cs" />
+    <Compile Include="Logging\InstanceDataClient.cs" />
+    <Compile Include="Logging\LogConstants.cs" />
+    <Compile Include="Logging\LoggingService.cs" />
+    <Compile Include="Logging\MappedLogs.cs" />
+    <Compile Include="Logging\QueueManager.cs" />
+    <Compile Include="Logs\BitrateChangedLog.cs" />
+    <Compile Include="Logs\ChunkDownloadLog.cs" />
+    <Compile Include="Logs\BufferSizeLog.cs" />
+    <Compile Include="Logs\BufferingChangedLog.cs" />
+    <Compile Include="Logs\CaptionTrackChangedLog.cs" />
+    <Compile Include="Logs\AudioTrackChangedLog.cs" />
+    <Compile Include="Logs\ClipEventLog.cs" />
+    <Compile Include="Logs\AppStartLog.cs" />
+    <Compile Include="Logs\PositionPercentageReachedLog.cs" />
+    <Compile Include="Logs\PlayTimePercentageReachedLog.cs" />
+    <Compile Include="Logs\PositionReachedLog.cs" />
+    <Compile Include="Logs\LatencyAlertLog.cs" />
+    <Compile Include="Logs\ErrorLog.cs" />
+    <Compile Include="Logs\PlayTimeReachedLog.cs" />
+    <Compile Include="Logs\StreamFailedLog.cs" />
+    <Compile Include="Logs\StreamLoadedLog.cs" />
+    <Compile Include="Logs\StreamEventLog.cs" />
+    <Compile Include="Logs\FullscreenChangedLog.cs" />
+    <Compile Include="Logs\CpuLog.cs" />
+    <Compile Include="Logs\FpsLog.cs" />
+    <Compile Include="Logs\DvrOperationLog.cs" />
+    <Compile Include="Logs\PerceivedBandwidthLog.cs" />
+    <Compile Include="Logs\DownloadErrorLog.cs" />
+    <Compile Include="Reports\ReportTypes.cs" />
+    <Compile Include="Reports\ReportAggregator.cs" />
+    <Compile Include="Reports\QualityReportAggregator.cs" />
+    <Compile Include="Reports\DownloadErrorReport.cs" />
+    <Compile Include="Reports\DownloadErrorReportAggregator.cs" />
+    <Compile Include="Extensions\XmlReaderExtensions.cs" />
+    <Compile Include="AnalyticsCollector.cs" />
+    <Compile Include="DataClients\IAdaptiveMonitor.cs" />
+    <Compile Include="DataClients\IPlayerMonitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Config\QualityConfig.cs" />
+    <Compile Include="Reports\IMarkerEntry.cs" />
+    <Compile Include="Reports\QualityReport.cs" />
+    <Compile Include="Logs\EventTypes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
+      <Project>{2d385553-240d-4f31-a78f-72686bb2613b}</Project>
+      <Name>ZLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

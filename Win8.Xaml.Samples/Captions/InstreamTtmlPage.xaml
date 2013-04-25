@@ -1,0 +1,27 @@
+﻿<common:LayoutAwarePage
+    xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
+    x:Class="Microsoft.PlayerFramework.Samples.InstreamTtmlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.Samples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+    xmlns:ttml="using:Microsoft.PlayerFramework.TimedText"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" IsCaptionSelectionVisible="True">
+            <mmppf:MediaPlayer.Plugins>
+                <adaptive:AdaptivePlugin InstreamCaptionsEnabled="True"/>
+                <ttml:CaptionsPlugin/>
+            </mmppf:MediaPlayer.Plugins>
+        </mmppf:MediaPlayer>
+    </Grid>
+    <Page.TopAppBar>
+        <AppBar>
+            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+        </AppBar>
+    </Page.TopAppBar>
+</common:LayoutAwarePage>

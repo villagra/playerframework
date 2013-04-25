@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="d522ad8c-6ba6-4c76-bc10-d26e5e2fd230" Version="1.0.0.0" Publisher="CN=WillA" />
+  <Properties>
+    <DisplayName>Microsoft Player Framework Samples (JavaScript)</DisplayName>
+    <PublisherDisplayName>WillA</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Microsoft Player Framework Samples (JavaScript)" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Samples application using the JavaScript version of the Microsoft Player Framework" ForegroundText="dark" BackgroundColor="#ffffff">
+        <DefaultTile ShowName="noLogos" />
+        <SplashScreen Image="images\splashscreen.png" BackgroundColor="#ffffff" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
+  </Capabilities>
+</Package>

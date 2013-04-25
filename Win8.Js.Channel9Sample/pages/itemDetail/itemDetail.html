@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Channel 9 Sample</title>
+        <link href="/pages/itemDetail/itemDetail.css" rel="stylesheet">
+        <script src="/pages/itemDetail/itemDetail.js"></script>
+    </head>
+    <body>
+        <div class="itemdetailpage fragment">
+            <header aria-label="Header content" role="banner">
+                <button type="button" class="win-backbutton" aria-label="Back" disabled></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle">This Week On Channel 9</span>
+                </h1>
+            </header>
+            <div class="content" aria-label="Main content" role="main">
+                <article>
+                    <div>
+                        <header>
+                            <h2 class="item-title" data-win-bind="textContent: title Converters.itemTitleConverter"></h2>
+                            <div class="item-date" data-win-bind="textContent: date Converters.itemDateConverter"></div>
+                            <div class="item-author" data-win-bind="textContent: author Converters.itemAuthorConverter"></div>
+                            <div class="item-tags" data-win-bind="textContent: tags Converters.itemTagsConverter"></div>
+                        </header>
+                        <div class="item-image" data-win-bind="style.backgroundImage: imageSource Converters.backgroundImageConverter">
+                            <button id="playButton" type="button" class="pf-button" title="Play">
+                                <span class="pf-button-container">
+                                    <span class="pf-button-content"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="item-description" data-win-bind="innerHTML: description"></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

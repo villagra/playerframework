@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples - Plain Text Captions</title>
+        <link href="../../itemdetail.css" rel="stylesheet">
+        <script src="../../itemdetail.js"></script>
+        <script src="webvtt.js"></script>
+    </head>
+    <body>
+        <div class="itemdetailpage fragment plaintext">
+            <header aria-label="Header content" role="banner">
+                <button type="button" class="win-backbutton" aria-label="Back" disabled></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle" data-win-bind="textContent: title"></span>
+                </h1>
+            </header>
+            <div class="content" aria-label="Main content" role="main">
+                <article>
+                    <div>
+                        <header>
+                            <h2 class="item-subtitle" data-win-bind="textContent: subtitle"></h2>
+                            <h4 class="item-description" data-win-bind="textContent: description"></h4>
+                        </header>
+                        <div class="item-player">
+                            <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                                width: 640,
+                                height: 360,
+                                autoplay: true,
+                                isCaptionsVisible: true,
+                                src: 'http://smf.blob.core.windows.net/samples/win8/captions/movie.mp4',
+                                tracks: [
+                                    {
+                                        kind: 'subtitles',
+                                        label: 'English',
+                                        src: 'http://smf.blob.core.windows.net/samples/win8/captions/captions.vtt',
+                                        srclang: 'en',
+                                        default: true
+                                    },
+                                    {
+                                        kind: 'subtitles',
+                                        label: 'German',
+                                        src: 'http://smf.blob.core.windows.net/samples/win8/captions/de-captions.vtt',
+                                        srclang: 'de'
+                                    }
+                                ],
+                                captionsPlugin: {
+                                    isEnabled: false
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

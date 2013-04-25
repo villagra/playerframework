@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="9d51dafb-bfb6-45f6-bf1c-ff207fb8d1e7" Publisher="CN=timg" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Microsoft.PlayerFramework.Samples</DisplayName>
+    <PublisherDisplayName>timg</PublisherDisplayName>
+    <Logo>Assets\Logo50x50.png</Logo>
+    <Description>Microsoft.PlayerFramework.Samples</Description>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Microsoft.PlayerFramework.Samples.App">
+      <VisualElements DisplayName="Microsoft PlayerFramework Xaml Samples" Logo="Assets\Logo150x150.png" SmallLogo="Assets\Logo30x30.png" Description="Xaml samples for the Microsoft Media Platform Player Framework" ForegroundText="dark" BackgroundColor="#ffffff">
+        <DefaultTile ShowName="noLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#ffffff" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
+</Package>

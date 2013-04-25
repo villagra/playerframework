@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EdgeServerConfig>
+  <EdgeServerRules Domain="videoaz.visitmix.com">
+    <EdgeResolverUrlPattern>http://videoaz.visitmix.com/ping.txt</EdgeResolverUrlPattern>
+    <EdgeResolverHeaders>X-LDebug,2</EdgeResolverHeaders>
+    <EdgeHeader>X-Cache</EdgeHeader>
+    <!--HIT from cds27.sea9.msecn.net-->
+    <EdgeRegEx><![CDATA[(?<=from )(.*)$]]></EdgeRegEx>
+  </EdgeServerRules>
+  <EdgeServerRules Domain="videoaz.microsoftpdc.com">
+    <EdgeResolverUrlPattern>http://videoaz.microsoftpdc.com/vod/ping.txt</EdgeResolverUrlPattern>
+    <EdgeResolverHeaders>X-LDebug,2</EdgeResolverHeaders>
+    <EdgeHeader>X-Cache</EdgeHeader>
+    <!--HIT from cds27.sea9.msecn.net-->
+    <EdgeRegEx><![CDATA[(?<=from )(.*)$]]></EdgeRegEx>
+  </EdgeServerRules>
+  <EdgeServerRules Domain="videoak.microsoftpdc.com">
+    <EdgeResolverUrlPattern>http://videoak.microsoftpdc.com/ServerIP</EdgeResolverUrlPattern>
+    <!--<diagnostics><clientip>67.171.245.85</clientip><serverip>184.84.222.89</serverip></diagnostics>-->
+    <EdgeRegEx><![CDATA[(?<=serverip\>)[\S\s]*?(?=\<\/serverip)]]></EdgeRegEx>
+    <ClientIpRegEx><![CDATA[(?<=clientip\>)[\S\s]*?(?=\<\/clientip)]]></ClientIpRegEx>
+  </EdgeServerRules>
+</EdgeServerConfig>

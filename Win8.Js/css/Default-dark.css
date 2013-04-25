@@ -1,0 +1,212 @@
+﻿/* Containers */
+.pf-container {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.win-ui-light .pf-container, .pf-container.win-ui-light {
+    color: rgb(0, 0, 0);
+    background-color: rgb(222, 222, 222);
+}
+
+/* Links */
+.pf-link {
+    color: rgb(156, 114, 255);
+}
+
+.pf-link:hover {
+    color: rgba(156, 114, 255, 0.8);
+}
+
+.pf-link:hover:active {
+    color: rgba(156, 114, 255, 0.6);
+}
+
+.pf-link[disabled], .pf-link[disabled]:active {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.win-ui-light .pf-link {
+    color: rgb(79, 26, 203);
+}
+
+.win-ui-light .pf-link:hover {
+    color: rgba(79, 26, 203, 0.8);
+}
+
+.win-ui-light .pf-link:hover:active {
+    color: rgba(79, 26, 203, 0.6);
+}
+
+.win-ui-light .pf-link[disabled], .win-ui-light .pf-link[disabled]:active {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+/* Button Control */
+.pf-button:hover .pf-button-container {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.pf-button:hover:active .pf-button-container {
+    background-color: currentColor;
+}
+
+.pf-button:hover:active .pf-button-content {
+    color: rgb(0, 0, 0);
+}
+
+.pf-button:disabled {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.win-ui-light .pf-button:hover .pf-button-container {
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+.win-ui-light .pf-button:hover:active .pf-button-container {
+    background-color: currentColor;
+}
+
+.win-ui-light .pf-button:hover:active .pf-button-content {
+    color: rgb(255, 255, 255);
+}
+
+.win-ui-light .pf-button:disabled {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Indicator Control */
+.pf-indicator-text {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.win-ui-light .pf-indicator-text {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+/* Meter Control */
+.pf-meter-bar {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+.win-ui-light .pf-meter-bar {
+    background-color: rgba(0, 0, 0, 0.23);
+}
+
+/* Slider Control */
+.pf-slider input[type=range]::-ms-fill-lower {
+    background-color: rgb(91, 46, 197);
+}
+
+.pf-slider input[type=range]:hover::-ms-fill-lower {
+    background-color: rgb(114, 75, 205);
+}
+
+.pf-slider input[type=range]:active::-ms-fill-lower {
+    background-color: rgb(129, 82, 239);
+}
+
+.pf-slider input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+.pf-slider input[type=range]::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.pf-slider input[type=range]:hover::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.pf-slider input[type=range]:active::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+.pf-slider input[type=range]:disabled::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.pf-slider input[type=range]::-ms-thumb {
+    background-color: rgb(254, 254, 254);
+}
+
+.pf-slider input[type=range]:disabled::-ms-thumb {
+    background-color: rgb(126, 126, 126);
+}
+
+.pf-slider progress::-ms-fill {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.win-ui-light .pf-slider input[type=range]::-ms-fill-lower {
+    background-color: rgb(70, 23, 180);
+}
+
+.win-ui-light .pf-slider input[type=range]:hover::-ms-fill-lower {
+    background-color: rgb(95, 55, 190);
+}
+
+.win-ui-light .pf-slider input[type=range]:active::-ms-fill-lower {
+    background-color: rgb(114, 65, 228);
+}
+
+.win-ui-light .pf-slider input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.win-ui-light .pf-slider input[type=range]::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.win-ui-light .pf-slider input[type=range]:hover::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.win-ui-light .pf-slider input[type=range]:active::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.win-ui-light .pf-slider input[type=range]:disabled::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.win-ui-light .pf-slider input[type=range]::-ms-thumb {
+    background-color: rgb(1, 1, 1);
+}
+
+.win-ui-light .pf-slider input[type=range]:disabled::-ms-thumb {
+    background-color: rgb(146, 146, 146);
+}
+
+.win-ui-light .pf-slider progress::-ms-fill {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+/* Buffering Control */
+.pf-buffering-control {
+    color: rgb(91, 46, 197);
+}
+
+.win-ui-light .pf-buffering-control {
+    color: rgb(70, 23, 180);
+}
+
+/* Control Panel */
+.pf-control-panel, .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgb(0, 0, 0);
+}
+
+.pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.win-ui-light .pf-control-panel, .win-ui-light .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgb(255, 255, 255);
+}
+
+.win-ui-light .pf-container .pf-control-panel, .win-ui-light .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
