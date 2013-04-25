@@ -1,5 +1,31 @@
 @pushd %~dp0%
 
+rmdir /s /q "Microsoft.PlayerFramework.WP8\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Adaptive\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Advertising\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.TimedText\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.WebVTT\References"
+
+mkdir "Microsoft.PlayerFramework.WP8\References"
+mkdir "Microsoft.PlayerFramework.WP8\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Adaptive\References"
+mkdir "Microsoft.PlayerFramework.WP8.Adaptive\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Adaptive\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Advertising\References"
+mkdir "Microsoft.PlayerFramework.WP8.Advertising\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Advertising\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics\References"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.TimedText\References"
+mkdir "Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References"
+mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral"
+
 cd..
 
 copy Phone.SL\bin\Release\Microsoft.PlayerFramework.dll  Build\Microsoft.PlayerFramework.WP8\References\CommonConfiguration\neutral\
