@@ -8,13 +8,13 @@
 
 		<link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/flick/jquery-ui.css">
 		<link rel="stylesheet" href="../css/playerframework.min.css">
-		<link rel="stylesheet" href="../css/prettify.css">
+		<!--<link rel="stylesheet" href="../css/prettify.css">-->
 		<link rel="stylesheet" href="../css/style.css">
 
 		<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
 		<script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
 		<script src="../js/playerframework.min.js"></script>
-		<script src="../js/prettify.js"></script>
+		<!--<script src="../js/prettify.js"></script>-->
 
 		<script>
 			$(function()
@@ -49,15 +49,15 @@
 				<div class="sample-player module ui-corner-all">
 					<div class="module-label">Silverlight Player</div>
 					<div class="module-contents">
-						<video id="myVideo1" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png">
-							<source src="../media/bigbuck.AAA" type='video/AAA' />
-							<source src="../media/bigbuck.BBB" type='video/BBB' />
-							<source src="../media/bigbuck.CCC" type='video/CCC' />
-							<object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png">
-								<param name="source" value="../xap/ProgressiveDownloadPlayer.xap" />
+						<video id="myVideo1" class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.AAA" type='video/AAA' />
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.BBB" type='video/BBB' />
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.CCC" type='video/CCC' />
+							<object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+								<param name="source" value="http://smf.cloudapp.net/html5/xap/ProgressiveDownloadPlayer.xap" />
 								<param name="onError" value="onSilverlightError" />
 								<param name="onLoad" value="onSilverlightLoad" />
-								<param name="minRuntimeVersion" value="4.0.50401.0" />
+								<param name="minRuntimeVersion" value="5.0.61118.0" />
 								<param name="autoUpgrade" value="false" />
 								<param name="enableGPUAcceleration" value="true" />
 								<param name="windowless" value="true" />
@@ -82,15 +82,15 @@
 						<div class="module-label">HTML</div>
 						<div class="module-contents">
 							<pre class="prettyprint">
-<code>&lt;video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png"&gt;
-	&lt;source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
-	&lt;source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
-	&lt;source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
-	&lt;object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png"&gt;
-		&lt;param name="source" value="../xap/ProgressiveDownloadPlayer.xap"/&gt;
+<code>&lt;video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
+	&lt;object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+		&lt;param name="source" value="http://smf.cloudapp.net/html5/xap/ProgressiveDownloadPlayer.xap"/&gt;
 		&lt;param name="onError" value="onSilverlightError" /&gt;
 		&lt;param name="onLoad" value="onSilverlightLoad" /&gt;
-		&lt;param name="minRuntimeVersion" value="4.0.50401.0" /&gt;
+		&lt;param name="minRuntimeVersion" value="5.0.61118.0" /&gt;
 		&lt;param name="autoUpgrade" value="false" /&gt;
 		&lt;param name="enableGPUAcceleration" value="true" /&gt;
 		&lt;param name="windowless" value="true" /&gt;
@@ -109,8 +109,8 @@
 				<div class="sample-player module ui-corner-all">
 					<div class="module-label">HTML5 Video Player</div>
 					<div class="module-contents">
-						<object id="myVideo2" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png">
-							<param name="source" value="../xap/SmoothStreamingPlayer.xap" />
+						<object id="myVideo2" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+							<param name="source" value="http://smf.cloudapp.net/html5/xap/SmoothStreamingPlayer.xap" />
 							<param name="onError" value="onSilverlightError" />
 							<param name="onLoad" value="onSilverlightLoad" />
 							<param name="minRuntimeVersion" value="99.0.00000.0" />
@@ -118,10 +118,10 @@
 							<param name="enableGPUAcceleration" value="true" />
 							<param name="windowless" value="true" />
 							<param name="InitParams" value="scriptablename=Player,autoplay=false,mediaurl=http://streams.smooth.vertigo.com/BigBuckBunny_30sec/bigbuck.ism/manifest" />
-							<video class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png">
-								<source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-								<source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
-								<source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
+							<video class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+								<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+								<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
+								<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
 								<div class="pf-static">
 									HTML5 video is not supported.
 								</div>
@@ -142,19 +142,19 @@
 						<div class="module-label">HTML</div>
 						<div class="module-contents">
 							<pre class="prettyprint">
-<code>&lt;object id="myVideo" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png"&gt;
-	&lt;param name="source" value="../xap/SmoothStreamingPlayer.xap"/&gt;
+<code>&lt;object id="myVideo" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+	&lt;param name="source" value="http://smf.cloudapp.net/html5/xap/SmoothStreamingPlayer.xap"/&gt;
 	&lt;param name="onError" value="onSilverlightError" /&gt;
 	&lt;param name="onLoad" value="onSilverlightLoad" /&gt;
-	&lt;param name="minRuntimeVersion" value="4.0.50401.0" /&gt;
+	&lt;param name="minRuntimeVersion" value="5.0.61118.0" /&gt;
 	&lt;param name="autoUpgrade" value="false" /&gt;
 	&lt;param name="enableGPUAcceleration" value="true" /&gt;
 	&lt;param name="windowless" value="true" /&gt;
 	&lt;param name="InitParams" value="scriptablename=Player,autoplay=false,mediaurl=http://streams.smooth.vertigo.com/BigBuckBunny_30sec/bigbuck.ism/manifest"/&gt;
-	&lt;video class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png"&gt;
-		&lt;source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
-		&lt;source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
-		&lt;source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
+	&lt;video class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+		&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
+		&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
+		&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
 		&lt;div class="pf-static"&gt;
 			HTML5 video is not supported.
 		&lt;/div&gt;
@@ -169,10 +169,10 @@
 				<div class="sample-player module ui-corner-all">
 					<div class="module-label">HTML5 Video Player</div>
 					<div class="module-contents">
-						<video id="myVideo3" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png">
-							<source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-							<source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
-							<source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
+						<video id="myVideo3" class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
+							<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
 							<div class="pf-static">
 								HTML5 video is not supported.
 							</div>
@@ -192,10 +192,10 @@
 						<div class="module-label">HTML</div>
 						<div class="module-contents">
 							<pre class="prettyprint">
-<code>&lt;video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png"&gt;
-	&lt;source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
-	&lt;source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
-	&lt;source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
+<code>&lt;video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' /&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' /&gt;
+	&lt;source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' /&gt;
 	&lt;div class="pf-static"&gt;
 		HTML5 video is not supported.
 	&lt;/div&gt;
@@ -209,11 +209,11 @@
 				<div class="sample-player module">
 					<div class="module-label">Silverlight Player</div>
 					<div class="module-contents">
-						<object id="myVideo4" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png">
-							<param name="source" value="../xap/SmoothStreamingPlayer.xap" />
+						<object id="myVideo4" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+							<param name="source" value="http://smf.cloudapp.net/html5/xap/SmoothStreamingPlayer.xap" />
 							<param name="onError" value="onSilverlightError" />
 							<param name="onLoad" value="onSilverlightLoad" />
-							<param name="minRuntimeVersion" value="4.0.50401.0" />
+							<param name="minRuntimeVersion" value="5.0.61118.0" />
 							<param name="autoUpgrade" value="false" />
 							<param name="enableGPUAcceleration" value="true" />
 							<param name="windowless" value="true" />
@@ -237,11 +237,11 @@
 						<div class="module-label">HTML</div>
 						<div class="module-contents">
 							<pre class="prettyprint">
-<code>&lt;object id="myVideo" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png"&gt;
-	&lt;param name="source" value="../xap/SmoothStreamingPlayer.xap"/&gt;
+<code>&lt;object id="myVideo" class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png"&gt;
+	&lt;param name="source" value="http://smf.cloudapp.net/html5/xap/SmoothStreamingPlayer.xap"/&gt;
 	&lt;param name="onError" value="onSilverlightError" /&gt;
 	&lt;param name="onLoad" value="onSilverlightLoad" /&gt;
-	&lt;param name="minRuntimeVersion" value="4.0.50401.0" /&gt;
+	&lt;param name="minRuntimeVersion" value="5.0.61118.0" /&gt;
 	&lt;param name="autoUpgrade" value="false" /&gt;
 	&lt;param name="enableGPUAcceleration" value="true" /&gt;
 	&lt;param name="windowless" value="true" /&gt;

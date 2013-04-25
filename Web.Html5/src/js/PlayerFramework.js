@@ -215,14 +215,16 @@ PlayerFramework.mouseEventProxy = function(element, eventType)
 	///	</param>
 	///	<returns type="Function" />
 
-	var proxy = PlayerFramework.proxy(this, function(e)
-	{
-		var event = document.createEvent("MouseEvents");
-		event.initMouseEvent(eventType, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-		element.dispatchEvent(event);
-	});
-
-	return proxy;
+	if (document.createEvent) {
+	    return PlayerFramework.proxy(this, function(e)
+	    {
+	            var event = document.createEvent("MouseEvents");
+	            event.initMouseEvent(eventType, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	            element.dispatchEvent(event);
+	    });
+    } else {
+        return null;
+    }
 };
 
 PlayerFramework.xhr = function(options, completeCallback, errorCallback)
@@ -230,11 +232,14 @@ PlayerFramework.xhr = function(options, completeCallback, errorCallback)
 	///	<summary>
 	///		Wraps an XMLHttpRequest.
 	///	</summary>
+	///	<param name="options" type="Object">
+	///		The options to use for the request (url, etc.)
+	///	</param>
 	///	<param name="completeCallback" type="Function">
 	///		The function to call when the request has completed.
 	///	</param>
 	///	<param name="errorCallback" type="Function">
-	///		The function to call when request resulted in an error.
+	///		The function to call when the request resulted in an error.
 	///	</param>
 
 	var request = null;

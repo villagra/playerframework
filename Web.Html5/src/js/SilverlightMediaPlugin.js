@@ -6,10 +6,10 @@
 		{
 			params:
 			{
-				source: "../xap/SilverlightPlayer.xap",
+			    source: "http://smf.cloudapp.net/html5/xap/SilverlightPlayer.xap",
 				onError: "onSilverlightError",
 				onLoad: "onSilverlightLoad",
-				minRuntimeVersion: "4.0.50401.0",
+				minRuntimeVersion: "5.0.61118.0",
 				autoUpgrade: false,
 				enableGPUAcceleration: true,
 				windowless: true
@@ -88,15 +88,26 @@
 			]);
 		}
 
-		if (!this.options.initParams.mediaurl)
-		{
+		var mediaUrl = this.options.initParams.mediaurl;
+        if (!mediaUrl)
+        {
+            mediaUrl = this.getMediaUrl();
 			PlayerFramework.merge(this.options.initParams,
 			{
-				mediaurl: this.getMediaUrl()
+			    mediaurl: mediaUrl
 			});
-		}
-		var initParams = "";
+        }
 
+        var deliveryMethod = this.options.initParams.deliveryMethod;
+        if (!deliveryMethod) {
+            deliveryMethod = this.getDeliveryMethod(mediaUrl);
+		    PlayerFramework.merge(this.options.initParams,
+			{
+			    deliverymethod: deliveryMethod
+			});
+        }
+
+		var initParams = "";
 		// Concatenate and add the special "InitParams" object param.
 		for(var p in this.options.initParams)
 		{
@@ -129,6 +140,15 @@
 		return firstSupportedSource.src.indexOf('://') != -1
 											? firstSupportedSource.src
 											: this.qualifyURL(firstSupportedSource.src);
+	},
+
+	getDeliveryMethod: function(mediaUrl)
+	{
+	    if (mediaUrl.toLowerCase().indexOf('/manifest') != -1) {
+	        return "AdaptiveStreaming";
+	    } else {
+	        return "ProgressiveDownload";
+	    }
 	},
 
 	escapeHTML: function(s)

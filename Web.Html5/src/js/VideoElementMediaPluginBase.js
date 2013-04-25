@@ -286,10 +286,12 @@
 		///	<param name="type" type="String" />
 		///	<returns type="Boolean" />
 
-		if (this.element)
-			return this.element.canPlayType(type);
+	    var videoElement = this.element ? this.element : document.createElement("video");
 
-		return document.createElement("video").canPlayType(type);
+	    if (videoElement.canPlayType)
+	        return videoElement.canPlayType(type);
+
+		return false;
 	},
 
 	checkSupport: function(callback)

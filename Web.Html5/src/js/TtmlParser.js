@@ -22,7 +22,7 @@
 			mediaSubFrameRate: 1,
 			mediaTickRate: 1000,
 			mediaStart: 0,
-			mediaDuration: 99999,
+			mediaDuration: Math.pow(2, 53), // maximum JavaScript integer
 			clocktime: /^(\d{2,}):(\d{2}):(\d{2})((?:\.\d{1,})|:(\d{2,}(?:\.\d{1,})?))?$/, // hours ":" minutes ":" seconds ( fraction | ":" frames ( "." sub-frames )? )?
 			offsettime: /^(\d+(\.\d+)?)(ms|[hmsft])$/ // time-count fraction? metric
 		});
@@ -212,7 +212,7 @@
 						var showBackground = div.getAttribute("data-showBackground") != 'whenActive';
 						var text = div.innerHTML.replace(/\s/g, "");
 
-						if (showBackground || text != "")
+						if (showBackground && text != "")
 							cues.push(div);
 					}
 				}));
@@ -249,18 +249,20 @@
 		// between these two reference times, based on the begin, end and dur attributes
 		// and to recursively set all of the children.
 		
-		var begin = this.getTime(this.getAttr(element, "begin")); // Will return 0 if begin is unattested.
-		var startTime = bound.first + begin;
-		var endTime;
-		
-		// Compute the simple duration of the interval.
-		var defaultDur = 0,
-			dur = 0,
-			end = 0;
+		var begin, end;
+		var startTime, endTime;
+		var defaultDur, dur;
 
-		// Workaround for an issue where some cue ancestor must be offset from 0s.
-		if (element.tagName != "body" && startTime == 0)
-			startTime = .01;
+		if (this.hasAttr(element, "begin"))
+		{
+			// Begin attested.
+			begin = this.getTime(this.getAttr(element, "begin")) + 0.01; // workaround to allow cues that begin exactly when the previous cue ends
+			startTime = bound.first + begin;
+		}
+		else
+		{
+			startTime = bound.first;
+		}
 
 		if (!this.hasAttr(element, "dur") && !this.hasAttr(element, "end"))
 		{
@@ -276,6 +278,7 @@
 				}
 				else
 				{
+					defaultDur = 0;
 					endTime = 0;
 				}
 			}
@@ -298,8 +301,7 @@
 		{
 			// Only dur attested.
 			dur = this.getTime(this.getAttr(element, "dur"));
-			var offsetStart = startTime + dur;
-			endTime = Math.min(offsetStart, bound.second);
+			endTime = Math.min(startTime + dur, bound.second);
 		}
 
 		if (endTime < startTime)

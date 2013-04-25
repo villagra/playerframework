@@ -215,14 +215,16 @@ PlayerFramework.mouseEventProxy = function(element, eventType)
 	///	</param>
 	///	<returns type="Function" />
 
-	var proxy = PlayerFramework.proxy(this, function(e)
-	{
-		var event = document.createEvent("MouseEvents");
-		event.initMouseEvent(eventType, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-		element.dispatchEvent(event);
-	});
-
-	return proxy;
+	if (document.createEvent) {
+	    return PlayerFramework.proxy(this, function(e)
+	    {
+	            var event = document.createEvent("MouseEvents");
+	            event.initMouseEvent(eventType, true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	            element.dispatchEvent(event);
+	    });
+    } else {
+        return null;
+    }
 };
 
 PlayerFramework.xhr = function(options, completeCallback, errorCallback)
@@ -230,11 +232,14 @@ PlayerFramework.xhr = function(options, completeCallback, errorCallback)
 	///	<summary>
 	///		Wraps an XMLHttpRequest.
 	///	</summary>
+	///	<param name="options" type="Object">
+	///		The options to use for the request (url, etc.)
+	///	</param>
 	///	<param name="completeCallback" type="Function">
 	///		The function to call when the request has completed.
 	///	</param>
 	///	<param name="errorCallback" type="Function">
-	///		The function to call when request resulted in an error.
+	///		The function to call when the request resulted in an error.
 	///	</param>
 
 	var request = null;
@@ -1855,10 +1860,12 @@ PlayerFramework.VideoMediaPlugin.MediaError =
 		///	<param name="type" type="String" />
 		///	<returns type="Boolean" />
 
-		if (this.element)
-			return this.element.canPlayType(type);
+	    var videoElement = this.element ? this.element : document.createElement("video");
 
-		return document.createElement("video").canPlayType(type);
+	    if (videoElement.canPlayType)
+	        return videoElement.canPlayType(type);
+
+		return false;
 	},
 
 	checkSupport: function(callback)
@@ -2538,8 +2545,8 @@ document.createElement("video");
 		///		or if it has completed seeking.
 		///	</summary>
 
-		var currentSeekTime = Date.now();
-
+	    var currentSeekTime = Date.now ? Date.now : +new Date;
+        
 		PlayerFramework.proxy(this, function(previousSeekTime)
 		{
 			window.setTimeout(PlayerFramework.proxy(this, function()
@@ -4353,8 +4360,20 @@ PlayerFramework.Plugins.PlaylistPlugin.PlaylistItemEndBehavior =
 		PlayerFramework.addEvent(document, "mousemove", PlayerFramework.proxy(this, this.onDocumentMouseMove));
 		PlayerFramework.addEvent(document, "mouseup", PlayerFramework.proxy(this, this.onDocumentMouseUp));
 		PlayerFramework.addEvent(document, "keydown", PlayerFramework.proxy(this, this.onDocumentKeyDown));
-		PlayerFramework.addEvent(this.element, "mouseover", PlayerFramework.mouseEventProxy(this.player, "mouseover"));
-		PlayerFramework.addEvent(this.element, "mouseout", PlayerFramework.mouseEventProxy(this.player, "mouseout"));
+
+		var mouseOutProxy = PlayerFramework.mouseEventProxy(this.player, "mouseout");
+		var mouseOverProxy = PlayerFramework.mouseEventProxy(this.player, "mouseover");
+		PlayerFramework.addEvent(this.element, "mouseout", mouseOutProxy ? mouseOutProxy : PlayerFramework.proxy(this, this.onMouseOut));
+		PlayerFramework.addEvent(this.element, "mouseover", mouseOverProxy ? mouseOverProxy : PlayerFramework.proxy(this, this.onMouseOver));
+	},
+
+	onMouseOut: function () {
+	    this.player.dispatchEvent({ type: "mouseout" });
+	},
+
+	onMouseOver: function()
+	{
+	    this.player.dispatchEvent({ type: "mouseover" });
 	},
 
 	createControl: function()
@@ -5128,6 +5147,7 @@ PlayerFramework.Plugins.PlaylistPlugin.PlaylistItemEndBehavior =
 
 		if (!this.element)
 		{
+			// HACK: recover from a common non-error situation in IE
 			if (this.player.networkState() === PlayerFramework.VideoMediaPlugin.NetworkState.NETWORK_NO_SOURCE && window.navigator.appName !== "Microsoft Internet Explorer")
 				this.show(this.options.strings.defaultMessage);
 		}
@@ -6465,10 +6485,10 @@ PlayerFramework.Player = PlayerFramework.Object.extend(
 		{
 			params:
 			{
-				source: "../xap/SilverlightPlayer.xap",
+			    source: "http://smf.cloudapp.net/html5/xap/SilverlightPlayer.xap",
 				onError: "onSilverlightError",
 				onLoad: "onSilverlightLoad",
-				minRuntimeVersion: "4.0.50401.0",
+				minRuntimeVersion: "5.0.61118.0",
 				autoUpgrade: false,
 				enableGPUAcceleration: true,
 				windowless: true
@@ -6547,15 +6567,26 @@ PlayerFramework.Player = PlayerFramework.Object.extend(
 			]);
 		}
 
-		if (!this.options.initParams.mediaurl)
-		{
+		var mediaUrl = this.options.initParams.mediaurl;
+        if (!mediaUrl)
+        {
+            mediaUrl = this.getMediaUrl();
 			PlayerFramework.merge(this.options.initParams,
 			{
-				mediaurl: this.getMediaUrl()
+			    mediaurl: mediaUrl
 			});
-		}
-		var initParams = "";
+        }
 
+        var deliveryMethod = this.options.initParams.deliveryMethod;
+        if (!deliveryMethod) {
+            deliveryMethod = this.getDeliveryMethod(mediaUrl);
+		    PlayerFramework.merge(this.options.initParams,
+			{
+			    deliverymethod: deliveryMethod
+			});
+        }
+
+		var initParams = "";
 		// Concatenate and add the special "InitParams" object param.
 		for(var p in this.options.initParams)
 		{
@@ -6588,6 +6619,15 @@ PlayerFramework.Player = PlayerFramework.Object.extend(
 		return firstSupportedSource.src.indexOf('://') != -1
 											? firstSupportedSource.src
 											: this.qualifyURL(firstSupportedSource.src);
+	},
+
+	getDeliveryMethod: function(mediaUrl)
+	{
+	    if (mediaUrl.toLowerCase().indexOf('/manifest') != -1) {
+	        return "AdaptiveStreaming";
+	    } else {
+	        return "ProgressiveDownload";
+	    }
 	},
 
 	escapeHTML: function(s)
@@ -7415,7 +7455,7 @@ PlayerFramework.TextTrack.DisplayPreference =
 			mediaSubFrameRate: 1,
 			mediaTickRate: 1000,
 			mediaStart: 0,
-			mediaDuration: 99999,
+			mediaDuration: Math.pow(2, 53), // maximum JavaScript integer
 			clocktime: /^(\d{2,}):(\d{2}):(\d{2})((?:\.\d{1,})|:(\d{2,}(?:\.\d{1,})?))?$/, // hours ":" minutes ":" seconds ( fraction | ":" frames ( "." sub-frames )? )?
 			offsettime: /^(\d+(\.\d+)?)(ms|[hmsft])$/ // time-count fraction? metric
 		});
@@ -7605,7 +7645,7 @@ PlayerFramework.TextTrack.DisplayPreference =
 						var showBackground = div.getAttribute("data-showBackground") != 'whenActive';
 						var text = div.innerHTML.replace(/\s/g, "");
 
-						if (showBackground || text != "")
+						if (showBackground && text != "")
 							cues.push(div);
 					}
 				}));
@@ -7642,18 +7682,20 @@ PlayerFramework.TextTrack.DisplayPreference =
 		// between these two reference times, based on the begin, end and dur attributes
 		// and to recursively set all of the children.
 		
-		var begin = this.getTime(this.getAttr(element, "begin")); // Will return 0 if begin is unattested.
-		var startTime = bound.first + begin;
-		var endTime;
-		
-		// Compute the simple duration of the interval.
-		var defaultDur = 0,
-			dur = 0,
-			end = 0;
+		var begin, end;
+		var startTime, endTime;
+		var defaultDur, dur;
 
-		// Workaround for an issue where some cue ancestor must be offset from 0s.
-		if (element.tagName != "body" && startTime == 0)
-			startTime = .01;
+		if (this.hasAttr(element, "begin"))
+		{
+			// Begin attested.
+			begin = this.getTime(this.getAttr(element, "begin")) + 0.01; // workaround to allow cues that begin exactly when the previous cue ends
+			startTime = bound.first + begin;
+		}
+		else
+		{
+			startTime = bound.first;
+		}
 
 		if (!this.hasAttr(element, "dur") && !this.hasAttr(element, "end"))
 		{
@@ -7669,6 +7711,7 @@ PlayerFramework.TextTrack.DisplayPreference =
 				}
 				else
 				{
+					defaultDur = 0;
 					endTime = 0;
 				}
 			}
@@ -7691,8 +7734,7 @@ PlayerFramework.TextTrack.DisplayPreference =
 		{
 			// Only dur attested.
 			dur = this.getTime(this.getAttr(element, "dur"));
-			var offsetStart = startTime + dur;
-			endTime = Math.min(offsetStart, bound.second);
+			endTime = Math.min(startTime + dur, bound.second);
 		}
 
 		if (endTime < startTime)

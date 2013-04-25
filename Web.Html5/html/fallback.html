@@ -15,15 +15,15 @@
 		<h1>HTML5 Player Framework</h1>
 		<h2>Fallback Usage Example</h2>
 
-		<video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="../media/bigbuck.png">
-			<source src="../media/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-			<source src="../media/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
-			<source src="../media/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
-			<object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="../media/bigbuck.png">
-				<param name="source" value="../xap/ProgressiveDownloadPlayer.xap" />
+		<video id="myVideo" class="pf-video" width="480" height="320" controls="controls" poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+			<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" type='video/webm; codecs="vp8, vorbis"' />
+			<source src="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" type='video/ogg; codecs="theora, vorbis"' />
+			<object class="pf-silverlight" data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="480" height="320" data-poster="http://smf.blob.core.windows.net/samples/videos/bigbuck.png">
+				<param name="source" value="http://smf.cloudapp.net/html5/xap/ProgressiveDownloadPlayer.xap" />
 				<param name="onError" value="onSilverlightError" />
 				<param name="onLoad" value="onSilverlightLoad" />
-				<param name="minRuntimeVersion" value="4.0.50401.0" />
+				<param name="minRuntimeVersion" value="5.0.61118.0" />
 				<param name="autoUpgrade" value="true" />
 				<param name="enableGPUAcceleration" value="true" />
 				<param name="windowless" value="true" />
@@ -31,13 +31,13 @@
 				<div class="pf-static">
 					<div>Downloads:</div>
 					<div>
-						<a href="../media/bigbuck.mp4" title="../media/bigbuck.mp4">../media/bigbuck.mp4</a>
+						<a href="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4" title="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4</a>
 					</div>
 					<div>
-						<a href="../media/bigbuck.webm" title="../media/bigbuck.webm">../media/bigbuck.webm</a>
+						<a href="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm" title="http://smf.blob.core.windows.net/samples/videos/bigbuck.webm">http://smf.blob.core.windows.net/samples/videos/bigbuck.webm</a>
 					</div>
 					<div>
-						<a href="../media/bigbuck.ogv" title="../media/bigbuck.ogv">../media/bigbuck.ogv</a>
+						<a href="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv" title="http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv">http://smf.blob.core.windows.net/samples/videos/bigbuck.ogv</a>
 					</div>
 				</div>
 			</object>

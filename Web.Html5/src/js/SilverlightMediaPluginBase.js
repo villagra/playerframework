@@ -473,8 +473,8 @@
 		///		or if it has completed seeking.
 		///	</summary>
 
-		var currentSeekTime = Date.now();
-
+	    var currentSeekTime = Date.now ? Date.now : +new Date;
+        
 		PlayerFramework.proxy(this, function(previousSeekTime)
 		{
 			window.setTimeout(PlayerFramework.proxy(this, function()

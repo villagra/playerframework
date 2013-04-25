@@ -513,8 +513,20 @@
 		PlayerFramework.addEvent(document, "mousemove", PlayerFramework.proxy(this, this.onDocumentMouseMove));
 		PlayerFramework.addEvent(document, "mouseup", PlayerFramework.proxy(this, this.onDocumentMouseUp));
 		PlayerFramework.addEvent(document, "keydown", PlayerFramework.proxy(this, this.onDocumentKeyDown));
-		PlayerFramework.addEvent(this.element, "mouseover", PlayerFramework.mouseEventProxy(this.player, "mouseover"));
-		PlayerFramework.addEvent(this.element, "mouseout", PlayerFramework.mouseEventProxy(this.player, "mouseout"));
+
+		var mouseOutProxy = PlayerFramework.mouseEventProxy(this.player, "mouseout");
+		var mouseOverProxy = PlayerFramework.mouseEventProxy(this.player, "mouseover");
+		PlayerFramework.addEvent(this.element, "mouseout", mouseOutProxy ? mouseOutProxy : PlayerFramework.proxy(this, this.onMouseOut));
+		PlayerFramework.addEvent(this.element, "mouseover", mouseOverProxy ? mouseOverProxy : PlayerFramework.proxy(this, this.onMouseOver));
+	},
+
+	onMouseOut: function () {
+	    this.player.dispatchEvent({ type: "mouseout" });
+	},
+
+	onMouseOver: function()
+	{
+	    this.player.dispatchEvent({ type: "mouseover" });
 	},
 
 	createControl: function()

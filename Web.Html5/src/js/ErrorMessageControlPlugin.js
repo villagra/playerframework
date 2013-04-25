@@ -55,6 +55,7 @@
 
 		if (!this.element)
 		{
+			// HACK: recover from a common non-error situation in IE
 			if (this.player.networkState() === PlayerFramework.VideoMediaPlugin.NetworkState.NETWORK_NO_SOURCE && window.navigator.appName !== "Microsoft Internet Explorer")
 				this.show(this.options.strings.defaultMessage);
 		}
