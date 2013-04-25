@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaState.cs">
+      <Link>Primitives\MediaState.cs</Link>
+    </Compile>
+    <Compile Include="Interfaces\IMediaPlugin.cs" />
+    <Compile Include="Primitives\LogReadyRoutedEventArgs.cs" />
+    <Compile Include="Primitives\RateChangedRoutedEventArgs.cs" />
+    <Compile Include="..\Win8.xaml\commands\DelegateCommand.cs">
+      <Link>Commands\DelegateCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Commands\ViewModelCommand.cs">
+      <Link>Commands\ViewModelCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Commands\ViewModelCommandFactory.cs">
+      <Link>Commands\ViewModelCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\ControlPanel.cs">
+      <Link>Controls\ControlPanel\ControlPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs">
+      <Link>Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\DeselectableListBox.cs">
+      <Link>Controls\ControlPanel\DeselectableListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\MediaPlayerButton.cs">
+      <Link>Controls\ControlPanel\MediaPlayerButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\PositionedItemsControl.cs">
+      <Link>Controls\ControlPanel\PositionedItemsControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\PositionedItemsPanel.cs">
+      <Link>Controls\ControlPanel\PositionedItemsPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\ResolutionIndicator.cs">
+      <Link>Controls\ControlPanel\ResolutionIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\SeekableSlider.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\SeekableSlider.TemplateDefinition.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\SeekableSliderTemplateParts.cs">
+      <Link>Controls\ControlPanel\SeekableSliderTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\SeekableSliderVisualStates.cs">
+      <Link>Controls\ControlPanel\SeekableSliderVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\SignalStrength.cs">
+      <Link>Controls\ControlPanel\SignalStrength.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\StandardButtons.cs">
+      <Link>Controls\ControlPanel\StandardButtons.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\Timeline.cs">
+      <Link>Controls\ControlPanel\Timeline.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\VolumeButton.cs">
+      <Link>Controls\ControlPanel\VolumeButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\ControlPanel\VolumeSlider.cs">
+      <Link>Controls\ControlPanel\VolumeSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\controls\InteractiveViewModel.cs">
+      <Link>Controls\InteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Controls\InteractiveViewModelBase.cs">
+      <Link>Controls\InteractiveViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\controls\MediaPlayer.cs">
+      <Link>Controls\MediaPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\controls\MediaPlayer.TemplateDefinitions.cs">
+      <Link>Controls\MediaPlayer.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\controls\PluginsFactory.cs">
+      <Link>Controls\PluginsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\converters\BoolToVisibilityConverter.cs">
+      <Link>Converters\BoolToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Converters\IsNullConverter.cs">
+      <Link>Converters\IsNullConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\converters\NotConverter.cs">
+      <Link>Converters\NotConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\converters\StringFormatConverter.cs">
+      <Link>Converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Converters\TargetNullValueConverter.cs">
+      <Link>Converters\TargetNullValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\extensions\ControlExtensions.cs">
+      <Link>Extensions\ControlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\extensions\TimeSpanExtensions.cs">
+      <Link>Extensions\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Extensions\ToggleButtonExtensions.cs">
+      <Link>Extensions\ToggleButtonExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Extensions\VisualTreeExtensions.cs">
+      <Link>Extensions\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\interfaces\IInteractiveViewModel.cs">
+      <Link>Interfaces\IInteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\interfaces\IMediaSource.cs">
+      <Link>Interfaces\IMediaSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\interfaces\IPlugin.cs">
+      <Link>Interfaces\IPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\AudioSelectionPlugin.cs">
+      <Link>Plugins\AudioSelectionPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\AudioSelectionView.cs">
+      <Link>Plugins\AudioSelectionView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\BufferingPlugin.cs">
+      <Link>Plugins\BufferingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\BufferingView.cs">
+      <Link>Plugins\BufferingView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\CaptionSelectorPlugin.cs">
+      <Link>Plugins\CaptionSelectorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\CaptionSelectorView.cs">
+      <Link>Plugins\CaptionSelectorView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\ChaptersPlugin.cs">
+      <Link>Plugins\ChaptersPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\ErrorPlugin.cs">
+      <Link>Plugins\ErrorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\ErrorView.cs">
+      <Link>Plugins\ErrorView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\LoaderPlugin.cs">
+      <Link>Plugins\LoaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\LoaderView.cs">
+      <Link>Plugins\LoaderView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\PlaylistPlugin.cs">
+      <Link>Plugins\PlaylistPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\PlayTimeTrackingPlugin.cs">
+      <Link>Plugins\PlayTimeTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\PluginBase.cs">
+      <Link>Plugins\PluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\PositionTrackingPlugin.cs">
+      <Link>Plugins\PositionTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\PosterPlugin.cs">
+      <Link>Plugins\PosterPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\plugins\PosterView.cs">
+      <Link>Plugins\PosterView.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\TrackingPlugin.Attached.cs">
+      <Link>Plugins\TrackingPlugin.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Plugins\TrackingPluginBase.cs">
+      <Link>Plugins\TrackingPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\AdvertisingStateEnum.cs">
+      <Link>Primitives\AdvertisingStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\AudioStream.cs">
+      <Link>Primitives\AudioStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\AutoHideBehavior.cs">
+      <Link>Primitives\AutoHideBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\primitives\Caption.cs">
+      <Link>Primitives\Caption.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\CategoryConstants.cs">
+      <Link>Primitives\CategoryConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\InteractionType.cs">
+      <Link>Primitives\InteractionType.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaEndedBehaviorEnum.cs">
+      <Link>Primitives\MediaEndedBehaviorEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaPlayerActionEventArgs.cs">
+      <Link>Primitives\MediaPlayerActionEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaPlayerDeferrableOperation.cs">
+      <Link>Primitives\MediaPlayerDeferrableOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaPlayerTemplateParts.cs">
+      <Link>Primitives\MediaPlayerTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaPlayerVisualStates.cs">
+      <Link>Primitives\MediaPlayerVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\MediaQualityEnum.cs">
+      <Link>Primitives\MediaQualityEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\PlayerStateEnum.cs">
+      <Link>Primitives\PlayerStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.xaml\primitives\PlaylistItem.cs">
+      <Link>Primitives\PlaylistItem.cs</Link>
+    </Compile>
+    <Compile Include="Controls\MediaElementWrapper.cs" />
+    <Compile Include="Converters\MulticastConverter.cs" />
+    <Compile Include="Interfaces\IMediaElement.cs" />
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\PlaylistItem.Metadata.cs">
+      <Link>Primitives\PlaylistItem.Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\PositionRoutedEventArgs.cs">
+      <Link>Primitives\PositionRoutedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\SelectedAudioStreamChangedEventArgs.cs">
+      <Link>Primitives\SelectedAudioStreamChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml\Primitives\VisualMarker.cs">
+      <Link>Primitives\VisualMarker.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\DispatcherExtensions.cs" />
+    <Compile Include="Primitives\TimelineMarkerEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.4\tools\Microsoft.Bcl.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
