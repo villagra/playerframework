@@ -17,7 +17,12 @@ namespace Microsoft.VideoAdvertising
     {
         static Extensions()
         {
+#if WINDOWS_PHONE
+            var userAgentMask = "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone {0}; Trident/6.0; IEMobile/10.0; Touch; {1}; {2})";
+            DefaultUserAgent = string.Format(userAgentMask, Environment.OSVersion.Version, Microsoft.Phone.Info.DeviceStatus.DeviceManufacturer, Microsoft.Phone.Info.DeviceStatus.DeviceName);
+#else
             DefaultUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
+#endif
         }
 
         public static string DefaultUserAgent { get; set; }
@@ -44,6 +49,7 @@ namespace Microsoft.VideoAdvertising
 #if SILVERLIGHT
             using (var client = new HttpClient())
             {
+                client.UserAgent = DefaultUserAgent;
                 await client.GetStreamAsync(source);
             }
 #else
@@ -69,6 +75,7 @@ namespace Microsoft.VideoAdvertising
 #if SILVERLIGHT
             using (var client = new HttpClient())
             {
+                client.UserAgent = DefaultUserAgent;
                 return await client.GetStreamAsync(source);
             }
 #else

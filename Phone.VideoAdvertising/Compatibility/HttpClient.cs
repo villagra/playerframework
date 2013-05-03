@@ -10,9 +10,12 @@ namespace System.Net.Http
     /// </summary>
     internal class HttpClient : IDisposable
     {
+        public string UserAgent { get; set; }
+
         public async Task<Stream> GetStreamAsync(Uri address)
         {
             var request = WebRequest.CreateHttp(address);
+            if (UserAgent != null) request.UserAgent = UserAgent;
             request.AllowReadStreamBuffering = true;
             var response = await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null);
             return response.GetResponseStream();
