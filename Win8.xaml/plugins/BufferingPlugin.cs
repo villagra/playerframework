@@ -25,7 +25,7 @@ namespace Microsoft.PlayerFramework
 #endif
     public sealed class BufferingPlugin : PluginBase
     {
-        BufferingView bufferingElement;
+        BufferingView bufferingView;
         Panel bufferingContainer;
 
         /// <summary>
@@ -39,16 +39,14 @@ namespace Microsoft.PlayerFramework
             bufferingContainer = MediaPlayer.Containers.OfType<Panel>().FirstOrDefault(e => e.Name == MediaPlayerTemplateParts.BufferingContainer);
             if (bufferingContainer != null)
             {
-                bufferingElement = new BufferingView()
-                {
-                    Style = BufferingViewStyle
-                };
-                bufferingContainer.Children.Add(bufferingElement);
+                bufferingView = new BufferingView();
+                if (BufferingViewStyle != null) bufferingView.Style = BufferingViewStyle;
+                bufferingContainer.Children.Add(bufferingView);
 #if SILVERLIGHT && !WINDOWS_PHONE
                 bufferingElement.SetBinding(BufferingView.ViewModelProperty, new Binding() { Path = new PropertyPath("InteractiveViewModel"), Source = MediaPlayer });
 #else
                 MediaPlayer.InteractiveViewModelChanged += MediaPlayer_InteractiveViewModelChanged;
-                bufferingElement.ViewModel = MediaPlayer.InteractiveViewModel;
+                bufferingView.ViewModel = MediaPlayer.InteractiveViewModel;
 #endif
                 return true;
             }
@@ -62,19 +60,19 @@ namespace Microsoft.PlayerFramework
             bufferingElement.ClearValue(BufferingView.ViewModelProperty);
 #else
             MediaPlayer.InteractiveViewModelChanged -= MediaPlayer_InteractiveViewModelChanged;
-            bufferingElement.ViewModel = null;
+            bufferingView.ViewModel = null;
 #endif
-            bufferingContainer.Children.Remove(bufferingElement);
-            bufferingElement = null;
+            bufferingContainer.Children.Remove(bufferingView);
+            bufferingView = null;
             bufferingContainer = null;
         }
 
 #if !SILVERLIGHT || WINDOWS_PHONE
         void MediaPlayer_InteractiveViewModelChanged(object sender, RoutedPropertyChangedEventArgs<IInteractiveViewModel> e)
         {
-            if (bufferingElement != null)
+            if (bufferingView != null)
             {
-                bufferingElement.ViewModel = MediaPlayer.InteractiveViewModel;
+                bufferingView.ViewModel = MediaPlayer.InteractiveViewModel;
             }
         }
 #endif
