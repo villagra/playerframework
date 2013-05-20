@@ -273,7 +273,7 @@
 			PlayerFramework.xhr({ url: textTrack.src }, PlayerFramework.proxy(this, function(result)
 			{
 				textTrack.xml = result.responseXML;
-				this.processTextTrackSource(textTrack);
+				this.processTextTrackSource(textTrack, textTrack.xml);
 		
 				textTrack.readyState = PlayerFramework.TextTrack.ReadyState.LOADED;
 				textTrack.dispatchEvent({ type: "load" });

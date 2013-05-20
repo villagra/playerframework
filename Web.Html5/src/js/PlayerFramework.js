@@ -555,6 +555,93 @@ PlayerFramework.forEach = function(array, fun /*, thisp */)
 	}
 };
 
+PlayerFramework.binarySearch = function (array, value, comparer) {
+    /// <summary>Searches a sorted array for the specified value using the binary search algorithm.</summary>
+    /// <param name="array" type="Array">The array to search.</param>
+    /// <param name="value" type="Object">The value to search for.</param>
+    /// <param name="comparer" type="Function">The comparison function by which the array is sorted.</param>
+    /// <returns type="Number">The lowest index of the value if found, otherwise the insertion point.</returns>
+
+    var left = 0;
+    var right = array.length;
+    var middle, compareResult, found;
+
+    while (left < right) {
+        middle = (left + right) >> 1;
+        compareResult = comparer(value, array[middle]);
+        if (compareResult > 0) {
+            left = middle + 1;
+        } else {
+            right = middle;
+            found = !compareResult;
+        }
+    }
+
+    return found ? left : ~left;
+};
+
+PlayerFramework.binaryInsert = function (array, value, comparer) {
+    /// <summary>Inserts a value into a sorted array if it does not already exist.</summary>
+    /// <param name="array" type="Array">The target array.</param>
+    /// <param name="value" type="Object">The value to insert.</param>
+    /// <param name="comparer" type="Function">The comparison function by which the array is sorted.</param>
+    /// <returns type="Boolean">True if the value was inserted.</returns>
+
+    var index = PlayerFramework.binarySearch(array, value, comparer);
+
+    if (index < 0) {
+        array.splice(-(index + 1), 0, value);
+        return true;
+    }
+
+    return false;
+};
+
+PlayerFramework.getArray = function (obj) {
+    /// <summary>Gets an array from an "enumerable" object.</summary>
+    /// <param name="obj" type="Object">The target object.</param>
+    /// <returns type="Array">The array.</returns>
+
+    if (obj) {
+        if (Array.isArray(obj)) {
+            return obj;
+        } else if (typeof obj.length !== "undefined") {
+            return Array.prototype.slice.call(obj);
+        } else if (typeof obj.first === "function") {
+            var array = [];
+
+            for (var i = obj.first() ; i.hasCurrent; i.moveNext()) {
+                array.push(i.current);
+            }
+
+            return array;
+        }
+    }
+
+    throw invalidArgument;
+};
+
+PlayerFramework.parseXml = function (data) {
+    var xml;
+
+    try {
+        if (window.DOMParser) {
+            var domParser = new DOMParser();
+            xml = domParser.parseFromString(data, "application/xml");
+        }
+        else {
+            xml = new ActiveXObject("Microsoft.XMLDOM");
+            xml.async = false;
+            xml.loadXML(data);
+        }
+    }
+    catch (err) {
+        xml = null;
+    }
+
+    return xml;
+};
+
 PlayerFramework.requestAnimationFrame = (function()
 {
 	///	<summary>
