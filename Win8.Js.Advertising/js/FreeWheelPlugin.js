@@ -162,7 +162,7 @@
                 });
 
                 if (impression) {
-                    var urls = impression.getUrls();
+                    var urls = PlayerFramework.Utilities.getArray(impression.getUrls());
                     for (var i = 0; i < urls.length; i++) {
                         var url = urls[i];
                         Microsoft.VideoAdvertising.AdTracking.current.fireTracking(url);
