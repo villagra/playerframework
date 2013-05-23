@@ -666,7 +666,12 @@ namespace Microsoft.VideoAdvertising
             }
 
             int index = 0;
-            foreach (var creative in source.Creatives)
+            IEnumerable<FWCreative> creatives = source.Creatives;
+            if (reference.CreativeId != null)
+            {
+                creatives = creatives.Where(c => c.Id == reference.CreativeId);
+            }
+            foreach (var creative in creatives)
             {
                 index++;
                 var wrappedAds = new List<Ad>();
