@@ -136,7 +136,6 @@ namespace Microsoft.PlayerFramework.Advertising
                 lastTrackingEvent = e.TrackingEvent as PlayTimeTrackingEvent;
 
                 var newUrl = url + string.Format("{3}init={0}&ct={1}&last={2}", isStart ? 1 : 0, (int)Math.Round(delta.TotalSeconds), isEnd ? 1 : 0, url.Contains("?") ? "&" : "?");
-                System.Diagnostics.Debug.WriteLine(newUrl);
                 AdTracking.Current.FireTracking(newUrl);
             }
         }
