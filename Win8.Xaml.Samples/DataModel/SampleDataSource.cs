@@ -248,12 +248,27 @@ namespace Microsoft.PlayerFramework.Samples.Data
             yield return new SampleDataItem(
                     "Smooth streaming (VOD)",
                     typeof(SmoothPage),
-                    "Demonstrates basic playback of smooth streaming video using the IIS Smooth Streaming SDK.");
+                    "Demonstrates basic playback of smooth streaming video using the Microsoft Smooth Streaming SDK.");
 
             yield return new SampleDataItem(
                     "Smooth streaming (Live)",
                     typeof(LivePage),
-                    "Demonstrates basic playback of live smooth streaming video using the IIS Smooth Streaming SDK.");
+                    "Demonstrates basic playback of live smooth streaming video using the Microsoft Smooth Streaming SDK.");
+
+            yield return new SampleDataItem(
+                    "DASH streaming video",
+                    typeof(DashPage),
+                    "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH.");
+
+            yield return new SampleDataItem(
+                    "CFF progressive download video",
+                    typeof(CffProgressivePage),
+                    "Demonstrates basic playback of the CFF encoding technology.");
+
+            yield return new SampleDataItem(
+                    "CFF offline video",
+                    typeof(CffOfflinePage),
+                    "Demonstrates basic playback of an offline CFF file.");
 
         }
 

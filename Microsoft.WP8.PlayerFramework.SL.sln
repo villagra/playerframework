@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.WebVTT", "Pho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.SL.WebVTT", "Phone.SL.WebVTT\Microsoft.WP8.PlayerFramework.SL.WebVTT.csproj", "{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.SL.Adaptive.Dash", "Phone.SL.Adaptive.Dash\Microsoft.WP8.PlayerFramework.SL.Adaptive.Dash.csproj", "{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -196,11 +200,32 @@ Global
 		{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}.Release|ARM.Build.0 = Release|ARM
 		{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}.Release|x86.ActiveCfg = Release|x86
 		{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}.Release|x86.Build.0 = Release|x86
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|ARM.Build.0 = Debug|ARM
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|x86.ActiveCfg = Debug|x86
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Debug|x86.Build.0 = Debug|x86
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|ARM.ActiveCfg = Release|ARM
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|ARM.Build.0 = Release|ARM
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|x86.ActiveCfg = Release|x86
+		{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D385553-240D-4F31-A78F-72686BB2613B} = {FBC68F48-BE99-4867-986A-BB603F67FD96}
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA} = {FBC68F48-BE99-4867-986A-BB603F67FD96}
 	EndGlobalSection
 EndGlobal

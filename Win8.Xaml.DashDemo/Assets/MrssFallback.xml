@@ -1,0 +1,28 @@
+﻿<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>NAB DASH demo</title>
+    <link>http://www.windowsazure.com</link>
+    <description>A list of compatible DASH streams for the NAB demo.</description>
+    <item>
+      <title>Sintel</title>
+      <description>2010 - Blender Foundation</description>
+      <media:content url="http://nimbuspartnerorigin.cloudapp.net/bcef2d45-1f64-4c08-9395-f529dc771a84/Sintel_H264.ism/manifest" duration="900" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/7de547d761.jpg" height="160" width="69"/>
+      </media:content>
+    </item>
+    <item>
+      <title>Big Buck Bunny</title>
+      <description>2008 - Blender Foundation</description>
+      <media:content url="http://nimbuspartnerorigin.cloudapp.net/bcef2d45-1f64-4c08-9395-f529dc771a84/Sintel_H264.ism/manifest" duration="600" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/698e569172.jpg" height="160" width="90"/>
+      </media:content>
+    </item>
+    <item>
+      <title>Elephants Dream</title>
+      <description>2006 - Blender Foundation</description>
+      <media:content url="http://nimbuspartnerorigin.cloudapp.net/bcef2d45-1f64-4c08-9395-f529dc771a84/Sintel_H264.ism/manifest" duration="600" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/f0a77d94e3.jpg" height="160" width="90"/>
+      </media:content>
+    </item>
+  </channel>
+</rss>

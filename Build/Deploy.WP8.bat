@@ -6,6 +6,8 @@ rmdir /s /q "Microsoft.PlayerFramework.WP8.Advertising\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.TimedText\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.WebVTT\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Advertising\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Dash\References"
 
 mkdir "Microsoft.PlayerFramework.WP8\References"
 mkdir "Microsoft.PlayerFramework.WP8\References\CommonConfiguration"
@@ -25,6 +27,9 @@ mkdir "Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\ne
 mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References"
 mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Dash\References"
+mkdir "Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral"
 
 cd..
 
@@ -49,6 +54,9 @@ copy Lib\Portable\ZLib\bin\Release\ZLib.dll														  Build\Microsoft.Playe
 
 copy Phone.SL.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll  Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 copy Phone.WebVTT\bin\Release\Microsoft.WebVTT.dll					 Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
+
+copy Phone.SL.Adaptive.Dash\bin\Release\Microsoft.PlayerFramework.Adaptive.Dash.dll		Build\Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
+copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll				Build\Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
 
 @popd
 

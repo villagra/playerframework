@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Media.ISO</RootNamespace>
+    <AssemblyName>Microsoft.Media.ISO</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile2</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.Media.ISO.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoxBinaryReader.cs" />
+    <Compile Include="Boxes\AdvancedVideoCodingBox.cs" />
+    <Compile Include="Boxes\AssetInformationFullBox.cs" />
+    <Compile Include="Boxes\AudioSampleEntryBox.cs" />
+    <Compile Include="Boxes\AVCNALBox.cs" />
+    <Compile Include="Boxes\BaseLocationFullBox.cs" />
+    <Compile Include="Boxes\BinaryXmlFullBox.cs" />
+    <Compile Include="Boxes\BitRateBox.cs" />
+    <Compile Include="Boxes\Box.cs" />
+    <Compile Include="Boxes\BoxType.cs" />
+    <Compile Include="Boxes\Codecs\Data\AudioTrackCodecData.cs" />
+    <Compile Include="Boxes\Codecs\Data\BitmapInfonHeader.cs" />
+    <Compile Include="Boxes\Codecs\Data\Rectangle.cs" />
+    <Compile Include="Boxes\Codecs\Data\VideoInfoHeader2.cs" />
+    <Compile Include="Boxes\Codecs\Data\VideoTrackCodecData.cs" />
+    <Compile Include="Boxes\Codecs\Data\WaveFormatEx.cs" />
+    <Compile Include="Boxes\CompositionTimeToSampleFullBox.cs" />
+    <Compile Include="Boxes\AC3SpecificBox.cs" />
+    <Compile Include="Boxes\DTSSpecificBox.cs" />
+    <Compile Include="Boxes\InitialObjectDescriptorBox.cs" />
+    <Compile Include="Boxes\MLPSpecificBox.cs" />
+    <Compile Include="Boxes\EC3SpecificBox.cs" />
+    <Compile Include="Boxes\DataInformationBox.cs" />
+    <Compile Include="Boxes\DecodingTimeToSampleFullBox.cs" />
+    <Compile Include="Boxes\Descriptors\DecoderConfigurationDescriptor.cs" />
+    <Compile Include="Boxes\Descriptors\DecoderSpecificInformationDescriptor.cs" />
+    <Compile Include="Boxes\Descriptors\Descriptor.cs" />
+    <Compile Include="Boxes\Descriptors\DescriptorTag.cs" />
+    <Compile Include="Boxes\Descriptors\ElementaryStreamDescriptor.cs" />
+    <Compile Include="Boxes\Descriptors\SyncronizationConfigurationDescriptor.cs" />
+    <Compile Include="Boxes\DigitalVideoCodingBox.cs" />
+    <Compile Include="Boxes\ElementaryStreamDescriptorFullBox.cs" />
+    <Compile Include="Boxes\ExtensionBox.cs" />
+    <Compile Include="Boxes\FileTypeBox.cs" />
+    <Compile Include="Boxes\FreeSpaceBox.cs" />
+    <Compile Include="Boxes\FullBox.cs" />
+    <Compile Include="Boxes\HandlerReferenceFullBox.cs" />
+    <Compile Include="Boxes\IndependentAndDisposableSamplesFullBox.cs" />
+    <Compile Include="Boxes\ItemDataBox.cs" />
+    <Compile Include="Boxes\ItemLocationFullBox.cs" />
+    <Compile Include="Boxes\MediaBox.cs" />
+    <Compile Include="Boxes\MediaDataBox.cs" />
+    <Compile Include="Boxes\MediaHeaderFullBox.cs" />
+    <Compile Include="Boxes\MediaInformationBox.cs" />
+    <Compile Include="Boxes\MetaFullBox.cs" />
+    <Compile Include="Boxes\MovieBox.cs" />
+    <Compile Include="Boxes\MovieExtendsBox.cs" />
+    <Compile Include="Boxes\MovieFragmentBox.cs" />
+    <Compile Include="Boxes\MovieFragmentHeaderFullBox.cs" />
+    <Compile Include="Boxes\MovieFragmentRandomAccessBox.cs" />
+    <Compile Include="Boxes\MovieFragmentRandomAccessOffsetFullBox.cs" />
+    <Compile Include="Boxes\MovieHeaderFullBox.cs" />
+    <Compile Include="Boxes\NullMediaHeaderFullBox.cs" />
+    <Compile Include="Boxes\ProducerReferenceTimeFullBox.cs" />
+    <Compile Include="Boxes\ProgressiveDownloadInfoFullBox.cs" />
+    <Compile Include="Boxes\ProtectedSampleEntryBox.cs" />
+    <Compile Include="Boxes\ProtectedSchemeInformationBox.cs" />
+    <Compile Include="Boxes\ProtectionSystemSpecificHeaderFullBox.cs" />
+    <Compile Include="Boxes\SampleAuxiliaryInformationOffsetsFullBox.cs" />
+    <Compile Include="Boxes\SampleAuxiliaryInformationSizesFullBox.cs" />
+    <Compile Include="Boxes\SampleChunkBox.cs" />
+    <Compile Include="Boxes\SampleChunkOffsetBox.cs" />
+    <Compile Include="Boxes\SampleDescriptionFullBox.cs" />
+    <Compile Include="Boxes\SampleEncryptionFullBox.cs" />
+    <Compile Include="Boxes\SampleEntryBox.cs" />
+    <Compile Include="Boxes\SampleSizeBox.cs" />
+    <Compile Include="Boxes\SampleTableBox.cs" />
+    <Compile Include="Boxes\SampleToGroupFullBox.cs" />
+    <Compile Include="Boxes\SchemeInformationBox.cs" />
+    <Compile Include="Boxes\SegmentIndexBox.cs" />
+    <Compile Include="Boxes\SoundMediaHeaderFullBox.cs" />
+    <Compile Include="Boxes\SubSampleInformationFullBox.cs" />
+    <Compile Include="Boxes\SubtitleMediaHeaderFullBox.cs" />
+    <Compile Include="Boxes\SubtitleSampleEntryBox.cs" />
+    <Compile Include="Boxes\SyncSamplesBox.cs" />
+    <Compile Include="Boxes\TrackBox.cs" />
+    <Compile Include="Boxes\TrackEncryptionFullBox.cs" />
+    <Compile Include="Boxes\TrackFragmentBaseMediaDecodeTimeFullBox.cs" />
+    <Compile Include="Boxes\TrackFragmentBox.cs" />
+    <Compile Include="Boxes\TrackFragmentExtendedHeaderBox.cs" />
+    <Compile Include="Boxes\TrackFragmentHeaderFullBox.cs" />
+    <Compile Include="Boxes\TrackFragmentRandomAccessFullBox.cs" />
+    <Compile Include="Boxes\TrackFragmentRunFullBox.cs" />
+    <Compile Include="Boxes\TrackHeaderFullBox.cs" />
+    <Compile Include="Boxes\TrackReferenceBox.cs" />
+    <Compile Include="Boxes\TrickPlayFullBox.cs" />
+    <Compile Include="Boxes\UnknownBox.cs" />
+    <Compile Include="Boxes\VideoMediaHeaderFullBox.cs" />
+    <Compile Include="Boxes\VisualSampleEntryBox.cs" />
+    <Compile Include="Boxes\WaveFormatExBox.cs" />
+    <Compile Include="Boxes\XmlFullBox.cs" />
+    <Compile Include="BoxException.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.Media.ISO.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

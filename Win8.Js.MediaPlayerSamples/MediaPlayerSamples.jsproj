@@ -67,6 +67,8 @@
     <Content Include="pages\groupeditems\groupeditems.css" />
     <Content Include="pages\groupeditems\groupeditems.html" />
     <Content Include="pages\groupeditems\groupeditems.js" />
+    <Content Include="pages\itemdetail\adaptive\dash\dash.html" />
+    <Content Include="pages\itemdetail\adaptive\dash\dash.js" />
     <Content Include="pages\itemdetail\adaptive\live\live.html" />
     <Content Include="pages\itemdetail\adaptive\live\live.js" />
     <Content Include="pages\itemdetail\adaptive\vod\vod.html" />
@@ -134,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj" />
+    <ProjectReference Include="..\Win8.AdaptiveStreaming.Dash\Microsoft.AdaptiveStreaming.Dash.csproj" />
     <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj" />
     <ProjectReference Include="..\Win8.Js.Adaptive\Microsoft.PlayerFramework.Js.Adaptive.csproj" />
     <ProjectReference Include="..\Win8.Js.Advertising\Microsoft.PlayerFramework.Js.Advertising.csproj" />
