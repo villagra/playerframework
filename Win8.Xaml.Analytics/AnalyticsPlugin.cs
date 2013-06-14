@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 #if SILVERLIGHT
 using System.Windows;
 using System.Windows.Threading;
 #else
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Core;
 #endif

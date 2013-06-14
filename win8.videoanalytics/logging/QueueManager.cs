@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
 using Windows.System.Threading;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {
@@ -29,7 +32,11 @@ namespace Microsoft.VideoAnalytics
 
         private int failedSendCount;
         private int sendCount;
+#if SILVERLIGHT
+        private Timer pollingTimer;  // timer for polling queue
+#else
         private ThreadPoolTimer pollingTimer;  // timer for polling queue
+#endif
         private bool IsThrottled = false;
         private IBatch BatchToRetry;
         private int RetryCount = 0;
@@ -46,8 +53,13 @@ namespace Microsoft.VideoAnalytics
                     if (pollingTimer != null)
                     {
                         // adjust the timer with the polling interval in case it failed
+#if SILVERLIGHT
+                        pollingTimer.Dispose();
+                        pollingTimer = new Timer(pollingTimer_Tick, null, QueuePollingInterval, QueuePollingInterval);
+#else
                         pollingTimer.Cancel();
                         pollingTimer = ThreadPoolTimer.CreatePeriodicTimer(pollingTimer_Tick, QueuePollingInterval);
+#endif
                     }
                 }
             }
@@ -62,7 +74,11 @@ namespace Microsoft.VideoAnalytics
 
             failedSendCount = 0;
             sendCount = 0;
+#if SILVERLIGHT
+            pollingTimer = new Timer(pollingTimer_Tick, null, QueuePollingInterval, QueuePollingInterval);
+#else
             pollingTimer = ThreadPoolTimer.CreatePeriodicTimer(pollingTimer_Tick, QueuePollingInterval);
+#endif
         }
 
         /// <summary>
@@ -255,7 +271,11 @@ namespace Microsoft.VideoAnalytics
         {
             lock (this)
             {
+#if SILVERLIGHT
+                pollingTimer.Dispose();
+#else
                 pollingTimer.Cancel();
+#endif
                 pollingTimer = null;
             }
             BatchToRetry = null;

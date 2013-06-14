@@ -4,10 +4,13 @@ using System.IO;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Linq;
+using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
 using Windows.Storage.Streams;
 using Windows.Foundation;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {
@@ -78,6 +81,7 @@ namespace Microsoft.VideoAnalytics
             AdditionalData = new Dictionary<string, string>();
         }
 
+#if !SILVERLIGHT
         /// <summary>
         /// Deserializes Xml into an AnalyticsConfig object.
         /// </summary>
@@ -96,6 +100,21 @@ namespace Microsoft.VideoAnalytics
                 return Load(XmlReader.Create(stream));
             }
         }
+#else
+
+        /// <summary>
+        /// Deserializes Xml into an AnalyticsConfig object.
+        /// </summary>
+        /// <param name="source">The source URI of the config file.</param>
+        /// <returns>An awaitable result.</returns>
+        public static AnalyticsConfig Load(Uri source)
+        {
+            using (var stream = System.Windows.Application.GetResourceStream(source).Stream)
+            {
+                return Load(XmlReader.Create(stream));
+            }
+        }
+#endif
 
         /// <summary>
         /// Creates an instance of the main diagnostic config object from an XmlReader

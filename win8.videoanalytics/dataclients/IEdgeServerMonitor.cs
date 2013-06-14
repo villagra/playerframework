@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
 using Windows.Foundation;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {

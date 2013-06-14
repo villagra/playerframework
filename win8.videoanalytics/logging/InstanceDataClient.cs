@@ -46,7 +46,11 @@ namespace Microsoft.VideoAnalytics
 #endif
                 }
             }
+#if WINDOWS_PHONE7
+            return TaskEx.FromResult(instanceIdGuid.Value);
+#else
             return Task.FromResult(instanceIdGuid.Value);
+#endif
         }
     }
 }

@@ -34,7 +34,11 @@ namespace Microsoft.VideoAnalytics
         /// <summary>
         /// Fired when more logs have been dropped
         /// </summary>
+#if SILVERLIGHT
+        public event EventHandler TotalLogsDroppedChanged;
+#else
         public event EventHandler<object> TotalLogsDroppedChanged;
+#endif
 
         private BatchingLogAgentStates state;
         private Queue<ILog> queue;

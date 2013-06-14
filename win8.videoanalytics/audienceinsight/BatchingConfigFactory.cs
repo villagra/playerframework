@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Xml;
+#if SILVERLIGHT
+#else
 using Windows.Foundation;
+using System.Runtime.InteropServices.WindowsRuntime;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {
@@ -12,6 +15,7 @@ namespace Microsoft.VideoAnalytics
     /// </summary>
     public static class BatchingConfigFactory
     {
+#if !SILVERLIGHT
         /// <summary>
         /// Deserializes Xml into a BatchingConfig object.
         /// </summary>
@@ -30,6 +34,20 @@ namespace Microsoft.VideoAnalytics
                 return Load(XmlReader.Create(stream));
             }
         }
+#else
+        /// <summary>
+        /// Deserializes Xml into a BatchingConfig object.
+        /// </summary>
+        /// <param name="source">The source URI of the config file.</param>
+        /// <returns>An awaitable result.</returns>
+        public static BatchingConfig Load(Uri source)
+        {
+            using (var stream = System.Windows.Application.GetResourceStream(source).Stream)
+            {
+                return Load(XmlReader.Create(stream));
+            }
+        }
+#endif
 
         internal static BatchingConfig Load(XmlReader reader)
         {

@@ -111,6 +111,14 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
+      <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
+      <Name>ZLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj">
+      <Project>{884A1566-4580-4C68-A6AC-0F13D3293AAB}</Project>
+      <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phone.SL.Adaptive\Microsoft.WP7.PlayerFramework.SL.Adaptive.csproj">
       <Project>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive</Name>
@@ -119,9 +127,17 @@
       <Project>{5490B4AB-8D77-4CC9-9A52-A475217D05A0}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL.Advertising</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.Analytics\Microsoft.WP7.PlayerFramework.SL.Analytics.csproj">
+      <Project>{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}</Project>
+      <Name>Microsoft.WP7.PlayerFramework.SL.Analytics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phone.SL.TimedText\Microsoft.WP7.PlayerFramework.SL.TimedText.csproj">
       <Project>{94267FA0-4D4A-4727-9354-11EC7490921F}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.WebVTT\Microsoft.WP7.PlayerFramework.SL.WebVTT.csproj">
+      <Project>{F34740E4-6D7C-4150-8751-D5B4D05CE860}</Project>
+      <Name>Microsoft.WP7.PlayerFramework.SL.WebVTT</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
       <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
@@ -134,6 +150,14 @@
     <ProjectReference Include="..\Phone.VideoAdvertising\Microsoft.WP7.VideoAdvertising.csproj">
       <Project>{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}</Project>
       <Name>Microsoft.WP7.VideoAdvertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj">
+      <Project>{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}</Project>
+      <Name>Microsoft.WP7.VideoAnalytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.WebVTT\Microsoft.WP7.WebVTT.csproj">
+      <Project>{1211DC2A-E5D4-4472-A113-99F67B50081B}</Project>
+      <Name>Microsoft.WP7.WebVTT</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
