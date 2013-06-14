@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</ProjectGuid>
+    <ProjectGuid>{1211DC2A-E5D4-4472-A113-99F67B50081B}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.Adaptive</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.Adaptive</AssemblyName>
+    <RootNamespace>Microsoft.WebVTT</RootNamespace>
+    <AssemblyName>Microsoft.WebVTT</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -41,7 +41,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -65,31 +64,57 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
-      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AdaptivePlugin.cs" />
-    <Compile Include="AdaptiveStreamingManager.cs" />
-    <Compile Include="AudioStreamWrapper.cs" />
-    <Compile Include="Data\OrderedObservableCollection.cs" />
-    <Compile Include="Data\QueuedRetryManager.cs" />
-    <Compile Include="Data\RateMonitor.cs" />
-    <Compile Include="Data\RetryManager.cs" />
-    <Compile Include="Data\StreamSelectionManager.cs" />
-    <Compile Include="DownloaderPluginAdapter.cs" />
-    <Compile Include="ILifetimeAwareDownloaderPlugin.cs" />
-    <Compile Include="SmoothStreamingExtensions.cs" />
-    <Compile Include="SmoothStreamingMediaElementWrapper.cs" />
-    <Compile Include="MarkerManager.cs" />
+    <Compile Include="..\Win8.WebVTT\BlockDocumentReader.cs">
+      <Link>BlockDocumentReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\BoxElement.cs">
+      <Link>BoxElement.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.webvtt\extensions\UnicodeExtensions.cs">
+      <Link>Extensions\UnicodeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\IWebVTTModels.cs">
+      <Link>IWebVTTModels.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.webvtt\markers\MediaMarker.cs">
+      <Link>Markers\MediaMarker.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.webvtt\markers\MediaMarkerCollection.cs">
+      <Link>Markers\MediaMarkerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.webvtt\markers\MediaMarkerManager.cs">
+      <Link>Markers\MediaMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.webvtt\markers\utilities\OrderedObservableCollection.cs">
+      <Link>Markers\Utilities\OrderedObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTContentReader.cs">
+      <Link>WebVTTContentReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTCueRenderer.cs">
+      <Link>WebVTTCueRenderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTLayoutPanel.cs">
+      <Link>WebVTTLayoutPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTModels.cs">
+      <Link>WebVTTModels.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTPanel.cs">
+      <Link>WebVTTPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.WebVTT\WebVTTParser.cs">
+      <Link>WebVTTParser.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
-      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
-    </ProjectReference>
+    <CodeAnalysisDictionary Include="themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Test", "Phone.SL.Test.WP7\Microsoft.WP7.PlayerFramework.SL.Test.csproj", "{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.WebVTT", "Phone.WebVTT\Microsoft.WP7.WebVTT.csproj", "{1211DC2A-E5D4-4472-A113-99F67B50081B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.WebVTT", "Phone.SL.WebVTT\Microsoft.WP7.PlayerFramework.SL.WebVTT.csproj", "{F34740E4-6D7C-4150-8751-D5B4D05CE860}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,22 @@ Global
 		{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}.Release|ARM.ActiveCfg = Release|Any CPU
 		{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}.Release|x86.ActiveCfg = Release|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1211DC2A-E5D4-4472-A113-99F67B50081B}.Release|x86.ActiveCfg = Release|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F34740E4-6D7C-4150-8751-D5B4D05CE860}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

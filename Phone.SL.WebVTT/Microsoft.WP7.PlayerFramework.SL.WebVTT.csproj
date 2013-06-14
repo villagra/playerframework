@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</ProjectGuid>
+    <ProjectGuid>{F34740E4-6D7C-4150-8751-D5B4D05CE860}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.Adaptive</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.Adaptive</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.WebVTT</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.WebVTT</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -41,7 +41,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -65,30 +64,26 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
-      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AdaptivePlugin.cs" />
-    <Compile Include="AdaptiveStreamingManager.cs" />
-    <Compile Include="AudioStreamWrapper.cs" />
-    <Compile Include="Data\OrderedObservableCollection.cs" />
-    <Compile Include="Data\QueuedRetryManager.cs" />
-    <Compile Include="Data\RateMonitor.cs" />
-    <Compile Include="Data\RetryManager.cs" />
-    <Compile Include="Data\StreamSelectionManager.cs" />
-    <Compile Include="DownloaderPluginAdapter.cs" />
-    <Compile Include="ILifetimeAwareDownloaderPlugin.cs" />
-    <Compile Include="SmoothStreamingExtensions.cs" />
-    <Compile Include="SmoothStreamingMediaElementWrapper.cs" />
-    <Compile Include="MarkerManager.cs" />
+    <Compile Include="..\Win8.Xaml.WebVTT\Helpers\Extensions.cs">
+      <Link>Helpers\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml.WebVTT\MediaPlayerExtensions.cs">
+      <Link>MediaPlayerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml.WebVTT\WebVTTPlugin.cs">
+      <Link>WebVTTPlugin.cs</Link>
+    </Compile>
+    <Compile Include="Helpers\HttpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
       <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.WebVTT\Microsoft.WP7.WebVTT.csproj">
+      <Project>{1211DC2A-E5D4-4472-A113-99F67B50081B}</Project>
+      <Name>Microsoft.WP7.WebVTT</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

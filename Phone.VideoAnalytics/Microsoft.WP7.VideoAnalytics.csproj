@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WP7.VideoAnalytics</RootNamespace>
+    <AssemblyName>Microsoft.WP7.VideoAnalytics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Win8.VideoAnalytics\AnalyticsCollector.cs">
+      <Link>AnalyticsCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\audienceinsight\BatchAgentFactory.cs">
+      <Link>AudienceInsight\BatchAgentFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\audienceinsight\BatchingConfigFactory.cs">
+      <Link>AudienceInsight\BatchingConfigFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\audienceinsight\ResponseDeserializer.cs">
+      <Link>AudienceInsight\ResponseDeserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\audienceinsight\RESTDataClient.cs">
+      <Link>AudienceInsight\RESTDataClient.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\AnalyticsConfig.cs">
+      <Link>Config\AnalyticsConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\BatchingConfig.cs">
+      <Link>Config\BatchingConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\EdgeServerConfig.cs">
+      <Link>Config\EdgeServerConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\LoggingConfig.cs">
+      <Link>Config\LoggingConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\MappingPolicy.cs">
+      <Link>Config\MappingPolicy.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\config\QualityConfig.cs">
+      <Link>Config\QualityConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\EdgeServerMonitor.cs">
+      <Link>DataClients\EdgeServerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\EdgeServerResult.cs">
+      <Link>DataClients\EdgeServerResult.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\IAdaptiveMonitor.cs">
+      <Link>DataClients\IAdaptiveMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\IEdgeServerMonitor.cs">
+      <Link>DataClients\IEdgeServerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\IEnvironmentMonitor.cs">
+      <Link>DataClients\IEnvironmentMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\dataclients\IPlayerMonitor.cs">
+      <Link>DataClients\IPlayerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\extensions\LinqExtensions.cs">
+      <Link>Extensions\LinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\extensions\LoggingExtensions.cs">
+      <Link>Extensions\LoggingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\extensions\XmlReaderExtensions.cs">
+      <Link>Extensions\XmlReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\Batch.cs">
+      <Link>Logging\Batch.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\BatchEventArgs.cs">
+      <Link>Logging\BatchEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\BatchingExceptionEventArgs.cs">
+      <Link>Logging\BatchingExceptionEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\BatchingLogAgent.cs">
+      <Link>Logging\BatchingLogAgent.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\IBatchAgent.cs">
+      <Link>Logging\IBatchAgent.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\ILogFilter.cs">
+      <Link>Logging\ILogFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\ILoggingSource.cs">
+      <Link>Logging\ILoggingSource.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\ILoggingTarget.cs">
+      <Link>Logging\ILoggingTarget.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\InstanceDataClient.cs">
+      <Link>Logging\InstanceDataClient.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\Log.cs">
+      <Link>Logging\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\LogConstants.cs">
+      <Link>Logging\LogConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\LoggingService.cs">
+      <Link>Logging\LoggingService.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\MappedLogs.cs">
+      <Link>Logging\MappedLogs.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logging\QueueManager.cs">
+      <Link>Logging\QueueManager.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\AppStartLog.cs">
+      <Link>Logs\AppStartLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\AudioTrackChangedLog.cs">
+      <Link>Logs\AudioTrackChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\BitrateChangedLog.cs">
+      <Link>Logs\BitrateChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\BufferingChangedLog.cs">
+      <Link>Logs\BufferingChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\BufferSizeLog.cs">
+      <Link>Logs\BufferSizeLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\CaptionTrackChangedLog.cs">
+      <Link>Logs\CaptionTrackChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\ChunkDownloadLog.cs">
+      <Link>Logs\ChunkDownloadLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\ClipEventLog.cs">
+      <Link>Logs\ClipEventLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\CpuLog.cs">
+      <Link>Logs\CpuLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\DownloadErrorLog.cs">
+      <Link>Logs\DownloadErrorLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\DvrOperationLog.cs">
+      <Link>Logs\DvrOperationLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\ErrorLog.cs">
+      <Link>Logs\ErrorLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\EventTypes.cs">
+      <Link>Logs\EventTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\FpsLog.cs">
+      <Link>Logs\FpsLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\FullscreenChangedLog.cs">
+      <Link>Logs\FullscreenChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\LatencyAlertLog.cs">
+      <Link>Logs\LatencyAlertLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\PerceivedBandwidthLog.cs">
+      <Link>Logs\PerceivedBandwidthLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\PlayTimePercentageReachedLog.cs">
+      <Link>Logs\PlayTimePercentageReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\PlayTimeReachedLog.cs">
+      <Link>Logs\PlayTimeReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\PositionPercentageReachedLog.cs">
+      <Link>Logs\PositionPercentageReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\PositionReachedLog.cs">
+      <Link>Logs\PositionReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\StreamEventLog.cs">
+      <Link>Logs\StreamEventLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\StreamFailedLog.cs">
+      <Link>Logs\StreamFailedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\logs\StreamLoadedLog.cs">
+      <Link>Logs\StreamLoadedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\DownloadErrorReport.cs">
+      <Link>Reports\DownloadErrorReport.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\DownloadErrorReportAggregator.cs">
+      <Link>Reports\DownloadErrorReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\IMarkerEntry.cs">
+      <Link>Reports\IMarkerEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\QualityReport.cs">
+      <Link>Reports\QualityReport.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\QualityReportAggregator.cs">
+      <Link>Reports\QualityReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\ReportAggregator.cs">
+      <Link>Reports\ReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\win8.videoanalytics\reports\ReportTypes.cs">
+      <Link>Reports\ReportTypes.cs</Link>
+    </Compile>
+    <Compile Include="Compatibility\HttpClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
