@@ -13,7 +13,7 @@
     <Grid Style="{StaticResource LayoutRootStyle}">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
             <mmppf:MediaPlayer.Plugins>
-                <ads:FreeWheelPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/freewheel.xml"/>
+                <ads:FreeWheelPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/freewheel_tracking.xml"/>
                 <ads:AdHandlerPlugin/>
             </mmppf:MediaPlayer.Plugins>
         </mmppf:MediaPlayer>

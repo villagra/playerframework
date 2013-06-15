@@ -12,9 +12,6 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <PackageCertificateThumbprint>CC273DC82302A7BE69FDDBFA2F011BE3AA8E1B0F</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Test_TemporaryKey.pfx</PackageCertificateKeyFile>

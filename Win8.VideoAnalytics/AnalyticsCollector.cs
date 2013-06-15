@@ -211,8 +211,8 @@ namespace Microsoft.VideoAnalytics
 
             if (AdaptiveMonitor != null)
             {
-                AdaptiveMonitor.ChunkDownloaded += AdaptiveMonitor_ChunkDownloaded;
-                AdaptiveMonitor.ChunkFailure += AdaptiveMonitor_ChunkFailure;
+                AdaptiveMonitor.ChunkDownloaded -= AdaptiveMonitor_ChunkDownloaded;
+                AdaptiveMonitor.ChunkFailure -= AdaptiveMonitor_ChunkFailure;
                 AdaptiveMonitor.CurrentBitrateChanged -= AdaptiveMonitor_CurrentBitrateChanged;
             }
 

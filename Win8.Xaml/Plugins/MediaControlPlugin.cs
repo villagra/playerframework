@@ -41,8 +41,8 @@ namespace Microsoft.PlayerFramework
         {
             if (PlaylistPlugin != null)
             {
-                PlaylistPlugin.Playlist.CollectionChanged += Playlist_CollectionChanged;
-                PlaylistPlugin.CurrentPlaylistItemChanged += PlaylistPlugin_CurrentPlaylistItemChanged;
+                PlaylistPlugin.Playlist.CollectionChanged -= Playlist_CollectionChanged;
+                PlaylistPlugin.CurrentPlaylistItemChanged -= PlaylistPlugin_CurrentPlaylistItemChanged;
             }
 
             MediaControl.PlayPauseTogglePressed -= MediaControl_PlayPauseTogglePressed;

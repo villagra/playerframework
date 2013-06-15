@@ -24,8 +24,16 @@
 		///	<returns type="CaptionTrackPlugin" />
 
 		this._super(player, options);
+	},
 
-		this.player.addEventListener("ready", PlayerFramework.proxy(this, this.onReady), false);
+	addEventListeners: function () {
+	    ///	<summary>
+	    ///		Adds event listeners to the control's elements.
+	    ///	</summary>
+	    this._super();
+
+	    this.player.addEventListener("ready", PlayerFramework.proxy(this, this.onReady), false);
+	    this.player.addEventListener("datareceived", PlayerFramework.proxy(this, this.onDataReceived), false);
 	},
 
 	// Event Handlers
@@ -102,6 +110,19 @@
 		this.player.dispatchEvent(e);
 	},
 
+	onDataReceived: function (e)
+	{
+	    ///	<summary>
+	    ///		Processes in-stream caption data
+	    ///	</summary>
+
+	    var startTime = e.dataReceived.timestamp * 1000;
+	    var endTime = e.dataReceived.duration * 1000 + startTime;
+	    var xml = PlayerFramework.parseXml(e.dataReceived.data);
+
+	    this.processTextTrackSource(this.activeTextTrack, xml, startTime, endTime);
+	},
+
 	onReady: function(e)
 	{
 		///	<summary>
@@ -122,7 +143,24 @@
 	},
 
 	// Functions
-	clearCaptionContainer: function()
+	activateTextTrack: function (textTrack) {
+
+	    if (textTrack.inStream) {
+
+	        this.player.mediaPlugin.activateTrack(textTrack);
+
+	        textTrack.readyState = PlayerFramework.TextTrack.ReadyState.LOADED;
+	        textTrack.dispatchEvent({ type: "load" });
+
+	        this.showTextTrack(textTrack);
+
+	    } else {
+
+	        this._super(textTrack);
+	    }
+	},
+
+	clearCaptionContainer: function ()
 	{
 		///	<summary>
 		///		Clears the area containing the caption HTML.
@@ -131,22 +169,49 @@
 		this.element.innerHTML = "";
 	},
 
-	processTextTrackSource: function(textTrack)
+	processTextTrackSource: function(textTrack, ttml, startTime, endTime)
 	{
 		///	<summary>
 		///		Processes a downloaded text track using a TTML parser.
 		///	</summary>
 		///	<param name="textTrack" type="Object">
 		///		The text track to process.
-		///	</param>
+	    ///	</param>
+	    ///	<param name="ttml" type="Object">
+	    ///		TTML data to process.
+	    ///	</param>
+	    ///	<param name="startTime" type="Number">
+	    ///		The start time in seconds of the provided TTML. Optional.
+	    ///	</param>
+	    ///	<param name="endTime" type="Number">
+	    ///		The end time in seconds of the provided TTML. Optional.
+	    ///	</param>
 
-		var ttmlParser = new PlayerFramework.TtmlParser();
-		var ttml = ttmlParser.parseTtml(textTrack.xml);
+	    var ttmlParser = new PlayerFramework.TtmlParser();
 
-		textTrack.cues = new PlayerFramework.TextTrackCueList(
-		{
-			track: textTrack,
-			list: ttml.captions
-		});
+	    ttmlParser.parseTtml(ttml, startTime, endTime);
+
+	    if (!textTrack.cues) {
+	        textTrack.cues = new PlayerFramework.TextTrackCueList();
+	    }
+
+	    for (var i = 0; i < ttmlParser.cues.length; i++) {
+
+	        var parserCue = ttmlParser.cues[i];
+
+	        var textTrackCue = new PlayerFramework.TextTrackCue(
+            {
+                track: textTrack,
+                id: parserCue.cue.id,
+                startTime: parserCue.startTime,
+                endTime: parserCue.endTime,
+                pauseOnExit: false,
+                text: parserCue.cue.innerHTML,
+                markup: parserCue.cue,
+                uri: parserCue.uri
+            });
+
+	        textTrack.cues.push(textTrackCue);
+	    }
 	}
 });

@@ -14,6 +14,7 @@
         }
 
         this._lastTrackingTime = null;
+        this._trackingEnded = false;
 
         PlayerFramework.Plugins.AdSchedulerPlugin.call(this, options);
     }, {
@@ -41,13 +42,13 @@
 
                     if (videoTracking) {
                         this._lastTrackingTime = null;
+                        this._trackingEnded = false;
 
                         // position tracking
-                        this.mediaPlayer.positionTrackingPlugin.trackingEvents.push({ positionPercentage: 0, data: videoTracking, area: freeWheelTrackingEventArea });
                         this.mediaPlayer.positionTrackingPlugin.trackingEvents.push({ positionPercentage: 1, data: videoTracking, area: freeWheelTrackingEventArea });
 
                         // play time tracking
-                        for (var i = 15; i < 60; i += 15) {
+                        for (var i = 0; i < 60; i += 15) {
                             this.mediaPlayer.playTimeTrackingPlugin.trackingEvents.push({ playTime: i, data: videoTracking, area: freeWheelTrackingEventArea });
                         }
 
@@ -79,30 +80,30 @@
                         promises = [];
                         for (var i = 0; i < videoAsset.adSlots.length; i++) {
                             var adSlot = videoAsset.adSlots[i];
-                            (function(adSlot){
+                            (function (adSlot) {
                                 promises.push(Microsoft.VideoAdvertising.FreeWheelFactory.getAdDocumentPayload(adSlot, adResponse).then(function (payload) {
-                                        var ad = null;
-                                        switch (adSlot.timePositionClass) {
-                                            case "preroll":
-                                                ad = new PlayerFramework.Advertising.PrerollAdvertisement();
-                                                break;
+                                    var ad = null;
+                                    switch (adSlot.timePositionClass) {
+                                        case "preroll":
+                                            ad = new PlayerFramework.Advertising.PrerollAdvertisement();
+                                            break;
 
-                                            case "postroll":
-                                                ad = new PlayerFramework.Advertising.PostrollAdvertisement();
-                                                break;
+                                        case "postroll":
+                                            ad = new PlayerFramework.Advertising.PostrollAdvertisement();
+                                            break;
 
-                                            default:
-                                                ad = new PlayerFramework.Advertising.MidrollAdvertisement();
-                                                ad.time = adSlot.timePosition / 1000;
-                                                break;
-                                        }
+                                        default:
+                                            ad = new PlayerFramework.Advertising.MidrollAdvertisement();
+                                            ad.time = adSlot.timePosition / 1000;
+                                            break;
+                                    }
 
-                                        ad.source = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
-                                        ad.source.type = Microsoft.VideoAdvertising.DocumentAdPayloadHandler.adType;
-                                        ad.source.payload = payload;
+                                    ad.source = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
+                                    ad.source.type = Microsoft.VideoAdvertising.DocumentAdPayloadHandler.adType;
+                                    ad.source.payload = payload;
 
-                                        this.advertisements.push(ad);
-                                        this._adSlots.push({ "ad": ad, "adSlot": adSlot });
+                                    this.advertisements.push(ad);
+                                    this._adSlots.push({ "ad": ad, "adSlot": adSlot });
                                 }.bind(this), function () { /* ignore */ }));
                             }).bind(this)(adSlot);
                         }
@@ -162,14 +163,14 @@
                 });
 
                 if (impression) {
-                    var urls = impression.getUrls();
+                    var urls = PlayerFramework.Utilities.getArray(impression.getUrls());
                     for (var i = 0; i < urls.length; i++) {
                         var url = urls[i];
                         Microsoft.VideoAdvertising.AdTracking.current.fireTracking(url);
                     }
                 }
             }
-            
+
             return PlayerFramework.Plugins.AdSchedulerPlugin.prototype._playAd.call(this, ad);
         },
 
@@ -188,14 +189,13 @@
             }
         },
 
-        _getTrackingUrl: function (url, start, end) {
-            var now = Date.now();
+        _getTrackingUrl: function (url, currentPlayTime, start, end) {
             var init = start ? 1 : 0;
             var last = end ? 1 : 0;
-            var ct = this._lastTrackingTime ? Math.round((now - this._lastTrackingTime) / 1000) : 0;
-            
+            var ct = this._lastTrackingTime !== null ? Math.round(currentPlayTime - this._lastTrackingTime) : 0;
+
             // save for next time
-            this._lastTrackingTime = now;
+            this._lastTrackingTime = currentPlayTime;
 
             if (url.indexOf("?") !== -1) {
                 return PlayerFramework.Utilities.formatString("{0}&init={1}&last={2}&ct={3}", url, init, last, ct);
@@ -258,30 +258,35 @@
         },
 
         _onMediaPlayerPlayTimeEventTracked: function (e) {
-            var trackingEvent = e.detail.trackingEvent;
-            if (trackingEvent.area === freeWheelTrackingEventArea) {
-                if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
-                    var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
-                    for (var i = 0; i < urls.length; i++) {
-                        var url = urls[i];
-                        var trackingUrl = this._getTrackingUrl(url);
-                        Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+            if (!this._trackingEnded) {
+                var trackingEvent = e.detail.trackingEvent;
+                if (trackingEvent.area === freeWheelTrackingEventArea) {
+                    if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
+                        var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
+                        var start = trackingEvent.playTime === 0;
+                        for (var i = 0; i < urls.length; i++) {
+                            var url = urls[i];
+                            var trackingUrl = this._getTrackingUrl(url, trackingEvent.playTime, start, false);
+                            Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+                        }
                     }
                 }
             }
         },
 
         _onMediaPlayerPositionEventTracked: function (e) {
-            var trackingEvent = e.detail.trackingEvent;
-            if (trackingEvent.area === freeWheelTrackingEventArea) {
-                if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
-                    var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
-                    for (var i = 0; i < urls.length; i++) {
-                        var url = urls[i];
-                        var start = !isNaN(trackingEvent.positionPercentage) && trackingEvent.positionPercentage === 0;
-                        var end = !isNaN(trackingEvent.positionPercentage) && trackingEvent.positionPercentage === 1;
-                        var trackingUrl = this._getTrackingUrl(url, start, end);
-                        Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+            if (!this._trackingEnded) {
+                var trackingEvent = e.detail.trackingEvent;
+                if (trackingEvent.area === freeWheelTrackingEventArea) {
+                    if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
+                        var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
+                        var currentTime = this.mediaPlayer.playTimeTrackingPlugin.playTime;
+                        for (var i = 0; i < urls.length; i++) {
+                            var url = urls[i];
+                            var trackingUrl = this._getTrackingUrl(url, currentTime, false, true);
+                            Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+                        }
+                        this._trackingEnded = true; // set this flag to prevent further tracking
                     }
                 }
             }

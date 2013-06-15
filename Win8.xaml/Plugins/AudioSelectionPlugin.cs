@@ -60,10 +60,8 @@ namespace Microsoft.PlayerFramework
         {
             if (MediaPlayer.AvailableAudioStreams.Any())
             {
-                selectorView = new AudioSelectionView()
-                {
-                    Style = AudioSelectionViewStyle
-                };
+                selectorView = new AudioSelectionView();
+                if (AudioSelectionViewStyle != null) selectorView.Style = AudioSelectionViewStyle;
                 selectorView.SetBinding(FrameworkElement.DataContextProperty, new Binding() { Path = new PropertyPath("InteractiveViewModel"), Source = MediaPlayer });
                 SettingsContainer.Visibility = Visibility.Visible;
                 SettingsContainer.Children.Add(selectorView);

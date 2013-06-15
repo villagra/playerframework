@@ -81,7 +81,7 @@
 		this.player.addEventListener("loadedmediaplugin", PlayerFramework.proxy(this, this.onLoadedMediaPlugin), false);
 	},
 
-	addTextTrack: function(kind, label, language)
+	addTextTrack: function(kind, label, language, inStream)
 	{
 		///	<summary>
 		///		Entry point for added a text track as specified by the W3C.
@@ -100,6 +100,7 @@
 		textTrack.kind = kind;
 		textTrack.label = label;
 		textTrack.language = language;
+		textTrack.inStream = inStream;
 
 		this.player.textTracks.push(textTrack);
 

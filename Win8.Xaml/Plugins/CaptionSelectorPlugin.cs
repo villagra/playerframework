@@ -60,10 +60,8 @@ namespace Microsoft.PlayerFramework
         {
             if (MediaPlayer.AvailableCaptions.Any())
             {
-                captionSelectorView = new CaptionSelectorView()
-                {
-                    Style = CaptionSelectorViewStyle
-                };
+                captionSelectorView = new CaptionSelectorView();
+                if (CaptionSelectorViewStyle != null) captionSelectorView.Style = CaptionSelectorViewStyle;
                 captionSelectorView.SetBinding(FrameworkElement.DataContextProperty, new Binding() { Path = new PropertyPath("InteractiveViewModel"), Source = MediaPlayer });
                 SettingsContainer.Visibility = Visibility.Visible;
                 SettingsContainer.Children.Add(captionSelectorView);

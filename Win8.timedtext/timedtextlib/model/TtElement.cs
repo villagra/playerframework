@@ -311,6 +311,7 @@ namespace TimedText
                 defaultLayout.Children.Add(defaultRegion);
                 defaultRegion.Parent = defaultLayout;
                 defaultRegion.Id = RegionElement.DefaultRegionName;
+                defaultRegion.Root = Root;
                 Root.Regions[defaultRegion.Id] = defaultRegion;
             }
             #endregion

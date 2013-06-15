@@ -130,7 +130,7 @@ namespace Microsoft.PlayerFramework.WebVTT
                 markerManager.MarkerLeft += MarkerManager_MarkerLeft;
                 markerManager.MarkerReached += MarkerManager_MarkerReached;
                 captionsPanel = new WebVTTPanel();
-                captionsPanel.Style = CaptionsPanelStyle;
+                if (CaptionsPanelStyle != null) captionsPanel.Style = CaptionsPanelStyle;
                 MediaPlayer.IsCaptionsActive = (MediaPlayer.SelectedCaption as Caption != null);
                 captionsContainer.Children.Add(captionsPanel);
                 UpdateCaption(MediaPlayer.SelectedCaption as Caption);

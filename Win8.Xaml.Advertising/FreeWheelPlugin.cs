@@ -22,7 +22,8 @@ namespace Microsoft.PlayerFramework.Advertising
         readonly Dictionary<Advertisement, FWTemporalAdSlot> adSlots = new Dictionary<Advertisement, FWTemporalAdSlot>();
         private CancellationTokenSource cts;
         private FWAdResponse adResponse;
-        private DateTime? lastTrackingEvent;
+        private bool trackingEnded;
+        private PlayTimeTrackingEvent lastTrackingEvent;
         const string TrackingEventArea = "FreeWheel";
 
         /// <summary>
@@ -95,25 +96,48 @@ namespace Microsoft.PlayerFramework.Advertising
 
         private void TrackVideoViewMarker(string url, EventTrackedEventArgs e)
         {
-            var trackingEvent = e.TrackingEvent;
-            bool isStart = false;
-            bool isEnd = false;
-            if (e.TrackingEvent is PositionTrackingEvent)
+            if (!trackingEnded)
             {
-                var positionTrackingEvent = e.TrackingEvent as PositionTrackingEvent;
-                isStart = positionTrackingEvent.PositionPercentage.HasValue && positionTrackingEvent.PositionPercentage.Value == 0;
-                isEnd = positionTrackingEvent.PositionPercentage.HasValue && positionTrackingEvent.PositionPercentage.Value == 1;
-            }
-            var now = DateTime.Now;
-            TimeSpan delta = TimeSpan.Zero;
-            if (lastTrackingEvent.HasValue)
-            {
-                delta = now.Subtract(lastTrackingEvent.Value);
-            }
-            lastTrackingEvent = now;
+                bool isStart;
+                bool isEnd;
+                TimeSpan currentPlayTime;
+                if (e.TrackingEvent is PositionTrackingEvent)
+                {
+                    var playTimeTrackingPlugin = MediaPlayer.Plugins.OfType<PlayTimeTrackingPlugin>().FirstOrDefault();
+                    if (playTimeTrackingPlugin == null) throw new Exception("PlayTimeTrackingPlugin not found; required for FreeWheelPlugin");
+                    var positionTrackingEvent = (PositionTrackingEvent)e.TrackingEvent;
+                    if (!positionTrackingEvent.PositionPercentage.HasValue || positionTrackingEvent.PositionPercentage.Value != 1) throw new Exception("Invalid tracking event was registered for FreeWheelPlugin");
+                    isStart = false;
+                    isEnd = true;
+                    currentPlayTime = playTimeTrackingPlugin.PlayTime;
+                    trackingEnded = true; // set this flag to prevent further tracking
+                }
+                else if (e.TrackingEvent is PlayTimeTrackingEvent)
+                {
+                    var playTimeTrackingEvent = (PlayTimeTrackingEvent)e.TrackingEvent;
+                    isStart = playTimeTrackingEvent.PlayTime == TimeSpan.Zero;
+                    isEnd = false;
+                    currentPlayTime = playTimeTrackingEvent.PlayTime;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
 
-            var newUrl = url + string.Format("{3}init={0}&ct={1}&last={2}", isStart ? 1 : 0, (int)Math.Round(delta.TotalSeconds), isEnd ? 1 : 0, url.Contains("?") ? "&": "?");
-            AdTracking.Current.FireTracking(newUrl);
+                TimeSpan delta;
+                if (lastTrackingEvent != null)
+                {
+                    delta = currentPlayTime - lastTrackingEvent.PlayTime;
+                }
+                else
+                {
+                    delta = currentPlayTime;
+                }
+                lastTrackingEvent = e.TrackingEvent as PlayTimeTrackingEvent;
+
+                var newUrl = url + string.Format("{3}init={0}&ct={1}&last={2}", isStart ? 1 : 0, (int)Math.Round(delta.TotalSeconds), isEnd ? 1 : 0, url.Contains("?") ? "&" : "?");
+                AdTracking.Current.FireTracking(newUrl);
+            }
         }
 
         private async void mediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
@@ -165,7 +189,7 @@ namespace Microsoft.PlayerFramework.Advertising
                 }
                 positionTrackingPlugin.EventTracked += trackingPlugin_EventTracked;
                 lastTrackingEvent = null; // reset
-                positionTrackingPlugin.TrackingEvents.Add(new PositionTrackingEvent() { PositionPercentage = 0, Data = videoTracking, Area = TrackingEventArea });
+                trackingEnded = false;
                 positionTrackingPlugin.TrackingEvents.Add(new PositionTrackingEvent() { PositionPercentage = 1, Data = videoTracking, Area = TrackingEventArea });
 
                 var playTimeTrackingPlugin = MediaPlayer.Plugins.OfType<PlayTimeTrackingPlugin>().FirstOrDefault();
@@ -175,7 +199,7 @@ namespace Microsoft.PlayerFramework.Advertising
                     MediaPlayer.Plugins.Add(playTimeTrackingPlugin);
                 }
                 playTimeTrackingPlugin.EventTracked += trackingPlugin_EventTracked;
-                for (int i = 15; i < 60; i = i + 15)
+                for (int i = 0; i < 60; i = i + 15)
                     playTimeTrackingPlugin.TrackingEvents.Add(new PlayTimeTrackingEvent() { PlayTime = TimeSpan.FromSeconds(i), Data = videoTracking, Area = TrackingEventArea });
                 for (int i = 60; i < 60 * 3; i = i + 30)
                     playTimeTrackingPlugin.TrackingEvents.Add(new PlayTimeTrackingEvent() { PlayTime = TimeSpan.FromSeconds(i), Data = videoTracking, Area = TrackingEventArea });

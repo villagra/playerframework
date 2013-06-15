@@ -16,7 +16,8 @@
 			},
 			initParams:
 			{
-				scriptablename: "Player",
+			    scriptablename: "Player",
+                captionsvisibility: "hidden",
 				autoplay: !!playerOptions.autoplay
 			}
 		});

@@ -24,7 +24,7 @@ namespace Microsoft.PlayerFramework
 #endif
     public sealed class ErrorPlugin : PluginBase
     {
-        ErrorView errorViewElement;
+        ErrorView errorView;
         Panel errorContainer;
         string errorText;
 
@@ -65,7 +65,7 @@ namespace Microsoft.PlayerFramework
             set
             {
                 errorText = value;
-                if (errorViewElement != null) errorViewElement.ErrorText = errorText;
+                if (errorView != null) errorView.ErrorText = errorText;
             }
         }
 
@@ -75,13 +75,13 @@ namespace Microsoft.PlayerFramework
             errorContainer = MediaPlayer.Containers.OfType<Panel>().FirstOrDefault(e => e.Name == MediaPlayerTemplateParts.ErrorsContainer);
             if (errorContainer != null)
             {
-                errorViewElement = new ErrorView()
+                errorView = new ErrorView()
                 {
-                    Style = ErrorViewStyle,
                     ErrorText = ErrorText
                 };
-                errorViewElement.Retry += errorViewElement_Retry;
-                errorContainer.Children.Add(errorViewElement);
+                if (ErrorViewStyle != null) errorView.Style = ErrorViewStyle;
+                errorView.Retry += errorViewElement_Retry;
+                errorContainer.Children.Add(errorView);
                 return true;
             }
             return false;
@@ -97,11 +97,11 @@ namespace Microsoft.PlayerFramework
         {
             if (errorContainer != null)
             {
-                if (errorViewElement != null)
+                if (errorView != null)
                 {
-                    errorViewElement.Retry -= errorViewElement_Retry;
-                    errorContainer.Children.Remove(errorViewElement);
-                    errorViewElement = null;
+                    errorView.Retry -= errorViewElement_Retry;
+                    errorContainer.Children.Remove(errorView);
+                    errorView = null;
                 }
                 errorContainer = null;
             }

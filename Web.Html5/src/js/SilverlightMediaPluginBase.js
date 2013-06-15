@@ -39,6 +39,22 @@
 		this.seekingValue = false;
 	},
 
+	activateTrack: function (track)
+	{
+	    ///	<summary>
+	    ///		Selects a text track on the Silverlight player
+	    ///	</summary>
+	    ///	<param name="track" type="TextTrack">
+	    ///		The text track to be activated.
+	    ///	</param>
+	    try {
+	        this.silverlightPlayer.SelectCaptionStream(track.label);
+	    } catch (err) {
+	        // Ignore failure here for backward compatibility with older xap files that didn't support smooth captions
+	    }
+	    
+	},
+
 	// VideoMediaPlugin Properties
 	controls: function(value)
 	{
@@ -326,9 +342,11 @@
 		///	</summary>
 
 		// Using addEventListener directly instead of PlayerFramework.addEvent because addEventListener will be supported by Silverlight player.
-		this.silverlightPlayer.addEventListener("ApplicationExit", PlayerFramework.proxy(this, this.onUnloadingMediaPlugin), false);
+	    this.silverlightPlayer.addEventListener("ApplicationExit", PlayerFramework.proxy(this, this.onUnloadingMediaPlugin), false);
+	    this.silverlightPlayer.addEventListener("DataReceived", PlayerFramework.proxy(this, this.onDataReceived), false);
 		this.silverlightPlayer.addEventListener("MediaEnded", PlayerFramework.proxy(this, this.onEnded), false);
 		this.silverlightPlayer.addEventListener("MediaFailed", PlayerFramework.proxy(this, this.onMediaFailed), false);
+		this.silverlightPlayer.addEventListener("MediaOpened", PlayerFramework.proxy(this, this.onMediaOpened), false);
 		this.silverlightPlayer.addEventListener("PlayStateChanged", PlayerFramework.proxy(this, this.onPlayStateChanged), false);
 		this.silverlightPlayer.addEventListener("PlaybackPositionChanged", PlayerFramework.proxy(this, this.onTimeUpdate), false);
 		this.silverlightPlayer.addEventListener("VolumeLevelChanged", PlayerFramework.proxy(this, this.onVolumeChange), false);
@@ -356,7 +374,31 @@
 		this.element.onErrorCallback = PlayerFramework.proxy(this, this.onElementError);
 	},
 
-	// Event Handlers
+    // Event Handlers
+	onDataReceived: function (sender, args)
+	{
+	    ///	<summary>
+	    ///		Notifies the player when text track data has been received.
+	    ///	</summary>
+	    ///	<param name="sender" type="Object">
+	    ///	</param>
+	    ///	<param name="args" type="ScriptDataReceivedInfo">
+	    ///		A scriptable type defined in the Silverlight player, containing the metadata and payload
+        ///     of the text track data chunk just received.
+	    ///	</param>
+
+	    this.player.dispatchEvent(
+        {
+            type: "datareceived",
+            dataReceived: 
+            {
+                data: args.Result.Data,
+                timestamp: args.Result.DataChunk.Timestamp,
+                duration: args.Result.DataChunk.Duration
+            }
+        });
+	},
+
 	onElementError: function()
 	{
 		///	<summary>
@@ -423,6 +465,27 @@
 			else if (this.isReady)
 				this.checkSupportCallback(true);
 		}
+	},
+
+	onMediaOpened: function () {
+
+	    ///	<summary>
+	    ///		Called when media is opened. Caption tracks are read from the Silverlight player
+	    ///     and are added to this player.
+	    ///	</summary>
+
+	    try {
+
+	        for (var i = 0; i < this.silverlightPlayer.AvailableCaptionStreams.length; i++) {
+
+	            var captionStream = this.silverlightPlayer.AvailableCaptionStreams[i];
+
+	            this.player.addTextTrack("captions", captionStream.Name, captionStream.Language, true);
+	        }
+
+	    } catch (err) {
+            // Ignore failure here for backward compatibility with older xap files that didn't support smooth captions
+	    }
 	},
 
 	onMediaFailed: function(e)

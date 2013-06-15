@@ -20,19 +20,22 @@ namespace Microsoft.WebVTT
             StringBuilder sb = new StringBuilder();
             bool lookForEnd = false;
 
-            int ci = Reader.Peek();
-            while (ci >= 0)
+            while (true)
             {
+                int ci = Reader.Peek();
+                if (ci < 0) break; // at the end
+
                 var c = Convert.ToChar(ci);
+                if (c == '<' && result != null) break; // we found a new node start, that means we're done and should return without actually reading the next char
+
+                Reader.Read();
                 if (c == '<')
                 {
-                    if (result != null) break;
                     result = new WebVTTContentNodeStart();
                     lookForEnd = true;
                 }
                 else if (c == '>')
                 {
-                    Reader.Read();
                     break;
                 }
                 else
@@ -41,18 +44,20 @@ namespace Microsoft.WebVTT
                     {
                         result = new WebVTTContentText();
                     }
+                    if (c == '&')
+                    {
+                        c = ReadEscapedChar(Reader);
+                    }
                     sb.Append(c);
                 }
-                Reader.Read();
-                ci = Reader.Peek();
 
                 if (lookForEnd)
                 {
                     lookForEnd = false;
+                    ci = Reader.Peek();
                     if (Convert.ToChar(ci) == '/')
                     {
                         Reader.Read();
-                        ci = Reader.Peek();
                         result = new WebVTTContentNodeEnd();
                     }
                 }
@@ -86,6 +91,36 @@ namespace Microsoft.WebVTT
             }
 
             return result;
+        }
+
+        static char ReadEscapedChar(StringReader reader)
+        {
+            var sb = new StringBuilder();
+            char c;
+            do
+            {
+                int i = reader.Read();
+                if (i < 0) break; // we reached the end. Indicates bad WebVTT
+                c = Convert.ToChar(i);
+                sb.Append(c);
+            } while (c != ';');
+            switch (sb.ToString())
+            {
+                case "amp;":
+                    return '&';
+                case "lt;":
+                    return '<';
+                case "gt;":
+                    return '>';
+                case "lrm;":
+                    return Convert.ToChar(0x200E);
+                case "rlm;":
+                    return Convert.ToChar(0x200F);
+                case "nbsp;":
+                    return ' ';
+                default:
+                    return new char();
+            }
         }
     }
 

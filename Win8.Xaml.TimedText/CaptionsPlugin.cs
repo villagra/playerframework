@@ -132,7 +132,7 @@ namespace Microsoft.PlayerFramework.TimedText
                 //captionsPanel = new TimedTextCaptions(new MarkerManager<CaptionRegion>(MediaPlayer), m => new MarkerManager<TimedTextElement>(MediaPlayer) { Markers = m });
                 captionsPanel = new TimedTextCaptions();
                 captionsPanel.NaturalVideoSize = new Size(MediaPlayer.NaturalVideoWidth, MediaPlayer.NaturalVideoHeight);
-                captionsPanel.Style = TimedTextCaptionsStyle;
+                if (TimedTextCaptionsStyle != null) captionsPanel.Style = TimedTextCaptionsStyle;
                 MediaPlayer.IsCaptionsActive = (MediaPlayer.SelectedCaption as Caption != null);
                 captionsContainer.Children.Add(captionsPanel);
                 UpdateCaption(MediaPlayer.SelectedCaption as Caption);

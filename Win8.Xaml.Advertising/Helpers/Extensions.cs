@@ -42,6 +42,7 @@ namespace Microsoft.PlayerFramework.Advertising
 #if SILVERLIGHT
             using (var client = new HttpClient())
             {
+                client.UserAgent = Microsoft.VideoAdvertising.Extensions.DefaultUserAgent;
                 return await client.GetStreamAsync(source);
             }
 #else
