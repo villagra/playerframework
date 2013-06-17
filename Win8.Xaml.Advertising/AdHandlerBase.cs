@@ -46,6 +46,11 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <summary>
+        /// Gets or sets the Xaml Style to be used on the CompanionHost HyperlinkButton control used to show companion ads.
+        /// </summary>
+        public Style CompanionHostStyle { get; set; }
+
+        /// <summary>
         /// Indicates that the active ad player has changed.
         /// </summary>
         public event EventHandler ActiveAdPlayerChanged;
@@ -428,7 +433,8 @@ namespace Microsoft.PlayerFramework.Advertising
                 FrameworkElement container = GetCompanionContainer(source);
                 if (container != null)
                 {
-                    var companionHost = new HyperlinkButton();
+                    var companionHost = new CompanionHost();
+                    if (CompanionHostStyle != null) companionHost.Style = CompanionHostStyle;
                     var companionElement = new Image()
                     {
                         Source = new BitmapImage(new Uri(source.Content)),

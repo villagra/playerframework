@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -175,6 +175,9 @@
     </Compile>
     <Compile Include="..\Win8.Xaml.Advertising\Vpaid\VpaidWebAdPlayer.cs">
       <Link>Vpaid\VpaidWebAdPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Win8.Xaml.Advertising\CompanionHost.cs">
+      <Link>CompanionHost.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
