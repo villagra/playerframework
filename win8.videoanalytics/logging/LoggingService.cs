@@ -12,7 +12,8 @@ namespace Microsoft.VideoAnalytics
     public sealed class LoggingService
     {
         IList<ILoggingSource> loggingSources;
-
+        readonly IList<ILoggingSource> wiredLoggingSources = new List<ILoggingSource>();
+        
         static LoggingService current;
 
         /// <summary>
@@ -87,6 +88,7 @@ namespace Microsoft.VideoAnalytics
             foreach (var item in loggingSources)
             {
                 item.LogCreated -= item_LogCreated;
+                wiredLoggingSources.Remove(item);
             }
         }
 
@@ -95,18 +97,26 @@ namespace Microsoft.VideoAnalytics
             foreach (var item in loggingSources)
             {
                 item.LogCreated += item_LogCreated;
+                wiredLoggingSources.Add(item);
             }
         }
 
         void Logger_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                WireLoggingSources(e.NewItems.Cast<ILoggingSource>());
+                UnwireLoggingSources(wiredLoggingSources.ToList());
             }
-            if (e.OldItems != null)
+            else
             {
-                UnwireLoggingSources(e.OldItems.Cast<ILoggingSource>());
+                if (e.NewItems != null)
+                {
+                    WireLoggingSources(e.NewItems.Cast<ILoggingSource>());
+                }
+                if (e.OldItems != null)
+                {
+                    UnwireLoggingSources(e.OldItems.Cast<ILoggingSource>());
+                }
             }
         }
 

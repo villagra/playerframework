@@ -120,19 +120,26 @@ namespace Microsoft.WebVTT
         {
             if (previousPosition.HasValue)
             {
-                if (e.NewItems != null)
+                if (e.Action == NotifyCollectionChangedAction.Reset)
                 {
-                    foreach (var marker in e.NewItems.Cast<MediaMarker>())
-                    {
-                        CheckMarkerPosition(previousPosition.Value, marker);
-                    }
+                    CheckMarkerPositions(previousPosition.Value);
                 }
-
-                if (e.OldItems != null)
+                else
                 {
-                    foreach (var marker in e.OldItems.Cast<MediaMarker>())
+                    if (e.NewItems != null)
                     {
-                        CheckMarkerPosition(previousPosition.Value, marker);
+                        foreach (var marker in e.NewItems.Cast<MediaMarker>())
+                        {
+                            CheckMarkerPosition(previousPosition.Value, marker);
+                        }
+                    }
+
+                    if (e.OldItems != null)
+                    {
+                        foreach (var marker in e.OldItems.Cast<MediaMarker>())
+                        {
+                            CheckMarkerPosition(previousPosition.Value, marker);
+                        }
                     }
                 }
             }

@@ -71,6 +71,8 @@ namespace Microsoft.PlayerFramework
             InitializeTemplateDefinitions();
         }
 
+        private IList<IPlugin> activePlugins = new List<IPlugin>();
+
         partial void InitializeTemplateDefinitions();
 
         partial void UninitializeTemplateDefinitions();
@@ -273,6 +275,7 @@ namespace Microsoft.PlayerFramework
                         {
                             plugin.MediaPlayer = this;
                             plugin.Load();
+                            activePlugins.Add(plugin);
                         }
                     }
                     finally // turn on the event again
@@ -313,6 +316,7 @@ namespace Microsoft.PlayerFramework
                     if (pluginsLoaded) plugin.Unload();
                     plugin.MediaPlayer = null;
                 }
+                activePlugins.Clear();
             }
 
             plugins = value;
@@ -330,21 +334,41 @@ namespace Microsoft.PlayerFramework
 
         void Plugins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                foreach (var plugin in e.NewItems.Cast<IPlugin>())
-                {
-                    plugin.MediaPlayer = this;
-                    if (pluginsLoaded) plugin.Load();
-                }
-            }
-
-            if (e.OldItems != null)
-            {
-                foreach (var plugin in e.OldItems.Cast<IPlugin>())
+                foreach (var plugin in activePlugins)
                 {
                     if (pluginsLoaded) plugin.Unload();
                     plugin.MediaPlayer = null;
+                }
+                activePlugins.Clear();
+                foreach (var plugin in Plugins)
+                {
+                    plugin.MediaPlayer = this;
+                    if (pluginsLoaded) plugin.Load();
+                    activePlugins.Add(plugin);
+                }
+            }
+            else
+            {
+                if (e.NewItems != null)
+                {
+                    foreach (var plugin in e.NewItems.Cast<IPlugin>())
+                    {
+                        plugin.MediaPlayer = this;
+                        if (pluginsLoaded) plugin.Load();
+                        activePlugins.Add(plugin);
+                    }
+                }
+
+                if (e.OldItems != null)
+                {
+                    foreach (var plugin in e.OldItems.Cast<IPlugin>())
+                    {
+                        if (pluginsLoaded) plugin.Unload();
+                        plugin.MediaPlayer = null;
+                        activePlugins.Remove(plugin);
+                    }
                 }
             }
         }
@@ -2444,9 +2468,6 @@ namespace Microsoft.PlayerFramework
         #endregion
 
         #endregion
-
-        /// <inheritdoc /> 
-        MediaPlayer IMediaSource.Player { get { return this; } }
 
         #region TimeFormatConverter
         /// <summary>

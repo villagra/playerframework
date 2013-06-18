@@ -19,6 +19,7 @@ namespace Microsoft.PlayerFramework.Analytics
     {
         MediaPlayer mediaPlayer;
         double playbackRate;
+        readonly IList<IEventTracker> trackingPlugins = new List<IEventTracker>();
 
         public MediaPlayerAdapter(MediaPlayer mediaPlayer)
         {
@@ -49,10 +50,11 @@ namespace Microsoft.PlayerFramework.Analytics
                     mediaPlayer.SelectedAudioStreamChanged -= mediaPlayer_SelectedAudioStreamChanged;
                     mediaPlayer.AdvertisingStateChanged -= mediaPlayer_AdvertisingStateChanged;
                     mediaPlayer.Plugins.CollectionChanged -= Plugins_CollectionChanged;
-                    foreach (var trackingPlugin in mediaPlayer.Plugins.OfType<IEventTracker>())
+                    foreach (var trackingPlugin in trackingPlugins)
                     {
                         trackingPlugin.EventTracked -= trackingPlugin_EventTracked;
                     }
+                    trackingPlugins.Clear();
                 }
                 mediaPlayer = value;
                 if (mediaPlayer != null)
@@ -74,7 +76,8 @@ namespace Microsoft.PlayerFramework.Analytics
                     mediaPlayer.AdvertisingStateChanged += mediaPlayer_AdvertisingStateChanged;
                     foreach (var trackingPlugin in mediaPlayer.Plugins.OfType<IEventTracker>())
                     {
-                        trackingPlugin.EventTracked += trackingPlugin_EventTracked;   
+                        trackingPlugin.EventTracked += trackingPlugin_EventTracked;
+                        trackingPlugins.Add(trackingPlugin);
                     }
                     mediaPlayer.Plugins.CollectionChanged += Plugins_CollectionChanged;
                 }
@@ -83,19 +86,37 @@ namespace Microsoft.PlayerFramework.Analytics
 
         void Plugins_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                foreach (var trackingPlugin in e.NewItems.OfType<IEventTracker>())
-                {
-                    trackingPlugin.EventTracked += trackingPlugin_EventTracked;
-                }
-            }
-
-            if (e.OldItems != null)
-            {
-                foreach (var trackingPlugin in e.OldItems.OfType<IEventTracker>())
+                foreach (var trackingPlugin in trackingPlugins)
                 {
                     trackingPlugin.EventTracked -= trackingPlugin_EventTracked;
+                }
+                trackingPlugins.Clear();
+                foreach (var trackingPlugin in mediaPlayer.Plugins.OfType<IEventTracker>())
+                {
+                    trackingPlugin.EventTracked += trackingPlugin_EventTracked;
+                    trackingPlugins.Add(trackingPlugin);
+                }
+            }
+            else
+            {
+                if (e.NewItems != null)
+                {
+                    foreach (var trackingPlugin in e.NewItems.OfType<IEventTracker>())
+                    {
+                        trackingPlugin.EventTracked += trackingPlugin_EventTracked;
+                        trackingPlugins.Add(trackingPlugin);
+                    }
+                }
+
+                if (e.OldItems != null)
+                {
+                    foreach (var trackingPlugin in e.OldItems.OfType<IEventTracker>())
+                    {
+                        trackingPlugin.EventTracked -= trackingPlugin_EventTracked;
+                        trackingPlugins.Remove(trackingPlugin);
+                    }
                 }
             }
         }

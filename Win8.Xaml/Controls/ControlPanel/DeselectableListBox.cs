@@ -50,7 +50,7 @@ namespace Microsoft.PlayerFramework
             get { return GetValue(SelectedIdentifierTextProperty) as string; }
             set { SetValue(SelectedIdentifierTextProperty, value); }
         }
-        
+
         static string DefaultSelectedIdentifierText
         {
             get
@@ -130,7 +130,7 @@ namespace Microsoft.PlayerFramework
                 ListBox.ItemsSource = items;
             }
         }
-        
+
         /// <summary>
         /// SelectedItem DependencyProperty definition.
         /// </summary>
@@ -230,18 +230,33 @@ namespace Microsoft.PlayerFramework
 
             void EnumerableWrapper_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
             {
-                if (e.OldItems != null)
+                if (e.Action == NotifyCollectionChangedAction.Reset)
                 {
-                    foreach (var item in e.OldItems)
+                    allItems.Clear();
+                    if (IncludeStartingItem)
                     {
-                        allItems.Remove(item);
+                        allItems.Add(StartingItem);
                     }
-                }
-                if (e.NewItems != null)
-                {
-                    foreach (var item in e.NewItems)
+                    foreach (var item in items)
                     {
                         allItems.Add(item);
+                    }
+                }
+                else
+                {
+                    if (e.OldItems != null)
+                    {
+                        foreach (var item in e.OldItems)
+                        {
+                            allItems.Remove(item);
+                        }
+                    }
+                    if (e.NewItems != null)
+                    {
+                        foreach (var item in e.NewItems)
+                        {
+                            allItems.Add(item);
+                        }
                     }
                 }
             }

@@ -19,6 +19,7 @@ namespace Microsoft.VideoAdvertising
         public TimeSpan? StartTimeout { get; set; }
         public IAdPayloadHandler ActiveHandler { get; private set; }
         private object activeAdContext;
+        private IList<IAdPayloadHandler> activePayloadHandlers = new List<IAdPayloadHandler>();
 
         IPlayer player;
         public IPlayer Player
@@ -62,29 +63,55 @@ namespace Microsoft.VideoAdvertising
 
         void AdPayloadHandlers_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                foreach (var handler in e.NewItems.Cast<IAdPayloadHandler>())
+                foreach (var handler in activePayloadHandlers.ToList())
                 {
-                    handler.Player = Player;
-                    handler.LoadPlayer += Handler_LoadPlayer;
-                    handler.UnloadPlayer += Handler_UnloadPlayer;
-                    handler.ActivateAdUnit += Handler_ActivateAdUnit;
-                    handler.DeactivateAdUnit += Handler_DeactivateAdUnit;
+                    DeactivateHandler(handler);
+                }
+                foreach (var handler in AdPayloadHandlers)
+                {
+                    ActivateHandler(handler);
                 }
             }
+            else
+            {
+                if (e.NewItems != null)
+                {
+                    foreach (var handler in e.NewItems.Cast<IAdPayloadHandler>())
+                    {
+                        ActivateHandler(handler);
+                    }
+                }
 
-            if (e.OldItems != null)
-            {
-                foreach (var handler in e.OldItems.Cast<IAdPayloadHandler>())
+                if (e.OldItems != null)
                 {
-                    handler.Player = null;
-                    handler.LoadPlayer -= Handler_LoadPlayer;
-                    handler.UnloadPlayer -= Handler_UnloadPlayer;
-                    handler.ActivateAdUnit -= Handler_ActivateAdUnit;
-                    handler.DeactivateAdUnit -= Handler_DeactivateAdUnit;
+                    foreach (var handler in e.OldItems.Cast<IAdPayloadHandler>())
+                    {
+                        DeactivateHandler(handler);
+                    }
                 }
             }
+        }
+
+        private void DeactivateHandler(IAdPayloadHandler handler)
+        {
+            handler.Player = null;
+            handler.LoadPlayer -= Handler_LoadPlayer;
+            handler.UnloadPlayer -= Handler_UnloadPlayer;
+            handler.ActivateAdUnit -= Handler_ActivateAdUnit;
+            handler.DeactivateAdUnit -= Handler_DeactivateAdUnit;
+            activePayloadHandlers.Remove(handler);
+        }
+
+        private void ActivateHandler(IAdPayloadHandler handler)
+        {
+            handler.Player = Player;
+            handler.LoadPlayer += Handler_LoadPlayer;
+            handler.UnloadPlayer += Handler_UnloadPlayer;
+            handler.ActivateAdUnit += Handler_ActivateAdUnit;
+            handler.DeactivateAdUnit += Handler_DeactivateAdUnit;
+            activePayloadHandlers.Add(handler);
         }
 
 

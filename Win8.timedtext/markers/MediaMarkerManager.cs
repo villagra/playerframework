@@ -61,7 +61,7 @@ namespace Microsoft.TimedText
                 PreviousPosition = mediaPosition;
             }
         }
-        
+
         void CheckMarkerPosition(TimeSpan mediaPosition, TMediaMarker marker)
         {
             lock (_syncObject)
@@ -111,14 +111,21 @@ namespace Microsoft.TimedText
         {
             if (PreviousPosition.HasValue)
             {
-                if (e.NewItems != null)
+                if (e.Action == NotifyCollectionChangedAction.Reset)
                 {
-                    e.NewItems.Cast<TMediaMarker>().ForEach(i => CheckMarkerPosition(PreviousPosition.Value, i));
+                    CheckMarkerPositions(PreviousPosition.Value);
                 }
-
-                if (e.OldItems != null)
+                else
                 {
-                    e.OldItems.Cast<TMediaMarker>().ForEach(i => CheckMarkerPosition(PreviousPosition.Value, i));
+                    if (e.NewItems != null)
+                    {
+                        e.NewItems.Cast<TMediaMarker>().ForEach(i => CheckMarkerPosition(PreviousPosition.Value, i));
+                    }
+
+                    if (e.OldItems != null)
+                    {
+                        e.OldItems.Cast<TMediaMarker>().ForEach(i => CheckMarkerPosition(PreviousPosition.Value, i));
+                    }
                 }
             }
         }

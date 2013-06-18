@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Microsoft.TimedText
@@ -7,9 +8,10 @@ namespace Microsoft.TimedText
     public class MediaMarkerCollection<TMediaMarker> : OrderedObservableCollection<TMediaMarker> where TMediaMarker : MediaMarker
     {
         public event Action<TMediaMarker> MarkerPositionChanged;
+        readonly IList<TMediaMarker> items = new List<TMediaMarker>();
 
         bool _suspendCollectionChangedEvents = false;
-        
+
         public new void Add(TMediaMarker mediaMarker)
         {
             if (mediaMarker is CaptionElement)
@@ -40,18 +42,30 @@ namespace Microsoft.TimedText
                 .ToList();
         }
 
-        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                e.NewItems.Cast<TMediaMarker>()
-                          .ForEach(OnItemAdded);
+                foreach (var item in items.ToList())
+                {
+                    OnItemRemoved(item);
+                }
+                foreach (var item in this)
+                {
+                    OnItemAdded(item);
+                }
             }
-
-            if (e.OldItems != null)
+            else
             {
-                e.OldItems.Cast<TMediaMarker>()
-                          .ForEach(OnItemRemoved);
+                if (e.NewItems != null)
+                {
+                    e.NewItems.Cast<TMediaMarker>().ForEach(OnItemAdded);
+                }
+
+                if (e.OldItems != null)
+                {
+                    e.OldItems.Cast<TMediaMarker>().ForEach(OnItemRemoved);
+                }
             }
 
             if (!_suspendCollectionChangedEvents)
@@ -63,11 +77,13 @@ namespace Microsoft.TimedText
         private void OnItemAdded(TMediaMarker item)
         {
             item.PositionChanged += Item_PositionChanged;
+            items.Add(item);
         }
 
         private void OnItemRemoved(TMediaMarker item)
         {
             item.PositionChanged -= Item_PositionChanged;
+            items.Remove(item);
         }
 
         private void Item_PositionChanged(MediaMarker item)

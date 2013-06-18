@@ -56,37 +56,58 @@ namespace Microsoft.WebVTT
 
         void _activeCues_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.OldItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                var oldCues = e.OldItems.Cast<WebVTTCue>().ToList();
-                animations.RemoveAll(a => oldCues.Contains(a.Cue));
-                foreach (var cue in oldCues)
+                animations.Clear();
+                foreach (var element in activeElements.Values)
                 {
-                    var element = activeElements[cue];
-                    activeElements.Remove(cue);
                     captionPanel.Children.Remove(element);
                 }
-            }
-            if (e.NewItems != null)
-            {
-                var newCues = e.NewItems.Cast<WebVTTCue>().ToList();
-                foreach (var cue in newCues)
+                activeElements.Clear();
+                foreach (var cue in activeCues)
                 {
-                    BoxElement element = renderer.GetRenderedCue(cue);
-                    if (BoxStyle != null) element.Style = BoxStyle;
-                    element.FontSize = currentFontSize;
-                    WebVTTLayoutPanel.SetAlignment(element, GetPanelAlignment(cue.Settings.Alignment));
-                    WebVTTLayoutPanel.SetDirection(element, GetPanelAlignment(cue.Settings.WritingMode, cue.Content));
-                    WebVTTLayoutPanel.SetLinePosition(element, cue.Settings.LinePosition);
-                    WebVTTLayoutPanel.SetOrientation(element, GetPanelOrientation(cue.Settings.WritingMode));
-                    WebVTTLayoutPanel.SetPosition(element, cue.Settings.TextPosition);
-                    WebVTTLayoutPanel.SetSize(element, cue.Settings.Size);
-                    WebVTTLayoutPanel.SetSnapToLines(element, cue.Settings.SnapToLines);
-
-                    activeElements.Add(cue, element);
-                    captionPanel.Children.Add(element);
+                    AddCue(cue);
                 }
             }
+            else
+            {
+                if (e.OldItems != null)
+                {
+                    var oldCues = e.OldItems.Cast<WebVTTCue>().ToList();
+                    animations.RemoveAll(a => oldCues.Contains(a.Cue));
+                    foreach (var cue in oldCues)
+                    {
+                        var element = activeElements[cue];
+                        activeElements.Remove(cue);
+                        captionPanel.Children.Remove(element);
+                    }
+                }
+                if (e.NewItems != null)
+                {
+                    var newCues = e.NewItems.Cast<WebVTTCue>().ToList();
+                    foreach (var cue in newCues)
+                    {
+                        AddCue(cue);
+                    }
+                }
+            }
+        }
+
+        private void AddCue(WebVTTCue cue)
+        {
+            BoxElement element = renderer.GetRenderedCue(cue);
+            if (BoxStyle != null) element.Style = BoxStyle;
+            element.FontSize = currentFontSize;
+            WebVTTLayoutPanel.SetAlignment(element, GetPanelAlignment(cue.Settings.Alignment));
+            WebVTTLayoutPanel.SetDirection(element, GetPanelAlignment(cue.Settings.WritingMode, cue.Content));
+            WebVTTLayoutPanel.SetLinePosition(element, cue.Settings.LinePosition);
+            WebVTTLayoutPanel.SetOrientation(element, GetPanelOrientation(cue.Settings.WritingMode));
+            WebVTTLayoutPanel.SetPosition(element, cue.Settings.TextPosition);
+            WebVTTLayoutPanel.SetSize(element, cue.Settings.Size);
+            WebVTTLayoutPanel.SetSnapToLines(element, cue.Settings.SnapToLines);
+
+            activeElements.Add(cue, element);
+            captionPanel.Children.Add(element);
         }
 
         static Orientation GetPanelOrientation(WebVTTWritingMode writingMode)

@@ -79,10 +79,5 @@ namespace Microsoft.PlayerFramework
         /// Gets a collection of available captions.
         /// </summary>
         ICollection<Caption> AvailableCaptions { get; }
-
-        /// <summary>
-        /// Gets the media player associated with this MediaSource
-        /// </summary>
-        MediaPlayer Player { get; }
     }
 }

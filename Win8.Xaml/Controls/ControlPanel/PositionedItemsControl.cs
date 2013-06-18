@@ -66,19 +66,40 @@ namespace Microsoft.PlayerFramework
 
         void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                foreach (var item in e.NewItems)
+                UnloadAllItems();
+                foreach (var item in ItemsSource)
                 {
                     LoadNewItem(item);
                 }
             }
-            if (e.OldItems != null)
+            else
             {
-                foreach (var item in e.OldItems)
+                if (e.NewItems != null)
                 {
-                    UnloadNewItem(item);
+                    foreach (var item in e.NewItems)
+                    {
+                        LoadNewItem(item);
+                    }
                 }
+                if (e.OldItems != null)
+                {
+                    foreach (var item in e.OldItems)
+                    {
+                        UnloadNewItem(item);
+                    }
+                }
+            }
+        }
+
+        private void UnloadAllItems()
+        {
+            foreach (var child in Children.OfType<FrameworkElement>().ToList())
+            {
+                child.DataContext = null;
+                Children.Remove(child);
+                if (ItemUnloaded != null) ItemUnloaded(this, new FrameworkElementEventArgs(child));
             }
         }
 

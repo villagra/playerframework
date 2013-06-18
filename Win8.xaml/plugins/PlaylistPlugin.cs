@@ -56,39 +56,16 @@ namespace Microsoft.PlayerFramework
             if (oldPlaylist != null)
             {
                 oldPlaylist.CollectionChanged -= playlist_CollectionChanged;
-                foreach (var item in oldPlaylist)
-                {
-                    item.Player = null;
-                }
             }
 
             if (newPlaylist != null)
             {
                 newPlaylist.CollectionChanged += playlist_CollectionChanged;
-                foreach (var item in newPlaylist)
-                {
-                    item.Player = MediaPlayer;
-                }
             }
         }
 
         void playlist_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.OldItems != null)
-            {
-                foreach (var item in e.OldItems.Cast<PlaylistItem>())
-                {
-                    item.Player = null;
-                }
-            }
-            if (e.NewItems != null)
-            {
-                foreach (var item in e.NewItems.Cast<PlaylistItem>())
-                {
-                    item.Player = MediaPlayer;
-                }
-            }
-
             RefreshPreviousNextPlaylistItems();
         }
 

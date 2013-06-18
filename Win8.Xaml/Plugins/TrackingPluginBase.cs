@@ -26,6 +26,8 @@ namespace Microsoft.PlayerFramework
             TrackingEvents = new ObservableCollection<T>();
         }
 
+        IList<T> trackedEvents = new List<T>();
+
         /// <inheritdoc /> 
         public event EventHandler<EventTrackedEventArgs> EventTracked;
 
@@ -63,23 +65,37 @@ namespace Microsoft.PlayerFramework
             get { return GetValue(TrackingEventsProperty) as IList<T>; }
             set { SetValue(TrackingEventsProperty, value); }
         }
-        
+
         private void TrackingPlugin_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (MediaPlayer != null && MediaPlayer.PlayerState == PlayerState.Started) // make sure we're started. If not, wait until MediaStarted fires
             {
-                if (e.OldItems != null)
+                if (e.Action == NotifyCollectionChangedAction.Reset)
                 {
-                    foreach (var item in e.OldItems.Cast<T>())
+                    foreach (var item in trackedEvents.ToList())
                     {
                         UninitializeTrackingEvent(item);
                     }
-                }
-                if (e.NewItems != null)
-                {
-                    foreach (var item in e.NewItems.Cast<T>())
+                    foreach (var item in TrackingEvents)
                     {
                         InitializeTrackingEvent(item);
+                    }
+                }
+                else
+                {
+                    if (e.OldItems != null)
+                    {
+                        foreach (var item in e.OldItems.Cast<T>())
+                        {
+                            UninitializeTrackingEvent(item);
+                        }
+                    }
+                    if (e.NewItems != null)
+                    {
+                        foreach (var item in e.NewItems.Cast<T>())
+                        {
+                            InitializeTrackingEvent(item);
+                        }
                     }
                 }
             }
@@ -120,14 +136,20 @@ namespace Microsoft.PlayerFramework
         /// Provides an opportunity to initialize an individual tracking event.
         /// </summary>
         /// <param name="trackingEvent">The tracking event being subscribed to.</param>
-        protected virtual void InitializeTrackingEvent(T trackingEvent) { }
+        protected virtual void InitializeTrackingEvent(T trackingEvent)
+        {
+            trackedEvents.Add(trackingEvent);
+        }
 
         /// <summary>
         /// Provides an opportunity to uninitialize an individual tracking event.
         /// </summary>
         /// <param name="trackingEvent">The tracking event being unsubscribed.</param>
-        protected virtual void UninitializeTrackingEvent(T trackingEvent) { }
-        
+        protected virtual void UninitializeTrackingEvent(T trackingEvent)
+        {
+            trackedEvents.Remove(trackingEvent);
+        }
+
         /// <inheritdoc /> 
         protected override void OnUpdate()
         {
@@ -175,7 +197,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public string Area { get; set; }
     }
-    
+
     /// <summary>
     /// Contains additional information about a tracking event that has occurred.
     /// </summary>
@@ -198,7 +220,7 @@ namespace Microsoft.PlayerFramework
         {
             TrackingEvent = trackingEvent;
         }
-        
+
         /// <summary>
         /// Gets the timestamp when the event occurred.
         /// </summary>

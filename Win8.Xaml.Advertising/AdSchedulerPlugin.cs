@@ -193,35 +193,49 @@ namespace Microsoft.PlayerFramework.Advertising
 
         async void Advertisements_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            var tasks = new List<Task>();
-            if (e.OldItems != null)
+            if (e.Action == NotifyCollectionChangedAction.Reset)
             {
-                foreach (var item in e.OldItems.OfType<MidrollAdvertisement>())
+                foreach (var marker in MediaPlayer.Markers.Where(t => t.Type == MarkerType_Play || t.Type == MarkerType_Preload).ToList())
                 {
-                    var marker = MediaPlayer.Markers.FirstOrDefault(t => (t.Type == MarkerType_Play || t.Type == MarkerType_Preload) && t.Text == item.Id);
-                    if (marker != null)
-                    {
-                        MediaPlayer.Markers.Remove(marker);
-                    }
-                    if (activePreloadOperation != null && activePreloadOperation.AdSource == item.Source)
-                    {
-                        // no need to wait
-                        tasks.Add(activePreloadOperation.CancelAsync());
-                    }
+                    MediaPlayer.Markers.Remove(marker);
                 }
-            }
-            if (e.NewItems != null)
-            {
-                foreach (var item in e.NewItems.OfType<MidrollAdvertisement>())
+                foreach (var item in Advertisements.OfType<MidrollAdvertisement>())
                 {
                     AddMarker(item);
                 }
             }
+            else
+            {
+                var tasks = new List<Task>();
+                if (e.OldItems != null)
+                {
+                    foreach (var item in e.OldItems.OfType<MidrollAdvertisement>())
+                    {
+                        var marker = MediaPlayer.Markers.FirstOrDefault(t => (t.Type == MarkerType_Play || t.Type == MarkerType_Preload) && t.Text == item.Id);
+                        if (marker != null)
+                        {
+                            MediaPlayer.Markers.Remove(marker);
+                        }
+                        if (activePreloadOperation != null && activePreloadOperation.AdSource == item.Source)
+                        {
+                            // no need to wait
+                            tasks.Add(activePreloadOperation.CancelAsync());
+                        }
+                    }
+                }
+                if (e.NewItems != null)
+                {
+                    foreach (var item in e.NewItems.OfType<MidrollAdvertisement>())
+                    {
+                        AddMarker(item);
+                    }
+                }
 #if SILVERLIGHT && !WINDOWS_PHONE || WINDOWS_PHONE7
-            await TaskEx.WhenAll(tasks);
+                await TaskEx.WhenAll(tasks);
 #else
-            await Task.WhenAll(tasks);
+                await Task.WhenAll(tasks);
 #endif
+            }
         }
 
         void AddMarker(MidrollAdvertisement ad)
