@@ -825,7 +825,13 @@
             /// <field name="currentTime" type="Number">Gets or sets the current playback position (in seconds).</field>
             currentTime: {
                 get: function () {
-                    return this._mediaElement.currentTime;
+                    var result = this._mediaElement.currentTime;
+                    if (isFinite(result)) {
+                        return result;
+                    }
+                    else {
+                        return 0;
+                    }
                 },
                 set: function (value) {
                     if (this._mediaElement.readyState !== PlayerFramework.ReadyState.nothing && isFinite(value) && !isNaN(value) && value >= 0) {
