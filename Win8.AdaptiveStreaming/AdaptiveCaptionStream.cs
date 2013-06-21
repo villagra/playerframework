@@ -14,7 +14,7 @@ namespace Microsoft.AdaptiveStreaming
         /// </summary> 
         public string Language { get; set; }
 
-        public AdaptiveCaptionStream(IManifestStream manifestStream)
+        internal AdaptiveCaptionStream(IManifestStream manifestStream)
         {
             ManifestStream = manifestStream;
             Name = manifestStream.Name;

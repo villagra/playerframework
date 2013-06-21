@@ -12,9 +12,9 @@ namespace Microsoft.AdaptiveStreaming
         /// <summary> 
         /// Gets or sets the Language of the audio stream. 
         /// </summary> 
-        public string Language { get; set; } 
+        public string Language { get; set; }
 
-        public AdaptiveAudioStream(IManifestStream manifestStream)
+        internal AdaptiveAudioStream(IManifestStream manifestStream)
         {
             ManifestStream = manifestStream;
             Name = manifestStream.Name;
