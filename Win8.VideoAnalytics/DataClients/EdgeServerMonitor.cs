@@ -4,11 +4,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
 using Windows.Foundation;
+using System.Runtime.InteropServices.WindowsRuntime;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {

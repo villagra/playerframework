@@ -7,9 +7,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Media;
+#if SILVERLIGHT
+#else
+using System.Threading.Tasks;
 using Windows.System.Threading;
+#endif
 
 namespace Microsoft.PlayerFramework.Adaptive.Analytics
 {
@@ -133,13 +136,13 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
                             if (entry.MethodName == "AddChunkToCache")
                             {
                                 var bufferSizeChange = GetBufferSize(entry);
-                                if (bufferSizeChange.Item1 == "video")
+                                if (bufferSizeChange.StreamType == "video")
                                 {
-                                    VideoBufferSize = bufferSizeChange.Item2;
+                                    VideoBufferSize = bufferSizeChange.Size;
                                 }
-                                else if (bufferSizeChange.Item1 == "audio")
+                                else if (bufferSizeChange.StreamType == "audio")
                                 {
-                                    AudioBufferSize = bufferSizeChange.Item2;
+                                    AudioBufferSize = bufferSizeChange.Size;
                                 }
                             }
                             break;
@@ -148,7 +151,7 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
             }
         }
 
-        static Tuple<string, uint> GetBufferSize(TraceEntry entry)
+        static BufferSizeResult GetBufferSize(TraceEntry entry)
         {
             string streamType = "";
             uint bufferSize = 0;
@@ -170,7 +173,7 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
                     streamType = data2Capture[0].Value.ToLowerInvariant();
                 }
             }
-            return Tuple.Create(streamType, bufferSize);
+            return new BufferSizeResult(streamType, bufferSize);
         }
 
         static uint GetPerceivedBandwidth(TraceEntry entry)
@@ -261,5 +264,17 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
             ssme.PlaybackTrackChanged -= ssme_PlaybackTrackChanged;
             ssme = null;
         }
+    }
+
+    internal class BufferSizeResult
+    {
+        public BufferSizeResult(string streamType, uint size)
+        {
+            StreamType = streamType;
+            Size = size;
+        }
+
+        public string StreamType { get; private set; }
+        public uint Size { get; private set; }
     }
 }

@@ -2,10 +2,13 @@
 using System.IO;
 using System.Xml;
 using System.Collections.Generic;
-using Windows.Storage.Streams;
 using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
+using Windows.Storage.Streams;
 using Windows.Foundation;
 using System.Runtime.InteropServices.WindowsRuntime;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {
@@ -27,6 +30,7 @@ namespace Microsoft.VideoAnalytics
         /// </summary>
         public IList<EdgeServerRules> EdgeServerRulesCollection { get; private set; }
 
+#if !SILVERLIGHT
         /// <summary>
         /// Deserializes a config xml file containing the rules into an instance of EdgeServerConfig
         /// </summary>
@@ -45,6 +49,20 @@ namespace Microsoft.VideoAnalytics
                 return Load(XmlReader.Create(stream));
             }
         }
+#else
+        /// <summary>
+        /// Deserializes a config xml file containing the rules into an instance of EdgeServerConfig
+        /// </summary>
+        /// <param name="source">The source URI for the config file</param>
+        /// <returns>An awaitable EdgeServerConfig</returns>
+        public static EdgeServerConfig Load(Uri source)
+        {
+            using (var stream = System.Windows.Application.GetResourceStream(source).Stream)
+            {
+                return Load(XmlReader.Create(stream));
+            }
+        }
+#endif
 
         internal static EdgeServerConfig Load(XmlReader reader)
         {

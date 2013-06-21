@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+#if SILVERLIGHT
+#else
 using Windows.Storage.Streams;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {

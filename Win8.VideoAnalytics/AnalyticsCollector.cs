@@ -3,10 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.System.Threading;
 #if SILVERLIGHT
 using System.Windows.Threading;
 #else
+using Windows.System.Threading;
 using Windows.UI.Core;
 #endif
 
@@ -20,8 +20,13 @@ namespace Microsoft.VideoAnalytics
         private readonly DateTimeOffset videoSessionStartTime = DateTimeOffset.Now;
 
         private AnalyticsConfig configuration;
+#if SILVERLIGHT
+        private Timer reportTimer;
+        private Timer pollingTimer;
+#else
         private ThreadPoolTimer reportTimer;
         private ThreadPoolTimer pollingTimer;
+#endif
         private TaskCompletionSource<StreamLoadedLog> streamLoadTask;
         private QualityReportAggregator qualityReportAggregator;
         private DownloadErrorReportAggregator downloadErrorReportAggregator;
@@ -552,11 +557,19 @@ namespace Microsoft.VideoAnalytics
 
                 if (Configuration.PollingInterval > TimeSpan.Zero)
                 {
+#if SILVERLIGHT
+                    pollingTimer = new Timer(pollingTimer_Tick, null, Configuration.PollingInterval, Configuration.PollingInterval);
+#else
                     pollingTimer = ThreadPoolTimer.CreatePeriodicTimer(pollingTimer_Tick, Configuration.PollingInterval);
+#endif
                 }
                 if (Configuration.AggregationInterval > TimeSpan.Zero)
                 {
+#if SILVERLIGHT
+                    reportTimer = new Timer(reportTimer_Tick, null, Configuration.AggregationInterval, Configuration.AggregationInterval);
+#else
                     reportTimer = ThreadPoolTimer.CreatePeriodicTimer(reportTimer_Tick, Configuration.AggregationInterval);
+#endif
                 }
             }
         }
@@ -570,12 +583,20 @@ namespace Microsoft.VideoAnalytics
             {
                 if (reportTimer != null)
                 {
+#if SILVERLIGHT
+                    reportTimer.Dispose();
+#else
                     reportTimer.Cancel();
+#endif
                     reportTimer = null;
                 }
                 if (pollingTimer != null)
                 {
+#if SILVERLIGHT
+                    pollingTimer.Dispose();
+#else
                     pollingTimer.Cancel();
+#endif
                     pollingTimer = null;
                 }
                 DetachEvents();

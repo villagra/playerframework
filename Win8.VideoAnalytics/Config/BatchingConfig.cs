@@ -1,10 +1,13 @@
 ﻿using System;
-using Windows.Storage.Streams;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Xml;
 using System.IO;
+#if SILVERLIGHT
+#else
+using Windows.Storage.Streams;
+using Windows.Foundation;
+using System.Runtime.InteropServices.WindowsRuntime;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {

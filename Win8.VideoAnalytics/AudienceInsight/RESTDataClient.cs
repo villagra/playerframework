@@ -1,10 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
+#if SILVERLIGHT
+#else
 using Windows.Foundation;
+using System.Runtime.InteropServices.WindowsRuntime;
+#endif
 
 namespace Microsoft.VideoAnalytics
 {

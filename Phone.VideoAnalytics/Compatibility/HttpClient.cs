@@ -103,7 +103,11 @@ namespace System.Net.Http
 
         public override Task<Stream> ReadAsStreamAsync()
         {
+#if WINDOWS_PHONE7
+            return TaskEx.FromResult(Response.GetResponseStream());
+#else
             return Task.FromResult(Response.GetResponseStream());
+#endif
         }
 
         public override void Dispose()
@@ -123,7 +127,11 @@ namespace System.Net.Http
 
         public override Task<Stream> ReadAsStreamAsync()
         {
+#if WINDOWS_PHONE7
+            return TaskEx.FromResult(Stream);
+#else
             return Task.FromResult(Stream);
+#endif
         }
 
         public override void Dispose()

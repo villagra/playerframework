@@ -218,11 +218,13 @@ namespace Microsoft.PlayerFramework
             if (newValue)
             {
                 control.Content = control.SelectedContent ?? control.Content;
+                control.ContentTemplate = control.SelectedContentTemplate ?? control.ContentTemplate;
                 AutomationProperties.SetName(control, control.SelectedName ?? AutomationProperties.GetName(control));
             }
             else
             {
                 control.Content = control.UnselectedContent ?? control.Content;
+                control.ContentTemplate = control.UnselectedContentTemplate ?? control.ContentTemplate;
                 AutomationProperties.SetName(control, control.UnselectedName ?? AutomationProperties.GetName(control));
             }
         }
@@ -260,6 +262,29 @@ namespace Microsoft.PlayerFramework
             set { SetValue(SelectedContentProperty, value); }
         }
 
+        /// <summary>
+        /// Identifies the SelectedContentTemplate dependency property.
+        /// </summary>
+        public static readonly DependencyProperty SelectedContentTemplateProperty = DependencyProperty.Register("SelectedContentTemplate", typeof(DataTemplate), typeof(MediaPlayerButton), new PropertyMetadata(null, OnSelectedContentTemplateChanged));
+
+        static void OnSelectedContentTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MediaPlayerButton;
+            if (control.IsSelected)
+            {
+                control.ContentTemplate = (e.NewValue as DataTemplate) ?? control.ContentTemplate;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the ContentTemplate of the button when in a selected state (IsSelected=true).
+        /// </summary>
+        public DataTemplate SelectedContentTemplate
+        {
+            get { return GetValue(SelectedContentTemplateProperty) as DataTemplate; }
+            set { SetValue(SelectedContentTemplateProperty, value); }
+        }
+
 
         /// <summary>
         /// Identifies the UnselectedContent dependency property.
@@ -282,6 +307,29 @@ namespace Microsoft.PlayerFramework
         {
             get { return GetValue(UnselectedContentProperty); }
             set { SetValue(UnselectedContentProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifies the UnselectedContentTemplate dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnselectedContentTemplateProperty = DependencyProperty.Register("UnselectedContentTemplate", typeof(DataTemplate), typeof(MediaPlayerButton), new PropertyMetadata(null, OnUnselectedContentTemplateChanged));
+
+        static void OnUnselectedContentTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MediaPlayerButton;
+            if (!control.IsSelected)
+            {
+                control.ContentTemplate = (e.NewValue as DataTemplate) ?? control.ContentTemplate;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the ContentTemplate of the button when in an unselected state (IsSelected=false).
+        /// </summary>
+        public DataTemplate UnselectedContentTemplate
+        {
+            get { return GetValue(UnselectedContentTemplateProperty) as DataTemplate; }
+            set { SetValue(UnselectedContentTemplateProperty, value); }
         }
 
         #endregion
