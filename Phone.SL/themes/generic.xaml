@@ -827,6 +827,8 @@
                                     <local:CaptionSelectionButton x:Name="CaptionSelectionButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:AudioSelectionButton x:Name="AudioSelectionButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsAudioSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:GoLiveButton x:Name="GoLiveButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="18" Size="45"/>
+                                    <local:FullScreenButton x:Name="FullScreenButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFullScreenButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
+                                    <local:MuteButton x:Name="MuteButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsMuteButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
@@ -851,7 +853,7 @@
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Left" Margin="10,0,10,15">
                                     <local:TimeElapsed x:Name="TimeElapsed" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}"/>
-                                    <TextBlock Text=" / " FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+                                    <TextBlock Text=" / " VerticalAlignment="Center" FontSize="{StaticResource PhoneFontSizeNormal}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
                                     <local:TimeRemaining x:Name="TimeRemaining" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}"/>
                                     <local:TotalDuration x:Name="TotalDuration" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}"/>
                                 </StackPanel>
