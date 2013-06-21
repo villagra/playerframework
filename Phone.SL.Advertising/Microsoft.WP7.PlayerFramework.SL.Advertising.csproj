@@ -92,6 +92,9 @@
     <Compile Include="..\Win8.Xaml.Advertising\ClipAdPayload.cs">
       <Link>ClipAdPayload.cs</Link>
     </Compile>
+    <Compile Include="..\Win8.Xaml.Advertising\CompanionHost.cs">
+      <Link>CompanionHost.cs</Link>
+    </Compile>
     <Compile Include="..\Win8.Xaml.Advertising\FreewheelPlugin.cs">
       <Link>FreewheelPlugin.cs</Link>
     </Compile>
