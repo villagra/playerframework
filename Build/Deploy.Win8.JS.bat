@@ -14,8 +14,8 @@ rmdir /s /q "Microsoft.PlayerFramework.Js.Analytics\References\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\DesignTime\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\References\"
-rmdir /s /q "Microsoft.PlayerFramework.Js.Dash\Redist\"
-rmdir /s /q "Microsoft.PlayerFramework.Js.Dash\References\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\References\"
 
 mkdir "Microsoft.PlayerFramework.Js\DesignTime"
 mkdir "Microsoft.PlayerFramework.Js\Redist"
@@ -95,16 +95,16 @@ mkdir "Microsoft.PlayerFramework.Js.TimedText\Redist\CommonConfiguration\neutral
 mkdir "Microsoft.PlayerFramework.Js.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js.TimedText\js"
 mkdir "Microsoft.PlayerFramework.Js.TimedText\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Js.TimedText\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Js.Dash\Redist"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References"
-mkdir "Microsoft.PlayerFramework.Js.Dash\Redist\CommonConfiguration"
-mkdir "Microsoft.PlayerFramework.Js.Dash\Redist\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Js.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\ARM"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\x64"
-mkdir "Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\x86"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\Redist"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x64"
+mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x86"
 
 cd..
 
@@ -167,11 +167,11 @@ copy Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreamin
 copy Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																							Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\ARM\
 copy Lib\Portable\ZLib\bin\Release\ZLib.dll																																					Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\neutral\
 
-copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.pri																		Build\Microsoft.PlayerFramework.Js.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash\
-copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\x86\
-copy Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\x64\
-copy Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\ARM\
-copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll																					Build\Microsoft.PlayerFramework.Js.Dash\References\CommonConfiguration\neutral\
+copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.pri																		Build\Microsoft.PlayerFramework.Win8.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash\
+copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x86\
+copy Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x64\
+copy Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM\
+copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll																					Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral\
 
 @popd
 

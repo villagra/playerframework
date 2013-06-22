@@ -17,8 +17,8 @@ cd ..\Microsoft.PlayerFramework.Js.Advertising
 cd ..\Microsoft.PlayerFramework.Js.Analytics
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Analytics.zip "*"
 
-cd ..\Microsoft.PlayerFramework.Js.Dash
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Dash.zip "*"
+cd ..\Microsoft.PlayerFramework.Win8.Dash
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Dash.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.zip "*"
@@ -40,9 +40,6 @@ cd ..\Microsoft.PlayerFramework.Xaml.Advertising
 
 cd ..\Microsoft.PlayerFramework.Xaml.Analytics
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Analytics.zip "*"
-
-cd ..\Microsoft.PlayerFramework.Xaml.Dash
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Dash.zip "*"
 
 cd ..\Microsoft.PlayerFramework.WP8
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.zip "*"
@@ -72,7 +69,7 @@ move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adap
 move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.vsix
 move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.vsix
 move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.vsix
-move Microsoft.PlayerFramework.Js.Dash.zip Microsoft.PlayerFramework.Js.Dash.vsix
+move Microsoft.PlayerFramework.Win8.Dash.zip Microsoft.PlayerFramework.Win8.Dash.vsix
 
 move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.vsix
 move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.vsix
@@ -80,7 +77,6 @@ move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml
 move Microsoft.PlayerFramework.Xaml.WebVTT.zip Microsoft.PlayerFramework.Xaml.WebVTT.vsix
 move Microsoft.PlayerFramework.Xaml.Advertising.zip Microsoft.PlayerFramework.Xaml.Advertising.vsix
 move Microsoft.PlayerFramework.Xaml.Analytics.zip Microsoft.PlayerFramework.Xaml.Analytics.vsix
-move Microsoft.PlayerFramework.Xaml.Dash.zip Microsoft.PlayerFramework.Xaml.Dash.vsix
 @rem move Microsoft.PlayerFramework.Xaml.CaptionMarkers.zip Microsoft.PlayerFramework.Xaml.CaptionMarkers.vsix
 
 move Microsoft.PlayerFramework.WP8.zip Microsoft.PlayerFramework.WP8.vsix
