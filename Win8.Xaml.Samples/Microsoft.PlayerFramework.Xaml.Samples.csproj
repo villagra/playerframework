@@ -108,6 +108,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Adaptive\CffOfflinePage.xaml.cs">
+      <DependentUpon>CffOfflinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
+      <DependentUpon>CffProgressivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\DashPage.xaml.cs">
+      <DependentUpon>DashPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Adaptive\LivePage.xaml.cs">
       <DependentUpon>LivePage.xaml</DependentUpon>
     </Compile>
@@ -225,6 +234,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Adaptive\CffOfflinePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\CffProgressivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\DashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Adaptive\LivePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -351,9 +372,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
+      <Project>{2d385553-240d-4f31-a78f-72686bb2613b}</Project>
+      <Name>ZLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj">
       <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
       <Name>Microsoft.AdaptiveStreaming.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.AdaptiveStreaming.Dash\Microsoft.AdaptiveStreaming.Dash.csproj">
+      <Project>{7df397b9-fb55-42db-a5b7-ad012d188953}</Project>
+      <Name>Microsoft.AdaptiveStreaming.Dash</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj">
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>

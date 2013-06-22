@@ -13,6 +13,8 @@ copy Phone.SL\bin\Release\Microsoft.PlayerFramework.xml											Build.NuGet\Mi
 copy Phone.SL.Adaptive\bin\Release\Microsoft.PlayerFramework.Adaptive.dll						Build.NuGet\Microsoft.PlayerFramework.Adaptive\lib\wp71\
 copy Phone.SL.Adaptive\bin\Release\Microsoft.PlayerFramework.Adaptive.xml						Build.NuGet\Microsoft.PlayerFramework.Adaptive\lib\wp71\
 
+copy Phone.SL.Adaptive.Dash\bin\Release\Microsoft.PlayerFramework.Adaptive.Dash.dll				Build.NuGet\Microsoft.PlayerFramework.Adaptive.Dash\lib\wp71\
+
 copy Phone.SL.TimedText\bin\Release\Microsoft.PlayerFramework.TimedText.dll						Build.NuGet\Microsoft.PlayerFramework.TimedText\lib\wp71\
 copy Phone.TimedText\bin\Release\Microsoft.TimedText.dll										Build.NuGet\Microsoft.PlayerFramework.TimedText\lib\wp71\
 

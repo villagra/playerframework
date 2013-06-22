@@ -22,6 +22,9 @@ cd..
 "%SN%" -R Win8.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
 
 @popd
 

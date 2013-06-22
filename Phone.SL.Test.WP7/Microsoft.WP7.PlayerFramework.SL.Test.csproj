@@ -111,6 +111,10 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
       <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
       <Name>ZLib</Name>
@@ -118,6 +122,10 @@
     <ProjectReference Include="..\Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj">
       <Project>{884A1566-4580-4C68-A6AC-0F13D3293AAB}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.Adaptive.Dash\Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash.csproj">
+      <Project>{143210B1-27EA-4942-8D76-210DEA8E059E}</Project>
+      <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phone.SL.Adaptive\Microsoft.WP7.PlayerFramework.SL.Adaptive.csproj">
       <Project>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</Project>

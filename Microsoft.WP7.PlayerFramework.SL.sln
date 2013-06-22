@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics", "Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj", "{884A1566-4580-4C68-A6AC-0F13D3293AAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash", "Phone.SL.Adaptive.Dash\Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash.csproj", "{143210B1-27EA-4942-8D76-210DEA8E059E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,11 +149,28 @@ Global
 		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Release|ARM.ActiveCfg = Release|Any CPU
 		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Release|x86.ActiveCfg = Release|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|x86.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D385553-240D-4F31-A78F-72686BB2613B} = {18C29559-7EFF-4CDA-8BE6-5A32F89B7E54}
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA} = {18C29559-7EFF-4CDA-8BE6-5A32F89B7E54}
 	EndGlobalSection
 EndGlobal

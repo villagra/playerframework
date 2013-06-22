@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -136,6 +136,10 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
       <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
       <Name>ZLib</Name>
@@ -143,6 +147,10 @@
     <ProjectReference Include="..\Phone.SL.Adaptive.Analytics\Microsoft.WP8.PlayerFramework.SL.Adaptive.Analytics.csproj">
       <Project>{16E729D7-0253-4C89-A0DA-1493865827E8}</Project>
       <Name>Microsoft.WP8.PlayerFramework.SL.Adaptive.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.Adaptive.Dash\Microsoft.WP8.PlayerFramework.SL.Adaptive.Dash.csproj">
+      <Project>{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}</Project>
+      <Name>Microsoft.WP8.PlayerFramework.SL.Adaptive.Dash</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phone.SL.Adaptive\Microsoft.WP8.PlayerFramework.SL.Adaptive.csproj">
       <Project>{70867DB8-A98B-4A2F-BA47-E44F2B4AD5A5}</Project>

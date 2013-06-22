@@ -14,6 +14,8 @@ rmdir /s /q "Microsoft.PlayerFramework.Xaml.TimedText\Redist"
 rmdir /s /q "Microsoft.PlayerFramework.Xaml.TimedText\References"
 rmdir /s /q "Microsoft.PlayerFramework.Xaml.WebVTT\Redist"
 rmdir /s /q "Microsoft.PlayerFramework.Xaml.WebVTT\References"
+rmdir /s /q "Microsoft.PlayerFramework.Xaml.Dash\Redist"
+rmdir /s /q "Microsoft.PlayerFramework.Xaml.Dash\References"
 
 pause
 
@@ -82,6 +84,16 @@ mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\Redist"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x64"
+mkdir "Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x86"
 
 cd..
 
@@ -153,6 +165,15 @@ copy Win8.Xaml.WebVTT\bin\x86\Release\Microsoft.WebVTT.winmd					Build\Microsoft
 @rem copy Win8.Xaml.WebVTT\bin\x86\Release\Microsoft.WebVTT.xml					Build\Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral\
 copy Win8.Xaml.WebVTT\bin\x86\Release\Microsoft.WebVTT.pri						Build\Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\
 copy Win8.WebVTT\bin\x86\Release\Themes\generic.xaml							Build\Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes\
+
+copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.pri				Build\Microsoft.PlayerFramework.Xaml.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash\
+copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd 			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x86\
+@rem copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.xml			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x86\
+copy Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd 			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x64\
+@rem copy Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.xml			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\x64\
+copy Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd 			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\ARM\
+@rem copy Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.xml			Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\ARM\
+copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll							Build\Microsoft.PlayerFramework.Xaml.Dash\References\CommonConfiguration\neutral\
 
 @popd
 

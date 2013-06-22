@@ -80,8 +80,9 @@
             { group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/playready", title: "PlayReady", description: "Demonstrates secure content protection using PlayReady" },
 
             // adaptive streaming
-            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/vod", title: "Video On Demand", description: "Demonstrates playback of smooth streaming video on demand using the adaptive plugin" },
-            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/live", title: "Live Smooth Streaming", description: "Demonstrates the live smooth streaming features of the Player Framework using the adaptive plugin" },
+            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/vod", title: "Smooth streaming (VOD)", description: "Demonstrates basic playback of smooth streaming video using the Microsoft Smooth Streaming SDK." },
+            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/live", title: "Smooth streaming (Live)", description: "Demonstrates basic playback of live smooth streaming video using the Microsoft Smooth Streaming SDK." },
+            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/dash", title: "DASH streaming video", description: "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH." },
 
             // closed captioning
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/plaintext", title: "Plain Text Captions", description: "Demonstrates plain text captions using the native closed captioning features of the video element" },
