@@ -78,8 +78,16 @@ namespace Microsoft.AdaptiveStreaming.Dash
         /// <param name="callback">The action that should be notified when the process is complete.</param>
         private async Task ReadMovieFragmentRandomAccess()
         {
+#if !RANGESUFFIXSUPPORTED // not all backend services support range suffixes. For example, Azure Blobs. Here is a way around this but it requires an extra request to get the length and therefore does not perform as well.
+            var fileSize = await WebRequestor.GetFileSizeAsync(this.fileUri);
+#endif
+
             // grab the mfra offset
+#if RANGESUFFIXSUPPORTED
             var offsetStream = await WebRequestor.GetStreamRangeAsync(this.fileUri, -4);
+#else
+            var offsetStream = await WebRequestor.GetStreamRangeNoSuffixAsync(this.fileUri, -4, fileSize);
+#endif
             uint mfraOffset = 0;
 
             using (var reader = new BoxBinaryReader(offsetStream))
@@ -88,7 +96,11 @@ namespace Microsoft.AdaptiveStreaming.Dash
             }
 
             // grab the mfra data
+#if RANGESUFFIXSUPPORTED
             var mfraStream = await WebRequestor.GetStreamRangeAsync(this.fileUri, -mfraOffset);
+#else
+            var mfraStream = await WebRequestor.GetStreamRangeNoSuffixAsync(this.fileUri, -mfraOffset, fileSize);
+#endif
             // Write the bytes to our TOC file
             using (var reader = new BoxBinaryReader(mfraStream))
             {

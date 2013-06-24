@@ -52,23 +52,28 @@ namespace Microsoft.AdaptiveStreaming.Dash
             }
         }
 
-        public static async Task<Stream> GetStreamRangeAsync(Uri uri, long range)
+        public static async Task<Stream> GetStreamRangeNoSuffixAsync(Uri uri, long range, long fileSize)
         {
-#if RANGE_SUFFIX_NOTSUPPORTED
-            if (range < 0)
+            using (var httpClient = new HttpClient())
             {
-                // not all backend services support range suffixes. For example, Azure Blobs. Here is a way around this but it requires an extra request to get the length and therefore does not perform as well.
-                var size = await GetFileSizeAsync(uri);
-                return await GetStreamRangeAsync(uri, size + range, size);
-            }
-            else
-#endif
-            {
-                using (var httpClient = new HttpClient())
+                httpClient.AddRange(range);
+                if (range < 0)
+                { 
+                    return await GetStreamRangeAsync(uri, fileSize + range, fileSize);
+                }
+                else
                 {
-                    httpClient.AddRange(range);
                     return (await httpClient.GetResponse(uri)).Stream;
                 }
+            }
+        }
+
+        public static async Task<Stream> GetStreamRangeAsync(Uri uri, long range)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.AddRange(range);
+                return (await httpClient.GetResponse(uri)).Stream;
             }
         }
 
