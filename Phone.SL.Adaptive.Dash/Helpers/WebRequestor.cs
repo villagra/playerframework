@@ -53,6 +53,24 @@ namespace Microsoft.AdaptiveStreaming.Dash
             }
         }
 
+        public static async Task<Stream> GetStreamRangeNoSuffixAsync(Uri uri, long range, long fileSize)
+        {
+            var request = (HttpWebRequest)WebRequestCreator.ClientHttp.Create(uri);
+            request.Method = "GET";
+            if (range < 0)
+            {
+                request.AddRange(fileSize + range, fileSize);
+            }
+            else
+            {
+                request.AddRange(range);
+            }
+            using (var response = await request.GetResponseAsync())
+            {
+                return GetStream(response);
+            }
+        }
+
         public static async Task<Stream> GetStreamRangeAsync(Uri uri, long range)
         {
             var request = (HttpWebRequest)WebRequestCreator.ClientHttp.Create(uri);
