@@ -81,6 +81,13 @@ namespace Microsoft.PlayerFramework.Advertising
         public AdHandlerBase()
         {
             controller = new AdHandlerController();
+        }
+
+        /// <summary>
+        /// Wires up the AdHandlerController events
+        /// </summary>
+        protected void WireController()
+        {
             controller.NavigationRequest += controller_NavigationRequest;
             controller.LoadPlayer += controller_LoadPlayer;
             controller.UnloadPlayer += controller_UnloadPlayer;
@@ -89,6 +96,21 @@ namespace Microsoft.PlayerFramework.Advertising
             controller.AdStateChanged += controller_AdStateChanged;
             controller.ActiveAdPlayerChanged += controller_ActiveAdPlayerChanged;
             controller.AdFailure += controller_AdFailure;
+        }
+
+        /// <summary>
+        /// Unwires the AdHandlerController events
+        /// </summary>
+        protected void UnwireController()
+        {
+            controller.NavigationRequest -= controller_NavigationRequest;
+            controller.LoadPlayer -= controller_LoadPlayer;
+            controller.UnloadPlayer -= controller_UnloadPlayer;
+            controller.ActivateAdUnit -= controller_ActivateAdUnit;
+            controller.DeactivateAdUnit -= controller_DeactivateAdUnit;
+            controller.AdStateChanged -= controller_AdStateChanged;
+            controller.ActiveAdPlayerChanged -= controller_ActiveAdPlayerChanged;
+            controller.AdFailure -= controller_AdFailure;
         }
 
         /// <summary>

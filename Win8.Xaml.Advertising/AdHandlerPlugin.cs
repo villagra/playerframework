@@ -211,6 +211,7 @@ namespace Microsoft.PlayerFramework.Advertising
 
         void IPlugin.Load()
         {
+            base.WireController();
             Player = new MediaPlayerAdapter(MediaPlayer) { CurrentBitrate = PreferredBitrate };
             AdContainer = MediaPlayer.Containers.OfType<Panel>().FirstOrDefault(f => f.Name == MediaPlayerTemplateParts.AdvertisingContainer);
 
@@ -240,6 +241,7 @@ namespace Microsoft.PlayerFramework.Advertising
         {
             MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
             MediaPlayer.PlayerStateChanged -= MediaPlayer_PlayerStateChanged;
+            base.UnwireController();
         }
 
         /// <inheritdoc /> 
