@@ -87,6 +87,7 @@ namespace Microsoft.PlayerFramework
                 new PosterPlugin(),
 #elif NETFX_CORE
                 new MediaControlPlugin(),
+                new DisplayRequestPlugin(),
 #endif
             });
         }

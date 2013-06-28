@@ -131,6 +131,7 @@
     <Compile Include="Controls\ControlPanel\StandardButtons.cs" />
     <Compile Include="Controls\ControlPanel\VolumeButton.cs" />
     <Compile Include="Extensions\VisualTreeExtensions.cs" />
+    <Compile Include="Plugins\DisplayRequestPlugin.cs" />
     <Compile Include="Plugins\MediaControlPlugin.cs" />
     <Compile Include="Controls\MediaPackHelper.cs" />
     <Compile Include="Primitives\AdvertisingStateEnum.cs" />
