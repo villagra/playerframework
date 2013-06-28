@@ -37,21 +37,7 @@ namespace Microsoft.AdaptiveStreaming.Dash.Smooth
             if (media.IsLive) writer.WriteAttributeString("IsLive", "true");
             if (media.LookaheadCount.HasValue) writer.WriteAttributeString("LookaheadCount", media.LookaheadCount.ToString());
             if (media.DVRWindowLength.HasValue) writer.WriteAttributeString("DVRWindowLength", media.DVRWindowLength.ToString());
-
-            if (media.Protection != null)
-            {
-                // The Protection element
-                writer.WriteStartElement("Protection");
-
-                // The ProtectionHeader element
-                writer.WriteStartElement("ProtectionHeader");
-                writer.WriteAttributeString("SystemID", media.Protection.ProtectionHeader.SystemID);
-                writer.WriteValue(media.Protection.ProtectionHeader.Value);
-                writer.WriteEndElement();
-
-                writer.WriteEndElement();
-            }
-
+            
             // The StreamIndex elements
             foreach (var streamIndex in media.StreamIndex)
             {
@@ -132,6 +118,20 @@ namespace Microsoft.AdaptiveStreaming.Dash.Smooth
                 }
 
                 // Close the StreamIndex element
+                writer.WriteEndElement();
+            }
+
+            if (media.Protection != null)
+            {
+                // The Protection element
+                writer.WriteStartElement("Protection");
+
+                // The ProtectionHeader element
+                writer.WriteStartElement("ProtectionHeader");
+                writer.WriteAttributeString("SystemID", media.Protection.ProtectionHeader.SystemID);
+                writer.WriteValue(media.Protection.ProtectionHeader.Value);
+                writer.WriteEndElement();
+
                 writer.WriteEndElement();
             }
 

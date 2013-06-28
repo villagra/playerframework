@@ -100,6 +100,15 @@ namespace Microsoft.AdaptiveStreaming.Dash
 
                         var initializationBoxes = await GetBoxesAsync(initializationUri, initializationRange);
 
+                        if (manifest.Protection == null) // support for CENC encryption
+                        {
+                            var moov = initializationBoxes.SingleOrDefault(b => b.Type == BoxType.Moov);
+                            if (moov != null)
+                            {
+                                manifest.Protection = SmoothFactory.GetProtectionHeader(moov);
+                            }
+                        }
+
                         var trackStreamIndex = SmoothFactory.GenerateClientManifestStreamIndex(initializationBoxes);
                         var track = trackStreamIndex.QualityLevel.First();
                         if (streamIndex != null)
@@ -164,24 +173,9 @@ namespace Microsoft.AdaptiveStreaming.Dash
                         }
                         else throw new NotImplementedException();
 
-                        //create protection data if it exists
-                        if (representation.ContentProtection.Any())
-                        {
-                            // TODO:
-                            //var systemId = representation.ContentProtection.First(d => d.SchemeIdUri == "SystemId" ).Value;
-                            //var data = representation.ContentProtection.First(d => d.SchemeIdUri == "Data" ).Value;
-                            //manifest.Protection = new SmoothStreamingMediaProtection()
-                            //{
-                            //    ProtectionHeader = new SmoothStreamingMediaProtectionProtectionHeader()
-                            //    {
-                            //        SystemID = systemId,
-                            //        Value = data
-                            //    }
-                            //};
-                        }
-
                         representationIndex++;
                     }
+                    
                     manifest.StreamIndex.Add(streamIndex);
                 }
             }
@@ -199,7 +193,7 @@ namespace Microsoft.AdaptiveStreaming.Dash
                 }
             }
         }
-        
+
         private static IEnumerable<SmoothStreamingMediaStreamIndexC> CreateChunks(SegmentIndexBox sidx)
         {
             int i = 0;

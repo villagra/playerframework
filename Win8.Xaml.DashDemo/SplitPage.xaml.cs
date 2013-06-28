@@ -1,12 +1,14 @@
 ﻿using Microsoft.AdaptiveStreaming;
 using Microsoft.AdaptiveStreaming.Dash;
 using Microsoft.Media.AdaptiveStreaming;
+using Microsoft.Media.PlayReadyClient;
 using Microsoft.PlayerFramework.Adaptive;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.Media.Protection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -26,8 +28,57 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
         StreamState CurrentStreamState = StreamState.Closed;
         Uri manifestUri;
 
+        #region PlayReady
+        const string LAURL = "http://playready.directtaps.net/pr/svc/rightsmanager.asmx?PlayRight=1&UseSimpleNonPersistentLicense=1";
+
+        MediaProtectionServiceCompletion _serviceCompletionNotifier = null;
+        RequestChain _requestChain = null;
+        ServiceRequestConfigData _requestConfigData = null;
+
+        void InitPlayReady()
+        {
+            var protectionManager = new MediaProtectionManager();
+            protectionManager.ComponentLoadFailed += ProtectionManager_ComponentLoadFailed;
+            protectionManager.ServiceRequested += ProtectionManager_ServiceRequested;
+
+            Windows.Foundation.Collections.PropertySet cpSystems = new Windows.Foundation.Collections.PropertySet();
+            cpSystems.Add("{F4637010-03C3-42CD-B932-B48ADF3A6A54}", "Microsoft.Media.PlayReadyClient.PlayReadyWinRTTrustedInput"); //Playready
+            protectionManager.Properties.Add("Windows.Media.Protection.MediaProtectionSystemIdMapping", cpSystems);
+            protectionManager.Properties.Add("Windows.Media.Protection.MediaProtectionSystemId", "{F4637010-03C3-42CD-B932-B48ADF3A6A54}");
+
+            player.ProtectionManager = protectionManager;
+        }
+
+        public ServiceRequestConfigData RequestConfigData
+        {
+            set { this._requestConfigData = value; }
+            get { return this._requestConfigData; }
+        }
+
+        void ProtectionManager_ComponentLoadFailed(MediaProtectionManager sender, ComponentLoadFailedEventArgs e)
+        {
+            e.Completion.Complete(false);
+        }
+
+        void ProtectionManager_ServiceRequested(MediaProtectionManager sender, ServiceRequestedEventArgs srEvent)
+        {
+            _serviceCompletionNotifier = srEvent.Completion;
+            IPlayReadyServiceRequest serviceRequest = (IPlayReadyServiceRequest)srEvent.Request;
+
+            _requestChain = new RequestChain(serviceRequest);
+            _requestChain.LicenseRequestUri = new Uri(LAURL);
+            _requestChain.RequestConfigData = this.RequestConfigData;
+            _requestChain.FinishAndReportResult(new ReportResultDelegate(HandleServiceRequest_Finished));
+        }
+
+        void HandleServiceRequest_Finished(bool bResult)
+        {
+            _serviceCompletionNotifier.Complete(bResult);
+        }
+        #endregion
+
         enum StreamState
-        { 
+        {
             Closed,
             Starting,
             Playing,
@@ -36,6 +87,9 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
         public SplitPage()
         {
             this.InitializeComponent();
+
+            InitPlayReady();
+
             adaptivePlugin = new AdaptivePlugin();
             player.Plugins.Add(adaptivePlugin);
 
@@ -197,7 +251,7 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
             adaptivePlugin.Manager.ClosedBackground -= manager_Closed;
 
             player.IsFullScreenChanged -= player_IsFullScreenChanged;
-            
+
             player.Dispose();
             adaptivePlugin = null;
             dashDownloaderPlugin = null;

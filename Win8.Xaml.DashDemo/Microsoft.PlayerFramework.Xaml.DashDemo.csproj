@@ -135,6 +135,11 @@
     </Compile>
     <Compile Include="MRSS\Media.cs" />
     <Compile Include="MRSS\MRssMediaFactory.cs" />
+    <Compile Include="PlayReady\HttpHelper.cs" />
+    <Compile Include="PlayReady\Indiv.cs" />
+    <Compile Include="PlayReady\LicenseAcquisition.cs" />
+    <Compile Include="PlayReady\RequestChain.cs" />
+    <Compile Include="PlayReady\ServiceRequest.cs" />
     <Compile Include="SplitPage.xaml.cs">
       <DependentUpon>SplitPage.xaml</DependentUpon>
     </Compile>
@@ -191,6 +196,9 @@
   <ItemGroup>
     <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
       <Name>Microsoft Smooth Streaming Client SDK for Windows 8</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.3.1678.0">
+      <Name>Microsoft PlayReady Client SDK</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>

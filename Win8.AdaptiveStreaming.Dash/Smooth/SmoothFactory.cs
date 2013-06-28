@@ -27,13 +27,19 @@ namespace Microsoft.AdaptiveStreaming.Dash.Smooth
             manifest.TimeScale = mvhd.TimeScale;
 
             manifest.StreamIndex.AddRange(GenerateClientManifestStreamIndexs(ManifestTracks, moov));
+            manifest.Protection = GetProtectionHeader(moov);
 
+            return manifest.ToStream();
+        }
+
+        public static SmoothStreamingMediaProtection GetProtectionHeader(Box moov)
+        {
             //create protection data if it exists
             var protectionBox = moov.InnerBoxes.SingleOrDefault(b => b.Type == BoxType.Pssh) as ProtectionSystemSpecificHeaderFullBox;
 
             if (protectionBox != null)
             {
-                manifest.Protection = new SmoothStreamingMediaProtection()
+                return new SmoothStreamingMediaProtection()
                 {
                     ProtectionHeader = new SmoothStreamingMediaProtectionProtectionHeader()
                     {
@@ -42,8 +48,7 @@ namespace Microsoft.AdaptiveStreaming.Dash.Smooth
                     }
                 };
             }
-
-            return manifest.ToStream();
+            return null;
         }
 
         public static IEnumerable<SmoothStreamingMediaStreamIndex> GenerateClientManifestStreamIndexs(IEnumerable<ManifestTrack> ManifestTracks, Box moov)

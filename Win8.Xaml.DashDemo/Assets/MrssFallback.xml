@@ -31,5 +31,17 @@
         <media:thumbnail url="http://smf.blob.core.windows.net/samples/videos/Tears-of-Steel.jpg" height="160" width="102"/>
       </media:content>
     </item>
+    <item>
+      <title>Sintel + Common Encryption (CENC)</title>
+      <description>2010 - Blender Foundation</description>
+      <media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/CENC/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">
+        <!--<media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/NoSubSampleAdjustment/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">-->
+        <!--<media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/NoSubSampleAdjustmentNoSenc/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">-->
+        <!--<media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/CENC/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">-->
+        <!--<media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/NoSubSampleAdjustment/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">-->
+        <!--<media:content url="http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/NoSubSampleAdjustmentNoSenc/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">-->
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/7de547d761.jpg" height="160" width="69"/>
+      </media:content>
+    </item>
   </channel>
 </rss>
