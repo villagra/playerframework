@@ -10,26 +10,7 @@ namespace Microsoft.PlayerFramework
     public class DisplayRequestPlugin : IPlugin
     {
         DisplayRequest displayRequest;
-
-        bool keepActiveWhilePaused;
-
-        /// <summary>
-        /// Gets or sets if the display request should be released while the media is paused (in other words: only active while playing)
-        /// </summary>
-        public bool KeepActiveWhilePaused
-        {
-            get { return keepActiveWhilePaused; }
-            set
-            {
-                if (keepActiveWhilePaused != value)
-                {
-                    if (MediaPlayer.CurrentState == MediaElementState.Paused && keepActiveWhilePaused) Deactivate();
-                    keepActiveWhilePaused = value;
-                    if (MediaPlayer.CurrentState == MediaElementState.Paused && keepActiveWhilePaused) Activate();
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Gets if the display request is currently acitve
         /// </summary>
@@ -48,20 +29,12 @@ namespace Microsoft.PlayerFramework
                 {
                     if (isEnabled) Deactivate();
                     isEnabled = value;
-                    if (isEnabled && (MediaPlayer.CurrentState == MediaElementState.Playing || (MediaPlayer.CurrentState == MediaElementState.Paused && KeepActiveWhilePaused)))
+                    if (isEnabled && (MediaPlayer.CurrentState == MediaElementState.Playing))
                     {
                         Activate();
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Creates a new instance of DisplayRequestPlugin
-        /// </summary>
-        public DisplayRequestPlugin()
-        {
-            KeepActiveWhilePaused = false;
         }
 
         DisplayRequest GetDisplayRequest()
@@ -83,15 +56,6 @@ namespace Microsoft.PlayerFramework
                         Activate();
                         break;
                     case MediaElementState.Paused:
-                        if (KeepActiveWhilePaused)
-                        {
-                            Activate();
-                        }
-                        else
-                        {
-                            Deactivate();
-                        }
-                        break;
                     case MediaElementState.Closed:
                     case MediaElementState.Stopped:
                         Deactivate();
@@ -106,6 +70,7 @@ namespace Microsoft.PlayerFramework
             {
                 GetDisplayRequest().RequestRelease();
                 IsActive = false;
+                displayRequest = null;
             }
         }
 
