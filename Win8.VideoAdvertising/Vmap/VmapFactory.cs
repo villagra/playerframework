@@ -118,7 +118,7 @@ namespace Microsoft.VideoAdvertising
 
             result.Id = (string)adSourceXml.Attribute("id") ?? string.Empty;
             result.AllowMultipleAds = adSourceXml.GetBoolAttribute("allowMultipleAds", true);
-            result.FollowsRedirect = adSourceXml.GetBoolAttribute("rollowsRedirect", true);
+            result.FollowsRedirect = adSourceXml.GetBoolAttribute("followRedirects", true);
             var vastDataXml = adSourceXml.Element(ns + "VASTAdData") ?? adSourceXml.Element(ns + "VASTData"); // HACK: VASTData is a typeo in VMAP spec so it may be phased out eventually.
             if (vastDataXml != null)
             {
