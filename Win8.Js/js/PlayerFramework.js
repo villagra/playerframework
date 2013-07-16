@@ -799,12 +799,17 @@
         /// <param name="properties" type="Array">The path on the object to the property.</param>
         /// <returns type="Object">The property value.</returns>
 
-        var value = obj;
+        var value = WinJS.Utilities.requireSupportedForProcessing(obj);
 
         if (properties) {
             for (var i = 0; i < properties.length && value !== null && value !== undefined; i++) {
                 var property = properties[i];
-                value = value[property];
+                if (value instanceof PlayerFramework.InteractiveViewModel) {
+                    value = value[property];
+                }
+                else {
+                    value = WinJS.Utilities.requireSupportedForProcessing(value[property]);
+                }
             }
         }
 
@@ -817,12 +822,13 @@
         /// <param name="properties" type="Array">The path on the object to the property.</param>
         /// <param name="value" type="Object">The value to set.</param>
 
-        var target = obj;
+        WinJS.Utilities.requireSupportedForProcessing(value);
+        var target = WinJS.Utilities.requireSupportedForProcessing(obj);
 
         if (properties) {
             for (var i = 0; i < properties.length - 1; i++) {
                 var property = properties[i];
-                target = target[property];
+                target = WinJS.Utilities.requireSupportedForProcessing(target[property]);
             }
 
             var property = properties[properties.length - 1];
@@ -856,7 +862,8 @@
         var value = getPropertyValue(source, sourceProperties);
 
         if (value) {
-            var eventHandler = value.bind(source);
+            // we can safely mark the resulting bind function as supported for processing because value has already been verified in getPropertyValue
+            var eventHandler = WinJS.Utilities.markSupportedForProcessing(value.bind(source));
             setPropertyValue(dest, destProperties, eventHandler);
         }
     }
