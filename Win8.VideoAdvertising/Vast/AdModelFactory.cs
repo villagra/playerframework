@@ -59,7 +59,7 @@ namespace Microsoft.VideoAdvertising
             {
                 vastRoot = xDoc.Element("VideoAdServingTemplate");
                 if (vastRoot == null) throw new NotImplementedException();
-                return await CreateFromVast1(xDoc.Element("VideoAdServingTemplate"), maxRedirectDepth, allowMultipleAds);
+                return await CreateFromVast1(vastRoot, maxRedirectDepth, allowMultipleAds);
             }
             else
             {
