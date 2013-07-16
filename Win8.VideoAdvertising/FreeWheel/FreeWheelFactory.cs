@@ -75,7 +75,7 @@ namespace Microsoft.VideoAdvertising
             if (rendererManifestXml != null)
             {
                 result.RendererManifest = rendererManifestXml.Value;
-                result.RendererManifest = (string)rendererManifestXml.Attribute("version");
+                result.RendererManifestVersion = (string)rendererManifestXml.Attribute("version");
             }
 
             var visitorXml = element.Element("visitor");
