@@ -160,8 +160,10 @@ namespace Microsoft.VideoAdvertising
         /// <returns>Two tasks that indicate when the ad is finished and another for when the ad is done with its linear portion</returns>
         PlayAdAsyncResult PlayAdAsync(AdDocumentPayload adDocument, IAdSource adSource, TimeSpan? startTimeout, CancellationToken cancellationToken, IProgress<AdStatus> progress)
         {
+            // primary task wll hold a task that finishes when the ad document finishes or a non-linear ad starts.
             var primaryTask = new TaskCompletionSource<object>();
 
+            // secondary task will hold a task that finishes when the entire ad document finishes.
             var secondaryTask = TaskHelpers.Create<Task>(async () =>
                 {
                     LoadException loadException = null; // keep around to re-throw in case we can't recover
@@ -195,69 +197,17 @@ namespace Microsoft.VideoAdvertising
                                             // model expects ads to be in the correct order.
                                             foreach (var defaultAd in adPod.Ads)
                                             {
-                                                var adCandidates = (new[] { defaultAd }).Concat(defaultAd.FallbackAds).ToList();
-                                                var lastAd = adCandidates.LastOrDefault();
+                                                var adCandidates = new List<Ad>();
+                                                adCandidates.Add(defaultAd);
+                                                adCandidates.AddRange(defaultAd.FallbackAds);
                                                 foreach (var ad in adCandidates)
                                                 {
                                                     try // **** try ad ****
                                                     {
                                                         // group the creatives by sequence number. Always put the group without sequence number at the back of the piority list in compliance with VAST spec.
-                                                        foreach (var creativeSet in ad.Creatives.GroupBy(c => c.Sequence).OrderBy(cs => cs.Key.GetValueOrDefault(int.MaxValue)))
+                                                        foreach (var creativeSet in ad.Creatives.GroupBy(c => c.Sequence).OrderBy(cs => cs.Key.GetValueOrDefault(int.MaxValue)).Select(cs => cs.ToList()))
                                                         {
-                                                            bool preloaded = false;
-                                                            ActiveAdUnit newAdUnit = null;
-                                                            if (loadOperation != null)
-                                                            {
-                                                                try
-                                                                {
-                                                                    if (loadOperation.AdSource == adSource)
-                                                                    {
-                                                                        mainCancellationToken.Register(() =>
-                                                                        {
-                                                                            if (loadOperation != null)
-                                                                            {
-                                                                                // no need to wait
-                                                                                var dummyTask = loadOperation.CancelAsync();
-                                                                            }
-                                                                        });
-                                                                        newAdUnit = await loadOperation.Task;
-                                                                        preloaded = true;
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        await loadOperation.CancelAsync();
-                                                                    }
-                                                                }
-                                                                catch { /* ignore, we'll try again regardless of reason, it was just a preload optimization anyway */ }
-                                                                finally
-                                                                {
-                                                                    loadOperation = null;
-                                                                }
-                                                                mainCancellationToken.ThrowIfCancellationRequested();
-                                                            }
-                                                            if (newAdUnit == null)
-                                                            {
-                                                                newAdUnit = CreateAdUnit(creativeSet, ad, adSource);
-                                                            }
-                                                            if (newAdUnit == null) throw new LoadException(new Exception("No ad unit could be created"));
-                                                            var companions = creativeSet.OfType<CreativeCompanions>().FirstOrDefault();
-
-                                                            if (!preloaded)
-                                                            {
-                                                                // Start initializing the ad. It is OK if there are other ads playing still.
-                                                                loadOperation = LoadAdUnit(newAdUnit, mainCancellationToken);
-                                                                try
-                                                                {
-                                                                    await loadOperation.Task;
-                                                                }
-                                                                catch (OperationCanceledException) { throw; }
-                                                                catch (Exception ex) { throw new LoadException(ex); }
-                                                                finally
-                                                                {
-                                                                    loadOperation = null;
-                                                                }
-                                                                mainCancellationToken.ThrowIfCancellationRequested();
-                                                            }
+                                                            var newAdUnit = await LoadAdUnitAsync(creativeSet, ad, adSource, mainCancellationToken);
 
                                                             // if there is an ad playing, wait for it to finish before proceeding.
                                                             if (activeAdTask.IsRunning())
@@ -272,84 +222,34 @@ namespace Microsoft.VideoAdvertising
                                                                 primaryTask.TrySetResult(null);
                                                             }
 
-                                                            // load companions
-                                                            CompanionAdsRequired required = CompanionAdsRequired.None;
-                                                            IEnumerable<ICompanionSource> companionsToLoad = Enumerable.Empty<ICompanionSource>();
-                                                            if (companions != null)
-                                                            {
-                                                                companionsToLoad = companions.Companions.Cast<ICompanionSource>();
-                                                                required = companions.Required;
-                                                            }
-                                                            else
-                                                            {
-                                                                // VPAID 2.0 supports companions that come from the VPAID player.
-                                                                // these are only to be used with the VAST file contains none.
-                                                                if (newAdUnit.Player is IVpaid2)
-                                                                {
-                                                                    var companionData = ((IVpaid2)newAdUnit.Player).AdCompanions;
-                                                                    if (!string.IsNullOrEmpty(companionData))
-                                                                    {
-                                                                        CreativeCompanions vpaidCompanions;
-                                                                        using (var stream = companionData.ToStream())
-                                                                        {
-                                                                            vpaidCompanions = AdModelFactory.CreateCompanionsFromVast(stream);
-                                                                        }
-                                                                        companionsToLoad = vpaidCompanions.Companions.Cast<ICompanionSource>();
-                                                                        required = vpaidCompanions.Required;
-                                                                    }
-                                                                }
-                                                            }
+                                                            LoadAdUnit(newAdUnit, creativeSet);
 
-                                                            try
-                                                            {
-                                                                OnActivateAd(newAdUnit, companionsToLoad, required);
-                                                            }
-                                                            catch (Exception ex)
-                                                            {
-                                                                throw new LoadException(ex);
-                                                            }
                                                             adPlayed = true;
                                                             loadException = null; // if there was a load error, we recovered, reset.
                                                             progress.Report(AdStatus.Loaded);
                                                             activeAd = newAdUnit;
                                                             VpaidController.AddAd(activeAd);
+
                                                             try
                                                             {
-                                                                // start the ad
-                                                                await VpaidController.StartAdAsync(activeAd, mainCancellationToken);
-
-                                                                // fire the impression beacon
-                                                                foreach (var url in ad.Impressions)
-                                                                {
-                                                                    VpaidController.TrackUrl(url, activeAd.CreativeSource);
-                                                                }
+                                                                await StartAdUnitAsync(ad, mainCancellationToken);
 
                                                                 // we successfully started an ad, create a new cancellation token that is not linked to timeout
                                                                 mainCancellationToken = cancellationToken;
                                                                 progress.Report(AdStatus.Playing);
 
                                                                 // returns when task is over or approaching end
-                                                                activeAdTask = null;
-#if WINDOWS_PHONE7
-                                                        // WP doesn't support 3 MediaElements all with a source loaded. Instead of preloading, just wait until we finish the ad.
-                                                        await VpaidController.FinishAdAsync(activeAd, mainCancellationToken);
-#else
-                                                                var finished = await VpaidController.PlayAdAsync(activeAd, mainCancellationToken);
-                                                                if (!finished)
+                                                                activeAdTask = await PlayAdUnitAsync(newAdUnit, mainCancellationToken);
+                                                                if (activeAdTask != null)
                                                                 {
-                                                                    // if approaching end has happened, retain a new task that will run to completion
-                                                                    activeAdTask = TaskHelpers.Create<Task>(async () =>
-                                                                        {
-                                                                            await VpaidController.FinishAdAsync(activeAd, mainCancellationToken);
-                                                                            CleanupAd(activeAd);
-                                                                            progress.Report(AdStatus.Complete);
-                                                                            activeAd = null;
-                                                                        });
+                                                                    activeAdTask = activeAdTask.ContinueWith((Task t) =>
+                                                                    {
+                                                                        progress.Report(AdStatus.Complete);
+                                                                        activeAd = null;
+                                                                    }, TaskScheduler.FromCurrentSynchronizationContext());
                                                                 }
                                                                 else
-#endif
                                                                 {
-                                                                    CleanupAd(activeAd);
                                                                     progress.Report(AdStatus.Complete);
                                                                     activeAd = null;
                                                                 }
@@ -366,7 +266,7 @@ namespace Microsoft.VideoAdvertising
                                                     } // **** end try ad ****
                                                     catch (LoadException)
                                                     {
-                                                        if (ad == lastAd) throw; // ignore if it's not the last ad in order ot go to next fallback ad 
+                                                        if (ad == adCandidates.Last()) throw; // ignore if it's not the last ad in order ot go to next fallback ad 
                                                     }
                                                 }
                                             }
@@ -421,6 +321,145 @@ namespace Microsoft.VideoAdvertising
                 });
 
             return new PlayAdAsyncResult(primaryTask.Task, secondaryTask);
+        }
+
+        async Task<ActiveAdUnit> LoadAdUnitAsync(ICollection<ICreative> creativeSet, Ad ad, IAdSource adSource, CancellationToken cancellationToken)
+        {
+            bool preloaded = false;
+            ActiveAdUnit result = null;
+
+            // check to see if there are any pre-loading ads.
+            if (loadOperation != null)
+            {
+                try
+                {
+                    if (loadOperation.AdSource == adSource)
+                    {
+                        cancellationToken.Register(() =>
+                        {
+                            if (loadOperation != null)
+                            {
+                                // no need to wait
+                                var dummyTask = loadOperation.CancelAsync();
+                            }
+                        });
+                        result = await loadOperation.Task;
+                        preloaded = true;
+                    }
+                    else
+                    {
+                        await loadOperation.CancelAsync();
+                    }
+                }
+                catch { /* ignore, we'll try again regardless of reason, it was just a preload optimization anyway */ }
+                finally
+                {
+                    loadOperation = null;
+                }
+                cancellationToken.ThrowIfCancellationRequested();
+            }
+            if (result == null)
+            {
+                result = CreateAdUnit(creativeSet, ad, adSource);
+            }
+            if (result == null) throw new LoadException(new Exception("No ad unit could be created"));
+
+            if (!preloaded)
+            {
+                // Start initializing the ad. It is OK if there are other ads playing still.
+                loadOperation = LoadAdUnit(result, cancellationToken);
+                try
+                {
+                    await loadOperation.Task;
+                }
+                catch (OperationCanceledException) { throw; }
+                catch (Exception ex) { throw new LoadException(ex); }
+                finally
+                {
+                    loadOperation = null;
+                }
+                cancellationToken.ThrowIfCancellationRequested();
+            }
+
+            return result;
+        }
+
+        void LoadAdUnit(ActiveAdUnit newAdUnit, ICollection<ICreative> creativeSet)
+        {
+            // load companions
+            CompanionAdsRequired required = CompanionAdsRequired.None;
+            IEnumerable<ICompanionSource> companionsToLoad = Enumerable.Empty<ICompanionSource>();
+            var companions = creativeSet.OfType<CreativeCompanions>().FirstOrDefault();
+            if (companions != null)
+            {
+                companionsToLoad = companions.Companions.Cast<ICompanionSource>();
+                required = companions.Required;
+            }
+            else
+            {
+                // VPAID 2.0 supports companions that come from the VPAID player.
+                // these are only to be used with the VAST file contains none.
+                if (newAdUnit.Player is IVpaid2)
+                {
+                    var companionData = ((IVpaid2)newAdUnit.Player).AdCompanions;
+                    if (!string.IsNullOrEmpty(companionData))
+                    {
+                        CreativeCompanions vpaidCompanions;
+                        using (var stream = companionData.ToStream())
+                        {
+                            vpaidCompanions = AdModelFactory.CreateCompanionsFromVast(stream);
+                        }
+                        companionsToLoad = vpaidCompanions.Companions.Cast<ICompanionSource>();
+                        required = vpaidCompanions.Required;
+                    }
+                }
+            }
+
+            try
+            {
+                OnActivateAd(newAdUnit, companionsToLoad, required);
+            }
+            catch (Exception ex)
+            {
+                throw new LoadException(ex);
+            }
+        }
+
+        async Task StartAdUnitAsync(Ad ad, CancellationToken cancellationToken)
+        {
+            // start the ad
+            await VpaidController.StartAdAsync(activeAd, cancellationToken);
+
+            // fire the impression beacon
+            foreach (var url in ad.Impressions)
+            {
+                VpaidController.TrackUrl(url, activeAd.CreativeSource);
+            }
+        }
+
+        async Task<Task> PlayAdUnitAsync(ActiveAdUnit adUnit, CancellationToken cancellationToken)
+        {
+#if WINDOWS_PHONE7
+            // WP doesn't support 3 MediaElements all with a source loaded. Instead of preloading, just wait until we finish the ad.
+            await VpaidController.FinishAdAsync(activeAd, cancellationToken);
+            var finished = true;
+#else
+            var finished = await VpaidController.PlayAdAsync(adUnit, cancellationToken);
+#endif
+            if (!finished)
+            {
+                // if approaching end has happened, retain a new task that will run to completion
+                return TaskHelpers.Create<Task>(async () =>
+                {
+                    await VpaidController.FinishAdAsync(adUnit, cancellationToken);
+                    CleanupAd(adUnit);
+                });
+            }
+            else
+            {
+                CleanupAd(adUnit);
+                return null;
+            }
         }
 
         void LogError(IAdSource adSource, Exception ex)
