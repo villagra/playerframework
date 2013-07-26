@@ -232,7 +232,7 @@ namespace Microsoft.VideoAdvertising
 
                                                             try
                                                             {
-                                                                await StartAdUnitAsync(ad, mainCancellationToken);
+                                                                await StartAdUnitAsync(newAdUnit, ad, mainCancellationToken);
 
                                                                 // we successfully started an ad, create a new cancellation token that is not linked to timeout
                                                                 mainCancellationToken = cancellationToken;
@@ -425,15 +425,15 @@ namespace Microsoft.VideoAdvertising
             }
         }
 
-        async Task StartAdUnitAsync(Ad ad, CancellationToken cancellationToken)
+        async Task StartAdUnitAsync(ActiveAdUnit adUnit, Ad ad, CancellationToken cancellationToken)
         {
             // start the ad
-            await VpaidController.StartAdAsync(activeAd, cancellationToken);
+            await VpaidController.StartAdAsync(adUnit, cancellationToken);
 
             // fire the impression beacon
             foreach (var url in ad.Impressions)
             {
-                VpaidController.TrackUrl(url, activeAd.CreativeSource);
+                VpaidController.TrackUrl(url, adUnit.CreativeSource);
             }
         }
 
