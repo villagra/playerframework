@@ -128,7 +128,7 @@ namespace Microsoft.PlayerFramework
         {
             RefreshPreviousNextPlaylistItems();
 
-            UpdateMediaSource(MediaPlayer, newCurrentPlaylistItem);
+            UpdateMediaSource(MediaPlayer, oldCurrentPlaylistItem, newCurrentPlaylistItem);
             if (CurrentPlaylistItemChanged != null) CurrentPlaylistItemChanged(this, EventArgs.Empty);
         }
 
@@ -287,10 +287,10 @@ namespace Microsoft.PlayerFramework
         /// Updates the media source on the player. This is called internally when a new playlist item is selected.
         /// </summary>
         /// <param name="mediaPlayer">The MediaPlayer to load the media source (playlist item) into.</param>
-        /// <param name="mediaSource">The new media source (this is usually a PlaylistItem object).</param>
-        public static void UpdateMediaSource(MediaPlayer mediaPlayer, IMediaSource mediaSource)
+        /// <param name="newMediaSource">The new media source (this is usually a PlaylistItem object).</param>
+        public static void UpdateMediaSource(MediaPlayer mediaPlayer, IMediaSource oldMediaSource, IMediaSource newMediaSource)
         {
-            if (mediaSource == null)
+            if (oldMediaSource != null)
             {
 #if SILVERLIGHT
                 mediaPlayer.LicenseAcquirer = new LicenseAcquirer();
@@ -305,40 +305,46 @@ namespace Microsoft.PlayerFramework
                 mediaPlayer.PosterSource = null;
                 mediaPlayer.Close();
             }
-            else
+            
+            foreach (var plugin in mediaPlayer.Plugins)
             {
-                var playlistItem = mediaSource as PlaylistItem;
+                plugin.Update(newMediaSource);
+            }
+
+            if (newMediaSource != null)
+            {
+                var playlistItem = newMediaSource as PlaylistItem;
 
 #if SILVERLIGHT
-                mediaPlayer.LicenseAcquirer = mediaSource.LicenseAcquirer ?? new LicenseAcquirer();
+                mediaPlayer.LicenseAcquirer = newMediaSource.LicenseAcquirer ?? new LicenseAcquirer();
 #else
-                mediaPlayer.ProtectionManager = mediaSource.ProtectionManager;
-                mediaPlayer.Stereo3DVideoPackingMode = mediaSource.Stereo3DVideoPackingMode;
-                mediaPlayer.Stereo3DVideoRenderMode = mediaSource.Stereo3DVideoRenderMode;
+                mediaPlayer.ProtectionManager = newMediaSource.ProtectionManager;
+                mediaPlayer.Stereo3DVideoPackingMode = newMediaSource.Stereo3DVideoPackingMode;
+                mediaPlayer.Stereo3DVideoRenderMode = newMediaSource.Stereo3DVideoRenderMode;
 #endif
-                mediaPlayer.PosterSource = mediaSource.PosterSource;
-                mediaPlayer.AutoLoad = mediaSource.AutoLoad;
-                mediaPlayer.AutoPlay = mediaSource.AutoPlay;
-                mediaPlayer.StartupPosition = mediaSource.StartupPosition;
+                mediaPlayer.PosterSource = newMediaSource.PosterSource;
+                mediaPlayer.AutoLoad = newMediaSource.AutoLoad;
+                mediaPlayer.AutoPlay = newMediaSource.AutoPlay;
+                mediaPlayer.StartupPosition = newMediaSource.StartupPosition;
                 mediaPlayer.VisualMarkers.Clear();
-                foreach (var marker in mediaSource.VisualMarkers)
+                foreach (var marker in newMediaSource.VisualMarkers)
                 {
                     mediaPlayer.VisualMarkers.Add(marker);
                 }
                 mediaPlayer.AvailableAudioStreams.Clear();
-                foreach (var audioStream in mediaSource.AvailableAudioStreams)
+                foreach (var audioStream in newMediaSource.AvailableAudioStreams)
                 {
                     mediaPlayer.AvailableAudioStreams.Add(audioStream);
                 }
                 mediaPlayer.AvailableCaptions.Clear();
-                foreach (var caption in mediaSource.AvailableCaptions)
+                foreach (var caption in newMediaSource.AvailableCaptions)
                 {
                     mediaPlayer.AvailableCaptions.Add(caption);
                 }
 
-                if (mediaSource.Source != null)
+                if (newMediaSource.Source != null)
                 {
-                    mediaPlayer.Source = mediaSource.Source;
+                    mediaPlayer.Source = newMediaSource.Source;
                 }
 #if NETFX_CORE
                 else if (playlistItem != null && playlistItem.SourceStream != null)
@@ -359,11 +365,6 @@ namespace Microsoft.PlayerFramework
                 {
                     mediaPlayer.Source = null;
                 }
-            }
-
-            foreach (var plugin in mediaPlayer.Plugins)
-            {
-                plugin.Update(mediaSource);
             }
         }
     }

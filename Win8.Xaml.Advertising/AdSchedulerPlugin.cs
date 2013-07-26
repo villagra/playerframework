@@ -58,9 +58,7 @@ namespace Microsoft.PlayerFramework.Advertising
         /// <inheritdoc /> 
         protected override void OnUpdate()
         {
-            Advertisements.Clear();
-            HandledAds.Clear();
-            Advertisements = AdScheduler.GetAdvertisements((DependencyObject)CurrentMediaSource);
+            Advertisements = AdScheduler.GetAdvertisements((DependencyObject)CurrentMediaSource) ?? new ObservableCollection<Advertisement>();
             base.OnUpdate();
         }
 
@@ -266,6 +264,7 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.ScrubbingCompleted -= MediaPlayer_ScrubbingCompleted;
             MediaPlayer.Scrubbing -= MediaPlayer_Scrubbing;
             MediaPlayer.MediaOpened -= MediaPlayer_MediaOpened;
+            MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
         }
 
         void WireMediaPlayer()
@@ -282,6 +281,13 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.ScrubbingCompleted += MediaPlayer_ScrubbingCompleted;
             MediaPlayer.Scrubbing += MediaPlayer_Scrubbing;
             MediaPlayer.MediaOpened += MediaPlayer_MediaOpened;
+            MediaPlayer.MediaClosed += MediaPlayer_MediaClosed;
+        }
+
+        void MediaPlayer_MediaClosed(object sender, RoutedEventArgs e)
+        {
+            Advertisements.Clear();
+            HandledAds.Clear();
         }
 
         void MediaPlayer_MediaOpened(object sender, RoutedEventArgs e)

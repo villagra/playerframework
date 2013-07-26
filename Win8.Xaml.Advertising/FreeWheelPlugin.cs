@@ -15,7 +15,7 @@ using Windows.UI.Xaml;
 namespace Microsoft.PlayerFramework.Advertising
 {
     /// <summary>
-    /// A plugin that is capable of downloading a VMAP source file, parsing it and using it to schedule when ads should play.
+    /// A plugin that is capable of downloading a FreeWheel SmartXML source file, parsing it and using it to schedule when ads should play.
     /// </summary>
     public class FreeWheelPlugin : AdSchedulerPlugin
     {
@@ -32,7 +32,7 @@ namespace Microsoft.PlayerFramework.Advertising
         public static readonly DependencyProperty SourceProperty = DependencyProperty.Register("Source", typeof(Uri), typeof(FreeWheelPlugin), null);
 
         /// <summary>
-        /// Gets or sets the source Uri of the VMAP file
+        /// Gets or sets the source Uri of the FreeWheel SmartXML file
         /// </summary>
         public Uri Source
         {
@@ -43,8 +43,7 @@ namespace Microsoft.PlayerFramework.Advertising
         /// <inheritdoc /> 
         protected override void OnUpdate()
         {
-            adSlots.Clear();
-            Source = VmapScheduler.GetSource((DependencyObject)CurrentMediaSource);
+            Source = FreeWheel.GetSource((DependencyObject)CurrentMediaSource);
             base.OnUpdate();
         }
 
@@ -262,6 +261,8 @@ namespace Microsoft.PlayerFramework.Advertising
             {
                 positionTrackingPlugin.EventTracked -= trackingPlugin_EventTracked;
             }
+
+            adSlots.Clear();
         }
 
         private void ShowCompanions()
