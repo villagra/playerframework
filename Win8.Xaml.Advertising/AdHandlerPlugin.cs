@@ -193,11 +193,19 @@ namespace Microsoft.PlayerFramework.Advertising
             {
                 if (e.NewValue == PlayerState.Loaded && MediaPlayer.AutoPlay)
                 {
+#if WINDOWS_PHONE
+                    mediaContainer.Opacity = 0;
+#else
                     mediaContainer.Visibility = Visibility.Collapsed;
+#endif
                 }
                 else if (e.NewValue != PlayerState.Opened && e.NewValue != PlayerState.Starting)
                 {
+#if WINDOWS_PHONE
+                    mediaContainer.Opacity = 1;
+#else
                     mediaContainer.Visibility = Visibility.Visible;
+#endif
                 }
             }
         }
