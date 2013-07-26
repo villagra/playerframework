@@ -119,6 +119,9 @@
     <Compile Include="..\Win8.Xaml.Advertising\ClipAdPayload.cs">
       <Link>ClipAdPayload.cs</Link>
     </Compile>
+    <Compile Include="..\Win8.Xaml.Advertising\FreeWheelPlugin.Attached.cs">
+      <Link>FreeWheelPlugin.Attached.cs</Link>
+    </Compile>
     <Compile Include="..\Win8.Xaml.Advertising\FreewheelPlugin.cs">
       <Link>FreewheelPlugin.cs</Link>
     </Compile>
@@ -197,6 +200,15 @@
       <Name>Microsoft.WP8.VideoAdvertising</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />
