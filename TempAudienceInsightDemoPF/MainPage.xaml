@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="TempAudienceInsightDemoPF.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TempAudienceInsightDemoPF"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest">
+            <mmppf:MediaPlayer.Plugins>
+                <!--<ai:AnalyticsPlugin/>-->
+                <adaptive:AdaptivePlugin/>
+            </mmppf:MediaPlayer.Plugins>
+        </mmppf:MediaPlayer>
+    </Grid>
+</Page>
