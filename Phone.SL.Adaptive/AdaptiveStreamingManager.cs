@@ -270,7 +270,7 @@ namespace Microsoft.PlayerFramework.Adaptive
         /// </summary>
         protected virtual void RestrictTracks()
         {
-            foreach (var videoStream in CurrentSegment.SelectedStreams.Where(IsVideoStream))
+            foreach (var videoStream in CurrentSegment.SelectedStreams.Where(vs => IsVideoStream(vs) && vs.AvailableTracks.Any()))
             {
                 IEnumerable<TrackInfo> excludedTracks;
                 if (IsMultiResolutionVideoSupported)
@@ -286,13 +286,18 @@ namespace Microsoft.PlayerFramework.Adaptive
                 else
                 {
                     var supportedTracks = videoStream.AvailableTracks.Where(o => o.GetSize().Height * o.GetSize().Width <= MaxPixels).ToList();
+                    if (!supportedTracks.Any())
+                    {
+                        // no tracks were found smaller than the max size, just pick the smallest one(s).
+                        supportedTracks = videoStream.AvailableTracks.GroupBy(o => o.GetSize().Height * o.GetSize().Width).OrderBy(o => o.Key).First().ToList();
+                    }
                     var trackGroups = supportedTracks.GroupBy(o => o.GetSize());
                     // pick the group with the most tracks at the same resolution, if there are more than one use the group that contains the highest bitate
-                    var bestGroup = trackGroups.OrderByDescending(g => g.Count()).ThenByDescending(g => g.Max(t => t.Bitrate)).FirstOrDefault();
+                    var bestGroup = trackGroups.OrderByDescending(g => g.Count()).ThenByDescending(g => g.Max(t => t.Bitrate)).First().ToList();
 
                     if (bestGroup.Any())
                     {
-                        videoStream.RestrictTracks(bestGroup.ToList());
+                        videoStream.RestrictTracks(bestGroup);
                     }
                 }
             }
