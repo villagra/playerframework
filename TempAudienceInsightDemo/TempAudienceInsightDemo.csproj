@@ -100,13 +100,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Microsoft.AudienceInsight\Microsoft.AudienceInsight.csproj">
-      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
-      <Name>Microsoft.AudienceInsight</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -142,6 +135,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Win8.AudienceInsight\Microsoft.AudienceInsight.csproj">
+      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
+      <Name>Microsoft.AudienceInsight</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

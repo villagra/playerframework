@@ -101,14 +101,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Microsoft.AudienceInsight\Microsoft.AudienceInsight.csproj">
-      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
-      <Name>Microsoft.AudienceInsight</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj">
-      <Project>{ad0f55fe-d523-4ba0-9198-5cba45ddcbcd}</Project>
-      <Name>Microsoft.VideoAnalytics.AudienceInsight</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj">
       <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
       <Name>Microsoft.AdaptiveStreaming.Analytics</Name>
@@ -116,6 +108,14 @@
     <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj">
       <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
       <Name>Microsoft.AdaptiveStreaming</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.AudienceInsight\Microsoft.AudienceInsight.csproj">
+      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
+      <Name>Microsoft.AudienceInsight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj">
+      <Project>{ad0f55fe-d523-4ba0-9198-5cba45ddcbcd}</Project>
+      <Name>Microsoft.VideoAnalytics.AudienceInsight</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj">
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>

@@ -100,7 +100,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Microsoft.AudienceInsight\Microsoft.AudienceInsight.csproj">
+    <ProjectReference Include="..\Win8.AudienceInsight\Microsoft.AudienceInsight.csproj">
       <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
       <Name>Microsoft.AudienceInsight</Name>
     </ProjectReference>
