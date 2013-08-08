@@ -198,7 +198,7 @@ namespace Microsoft.PlayerFramework
             InteractivityContainer = GetTemplateChild(MediaPlayerTemplateParts.InteractivityContainer) as Panel;
             MediaContainer = GetTemplateChild(MediaPlayerTemplateParts.MediaContainer) as Panel;
             ControlPanel = GetTemplateChild(MediaPlayerTemplateParts.ControlPanel) as Control;
-            
+
 #if SILVERLIGHT
             //MediaElementElement = GetTemplateChild(MediaPlayerTemplateParts.MediaElement) as IMediaElement;
             var mediaPlugin = Plugins.OfType<IMediaPlugin>().FirstOrDefault();
@@ -676,7 +676,7 @@ namespace Microsoft.PlayerFramework
             set { SetValue(AutoHideBehaviorProperty, value); }
         }
         #endregion
-        
+
         #region IsInteractive
         /// <summary>
         /// Occurs when the IsInteractive property changes.
@@ -1201,6 +1201,11 @@ namespace Microsoft.PlayerFramework
                     if (Application.Current.Host.Content.IsFullScreen != value)
                     {
                         Application.Current.Host.Content.IsFullScreen = value;
+                    }
+#elif NETFX_CORE
+                    if (value && Windows.UI.ViewManagement.ApplicationView.Value == Windows.UI.ViewManagement.ApplicationViewState.Snapped)
+                    {
+                        Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
                     }
 #endif
                 });
@@ -2010,7 +2015,7 @@ namespace Microsoft.PlayerFramework
                 ((AutoHideBehavior & AutoHideBehavior.AllowDuringPlaybackOnly) == AutoHideBehavior.AllowDuringPlaybackOnly && InteractiveViewModel.CurrentState != MediaElementState.Playing) ||
                 ((AutoHideBehavior & AutoHideBehavior.PreventDuringInteractiveHover) == AutoHideBehavior.PreventDuringInteractiveHover && IsPointerOverInteractiveElement())
 #if NETFX_CORE
-                || interactiveElements.Any(ie => ie.HasKeyboardFocus())
+ || interactiveElements.Any(ie => ie.HasKeyboardFocus())
                 || IsPlayToConnected()
 #endif
 );
@@ -2021,7 +2026,7 @@ namespace Microsoft.PlayerFramework
                 IsInteractive = false;
             }
         }
-        
+
 #if SILVERLIGHT
         void uiElement_MouseMove(object sender, MouseEventArgs e)
 #else
@@ -2039,7 +2044,7 @@ namespace Microsoft.PlayerFramework
         {
             OnUserInteraction(InteractionType.Hard, true);
         }
-        
+
         #endregion
 
         #endregion

@@ -1793,6 +1793,11 @@
                             this._shimElement.style.display = "none";
                         }
 
+                        if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped)
+                        {
+                            Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
+                        }
+
                         this._isFullScreen = value;
                         this._observableMediaPlayer.notify("isFullScreen", value, oldValue);
                         this.dispatchEvent("fullscreenchange");
