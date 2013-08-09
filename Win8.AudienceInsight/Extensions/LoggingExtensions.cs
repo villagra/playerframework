@@ -17,6 +17,11 @@ namespace Microsoft.AudienceInsight
         internal const string LogNodeName = "log";
         internal const string LogsArrayName = "logs";
 
+        /// <summary>
+        /// Gets the string representation of the provided object
+        /// </summary>
+        /// <param name="value">The object to get the string representation of</param>
+        /// <returns>A string representation of the provided object</returns>
         internal static string SerializeValue(object value)
         {
             if (value.GetType() == typeof(bool))
@@ -31,6 +36,11 @@ namespace Microsoft.AudienceInsight
                 return Convert.ToString(value, CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// Gets the JsonValue representation of the provided object
+        /// </summary>
+        /// <param name="value">The object to get the JsonValue representation of</param>
+        /// <returns>The JsonValue representation of the provided object</returns>
         internal static JsonValue GetJsonValue(object value)
         {
             if (value.GetType() == typeof(bool))
@@ -78,7 +88,11 @@ namespace Microsoft.AudienceInsight
             }
         }
 
-
+        /// <summary>
+        /// Creates a JsonObject from an ILog
+        /// </summary>
+        /// <param name="log">The log to create the JsonObject from</param>
+        /// <returns>A JsonObject representing the ILog</returns>
         internal static JsonObject CreateJsonObject(ILog log)
         {
             JsonObject jsonObject = new JsonObject();
@@ -92,6 +106,11 @@ namespace Microsoft.AudienceInsight
             return jsonObject;
         }
 
+        /// <summary>
+        /// Creates a JsonObject from an IBatch, including all child logs.
+        /// </summary>
+        /// <param name="batch">The IBatch to create the JsonOBject from</param>
+        /// <returns>A JsonObject representing the provided IBatch</returns>
         internal static JsonObject ToJsonObject(this IBatch batch)
         {
             JsonObject batchJson = CreateJsonObject(batch);
@@ -105,6 +124,11 @@ namespace Microsoft.AudienceInsight
             return batchJson;
         }
 
+        /// <summary>
+        /// Converts an IBatch to an HTTP query string
+        /// </summary>
+        /// <param name="batch">The IBatch to create the HTTP query string from</param>
+        /// <returns></returns>
         internal static string ToHttpQueryString(this IBatch batch)
         {
             List<string> keyValueStrings = new List<string>();
@@ -129,23 +153,36 @@ namespace Microsoft.AudienceInsight
             return String.Join("&", keyValueStrings.ToArray());
         }
 
-        internal static void SerializeUncompressed(this IBatch batch, Stream stream)
+        /// <summary>
+        /// Serializes an IBatch to a XML
+        /// </summary>
+        /// <param name="batch">The IBatch to serialize</param>
+        /// <param name="stream">The stream to write the serialized data to</param>
+        internal static void SerializeUncompressedXml(this IBatch batch, Stream stream)
         {
-            //StreamWriter outputStream = new StreamWriter(stream, System.Text.Encoding.UTF8);
             XmlWriter xmlWriter = XmlWriter.Create(stream);
             batch.Serialize(xmlWriter);
         }
 
-        internal static void SerializeCompressed(this IBatch batch, Stream stream)
+        /// <summary>
+        /// Serializes an IBatch to a XML and compresses it
+        /// </summary>
+        /// <param name="batch">The IBatch to serialize</param>
+        /// <param name="stream">The stream to write the serialized and compressed data to</param>
+        internal static void SerializeCompressedXml(this IBatch batch, Stream stream)
         {
-            //using (var zipStream = new DeflateStream(stream, CompressionMode.Compress, true))
             using (var zipStream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
             {
-                batch.SerializeUncompressed(zipStream);
+                batch.SerializeUncompressedXml(zipStream);
                 zipStream.Flush();
             }
         }
 
+        /// <summary>
+        /// Serializes an IBatch to a JSON
+        /// </summary>
+        /// <param name="batch">The IBatch to serialize</param>
+        /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeUncompressedJson(this IBatch batch, Stream stream)
         {
             JsonObject batchJson = batch.ToJsonObject();
@@ -154,6 +191,11 @@ namespace Microsoft.AudienceInsight
             textWriter.Flush();
         }
 
+        /// <summary>
+        /// Serializes an IBatch to a JSON and compresses it
+        /// </summary>
+        /// <param name="batch">The IBatch to serialize</param>
+        /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeCompressedJson(this IBatch batch, Stream stream)
         {
             using (var zipStream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
@@ -166,6 +208,11 @@ namespace Microsoft.AudienceInsight
             }
         }
 
+        /// <summary>
+        /// Serializes an IBatch to an HTTP query string and writes it to the provided stream
+        /// </summary>
+        /// <param name="batch">The IBatch to serialize</param>
+        /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeHttpQueryString(this IBatch batch, Stream stream)
         {
             TextWriter textWriter = new StreamWriter(stream);

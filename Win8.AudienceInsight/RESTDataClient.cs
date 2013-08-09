@@ -22,6 +22,8 @@ namespace Microsoft.AudienceInsight
         /// </summary>
         /// <param name="serviceUrl">The url endpoint of the service to send data to.</param>
         /// <param name="timeout">A timeout for all requests.</param>
+        /// <param name="compress">Whether to compress data before sending. Only applies when posting JSON or XML, not with HttpQueryString mode.</param>
+        /// <param name="serializationFormat">The version number to send to the server.</param>
         /// <param name="version">The version number to send to the server.</param>
         public RESTDataClient(Uri serviceUrl, int timeout, bool compress, SerializationFormat serializationFormat, int version)
         {
@@ -76,16 +78,18 @@ namespace Microsoft.AudienceInsight
                 {
                     httpClient.Timeout = Timeout;
                     httpClient.DefaultRequestHeaders.Add("Ver", Version.ToString());
+                    
+                    Dictionary<string, string> headers = new Dictionary<string, string>();
+                    headers.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
 
                     using (var stream = new MemoryStream())
                     {
-                        Dictionary<string, string> headers = new Dictionary<string, string>();
                         if (SerializationFormat == AudienceInsight.SerializationFormat.Xml)
                         {
                             if (Compress)
-                                batch.SerializeCompressed(stream);
+                                batch.SerializeCompressedXml(stream);
                             else
-                                batch.SerializeUncompressed(stream);
+                                batch.SerializeUncompressedXml(stream);
                         }
                         else if (SerializationFormat == AudienceInsight.SerializationFormat.Json)
                         {
@@ -95,7 +99,6 @@ namespace Microsoft.AudienceInsight
                             {
                                 batch.SerializeUncompressedJson(stream);
                                 headers.Add("Content-Type", "application/json; charset=utf-8");
-                                headers.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
                             }
                         }
                         else if (SerializationFormat == AudienceInsight.SerializationFormat.HttpQueryString)
@@ -117,6 +120,7 @@ namespace Microsoft.AudienceInsight
                         {
                             foreach (var headerKey in headers.Keys)
                                 content.Headers.Add(headerKey, headers[headerKey]);
+
                             using (var response = await httpClient.PostAsync(ServiceUrl, content, c))
                             {
                                 response.EnsureSuccessStatusCode();
