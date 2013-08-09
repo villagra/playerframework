@@ -16,6 +16,8 @@ rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\References\"
 rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\References\"
+rmdir /s /q "Microsoft.AudienceInsight.Win8\Redist\"
+rmdir /s /q "Microsoft.AudienceInsight.Win8\References\"
 
 mkdir "Microsoft.PlayerFramework.Js\DesignTime"
 mkdir "Microsoft.PlayerFramework.Js\Redist"
@@ -105,6 +107,13 @@ mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x86"
+mkdir "Microsoft.AudienceInsight.Win8\Redist"
+mkdir "Microsoft.AudienceInsight.Win8\References"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight"
+mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration"
+mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral"
 
 cd..
 
@@ -172,6 +181,10 @@ copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Das
 copy Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x64\
 copy Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM\
 copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll																					Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral\
+
+copy Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.pri																															Build\Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight\
+copy Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd																															Build\Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
+copy Lib\Portable\ZLib\bin\Release\ZLib.dll																																					Build\Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
 
 @popd
 

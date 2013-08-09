@@ -25,6 +25,7 @@ cd..
 "%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd			Win8.AudienceInsight\Microsoft.AudienceInsight.snk
 
 @popd
 

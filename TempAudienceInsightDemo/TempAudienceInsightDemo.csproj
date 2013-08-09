@@ -137,10 +137,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.AudienceInsight\Microsoft.AudienceInsight.csproj">
-      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
-      <Name>Microsoft.AudienceInsight</Name>
-    </ProjectReference>
+    <SDKReference Include="Microsoft.AudienceInsight, Version=1.0.0.0">
+      <Name>Microsoft Audience Insight Client SDK</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
