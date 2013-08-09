@@ -144,13 +144,68 @@ namespace Microsoft.AudienceInsight
             {
                 foreach (var nvp in log.GetData().Where(nvp => nvp.Value != null))
                 {
-                    keyValueStrings.Add(LogsArrayName + "[" + logNumber + "][" + nvp.Key + "]=" + Uri.EscapeUriString(nvp.Value.ToString()));
+                    keyValueStrings.Add(LogsArrayName + "[" + logNumber + "][" + nvp.Key + "]=" + Uri.EscapeDataString(nvp.Value.ToString()));
                 }
 
                 logNumber++;
             }
 
             return String.Join("&", keyValueStrings.ToArray());
+        }
+
+
+        // PoC
+        internal static JsonObject HttpQueryStringToJsonObject(this string httpQueryString)
+        {
+            // Assumes property names with no index belong to parent batch
+
+            JsonObject batch = new JsonObject();
+
+            // use a dictionary here in case log data in the query string is not in order
+            // allows log 3 to be created before log 1 (rather than using a List, etc)
+            Dictionary<int, JsonObject> logs = new Dictionary<int, JsonObject>();
+
+            string[] keyValuePairs = httpQueryString.Split('&');
+
+            foreach (var kvp in keyValuePairs)
+            {
+                string[] keyAndValue = kvp.Split('=');
+
+                var key = keyAndValue[0];
+                var escapedValueString = keyAndValue[1];
+
+                var unescapedValueString = Uri.UnescapeDataString(escapedValueString);
+
+                if (key.StartsWith("logs["))
+                {
+                    // add property to log
+                    int indexerMiddle = key.IndexOf("][");
+                    
+                    string logNumberString = key.Substring("logs[".Length, indexerMiddle - "logs[".Length);
+                    int logNumber = int.Parse(logNumberString);
+
+                    string logPropertyName = key.Substring(indexerMiddle + 2, key.Length - (indexerMiddle + 2) - 1);
+
+                    if (!logs.ContainsKey(logNumber))
+                        logs.Add(logNumber, new JsonObject());
+
+                    logs[logNumber].Add(logPropertyName, JsonValue.CreateStringValue(unescapedValueString));
+                }
+                else
+                {
+                    // add property to batch
+                    batch.Add(key, JsonValue.CreateStringValue(escapedValueString));
+                }
+            }
+
+            JsonArray logsJson = new JsonArray();
+
+            foreach (var key in logs.Keys)
+                logsJson.Add(logs[key]);
+
+            batch.Add("logs", logsJson);
+
+            return batch;
         }
 
         /// <summary>
@@ -189,6 +244,13 @@ namespace Microsoft.AudienceInsight
             TextWriter textWriter = new StreamWriter(stream);
             textWriter.Write(batchJson.Stringify());
             textWriter.Flush();
+
+
+            // Testing
+
+            //var str = batch.ToHttpQueryString();
+            //var jsonObject = str.HttpQueryStringToJsonObject();
+            //var final = jsonObject.Stringify();
         }
 
         /// <summary>
