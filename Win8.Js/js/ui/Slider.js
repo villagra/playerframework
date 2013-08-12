@@ -9,7 +9,8 @@
     var events = [
         "start",
         "update",
-        "complete"
+        "complete",
+        "skiptomarker"
     ];
 
     // Slider Class
@@ -25,11 +26,13 @@
         this._element = null;
         this._containerElement = null;
         this._progressElement = null;
+        this._markerContainerElement = null;
         this._inputElement = null;
         this._altStep1 = 0;
         this._altStep2 = 0;
         this._altStep3 = 0;
         this._hasCapture = false;
+        this._markers = [];
 
         this._setElement(element);
         this._setOptions(options);
@@ -48,6 +51,7 @@
             set: function (value) {
                 this._inputElement.min = value;
                 this._element.setAttribute("aria-valuemin", value);
+                this._updateMarkers();
             }
         },
 
@@ -58,6 +62,7 @@
             set: function (value) {
                 this._inputElement.max = value;
                 this._element.setAttribute("aria-valuemax", value);
+                this._updateMarkers();
             }
         },
 
@@ -178,6 +183,16 @@
             }
         },
 
+        markers: {
+            get: function () {
+                return this._markers;
+            },
+            set: function (value) {
+                this._markers = value;
+                this._updateMarkers();
+            }
+        },
+
         // Private Methods
         _setElement: function (element) {
             this._element = element;
@@ -188,6 +203,7 @@
             this._containerElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-slider-container" }]);
             this._progressElement = PlayerFramework.Utilities.createElement(this._containerElement, ["progress"]);
             this._inputElement = PlayerFramework.Utilities.createElement(this._containerElement, ["input", { "type": "range" }]);
+            this._markerContainerElement = PlayerFramework.Utilities.createElement(this._containerElement, ["div", { "class": "pf-slider-marker-container" }]);
 
             this._bindEvent("MSGotPointerCapture", this._inputElement, this._onInputElementMSGotPointerCapture);
             this._bindEvent("MSLostPointerCapture", this._inputElement, this._onInputElementMSLostPointerCapture);
@@ -290,7 +306,55 @@
                 this.dispatchEvent("update");
                 this.dispatchEvent("complete");
             }
-        }
+        },
+
+        _updateMarkers: function () {
+            // remove existing markers
+            var markerElements = this._markerContainerElement.querySelectorAll(".pf-slider-marker");
+            for (var i = 0; i < markerElements.length; i++) {
+                var markerElement = markerElements[i];
+                if (markerElement.classList.contains("pf-slider-seekablemarker")) {
+                    this._unbindEvent("click", markerElement, this._onMarkerClick);
+                }
+                this._markerContainerElement.removeChild(markerElement);
+            }
+
+            // add and position markers
+            var seekRange = this.max - this.min;
+            if (seekRange > 0) {
+                for (var i = 0; i < this._markers.length; i++) {
+                    var marker = this._markers[i];
+                    var markerElement;
+
+                    if (marker.isSeekable) {
+                        markerElement = PlayerFramework.Utilities.createElement(this._markerContainerElement, ["div", { "class": "pf-slider-marker pf-slider-seekablemarker", "title": marker.text }]);
+                        this._bindEvent("click", markerElement, this._onMarkerClick);
+                    }
+                    else {
+                        markerElement = PlayerFramework.Utilities.createElement(this._markerContainerElement, ["div", { "class": "pf-slider-marker", "title": marker.text }]);
+                    }
+                    markerElement.setAttribute("data-marker", marker.time);
+                    if (marker.extraClass) WinJS.Utilities.addClass(markerElement, marker.extraClass);
+                    var positionPercentage = PlayerFramework.Utilities.convertSecondsToTicks(marker.time) / seekRange;
+                    markerElement.style.marginLeft = (positionPercentage * 100) + "%";
+                    this._markerContainerElement.appendChild(markerElement);
+                }
+            }
+        },
+        
+        _onMarkerClick: function (e) {
+            var markerTime = e.srcElement.getAttribute("data-marker");
+            var marker = null;
+            for (var i = 0; i < this._markers.length; i++) {
+                var candidate = this._markers[i];
+                if (candidate.time.toString() === markerTime) {
+                    marker = candidate;
+                    break;
+                }
+            }
+            
+            if (marker) this.dispatchEvent("skiptomarker", marker);
+        },
     });
 
     // Slider Mixins

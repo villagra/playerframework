@@ -220,6 +220,7 @@
             this._observableMediaPlayer = WinJS.Binding.as(this);
             this._lastTime = null;
             this._testForMediaPack = true;
+            this._visualMarkers = [];
 
             this._setElement(element);
             this._setOptions(options);
@@ -2177,6 +2178,20 @@
                 },
                 set: function (value) {
                     this._testForMediaPack = value;
+                }
+            },
+
+            /// <field name="visualMarkers" type="Array">Gets or sets the collection of markers to display in the timeline</field>
+            visualMarkers: {
+                get: function () {
+                    return this._visualMarkers;
+                },
+                set: function (value) {
+                    var oldValue = this._visualMarkers;
+                    if (oldValue !== value) {
+                        this._visualMarkers = value;
+                        this._observableMediaPlayer.notify("visualMarkers", value, oldValue);
+                    }
                 }
             },
 

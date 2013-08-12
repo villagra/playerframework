@@ -86,6 +86,12 @@
             }
         },
 
+        visualMarkers: {
+            get: function () {
+                return [];
+            }
+        },
+
         // Public Methods
         initialize: function () {
             // ad player events

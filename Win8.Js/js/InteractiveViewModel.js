@@ -34,6 +34,12 @@
             }
         },
 
+        maxTime: {
+            get: function () {
+                return this._getViewModelTime(this._mediaPlayer.liveTime !== null ? this._mediaPlayer.liveTime : this._mediaPlayer.endTime);
+            }
+        },
+
         endTime: {
             get: function () {
                 return this._getViewModelTime(this._mediaPlayer.endTime);
@@ -754,12 +760,19 @@
             }
         },
 
+        visualMarkers: {
+            get: function () {
+                return this._mediaPlayer.visualMarkers;
+            }
+        },
+
         // Public Methods
         initialize: function () {
             // media player value properties
             this._bindProperty("startTime", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime"]);
-            this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime"]);
-            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime"]);
+            this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "maxTime"]);
+            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime", "maxTime"]);
+            this._bindProperty("liveTime", this._observableMediaPlayer, this._notifyProperties, ["maxTime"]);
             this._bindProperty("currentTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindProperty("buffered", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("duration", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
@@ -882,19 +895,37 @@
         },
 
         skipPrevious: function () {
-            if (!this.dispatchEvent("skipprevious")) {
-                this._mediaPlayer._seek(this._mediaPlayer.startTime);
+            var minTime = this.startTime;
+            var previousMarker = null;
+            var previousMarkerTime = null;
+            for (var i = 0; i < this.visualMarkers.length; i++) {
+                var marker = this.visualMarkers[i];
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                if (marker.isSeekable && markerTime < this.currentTime && markerTime > minTime) {
+                    if (!previousMarker || previousMarkerTime < markerTime) {
+                        previousMarker = marker;
+                        previousMarkerTime = markerTime;
+                    }
+                }
             }
+            this._onSkipPrevious(previousMarker);
         },
 
         skipNext: function () {
-            if (!this.dispatchEvent("skipnext")) {
-                if (this._mediaPlayer.liveTime !== null) {
-                    this._mediaPlayer._seek(this._mediaPlayer.liveTime);
-                } else {
-                    this._mediaPlayer._seek(this._mediaPlayer.endTime);
+            var maxTime = this.maxTime;
+            var nextMarker = null;
+            var nextMarkerTime = null;
+            for (var i = 0; i < this.visualMarkers.length; i++) {
+                var marker = this.visualMarkers[i];
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                if (marker.isSeekable && markerTime > this.currentTime && markerTime < maxTime) {
+                    if (!nextMarker || nextMarkerTime > markerTime) {
+                        nextMarker = marker;
+                        nextMarkerTime = markerTime;
+                    }
                 }
             }
+            this._onSkipNext(nextMarker);
         },
 
         skipBack: function () {
@@ -965,6 +996,13 @@
         onTimelineSliderComplete: function (e) {
             var time = this._getMediaPlayerTime(e.target.winControl.value);
             this.completeScrub(time);
+        },
+
+        onTimelineSliderSkipToMarker: function (e) {
+            var marker = e.detail;
+            var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+            var time = this._getMediaPlayerTime(markerTime);
+            this._mediaPlayer._seek(time);
         },
 
         onCaptionsMenuBeforeShow: function (e) {
@@ -1066,7 +1104,7 @@
             var slider = e.target;
             var volume = this._getMediaPlayerVolume(slider.winControl.value);
             this.setVolume(volume);
-        }, 
+        },
 
         onVolumeMuteSliderFocusIn: function (e) {
             var slider = e.currentTarget;
@@ -1173,6 +1211,34 @@
                 }
 
                 this._observableViewModel.notify(propertyName, this[propertyName]);
+            }
+        },
+        
+        _onSkipPrevious: function (marker) {
+            if (marker) {
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                this._mediaPlayer._seek(this._getMediaPlayerTime(markerTime));
+            }
+            else {
+                if (!this.dispatchEvent("skipprevious")) {
+                    this._mediaPlayer._seek(this._mediaPlayer.startTime);
+                }
+            }
+        },
+
+        _onSkipNext: function (marker) {
+            if (marker) {
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                this._mediaPlayer._seek(this._getMediaPlayerTime(markerTime));
+            }
+            else {
+                if (!this.dispatchEvent("skipnext")) {
+                    if (this._mediaPlayer.liveTime !== null) {
+                        this._mediaPlayer._seek(this._mediaPlayer.liveTime);
+                    } else {
+                        this._mediaPlayer._seek(this._mediaPlayer.endTime);
+                    }
+                }
             }
         }
     });
