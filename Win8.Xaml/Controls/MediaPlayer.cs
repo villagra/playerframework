@@ -247,10 +247,17 @@ namespace Microsoft.PlayerFramework
 #endif
         {
             // initialize any plugins already in the collection
-            foreach (var plugin in Plugins.ToList())
+            var pluginsToLoad = Plugins.ToList();
+            var loadedPlugins = new List<IPlugin>();
+            do
             {
-                plugin.Load();
-            }
+                foreach (var plugin in pluginsToLoad)
+                {
+                    plugin.Load();
+                    loadedPlugins.Add(plugin);
+                }
+                pluginsToLoad = Plugins.Except(loadedPlugins).ToList();
+            } while (pluginsToLoad.Any()); // do it again if more plugins were added
 
             // load more plugins via MEF
             if (AutoLoadPlugins)
@@ -4480,7 +4487,7 @@ namespace Microsoft.PlayerFramework
         {
             if (StretchChanged != null) StretchChanged(this, e);
         }
-        
+
         /// <summary>
         /// Performs an async Seek. This can also be accomplished by setting the Position property and waiting for SeekCompleted to fire.
         /// </summary>
