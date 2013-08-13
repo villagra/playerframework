@@ -55,7 +55,8 @@
         "timeupdate",
         "updated",
         "volumechange",
-        "waiting"
+        "waiting",
+        "markerreached"
     ];
 
     // MediaPlayer Class
@@ -221,6 +222,8 @@
             this._lastTime = null;
             this._testForMediaPack = true;
             this._visualMarkers = [];
+            this._markers = [];
+            this._lastMarkerCheckTime = -1;
 
             this._setElement(element);
             this._setOptions(options);
@@ -712,7 +715,7 @@
                     return this._mediaElement.initialTime;
                 }
             },
-            
+
             /// <field name="startupTime" type="Number">Gets or sets the position (in seconds) where playback should start. This is useful for resuming a video where the user left off in a previous session.</field>
             startupTime: {
                 get: function () {
@@ -2195,8 +2198,21 @@
                 }
             },
 
-            /************************ Public Methods ************************/
+            /// <field name="markers" type="Array">Gets or sets the collection of markers to track. Note: this is different from visualMarkers (which are displayed in the timeline)</field>
+            markers: {
+                get: function () {
+                    return this._markers;
+                },
+                set: function (value) {
+                    var oldValue = this._markers;
+                    if (oldValue !== value) {
+                        this._markers = value;
+                        this._observableMediaPlayer.notify("markers", value, oldValue);
+                    }
+                }
+            },
 
+            /************************ Public Methods ************************/
             canPlayType: function (type) {
                 /// <summary>Returns a value that specifies whether the player can play a given media type.</summary>
                 /// <param name="type" type="String">The type of media to be played.</param>
@@ -2267,7 +2283,7 @@
                     this._mediaElement.play();
                 } else if (this.playerState !== PlayerFramework.PlayerState.starting) {
                     this.playerState = PlayerFramework.PlayerState.starting;
-                    
+
                     var deferrableOperation = new PlayerFramework.Utilities.DeferrableOperation();
                     this.dispatchEvent("starting", deferrableOperation);
 
@@ -2310,7 +2326,7 @@
 
             replay: function () {
                 /// <summary>Supports instant replay by applying an offset to the current playback position.</summary>
-                
+
                 this.currentTime = Math.max(this.initialTime, this.currentTime - this.replayOffset);
                 this.play();
             },
@@ -2346,7 +2362,7 @@
             addClass: function (name) {
                 /// <summary>Adds the specified CSS class to the host element.</summary>
                 /// <param name="name" type="String">The name of the class to add. Multiple classes can be added using space-delimited names.</param>
-                
+
                 WinJS.Utilities.addClass(this._element, name);
             },
 
@@ -2359,7 +2375,7 @@
 
             focus: function () {
                 /// <summary>Gives focus to the host element.</summary>
-                
+
                 this._element.focus();
             },
 
@@ -2406,7 +2422,7 @@
                     WinJS.Utilities.data(this._element).mediaPlayer = null;
                     WinJS.Utilities.removeClass(this._element, "pf-container");
                     this._element.winControl = null;
-                    
+
                     PlayerFramework.Utilities.removeElement(this._shimElement);
                     PlayerFramework.Utilities.removeElement(this._mediaElement);
 
@@ -2423,13 +2439,13 @@
             msFrameStep: function (forward) {
                 /// <summary>Steps the video forward or backward by one frame.</summary>
                 /// <param name="forward" type="Boolean">If true, the video is stepped forward, otherwise the video is stepped backward.</param>
-                
+
                 this._mediaElement.msFrameStep(forward);
             },
 
             msClearEffects: function () {
                 /// <summary>Clears all effects from the media pipeline.</summary>
-                
+
                 this._mediaElement.msClearEffects();
             },
 
@@ -2438,7 +2454,7 @@
                 /// <param name="activatableClassId" type="String">The audio effects class.</param>
                 /// <param name="effectRequired" type="Boolean"></param>
                 /// <param name="config" type="Object" optional="true"></param>
-                
+
                 this._mediaElement.msInsertAudioEffect(activatableClassId, effectRequired, config);
             },
 
@@ -2447,14 +2463,14 @@
                 /// <param name="activatableClassId" type="String">The video effects class.</param>
                 /// <param name="effectRequired" type="Boolean"></param>
                 /// <param name="config" type="Object" optional="true"></param>
-                
+
                 this._mediaElement.msInsertVideoEffect(activatableClassId, effectRequired, config);
             },
 
             msSetMediaProtectionManager: function (mediaProtectionManager) {
                 /// <summary>Sets the media protection manager for a given media pipeline.</summary>
                 /// <param name="mediaProtectionManager" type="Windows.Media.Protection.MediaProtectionManager"></param>
-                
+
                 this._mediaElement.msSetMediaProtectionManager(mediaProtectionManager);
             },
 
@@ -2464,7 +2480,7 @@
                 /// <param name="top" type="Number">The top position of the rectangle.</param>
                 /// <param name="right" type="Number">The right position of the rectangle.</param>
                 /// <param name="bottom" type="Number">The bottom position of the rectangle.</param>
-                
+
                 this._mediaElement.msSetVideoRectangle(left, top, right, bottom);
             },
 
@@ -2539,7 +2555,7 @@
                 this._bindEvent("progress", this._mediaElement, this._notifyProperties, ["buffered"]);
                 this._bindEvent("ratechange", this._mediaElement, this._notifyProperties, ["playbackRate"]);
                 this._bindEvent("volumechange", this._mediaElement, this._notifyProperties, ["volume", "muted"]);
-                
+
                 // property dependencies
                 this._bindProperty("advertisingState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
                 this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
@@ -2699,6 +2715,17 @@
                 } else {
                     this.isCurrentTimeLive = false;
                 }
+            },
+
+            _updateMarkerState: function () {
+                var now = this.currentTime;
+                for (var i = 0; i < this._markers.length; i++) {
+                    var marker = this._markers[i];
+                    if (marker.time < now && marker.time >= this._lastMarkerCheckTime) {
+                        this.dispatchEvent("markerreached", marker);
+                    }
+                }
+                this._lastMarkerCheckTime = now;
             },
 
             _isFunctionalElement: function (element) {
@@ -2874,12 +2901,12 @@
 
             _onMediaElementLoadedMetadata: function (e) {
                 this.mediaQuality = this.videoHeight >= 720 ? PlayerFramework.MediaQuality.highDefinition : PlayerFramework.MediaQuality.standardDefinition;
-                
+
                 if (!this.audioTracks) {
                     this.audioTracks = PlayerFramework.Utilities.getArray(this._mediaElement.audioTracks);
                 }
                 this.currentAudioTrack = PlayerFramework.Utilities.first(this.audioTracks, function (track) { return track.enabled; });
-                
+
                 if (!this.captionTracks) {
                     this.captionTracks = Array.prototype.filter.call(this.textTracks, function (track) {
                         return (track.kind === "captions" || track.kind === "subtitles") && track !== this._dummyTrack;
@@ -2891,6 +2918,7 @@
             },
 
             _onMediaElementLoadStart: function (e) {
+                this._lastMarkerCheckTime = -1;
                 this.playerState = PlayerFramework.PlayerState.loaded;
                 this.dispatchEvent("loadstart");
             },
@@ -2950,6 +2978,7 @@
             _onMediaElementTimeUpdate: function (e) {
                 this._lastTime = this.currentTime;
                 this._updateIsCurrentTimeLive();
+                this._updateMarkerState();
                 this.dispatchEvent("timeupdate");
             },
 
@@ -2968,6 +2997,6 @@
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.createEventProperties(events));
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.eventBindingMixin);
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.propertyBindingMixin);
-    
+
 })(PlayerFramework);
 
