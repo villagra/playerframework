@@ -80,6 +80,8 @@ namespace Microsoft.AudienceInsight
                     httpClient.DefaultRequestHeaders.Add("Ver", Version.ToString());
                     
                     Dictionary<string, string> headers = new Dictionary<string, string>();
+                    
+                    // For development
                     headers.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
 
                     using (var stream = new MemoryStream())
@@ -87,14 +89,20 @@ namespace Microsoft.AudienceInsight
                         if (SerializationFormat == AudienceInsight.SerializationFormat.Xml)
                         {
                             if (Compress)
+                            {
                                 batch.SerializeCompressedXml(stream);
+                            }
                             else
+                            {
                                 batch.SerializeUncompressedXml(stream);
+                            }
                         }
                         else if (SerializationFormat == AudienceInsight.SerializationFormat.Json)
                         {
                             if (Compress)
+                            {
                                 batch.SerializeCompressedJson(stream);
+                            }
                             else
                             {
                                 batch.SerializeUncompressedJson(stream);
