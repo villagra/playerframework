@@ -2496,8 +2496,10 @@
                 WinJS.Utilities.addClass(this._element, "pf-container");
 
                 // media element
-                this._mediaElement = this._element.querySelector("video") || document.createElement("video");
+                this._mediaElement = this._element.querySelector("video") || this._element.querySelector("audio") || document.createElement("video");
                 WinJS.Utilities.addClass(this._mediaElement, "pf-media");
+                WinJS.Utilities.addClass(this._element, "pf-media-" + this._mediaElement.tagName.toLowerCase());
+
                 PlayerFramework.Utilities.appendElement(this._element, this._mediaElement);
 
                 // HACK: "iframe shim" fixes issues with full screen overlay
@@ -2663,7 +2665,10 @@
 
                     if (!e.canceled) {
                         this._scrubPlaybackRate = this.playbackRate;
-                        this.playbackRate = 0;
+                        if (this._mediaElement.tagName !== "AUDIO") {
+                            // better UX to not stop playback for audio
+                            this.playbackRate = 0;
+                        }
                     } else {
                         this._completeScrub(time, true);
                     }
@@ -2694,7 +2699,9 @@
 
                     if (!e.canceled) {
                         this.currentTime = time;
-                        this.playbackRate = this._scrubPlaybackRate;
+                        if (this._mediaElement.tagName !== "AUDIO") {
+                            this.playbackRate = this._scrubPlaybackRate;
+                        }
                     }
                 }
             },

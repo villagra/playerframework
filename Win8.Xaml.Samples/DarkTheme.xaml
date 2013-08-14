@@ -1420,6 +1420,10 @@
                 <ControlTemplate TargetType="mmppf:MediaPlayer">
                     <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
                         <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="MediaTypeStates">
+                                <VisualState x:Name="AudioOnly"/>
+                                <VisualState x:Name="AudioVideo"/>
+                            </VisualStateGroup>
                             <VisualStateGroup x:Name="FullScreenStates">
                                 <VisualState x:Name="FullScreen" />
                                 <VisualState x:Name="NotFullScreen" />

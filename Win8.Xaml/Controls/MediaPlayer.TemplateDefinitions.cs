@@ -42,6 +42,8 @@ namespace Microsoft.PlayerFramework
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Connected, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Disconnected, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Rendering, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
+    [TemplateVisualState(Name = MediaPlayerVisualStates.MediaTypeStates.AudioOnly, GroupName = MediaPlayerVisualStates.GroupNames.MediaTypeStates)]
+    [TemplateVisualState(Name = MediaPlayerVisualStates.MediaTypeStates.AudioVideo, GroupName = MediaPlayerVisualStates.GroupNames.MediaTypeStates)]
 #endif
     [TemplateVisualState(Name = MediaPlayerVisualStates.InteractiveStates.Hidden, GroupName = MediaPlayerVisualStates.GroupNames.InteractiveStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.InteractiveStates.StartInteracting, GroupName = MediaPlayerVisualStates.GroupNames.InteractiveStates)]
@@ -324,7 +326,8 @@ namespace Microsoft.PlayerFramework
                 this.GoToVisualState(MediaPlayerVisualStates.InteractiveStates.Hidden);
             }
 #if NETFX_CORE
-            OnPlayToStateChanged(PlayToConnectionState.Disconnected);
+            this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioVideo);
+            this.GoToVisualState(MediaPlayerVisualStates.PlayToStates.Disconnected);
 #endif
         }
 
@@ -1110,6 +1113,18 @@ namespace Microsoft.PlayerFramework
         bool _IsAudioOnly
         {
             get { return MediaElementElement != null ? MediaElementElement.IsAudioOnly : DefaultIsAudioOnly; }
+        }
+
+        partial void OnIsAudioOnlyUpdated(bool newValue)
+        {
+            if (newValue)
+            {
+                this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioOnly);
+            }
+            else
+            {
+                this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioVideo);
+            }
         }
 
         static bool DefaultIsAudioOnly

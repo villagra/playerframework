@@ -748,7 +748,12 @@ namespace Microsoft.PlayerFramework
                     var t = SeekAsync(position);
                 }
             }
-            PlaybackRate = rateAfterScrub;
+#if !SILVERLIGHT
+            if (!IsAudioOnly)
+#endif
+            {
+                PlaybackRate = rateAfterScrub;
+            }
             SetValue(IsScrubbingProperty, false);
         }
 
@@ -761,7 +766,12 @@ namespace Microsoft.PlayerFramework
             canceled = args.Canceled;
             if (!canceled)
             {
-                PlaybackRate = 0;
+#if !SILVERLIGHT
+                if (!IsAudioOnly)
+#endif
+                {
+                    PlaybackRate = 0;
+                }
                 SetValue(IsScrubbingProperty, true);
             }
         }
@@ -3586,7 +3596,14 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the IsAudioOnly dependency property.
         /// </summary>
-        public static readonly DependencyProperty IsAudioOnlyProperty = RegisterDependencyProperty<bool>("IsAudioOnly", DefaultIsAudioOnly);
+        public static readonly DependencyProperty IsAudioOnlyProperty = RegisterDependencyProperty<bool>("IsAudioOnly", (t, o, n) => t.OnIsAudioOnlyChanged(n, o), DefaultIsAudioOnly);
+
+        void OnIsAudioOnlyChanged(bool newValue, bool oldValue)
+        {
+            OnIsAudioOnlyUpdated(newValue);
+        }
+
+        partial void OnIsAudioOnlyUpdated(bool newValue);
 
         /// <summary>
         /// Gets or sets a value that describes whether the media source loaded in the media engine should seek to the start after reaching its end.

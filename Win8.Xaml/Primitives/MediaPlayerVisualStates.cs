@@ -12,6 +12,7 @@ namespace Microsoft.PlayerFramework
             internal const string FullScreenStates = "FullScreenStates";
             internal const string AdvertisingStates = "AdvertisingStates";
             internal const string PlayToStates = "PlayToStates";
+            internal const string MediaTypeStates = "MediaTypeStates";
         }
 
         internal static class InteractiveStates
@@ -56,13 +57,6 @@ namespace Microsoft.PlayerFramework
             internal const string NotFullScreen = "NotFullScreen";
         }
 
-        internal static class PlayToStates
-        {
-            internal const string Connected = "PlayToConnected";
-            internal const string Rendering = "PlayToRendering";
-            internal const string Disconnected = "PlayToDisconnected";
-        }
-
         internal static class AdvertisingStates
         {
             internal const string LoadingAd = "LoadingAd";
@@ -70,5 +64,20 @@ namespace Microsoft.PlayerFramework
             internal const string LinearAd = "LinearAd";
             internal const string NonLinearAd = "NonLinearAd";
         }
+   
+#if !SILVERLIGHT
+        internal static class PlayToStates
+        {
+            internal const string Connected = "PlayToConnected";
+            internal const string Rendering = "PlayToRendering";
+            internal const string Disconnected = "PlayToDisconnected";
+        }
+
+        internal static class MediaTypeStates
+        {
+            internal const string AudioOnly = "AudioOnly";
+            internal const string AudioVideo = "AudioVideo";
+        }
+#endif
     }
 }
