@@ -390,7 +390,7 @@
         /// <param name="value" type="Number">The number of seconds to convert.</param>
         /// <returns type="Number">The number of ticks.</returns>
 
-        return value * 10000000;
+        return Math.round(value * 10000000);
     }
 
     function convertTicksToSeconds(value) {
