@@ -673,7 +673,7 @@ namespace Microsoft.VideoAdvertising
             // get the media with the closest aspect ratio, then bitrate, then dimensions
             return mediaFiles
                 .OrderByDescending(m => m.Ranking)
-                .OrderBy(IsStreaming)
+                .ThenBy(IsStreaming)
                 .ThenBy(m => CompareAspectRatio(m, Player.Dimensions))
                 .ThenBy(m => CompareBitrate(m, targetBitrateKbps))
                 .ThenBy(m => CompareSize(m, Player.Dimensions));
