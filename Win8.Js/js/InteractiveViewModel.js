@@ -783,6 +783,7 @@
             this._bindProperty("isFullScreen", this._observableMediaPlayer, this._notifyProperties, ["fullScreenIcon", "fullScreenLabel", "fullScreenTooltip"]);
             this._bindProperty("signalStrength", this._observableMediaPlayer, this._notifyProperties, ["signalStrength", "signalStrengthTooltip"]);
             this._bindProperty("mediaQuality", this._observableMediaPlayer, this._notifyProperties, ["mediaQuality", "mediaQualityTooltip"]);
+            this._bindProperty("visualMarkers", this._observableMediaPlayer, this._notifyProperties, ["visualMarkers"]);
 
             // media player interaction properties
             this._bindProperty("isPlayPauseAllowed", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseDisabled"]);
