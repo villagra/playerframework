@@ -19,6 +19,7 @@ namespace Microsoft.VideoAdvertising
         {
             VpaidController = new PlayerAwareVpaidController();
             VpaidController.AdFailed += VpaidController_AdFailed;
+            VpaidController.AdTrackingEventOccurred += VpaidController_AdTrackingEventOccurred;
         }
 
         public static string AdType { get { return "document"; } }
@@ -36,6 +37,7 @@ namespace Microsoft.VideoAdvertising
         public event EventHandler<ActivateAdUnitEventArgs> ActivateAdUnit;
         public event EventHandler<DeactivateAdUnitEventArgs> DeactivateAdUnit;
         public event EventHandler<AdFailureEventArgs> AdFailure;
+        public event EventHandler<AdTrackingEventEventArgs> AdTrackingEventOccurred;
 
         public IPlayer Player
         {
@@ -57,6 +59,11 @@ namespace Microsoft.VideoAdvertising
                     VpaidController.TrackErrorUrl(error, Microsoft.VideoAdvertising.VpaidController.Error_Vpaid, e.ActiveAdUnit.CreativeSource);
                 }
             }
+        }
+
+        void VpaidController_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
+        {
+            if (AdTrackingEventOccurred != null) AdTrackingEventOccurred(this, e);
         }
 
         IVpaid OnLoadPlayer(ICreativeSource creativeSource)

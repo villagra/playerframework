@@ -26,6 +26,12 @@ namespace Microsoft.VideoAdvertising
             adHandlerBase.ActivateAdUnit += adHandlerBase_ActivateAdUnit;
             adHandlerBase.DeactivateAdUnit += adHandlerBase_DeactivateAdUnit;
             adHandlerBase.AdFailure += adHandlerBase_AdFailure;
+            adHandlerBase.AdTrackingEventOccurred += adHandlerBase_AdTrackingEventOccurred;
+        }
+
+        void adHandlerBase_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
+        {
+            if (AdTrackingEventOccurred != null) AdTrackingEventOccurred(this, e);
         }
 
         void adHandlerBase_AdFailure(object sender, AdFailureEventArgs e)
@@ -58,6 +64,7 @@ namespace Microsoft.VideoAdvertising
         public event EventHandler<ActivateAdUnitEventArgs> ActivateAdUnit;
         public event EventHandler<DeactivateAdUnitEventArgs> DeactivateAdUnit;
         public event EventHandler<AdFailureEventArgs> AdFailure;
+        public event EventHandler<AdTrackingEventEventArgs> AdTrackingEventOccurred;
 
         public IPlayer Player
         {

@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="TempAudienceInsightDemoAds.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TempAudienceInsightDemoAds"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+    xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
+            <mmppf:MediaPlayer.Plugins>
+                <ads:AdSchedulerPlugin>
+                    <ads:AdSchedulerPlugin.Advertisements>
+
+                        <ads:MidrollAdvertisement Time="00:00:05">
+                            <ads:MidrollAdvertisement.Source>
+                                <ads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml" Type="vast"/>
+                            </ads:MidrollAdvertisement.Source>
+                        </ads:MidrollAdvertisement>
+
+                    </ads:AdSchedulerPlugin.Advertisements>
+                </ads:AdSchedulerPlugin>
+                <ads:AdHandlerPlugin/>
+                <adaptive:AdaptivePlugin/>
+            </mmppf:MediaPlayer.Plugins>
+        </mmppf:MediaPlayer>
+    </Grid>
+</Page>
