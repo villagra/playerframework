@@ -600,8 +600,6 @@ namespace Microsoft.VideoAdvertising
 
         protected void TrackEvent(ActiveAdUnit adUnit, TrackingType eventToTrack)
         {
-            // TODO - progress events not captured here (see above)
-
             if (AdTrackingEventOccurred != null) 
                 AdTrackingEventOccurred(this, new AdTrackingEventEventArgs(adUnit.AdSource, eventToTrack));
             
