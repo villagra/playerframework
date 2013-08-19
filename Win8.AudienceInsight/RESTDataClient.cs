@@ -32,6 +32,7 @@ namespace Microsoft.AudienceInsight
             Timeout = TimeSpan.FromSeconds(timeout);
             Compress = compress;
             SerializationFormat = serializationFormat;
+            AdditionalHttpHeaders = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -59,6 +60,11 @@ namespace Microsoft.AudienceInsight
         /// </summary>
         public SerializationFormat SerializationFormat { get; private set; }
 
+        /// <summary>
+        /// Gets a set of http headers to be included on all HTTP requests
+        /// </summary>
+        public IDictionary<string, string> AdditionalHttpHeaders { get; private set; }
+
 #if NETFX_CORE
         /// <inheritdoc /> 
         public IAsyncOperation<LogBatchResult> SendBatchAsync(IBatch batch)
@@ -80,9 +86,9 @@ namespace Microsoft.AudienceInsight
                     httpClient.DefaultRequestHeaders.Add("Ver", Version.ToString());
                     
                     Dictionary<string, string> headers = new Dictionary<string, string>();
-                    
-                    // For development
-                    headers.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
+
+                    foreach (var headerKey in AdditionalHttpHeaders.Keys)
+                        headers.Add(headerKey, AdditionalHttpHeaders[headerKey]);
 
                     using (var stream = new MemoryStream())
                     {

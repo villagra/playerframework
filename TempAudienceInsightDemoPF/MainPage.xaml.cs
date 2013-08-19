@@ -1,4 +1,5 @@
 ﻿using Microsoft.AdaptiveStreaming.Analytics;
+using Microsoft.AudienceInsight;
 using Microsoft.PlayerFramework.Adaptive;
 using Microsoft.PlayerFramework.Analytics;
 using System;
@@ -39,6 +40,10 @@ namespace TempAudienceInsightDemoPF
             // Audience Insight config
             
             var batchingConfig = await Microsoft.AudienceInsight.BatchingConfigFactory.Load(new Uri("ms-appx:///AudienceInsightConfig.xml"));
+
+            var dataClient = (RESTDataClient)batchingConfig.BatchAgent;
+            dataClient.AdditionalHttpHeaders.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
+            
             var batchinglogAgent = new Microsoft.AudienceInsight.BatchingLogAgent(batchingConfig);
             var aiLoggingTarget = new Microsoft.VideoAnalytics.AudienceInsight.AudienceInsightLoggingTarget(batchinglogAgent);
 
