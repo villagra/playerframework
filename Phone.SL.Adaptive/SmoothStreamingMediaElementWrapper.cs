@@ -19,6 +19,7 @@ namespace Microsoft.PlayerFramework.Adaptive
         bool seekInProgress;
         TimelineMarkerCollection markers;
         event LogReadyRoutedEventHandler logReady;
+        TimeSpan? lastMarkerCheckTime;
 
         /// <summary>
         /// Creates a new instance of SmoothStreamingMediaElementWrapper
@@ -30,6 +31,13 @@ namespace Microsoft.PlayerFramework.Adaptive
             base.LogReady += SmoothStreamingMediaElement_LogReady;
             base.SeekCompleted += SmoothStreamingMediaElement_SeekCompleted;
             templateAppliedTaskSource = new TaskCompletionSource<object>();
+            base.MediaOpened += SmoothStreamingMediaElementWrapper_MediaOpened;
+        }
+
+        void SmoothStreamingMediaElementWrapper_MediaOpened(object sender, System.Windows.RoutedEventArgs e)
+        {
+            lastMarkerCheckTime = null;
+            markers.Clear();
         }
 
         /// <inheritdoc /> 
@@ -151,6 +159,8 @@ namespace Microsoft.PlayerFramework.Adaptive
             get { return base.Position; }
             set
             {
+                // reset on seek to prevent MarkerReached from firing.
+                lastMarkerCheckTime = null;
                 if (base.SmoothStreamingSource != null)
                 {
                     if (!seekInProgress)
@@ -203,28 +213,20 @@ namespace Microsoft.PlayerFramework.Adaptive
             get { return markers; }
         }
 
-        List<TimelineMarker> activatedMarkers = new List<TimelineMarker>();
         internal void EvaluateMarkers()
         {
-            // remove all actived markers that could be reached via normal playback
-            foreach (var marker in activatedMarkers.ToList())
+            var now = base.Position;
+            if (lastMarkerCheckTime.HasValue)
             {
-                if (base.Position < marker.Time)
+                foreach (var marker in markers.ToList())
                 {
-                    activatedMarkers.Remove(marker);
+                    if (marker.Time <= now && marker.Time > lastMarkerCheckTime.Value)
+                    {
+                        if (MarkerReached != null) MarkerReached(this, new TimelineMarkerRoutedEventArgs() { Marker = marker });
+                    }
                 }
             }
-
-            foreach (var marker in markers.Except(activatedMarkers).ToList())
-            {
-                if (marker.Time <= base.Position)
-                {
-                    activatedMarkers.Add(marker);
-                    var e = new TimelineMarkerRoutedEventArgs();
-                    e.Marker = marker;
-                    if (MarkerReached != null) MarkerReached(this, e);
-                }
-            }
+            lastMarkerCheckTime = now;
         }
 #endif
     }
