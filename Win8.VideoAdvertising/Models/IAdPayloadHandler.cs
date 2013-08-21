@@ -37,21 +37,26 @@ namespace Microsoft.VideoAdvertising
  : EventArgs
 #endif
     {
-        public AdTrackingEventEventArgs(IAdSource adSource, TrackingType trackingType)
+        public AdTrackingEventEventArgs(ICreativeSource creativeSource, TrackingType trackingType)
         {
-            AdSource = adSource;
+            CreativeSource = creativeSource;
             TrackingType = trackingType;
         }
 
         /// <summary>
-        /// The ad source associated with the playing ad unit.
+        /// The creative source associated with the playing ad unit.
         /// </summary>
-        public IAdSource AdSource { get; private set; }
+        public ICreativeSource CreativeSource { get; private set; }
 
         /// <summary>
         /// The type of tracking event that occurred
         /// </summary>
         public TrackingType TrackingType { get; private set; }
+
+        /// <summary>
+        /// The playback position of the main content.
+        /// </summary>
+        public TimeSpan CurrentPosition { get; set; }
     }
 
     public sealed class AdFailureEventArgs

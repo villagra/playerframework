@@ -63,7 +63,13 @@ namespace Microsoft.VideoAdvertising
 
         void VpaidController_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
         {
-            if (AdTrackingEventOccurred != null) AdTrackingEventOccurred(this, e);
+            if (AdTrackingEventOccurred != null)
+            {
+                if (Player != null)
+                    e.CurrentPosition = Player.CurrentPosition;
+
+                AdTrackingEventOccurred(this, e);
+            }
         }
 
         IVpaid OnLoadPlayer(ICreativeSource creativeSource)

@@ -31,7 +31,13 @@ namespace Microsoft.VideoAdvertising
 
         void adHandlerBase_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
         {
-            if (AdTrackingEventOccurred != null) AdTrackingEventOccurred(this, e);
+            if (AdTrackingEventOccurred != null)
+            {
+                if (Player != null)
+                    e.CurrentPosition = Player.CurrentPosition;
+
+                AdTrackingEventOccurred(this, e);
+            }
         }
 
         void adHandlerBase_AdFailure(object sender, AdFailureEventArgs e)

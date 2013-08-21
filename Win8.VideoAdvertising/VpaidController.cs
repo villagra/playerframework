@@ -601,7 +601,7 @@ namespace Microsoft.VideoAdvertising
         protected void TrackEvent(ActiveAdUnit adUnit, TrackingType eventToTrack)
         {
             if (AdTrackingEventOccurred != null) 
-                AdTrackingEventOccurred(this, new AdTrackingEventEventArgs(adUnit.AdSource, eventToTrack));
+                AdTrackingEventOccurred(this, new AdTrackingEventEventArgs(adUnit.CreativeSource, eventToTrack));
             
             foreach (var trackingEvent in adUnit.CreativeSource.TrackingEvents.Where(te => te.Type == eventToTrack))
             {

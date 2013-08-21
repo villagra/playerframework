@@ -83,6 +83,12 @@
         <Value Name="LogId" Id="lid" />
         <Value Name="TimeStamp" Id="tik" />
         <Value Name="TrackingType" Id="s01" />
+        <Value Name="MediaSource" Id="s02" />
+        <Value Name="MediaSourceType" Id="s03" />
+        <Value Name="CreativeExtraInfo" Id="s04" />
+        <Value Name="CreativeSourceType" Id="s05" />
+        <Value Name="CreativeId" Id="s06" />
+        <Value Name="CurrentPosition" Id="s07" />        
       </Log>
       <Log Type="ApplicationException" Id="ApplicationException">
         <Value Name="Type" Id="typ" />
