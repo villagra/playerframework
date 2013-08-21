@@ -1,7 +1,10 @@
 ﻿using Microsoft.AdaptiveStreaming.Analytics;
 using Microsoft.AudienceInsight;
 using Microsoft.PlayerFramework.Adaptive;
+using Microsoft.PlayerFramework.Advertising;
 using Microsoft.PlayerFramework.Analytics;
+using Microsoft.VideoAdvertising;
+using Microsoft.VideoAnalytics.VideoAdvertising;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,6 +28,8 @@ namespace TempAudienceInsightDemoPF
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        AdvertisingLoggingSource advertisingLoggingSource;
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -64,6 +69,12 @@ namespace TempAudienceInsightDemoPF
             analyticsPlugin.EdgeServerMonitor = edgeServerMonitor;
 
             player.Plugins.Add(analyticsPlugin);
+
+
+            // Audience Insight ad tracking config
+
+            var analyticsCollector = player.Plugins.OfType<AnalyticsPlugin>().First().AnalyticsCollector;
+            advertisingLoggingSource = new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlers, analyticsCollector);
         }
     }
 }

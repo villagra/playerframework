@@ -7,12 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest">
             <mmppf:MediaPlayer.Plugins>
-                <!--<ai:AnalyticsPlugin/>-->
+                <ads:AdSchedulerPlugin>
+                    <ads:AdSchedulerPlugin.Advertisements>
+
+                        <ads:MidrollAdvertisement Time="00:00:05">
+                            <ads:MidrollAdvertisement.Source>
+                                <ads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml" Type="vast"/>
+                            </ads:MidrollAdvertisement.Source>
+                        </ads:MidrollAdvertisement>
+
+                    </ads:AdSchedulerPlugin.Advertisements>
+                </ads:AdSchedulerPlugin>
+                <ads:AdHandlerPlugin/>
                 <adaptive:AdaptivePlugin/>
             </mmppf:MediaPlayer.Plugins>
         </mmppf:MediaPlayer>

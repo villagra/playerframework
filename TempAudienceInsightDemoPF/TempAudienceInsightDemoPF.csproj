@@ -101,6 +101,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\Microsoft.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj">
+      <Project>{95dff5d9-bd94-494e-ad33-f20e45a339eb}</Project>
+      <Name>Microsoft.VideoAnalytics.VideoAdvertising</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj">
       <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
       <Name>Microsoft.AdaptiveStreaming.Analytics</Name>
@@ -113,6 +117,10 @@
       <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
       <Name>Microsoft.AudienceInsight</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj">
+      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
+      <Name>Microsoft.VideoAdvertising</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Win8.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj">
       <Project>{ad0f55fe-d523-4ba0-9198-5cba45ddcbcd}</Project>
       <Name>Microsoft.VideoAnalytics.AudienceInsight</Name>
@@ -124,6 +132,10 @@
     <ProjectReference Include="..\Win8.Xaml.Adaptive\Microsoft.PlayerFramework.Xaml.Adaptive.csproj">
       <Project>{66c646d5-855a-4ca9-91e2-190c6834f7c0}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.Adaptive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Advertising\Microsoft.PlayerFramework.Xaml.Advertising.csproj">
+      <Project>{2e19fe19-9b06-416d-8ffc-c432d6285cb9}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml.Advertising</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.Analytics\Microsoft.PlayerFramework.Xaml.Analytics.csproj">
       <Project>{da1f6f23-4c7f-4e0c-8884-f283ee0f3633}</Project>
