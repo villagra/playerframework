@@ -20,6 +20,10 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.pf-slider-thumbnailView {
+    border-color: rgb(0, 0, 0);
+}
+
 .win-ui-dark .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
     background: transparent url("../images/thumb-dark.png");
 }
@@ -32,3 +36,6 @@
     background-color: rgba(255, 255, 255, 0.4);
 }
 
+.win-ui-dark .pf-slider-thumbnailView {
+    border-color: rgb(255, 255, 255);
+}

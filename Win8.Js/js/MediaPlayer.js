@@ -224,6 +224,12 @@
             this._visualMarkers = [];
             this._markers = [];
             this._lastMarkerCheckTime = -1;
+            this._virtualTime = 0;
+            this._isTrickPlayEnabled = true;
+            this._simulatedPlaybackRate = 1;
+            this._simulatedPlaybackRateTimer = null;
+            this._isThumbnailVisible = false;
+            this._thumbnailImageSrc = null;
 
             this._setElement(element);
             this._setOptions(options);
@@ -616,13 +622,58 @@
             /// <field name="playbackRate" type="Number">Gets or sets the playback rate for the current media source.</field>
             playbackRate: {
                 get: function () {
-                    return this._mediaElement.playbackRate;
+                    if (!this.isTrickPlayEnabled) {
+                        return this._simulatedPlaybackRate;
+                    }
+                    else {
+                        return this._mediaElement.playbackRate;
+                    }
                 },
                 set: function (value) {
-                    var oldValue = this._mediaElement.playbackRate;
+                    var oldValue = this.playbackRate;
                     if (oldValue !== value) {
-                        this._mediaElement.playbackRate = value;
+                        if (!this.isTrickPlayEnabled)
+                        {
+                            this._simulatedPlaybackRate = value;
+                            if (value === 1.0 || value === 0.0)
+                            {
+                                window.clearInterval(this._simulatedPlaybackRateTimer);
+                                this._simulatedPlaybackRateTimer = null;
+                                if (oldValue !== 1.0 || oldValue !== 0.0)
+                                {
+                                    this.currentTime = this.virtualTime; // we're coming out of simulated trick play, sync positions
+                                }
+                                this._mediaElement.playbackRate = value;
+                            }
+                            else
+                            {
+                                if (oldValue === 1.0 || oldValue === 0.0)
+                                {
+                                    this._mediaElement.playbackRate = 0;
+                                    this._simulatedPlaybackRateTimer = window.setInterval(this._onSimulatedPlaybackRateTimerTick.bind(this), 250);
+                                }
+                                this.dispatchEvent("ratechange"); // manually raise event since we didn't actually set the mediaElement's playback rate
+                            }
+                        }
+                        else
+                        {
+                            this._mediaElement.playbackRate = value;
+                        }
                         this._observableMediaPlayer.notify("playbackRate", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="playbackRate" type="Number">Gets or sets the playback rate for the current media source.</field>
+            isTrickPlayEnabled: {
+                get: function () {
+                    return this._isTrickPlayEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isTrickPlayEnabled;
+                    if (oldValue !== value) {
+                        this._isTrickPlayEnabled = value;
+                        this._observableMediaPlayer.notify("isTrickPlayEnabled", value, oldValue);
                     }
                 }
             },
@@ -840,8 +891,16 @@
                 set: function (value) {
                     if (this._mediaElement.readyState !== PlayerFramework.ReadyState.nothing && isFinite(value) && !isNaN(value) && value >= 0) {
                         // note: the timeupdate event will notify the observable property for us
+                        this._virtualTime = value;
                         this._mediaElement.currentTime = value;
                     }
+                }
+            },
+
+            /// <field name="virtualTime" type="Number">Gets the position that is being seeked to (even before the seek completes). If seekWhileScrubbing = false, also returns the position being scrubbed to for visual feedback (in seconds).</field>
+            virtualTime: {
+                get: function () {
+                    return this._virtualTime;
                 }
             },
 
@@ -2212,6 +2271,34 @@
                 }
             },
 
+            /// <field name="isThumbnailVisible" type="Boolean">Gets or sets whether thumbnails should be displayed while scrubbing. Default is false.</field>
+            isThumbnailVisible: {
+                get: function () {
+                    return this._isThumbnailVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isThumbnailVisible;
+                    if (oldValue !== value) {
+                        this._isThumbnailVisible = value;
+                        this._observableMediaPlayer.notify("isThumbnailVisible", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="thumbnailImageSrc" type="String">Gets or sets the thumbnail to show (typically while scrubbing and/or in RW/FF mode).</field>
+            thumbnailImageSrc: {
+                get: function () {
+                    return this._thumbnailImageSrc;
+                },
+                set: function (value) {
+                    var oldValue = this._thumbnailImageSrc;
+                    if (oldValue !== value) {
+                        this._thumbnailImageSrc = value;
+                        this._observableMediaPlayer.notify("thumbnailImageSrc", value, oldValue);
+                    }
+                }
+            },
+
             /************************ Public Methods ************************/
             canPlayType: function (type) {
                 /// <summary>Returns a value that specifies whether the player can play a given media type.</summary>
@@ -2547,10 +2634,10 @@
                 this._bindEvent("waiting", this._mediaElement, this._onMediaElementWaiting);
 
                 // property notifications
-                this._bindEvent("emptied", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("loadstart", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("loadeddata", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("timeupdate", this._mediaElement, this._notifyProperties, ["currentTime"]);
+                this._bindEvent("emptied", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("loadstart", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("loadeddata", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("timeupdate", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime"]);
                 this._bindEvent("playing", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
                 this._bindEvent("pause", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
                 this._bindEvent("ended", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
@@ -2644,7 +2731,7 @@
             },
 
             _seek: function (time) {
-                var previousTime = this.currentTime;
+                var previousTime = this._virtualTime;
                 this.currentTime = time;
                 this.dispatchEvent("seek", { previousTime: previousTime, time: time });
             },
@@ -2658,7 +2745,7 @@
             _startScrub: function (time) {
                 if (!this._scrubbing) {
                     this._scrubbing = true;
-                    this._scrubStartTime = this.currentTime;
+                    this._scrubStartTime = this._virtualTime;
 
                     var e = { time: time, canceled: false };
                     this.dispatchEvent("scrub", e);
@@ -2683,6 +2770,9 @@
                     if (!e.canceled) {
                         if (this.seekWhileScrubbing) {
                             this.currentTime = time;
+                        }
+                        else {
+                            this._setVirtualTime(time);
                         }
                     } else {
                         this._completeScrub(time, true);
@@ -2718,14 +2808,14 @@
             _updateIsCurrentTimeLive: function () {
                 if (this.liveTime !== null) {
                     var liveThreshold = this.isCurrentTimeLive ? this.liveTimeBuffer * 1.1 : this.liveTimeBuffer * 0.9;
-                    this.isCurrentTimeLive = this.liveTime - this.currentTime < liveThreshold;
+                    this.isCurrentTimeLive = this.liveTime - this._virtualTime < liveThreshold;
                 } else {
                     this.isCurrentTimeLive = false;
                 }
             },
 
             _updateMarkerState: function () {
-                var now = this.currentTime;
+                var now = this._virtualTime;
                 for (var i = 0; i < this._markers.length; i++) {
                     var marker = this._markers[i];
                     if (marker.time < now && marker.time >= this._lastMarkerCheckTime) {
@@ -2983,7 +3073,11 @@
             },
 
             _onMediaElementTimeUpdate: function (e) {
-                this._lastTime = this.currentTime;
+                var time = this.currentTime;
+                if ((this.isTrickPlayEnabled || this.playbackRate === 0.0 || this.playbackRate === 1.0) && !this.scrubbing) {
+                    this._virtualTime = time;
+                }
+                this._lastTime = time;
                 this._updateIsCurrentTimeLive();
                 this._updateMarkerState();
                 this.dispatchEvent("timeupdate");
@@ -2995,6 +3089,24 @@
 
             _onMediaElementWaiting: function (e) {
                 this.dispatchEvent("waiting");
+            },
+
+            _setVirtualTime: function (time) {
+                var oldValue = this._virtualTime;
+                this._virtualTime = time;
+                this._lastTime = this._virtualTime;
+                this._updateIsCurrentTimeLive();
+                this.dispatchEvent("timeupdate");
+                this._observableMediaPlayer.notify("virtualTime", time, oldValue);
+            },
+
+            _onSimulatedPlaybackRateTimerTick: function () {
+                if (this.playbackRate !== 0.0 && this.playbackRate !== 1.0 && !this.scrubbing) {
+                    var newTime = this._virtualTime + this.playbackRate / 4;
+                    if (newTime > this.endTime) newTime = this.endTime;
+                    if (newTime < this.startTime) newTime = this.startTime;
+                    this._setVirtualTime(newTime);
+                }
             }
         })
     });

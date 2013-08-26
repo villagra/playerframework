@@ -17,7 +17,7 @@ namespace Microsoft.PlayerFramework
         public static MediaPlayerState GetPlayerState(this MediaPlayer player)
         {
             var result = new MediaPlayerState();
-            result.Position = player.Position;
+            result.Position = player.VirtualPosition;
             result.IsPaused = player.CurrentState == MediaElementState.Paused;
 
             var playlistPlugin = player.Plugins.OfType<PlaylistPlugin>().FirstOrDefault();

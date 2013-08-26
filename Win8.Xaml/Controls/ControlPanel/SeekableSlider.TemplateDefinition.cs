@@ -216,6 +216,40 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+        #region ThumbnailContent
+        /// <summary>
+        /// ThumbnailContent DependencyProperty definition.
+        /// </summary>
+        public static readonly DependencyProperty ThumbnailContentProperty = DependencyProperty.Register("ThumbnailContent", typeof(UIElement), typeof(SeekableSlider), null);
+
+        /// <summary>
+        /// Gets or sets the UIElement to display behind the control
+        /// </summary>
+        public UIElement ThumbnailContent
+        {
+            get { return GetValue(ThumbnailContentProperty) as UIElement; }
+            set { SetValue(ThumbnailContentProperty, value); }
+        }
+
+        #endregion
+
+        #region ThumbnailVisibility
+        /// <summary>
+        /// ThumbnailVisibility DependencyProperty definition.
+        /// </summary>
+        public static readonly DependencyProperty ThumbnailVisibilityProperty = DependencyProperty.Register("ThumbnailVisibility", typeof(Visibility), typeof(SeekableSlider), new PropertyMetadata(Visibility.Collapsed));
+
+        /// <summary>
+        /// Gets or sets if the thumbnail is visible
+        /// </summary>
+        public Visibility ThumbnailVisibility
+        {
+            get { return (Visibility)GetValue(ThumbnailVisibilityProperty); }
+            set { SetValue(ThumbnailVisibilityProperty, value); }
+        }
+
+        #endregion
+
         #region HorizontalBackgroundContent
         /// <summary>
         /// HorizontalBackgroundContent DependencyProperty definition.

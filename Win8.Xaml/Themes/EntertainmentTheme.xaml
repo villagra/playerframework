@@ -89,8 +89,8 @@
                                         </Grid.ColumnDefinitions>
                                         <local:TimeElapsedButton x:Name="TimeElapsedButton" Grid.Column="0" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
                                         <!--<local:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>-->
-                                      <local:Timeline Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0">
-                                        <local:Timeline.SliderStyle>
+                                        <local:Timeline Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                            <local:Timeline.SliderStyle>
                                                 <Style TargetType="local:SeekableSlider">
                                                     <Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
                                                     <Setter Property="SliderTrackDecreasePressedBackground" Value="{StaticResource ButtonPressedForegroundThemeBrush}" />
@@ -115,6 +115,11 @@
                                                     </Setter>
                                                 </Style>
                                             </local:Timeline.SliderStyle>
+                                            <local:Timeline.ThumbnailContent>
+                                                <Border BorderThickness="2" BorderBrush="{StaticResource ButtonForegroundThemeBrush}" Width="164" Height="94" Background="{StaticResource ButtonPressedForegroundThemeBrush}" Margin="-76,-102,0,0">
+                                                    <local:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                </Border>
+                                            </local:Timeline.ThumbnailContent>
                                         </local:Timeline>
 
                                         <local:TimeRemainingButton x:Name="TimeRemainingButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>

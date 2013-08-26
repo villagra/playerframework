@@ -168,6 +168,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="ThumbnailPage.xaml.cs">
+      <DependentUpon>ThumbnailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\MediaPlayerExtensions.cs" />
     <Compile Include="SuspendResumePage.xaml.cs">
       <DependentUpon>SuspendResumePage.xaml</DependentUpon>
@@ -303,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ThumbnailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

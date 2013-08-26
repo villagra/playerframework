@@ -102,6 +102,7 @@
             { group: sampleGroups[3], backgroundImage: sampleImage1, subtitle: "advertising/programmatic", title: "Programmatic Ad", description: "Demonstrates how to programmatically create, play, and cancel an ad" },
 
             // advanced
+            { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/thumbnails", title: "Thumbnails", description: "Demonstrates how to show thumbnails during scrubbing, RW, & FF operations." },
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/tracking", title: "Event Tracking", description: "Demonstrates event tracking for analytic purposes" },
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/playto", title: "Play To", description: "Demonstrates streaming media from the player to a target device using Play To" },
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/local", title: "Local Playback", description: "Demonstrates playing a local video file and capturing input from a webcam" },

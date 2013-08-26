@@ -117,3 +117,17 @@
     margin-right: 15px;
     width: auto;
 }
+
+.pf-slider-container .pf-slider-thumbnail-container {
+    left:0;
+    right:0;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: auto;
+}
+
+.pf-slider-thumbnailView {
+    border: solid;
+    border-width: 2px;
+    top: -66px;
+}

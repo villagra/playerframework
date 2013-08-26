@@ -79,6 +79,8 @@
     <Content Include="pages\itemdetail\advanced\local\local.js" />
     <Content Include="pages\itemdetail\advanced\suspendresume\suspendresume.html" />
     <Content Include="pages\itemdetail\advanced\suspendresume\suspendresume.js" />
+    <Content Include="pages\itemdetail\advanced\thumbnails\thumbnails.html" />
+    <Content Include="pages\itemdetail\advanced\thumbnails\thumbnails.js" />
     <Content Include="pages\itemdetail\advanced\tracking\tracking.html" />
     <Content Include="pages\itemdetail\advanced\tracking\tracking.js" />
     <Content Include="pages\itemdetail\advertising\adpod\adpod.html" />

@@ -48,7 +48,7 @@
 
         currentTime: {
             get: function () {
-                return this._getViewModelTime(this._mediaPlayer.currentTime);
+                return this._getViewModelTime(this._mediaPlayer.virtualTime);
             }
         },
 
@@ -766,6 +766,18 @@
             }
         },
 
+        thumbnailImageSrc: {
+            get: function () {
+                return this._mediaPlayer.thumbnailImageSrc;
+            }
+        },
+
+        isThumbnailVisible: {
+            get: function () {
+                return this._mediaPlayer.isThumbnailVisible;
+            }
+        },
+
         // Public Methods
         initialize: function () {
             // media player value properties
@@ -773,7 +785,7 @@
             this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "maxTime"]);
             this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime", "maxTime"]);
             this._bindProperty("liveTime", this._observableMediaPlayer, this._notifyProperties, ["maxTime"]);
-            this._bindProperty("currentTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
+            this._bindProperty("virtualTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindProperty("buffered", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("duration", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("skipBackInterval", this._observableMediaPlayer, this._notifyProperties, ["elapsedTimeText"]);
@@ -784,6 +796,8 @@
             this._bindProperty("signalStrength", this._observableMediaPlayer, this._notifyProperties, ["signalStrength", "signalStrengthTooltip"]);
             this._bindProperty("mediaQuality", this._observableMediaPlayer, this._notifyProperties, ["mediaQuality", "mediaQualityTooltip"]);
             this._bindProperty("visualMarkers", this._observableMediaPlayer, this._notifyProperties, ["visualMarkers"]);
+            this._bindProperty("thumbnailImageSrc", this._observableMediaPlayer, this._notifyProperties, ["thumbnailImageSrc"]);
+            this._bindProperty("isThumbnailVisible", this._observableMediaPlayer, this._notifyProperties, ["isThumbnailVisible"]);
 
             // media player interaction properties
             this._bindProperty("isPlayPauseAllowed", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseDisabled"]);
@@ -931,7 +945,7 @@
 
         skipBack: function () {
             var minTime = this._mediaPlayer.startTime;
-            var time = this._mediaPlayer.skipBackInterval !== null ? Math.max(this._mediaPlayer.currentTime - this._mediaPlayer.skipBackInterval, minTime) : minTime;
+            var time = this._mediaPlayer.skipBackInterval !== null ? Math.max(this._mediaPlayer.virtualTime - this._mediaPlayer.skipBackInterval, minTime) : minTime;
 
             if (!this.dispatchEvent("skipback", { time: time })) {
                 this._mediaPlayer._seek(time);
@@ -940,7 +954,7 @@
 
         skipAhead: function () {
             var maxTime = this._mediaPlayer.liveTime !== null ? this._mediaPlayer.liveTime : this._mediaPlayer.endTime;
-            var time = this._mediaPlayer.skipAheadInterval !== null ? Math.min(this._mediaPlayer.currentTime + this._mediaPlayer.skipAheadInterval, maxTime) : maxTime;
+            var time = this._mediaPlayer.skipAheadInterval !== null ? Math.min(this._mediaPlayer.virtualTime + this._mediaPlayer.skipAheadInterval, maxTime) : maxTime;
 
             if (!this.dispatchEvent("skipahead", { time: time })) {
                 this._mediaPlayer._seek(time);

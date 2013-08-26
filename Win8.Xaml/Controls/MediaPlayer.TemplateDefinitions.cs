@@ -1730,7 +1730,7 @@ namespace Microsoft.PlayerFramework
         {
             var result = new MediaState();
             result.Source = Source;
-            result.Position = Position;
+            result.Position = VirtualPosition;
             result.IsStarted = PlayerState == PlayerState.Started;
             if (result.IsStarted)
             {
@@ -1912,11 +1912,14 @@ namespace Microsoft.PlayerFramework
 
         void MediaElement_RateChanged(object sender, RateChangedRoutedEventArgs e)
         {
+            if (IsTrickPlayEnabled)
+            {
 #if SILVERLIGHT
-            SetValueWithoutCallback(PlaybackRateProperty, e.NewRate);
+                SetValueWithoutCallback(PlaybackRateProperty, e.NewRate);
 #else
-            SetValueWithoutCallback(PlaybackRateProperty, _PlaybackRate);
+                SetValueWithoutCallback(PlaybackRateProperty, _PlaybackRate);
 #endif
+            }
             OnRateChanged(e);
         }
 

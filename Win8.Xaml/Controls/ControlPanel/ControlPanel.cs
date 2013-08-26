@@ -79,17 +79,17 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Identifies the GoLiveButtonVisibility dependency property.
+        /// Identifies the IsThumbnailVisible dependency property.
         /// </summary>
-        public static readonly DependencyProperty GoLiveButtonVisibilityProperty = DependencyProperty.Register("GoLiveButtonVisibility", typeof(Visibility), typeof(ControlPanel), new PropertyMetadata(Visibility.Collapsed));
+        public static readonly DependencyProperty IsThumbnailVisibleProperty = DependencyProperty.Register("IsThumbnailVisible", typeof(bool), typeof(ControlPanel), new PropertyMetadata(false));
 
         /// <summary>
-        /// Gets or sets the Visibility property on the GoLiveButton.
+        /// Gets or sets if the Thumbnail is visible or not.
         /// </summary>
-        public Visibility GoLiveButtonVisibility
+        public bool IsThumbnailVisible
         {
-            get { return (Visibility)GetValue(IsGoLiveButtonVisibleProperty); }
-            set { SetValue(IsGoLiveButtonVisibleProperty, value); }
+            get { return (bool)GetValue(IsThumbnailVisibleProperty); }
+            set { SetValue(IsThumbnailVisibleProperty, value); }
         }
 
         /// <summary>

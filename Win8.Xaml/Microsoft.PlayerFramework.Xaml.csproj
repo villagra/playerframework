@@ -126,6 +126,7 @@
     <Compile Include="Controls\ControlPanel\ControlPanel.cs" />
     <Compile Include="Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs" />
     <Compile Include="Controls\ControlPanel\MediaPlayerButton.cs" />
+    <Compile Include="Controls\ControlPanel\ThumbnailView.cs" />
     <Compile Include="Controls\ControlPanel\VolumeSlider.cs" />
     <Compile Include="Controls\ControlPanel\ResolutionIndicator.cs" />
     <Compile Include="Controls\ControlPanel\StandardButtons.cs" />

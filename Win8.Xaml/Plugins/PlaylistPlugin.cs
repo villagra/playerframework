@@ -223,7 +223,7 @@ namespace Microsoft.PlayerFramework
 
         void MediaPlayer_SkippingBack(object sender, SkipRoutedEventArgs e)
         {
-            if (e.Position == MediaPlayer.StartTime && (!SkipBackThreshold.HasValue || MediaPlayer.Position.Subtract(MediaPlayer.StartTime) < SkipBackThreshold.Value) && CurrentPlaylistItemIndex > 0)
+            if (e.Position == MediaPlayer.StartTime && (!SkipBackThreshold.HasValue || MediaPlayer.VirtualPosition.Subtract(MediaPlayer.StartTime) < SkipBackThreshold.Value) && CurrentPlaylistItemIndex > 0)
             {
                 GoToPreviousPlaylistItem();
                 e.Canceled = true;

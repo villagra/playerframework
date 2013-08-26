@@ -33,6 +33,13 @@
         this._altStep3 = 0;
         this._hasCapture = false;
         this._markers = [];
+        this._thumbnailContainerElement = null;
+        this._thumbnailViewElement = null;
+        this._thumbnail1Element = null;
+        this._thumbnail2Element = null;
+        this._thumbnailImageSrc = null;
+        this._isThumbnailVisible = false;
+        this._thumbnailElementIndex = 0;
 
         this._setElement(element);
         this._setOptions(options);
@@ -52,6 +59,7 @@
                 this._inputElement.min = value;
                 this._element.setAttribute("aria-valuemin", value);
                 this._updateMarkers();
+                if (this._isThumbnailVisible) this._updateThumbnailPosition();
             }
         },
 
@@ -63,6 +71,7 @@
                 this._inputElement.max = value;
                 this._element.setAttribute("aria-valuemax", value);
                 this._updateMarkers();
+                if (this._isThumbnailVisible) this._updateThumbnailPosition();
             }
         },
 
@@ -74,6 +83,7 @@
                 var clampedValue = PlayerFramework.Utilities.clamp(value, this.min, this.max);
                 this._inputElement.value = clampedValue;
                 this._element.setAttribute("aria-valuenow", clampedValue);
+                if (this._isThumbnailVisible) this._updateThumbnailPosition();
             }
         },
 
@@ -193,6 +203,36 @@
             }
         },
 
+        thumbnailImageSrc: {
+            get: function () {
+                return this._thumbnailImageSrc;
+            },
+            set: function (value) {
+                this._thumbnailImageSrc = value;
+                if (value) {
+                    if (this._thumbnailElementIndex === 0)
+                        this._thumbnail1Element.src = value;
+                    else
+                        this._thumbnail2Element.src = value;
+                }
+                else {
+                    this._thumbnail1Element.src = "";
+                    this._thumbnail2Element.src = "";
+                }
+            }
+        },
+
+        isThumbnailVisible: {
+            get: function () {
+                return this._isThumbnailVisible;
+            },
+            set: function (value) {
+                this._isThumbnailVisible = value;
+                this._thumbnailContainerElement.style.display = value ? "" : "none";
+                if (value) this._updateThumbnailPosition();
+            }
+        },
+
         // Private Methods
         _setElement: function (element) {
             this._element = element;
@@ -204,6 +244,14 @@
             this._progressElement = PlayerFramework.Utilities.createElement(this._containerElement, ["progress"]);
             this._inputElement = PlayerFramework.Utilities.createElement(this._containerElement, ["input", { "type": "range" }]);
             this._markerContainerElement = PlayerFramework.Utilities.createElement(this._containerElement, ["div", { "class": "pf-slider-marker-container" }]);
+
+            this._thumbnailContainerElement = PlayerFramework.Utilities.createElement(this._containerElement, ["div", { "class": "pf-slider-thumbnail-container", "style": "display: none;" }]);
+            this._thumbnailViewElement = PlayerFramework.Utilities.createElement(this._thumbnailContainerElement, ["div", { "class": "pf-slider-thumbnailView" }]);
+            // use 2 img tags to hold the thumbnail. This allows us to ensure the last image continues to show while the new one is downloading
+            this._thumbnail1Element = PlayerFramework.Utilities.createElement(this._thumbnailViewElement, ["img", { "class": "pf-slider-thumbnailImage" }]);
+            this._thumbnail2Element = PlayerFramework.Utilities.createElement(this._thumbnailViewElement, ["img", { "class": "pf-slider-thumbnailImage", "style": "display: none;" }]);
+            this._bindEvent("load", this._thumbnail1Element, this._onThumbnailElementLoad);
+            this._bindEvent("load", this._thumbnail2Element, this._onThumbnailElementLoad);
 
             this._bindEvent("MSGotPointerCapture", this._inputElement, this._onInputElementMSGotPointerCapture);
             this._bindEvent("MSLostPointerCapture", this._inputElement, this._onInputElementMSLostPointerCapture);
@@ -229,6 +277,24 @@
             });
         },
 
+        _onThumbnailElementLoad: function (e) {
+            var newThumbnailElement;
+            var oldThumbnailElement;
+            if (this._thumbnailElementIndex === 0) {
+                newThumbnailElement = this._thumbnail1Element;
+                oldThumbnailElement = this._thumbnail2Element;
+                this._thumbnailElementIndex = 1;
+            }
+            else {
+                newThumbnailElement = this._thumbnail2Element;
+                oldThumbnailElement = this._thumbnail1Element;
+                this._thumbnailElementIndex = 0;
+            }
+
+            newThumbnailElement.style.display = "";
+            oldThumbnailElement.style.display = "none";
+        },
+
         _onInputElementMSGotPointerCapture: function (e) {
             if (!this._hasCapture) {
                 this._hasCapture = true;
@@ -247,6 +313,8 @@
         _onInputElementChange: function (e) {
             if (this._hasCapture) {
                 this.dispatchEvent("update");
+
+                if (this._isThumbnailVisible) this._updateThumbnailPosition();
             }
         },
 
@@ -355,6 +423,12 @@
             
             if (marker) this.dispatchEvent("skiptomarker", marker);
         },
+
+        _updateThumbnailPosition: function ()
+        {
+            var percentageComplete = this._inputElement.value / (this.max - this.min);
+            this._thumbnailViewElement.style.marginLeft = (percentageComplete * 100) + "%";
+        }
     });
 
     // Slider Mixins
