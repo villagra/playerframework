@@ -115,7 +115,6 @@
     <Compile Include="Logging\Batch.cs" />
     <Compile Include="Logging\BatchingExceptionEventArgs.cs" />
     <Compile Include="Logging\BatchingLogAgent.cs" />
-    <Compile Include="Logging\DictionaryLog.cs" />
     <Compile Include="Logging\IBatchAgent.cs" />
     <Compile Include="Logging\ILogFilter.cs" />
     <Compile Include="Logging\InstanceDataClient.cs" />

@@ -24,7 +24,7 @@ namespace Microsoft.VideoAnalytics.AudienceInsight
             if (this.batchingLogAgent == null)
                 return;
 
-            var aiLog = new DictionaryLog(log.Id, log.TimeStamp, log.Type, log.GetData());
+            var aiLog = new Microsoft.AudienceInsight.Log(log.Id, log.TimeStamp, log.Type, log.GetData());
 
             this.batchingLogAgent.LogEntry(aiLog);
         }

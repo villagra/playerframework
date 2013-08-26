@@ -23,7 +23,7 @@ namespace TempAudienceInsightDemo
 
         public IDictionary<string, object> GetData()
         {
-            var data = new Dictionary<string, object>();
+            var data = this.CreateBasicLogData();
             data.Add("CustomProperty", CustomProperty);
             return data;
         }

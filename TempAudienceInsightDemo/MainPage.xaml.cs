@@ -37,7 +37,11 @@ namespace TempAudienceInsightDemo
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             var batchingConfig = await Microsoft.AudienceInsight.BatchingConfigFactory.Load(new Uri("ms-appx:///AudienceInsightConfig.xml"));
-            batchingLogAgent = new Microsoft.AudienceInsight.BatchingLogAgent(batchingConfig); 
+            
+            var dataClient = (RESTDataClient)batchingConfig.BatchAgent;
+            dataClient.AdditionalHttpHeaders.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
+
+            batchingLogAgent = new Microsoft.AudienceInsight.BatchingLogAgent(batchingConfig);
         }
 
         private void logButton_Click(object sender, RoutedEventArgs e)
