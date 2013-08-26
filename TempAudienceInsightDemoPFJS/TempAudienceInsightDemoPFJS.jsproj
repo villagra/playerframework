@@ -69,7 +69,6 @@
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj" />
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj" />
     <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj" />
     <ProjectReference Include="..\Win8.AudienceInsight\Microsoft.AudienceInsight.csproj" />
@@ -79,6 +78,7 @@
     <ProjectReference Include="..\Win8.Js\Microsoft.PlayerFramework.Js.csproj" />
     <ProjectReference Include="..\Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj" />
     <ProjectReference Include="..\Win8.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj" />
+    <ProjectReference Include="..\Win8.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj" />
     <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />

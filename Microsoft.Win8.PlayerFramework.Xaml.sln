@@ -54,7 +54,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempAudienceInsightDemoPF",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AudienceInsight", "Win8.AudienceInsight\Microsoft.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.VideoAdvertising", "Microsoft.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.VideoAdvertising", "Win8.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
