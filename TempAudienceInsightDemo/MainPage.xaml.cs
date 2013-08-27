@@ -46,7 +46,14 @@ namespace TempAudienceInsightDemo
 
         private void logButton_Click(object sender, RoutedEventArgs e)
         {
-            batchingLogAgent.LogEntry(new CustomLog() { CustomProperty = "testing" });
+            var customLog = new CustomLog()
+            {
+                CustomProperty = "testing",
+                CustomPropertyNumber = 3.14159,
+                CustomPropertyBool = true
+            };
+            
+            batchingLogAgent.LogEntry(customLog);
         }
     }
 }

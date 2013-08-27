@@ -18,6 +18,8 @@ namespace TempAudienceInsightDemo
         }
 
         public string CustomProperty { get; set; }
+        public double CustomPropertyNumber { get; set; }
+        public bool CustomPropertyBool { get; set; }
 
         public IDictionary<string, object> ExtraData { get; private set; }
 
@@ -25,6 +27,8 @@ namespace TempAudienceInsightDemo
         {
             var data = this.CreateBasicLogData();
             data.Add("CustomProperty", CustomProperty);
+            data.Add("CustomPropertyNumber", CustomPropertyNumber);
+            data.Add("CustomPropertyBool", CustomPropertyBool);
             return data;
         }
 

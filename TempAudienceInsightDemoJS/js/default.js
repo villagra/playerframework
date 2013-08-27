@@ -49,7 +49,9 @@
     function buttonClickHandler(eventInfo) {
 
         var customLog = {
-            CustomProperty: "testing"
+            CustomProperty: "testing",
+            CustomPropertyNumber: 3.14159,
+            CustomPropertyBool: true
         };
 
         batchinglogAgent.logEntry(new Microsoft.AudienceInsight.Log("CustomLog", JSON.stringify(customLog)));
