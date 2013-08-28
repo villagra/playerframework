@@ -108,6 +108,7 @@ namespace Microsoft.AudienceInsight
                             if (Compress)
                             {
                                 batch.SerializeCompressedJson(stream);
+                                headers.Add("Content-Type", "application/gzip");
                             }
                             else
                             {

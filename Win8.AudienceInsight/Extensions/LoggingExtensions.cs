@@ -260,13 +260,13 @@ namespace Microsoft.AudienceInsight
         /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeCompressedJson(this IBatch batch, Stream stream)
         {
-            using (var zipStream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
+            using (var gzipStream = new Ionic.Zlib.GZipStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
             {
                 JsonObject batchJson = batch.ToJsonObject();
-                TextWriter textWriter = new StreamWriter(zipStream);
+                TextWriter textWriter = new StreamWriter(gzipStream);
                 textWriter.Write(batchJson.Stringify());
                 textWriter.Flush();
-                zipStream.Flush();
+                gzipStream.Flush();
             }
         }
 

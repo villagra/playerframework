@@ -53,7 +53,7 @@ namespace Microsoft.AudienceInsight
                         case "version":
                             serviceVersion = reader.ReadElementContentAsInt();
                             break;
-                        case "compress":
+                        case "compressed":
                             compress = Convert.ToBoolean(reader.ReadElementContentAsInt());
                             break;
                         case "serializationFormat":
