@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -103,7 +103,6 @@
     <Compile Include="Data\StreamSelectionManager.cs" />
     <Compile Include="DownloaderPluginAdapter.cs" />
     <Compile Include="ILifetimeAwareDownloaderPlugin.cs" />
-    <Compile Include="ResolutionHelper.cs" />
     <Compile Include="SmoothStreamingExtensions.cs" />
     <Compile Include="SmoothStreamingMediaElementWrapper.cs" />
     <Compile Include="MarkerManager.cs" />

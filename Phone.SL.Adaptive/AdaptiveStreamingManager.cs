@@ -245,18 +245,10 @@ namespace Microsoft.PlayerFramework.Adaptive
 #if WINDOWS_PHONE7
             MaxPixels = 384000; // smooth streaming supports a max pixel count of 800x480 (384000)
 #else
-            switch (ResolutionHelper.CurrentResolution)
-            {
-                case Resolutions.HD720p:
-                    MaxPixels = 720 * 1280;
-                    break;
-                case Resolutions.WVGA:
-                    MaxPixels = 800 * 480;
-                    break;
-                case Resolutions.WXGA:
-                    MaxPixels = 768 * 1280;
-                    break;
-            }
+            double scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
+            int verticalSize = (int)Math.Ceiling(Application.Current.Host.Content.ActualHeight * scale);
+            int horizontalSize = (int)Math.Ceiling(Application.Current.Host.Content.ActualWidth * scale);
+            MaxPixels = verticalSize * horizontalSize;
 #endif
         }
 
