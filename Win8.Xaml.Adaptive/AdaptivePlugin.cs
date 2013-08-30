@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Windows.Foundation;
 using Windows.Media;
 using Windows.UI.Xaml;
+using Windows.Graphics.Display;
 
 namespace Microsoft.PlayerFramework.Adaptive
 {
@@ -51,7 +52,7 @@ namespace Microsoft.PlayerFramework.Adaptive
                     autoRestrictSize = value;
                     if (isLoaded)
                     {
-                        Manager.MaxSize = autoRestrictSize ? new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight) : new Size?();
+                        UpdateMaxSize(new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight));
                     }
                 }
             }
@@ -240,9 +241,29 @@ namespace Microsoft.PlayerFramework.Adaptive
 
         void MediaPlayer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            UpdateMaxSize(e.NewSize);
+        }
+
+        private void UpdateMaxSize(Size size)
+        {
             if (AutoRestrictSize)
             {
-                Manager.MaxSize = e.NewSize;
+                switch (DisplayProperties.ResolutionScale)
+                {
+                    case ResolutionScale.Scale180Percent:
+                        Manager.MaxSize = new Size(Math.Round(size.Width * 1.8), Math.Round(size.Height * 1.8));
+                        break;
+                    case ResolutionScale.Scale140Percent:
+                        Manager.MaxSize = new Size(Math.Round(size.Width * 1.4), Math.Round(size.Height * 1.4));
+                        break;
+                    default:
+                        Manager.MaxSize = size;
+                        break;
+                }
+            }
+            else
+            {
+                Manager.MaxSize = new Size?();
             }
         }
 
@@ -275,7 +296,7 @@ namespace Microsoft.PlayerFramework.Adaptive
 
         void IPlugin.Load()
         {
-            Manager.MaxSize = autoRestrictSize ? new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight) : new Size?();
+            UpdateMaxSize(new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight));
 
             Manager.DataReceived += manager_DataReceived;
             Manager.StateChanged += manager_StateChanged;

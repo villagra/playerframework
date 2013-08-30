@@ -707,8 +707,10 @@
         /// <summary>Measures the size of a DOM element.</summary>
         /// <param name="element" type="HTMLElement" domElement="true">The element to measure.</param>
         /// <returns type="Object">The element size.</returns>
-
-        return { width: element.scrollWidth, height: element.scrollHeight };
+        var scale = Windows.Graphics.Display.DisplayProperties.resolutionScale / 100;
+        var w = Math.ceil(WinJS.Utilities.getTotalWidth(element) * scale); // use ceil instead of round because WinJS reports whole numbers only
+        var h = Math.ceil(WinJS.Utilities.getTotalHeight(element) * scale);
+        return { width: w, height: h };
     }
 
     function addHideFocusClass(element) {
