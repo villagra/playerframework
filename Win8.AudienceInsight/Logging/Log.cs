@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+#if WINDOWS_PHONE
+#else
 using Windows.Data.Json;
+#endif
 
 namespace Microsoft.AudienceInsight
 {
@@ -79,17 +82,6 @@ namespace Microsoft.AudienceInsight
         /// <summary>
         /// Creates a new instance of Log
         /// </summary>
-        /// <param name="type">The type of log</param>
-        /// <param name="jsondata">The JSON data to be included in the log</param>
-        public Log(string type, string jsondata)
-            : this(type)
-        {
-            ExtraData = ConvertToDictionary(JsonObject.Parse(jsondata));
-        }
-
-        /// <summary>
-        /// Creates a new instance of Log
-        /// </summary>
         /// <param name="id">The log id</param>
         /// <param name="jsondata">The log timestamp</param>
         /// <param name="type">The type of log</param>
@@ -102,8 +94,18 @@ namespace Microsoft.AudienceInsight
             ExtraData = data;
         }
 
-        /// <inheritdoc /> 
-        public IDictionary<string, object> ExtraData { get; private set; }
+#if !WINDOWS_PHONE
+
+        /// <summary>
+        /// Creates a new instance of Log
+        /// </summary>
+        /// <param name="type">The type of log</param>
+        /// <param name="jsondata">The JSON data to be included in the log</param>
+        public Log(string type, string jsondata)
+            : this(type)
+        {
+            ExtraData = ConvertToDictionary(JsonObject.Parse(jsondata));
+        }
 
         static IDictionary<string, object> ConvertToDictionary(JsonObject jsonObject)
         {
@@ -133,6 +135,9 @@ namespace Microsoft.AudienceInsight
             }
             return result;
         }
+#endif
+        /// <inheritdoc /> 
+        public IDictionary<string, object> ExtraData { get; private set; }
 
         /// <inheritdoc /> 
         public Guid Id { get; set; }

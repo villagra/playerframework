@@ -99,13 +99,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2d385553-240d-4f31-a78f-72686bb2613b}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="BatchAgentFactory.cs" />
     <Compile Include="BatchingConfigFactory.cs" />
     <Compile Include="Config\BatchingConfig.cs" />

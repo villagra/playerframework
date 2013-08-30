@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 #else
 using Windows.Foundation;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Collections.Generic;
 #endif
 
 namespace Microsoft.AudienceInsight
@@ -94,17 +94,16 @@ namespace Microsoft.AudienceInsight
                     {
                         if (SerializationFormat == AudienceInsight.SerializationFormat.Xml)
                         {
+#if COMPRESSION
                             if (Compress)
-                            {
                                 batch.SerializeCompressedXml(stream);
-                            }
                             else
-                            {
+#endif
                                 batch.SerializeUncompressedXml(stream);
-                            }
                         }
                         else if (SerializationFormat == AudienceInsight.SerializationFormat.Json)
                         {
+#if COMPRESSION                            
                             if (Compress)
                             {
                                 batch.SerializeCompressedJson(stream);
@@ -112,9 +111,12 @@ namespace Microsoft.AudienceInsight
                             }
                             else
                             {
+#endif
                                 batch.SerializeUncompressedJson(stream);
                                 headers.Add("Content-Type", "application/json; charset=utf-8");
+#if COMPRESSION
                             }
+#endif
                         }
                         else if (SerializationFormat == AudienceInsight.SerializationFormat.HttpQueryString)
                         {

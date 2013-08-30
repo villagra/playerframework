@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+#if COMPRESSION
+using System.IO.Compression;
+#endif
 using System.Linq;
+using System.Text;
 using System.Xml;
-using Windows.Data.Json;
 
 namespace Microsoft.AudienceInsight
 {
@@ -37,22 +40,22 @@ namespace Microsoft.AudienceInsight
         }
 
         /// <summary>
-        /// Gets the JsonValue representation of the provided object
+        /// Gets the json string representation of the provided object
         /// </summary>
-        /// <param name="value">The object to get the JsonValue representation of</param>
-        /// <returns>The JsonValue representation of the provided object</returns>
-        internal static JsonValue GetJsonValue(object value)
+        /// <param name="value">The object to get the json string representation of</param>
+        /// <returns>The json string representation of the provided object</returns>
+        internal static string GetJsonValue(object value)
         {
             if (value.GetType() == typeof(bool))
-                return JsonValue.CreateNumberValue(Convert.ToInt32((bool)value));
+                return (bool)value ? "1" : "0";
             else if (value.GetType() == typeof(TimeSpan))
-                return JsonValue.CreateStringValue(((TimeSpan)value).Ticks.ToString());
+                return ((TimeSpan)value).Ticks.ToString();
             else if (value.GetType() == typeof(DateTimeOffset))
-                return JsonValue.CreateStringValue(((DateTimeOffset)value).Ticks.ToString());
+                return ((DateTimeOffset)value).Ticks.ToString();
             else if (value.GetType() == typeof(Uri))
-                return JsonValue.CreateStringValue(((Uri)value).OriginalString);
+                return "\"" + ((Uri)value).OriginalString + "\"";
             else
-                return JsonValue.CreateStringValue(Convert.ToString(value, CultureInfo.InvariantCulture));
+                return "\"" + Convert.ToString(value, CultureInfo.InvariantCulture) + "\"";
         }
 
         /// <summary>
@@ -89,39 +92,37 @@ namespace Microsoft.AudienceInsight
         }
 
         /// <summary>
-        /// Creates a JsonObject from an ILog
-        /// </summary>
-        /// <param name="log">The log to create the JsonObject from</param>
-        /// <returns>A JsonObject representing the ILog</returns>
-        internal static JsonObject CreateJsonObject(ILog log)
-        {
-            JsonObject jsonObject = new JsonObject();
-
-            // write all named value pairs
-            foreach (var nvp in log.GetData().Where(nvp => nvp.Value != null))
-            {
-                jsonObject[nvp.Key] = GetJsonValue(nvp.Value);
-            }
-
-            return jsonObject;
-        }
-
-        /// <summary>
         /// Creates a JsonObject from an IBatch, including all child logs.
         /// </summary>
         /// <param name="batch">The IBatch to create the JsonOBject from</param>
         /// <returns>A JsonObject representing the provided IBatch</returns>
-        internal static JsonObject ToJsonObject(this IBatch batch)
+        internal static string SerializeToJson(this IBatch batch)
         {
-            JsonObject batchJson = CreateJsonObject(batch);
-            JsonArray logsJson = new JsonArray();
+            List<string> batchProperties = new List<string>();
+
+            foreach (var nvp in batch.GetData().Where(nvp => nvp.Value != null))
+            {
+                batchProperties.Add(nvp.Key + ":" + GetJsonValue(nvp.Value));
+            }
+
+            List<string> logStrings = new List<string>();
 
             foreach (var log in batch.Logs)
-                logsJson.Add(CreateJsonObject(log));
+            {
+                var logProperties = log.GetData()
+                    .Where(nvp => nvp.Value != null)
+                    .Select(nvp => nvp.Key + ":" + GetJsonValue(nvp.Value));
 
-            batchJson[LogsArrayName] = logsJson;
+                logStrings.Add("{" + string.Join(",", logProperties) + "}");
+            }
 
-            return batchJson;
+            var logsArrayString = "[" + string.Join(",", logStrings) +"]";
+
+            batchProperties.Add(LogsArrayName + ":" + logsArrayString);
+
+            var batchString = "{" + string.Join(",", batchProperties) + "}";
+
+            return batchString;
         }
 
         /// <summary>
@@ -155,58 +156,58 @@ namespace Microsoft.AudienceInsight
 
 
         // PoC
-        internal static JsonObject HttpQueryStringToJsonObject(this string httpQueryString)
-        {
-            // Assumes property names with no index belong to parent batch
+        //internal static JsonObject HttpQueryStringToJsonObject(this string httpQueryString)
+        //{
+        //    // Assumes property names with no index belong to parent batch
 
-            JsonObject batch = new JsonObject();
+        //    JsonObject batch = new JsonObject();
 
-            // use a dictionary here in case log data in the query string is not in order
-            // allows log 3 to be created before log 1 (rather than using a List, etc)
-            Dictionary<int, JsonObject> logs = new Dictionary<int, JsonObject>();
+        //    // use a dictionary here in case log data in the query string is not in order
+        //    // allows log 3 to be created before log 1 (rather than using a List, etc)
+        //    Dictionary<int, JsonObject> logs = new Dictionary<int, JsonObject>();
 
-            string[] keyValuePairs = httpQueryString.Split('&');
+        //    string[] keyValuePairs = httpQueryString.Split('&');
 
-            foreach (var kvp in keyValuePairs)
-            {
-                string[] keyAndValue = kvp.Split('=');
+        //    foreach (var kvp in keyValuePairs)
+        //    {
+        //        string[] keyAndValue = kvp.Split('=');
 
-                var key = keyAndValue[0];
-                var escapedValueString = keyAndValue[1];
+        //        var key = keyAndValue[0];
+        //        var escapedValueString = keyAndValue[1];
 
-                var unescapedValueString = Uri.UnescapeDataString(escapedValueString);
+        //        var unescapedValueString = Uri.UnescapeDataString(escapedValueString);
 
-                if (key.StartsWith("logs["))
-                {
-                    // add property to log
-                    int indexerMiddle = key.IndexOf("][");
+        //        if (key.StartsWith("logs["))
+        //        {
+        //            // add property to log
+        //            int indexerMiddle = key.IndexOf("][");
                     
-                    string logNumberString = key.Substring("logs[".Length, indexerMiddle - "logs[".Length);
-                    int logNumber = int.Parse(logNumberString);
+        //            string logNumberString = key.Substring("logs[".Length, indexerMiddle - "logs[".Length);
+        //            int logNumber = int.Parse(logNumberString);
 
-                    string logPropertyName = key.Substring(indexerMiddle + 2, key.Length - (indexerMiddle + 2) - 1);
+        //            string logPropertyName = key.Substring(indexerMiddle + 2, key.Length - (indexerMiddle + 2) - 1);
 
-                    if (!logs.ContainsKey(logNumber))
-                        logs.Add(logNumber, new JsonObject());
+        //            if (!logs.ContainsKey(logNumber))
+        //                logs.Add(logNumber, new JsonObject());
 
-                    logs[logNumber].Add(logPropertyName, JsonValue.CreateStringValue(unescapedValueString));
-                }
-                else
-                {
-                    // add property to batch
-                    batch.Add(key, JsonValue.CreateStringValue(escapedValueString));
-                }
-            }
+        //            logs[logNumber].Add(logPropertyName, JsonValue.CreateStringValue(unescapedValueString));
+        //        }
+        //        else
+        //        {
+        //            // add property to batch
+        //            batch.Add(key, JsonValue.CreateStringValue(escapedValueString));
+        //        }
+        //    }
 
-            JsonArray logsJson = new JsonArray();
+        //    JsonArray logsJson = new JsonArray();
 
-            foreach (var key in logs.Keys)
-                logsJson.Add(logs[key]);
+        //    foreach (var key in logs.Keys)
+        //        logsJson.Add(logs[key]);
 
-            batch.Add("logs", logsJson);
+        //    batch.Add("logs", logsJson);
 
-            return batch;
-        }
+        //    return batch;
+        //}
 
         /// <summary>
         /// Serializes an IBatch to a XML
@@ -218,7 +219,7 @@ namespace Microsoft.AudienceInsight
             XmlWriter xmlWriter = XmlWriter.Create(stream);
             batch.Serialize(xmlWriter);
         }
-
+#if COMPRESSION
         /// <summary>
         /// Serializes an IBatch to a XML and compresses it
         /// </summary>
@@ -226,13 +227,13 @@ namespace Microsoft.AudienceInsight
         /// <param name="stream">The stream to write the serialized and compressed data to</param>
         internal static void SerializeCompressedXml(this IBatch batch, Stream stream)
         {
-            using (var zipStream = new Ionic.Zlib.ZlibStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
+            using (var gzipStream = new GZipStream(stream, CompressionMode.Compress, true))
             {
-                batch.SerializeUncompressedXml(zipStream);
-                zipStream.Flush();
+                batch.SerializeUncompressedXml(gzipStream);
+                gzipStream.Flush();
             }
         }
-
+#endif
         /// <summary>
         /// Serializes an IBatch to a JSON
         /// </summary>
@@ -240,9 +241,8 @@ namespace Microsoft.AudienceInsight
         /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeUncompressedJson(this IBatch batch, Stream stream)
         {
-            JsonObject batchJson = batch.ToJsonObject();
             TextWriter textWriter = new StreamWriter(stream);
-            textWriter.Write(batchJson.Stringify());
+            textWriter.Write(batch.SerializeToJson());
             textWriter.Flush();
 
 
@@ -252,7 +252,7 @@ namespace Microsoft.AudienceInsight
             //var jsonObject = str.HttpQueryStringToJsonObject();
             //var final = jsonObject.Stringify();
         }
-
+#if COMPRESSION
         /// <summary>
         /// Serializes an IBatch to a JSON and compresses it
         /// </summary>
@@ -260,16 +260,15 @@ namespace Microsoft.AudienceInsight
         /// <param name="stream">The stream to write the serialized data to</param>
         internal static void SerializeCompressedJson(this IBatch batch, Stream stream)
         {
-            using (var gzipStream = new Ionic.Zlib.GZipStream(stream, Ionic.Zlib.CompressionMode.Compress, true))
+            using (var gzipStream = new GZipStream(stream, CompressionMode.Compress, true))
             {
-                JsonObject batchJson = batch.ToJsonObject();
                 TextWriter textWriter = new StreamWriter(gzipStream);
-                textWriter.Write(batchJson.Stringify());
+                textWriter.Write(batch.SerializeToJson());
                 textWriter.Flush();
                 gzipStream.Flush();
             }
         }
-
+#endif
         /// <summary>
         /// Serializes an IBatch to an HTTP query string and writes it to the provided stream
         /// </summary>
