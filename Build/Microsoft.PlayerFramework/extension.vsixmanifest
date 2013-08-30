@@ -33,6 +33,7 @@
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.WP8.Advertising.vsix" DisplayName="Microsoft Player Advertising Plugin for WP8" Id="MMP.PF.WP8.Advertising.SDK.VSIX.ad25c61c-e27c-4f8c-acbe-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.WP8.Analytics.vsix" DisplayName="Microsoft Player Analytics Plugin for WP8" Id="MMP.PF.WP8.Analytics.SDK.VSIX.ad25c61c-e222-4f8c-acbe-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.WP8.Dash.vsix" DisplayName="Microsoft Player Dash Plugin for WP8" Id="MMP.PF.WP8.Dash.SDK.VSIX.ad25c61c-e222-4f8c-acbe-b349c8a68ccc" />
+    <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.AudienceInsight.WP8.vsix" DisplayName="Microsoft Audience Insight Client SDK for WP8" Id="Microsoft.AudienceInsight.SDK.6D5579B9-1048-4D82-A50C-19AFEB15A0E6" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.WP8.vsix" DisplayName="Microsoft Player Framework for WP8" Id="MMP.PF.WP8.Core.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" />
   </Dependencies>
 </PackageManifest>

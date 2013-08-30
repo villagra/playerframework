@@ -152,10 +152,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.AudienceInsight\Microsoft.WP8.AudienceInsight.csproj">
-      <Project>{551B3879-D971-45FB-B0CF-246533FF3084}</Project>
-      <Name>Microsoft.WP8.AudienceInsight</Name>
-    </ProjectReference>
+    <SDKReference Include="Microsoft.AudienceInsight, Version=1.0.0.0">
+      <Name>Microsoft Audience Insight Client SDK</Name>
+    </SDKReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
