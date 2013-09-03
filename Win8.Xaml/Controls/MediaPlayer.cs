@@ -808,6 +808,11 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public event RoutedPropertyChangedEventHandler<Stretch> StretchChanged;
 
+        /// <summary>
+        /// Occurs when the PosterSource property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<ImageSource> PosterSourceChanged;
+
 #else
         /// <summary>
         /// Occurs when the seek point of a requested seek operation is ready for playback.
@@ -3477,7 +3482,12 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the PosterSource dependency property.
         /// </summary>
-        public static readonly DependencyProperty PosterSourceProperty = RegisterDependencyProperty<ImageSource>("PosterSource");
+        public static readonly DependencyProperty PosterSourceProperty = RegisterDependencyProperty<ImageSource>("PosterSource", (t, o, n) => t.OnPosterSourceChanged(o, n));
+
+        void OnPosterSourceChanged(ImageSource oldValue, ImageSource newValue)
+        {
+            if (PosterSourceChanged != null) PosterSourceChanged(this, new RoutedPropertyChangedEventArgs<ImageSource>(oldValue, newValue));
+        }
 
         /// <summary>
         /// Gets or sets an ImageSource to be displayed before the content is loaded. Only shows until MediaOpened fires and is hidden when the first frame of the video is available.
