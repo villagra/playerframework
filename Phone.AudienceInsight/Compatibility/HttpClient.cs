@@ -40,14 +40,10 @@ namespace System.Net.Http
                 cts.CancelAfter(Timeout);
                 var request = WebRequest.CreateHttp(address);
                 request.Method = "POST";
-                foreach (var header in DefaultRequestHeaders)
-                {
-                    request.Headers[header.Key] = header.Value;
-                }
-                foreach (var header in content.Headers)
-                {
-                    request.Headers[header.Key] = header.Value;
-                }
+
+                SetHeaders(request, DefaultRequestHeaders);
+                SetHeaders(request, content.Headers);
+
                 request.AllowReadStreamBuffering = true;
                 using (var stream = await Task.Factory.FromAsync<Stream>(request.BeginGetRequestStream, request.EndGetRequestStream, null))
                 {
@@ -55,6 +51,24 @@ namespace System.Net.Http
                 }
 
                 return new HttpResponseMessage((HttpWebResponse)await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null));
+            }
+        }
+
+        void SetHeaders(HttpWebRequest request, IDictionary<string, string> headers)
+        {
+            foreach (var header in headers)
+            {
+                switch (header.Key)
+                {
+                    case "Accept":
+                        request.Accept = header.Value; break;
+                    case "Content-Type":
+                        request.ContentType = header.Value; break;
+                    case "User-Agent":
+                        request.UserAgent = header.Value; break;
+                    default:
+                        request.Headers[header.Key] = header.Value; break;
+                }
             }
         }
 
