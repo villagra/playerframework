@@ -140,6 +140,9 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="AudienceInsightConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -180,10 +183,20 @@
       <Project>{ECA38FD7-D3A9-4682-BD26-D7C96D98524D}</Project>
       <Name>Microsoft.WP8.VideoAnalytics.AudienceInsight</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Phone.VideoAnalytics.VideoAdvertising\Microsoft.WP8.VideoAnalytics.VideoAdvertising\Microsoft.WP8.VideoAnalytics.VideoAdvertising.csproj">
+      <Project>{4BA5FC44-B99F-4977-A355-D158B9396B04}</Project>
+      <Name>Microsoft.WP8.VideoAnalytics.VideoAdvertising</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP8.VideoAnalytics.csproj">
       <Project>{C9E36E2B-62F5-41AD-883A-597B6795D702}</Project>
       <Name>Microsoft.WP8.VideoAnalytics</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming, Version=1.1.837.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

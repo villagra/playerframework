@@ -289,9 +289,7 @@ namespace Microsoft.AudienceInsight
         public static IDictionary<string, object> CreateBasicLogData(this ILog log)
         {
             var result = new Dictionary<string, object>();
-            result.Add("TimeStamp", log.TimeStamp);
-            result.Add("Type", log.Type);
-            result.Add("LogId", log.Id);
+            
             if (log.ExtraData != null)
             {
                 foreach (var item in log.ExtraData)
@@ -299,6 +297,16 @@ namespace Microsoft.AudienceInsight
                     result.Add(item.Key, item.Value);
                 }
             }
+
+            if (!result.Keys.Contains("TimeStamp"))
+                result.Add("TimeStamp", log.TimeStamp);
+
+            if (!result.Keys.Contains("Type"))
+                result.Add("Type", log.Type);
+
+            if (!result.Keys.Contains("LogId"))
+                result.Add("LogId", log.Id);
+
             return result;
         }
     }

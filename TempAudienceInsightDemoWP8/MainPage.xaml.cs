@@ -28,14 +28,14 @@ namespace TempAudienceInsightDemoWP8
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-
             var batchingConfig = Microsoft.AudienceInsight.BatchingConfigFactory.Load(new Uri("/TempAudienceInsightDemoWP8;component/AudienceInsightConfig.xml", UriKind.Relative));
 
             var dataClient = (RESTDataClient)batchingConfig.BatchAgent;
             dataClient.AdditionalHttpHeaders.Add("Authorization-Token", "{2842C782-562E-4250-A1A2-F66D55B5EA15}");
 
             batchingLogAgent = new Microsoft.AudienceInsight.BatchingLogAgent(batchingConfig);
+
+            base.OnNavigatedTo(e);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
