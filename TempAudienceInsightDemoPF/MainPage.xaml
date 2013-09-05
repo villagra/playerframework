@@ -13,7 +13,8 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest">
             <mmppf:MediaPlayer.Plugins>
-                <ads:AdSchedulerPlugin>
+                <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
+                <!--<ads:AdSchedulerPlugin>
                     <ads:AdSchedulerPlugin.Advertisements>
 
                         <ads:MidrollAdvertisement Time="00:00:05">
@@ -23,7 +24,7 @@
                         </ads:MidrollAdvertisement>
 
                     </ads:AdSchedulerPlugin.Advertisements>
-                </ads:AdSchedulerPlugin>
+                </ads:AdSchedulerPlugin>-->
                 <ads:AdHandlerPlugin/>
                 <adaptive:AdaptivePlugin/>
             </mmppf:MediaPlayer.Plugins>
