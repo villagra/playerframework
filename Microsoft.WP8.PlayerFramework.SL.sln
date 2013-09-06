@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempAudienceInsightDemoPFWP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.VideoAnalytics.AudienceInsight", "Phone.VideoAnalytics.AudienceInsight\Microsoft.WP8.VideoAnalytics.AudienceInsight.csproj", "{ECA38FD7-D3A9-4682-BD26-D7C96D98524D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.VideoAnalytics.VideoAdvertising", "Phone.VideoAnalytics.VideoAdvertising\Microsoft.WP8.VideoAnalytics.VideoAdvertising\Microsoft.WP8.VideoAnalytics.VideoAdvertising.csproj", "{4BA5FC44-B99F-4977-A355-D158B9396B04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.VideoAnalytics.VideoAdvertising", "Phone.VideoAnalytics.VideoAdvertising\Microsoft.WP8.VideoAnalytics.VideoAdvertising.csproj", "{4BA5FC44-B99F-4977-A355-D158B9396B04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

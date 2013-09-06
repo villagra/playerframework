@@ -83,17 +83,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Win8.VideoAnalytics.VideoAdvertising\AdvertisingLoggingSource.cs">
+    <Compile Include="..\Win8.VideoAnalytics.VideoAdvertising\AdvertisingLoggingSource.cs">
       <Link>AdvertisingLoggingSource.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Phone.VideoAdvertising\Microsoft.WP8.VideoAdvertising.csproj">
+    <ProjectReference Include="..\Phone.VideoAdvertising\Microsoft.WP8.VideoAdvertising.csproj">
       <Project>{E9964EA2-4C37-4C00-9B59-278D5F4608BB}</Project>
       <Name>Microsoft.WP8.VideoAdvertising</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Phone.VideoAnalytics\Microsoft.WP8.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP8.VideoAnalytics.csproj">
       <Project>{C9E36E2B-62F5-41AD-883A-597B6795D702}</Project>
       <Name>Microsoft.WP8.VideoAnalytics</Name>
     </ProjectReference>
