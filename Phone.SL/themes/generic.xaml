@@ -670,6 +670,10 @@
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
+                            <VisualStateGroup x:Name="ScrubbingStates">
+                                <VisualState x:Name="NotScrubbing" />
+                                <VisualState x:Name="Scrubbing" />
+                            </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
                         <Grid x:Name="HorizontalTemplate">
