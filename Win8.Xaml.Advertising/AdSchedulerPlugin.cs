@@ -396,10 +396,23 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
 #if WINDOWS_PHONE7
-        async void MediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
+        async protected virtual void MediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
 #else
         async void MediaPlayer_MediaStarting(object sender, MediaPlayerDeferrableEventArgs e)
 #endif
+        {
+            var deferral = e.DeferrableOperation.GetDeferral();
+            try
+            {
+                await PlayStartupAds(deferral.CancellationToken);
+            }
+            finally
+            {
+                deferral.Complete();
+            }
+        }
+
+        internal async Task PlayStartupAds(CancellationToken c)
         {
             if (MediaPlayer.AllowMediaStartingDeferrals)
             {
@@ -424,20 +437,15 @@ namespace Microsoft.PlayerFramework.Advertising
 
                 if (startupAds.Any())
                 {
-                    var deferral = e.DeferrableOperation.GetDeferral();
                     try
                     {
-                        using (var adCts = CancellationTokenSource.CreateLinkedTokenSource(deferral.CancellationToken, cts.Token))
+                        using (var adCts = CancellationTokenSource.CreateLinkedTokenSource(c, cts.Token))
                         {
                             HandledAds.AddRange(startupAds);
                             await PlayAds(startupAds, adCts.Token);
                         }
                     }
                     catch { /* ignore */ }
-                    finally
-                    {
-                        deferral.Complete();
-                    }
                 }
             }
         }

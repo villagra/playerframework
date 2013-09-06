@@ -113,7 +113,7 @@ namespace Microsoft.PlayerFramework.Advertising
         MediaState playerState;
 
         /// <inheritdoc /> 
-        protected override async void SetAdvertisingState(AdState adState)
+        protected override void SetAdvertisingState(AdState adState)
 #else
         /// <inheritdoc /> 
         protected override void SetAdvertisingState(AdState adState)
