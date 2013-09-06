@@ -68,13 +68,17 @@ namespace Microsoft.PlayerFramework.Advertising
 
         private void WirePlayer()
         {
+#if !WINDOWS_PHONE7
             MediaPlayer.MediaLoading += mediaPlayer_MediaLoading;
+#endif
             MediaPlayer.MediaClosed += MediaPlayer_MediaClosed;
         }
 
         private void UnwirePlayer()
         {
+#if !WINDOWS_PHONE7
             MediaPlayer.MediaLoading -= mediaPlayer_MediaLoading;
+#endif
             MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
         }
 
@@ -139,7 +143,11 @@ namespace Microsoft.PlayerFramework.Advertising
             }
         }
 
-        private async void mediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
+#if WINDOWS_PHONE7
+        protected override async void MediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
+#else
+        async void mediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
+#endif
         {
             if (IsEnabled)
             {
@@ -149,6 +157,9 @@ namespace Microsoft.PlayerFramework.Advertising
                     try
                     {
                         await LoadAds(Source, deferral.CancellationToken);
+#if WINDOWS_PHONE7
+                        await base.PlayStartupAds(deferral.CancellationToken);
+#endif
                     }
                     catch { /* ignore */ }
                     finally

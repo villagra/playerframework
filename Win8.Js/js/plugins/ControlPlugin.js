@@ -47,6 +47,13 @@
             this._bindEvent("interactivestatechange", this.mediaPlayer, this._onMediaPlayerInteractiveStateChange);
             this._bindEvent("transitionend", this._controlPanelElement, this._onControlPanelTransitionEnd);
 
+            if (this.mediaPlayer.isInteractive) {
+                this.show();
+                this._controlPanelElement.winControl.hidden = false;
+            } else {
+                this._controlPanelElement.winControl.hidden = true;
+            }
+
             return true;
         },
 

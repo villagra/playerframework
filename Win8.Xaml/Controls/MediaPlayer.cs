@@ -247,10 +247,17 @@ namespace Microsoft.PlayerFramework
 #endif
         {
             // initialize any plugins already in the collection
-            foreach (var plugin in Plugins.ToList())
+            var pluginsToLoad = Plugins.ToList();
+            var loadedPlugins = new List<IPlugin>();
+            do
             {
-                plugin.Load();
-            }
+                foreach (var plugin in pluginsToLoad)
+                {
+                    plugin.Load();
+                    loadedPlugins.Add(plugin);
+                }
+                pluginsToLoad = Plugins.Except(loadedPlugins).ToList();
+            } while (pluginsToLoad.Any()); // do it again if more plugins were added
 
             // load more plugins via MEF
             if (AutoLoadPlugins)
@@ -568,7 +575,7 @@ namespace Microsoft.PlayerFramework
         public virtual void DecreasePlaybackRate()
         {
             var ascendingPlaybackRates = SupportedPlaybackRates.Where(r => r <= -1 || r >= 1).OrderByDescending(r => r);
-            var availableRates = ascendingPlaybackRates.SkipWhile(r => r >= PlaybackRate);
+            var availableRates = ascendingPlaybackRates.SkipWhile(r => r >= PlaybackRate).ToList();
             if (availableRates.Any())
             {
                 PlaybackRate = availableRates.First();
@@ -581,7 +588,7 @@ namespace Microsoft.PlayerFramework
         public virtual void IncreasePlaybackRate()
         {
             var ascendingPlaybackRates = SupportedPlaybackRates.Where(r => r <= -1 || r >= 1).OrderBy(r => r);
-            var availableRates = ascendingPlaybackRates.SkipWhile(r => r <= PlaybackRate);
+            var availableRates = ascendingPlaybackRates.SkipWhile(r => r <= PlaybackRate).ToList();
             if (availableRates.Any())
             {
                 PlaybackRate = availableRates.First();
@@ -593,7 +600,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public virtual void Replay()
         {
-            TimeSpan newPosition = Position.Subtract(ReplayOffset);
+            TimeSpan newPosition = VirtualPosition.Subtract(ReplayOffset);
             if (newPosition < StartTime)
             {
                 newPosition = StartTime;
@@ -686,7 +693,7 @@ namespace Microsoft.PlayerFramework
 
         internal void Seek(TimeSpan position, out bool cancel)
         {
-            var previousPosition = Position;
+            var previousPosition = VirtualPosition;
             var args = new SeekRoutedEventArgs(previousPosition, position);
             OnSeeked(args);
             cancel = args.Canceled;
@@ -702,7 +709,7 @@ namespace Microsoft.PlayerFramework
             if (SkippingAhead != null) SkippingAhead(this, skippingEventArgs);
             if (!skippingEventArgs.Canceled)
             {
-                var previousPosition = Position;
+                var previousPosition = VirtualPosition;
                 var args = new SeekRoutedEventArgs(previousPosition, position);
                 OnSeeked(args);
                 if (!args.Canceled)
@@ -718,7 +725,7 @@ namespace Microsoft.PlayerFramework
             if (SkippingBack != null) SkippingBack(this, skippingEventArgs);
             if (!skippingEventArgs.Canceled)
             {
-                var previousPosition = Position;
+                var previousPosition = VirtualPosition;
                 var args = new SeekRoutedEventArgs(previousPosition, position);
                 OnSeeked(args);
                 if (!args.Canceled)
@@ -741,20 +748,30 @@ namespace Microsoft.PlayerFramework
                     var t = SeekAsync(position);
                 }
             }
-            PlaybackRate = rateAfterScrub;
+#if !SILVERLIGHT
+            if (!IsAudioOnly)
+#endif
+            {
+                PlaybackRate = rateAfterScrub;
+            }
             SetValue(IsScrubbingProperty, false);
         }
 
         internal void StartScrub(TimeSpan position, out bool canceled)
         {
-            startScrubPosition = Position;
+            startScrubPosition = VirtualPosition;
             rateAfterScrub = PlaybackRate;
             var args = new ScrubRoutedEventArgs(position);
             OnScrubbingStarted(args);
             canceled = args.Canceled;
             if (!canceled)
             {
-                PlaybackRate = 0;
+#if !SILVERLIGHT
+                if (!IsAudioOnly)
+#endif
+                {
+                    PlaybackRate = 0;
+                }
                 SetValue(IsScrubbingProperty, true);
             }
         }
@@ -769,6 +786,10 @@ namespace Microsoft.PlayerFramework
                 if (SeekWhileScrubbing)
                 {
                     var t = SeekAsync(position);
+                }
+                else
+                {
+                    VirtualPosition = position;
                 }
             }
         }
@@ -786,6 +807,11 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the Stretch property changes.
         /// </summary>
         public event RoutedPropertyChangedEventHandler<Stretch> StretchChanged;
+
+        /// <summary>
+        /// Occurs when the PosterSource property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<ImageSource> PosterSourceChanged;
 
 #else
         /// <summary>
@@ -904,6 +930,16 @@ namespace Microsoft.PlayerFramework
 #else
         public event RoutedEventHandler VolumeChanged;
 #endif
+
+        /// <summary>
+        /// Occurs when the VirtualPosition property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<TimeSpan> VirtualPositionChanged;
+
+        /// <summary>
+        /// Occurs when the ThumbnailImageSource property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<ImageSource> ThumbnailImageSourceChanged;
 
         /// <summary>
         /// Occurs when the IsMuted property changes.
@@ -1034,6 +1070,16 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the InvokeAudioSelection method is called.
         /// </summary>
         public event RoutedEventHandler AudioSelectionInvoked;
+
+        /// <summary>
+        /// Occurs when the IsScrubbing property changes.
+        /// </summary>
+        public event RoutedEventHandler IsScrubbingChanged;
+
+        /// <summary>
+        /// Occurs when the IsThumbnailVisible property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<bool> IsThumbnailVisibleChanged;
 
         #endregion
 
@@ -2705,7 +2751,7 @@ namespace Microsoft.PlayerFramework
                            ? TimeSpan.FromSeconds(LivePositionBuffer.TotalSeconds + (LivePositionBuffer.TotalSeconds * .1))
                            : TimeSpan.FromSeconds(LivePositionBuffer.TotalSeconds - (LivePositionBuffer.TotalSeconds * .1));
 
-            IsPositionLive = LivePosition.HasValue && LivePosition.Value.Subtract(Position) < liveThreshold;
+            IsPositionLive = LivePosition.HasValue && LivePosition.Value.Subtract(VirtualPosition) < liveThreshold;
         }
 
         /// <summary>
@@ -2834,7 +2880,7 @@ namespace Microsoft.PlayerFramework
         void OnEndTimeChanged(TimeSpan oldValue, TimeSpan newValue)
         {
             SetValue(DurationProperty, newValue.Subtract(StartTime));
-            SetValue(TimeRemainingProperty, TimeSpanExtensions.Max(newValue.Subtract(Position), TimeSpan.Zero));
+            SetValue(TimeRemainingProperty, TimeSpanExtensions.Max(newValue.Subtract(VirtualPosition), TimeSpan.Zero));
             OnEndTimeChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(oldValue, newValue));
         }
 
@@ -3025,7 +3071,12 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the IsScrubbing dependency property.
         /// </summary>
-        public static readonly DependencyProperty IsScrubbingProperty = RegisterDependencyProperty<bool>("IsScrubbing", false);
+        public static readonly DependencyProperty IsScrubbingProperty = RegisterDependencyProperty<bool>("IsScrubbing", (t, o, n) => t.OnIsScrubbingChanged(n), false);
+
+        void OnIsScrubbingChanged(bool newValue)
+        {
+            if (IsScrubbingChanged != null) IsScrubbingChanged(this, new RoutedEventArgs());
+        }
 
         /// <summary>
         /// Gets whether or not the user is actively scrubbing.
@@ -3217,6 +3268,72 @@ namespace Microsoft.PlayerFramework
         }
         #endregion
 
+        #region IsThumbnailVisible
+        /// <summary>
+        /// Identifies the IsThumbnailVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsThumbnailVisibleProperty = RegisterDependencyProperty<bool>("IsThumbnailVisible", (t, o, n) => t.OnIsThumbnailVisibleChanged(o, n), false);
+
+        void OnIsThumbnailVisibleChanged(bool oldValue, bool newValue)
+        {
+            if (IsThumbnailVisibleChanged != null) IsThumbnailVisibleChanged(this, new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue));
+        }
+
+        /// <summary>
+        /// Gets or sets whether thumbnails should be displayed while scrubbing. Default is false.
+        /// </summary>
+        [Category(Categories.Advanced)]
+        public bool IsThumbnailVisible
+        {
+            get { return (bool)GetValue(IsThumbnailVisibleProperty); }
+            set { SetValue(IsThumbnailVisibleProperty, value); }
+        }
+        #endregion
+
+        #region VirtualPosition
+        /// <summary>
+        /// Identifies the VirtualPosition dependency property.
+        /// </summary>
+        public static readonly DependencyProperty VirtualPositionProperty = RegisterDependencyProperty<TimeSpan>("VirtualPosition", (t, o, n) => t.OnVirtualPositionChanged(o, n), TimeSpan.Zero);
+
+        void OnVirtualPositionChanged(TimeSpan oldValue, TimeSpan newValue)
+        {
+            OnVirtualPositionChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(oldValue, newValue));
+        }
+
+        /// <summary>
+        /// Gets the position that is being seeked to (even before the seek completes). If SeekWhileScrubbing = false, also returns the position being scrubbed to for visual feedback.
+        /// </summary>
+        [Category(Categories.Advanced)]
+        public TimeSpan VirtualPosition
+        {
+            get { return (TimeSpan)GetValue(VirtualPositionProperty); }
+            private set { SetValue(VirtualPositionProperty, value); }
+        }
+        #endregion
+
+        #region ThumbnailImageSource
+        /// <summary>
+        /// Identifies the ThumbnailImageSource dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThumbnailImageSourceProperty = RegisterDependencyProperty<ImageSource>("ThumbnailImageSource", (t, o, n) => t.OnThumbnailImageSourceChanged(o, n), null);
+
+        void OnThumbnailImageSourceChanged(ImageSource oldValue, ImageSource newValue)
+        {
+            if (ThumbnailImageSourceChanged != null) ThumbnailImageSourceChanged(this, new RoutedPropertyChangedEventArgs<ImageSource>(oldValue, newValue));
+        }
+
+        /// <summary>
+        /// Gets or sets the thumbnail to show (typically while scrubbing and/or in RW/FF mode).
+        /// </summary>
+        [Category(Categories.Advanced)]
+        public ImageSource ThumbnailImageSource
+        {
+            get { return GetValue(ThumbnailImageSourceProperty) as ImageSource; }
+            set { SetValue(ThumbnailImageSourceProperty, value); }
+        }
+        #endregion
+
 #if SILVERLIGHT
 
         #region BufferingTime
@@ -3365,7 +3482,12 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the PosterSource dependency property.
         /// </summary>
-        public static readonly DependencyProperty PosterSourceProperty = RegisterDependencyProperty<ImageSource>("PosterSource");
+        public static readonly DependencyProperty PosterSourceProperty = RegisterDependencyProperty<ImageSource>("PosterSource", (t, o, n) => t.OnPosterSourceChanged(o, n));
+
+        void OnPosterSourceChanged(ImageSource oldValue, ImageSource newValue)
+        {
+            if (PosterSourceChanged != null) PosterSourceChanged(this, new RoutedPropertyChangedEventArgs<ImageSource>(oldValue, newValue));
+        }
 
         /// <summary>
         /// Gets or sets an ImageSource to be displayed before the content is loaded. Only shows until MediaOpened fires and is hidden when the first frame of the video is available.
@@ -3579,7 +3701,14 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the IsAudioOnly dependency property.
         /// </summary>
-        public static readonly DependencyProperty IsAudioOnlyProperty = RegisterDependencyProperty<bool>("IsAudioOnly", DefaultIsAudioOnly);
+        public static readonly DependencyProperty IsAudioOnlyProperty = RegisterDependencyProperty<bool>("IsAudioOnly", (t, o, n) => t.OnIsAudioOnlyChanged(n, o), DefaultIsAudioOnly);
+
+        void OnIsAudioOnlyChanged(bool newValue, bool oldValue)
+        {
+            OnIsAudioOnlyUpdated(newValue);
+        }
+
+        partial void OnIsAudioOnlyUpdated(bool newValue);
 
         /// <summary>
         /// Gets or sets a value that describes whether the media source loaded in the media engine should seek to the start after reaching its end.
@@ -4038,11 +4167,40 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the PlaybackRate dependency property.
         /// </summary>
-        public static readonly DependencyProperty PlaybackRateProperty = RegisterDependencyProperty<double>("PlaybackRate", (t, o, n) => t.OnPlaybackRateChanged(n), DefaultRate);
+        public static readonly DependencyProperty PlaybackRateProperty = RegisterDependencyProperty<double>("PlaybackRate", (t, o, n) => t.OnPlaybackRateChanged(o, n), DefaultRate);
 
-        void OnPlaybackRateChanged(double newValue)
+        void OnPlaybackRateChanged(double oldValue, double newValue)
         {
-            _PlaybackRate = newValue;
+            if (!IsTrickPlayEnabled)
+            {
+                if (newValue == 1.0 || newValue == 0.0)
+                {
+                    if (oldValue != 1.0 || oldValue != 0.0)
+                    {
+                        Position = VirtualPosition; // we're coming out of simulated trick play, sync positions
+                    }
+                    _PlaybackRate = newValue;
+                }
+                else
+                {
+                    if (oldValue == 1.0 || oldValue == 0.0)
+                    {
+                        _PlaybackRate = 0;
+                    }
+                    else
+                    {
+#if SILVERLIGHT
+                        OnRateChanged(new RateChangedRoutedEventArgs(newValue));
+#else
+                        OnRateChanged(new RateChangedRoutedEventArgs());
+#endif
+                    }
+                }
+            }
+            else
+            {
+                _PlaybackRate = newValue;
+            }
         }
 
         /// <summary>
@@ -4054,6 +4212,23 @@ namespace Microsoft.PlayerFramework
         {
             get { return (double)GetValue(PlaybackRateProperty); }
             set { SetValue(PlaybackRateProperty, value); }
+        }
+        #endregion
+
+        #region IsTrickPlayEnabled
+        /// <summary>
+        /// Identifies the IsTrickPlayEnabled dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsTrickPlayEnabledProperty = RegisterDependencyProperty<bool>("IsTrickPlayEnabled", true);
+
+        /// <summary>
+        /// Gets or sets whether trickplay (set via PlaybackRate) should be simulated by seeking on a timer. Default is false.
+        /// </summary>
+        [Category(Categories.Advanced)]
+        public bool IsTrickPlayEnabled
+        {
+            get { return (bool)GetValue(IsTrickPlayEnabledProperty); }
+            set { SetValue(IsTrickPlayEnabledProperty, value); }
         }
         #endregion
 
@@ -4480,7 +4655,7 @@ namespace Microsoft.PlayerFramework
         {
             if (StretchChanged != null) StretchChanged(this, e);
         }
-        
+
         /// <summary>
         /// Performs an async Seek. This can also be accomplished by setting the Position property and waiting for SeekCompleted to fire.
         /// </summary>
@@ -4503,6 +4678,7 @@ namespace Microsoft.PlayerFramework
         /// <returns>The task to await on. If true, the seek was successful, if false, the seek was trumped by a new value while it was waiting for a pending seek to complete.</returns>
         public async Task<bool> SeekAsync(TimeSpan position)
         {
+            VirtualPosition = position;
             if (currentSeek != null)
             {
                 var thisOperation = new object();
@@ -4566,13 +4742,36 @@ namespace Microsoft.PlayerFramework
         protected virtual void OnUpdate()
         {
 #if !POSITIONBINDING
+            TimeSpan previousVirtualPosition = this.VirtualPosition;
             previousPosition = this.Position;
-            var newPosition = _Position;
-            if (newPosition != previousPosition)
+
+            TimeSpan newPosition;
+            if (!IsTrickPlayEnabled && PlaybackRate != 0.0 && PlaybackRate != 1.0)
             {
-                SetValueWithoutCallback(PositionProperty, newPosition);
+                newPosition = previousVirtualPosition + TimeSpan.FromSeconds(PlaybackRate * UpdateInterval.TotalSeconds);
+                newPosition = TimeSpanExtensions.Min(EndTime, TimeSpanExtensions.Max(StartTime, newPosition));
+            }
+            else
+            {
+                newPosition = _Position;
+                if (newPosition != previousPosition)
+                {
+                    SetValueWithoutCallback(PositionProperty, newPosition);
+                    OnPositionChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(previousPosition, newPosition));
+                }
+            }
+            
+            if (newPosition != previousVirtualPosition)
+            {
+                if (!IsScrubbing)
+                {
+                    SetValueWithoutCallback(VirtualPositionProperty, newPosition);
+                }
                 UpdateIsPositionLive();
-                OnPositionChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(previousPosition, newPosition));
+                if (!IsScrubbing)
+                {
+                    OnVirtualPositionChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(previousVirtualPosition, newPosition));
+                }
             }
             else
             {
@@ -4760,9 +4959,14 @@ namespace Microsoft.PlayerFramework
             if (RateChanged != null) RateChanged(this, e);
         }
 
-        void OnPositionChanged(RoutedPropertyChangedEventArgs<TimeSpan> e)
+        void OnVirtualPositionChanged(RoutedPropertyChangedEventArgs<TimeSpan> e)
         {
             SetValue(TimeRemainingProperty, TimeSpanExtensions.Max(EndTime.Subtract(e.NewValue), TimeSpan.Zero));
+            if (VirtualPositionChanged != null) VirtualPositionChanged(this, e);
+        }
+
+        void OnPositionChanged(RoutedPropertyChangedEventArgs<TimeSpan> e)
+        {
             if (PositionChanged != null) PositionChanged(this, e);
         }
 

@@ -597,5 +597,11 @@ namespace Microsoft.PlayerFramework.Advertising
                 }
             }
         }
+
+        /// <inheritdoc /> 
+        public override ImageSource ThumbnailImageSource
+        {
+            get { return null; }
+        }
     }
 }

@@ -67,7 +67,7 @@
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearLeft">
                                         <local:SkipPreviousButton x:Name="SkipPreviousButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipPreviousButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
-                                        <local:RewindButton x:Name="RewindButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
+                                        <local:RewindButton x:Name="RewindButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Padding="0,0,5,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
                                         <local:SkipBackButton x:Name="SkipBackButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipBackButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
                                     </StackPanel>
 
@@ -75,7 +75,7 @@
 
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearRight">
                                         <local:SkipAheadButton x:Name="SkipAheadButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipAheadButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
-                                        <local:FastForwardButton x:Name="FastForwardButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
+                                        <local:FastForwardButton x:Name="FastForwardButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Padding="5,0,0,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
                                         <local:SkipNextButton x:Name="SkipNextButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipNextButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource ItemBackgroundThemeBrush}"/>
                                     </StackPanel>
                                 </StackPanel>
@@ -89,7 +89,7 @@
                                         </Grid.ColumnDefinitions>
                                         <local:TimeElapsedButton x:Name="TimeElapsedButton" Grid.Column="0" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
                                         <!--<local:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>-->
-                                        <local:Timeline Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0">
+                                        <local:Timeline Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                             <local:Timeline.SliderStyle>
                                                 <Style TargetType="local:SeekableSlider">
                                                     <Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
@@ -115,6 +115,11 @@
                                                     </Setter>
                                                 </Style>
                                             </local:Timeline.SliderStyle>
+                                            <local:Timeline.ThumbnailContent>
+                                                <Border BorderThickness="2" BorderBrush="{StaticResource ButtonForegroundThemeBrush}" Width="164" Height="94" Background="{StaticResource ButtonPressedForegroundThemeBrush}" Margin="-76,-102,0,0">
+                                                    <local:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                </Border>
+                                            </local:Timeline.ThumbnailContent>
                                         </local:Timeline>
 
                                         <local:TimeRemainingButton x:Name="TimeRemainingButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>

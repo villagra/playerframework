@@ -32,7 +32,6 @@ namespace Microsoft.AdaptiveStreaming
         private SortedSet<BitrateLogEntry> bitrateLog = new SortedSet<BitrateLogEntry>();
         private CancellationTokenSource mainCancellationTokenSource;
         private CancellationTokenSource fragmentCancellationTokenSource;
-        private readonly object fragmentPollingLock = new object();
 
         public event EventHandler<DataReceivedEventArgs> DataReceived;
         public event EventHandler<DataErrorEventArgs> DataError;
@@ -616,49 +615,43 @@ namespace Microsoft.AdaptiveStreaming
                         }
                         if (newCaptionStream != oldCaptionStream)
                         {
-                            // run on background thread since this can block UI thread
-                            var selectionOperation = Task.Run(() => ActiveAdaptiveSource.Manifest.SelectStreamsAsync(selectedStreams).AsTask());
-                            if (IsIsmtEnabled)
-                            {
-                                selectionOperation.ContinueWith(t => PollIsmtAsync(newCaptionStream));
-                            }
+                            var noawait = UpdateCaptionStreamAsync(newCaptionStream, selectedStreams);
                         }
                     }
                 }
             }
         }
 
-        private async Task PollIsmtAsync(IManifestStream stream)
+        private async Task UpdateCaptionStreamAsync(IManifestStream captionStream, List<IManifestStream> selectedStreams)
         {
-            lock (fragmentPollingLock)
-            {
-                if (fragmentCancellationTokenSource != null) fragmentCancellationTokenSource.Cancel();
-            }
+            // cancel any active polling operations
+            if (fragmentCancellationTokenSource != null) fragmentCancellationTokenSource.Cancel();
 
-            if (stream != null)
+            // start downloading chunks
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(mainCancellationTokenSource.Token))
             {
-                // start downloading chunks
-                using (var cts = CancellationTokenSource.CreateLinkedTokenSource(mainCancellationTokenSource.Token))
+                fragmentCancellationTokenSource = cts;
+                var token = cts.Token;
+                try
                 {
-                    lock (fragmentPollingLock)
+                    // select the new streams
+                    await ActiveAdaptiveSource.Manifest.SelectStreamsAsync(selectedStreams);
+                    if (captionStream != null && IsIsmtEnabled)
                     {
-                        fragmentCancellationTokenSource = cts;
-                    }
-                    try
-                    {
-                        cts.Token.ThrowIfCancellationRequested();
+                        token.ThrowIfCancellationRequested();
 
-                        var captionTrack = stream.AvailableTracks.FirstOrDefault();
+                        var captionTrack = captionStream.AvailableTracks.FirstOrDefault();
                         if (captionTrack != null)
                         {
-                            await PollFragmentsAsync(stream, captionTrack, cts.Token);
+                            await PollFragmentsAsync(captionStream, captionTrack, token);
                         }
                     }
-                    catch (OperationCanceledException) { /* ignore */ }
-                    lock (fragmentPollingLock)
-                    {
-                        fragmentCancellationTokenSource = null;
-                    }
+                }
+                catch (OperationCanceledException) { /* ignore */ }
+                finally
+                {
+                    // null the cts if it is the same one we started with.
+                    if (fragmentCancellationTokenSource == cts) fragmentCancellationTokenSource = null;
                 }
             }
         }

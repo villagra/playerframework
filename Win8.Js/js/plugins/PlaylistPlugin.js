@@ -219,7 +219,7 @@
         },
 
         _onInteractiveViewModelSkipBack: function (e) {
-            if (e.detail.time === 0 && (!this.skipBackThreshold || this.mediaPlayer.currentTime < this.skipBackThreshold) && this.canGoToPreviousPlaylistItem()) {
+            if (e.detail.time === 0 && (!this.skipBackThreshold || this.mediaPlayer.virtualTime < this.skipBackThreshold) && this.canGoToPreviousPlaylistItem()) {
                 this.goToPreviousPlaylistItem();
                 e.preventDefault();
             }
@@ -233,7 +233,7 @@
         },
 
         _onInteractiveViewModelSkipPrevious: function (e) {
-            if ((!this.skipBackThreshold || this.mediaPlayer.currentTime < this.skipBackThreshold) && this.canGoToPreviousPlaylistItem()) {
+            if ((!this.skipBackThreshold || this.mediaPlayer.virtualTime < this.skipBackThreshold) && this.canGoToPreviousPlaylistItem()) {
                 this.goToPreviousPlaylistItem();
                 e.preventDefault();
             }

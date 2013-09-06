@@ -353,7 +353,7 @@ namespace Microsoft.PlayerFramework
                 this._Volume = value;
             }
         }
-        
+
         /// <inheritdoc /> 
         public abstract IEnumerable<Caption> AvailableCaptions { get; }
 
@@ -627,12 +627,14 @@ namespace Microsoft.PlayerFramework
         /// Gets or sets the IsFullScreen flag
         /// </summary>
         protected abstract bool _IsFullScreen { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the IsSlowMotion flag
         /// </summary>
         protected abstract bool _IsSlowMotion { get; set; }
 
+        /// <inheritdoc /> 
+        public abstract ImageSource ThumbnailImageSource { get; }
         /// <inheritdoc /> 
         public abstract double BufferingProgress { get; }
         /// <inheritdoc /> 

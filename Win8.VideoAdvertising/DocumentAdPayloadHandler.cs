@@ -178,37 +178,39 @@ namespace Microsoft.VideoAdvertising
 
             // secondary task will hold a task that finishes when the entire ad document finishes.
             var secondaryTask = TaskHelpers.Create<Task>(async () =>
+            {
+                LoadException loadException = null; // keep around to re-throw in case we can't recover
+
+                using (var timeoutTokenSource = new CancellationTokenSource())
                 {
-                    LoadException loadException = null; // keep around to re-throw in case we can't recover
-
-                    using (var timeoutTokenSource = new CancellationTokenSource())
+                    if (startTimeout.HasValue)
                     {
-                        if (startTimeout.HasValue)
-                        {
-                            timeoutTokenSource.CancelAfter(startTimeout.Value);
-                        }
-                        var timeoutToken = timeoutTokenSource.Token;
-                        using (var mainCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutToken))
-                        {
-                            var mainCancellationToken = mainCancellationTokenSource.Token;
-                            // NOTE: mainCancellationToken is reset to just the initial token once we have successfully started an ad.
+                        timeoutTokenSource.CancelAfter(startTimeout.Value);
+                    }
+                    var timeoutToken = timeoutTokenSource.Token;
+                    using (var mainCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutToken))
+                    {
+                        var mainCancellationToken = mainCancellationTokenSource.Token;
+                        // NOTE: mainCancellationToken is reset to just the initial token once we have successfully started an ad.
 
-                            progress.Report(AdStatus.Opening);
+                        progress.Report(AdStatus.Opening);
+                        try
+                        {
                             try
                             {
-                                try
-                                {
-                                    bool podPlayed = false; // throw an exception if no ad ever played
-                                    // a task to hold the currently playing ad
-                                    Task activeAdTask = null;
+                                bool podPlayed = false; // throw an exception if no ad ever played
+                                // a task to hold the currently playing ad
+                                Task activeAdTask = null;
 
-                                    foreach (var adPod in adDocument.AdPods)
+                                foreach (var adPod in adDocument.AdPods)
+                                {
+                                    try
                                     {
-                                        try
+                                        bool adPlayed = false; // throw an exception if no ad ever played
+                                        // model expects ads to be in the correct order.
+                                        foreach (var defaultAd in adPod.Ads)
                                         {
-                                            bool adPlayed = false; // throw an exception if no ad ever played
-                                            // model expects ads to be in the correct order.
-                                            foreach (var defaultAd in adPod.Ads)
+                                            try
                                             {
                                                 var adCandidates = new List<Ad>();
                                                 adCandidates.Add(defaultAd);
@@ -279,59 +281,64 @@ namespace Microsoft.VideoAdvertising
                                                     } // **** end try ad ****
                                                     catch (LoadException)
                                                     {
-                                                        if (ad == adCandidates.Last()) throw; // ignore if it's not the last ad in order ot go to next fallback ad 
+                                                        if (ad == adCandidates.Last()) throw; // ignore if it's not the last ad in order to go to next fallback ad 
                                                     }
                                                 }
                                             }
-                                            if (!adPlayed) throw new LoadException(new Exception("No ads found."));
-                                            podPlayed = true;
-                                            break;  // we should only play one adPod per the VAST spec
+                                            catch (LoadException)
+                                            {
+                                                if (defaultAd == adPod.Ads.Last()) throw; // ignore if it's not the last ad in the pod
+                                            }
                                         }
-                                        catch (LoadException ex)
-                                        {
-                                            // keep around to re-throw in case we can't successfully load an ad
-                                            loadException = ex;
-                                            // move to the next adpod, ignore for now. We'll log this later if it's relevant
-                                        }
+                                        if (!adPlayed) throw new LoadException(new Exception("No ads found."));
+                                        podPlayed = true;
+                                        break;  // we should only play one adPod per the VAST spec
                                     }
-                                    // always wait for the playing ad to complete before returning
-                                    if (activeAdTask.IsRunning())
+                                    catch (LoadException ex)
                                     {
-                                        await activeAdTask;
-                                    }
-                                    if (!podPlayed)
-                                    {
-                                        VpaidController.TrackErrorUrl(adDocument.Error, Microsoft.VideoAdvertising.VpaidController.Error_NoAd);
-                                        throw new LoadException(new Exception("No ads found."));
+                                        // keep around to re-throw in case we can't successfully load an ad
+                                        loadException = ex;
+                                        // move to the next adpod, ignore for now. We'll log this later if it's relevant
                                     }
                                 }
-                                catch (OperationCanceledException)
+                                // always wait for the playing ad to complete before returning
+                                if (activeAdTask.IsRunning())
                                 {
-                                    if (timeoutToken.IsCancellationRequested) throw new TimeoutException(); else throw;
+                                    await activeAdTask;
                                 }
-                                catch (Exception ex)
+                                if (!podPlayed)
                                 {
-                                    throw new PlayException(ex);
+                                    VpaidController.TrackErrorUrl(adDocument.Error, Microsoft.VideoAdvertising.VpaidController.Error_NoAd);
+                                    throw new LoadException(new Exception("No ads found."));
                                 }
-                                if (loadException != null)
-                                {
-                                    throw loadException;
-                                }
+                            }
+                            catch (OperationCanceledException)
+                            {
+                                if (timeoutToken.IsCancellationRequested) throw new TimeoutException(); else throw;
                             }
                             catch (Exception ex)
                             {
-                                LogError(adSource, ex);
-                                primaryTask.TrySetException(ex);
-                                throw;
+                                throw new PlayException(ex);
                             }
-                            finally
+                            if (loadException != null)
                             {
-                                progress.Report(AdStatus.Unloaded);
+                                throw loadException;
                             }
-                            primaryTask.TrySetResult(null);
                         }
+                        catch (Exception ex)
+                        {
+                            LogError(adSource, ex);
+                            primaryTask.TrySetException(ex);
+                            throw;
+                        }
+                        finally
+                        {
+                            progress.Report(AdStatus.Unloaded);
+                        }
+                        primaryTask.TrySetResult(null);
                     }
-                });
+                }
+            });
 
             return new PlayAdAsyncResult(primaryTask.Task, secondaryTask);
         }
@@ -686,7 +693,7 @@ namespace Microsoft.VideoAdvertising
             // get the media with the closest aspect ratio, then bitrate, then dimensions
             return mediaFiles
                 .OrderByDescending(m => m.Ranking)
-                .OrderBy(IsStreaming)
+                .ThenBy(IsStreaming)
                 .ThenBy(m => CompareAspectRatio(m, Player.Dimensions))
                 .ThenBy(m => CompareBitrate(m, targetBitrateKbps))
                 .ThenBy(m => CompareSize(m, Player.Dimensions));

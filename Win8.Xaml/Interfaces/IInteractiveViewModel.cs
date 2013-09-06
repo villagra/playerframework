@@ -238,6 +238,11 @@ namespace Microsoft.PlayerFramework
         /// Gets the enabled state of the go live feature.
         /// </summary>
         bool IsGoLiveEnabled { get; }
+        
+        /// <summary>
+        /// Gets the thumbnail image to display
+        /// </summary>
+        ImageSource ThumbnailImageSource { get; }
 
         /// <summary>
         /// Raised when the IsPlayResumeEnabled property changes.

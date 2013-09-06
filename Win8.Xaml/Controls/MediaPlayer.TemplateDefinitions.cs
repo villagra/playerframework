@@ -42,6 +42,8 @@ namespace Microsoft.PlayerFramework
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Connected, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Disconnected, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.PlayToStates.Rendering, GroupName = MediaPlayerVisualStates.GroupNames.PlayToStates)]
+    [TemplateVisualState(Name = MediaPlayerVisualStates.MediaTypeStates.AudioOnly, GroupName = MediaPlayerVisualStates.GroupNames.MediaTypeStates)]
+    [TemplateVisualState(Name = MediaPlayerVisualStates.MediaTypeStates.AudioVideo, GroupName = MediaPlayerVisualStates.GroupNames.MediaTypeStates)]
 #endif
     [TemplateVisualState(Name = MediaPlayerVisualStates.InteractiveStates.Hidden, GroupName = MediaPlayerVisualStates.GroupNames.InteractiveStates)]
     [TemplateVisualState(Name = MediaPlayerVisualStates.InteractiveStates.StartInteracting, GroupName = MediaPlayerVisualStates.GroupNames.InteractiveStates)]
@@ -198,7 +200,7 @@ namespace Microsoft.PlayerFramework
             InteractivityContainer = GetTemplateChild(MediaPlayerTemplateParts.InteractivityContainer) as Panel;
             MediaContainer = GetTemplateChild(MediaPlayerTemplateParts.MediaContainer) as Panel;
             ControlPanel = GetTemplateChild(MediaPlayerTemplateParts.ControlPanel) as Control;
-            
+
 #if SILVERLIGHT
             //MediaElementElement = GetTemplateChild(MediaPlayerTemplateParts.MediaElement) as IMediaElement;
             var mediaPlugin = Plugins.OfType<IMediaPlugin>().FirstOrDefault();
@@ -324,7 +326,8 @@ namespace Microsoft.PlayerFramework
                 this.GoToVisualState(MediaPlayerVisualStates.InteractiveStates.Hidden);
             }
 #if NETFX_CORE
-            OnPlayToStateChanged(PlayToConnectionState.Disconnected);
+            this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioVideo);
+            this.GoToVisualState(MediaPlayerVisualStates.PlayToStates.Disconnected);
 #endif
         }
 
@@ -676,7 +679,7 @@ namespace Microsoft.PlayerFramework
             set { SetValue(AutoHideBehaviorProperty, value); }
         }
         #endregion
-        
+
         #region IsInteractive
         /// <summary>
         /// Occurs when the IsInteractive property changes.
@@ -1112,6 +1115,18 @@ namespace Microsoft.PlayerFramework
             get { return MediaElementElement != null ? MediaElementElement.IsAudioOnly : DefaultIsAudioOnly; }
         }
 
+        partial void OnIsAudioOnlyUpdated(bool newValue)
+        {
+            if (newValue)
+            {
+                this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioOnly);
+            }
+            else
+            {
+                this.GoToVisualState(MediaPlayerVisualStates.MediaTypeStates.AudioVideo);
+            }
+        }
+
         static bool DefaultIsAudioOnly
         {
             get { return GetDefaultValue<bool>(MediaElement.IsAudioOnlyProperty); }
@@ -1201,6 +1216,11 @@ namespace Microsoft.PlayerFramework
                     if (Application.Current.Host.Content.IsFullScreen != value)
                     {
                         Application.Current.Host.Content.IsFullScreen = value;
+                    }
+#elif NETFX_CORE
+                    if (value && Windows.UI.ViewManagement.ApplicationView.Value == Windows.UI.ViewManagement.ApplicationViewState.Snapped)
+                    {
+                        Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
                     }
 #endif
                 });
@@ -1710,7 +1730,7 @@ namespace Microsoft.PlayerFramework
         {
             var result = new MediaState();
             result.Source = Source;
-            result.Position = Position;
+            result.Position = VirtualPosition;
             result.IsStarted = PlayerState == PlayerState.Started;
             if (result.IsStarted)
             {
@@ -1892,11 +1912,14 @@ namespace Microsoft.PlayerFramework
 
         void MediaElement_RateChanged(object sender, RateChangedRoutedEventArgs e)
         {
+            if (IsTrickPlayEnabled)
+            {
 #if SILVERLIGHT
-            SetValueWithoutCallback(PlaybackRateProperty, e.NewRate);
+                SetValueWithoutCallback(PlaybackRateProperty, e.NewRate);
 #else
-            SetValueWithoutCallback(PlaybackRateProperty, _PlaybackRate);
+                SetValueWithoutCallback(PlaybackRateProperty, _PlaybackRate);
 #endif
+            }
             OnRateChanged(e);
         }
 
@@ -2010,7 +2033,7 @@ namespace Microsoft.PlayerFramework
                 ((AutoHideBehavior & AutoHideBehavior.AllowDuringPlaybackOnly) == AutoHideBehavior.AllowDuringPlaybackOnly && InteractiveViewModel.CurrentState != MediaElementState.Playing) ||
                 ((AutoHideBehavior & AutoHideBehavior.PreventDuringInteractiveHover) == AutoHideBehavior.PreventDuringInteractiveHover && IsPointerOverInteractiveElement())
 #if NETFX_CORE
-                || interactiveElements.Any(ie => ie.HasKeyboardFocus())
+ || interactiveElements.Any(ie => ie.HasKeyboardFocus())
                 || IsPlayToConnected()
 #endif
 );
@@ -2021,7 +2044,7 @@ namespace Microsoft.PlayerFramework
                 IsInteractive = false;
             }
         }
-        
+
 #if SILVERLIGHT
         void uiElement_MouseMove(object sender, MouseEventArgs e)
 #else
@@ -2039,7 +2062,7 @@ namespace Microsoft.PlayerFramework
         {
             OnUserInteraction(InteractionType.Hard, true);
         }
-        
+
         #endregion
 
         #endregion

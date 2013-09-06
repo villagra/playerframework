@@ -55,7 +55,8 @@
         "timeupdate",
         "updated",
         "volumechange",
-        "waiting"
+        "waiting",
+        "markerreached"
     ];
 
     // MediaPlayer Class
@@ -220,6 +221,15 @@
             this._observableMediaPlayer = WinJS.Binding.as(this);
             this._lastTime = null;
             this._testForMediaPack = true;
+            this._visualMarkers = [];
+            this._markers = [];
+            this._lastMarkerCheckTime = -1;
+            this._virtualTime = 0;
+            this._isTrickPlayEnabled = true;
+            this._simulatedPlaybackRate = 1;
+            this._simulatedPlaybackRateTimer = null;
+            this._isThumbnailVisible = false;
+            this._thumbnailImageSrc = null;
 
             this._setElement(element);
             this._setOptions(options);
@@ -612,13 +622,58 @@
             /// <field name="playbackRate" type="Number">Gets or sets the playback rate for the current media source.</field>
             playbackRate: {
                 get: function () {
-                    return this._mediaElement.playbackRate;
+                    if (!this.isTrickPlayEnabled) {
+                        return this._simulatedPlaybackRate;
+                    }
+                    else {
+                        return this._mediaElement.playbackRate;
+                    }
                 },
                 set: function (value) {
-                    var oldValue = this._mediaElement.playbackRate;
+                    var oldValue = this.playbackRate;
                     if (oldValue !== value) {
-                        this._mediaElement.playbackRate = value;
+                        if (!this.isTrickPlayEnabled)
+                        {
+                            this._simulatedPlaybackRate = value;
+                            if (value === 1.0 || value === 0.0)
+                            {
+                                window.clearInterval(this._simulatedPlaybackRateTimer);
+                                this._simulatedPlaybackRateTimer = null;
+                                if (oldValue !== 1.0 || oldValue !== 0.0)
+                                {
+                                    this.currentTime = this.virtualTime; // we're coming out of simulated trick play, sync positions
+                                }
+                                this._mediaElement.playbackRate = value;
+                            }
+                            else
+                            {
+                                if (oldValue === 1.0 || oldValue === 0.0)
+                                {
+                                    this._mediaElement.playbackRate = 0;
+                                    this._simulatedPlaybackRateTimer = window.setInterval(this._onSimulatedPlaybackRateTimerTick.bind(this), 250);
+                                }
+                                this.dispatchEvent("ratechange"); // manually raise event since we didn't actually set the mediaElement's playback rate
+                            }
+                        }
+                        else
+                        {
+                            this._mediaElement.playbackRate = value;
+                        }
                         this._observableMediaPlayer.notify("playbackRate", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="playbackRate" type="Number">Gets or sets the playback rate for the current media source.</field>
+            isTrickPlayEnabled: {
+                get: function () {
+                    return this._isTrickPlayEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isTrickPlayEnabled;
+                    if (oldValue !== value) {
+                        this._isTrickPlayEnabled = value;
+                        this._observableMediaPlayer.notify("isTrickPlayEnabled", value, oldValue);
                     }
                 }
             },
@@ -711,7 +766,7 @@
                     return this._mediaElement.initialTime;
                 }
             },
-            
+
             /// <field name="startupTime" type="Number">Gets or sets the position (in seconds) where playback should start. This is useful for resuming a video where the user left off in a previous session.</field>
             startupTime: {
                 get: function () {
@@ -836,8 +891,16 @@
                 set: function (value) {
                     if (this._mediaElement.readyState !== PlayerFramework.ReadyState.nothing && isFinite(value) && !isNaN(value) && value >= 0) {
                         // note: the timeupdate event will notify the observable property for us
+                        this._virtualTime = value;
                         this._mediaElement.currentTime = value;
                     }
+                }
+            },
+
+            /// <field name="virtualTime" type="Number">Gets the position that is being seeked to (even before the seek completes). If seekWhileScrubbing = false, also returns the position being scrubbed to for visual feedback (in seconds).</field>
+            virtualTime: {
+                get: function () {
+                    return this._virtualTime;
                 }
             },
 
@@ -1793,6 +1856,11 @@
                             this._shimElement.style.display = "none";
                         }
 
+                        if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped)
+                        {
+                            Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
+                        }
+
                         this._isFullScreen = value;
                         this._observableMediaPlayer.notify("isFullScreen", value, oldValue);
                         this.dispatchEvent("fullscreenchange");
@@ -2175,8 +2243,63 @@
                 }
             },
 
-            /************************ Public Methods ************************/
+            /// <field name="visualMarkers" type="Array">Gets or sets the collection of markers to display in the timeline</field>
+            visualMarkers: {
+                get: function () {
+                    return this._visualMarkers;
+                },
+                set: function (value) {
+                    var oldValue = this._visualMarkers;
+                    if (oldValue !== value) {
+                        this._visualMarkers = value;
+                        this._observableMediaPlayer.notify("visualMarkers", value, oldValue);
+                    }
+                }
+            },
 
+            /// <field name="markers" type="Array">Gets or sets the collection of markers to track. Note: this is different from visualMarkers (which are displayed in the timeline)</field>
+            markers: {
+                get: function () {
+                    return this._markers;
+                },
+                set: function (value) {
+                    var oldValue = this._markers;
+                    if (oldValue !== value) {
+                        this._markers = value;
+                        this._observableMediaPlayer.notify("markers", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isThumbnailVisible" type="Boolean">Gets or sets whether thumbnails should be displayed while scrubbing. Default is false.</field>
+            isThumbnailVisible: {
+                get: function () {
+                    return this._isThumbnailVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isThumbnailVisible;
+                    if (oldValue !== value) {
+                        this._isThumbnailVisible = value;
+                        this._observableMediaPlayer.notify("isThumbnailVisible", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="thumbnailImageSrc" type="String">Gets or sets the thumbnail to show (typically while scrubbing and/or in RW/FF mode).</field>
+            thumbnailImageSrc: {
+                get: function () {
+                    return this._thumbnailImageSrc;
+                },
+                set: function (value) {
+                    var oldValue = this._thumbnailImageSrc;
+                    if (oldValue !== value) {
+                        this._thumbnailImageSrc = value;
+                        this._observableMediaPlayer.notify("thumbnailImageSrc", value, oldValue);
+                    }
+                }
+            },
+
+            /************************ Public Methods ************************/
             canPlayType: function (type) {
                 /// <summary>Returns a value that specifies whether the player can play a given media type.</summary>
                 /// <param name="type" type="String">The type of media to be played.</param>
@@ -2247,7 +2370,7 @@
                     this._mediaElement.play();
                 } else if (this.playerState !== PlayerFramework.PlayerState.starting) {
                     this.playerState = PlayerFramework.PlayerState.starting;
-                    
+
                     var deferrableOperation = new PlayerFramework.Utilities.DeferrableOperation();
                     this.dispatchEvent("starting", deferrableOperation);
 
@@ -2290,7 +2413,7 @@
 
             replay: function () {
                 /// <summary>Supports instant replay by applying an offset to the current playback position.</summary>
-                
+
                 this.currentTime = Math.max(this.initialTime, this.currentTime - this.replayOffset);
                 this.play();
             },
@@ -2326,7 +2449,7 @@
             addClass: function (name) {
                 /// <summary>Adds the specified CSS class to the host element.</summary>
                 /// <param name="name" type="String">The name of the class to add. Multiple classes can be added using space-delimited names.</param>
-                
+
                 WinJS.Utilities.addClass(this._element, name);
             },
 
@@ -2339,7 +2462,7 @@
 
             focus: function () {
                 /// <summary>Gives focus to the host element.</summary>
-                
+
                 this._element.focus();
             },
 
@@ -2386,7 +2509,7 @@
                     WinJS.Utilities.data(this._element).mediaPlayer = null;
                     WinJS.Utilities.removeClass(this._element, "pf-container");
                     this._element.winControl = null;
-                    
+
                     PlayerFramework.Utilities.removeElement(this._shimElement);
                     PlayerFramework.Utilities.removeElement(this._mediaElement);
 
@@ -2403,13 +2526,13 @@
             msFrameStep: function (forward) {
                 /// <summary>Steps the video forward or backward by one frame.</summary>
                 /// <param name="forward" type="Boolean">If true, the video is stepped forward, otherwise the video is stepped backward.</param>
-                
+
                 this._mediaElement.msFrameStep(forward);
             },
 
             msClearEffects: function () {
                 /// <summary>Clears all effects from the media pipeline.</summary>
-                
+
                 this._mediaElement.msClearEffects();
             },
 
@@ -2418,7 +2541,7 @@
                 /// <param name="activatableClassId" type="String">The audio effects class.</param>
                 /// <param name="effectRequired" type="Boolean"></param>
                 /// <param name="config" type="Object" optional="true"></param>
-                
+
                 this._mediaElement.msInsertAudioEffect(activatableClassId, effectRequired, config);
             },
 
@@ -2427,14 +2550,14 @@
                 /// <param name="activatableClassId" type="String">The video effects class.</param>
                 /// <param name="effectRequired" type="Boolean"></param>
                 /// <param name="config" type="Object" optional="true"></param>
-                
+
                 this._mediaElement.msInsertVideoEffect(activatableClassId, effectRequired, config);
             },
 
             msSetMediaProtectionManager: function (mediaProtectionManager) {
                 /// <summary>Sets the media protection manager for a given media pipeline.</summary>
                 /// <param name="mediaProtectionManager" type="Windows.Media.Protection.MediaProtectionManager"></param>
-                
+
                 this._mediaElement.msSetMediaProtectionManager(mediaProtectionManager);
             },
 
@@ -2444,7 +2567,7 @@
                 /// <param name="top" type="Number">The top position of the rectangle.</param>
                 /// <param name="right" type="Number">The right position of the rectangle.</param>
                 /// <param name="bottom" type="Number">The bottom position of the rectangle.</param>
-                
+
                 this._mediaElement.msSetVideoRectangle(left, top, right, bottom);
             },
 
@@ -2460,8 +2583,10 @@
                 WinJS.Utilities.addClass(this._element, "pf-container");
 
                 // media element
-                this._mediaElement = this._element.querySelector("video") || document.createElement("video");
+                this._mediaElement = this._element.querySelector("video") || this._element.querySelector("audio") || document.createElement("video");
                 WinJS.Utilities.addClass(this._mediaElement, "pf-media");
+                WinJS.Utilities.addClass(this._element, "pf-media-" + this._mediaElement.tagName.toLowerCase());
+
                 PlayerFramework.Utilities.appendElement(this._element, this._mediaElement);
 
                 // HACK: "iframe shim" fixes issues with full screen overlay
@@ -2509,17 +2634,17 @@
                 this._bindEvent("waiting", this._mediaElement, this._onMediaElementWaiting);
 
                 // property notifications
-                this._bindEvent("emptied", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("loadstart", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("loadeddata", this._mediaElement, this._notifyProperties, ["currentTime", "paused", "ended", "buffered"]);
-                this._bindEvent("timeupdate", this._mediaElement, this._notifyProperties, ["currentTime"]);
+                this._bindEvent("emptied", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("loadstart", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("loadeddata", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
+                this._bindEvent("timeupdate", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime"]);
                 this._bindEvent("playing", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
                 this._bindEvent("pause", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
                 this._bindEvent("ended", this._mediaElement, this._notifyProperties, ["paused", "ended"]);
                 this._bindEvent("progress", this._mediaElement, this._notifyProperties, ["buffered"]);
                 this._bindEvent("ratechange", this._mediaElement, this._notifyProperties, ["playbackRate"]);
                 this._bindEvent("volumechange", this._mediaElement, this._notifyProperties, ["volume", "muted"]);
-                
+
                 // property dependencies
                 this._bindProperty("advertisingState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
                 this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
@@ -2606,7 +2731,7 @@
             },
 
             _seek: function (time) {
-                var previousTime = this.currentTime;
+                var previousTime = this._virtualTime;
                 this.currentTime = time;
                 this.dispatchEvent("seek", { previousTime: previousTime, time: time });
             },
@@ -2620,14 +2745,17 @@
             _startScrub: function (time) {
                 if (!this._scrubbing) {
                     this._scrubbing = true;
-                    this._scrubStartTime = this.currentTime;
+                    this._scrubStartTime = this._virtualTime;
 
                     var e = { time: time, canceled: false };
                     this.dispatchEvent("scrub", e);
 
                     if (!e.canceled) {
                         this._scrubPlaybackRate = this.playbackRate;
-                        this.playbackRate = 0;
+                        if (this._mediaElement.tagName !== "AUDIO") {
+                            // better UX to not stop playback for audio
+                            this.playbackRate = 0;
+                        }
                     } else {
                         this._completeScrub(time, true);
                     }
@@ -2642,6 +2770,9 @@
                     if (!e.canceled) {
                         if (this.seekWhileScrubbing) {
                             this.currentTime = time;
+                        }
+                        else {
+                            this._setVirtualTime(time);
                         }
                     } else {
                         this._completeScrub(time, true);
@@ -2658,7 +2789,9 @@
 
                     if (!e.canceled) {
                         this.currentTime = time;
-                        this.playbackRate = this._scrubPlaybackRate;
+                        if (this._mediaElement.tagName !== "AUDIO") {
+                            this.playbackRate = this._scrubPlaybackRate;
+                        }
                     }
                 }
             },
@@ -2675,10 +2808,21 @@
             _updateIsCurrentTimeLive: function () {
                 if (this.liveTime !== null) {
                     var liveThreshold = this.isCurrentTimeLive ? this.liveTimeBuffer * 1.1 : this.liveTimeBuffer * 0.9;
-                    this.isCurrentTimeLive = this.liveTime - this.currentTime < liveThreshold;
+                    this.isCurrentTimeLive = this.liveTime - this._virtualTime < liveThreshold;
                 } else {
                     this.isCurrentTimeLive = false;
                 }
+            },
+
+            _updateMarkerState: function () {
+                var now = this._virtualTime;
+                for (var i = 0; i < this._markers.length; i++) {
+                    var marker = this._markers[i];
+                    if (marker.time < now && marker.time >= this._lastMarkerCheckTime) {
+                        this.dispatchEvent("markerreached", marker);
+                    }
+                }
+                this._lastMarkerCheckTime = now;
             },
 
             _isFunctionalElement: function (element) {
@@ -2854,12 +2998,12 @@
 
             _onMediaElementLoadedMetadata: function (e) {
                 this.mediaQuality = this.videoHeight >= 720 ? PlayerFramework.MediaQuality.highDefinition : PlayerFramework.MediaQuality.standardDefinition;
-                
+
                 if (!this.audioTracks) {
                     this.audioTracks = PlayerFramework.Utilities.getArray(this._mediaElement.audioTracks);
                 }
                 this.currentAudioTrack = PlayerFramework.Utilities.first(this.audioTracks, function (track) { return track.enabled; });
-                
+
                 if (!this.captionTracks) {
                     this.captionTracks = Array.prototype.filter.call(this.textTracks, function (track) {
                         return (track.kind === "captions" || track.kind === "subtitles") && track !== this._dummyTrack;
@@ -2871,6 +3015,7 @@
             },
 
             _onMediaElementLoadStart: function (e) {
+                this._lastMarkerCheckTime = -1;
                 this.playerState = PlayerFramework.PlayerState.loaded;
                 this.dispatchEvent("loadstart");
             },
@@ -2928,8 +3073,13 @@
             },
 
             _onMediaElementTimeUpdate: function (e) {
-                this._lastTime = this.currentTime;
+                var time = this.currentTime;
+                if ((this.isTrickPlayEnabled || this.playbackRate === 0.0 || this.playbackRate === 1.0) && !this.scrubbing) {
+                    this._virtualTime = time;
+                }
+                this._lastTime = time;
                 this._updateIsCurrentTimeLive();
+                this._updateMarkerState();
                 this.dispatchEvent("timeupdate");
             },
 
@@ -2939,6 +3089,24 @@
 
             _onMediaElementWaiting: function (e) {
                 this.dispatchEvent("waiting");
+            },
+
+            _setVirtualTime: function (time) {
+                var oldValue = this._virtualTime;
+                this._virtualTime = time;
+                this._lastTime = this._virtualTime;
+                this._updateIsCurrentTimeLive();
+                this.dispatchEvent("timeupdate");
+                this._observableMediaPlayer.notify("virtualTime", time, oldValue);
+            },
+
+            _onSimulatedPlaybackRateTimerTick: function () {
+                if (this.playbackRate !== 0.0 && this.playbackRate !== 1.0 && !this.scrubbing) {
+                    var newTime = this._virtualTime + this.playbackRate / 4;
+                    if (newTime > this.endTime) newTime = this.endTime;
+                    if (newTime < this.startTime) newTime = this.startTime;
+                    this._setVirtualTime(newTime);
+                }
             }
         })
     });
@@ -2948,6 +3116,6 @@
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.createEventProperties(events));
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.eventBindingMixin);
     WinJS.Class.mix(PlayerFramework.MediaPlayer, PlayerFramework.Utilities.propertyBindingMixin);
-    
+
 })(PlayerFramework);
 

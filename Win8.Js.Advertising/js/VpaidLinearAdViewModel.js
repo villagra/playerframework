@@ -86,6 +86,24 @@
             }
         },
 
+        visualMarkers: {
+            get: function () {
+                return [];
+            }
+        },
+
+        thumbnailImageSrc: {
+            get: function () {
+                return null;
+            }
+        },
+
+        isThumbnailVisible: {
+            get: function () {
+                return false;
+            }
+        },
+
         // Public Methods
         initialize: function () {
             // ad player events

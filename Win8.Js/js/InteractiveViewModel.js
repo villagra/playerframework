@@ -34,6 +34,12 @@
             }
         },
 
+        maxTime: {
+            get: function () {
+                return this._getViewModelTime(this._mediaPlayer.liveTime !== null ? this._mediaPlayer.liveTime : this._mediaPlayer.endTime);
+            }
+        },
+
         endTime: {
             get: function () {
                 return this._getViewModelTime(this._mediaPlayer.endTime);
@@ -42,7 +48,7 @@
 
         currentTime: {
             get: function () {
-                return this._getViewModelTime(this._mediaPlayer.currentTime);
+                return this._getViewModelTime(this._mediaPlayer.virtualTime);
             }
         },
 
@@ -754,13 +760,32 @@
             }
         },
 
+        visualMarkers: {
+            get: function () {
+                return this._mediaPlayer.visualMarkers;
+            }
+        },
+
+        thumbnailImageSrc: {
+            get: function () {
+                return this._mediaPlayer.thumbnailImageSrc;
+            }
+        },
+
+        isThumbnailVisible: {
+            get: function () {
+                return this._mediaPlayer.isThumbnailVisible;
+            }
+        },
+
         // Public Methods
         initialize: function () {
             // media player value properties
             this._bindProperty("startTime", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime"]);
-            this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime"]);
-            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime"]);
-            this._bindProperty("currentTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
+            this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "maxTime"]);
+            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime", "maxTime"]);
+            this._bindProperty("liveTime", this._observableMediaPlayer, this._notifyProperties, ["maxTime"]);
+            this._bindProperty("virtualTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindProperty("buffered", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("duration", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("skipBackInterval", this._observableMediaPlayer, this._notifyProperties, ["elapsedTimeText"]);
@@ -770,6 +795,9 @@
             this._bindProperty("isFullScreen", this._observableMediaPlayer, this._notifyProperties, ["fullScreenIcon", "fullScreenLabel", "fullScreenTooltip"]);
             this._bindProperty("signalStrength", this._observableMediaPlayer, this._notifyProperties, ["signalStrength", "signalStrengthTooltip"]);
             this._bindProperty("mediaQuality", this._observableMediaPlayer, this._notifyProperties, ["mediaQuality", "mediaQualityTooltip"]);
+            this._bindProperty("visualMarkers", this._observableMediaPlayer, this._notifyProperties, ["visualMarkers"]);
+            this._bindProperty("thumbnailImageSrc", this._observableMediaPlayer, this._notifyProperties, ["thumbnailImageSrc"]);
+            this._bindProperty("isThumbnailVisible", this._observableMediaPlayer, this._notifyProperties, ["isThumbnailVisible"]);
 
             // media player interaction properties
             this._bindProperty("isPlayPauseAllowed", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseDisabled"]);
@@ -882,24 +910,42 @@
         },
 
         skipPrevious: function () {
-            if (!this.dispatchEvent("skipprevious")) {
-                this._mediaPlayer._seek(this._mediaPlayer.startTime);
+            var minTime = this.startTime;
+            var previousMarker = null;
+            var previousMarkerTime = null;
+            for (var i = 0; i < this.visualMarkers.length; i++) {
+                var marker = this.visualMarkers[i];
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                if (marker.isSeekable && markerTime < this.currentTime && markerTime > minTime) {
+                    if (!previousMarker || previousMarkerTime < markerTime) {
+                        previousMarker = marker;
+                        previousMarkerTime = markerTime;
+                    }
+                }
             }
+            this._onSkipPrevious(previousMarker);
         },
 
         skipNext: function () {
-            if (!this.dispatchEvent("skipnext")) {
-                if (this._mediaPlayer.liveTime !== null) {
-                    this._mediaPlayer._seek(this._mediaPlayer.liveTime);
-                } else {
-                    this._mediaPlayer._seek(this._mediaPlayer.endTime);
+            var maxTime = this.maxTime;
+            var nextMarker = null;
+            var nextMarkerTime = null;
+            for (var i = 0; i < this.visualMarkers.length; i++) {
+                var marker = this.visualMarkers[i];
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                if (marker.isSeekable && markerTime > this.currentTime && markerTime < maxTime) {
+                    if (!nextMarker || nextMarkerTime > markerTime) {
+                        nextMarker = marker;
+                        nextMarkerTime = markerTime;
+                    }
                 }
             }
+            this._onSkipNext(nextMarker);
         },
 
         skipBack: function () {
             var minTime = this._mediaPlayer.startTime;
-            var time = this._mediaPlayer.skipBackInterval !== null ? Math.max(this._mediaPlayer.currentTime - this._mediaPlayer.skipBackInterval, minTime) : minTime;
+            var time = this._mediaPlayer.skipBackInterval !== null ? Math.max(this._mediaPlayer.virtualTime - this._mediaPlayer.skipBackInterval, minTime) : minTime;
 
             if (!this.dispatchEvent("skipback", { time: time })) {
                 this._mediaPlayer._seek(time);
@@ -908,7 +954,7 @@
 
         skipAhead: function () {
             var maxTime = this._mediaPlayer.liveTime !== null ? this._mediaPlayer.liveTime : this._mediaPlayer.endTime;
-            var time = this._mediaPlayer.skipAheadInterval !== null ? Math.min(this._mediaPlayer.currentTime + this._mediaPlayer.skipAheadInterval, maxTime) : maxTime;
+            var time = this._mediaPlayer.skipAheadInterval !== null ? Math.min(this._mediaPlayer.virtualTime + this._mediaPlayer.skipAheadInterval, maxTime) : maxTime;
 
             if (!this.dispatchEvent("skipahead", { time: time })) {
                 this._mediaPlayer._seek(time);
@@ -965,6 +1011,13 @@
         onTimelineSliderComplete: function (e) {
             var time = this._getMediaPlayerTime(e.target.winControl.value);
             this.completeScrub(time);
+        },
+
+        onTimelineSliderSkipToMarker: function (e) {
+            var marker = e.detail;
+            var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+            var time = this._getMediaPlayerTime(markerTime);
+            this._mediaPlayer._seek(time);
         },
 
         onCaptionsMenuBeforeShow: function (e) {
@@ -1066,7 +1119,7 @@
             var slider = e.target;
             var volume = this._getMediaPlayerVolume(slider.winControl.value);
             this.setVolume(volume);
-        }, 
+        },
 
         onVolumeMuteSliderFocusIn: function (e) {
             var slider = e.currentTarget;
@@ -1173,6 +1226,34 @@
                 }
 
                 this._observableViewModel.notify(propertyName, this[propertyName]);
+            }
+        },
+        
+        _onSkipPrevious: function (marker) {
+            if (marker) {
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                this._mediaPlayer._seek(this._getMediaPlayerTime(markerTime));
+            }
+            else {
+                if (!this.dispatchEvent("skipprevious")) {
+                    this._mediaPlayer._seek(this._mediaPlayer.startTime);
+                }
+            }
+        },
+
+        _onSkipNext: function (marker) {
+            if (marker) {
+                var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
+                this._mediaPlayer._seek(this._getMediaPlayerTime(markerTime));
+            }
+            else {
+                if (!this.dispatchEvent("skipnext")) {
+                    if (this._mediaPlayer.liveTime !== null) {
+                        this._mediaPlayer._seek(this._mediaPlayer.liveTime);
+                    } else {
+                        this._mediaPlayer._seek(this._mediaPlayer.endTime);
+                    }
+                }
             }
         }
     });

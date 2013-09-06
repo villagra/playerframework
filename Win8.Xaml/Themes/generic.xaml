@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:local="using:Microsoft.PlayerFramework"
@@ -968,6 +968,10 @@
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="PointerFocused" />
                             </VisualStateGroup>
+                            <VisualStateGroup x:Name="ScrubbingStates">
+                                <VisualState x:Name="NotScrubbing" />
+                                <VisualState x:Name="Scrubbing" />
+                            </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
                         <Grid x:Name="HorizontalTemplate">
@@ -989,6 +993,9 @@
                             <Border x:Name="HorizontalAvailableBar" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" IsHitTestVisible="True" Background="#00000000" />
                             <ContentPresenter x:Name="HorizontalForegroundContentPresenter" Margin="{TemplateBinding Padding}" Content="{TemplateBinding HorizontalForegroundContent}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
                             <Thumb x:Name="HorizontalThumb" Background="{TemplateBinding SliderThumbBackground}" Style="{TemplateBinding SliderThumbStyle}" DataContext="{TemplateBinding Value}" Grid.Row="1" Grid.Column="1" />
+                            <Canvas Visibility="{TemplateBinding ThumbnailVisibility}" IsHitTestVisible="False" Grid.Row="1" Grid.Column="1">
+                                <ContentPresenter x:Name="ThumbnailContentPresenter" Content="{TemplateBinding ThumbnailContent}" Visibility="{TemplateBinding ThumbnailVisibility}"/>
+                            </Canvas>
                         </Grid>
 
                         <Grid x:Name="VerticalTemplate" Visibility="Collapsed">
@@ -1037,6 +1044,8 @@
                                 VerticalAlignment="Stretch"
                                 Orientation="Horizontal"
                                 Height="{TemplateBinding Height}"
+                                ThumbnailVisibility="{TemplateBinding ThumbnailVisibility}"
+                                ThumbnailContent="{TemplateBinding ThumbnailContent}"
                                 DataContext="{TemplateBinding ViewModel}">
                             <local:SeekableSlider.HorizontalForegroundContent>
                                 <local:PositionedItemsControl x:Name="PositionedItemsControl"
@@ -1148,7 +1157,11 @@
                                     <local:TimeElapsedButton x:Name="TimeElapsedButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
                                 </StackPanel>
 
-                                <local:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
+                                <local:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                    <local:Timeline.ThumbnailContent>
+                                        <local:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" Margin="-74,-122,0,0" Width="160" Height="90"/>
+                                    </local:Timeline.ThumbnailContent>
+                                </local:Timeline>
 
                                 <StackPanel x:Name="RightItemsPanel" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
                                     <local:TimeRemainingButton x:Name="TimeRemainingButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
@@ -1181,6 +1194,10 @@
                 <ControlTemplate TargetType="local:MediaPlayer">
                     <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
                         <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="MediaTypeStates">
+                                <VisualState x:Name="AudioOnly"/>
+                                <VisualState x:Name="AudioVideo"/>
+                            </VisualStateGroup>
                             <VisualStateGroup x:Name="FullScreenStates">
                                 <VisualState x:Name="FullScreen"/>
                                 <VisualState x:Name="NotFullScreen"/>
@@ -1384,7 +1401,8 @@
                                 IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}"
                                 IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}"
                                 IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}"
-                                IsTimelineVisible="{TemplateBinding IsTimelineVisible}"/>
+                                IsTimelineVisible="{TemplateBinding IsTimelineVisible}"
+                                IsThumbnailVisible="{TemplateBinding IsThumbnailVisible}"/>
                         </Grid>
                         <Grid x:Name="LoaderViewContainer" Visibility="Collapsed"/>
                         <Grid x:Name="BufferingContainer" Visibility="Collapsed"/>
@@ -1501,6 +1519,22 @@
                             </ListBox>
                         </Border>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ThumbnailView">
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ThumbnailView">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid x:Name="container"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

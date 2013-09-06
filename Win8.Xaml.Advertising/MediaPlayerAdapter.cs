@@ -107,7 +107,26 @@ namespace Microsoft.PlayerFramework.Advertising
         {
             get
             {
+#if NETFX_CORE
+                var size = new Size(AdContainer.ActualWidth, AdContainer.ActualHeight);
+                switch (Windows.Graphics.Display.DisplayProperties.ResolutionScale)
+                {
+                    case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
+                        size = new Size(Math.Round(size.Width * 1.8), Math.Round(size.Height * 1.8));
+                        break;
+                    case Windows.Graphics.Display.ResolutionScale.Scale140Percent:
+                        size = new Size(Math.Round(size.Width * 1.4), Math.Round(size.Height * 1.4));
+                        break;
+                }
+                return size;
+#elif WINDOWS_PHONE && !WINDOWS_PHONE7
+                double scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
+                int w = (int)Math.Ceiling(AdContainer.ActualWidth * scale);
+                int h = (int)Math.Ceiling(AdContainer.ActualHeight * scale);
+                return new Size(w, h);
+#else
                 return new Size(AdContainer.ActualWidth, AdContainer.ActualHeight);
+#endif
             }
             set
             {

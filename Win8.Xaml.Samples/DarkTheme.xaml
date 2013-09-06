@@ -1241,6 +1241,10 @@
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="PointerFocused" />
                             </VisualStateGroup>
+                            <VisualStateGroup x:Name="ScrubbingStates">
+                                <VisualState x:Name="NotScrubbing" />
+                                <VisualState x:Name="Scrubbing" />
+                            </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid x:Name="HorizontalTemplate">
                             <Grid.ColumnDefinitions>
@@ -1260,6 +1264,9 @@
                             <Border x:Name="HorizontalAvailableBar" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" IsHitTestVisible="True" Background="#00000000" />
                             <ContentPresenter x:Name="HorizontalForegroundContentPresenter" Margin="{TemplateBinding Padding}" Content="{TemplateBinding HorizontalForegroundContent}" Grid.ColumnSpan="3" Grid.RowSpan="3" />
                             <Thumb x:Name="HorizontalThumb" Background="{TemplateBinding SliderThumbBackground}" Style="{TemplateBinding SliderThumbStyle}" DataContext="{TemplateBinding Value}" Grid.Row="1" Grid.Column="1" />
+                            <Canvas Visibility="{TemplateBinding ThumbnailVisibility}" IsHitTestVisible="False" Grid.Row="1" Grid.Column="1">
+                                <ContentPresenter x:Name="ThumbnailContentPresenter" Content="{TemplateBinding ThumbnailContent}" Visibility="{TemplateBinding ThumbnailVisibility}"/>
+                            </Canvas>
                         </Grid>
                         <Grid x:Name="VerticalTemplate" Visibility="Collapsed">
                             <Grid.RowDefinitions>
@@ -1297,7 +1304,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="mmppf:Timeline">
                     <Grid ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}">
-                        <mmppf:SeekableSlider x:Name="ProgressSlider" SmallChange="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" VerticalAlignment="Stretch" Orientation="Horizontal" Height="{TemplateBinding Height}" DataContext="{TemplateBinding ViewModel}">
+                        <mmppf:SeekableSlider x:Name="ProgressSlider"
+                                SmallChange="10"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Padding="{TemplateBinding Padding}" 
+                                VerticalAlignment="Stretch" 
+                                Orientation="Horizontal" 
+                                Height="{TemplateBinding Height}" 
+                                ThumbnailVisibility="{TemplateBinding ThumbnailVisibility}"
+                                ThumbnailContent="{TemplateBinding ThumbnailContent}"
+                                DataContext="{TemplateBinding ViewModel}">
                             <mmppf:SeekableSlider.HorizontalForegroundContent>
                                 <mmppf:PositionedItemsControl x:Name="PositionedItemsControl" ItemsSource="{Binding VisualMarkers}" Minimum="{Binding StartTime.TotalSeconds}" Maximum="{Binding EndTime.TotalSeconds}">
                                     <mmppf:PositionedItemsControl.ItemTemplate>
@@ -1389,7 +1406,13 @@
                                     </StackPanel>
                                     <mmppf:TimeElapsedButton x:Name="TimeElapsedButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_TimeElapsedButton}" />
                                 </StackPanel>
-                                <mmppf:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_Timeline}" />
+
+                                <mmppf:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_Timeline}" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                    <mmppf:Timeline.ThumbnailContent>
+                                        <mmppf:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" Margin="-74,-122,0,0" Width="160" Height="90"/>
+                                    </mmppf:Timeline.ThumbnailContent>
+                                </mmppf:Timeline>
+
                                 <StackPanel x:Name="RightItemsPanel" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
                                     <mmppf:TimeRemainingButton x:Name="TimeRemainingButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_TimeRemainingButton}" />
                                     <mmppf:DurationButton x:Name="DurationButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_DurationButton}" />
@@ -1420,6 +1443,10 @@
                 <ControlTemplate TargetType="mmppf:MediaPlayer">
                     <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
                         <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="MediaTypeStates">
+                                <VisualState x:Name="AudioOnly"/>
+                                <VisualState x:Name="AudioVideo"/>
+                            </VisualStateGroup>
                             <VisualStateGroup x:Name="FullScreenStates">
                                 <VisualState x:Name="FullScreen" />
                                 <VisualState x:Name="NotFullScreen" />
@@ -1602,7 +1629,7 @@
                         </Grid>
                         <Grid x:Name="ErrorsContainer" Visibility="Collapsed" />
                         <Grid x:Name="InteractivityContainer" Visibility="Collapsed">
-                            <mmppf:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}" IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}" IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}" IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}" IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}" IsDurationButtonVisible="{TemplateBinding IsDurationVisible}" IsTimeRemainingButtonVisible="{TemplateBinding IsTimeRemainingVisible}" IsFastForwardButtonVisible="{TemplateBinding IsFastForwardVisible}" IsStopButtonVisible="{TemplateBinding IsStopVisible}" IsRewindButtonVisible="{TemplateBinding IsRewindVisible}" IsSkipPreviousButtonVisible="{TemplateBinding IsSkipPreviousVisible}" IsSkipNextButtonVisible="{TemplateBinding IsSkipNextVisible}" IsSkipBackButtonVisible="{TemplateBinding IsSkipBackVisible}" IsSkipAheadButtonVisible="{TemplateBinding IsSkipAheadVisible}" IsReplayButtonVisible="{TemplateBinding IsReplayVisible}" IsResolutionIndicatorVisible="{TemplateBinding IsResolutionIndicatorVisible}" IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}" IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}" IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}" IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}" IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}" IsTimelineVisible="{TemplateBinding IsTimelineVisible}" Style="{StaticResource Dark_ControlPanel}" />
+                            <mmppf:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}" IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}" IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}" IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}" IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}" IsDurationButtonVisible="{TemplateBinding IsDurationVisible}" IsTimeRemainingButtonVisible="{TemplateBinding IsTimeRemainingVisible}" IsFastForwardButtonVisible="{TemplateBinding IsFastForwardVisible}" IsStopButtonVisible="{TemplateBinding IsStopVisible}" IsRewindButtonVisible="{TemplateBinding IsRewindVisible}" IsSkipPreviousButtonVisible="{TemplateBinding IsSkipPreviousVisible}" IsSkipNextButtonVisible="{TemplateBinding IsSkipNextVisible}" IsSkipBackButtonVisible="{TemplateBinding IsSkipBackVisible}" IsSkipAheadButtonVisible="{TemplateBinding IsSkipAheadVisible}" IsReplayButtonVisible="{TemplateBinding IsReplayVisible}" IsResolutionIndicatorVisible="{TemplateBinding IsResolutionIndicatorVisible}" IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}" IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}" IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}" IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}" IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}" IsTimelineVisible="{TemplateBinding IsTimelineVisible}" IsThumbnailVisible="{TemplateBinding IsThumbnailVisible}" Style="{StaticResource Dark_ControlPanel}" />
                         </Grid>
                         <Grid x:Name="LoaderViewContainer" Visibility="Collapsed" />
                         <Grid x:Name="BufferingContainer" Visibility="Collapsed" />

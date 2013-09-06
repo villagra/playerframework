@@ -114,9 +114,10 @@ namespace Microsoft.PlayerFramework
             MediaPlayer.TimeFormatConverterChanged += (s, e) => OnPropertyChanged(() => TimeFormatConverter);
             MediaPlayer.SkipBackIntervalChanged += (s, e) => OnPropertyChanged(() => SkipBackInterval);
             MediaPlayer.SkipAheadIntervalChanged += (s, e) => OnPropertyChanged(() => SkipAheadInterval);
-            MediaPlayer.PositionChanged += (s, e) => OnPropertyChanged(() => Position);
+            MediaPlayer.VirtualPositionChanged += (s, e) => OnPropertyChanged(() => Position);
             MediaPlayer.SignalStrengthChanged += (s, e) => OnPropertyChanged(() => SignalStrength);
             MediaPlayer.MediaQualityChanged += (s, e) => OnPropertyChanged(() => MediaQuality);
+            MediaPlayer.ThumbnailImageSourceChanged += (s, e) => OnPropertyChanged(() => ThumbnailImageSource);
         }
 
         #region Methods
@@ -465,7 +466,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
-
+        
         /// <inheritdoc /> 
         protected override bool _IsMuted
         {
@@ -503,7 +504,7 @@ namespace Microsoft.PlayerFramework
         /// <inheritdoc /> 
         public override TimeSpan TimeRemaining { get { return MediaPlayer.TimeRemaining; } }
         /// <inheritdoc /> 
-        public override TimeSpan Position { get { return GetViewModelPosition(MediaPlayer.Position); } }
+        public override TimeSpan Position { get { return GetViewModelPosition(MediaPlayer.VirtualPosition); } }
         /// <inheritdoc /> 
         public override TimeSpan MaxPosition { get { return GetViewModelPosition(MediaPlayer.LivePosition.GetValueOrDefault(MediaPlayer.EndTime)); } }
         /// <inheritdoc /> 
@@ -518,5 +519,7 @@ namespace Microsoft.PlayerFramework
         public override double SignalStrength { get { return MediaPlayer.SignalStrength; } }
         /// <inheritdoc /> 
         public override MediaQuality MediaQuality { get { return MediaPlayer.MediaQuality; } }
+        /// <inheritdoc /> 
+        public override ImageSource ThumbnailImageSource { get { return MediaPlayer.ThumbnailImageSource; } }
     }
 }

@@ -113,7 +113,7 @@ namespace Microsoft.PlayerFramework.Advertising
         MediaState playerState;
 
         /// <inheritdoc /> 
-        protected override async void SetAdvertisingState(AdState adState)
+        protected override void SetAdvertisingState(AdState adState)
 #else
         /// <inheritdoc /> 
         protected override void SetAdvertisingState(AdState adState)
@@ -124,7 +124,11 @@ namespace Microsoft.PlayerFramework.Advertising
 
             if (newValue != oldValue)
             {
+#if WINDOWS_PHONE7
+                if (MediaPlayer.PlayerState == PlayerState.Started || playerState != null)
+#else
                 if (MediaPlayer.PlayerState == PlayerState.Started)
+#endif
                 {
                     // pause the MediaPlayer if we're playing a linear ad or loading an ad, resume if the opposite
                     if ((newValue == AdvertisingState.Loading || newValue == AdvertisingState.Linear) && (oldValue == AdvertisingState.None || oldValue == AdvertisingState.NonLinear))
@@ -140,6 +144,7 @@ namespace Microsoft.PlayerFramework.Advertising
                     {
 #if WINDOWS_PHONE7
                         MediaPlayer.RestoreMediaState(playerState);
+                        playerState = null;
 #else
                         MediaPlayer.Play();
 #endif

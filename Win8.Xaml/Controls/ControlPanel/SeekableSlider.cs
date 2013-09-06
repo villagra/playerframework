@@ -90,6 +90,7 @@ namespace Microsoft.PlayerFramework
         /// <param name="e">EventArgs used to provide info about the event</param>
         protected void OnScrubbingCompleted(ValueRoutedEventArgs e)
         {
+            VisualStateManager.GoToState(this, "NotScrubbing", true);
             if (ScrubbingCompleted != null)
             {
                 ignoreValueChanged = true;
@@ -124,6 +125,7 @@ namespace Microsoft.PlayerFramework
         /// <param name="e">EventArgs used to provide info about the event</param>
         protected void OnScrubbingStarted(ValueRoutedEventArgs e)
         {
+            VisualStateManager.GoToState(this, "Scrubbing", true);
             if (ScrubbingStarted != null)
             {
                 ignoreValueChanged = true;

@@ -16,9 +16,11 @@ namespace Microsoft.PlayerFramework
     [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
     [System.ComponentModel.Composition.Export(typeof(IPlugin))]
 #endif
-    public class ChaptersPlugin : PluginBase
+    public class ChaptersPlugin : IPlugin
     {
         const string DefaultMarkerType = "NAME";
+
+        List<VisualMarker> chapterMarkers;
 
         /// <summary>
         /// Creates a new instance of the ChaptersPlugin
@@ -26,9 +28,25 @@ namespace Microsoft.PlayerFramework
         public ChaptersPlugin()
         {
             ChapterMarkerType = DefaultMarkerType;
+            DefaultChapterCount = 10;
+            AutoCreateDefaultChapters = false;
+            AutoCreateChaptersFromMarkers = false;
         }
 
-        List<VisualMarker> ChapterMarkers;
+        /// <summary>
+        /// Gets or sets the total number of default chapters to create in the timeline. Default is 10.
+        /// </summary>
+        public int DefaultChapterCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to automatically create default chapters when the media loads. Default is false.
+        /// </summary>
+        public bool AutoCreateDefaultChapters { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to automatically create chapters from markers embedded in the stream. Note: not supported on Windows 8 due to limitations of the MediaElement. Default is false.
+        /// </summary>
+        public bool AutoCreateChaptersFromMarkers { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not captions are enabled
@@ -41,20 +59,31 @@ namespace Microsoft.PlayerFramework
         public Style MarkerStyle { get; set; }
 
         /// <inheritdoc /> 
-        protected override bool OnActivate()
+        public void Load()
         {
-            LoadChapters();
             MediaPlayer.MediaOpened += MediaPlayer_MediaOpened;
-            MediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
-            return true;
+            MediaPlayer.MediaClosed += MediaPlayer_MediaClosed;
         }
 
         /// <inheritdoc /> 
-        protected override void OnDeactivate()
+        public void Update(IMediaSource mediaSource)
+        {
+            // do nothing
+        }
+
+        /// <inheritdoc /> 
+        public void Unload()
+        {
+            MediaPlayer.MediaOpened -= MediaPlayer_MediaOpened;
+            MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
+        }
+
+        /// <inheritdoc /> 
+        public MediaPlayer MediaPlayer { get; set; }
+
+        void MediaPlayer_MediaClosed(object sender, RoutedEventArgs e)
         {
             UnloadChapters();
-            MediaPlayer.MediaOpened -= MediaPlayer_MediaOpened;
-            MediaPlayer.MediaEnded -= MediaPlayer_MediaEnded;
         }
 
         void MediaPlayer_MediaOpened(object sender, RoutedEventArgs e)
@@ -62,36 +91,49 @@ namespace Microsoft.PlayerFramework
             LoadChapters();
         }
 
-        void MediaPlayer_MediaEnded(object sender, MediaPlayerActionEventArgs e)
-        {
-            UnloadChapters();
-        }
-
         void LoadChapters()
         {
-            ChapterMarkers = new List<VisualMarker>();
-            foreach (var chapter in MediaPlayer.Markers.Where(m => m.Type == ChapterMarkerType))
+            chapterMarkers = new List<VisualMarker>();
+            if (AutoCreateChaptersFromMarkers)
             {
-                var marker = new VisualMarker() 
-                { 
-                    Text = chapter.Text, 
-                    Time = chapter.Time
-                };
-                if (MarkerStyle != null) marker.Style = MarkerStyle;
-                ChapterMarkers.Add(marker);
-                MediaPlayer.VisualMarkers.Add(marker);
+                foreach (var chapter in MediaPlayer.Markers.Where(m => m.Type == ChapterMarkerType))
+                {
+                    var marker = new VisualMarker()
+                    {
+                        Text = chapter.Text,
+                        Time = chapter.Time,
+                        IsSeekable = true
+                    };
+                    if (MarkerStyle != null) marker.Style = MarkerStyle;
+                    chapterMarkers.Add(marker);
+                    MediaPlayer.VisualMarkers.Add(marker);
+                }
+            }
+            if (AutoCreateDefaultChapters)
+            {
+                var chapterLength = MediaPlayer.Duration.TotalSeconds / DefaultChapterCount;
+                for (int i = 0; i <= DefaultChapterCount; i++)
+                {
+                    var marker = new VisualMarker()
+                    {
+                        Time = TimeSpan.FromSeconds(chapterLength * i),
+                        IsSeekable = true
+                    };
+                    chapterMarkers.Add(marker);
+                    MediaPlayer.VisualMarkers.Add(marker);
+                }
             }
         }
 
         void UnloadChapters()
         {
-            if (ChapterMarkers != null)
+            if (chapterMarkers != null)
             {
-                foreach (var marker in ChapterMarkers)
+                foreach (var marker in chapterMarkers)
                 {
                     MediaPlayer.VisualMarkers.Remove(marker);
                 }
-                ChapterMarkers = null;
+                chapterMarkers = null;
             }
         }
     }

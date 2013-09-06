@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define HACK_MARKERREACHED
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Microsoft.PlayerFramework
 {
@@ -22,6 +25,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         MediaElement mediaElement;
 
+#if HACK_MARKERREACHED
+        // HACK: MarkerReached has a bug requiring us to manage this ourselves.
+        TimelineMarkerCollection markers = new TimelineMarkerCollection();
+        TimeSpan? lastMarkerCheckTime;
+        readonly DispatcherTimer markerTimer;
+#endif
+
         /// <summary>
         /// The underlying MediaElement being wrapped
         /// </summary>
@@ -34,6 +44,9 @@ namespace Microsoft.PlayerFramework
                 {
                     mediaElement.CurrentStateChanged -= mediaElement_CurrentStateChanged;
                     mediaElement.LogReady -= mediaElement_LogReady;
+#if HACK_MARKERREACHED
+                    mediaElement.MediaOpened -= mediaElement_MediaOpened;
+#endif
 #if !WINDOWS_PHONE
                     mediaElement.RateChanged -= mediaElement_RateChanged;
 #endif
@@ -45,6 +58,9 @@ namespace Microsoft.PlayerFramework
                 {
                     mediaElement.CurrentStateChanged += mediaElement_CurrentStateChanged;
                     mediaElement.LogReady += mediaElement_LogReady;
+#if HACK_MARKERREACHED
+                    mediaElement.MediaOpened += mediaElement_MediaOpened;
+#endif
 #if !WINDOWS_PHONE
                     mediaElement.RateChanged += mediaElement_RateChanged;
 #endif
@@ -60,7 +76,10 @@ namespace Microsoft.PlayerFramework
             this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
             this.VerticalContentAlignment = VerticalAlignment.Stretch;
             MediaElement = new MediaElement();
-#if WINDOWS_PHONE
+#if HACK_MARKERREACHED
+            markerTimer = new DispatcherTimer();
+            markerTimer.Interval = TimeSpan.FromMilliseconds(250);
+#elif WINDOWS_PHONE
             MediaElement.MarkerReached += MediaElement_MarkerReached;
 #endif
             this.Content = MediaElement;
@@ -113,8 +132,58 @@ namespace Microsoft.PlayerFramework
 
         void mediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
+#if HACK_MARKERREACHED
+            if (mediaElement.CurrentState == MediaElementState.Playing)
+            {
+                if (!markerTimer.IsEnabled)
+                {
+                    markerTimer.Tick += markerTimer_Tick;
+                    markerTimer.Start();
+                }
+            }
+            else
+            {
+                if (markerTimer.IsEnabled)
+                {
+                    markerTimer.Tick -= markerTimer_Tick;
+                    markerTimer.Stop();
+                }
+            }
+#endif
             if (CurrentStateChanged != null) CurrentStateChanged(sender, e);
         }
+
+#if HACK_MARKERREACHED
+        void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            lastMarkerCheckTime = null;
+            markers.Clear();
+            // add all markers embedded in the stream.
+            foreach (var marker in mediaElement.Markers)
+            {
+                markers.Add(marker);
+            }
+        }
+
+        void markerTimer_Tick(object sender, EventArgs e)
+        {
+            if (markerTimer.IsEnabled)
+            {
+                var now = mediaElement.Position;
+                if (lastMarkerCheckTime.HasValue)
+                {
+                    foreach (var marker in markers.ToList())
+                    {
+                        if (marker.Time <= now && marker.Time > lastMarkerCheckTime.Value)
+                        {
+                            if (MarkerReached != null) MarkerReached(this, new TimelineMarkerRoutedEventArgs() { Marker = marker });
+                        }
+                    }
+                }
+                lastMarkerCheckTime = now;
+            }
+        }
+#endif
 
         /// <inheritdoc /> 
         public event LogReadyRoutedEventHandler LogReady;
@@ -341,7 +410,14 @@ namespace Microsoft.PlayerFramework
         /// <inheritdoc /> 
         public TimelineMarkerCollection Markers
         {
-            get { return MediaElement.Markers; }
+            get
+            {
+#if HACK_MARKERREACHED
+                return markers;
+#else
+                return MediaElement.Markers;
+#endif
+            }
         }
 
         /// <inheritdoc /> 
@@ -366,7 +442,14 @@ namespace Microsoft.PlayerFramework
         public TimeSpan Position
         {
             get { return MediaElement.Position; }
-            set { MediaElement.Position = value; }
+            set
+            {
+#if HACK_MARKERREACHED
+                // reset on seek to prevent MarkerReached from firing.
+                lastMarkerCheckTime = null;
+#endif
+                MediaElement.Position = value;
+            }
         }
 
         /// <inheritdoc /> 

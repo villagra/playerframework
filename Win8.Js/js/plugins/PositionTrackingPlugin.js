@@ -119,7 +119,7 @@
         },
 
         _onMediaPlayerTimeUpdate: function (e) {
-            var currentTime = this.mediaPlayer.currentTime;
+            var currentTime = this.mediaPlayer.virtualTime;
 
             this.position = currentTime;
             this.positionPercentage = currentTime / this.mediaPlayer.duration;
