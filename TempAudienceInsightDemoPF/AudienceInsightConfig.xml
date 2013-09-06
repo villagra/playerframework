@@ -4,7 +4,7 @@
     <!--<Url>http://localhost:22269//handler.ashx</Url>-->
     <!--<Url>http://smf.cloudapp.net/services/audienceinsight.ashx</Url>-->
     <!--<Url>http://localhost.fiddler:47037/media</Url>-->
-    <Url>http://localhost.fiddler:81/api/media/player</Url>
+    <!--<Url>http://localhost.fiddler:81/api/media/player</Url>-->
     <Url>http://10.200.150.22:81/api/media/player</Url>
     <WCF>0</WCF>
     <relative>0</relative>

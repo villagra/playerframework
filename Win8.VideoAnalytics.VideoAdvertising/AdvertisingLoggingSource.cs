@@ -1,4 +1,5 @@
-﻿using Microsoft.VideoAdvertising;
+﻿using Microsoft.PlayerFramework;
+using Microsoft.VideoAdvertising;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,17 @@ namespace Microsoft.VideoAnalytics.VideoAdvertising
     {
         AnalyticsCollector analyticsCollector;
 
-        public AdvertisingLoggingSource(IList<IAdPayloadHandler> adHandlers, AnalyticsCollector analyticsCollector)
+        static AdvertisingLoggingSource advertisingLoggingSource;
+
+        public static void Initialize(IList<IAdPayloadHandler> adHandlers, AnalyticsCollector analyticsCollector)
+        {
+            if (advertisingLoggingSource == null)
+            {
+                advertisingLoggingSource = new AdvertisingLoggingSource(adHandlers, analyticsCollector);
+            }
+        }
+
+        private AdvertisingLoggingSource(IList<IAdPayloadHandler> adHandlers, AnalyticsCollector analyticsCollector)
         {
             this.analyticsCollector = analyticsCollector;
             

@@ -8,8 +8,6 @@
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
 
-    var advertisingLoggingSource = null;
-
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
@@ -57,8 +55,7 @@
 
                 // Audience Insight ad tracking config
 
-                var analyticsCollector = mediaPlayer.analyticsPlugin.analyticsCollector;
-                advertisingLoggingSource = new Microsoft.VideoAnalytics.VideoAdvertising.AdvertisingLoggingSource(mediaPlayer.adHandlerPlugin.adPayloadHandlers, analyticsCollector);
+                Microsoft.VideoAnalytics.VideoAdvertising.AdvertisingLoggingSource.initialize(mediaPlayer.adHandlerPlugin.adPayloadHandlers, analyticsPlugin.analyticsCollector);
 
                 // Set up ad
 

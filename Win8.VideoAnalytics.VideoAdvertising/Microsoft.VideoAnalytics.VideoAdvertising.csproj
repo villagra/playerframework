@@ -108,6 +108,10 @@
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
       <Name>Microsoft.VideoAnalytics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj">
+      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdvertisingLoggingSource.cs" />

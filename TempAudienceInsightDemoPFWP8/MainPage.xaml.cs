@@ -20,9 +20,7 @@ using Microsoft.VideoAnalytics;
 namespace TempAudienceInsightDemoPFWP8
 {
     public partial class MainPage : PhoneApplicationPage
-    {
-        AdvertisingLoggingSource advertisingLoggingSource;
-        
+    {       
         public MainPage()
         {
             InitializeComponent();
@@ -58,8 +56,7 @@ namespace TempAudienceInsightDemoPFWP8
 
             // Audience Insight ad tracking config
 
-            var analyticsCollector = player.Plugins.OfType<AnalyticsPlugin>().First().AnalyticsCollector;
-            advertisingLoggingSource = new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlers, analyticsCollector);
+            AdvertisingLoggingSource.Initialize(player.GetAdHandlerPlugin().AdHandlers, analyticsPlugin.AnalyticsCollector);
         }
     }
 }

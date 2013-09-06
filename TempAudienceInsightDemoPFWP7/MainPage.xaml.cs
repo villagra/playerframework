@@ -24,9 +24,7 @@ using Microsoft.PlayerFramework;
 namespace TempAudienceInsightDemoPFWP7
 {
     public partial class MainPage : PhoneApplicationPage
-    {
-        AdvertisingLoggingSource advertisingLoggingSource;
-        
+    {       
         // Constructor
         public MainPage()
         {
@@ -63,8 +61,7 @@ namespace TempAudienceInsightDemoPFWP7
 
             // Audience Insight ad tracking config
 
-            var analyticsCollector = player.Plugins.OfType<AnalyticsPlugin>().First().AnalyticsCollector;
-            advertisingLoggingSource = new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlers, analyticsCollector);
+            AdvertisingLoggingSource.Initialize(player.GetAdHandlerPlugin().AdHandlers, analyticsPlugin.AnalyticsCollector);
         }
     }
 }

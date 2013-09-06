@@ -27,9 +27,7 @@ namespace TempAudienceInsightDemoPF
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {
-        AdvertisingLoggingSource advertisingLoggingSource;
-        
+    {       
         public MainPage()
         {
             this.InitializeComponent();
@@ -73,8 +71,7 @@ namespace TempAudienceInsightDemoPF
 
             // Audience Insight ad tracking config
 
-            var analyticsCollector = player.Plugins.OfType<AnalyticsPlugin>().First().AnalyticsCollector;
-            advertisingLoggingSource = new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlers, analyticsCollector);
+            AdvertisingLoggingSource.Initialize(player.GetAdHandlerPlugin().AdHandlers, analyticsPlugin.AnalyticsCollector);
         }
     }
 }
