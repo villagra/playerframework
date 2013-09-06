@@ -1331,34 +1331,10 @@
                                 </VisualState>
                                 <VisualState x:Name="Loading"/>
                                 <VisualState x:Name="Loaded"/>
-                                <VisualState x:Name="Opened">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Starting">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Started">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Ending">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
+                                <VisualState x:Name="Opened"/>
+                                <VisualState x:Name="Starting"/>
+                                <VisualState x:Name="Started"/>
+                                <VisualState x:Name="Ending"/>
                                 <VisualState x:Name="Failed">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="ErrorsContainer">
