@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Xaml.PlayerFramework.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Xaml.PlayerFramework"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:ads="using:Microsoft.PlayerFramework.Advertising"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest">
+            <mmppf:MediaPlayer.Plugins>
+                <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
+                <!--<ads:AdSchedulerPlugin>
+                    <ads:AdSchedulerPlugin.Advertisements>
+
+                        <ads:MidrollAdvertisement Time="00:00:05">
+                            <ads:MidrollAdvertisement.Source>
+                                <ads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml" Type="vast"/>
+                            </ads:MidrollAdvertisement.Source>
+                        </ads:MidrollAdvertisement>
+
+                    </ads:AdSchedulerPlugin.Advertisements>
+                </ads:AdSchedulerPlugin>-->
+                <ads:AdHandlerPlugin/>
+                <adaptive:AdaptivePlugin/>
+            </mmppf:MediaPlayer.Plugins>
+        </mmppf:MediaPlayer>
+    </Grid>
+</Page>
