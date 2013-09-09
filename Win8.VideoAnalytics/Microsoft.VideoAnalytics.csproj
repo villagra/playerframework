@@ -103,15 +103,9 @@
     <DocumentationFile>bin\x86\Release\Microsoft.VideoAnalytics.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AudienceInsight\BatchAgentFactory.cs" />
-    <Compile Include="AudienceInsight\BatchingConfigFactory.cs" />
-    <Compile Include="AudienceInsight\ResponseDeserializer.cs" />
-    <Compile Include="AudienceInsight\RESTDataClient.cs" />
-    <Compile Include="Config\BatchingConfig.cs" />
     <Compile Include="Config\AnalyticsConfig.cs" />
     <Compile Include="Config\LoggingConfig.cs" />
     <Compile Include="Config\EdgeServerConfig.cs" />
-    <Compile Include="Config\MappingPolicy.cs" />
     <Compile Include="DataClients\EdgeServerMonitor.cs" />
     <Compile Include="DataClients\EdgeServerResult.cs" />
     <Compile Include="DataClients\IEdgeServerMonitor.cs" />
@@ -119,19 +113,10 @@
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Extensions\LoggingExtensions.cs" />
     <Compile Include="Logging\Log.cs" />
-    <Compile Include="Logging\Batch.cs" />
-    <Compile Include="Logging\BatchEventArgs.cs" />
-    <Compile Include="Logging\BatchingExceptionEventArgs.cs" />
-    <Compile Include="Logging\BatchingLogAgent.cs" />
-    <Compile Include="Logging\IBatchAgent.cs" />
-    <Compile Include="Logging\ILogFilter.cs" />
     <Compile Include="Logging\ILoggingSource.cs" />
     <Compile Include="Logging\ILoggingTarget.cs" />
-    <Compile Include="Logging\InstanceDataClient.cs" />
     <Compile Include="Logging\LogConstants.cs" />
     <Compile Include="Logging\LoggingService.cs" />
-    <Compile Include="Logging\MappedLogs.cs" />
-    <Compile Include="Logging\QueueManager.cs" />
     <Compile Include="Logs\BitrateChangedLog.cs" />
     <Compile Include="Logs\ChunkDownloadLog.cs" />
     <Compile Include="Logs\BufferSizeLog.cs" />
