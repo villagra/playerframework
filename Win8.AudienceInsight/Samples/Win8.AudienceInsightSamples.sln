@@ -9,7 +9,7 @@ Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "JS.Standalone", "JS.Standal
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "JS.PlayerFramework", "JS.PlayerFramework\JS.PlayerFramework.jsproj", "{B89C397E-A72D-409D-A7E7-314F51207443}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlayerFramework.Xaml", "PlayerFramework.Xaml", "{72FA6035-F74B-4637-8505-FB42EA5BBE1F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlayerFramework", "PlayerFramework", "{72FA6035-F74B-4637-8505-FB42EA5BBE1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AudienceInsight", "AudienceInsight", "{8ADC2AC9-C9FF-43AF-919E-87CDD58CDD59}"
 EndProject
