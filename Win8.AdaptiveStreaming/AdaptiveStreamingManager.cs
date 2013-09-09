@@ -40,6 +40,7 @@ namespace Microsoft.AdaptiveStreaming
         public event EventHandler<object> Opened;
         public event EventHandler<object> Closed;
         public event EventHandler<RefreshingStateEventArgs> RefreshingState;
+        public event EventHandler<SelectingTracksEventArgs> SelectingTracks;
 
         private bool isStartupBitrateActive;
         private TimeSpan Position { get; set; }
@@ -235,7 +236,7 @@ namespace Microsoft.AdaptiveStreaming
                     if (IsOpen)
                     {
                         // select all eligable tracks
-                        UpdateSelectedTracks();
+                        UpdateSelectedTracks(null);
                     }
                 }
             }
@@ -480,7 +481,7 @@ namespace Microsoft.AdaptiveStreaming
                 {
                     if (IsOpen)
                     {
-                        UpdateSelectedTracks();
+                        UpdateSelectedTracks(null);
                     }
                 }
             }
@@ -496,7 +497,7 @@ namespace Microsoft.AdaptiveStreaming
                 {
                     if (IsOpen)
                     {
-                        UpdateSelectedTracks();
+                        UpdateSelectedTracks(null);
                     }
                 }
             }
@@ -512,44 +513,61 @@ namespace Microsoft.AdaptiveStreaming
                 {
                     if (IsOpen)
                     {
-                        UpdateSelectedTracks();
+                        UpdateSelectedTracks(null);
                     }
                 }
             }
         }
 
-        private void UpdateSelectedTracks(uint? preferredBitrate = null)
+        public void UpdateSelectedTracks()
+        {
+            UpdateSelectedTracks(null);
+        }
+
+        private void UpdateSelectedTracks(uint? preferredBitrate)
         {
             var videoStream = VideoStream;
-            if (videoStream != null && videoStream.AvailableTracks.Any())
+            if (videoStream != null)
             {
-                IList<IManifestTrack> tracks = videoStream.AvailableTracks.ToList();
-                if (MaxSize.HasValue)
+                IList<IManifestTrack> allTracks = videoStream.AvailableTracks.ToList();
+                if (allTracks.Any())
                 {
-                    tracks = tracks.Where(t => t.MaxWidth <= MaxSize.Value.Width && t.MaxHeight <= MaxSize.Value.Height).ToList();
-                }
-                if (MaxBitrate.HasValue)
-                {
-                    tracks = tracks.Where(t => t.Bitrate <= MaxBitrate.Value).ToList();
-                }
-                if (MinBitrate.HasValue)
-                {
-                    tracks = tracks.Where(t => t.Bitrate >= MinBitrate.Value).ToList();
-                }
-                if (!tracks.Any())
-                {
-                    // there are no tracks this small. Instead take the smallest ones (note: there can be more than one at the same size)
-                    tracks = videoStream.AvailableTracks.GroupBy(t => t.MaxWidth * t.MaxHeight).OrderBy(g => g.Key).First().ToList();
-                }
-                if (preferredBitrate.HasValue)
-                {
-                    tracks = tracks.OrderBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).Take(1).ToList();
-                }
-                isStartupBitrateActive = false;
-                if (!videoStream.SelectedTracks.SequenceEqual(tracks, manifestTrackEqualityComparer))
-                {
-                    videoStream.SelectTracks(new ReadOnlyCollection<IManifestTrack>(tracks));
-                    isStartupBitrateActive = preferredBitrate.HasValue; // causes an UpdateSelectedTracks call to be made immediately after playback starts.
+                    IList<IManifestTrack> selectedTracks = allTracks.ToList();
+
+                    if (MaxSize.HasValue)
+                    {
+                        selectedTracks = selectedTracks.Where(t => t.MaxWidth <= MaxSize.Value.Width && t.MaxHeight <= MaxSize.Value.Height).ToList();
+                    }
+                    if (MaxBitrate.HasValue)
+                    {
+                        selectedTracks = selectedTracks.Where(t => t.Bitrate <= MaxBitrate.Value).ToList();
+                    }
+                    if (MinBitrate.HasValue)
+                    {
+                        selectedTracks = selectedTracks.Where(t => t.Bitrate >= MinBitrate.Value).ToList();
+                    }
+                    if (!selectedTracks.Any())
+                    {
+                        // there are no tracks this small. Instead take the smallest ones (note: there can be more than one at the same size)
+                        selectedTracks = allTracks.GroupBy(t => t.MaxWidth * t.MaxHeight).OrderBy(g => g.Key).First().ToList();
+                    }
+                    if (preferredBitrate.HasValue)
+                    {
+                        selectedTracks = selectedTracks.GroupBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).First().ToList();
+                    }
+
+                    // offer the consumer a chance to override our choices
+                    if (SelectingTracks != null)
+                    {
+                        SelectingTracks(this, new SelectingTracksEventArgs(selectedTracks, allTracks));
+                    }
+
+                    isStartupBitrateActive = false;
+                    if (!videoStream.SelectedTracks.SequenceEqual(selectedTracks, manifestTrackEqualityComparer))
+                    {
+                        videoStream.SelectTracks(new ReadOnlyCollection<IManifestTrack>(selectedTracks));
+                        isStartupBitrateActive = preferredBitrate.HasValue; // causes an UpdateSelectedTracks call to be made immediately after playback starts.
+                    }
                 }
             }
         }
@@ -750,6 +768,18 @@ namespace Microsoft.AdaptiveStreaming
         }
 
         public TimeSpan Position { get; private set; }
+    }
+
+    public sealed class SelectingTracksEventArgs
+    {
+        internal SelectingTracksEventArgs(IList<IManifestTrack> selectedTracks, IList<IManifestTrack> allTracks)
+        {
+            SelectedTracks = selectedTracks;
+            AllTracks = allTracks;
+        }
+
+        public IList<IManifestTrack> SelectedTracks { get; private set; }
+        public IList<IManifestTrack> AllTracks { get; private set; }
     }
 
     public sealed class DataReceivedEventArgs
