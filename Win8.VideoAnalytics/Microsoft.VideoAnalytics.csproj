@@ -156,12 +156,6 @@
     <Compile Include="Logs\EventTypes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2d385553-240d-4f31-a78f-72686bb2613b}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">

@@ -236,12 +236,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />

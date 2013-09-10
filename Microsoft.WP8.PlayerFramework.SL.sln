@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.SL.Test", "Phone.SL.Test.WP8\Microsoft.WP8.PlayerFramework.SL.Test.csproj", "{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZLib", "Lib\Portable\ZLib\ZLib.csproj", "{2D385553-240D-4F31-A78F-72686BB2613B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.VideoAnalytics", "Phone.VideoAnalytics\Microsoft.WP8.VideoAnalytics.csproj", "{C9E36E2B-62F5-41AD-883A-597B6795D702}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.SL.Analytics", "Phone.SL.Analytics\Microsoft.WP8.PlayerFramework.SL.Analytics.csproj", "{F03BC1C2-BC5C-476D-A715-09DA916F9943}"
@@ -138,14 +136,6 @@ Global
 		{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}.Release|x86.ActiveCfg = Release|x86
 		{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}.Release|x86.Build.0 = Release|x86
 		{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}.Release|x86.Deploy.0 = Release|x86
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Release|ARM.ActiveCfg = Release|Any CPU
-		{2D385553-240D-4F31-A78F-72686BB2613B}.Release|x86.ActiveCfg = Release|Any CPU
 		{C9E36E2B-62F5-41AD-883A-597B6795D702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C9E36E2B-62F5-41AD-883A-597B6795D702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9E36E2B-62F5-41AD-883A-597B6795D702}.Debug|ARM.ActiveCfg = Debug|ARM
