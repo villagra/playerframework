@@ -10,5 +10,4 @@
   <File Reference="Microsoft.PlayerFramework.Analytics.dll"/>
   <File Reference="Microsoft.PlayerFramework.Analytics.xml"/>
   <File Reference="Microsoft.PlayerFramework.Adaptive.Analytics.dll"/>
-  <File Reference="ZLib.dll"/>
 </FileList>

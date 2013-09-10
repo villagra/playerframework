@@ -18,6 +18,11 @@ rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\References\"
 rmdir /s /q "Microsoft.AudienceInsight.Win8\Redist\"
 rmdir /s /q "Microsoft.AudienceInsight.Win8\References\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\"
+
 
 mkdir "Microsoft.PlayerFramework.Js\DesignTime"
 mkdir "Microsoft.PlayerFramework.Js\Redist"
@@ -114,6 +119,26 @@ mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral"
 mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight"
 mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration"
 mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.VideoAdvertising"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x64"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x86"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.AudienceInsight"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x64"
+mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x86"
 
 cd..
 
@@ -174,7 +199,6 @@ copy Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreamin
 copy Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																							Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x86\
 copy Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																							Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x64\
 copy Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																							Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\ARM\
-copy Lib\Portable\ZLib\bin\Release\ZLib.dll																																					Build\Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\neutral\
 
 copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.pri																		Build\Microsoft.PlayerFramework.Win8.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash\
 copy Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd																		Build\Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x86\
@@ -184,7 +208,15 @@ copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll							
 
 copy Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.pri																															Build\Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight\
 copy Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd																															Build\Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
-copy Lib\Portable\ZLib\bin\Release\ZLib.dll																																					Build\Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
+copy Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.pri																		Build\Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.VideoAdvertising\
+copy Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x86\
+copy Win8.VideoAnalytics.VideoAdvertising\bin\x64\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x64\
+copy Win8.VideoAnalytics.VideoAdvertising\bin\ARM\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\ARM\
+
+copy Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.pri																		Build\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.AudienceInsight\
+copy Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x86\
+copy Win8.VideoAnalytics.AudienceInsight\bin\x64\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x64\
+copy Win8.VideoAnalytics.AudienceInsight\bin\ARM\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Build\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\ARM\
 
 @popd
 
