@@ -1,0 +1,106 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AudienceInsight", "AudienceInsight", "{B38ED114-C260-47C4-8108-DF539863DCC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PlayerFramework", "PlayerFramework", "{EBF3F39B-F64A-4049-A944-6747CDBFEC08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.AudienceInsight", "..\Microsoft.WP7.AudienceInsight.csproj", "{672FD853-FC56-4544-903B-BA02A48BB696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL", "..\..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj", "{93CA50DC-F398-4DB6-9752-43FDD594C2C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive", "..\..\Phone.SL.Adaptive\Microsoft.WP7.PlayerFramework.SL.Adaptive.csproj", "{A9D1AEAF-C71F-4AB4-9F96-47530144337B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics", "..\..\Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj", "{884A1566-4580-4C68-A6AC-0F13D3293AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Advertising", "..\..\Phone.SL.Advertising\Microsoft.WP7.PlayerFramework.SL.Advertising.csproj", "{5490B4AB-8D77-4CC9-9A52-A475217D05A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Analytics", "..\..\Phone.SL.Analytics\Microsoft.WP7.PlayerFramework.SL.Analytics.csproj", "{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAdvertising", "..\..\Phone.VideoAdvertising\Microsoft.WP7.VideoAdvertising.csproj", "{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics", "..\..\Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj", "{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics.AudienceInsight", "..\..\Phone.VideoAnalytics.AudienceInsight\Microsoft.WP7.VideoAnalytics.AudienceInsight.csproj", "{D6C7FF1E-E128-490C-BB6D-7992259289A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics.VideoAdvertising", "..\..\Phone.VideoAnalytics.VideoAdvertising\Microsoft.WP7.VideoAnalytics.VideoAdvertising.csproj", "{FBECB5F7-00BD-463E-B494-67F69B3D2679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandaloneSample", "StandaloneSample\StandaloneSample.csproj", "{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerFrameworkSample", "PlayerFrameworkSample\PlayerFrameworkSample.csproj", "{A914132F-36A5-494A-8558-54AF29F1D00A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{672FD853-FC56-4544-903B-BA02A48BB696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672FD853-FC56-4544-903B-BA02A48BB696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672FD853-FC56-4544-903B-BA02A48BB696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672FD853-FC56-4544-903B-BA02A48BB696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{884A1566-4580-4C68-A6AC-0F13D3293AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5490B4AB-8D77-4CC9-9A52-A475217D05A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5490B4AB-8D77-4CC9-9A52-A475217D05A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5490B4AB-8D77-4CC9-9A52-A475217D05A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5490B4AB-8D77-4CC9-9A52-A475217D05A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C7FF1E-E128-490C-BB6D-7992259289A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C7FF1E-E128-490C-BB6D-7992259289A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C7FF1E-E128-490C-BB6D-7992259289A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C7FF1E-E128-490C-BB6D-7992259289A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28ADA732-0B0F-4C4A-94A1-AC2554E3C3F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A914132F-36A5-494A-8558-54AF29F1D00A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{672FD853-FC56-4544-903B-BA02A48BB696} = {B38ED114-C260-47C4-8108-DF539863DCC2}
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{A9D1AEAF-C71F-4AB4-9F96-47530144337B} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{884A1566-4580-4C68-A6AC-0F13D3293AAB} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{5490B4AB-8D77-4CC9-9A52-A475217D05A0} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{8129DB2B-AB5F-4F40-8125-9D61D396C0BA} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{D6C7FF1E-E128-490C-BB6D-7992259289A5} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+		{FBECB5F7-00BD-463E-B494-67F69B3D2679} = {EBF3F39B-F64A-4049-A944-6747CDBFEC08}
+	EndGlobalSection
+EndGlobal
