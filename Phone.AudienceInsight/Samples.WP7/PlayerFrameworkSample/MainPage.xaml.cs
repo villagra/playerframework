@@ -55,7 +55,11 @@ namespace PlayerFrameworkSample
 
             // Audience Insight ad tracking config
 
-            AdvertisingLoggingSource.Initialize(player.GetAdHandlerPlugin().AdHandlers, analyticsPlugin.AnalyticsCollector);
+            analyticsPlugin.AnalyticsCollector.LoggingSources.Add(new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlerController));
+
+            // -or-
+
+            //LoggingService.Current.LoggingSources.Add(new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlerController));
         }
     }
 }

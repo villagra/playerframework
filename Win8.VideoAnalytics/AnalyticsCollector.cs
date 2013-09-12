@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Threading;
 using System.Threading.Tasks;
 #if SILVERLIGHT
@@ -8,8 +10,6 @@ using System.Windows.Threading;
 #else
 using Windows.System.Threading;
 using Windows.UI.Core;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 #endif
 
 namespace Microsoft.VideoAnalytics

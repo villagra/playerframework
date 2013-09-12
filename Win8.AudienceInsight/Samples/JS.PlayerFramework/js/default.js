@@ -55,7 +55,7 @@
 
                 // Audience Insight ad tracking config
 
-                Microsoft.VideoAnalytics.VideoAdvertising.AdvertisingLoggingSource.initialize(mediaPlayer.adHandlerPlugin.adPayloadHandlers, analyticsPlugin.analyticsCollector);
+                analyticsPlugin.analyticsCollector.loggingSources.push(new Microsoft.VideoAnalytics.VideoAdvertising.AdvertisingLoggingSource(mediaPlayer.adHandlerPlugin.adHandlerController));
 
                 // Set up ad
 
