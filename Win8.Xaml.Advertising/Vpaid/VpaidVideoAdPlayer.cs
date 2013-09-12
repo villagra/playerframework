@@ -1,4 +1,8 @@
-﻿using System;
+﻿#if WINDOWS_PHONE
+#define HACK_MARKERREACHED
+#endif
+
+using System;
 using System.Linq;
 using Microsoft.VideoAdvertising;
 using System.Threading.Tasks;
@@ -177,7 +181,9 @@ namespace Microsoft.PlayerFramework.Advertising
                 mediaElement.Markers.Add(new TimelineMarker() { Type = Marker_DurationReached, Time = MaxDuration.Value });
             }
 
+#if !HACK_MARKERREACHED
             mediaElement.MarkerReached += MediaElement_MarkerReached;
+#endif
         }
 
         protected void OnLoaded()
@@ -195,7 +201,20 @@ namespace Microsoft.PlayerFramework.Advertising
         void timer_Tick(object sender, object e)
 #endif
         {
-            if (AdRemainingTimeChange != null) AdRemainingTimeChange(this, EventArgs.Empty);
+            if (timer.IsEnabled)
+            {
+                if (AdRemainingTimeChange != null) AdRemainingTimeChange(this, EventArgs.Empty);
+#if HACK_MARKERREACHED
+                var now = mediaElement.Position;
+                foreach (var marker in mediaElement.Markers.ToList())
+                {
+                    if (marker.Time <= now)
+                    {
+                        OnMarkerReached(marker);
+                    }
+                }
+#endif
+            }
         }
 
 #if WINDOWS_PHONE
@@ -204,28 +223,36 @@ namespace Microsoft.PlayerFramework.Advertising
         void MediaElement_MarkerReached(object sender, TimelineMarkerRoutedEventArgs e)
 #endif
         {
-            switch (e.Marker.Type)
+            OnMarkerReached(e.Marker);
+        }
+
+        private void OnMarkerReached(TimelineMarker marker)
+        {
+            switch (marker.Type)
             {
                 case Marker_SkippableOffset:
                     AdSkippableState = true;
-                    mediaElement.Markers.Remove(e.Marker);
+                    mediaElement.Markers.Remove(marker);
                     break;
                 case Marker_FirstQuartile:
                     if (AdVideoFirstQuartile != null) AdVideoFirstQuartile(this, EventArgs.Empty);
-                    mediaElement.Markers.Remove(e.Marker);
+                    mediaElement.Markers.Remove(marker);
                     break;
                 case Marker_Midpoint:
                     if (AdVideoMidpoint != null) AdVideoMidpoint(this, EventArgs.Empty);
-                    mediaElement.Markers.Remove(e.Marker);
+                    mediaElement.Markers.Remove(marker);
                     break;
                 case Marker_ThirdQuartile:
                     if (AdVideoThirdQuartile != null) AdVideoThirdQuartile(this, EventArgs.Empty);
-                    mediaElement.Markers.Remove(e.Marker);
+                    mediaElement.Markers.Remove(marker);
                     break;
                 case Marker_DurationReached:
                     if (AdVideoComplete != null) AdVideoComplete(this, EventArgs.Empty);
-                    mediaElement.Markers.Remove(e.Marker);
+                    mediaElement.Markers.Remove(marker);
                     StopAd();
+                    break;
+                default:
+                    mediaElement.Markers.Remove(marker);
                     break;
             }
         }
@@ -272,6 +299,15 @@ namespace Microsoft.PlayerFramework.Advertising
 
         void MediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
+            if (mediaElement.CurrentState == MediaElementState.Playing)
+            {
+                if (!timer.IsEnabled) timer.Start();
+            }
+            else if (timer.IsEnabled)
+            {
+                timer.Stop();
+            }
+
             switch (mediaElement.CurrentState)
             {
                 case MediaElementState.Playing:
@@ -286,11 +322,18 @@ namespace Microsoft.PlayerFramework.Advertising
                     }
                     break;
                 case MediaElementState.Paused:
-                    if (State == AdState.Playing)
+#if WINDOWS_PHONE // HACK: WP will fire Paused StateChanged just prior to MediaEnded, instead, let MediaEnded fire first.
+                    Dispatcher.BeginInvoke(() =>
                     {
-                        State = AdState.Paused;
-                        if (AdPaused != null) AdPaused(this, EventArgs.Empty);
-                    }
+#endif
+                        if (State == AdState.Playing)
+                        {
+                            State = AdState.Paused;
+                            if (AdPaused != null) AdPaused(this, EventArgs.Empty);
+                        }
+#if WINDOWS_PHONE
+                    });
+#endif
                     break;
                 case MediaElementState.Stopped:
                 case MediaElementState.Closed:
@@ -316,7 +359,6 @@ namespace Microsoft.PlayerFramework.Advertising
             this.Navigated += AdPlayer_Navigated;
             this.SizeChanged += AdPlayer_SizeChanged;
             timer.Tick += timer_Tick;
-            timer.Start();
 
             if (AdStarted != null) AdStarted(this, EventArgs.Empty);
             if (AdImpression != null) AdImpression(this, EventArgs.Empty);
@@ -353,7 +395,9 @@ namespace Microsoft.PlayerFramework.Advertising
             mediaElement.MediaFailed -= MediaElement_MediaFailed;
             mediaElement.MediaEnded -= MediaElement_MediaEnded;
             mediaElement.CurrentStateChanged -= MediaElement_CurrentStateChanged;
+#if !HACK_MARKERREACHED
             mediaElement.MarkerReached -= MediaElement_MarkerReached;
+#endif
             OnTeardown();
             this.Content = null;
             mediaElement = null;
