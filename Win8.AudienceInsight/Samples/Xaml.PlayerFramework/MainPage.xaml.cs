@@ -3,6 +3,7 @@ using Microsoft.AudienceInsight;
 using Microsoft.PlayerFramework.Adaptive;
 using Microsoft.PlayerFramework.Advertising;
 using Microsoft.PlayerFramework.Analytics;
+using Microsoft.VideoAnalytics;
 using Microsoft.VideoAnalytics.VideoAdvertising;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,10 @@ namespace Xaml.PlayerFramework
         public MainPage()
         {
             this.InitializeComponent();
+            player.Loaded += player_Loaded;
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        async void player_Loaded(object sender, RoutedEventArgs e)
         {
             // Audience Insight config
 
@@ -70,7 +67,12 @@ namespace Xaml.PlayerFramework
 
             // Audience Insight ad tracking config
 
-            AdvertisingLoggingSource.Initialize(player.GetAdHandlerPlugin().AdHandlers, analyticsPlugin.AnalyticsCollector);
+            analyticsPlugin.AnalyticsCollector.LoggingSources.Add(new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlerController));
+
+            // -or-
+
+            //LoggingService.Current.LoggingSources.Add(new AdvertisingLoggingSource(player.GetAdHandlerPlugin().AdHandlerController));
+        
         }
     }
 }

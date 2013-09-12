@@ -6,29 +6,26 @@ using System.Text;
 
 namespace Microsoft.VideoAnalytics.VideoAdvertising
 {
-    public sealed class AdvertisingLoggingSource
+    public sealed class AdvertisingLoggingSource : ILoggingSource
     {
-        AnalyticsCollector analyticsCollector;
+        public event EventHandler<LogEventArgs> LogCreated;
 
-        static AdvertisingLoggingSource advertisingLoggingSource;
-
-        public static void Initialize(IList<IAdPayloadHandler> adHandlers, AnalyticsCollector analyticsCollector)
+        public AdvertisingLoggingSource(AdHandlerController adHandlerController)
         {
-            if (advertisingLoggingSource == null)
+            adHandlerController.AdTrackingEventOccurred += adHandlerController_AdTrackingEventOccurred;
+        }
+
+        void adHandlerController_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
+        {
+            if (LogCreated != null)
             {
-                advertisingLoggingSource = new AdvertisingLoggingSource(adHandlers, analyticsCollector);
-            }
+                var adLog = CreateAdLog(e);
+
+                LogCreated(this, new LogEventArgs(adLog));
+            } 
         }
 
-        private AdvertisingLoggingSource(IList<IAdPayloadHandler> adHandlers, AnalyticsCollector analyticsCollector)
-        {
-            this.analyticsCollector = analyticsCollector;
-            
-            foreach (var adHandler in adHandlers)
-                adHandler.AdTrackingEventOccurred += handler_AdTrackingEventOccurred;
-        }
-
-        void handler_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
+        AdEventLog CreateAdLog(AdTrackingEventEventArgs e)
         {
             var adLog = new AdEventLog();
             adLog.TrackingType = e.TrackingType;
@@ -45,8 +42,7 @@ namespace Microsoft.VideoAnalytics.VideoAdvertising
                 adLog.CreativeId = creativeSource.Id;
             }
 
-            if (analyticsCollector != null) analyticsCollector.SendLog(adLog);
-            else LoggingService.Current.Log(adLog);
+            return adLog;
         }
     }
 

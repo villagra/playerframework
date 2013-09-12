@@ -123,6 +123,14 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <summary>
+        /// Gets the current AdHandlerController object
+        /// </summary>
+        public AdHandlerController AdHandlerController
+        {
+            get { return controller; }
+        }
+
+        /// <summary>
         /// Cancels all active ads.
         /// </summary>
         public async Task CancelActiveAds()
