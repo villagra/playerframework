@@ -6,7 +6,6 @@ rmdir /s /q "Microsoft.PlayerFramework.WP8.Advertising\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.TimedText\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.WebVTT\References"
-rmdir /s /q "Microsoft.PlayerFramework.WP8.Advertising\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.Dash\References"
 
 mkdir "Microsoft.PlayerFramework.WP8\References"
