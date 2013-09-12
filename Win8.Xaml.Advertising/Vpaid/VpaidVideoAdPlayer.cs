@@ -286,11 +286,18 @@ namespace Microsoft.PlayerFramework.Advertising
                     }
                     break;
                 case MediaElementState.Paused:
-                    if (State == AdState.Playing)
+#if WINDOWS_PHONE // HACK: WP will fire Paused StateChanged just prior to MediaEnded, instead, let MediaEnded fire first.
+                    Dispatcher.BeginInvoke(() =>
                     {
-                        State = AdState.Paused;
-                        if (AdPaused != null) AdPaused(this, EventArgs.Empty);
-                    }
+#endif
+                        if (State == AdState.Playing)
+                        {
+                            State = AdState.Paused;
+                            if (AdPaused != null) AdPaused(this, EventArgs.Empty);
+                        }
+#if WINDOWS_PHONE
+                    });
+#endif
                     break;
                 case MediaElementState.Stopped:
                 case MediaElementState.Closed:
