@@ -31,7 +31,7 @@ namespace Microsoft.VideoAnalytics
         private ThreadPoolTimer reportTimer;
         private ThreadPoolTimer pollingTimer;
 #endif
-        private TaskCompletionSource<StreamLoadedLog> streamLoadTask;
+        private StreamLoadedLog streamLoadedLog = null;
         private QualityReportAggregator qualityReportAggregator;
         private DownloadErrorReportAggregator downloadErrorReportAggregator;
         private bool isLive;
@@ -350,12 +350,7 @@ namespace Microsoft.VideoAnalytics
                 log.ExtraData.Add(kvp);
             }
 
-            // add additional info about the stream (which may require us to wait until it's finished).
-            StreamLoadedLog streamLoadedLog = null;
-            if (streamLoadTask != null)
-            {
-                streamLoadedLog = await streamLoadTask.Task;
-            }
+            // add additional info about the stream (which may not be available until it's finished loading).
             if (streamLoadedLog != null)
             {
                 log.ExtraData.Add("EdgeIP", streamLoadedLog.EdgeServer);
@@ -479,7 +474,8 @@ namespace Microsoft.VideoAnalytics
             loadedLog.EdgeServer = edgeResult.EdgeServer;
             loadedLog.ClientIp = edgeResult.ClientIP;
             AddLog(loadedLog);
-            streamLoadTask.SetResult(loadedLog);
+            streamLoadedLog = loadedLog;
+            
         }
 
         void Player_StreamEnded(object sender, object e)
@@ -492,7 +488,7 @@ namespace Microsoft.VideoAnalytics
         {
             isPaused = true;
             AddLog(new StreamEventLog(StreamEventType.Unloaded, Player.Position, Player.Duration));
-            streamLoadTask = new TaskCompletionSource<StreamLoadedLog>();
+            streamLoadedLog = null;
         }
 
         void Player_PositionReached(object sender, PositionReachedEventArgs e)
@@ -594,7 +590,7 @@ namespace Microsoft.VideoAnalytics
                 IsAttached = true;
 
                 if (player == null) throw new ArgumentNullException("player");
-                streamLoadTask = new TaskCompletionSource<StreamLoadedLog>();
+                streamLoadedLog = null;
 
                 EdgeServerMonitor = edgeServerMonitor;
                 AdaptiveMonitor = adaptiveMonitor;
@@ -659,7 +655,7 @@ namespace Microsoft.VideoAnalytics
                 DetachEvents();
                 Player = null;
                 AdaptiveMonitor = null;
-                streamLoadTask = null;
+                streamLoadedLog = null;
                 qualityReportAggregator = null;
                 downloadErrorReportAggregator = null;
 

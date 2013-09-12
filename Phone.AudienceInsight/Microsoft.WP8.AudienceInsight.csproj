@@ -131,9 +131,6 @@
     <Compile Include="..\Win8.AudienceInsight\Logging\QueueManager.cs">
       <Link>Logging\QueueManager.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\ResponseDeserializer.cs">
-      <Link>ResponseDeserializer.cs</Link>
-    </Compile>
     <Compile Include="..\Win8.AudienceInsight\RESTDataClient.cs">
       <Link>RESTDataClient.cs</Link>
     </Compile>

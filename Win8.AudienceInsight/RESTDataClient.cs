@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 #else
 using Windows.Foundation;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Net.Http.Headers;
 #endif
 
 namespace Microsoft.AudienceInsight
@@ -142,12 +145,17 @@ namespace Microsoft.AudienceInsight
                             {
                                 response.EnsureSuccessStatusCode();
 
-                                using (var responseStream = await response.Content.ReadAsStreamAsync())
-                                {
-                                    c.ThrowIfCancellationRequested();
-                                    //return ResponseDeserializer.Deserialize(responseStream);
-                                    return new LogBatchResult() { IsEnabled = true };
-                                }
+                                c.ThrowIfCancellationRequested();
+
+                                var responseHeaders = new Dictionary<string, string>();
+#if SILVERLIGHT                                
+                                foreach (var responseHeaderKey in response.Response.Headers.AllKeys)
+                                    responseHeaders.Add(responseHeaderKey, response.Response.Headers[responseHeaderKey]);
+#else
+                                foreach (var responseHeader in response.Headers)
+                                    responseHeaders.Add(responseHeader.Key, responseHeader.Value.FirstOrDefault());
+#endif
+                                return CreateLogBatchResult(responseHeaders);
                             }
                         }
                     }
@@ -156,6 +164,21 @@ namespace Microsoft.AudienceInsight
             else return null;
         }
 
+        LogBatchResult CreateLogBatchResult(Dictionary<string, string> responseHeaders)
+        {
+            LogBatchResult result = new LogBatchResult();
+
+            if (responseHeaders.Keys.Contains("LoggingEnabled"))
+                result.IsEnabled = Convert.ToInt32(responseHeaders["LoggingEnabled"]) != 0 ;
+
+            if (responseHeaders.Keys.Contains("QueuePollingIntervalSeconds"))
+                result.QueuePollingInterval = TimeSpan.FromSeconds(Convert.ToDouble(responseHeaders["QueuePollingIntervalSeconds"]));
+
+            if (responseHeaders.Keys.Contains("ServerTime"))
+                result.ServerTime = new DateTimeOffset(Convert.ToInt64(responseHeaders["ServerTime"]), TimeSpan.Zero);
+
+            return result;
+        }
     }
 
     /// <summary>

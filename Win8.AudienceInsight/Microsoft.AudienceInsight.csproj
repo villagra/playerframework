@@ -116,7 +116,6 @@
     <Compile Include="Logging\MappedLogs.cs" />
     <Compile Include="Logging\QueueManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResponseDeserializer.cs" />
     <Compile Include="RESTDataClient.cs" />
   </ItemGroup>
   <ItemGroup>
