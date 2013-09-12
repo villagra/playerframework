@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <Service>
-    <!--<Url>http://localhost:22269//handler.ashx</Url>-->
-    <!--<Url>http://smf.cloudapp.net/services/audienceinsight.ashx</Url>-->
-    <!--<Url>http://localhost.fiddler:47037/media</Url>-->
     <!--<Url>http://localhost.fiddler:81/api/media/player</Url>-->
     <Url>http://10.200.150.22:81/api/media/player</Url>
     <WCF>0</WCF>
