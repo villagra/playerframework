@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -311,12 +311,6 @@
     <Compile Include="Controls\MediaElementWrapper.cs" />
     <Compile Include="Converters\MulticastConverter.cs" />
     <Compile Include="Interfaces\IMediaElement.cs" />
-    <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="..\Win8.Xaml\Primitives\PlaylistItem.Metadata.cs">
       <Link>Primitives\PlaylistItem.Metadata.cs</Link>
     </Compile>
@@ -334,10 +328,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="themes\generic.xaml">

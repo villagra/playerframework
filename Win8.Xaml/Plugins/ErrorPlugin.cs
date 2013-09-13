@@ -40,11 +40,7 @@ namespace Microsoft.PlayerFramework
         {
             get
             {
-#if SILVERLIGHT
-                return Microsoft.PlayerFramework.Resources.ErrorText;
-#else
                 return MediaPlayer.GetResourceString("ErrorText"); 
-#endif
             }
         }
 

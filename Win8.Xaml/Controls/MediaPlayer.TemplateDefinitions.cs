@@ -1812,7 +1812,7 @@ namespace Microsoft.PlayerFramework
         {
             get
             {
-                return Microsoft.PlayerFramework.Resources.DefaultAudioStreamName;
+                return GetResourceString("DefaultAudioStreamName");
             }
         }
 #else

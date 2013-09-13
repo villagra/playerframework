@@ -285,12 +285,6 @@
     <Compile Include="Controls\MediaElementWrapper.cs" />
     <Compile Include="Converters\MulticastConverter.cs" />
     <Compile Include="Interfaces\IMediaElement.cs" />
-    <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="..\Win8.Xaml\Primitives\PlaylistItem.Metadata.cs">
       <Link>Primitives\PlaylistItem.Metadata.cs</Link>
     </Compile>
@@ -309,7 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

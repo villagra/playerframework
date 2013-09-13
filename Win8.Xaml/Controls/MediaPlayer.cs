@@ -2545,7 +2545,7 @@ namespace Microsoft.PlayerFramework
             get
             {
 #if SILVERLIGHT
-                return PlayerFramework.Resources.TimeSpanReadableFormat;
+                return GetResourceString("TimeSpanReadableFormat");
 #else
                 if (!IsInDesignMode)
                 {
@@ -5112,8 +5112,17 @@ namespace Microsoft.PlayerFramework
         public static string GetResourceString(string resourceId)
 #if SILVERLIGHT
         {
-            return Microsoft.PlayerFramework.Resources.ResourceManager.GetString(resourceId, Microsoft.PlayerFramework.Resources.Culture);
+            if (ResourceManager == null)
+            {
+                ResourceManager = new ResourceManager("Microsoft.PlayerFramework.Resources", typeof(MediaPlayer).Assembly);
+            }
+            return ResourceManager.GetString(resourceId, null);
         }
+
+        /// <summary>
+        /// Gets or sets the ResourceLoader used to load all string resources.
+        /// </summary>
+        public static ResourceManager ResourceManager { get; set; }
 #else
         {
             string result = null;
