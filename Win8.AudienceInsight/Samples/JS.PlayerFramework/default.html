@@ -65,14 +65,25 @@
     <script src="/Microsoft.PlayerFramework.Js.Analytics/js/MediaPlayerAdapter.js"></script>
     <script src="/Microsoft.PlayerFramework.Js.Analytics/js/AdaptiveAnalyticsPlugin.js"></script>
     <script src="/Microsoft.PlayerFramework.Js.Analytics/js/AnalyticsPlugin.js"></script>
+
+    <style>
+        #divMain {
+            width: 100%;
+            height: 100%;
+            display: -ms-flexbox;
+            -ms-flex-align: center;
+            -ms-flex-direction: column;
+            -ms-flex-pack: center;
+        }
+    </style>
 </head>
 <body>
-        <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
-        width: 600,
-        height: 400,
+    <div id="divMain" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
         autoplay: true,
-        isFullScreenVisible: true,
-        src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
+        src: 'http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest',
+        vmapSchedulerPlugin: {
+            source: 'http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml'
+        }
     }"></div>
 </body>
 </html>

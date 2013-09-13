@@ -10,20 +10,14 @@
 
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
-            if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
-                // TODO: This application has been newly launched. Initialize
-                // your application here.
-            } else {
-                // TODO: This application has been reactivated from suspension.
-                // Restore application state here.
-            }
             args.setPromise(WinJS.UI.processAll());
         }
 
         var mediaPlayerElement = document.querySelector("[data-win-control='PlayerFramework.MediaPlayer']");
         var mediaPlayer = mediaPlayerElement.winControl;
+        var configUrl = new Windows.Foundation.Uri("ms-appx:///AudienceInsightConfig.xml");
 
-        Microsoft.AudienceInsight.BatchingConfigFactory.load(new Windows.Foundation.Uri("ms-appx:///AudienceInsightConfig.xml"))
+        Microsoft.AudienceInsight.BatchingConfigFactory.load(configUrl)
             .then(function (batchingConfig) {
 
                 // Audience Insight config
@@ -36,7 +30,7 @@
 
                 Microsoft.VideoAnalytics.LoggingService.current.loggingTargets.append(aiLoggingTarget);
 
-                return Microsoft.VideoAnalytics.AnalyticsConfig.load(new Windows.Foundation.Uri("ms-appx:///AudienceInsightConfig.xml"));
+                return Microsoft.VideoAnalytics.AnalyticsConfig.load(configUrl);
 
             })
             .then(function (analyticsConfig) {
@@ -57,15 +51,6 @@
 
                 analyticsPlugin.analyticsCollector.loggingSources.push(new Microsoft.VideoAnalytics.VideoAdvertising.AdvertisingLoggingSource(mediaPlayer.adHandlerPlugin.adHandlerController));
 
-                // Set up ad
-
-                var midrollAd = new PlayerFramework.Advertising.MidrollAdvertisement();
-                midrollAd.source = new Microsoft.PlayerFramework.Js.Advertising.RemoteAdSource();
-                midrollAd.source.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
-                midrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml");
-                midrollAd.time = 5;
-
-                mediaPlayer.adSchedulerPlugin.advertisements.push(midrollAd);
                 mediaPlayer.focus();
             });
     };

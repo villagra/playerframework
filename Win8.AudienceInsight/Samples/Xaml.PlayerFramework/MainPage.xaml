@@ -16,13 +16,11 @@
                 <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
                 <!--<ads:AdSchedulerPlugin>
                     <ads:AdSchedulerPlugin.Advertisements>
-
                         <ads:MidrollAdvertisement Time="00:00:05">
                             <ads:MidrollAdvertisement.Source>
                                 <ads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml" Type="vast"/>
                             </ads:MidrollAdvertisement.Source>
                         </ads:MidrollAdvertisement>
-
                     </ads:AdSchedulerPlugin.Advertisements>
                 </ads:AdSchedulerPlugin>-->
                 <ads:AdHandlerPlugin/>

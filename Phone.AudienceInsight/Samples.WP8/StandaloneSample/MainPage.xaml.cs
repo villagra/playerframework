@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using Microsoft.AudienceInsight;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using StandaloneSample.Resources;
-using Microsoft.AudienceInsight;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace StandaloneSample
 {
@@ -23,6 +18,8 @@ namespace StandaloneSample
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            // Audience Insight config
+            
             var batchingConfig = BatchingConfigFactory.Load(new Uri("/StandaloneSample;component/AudienceInsightConfig.xml", UriKind.Relative));
 
             var dataClient = (RESTDataClient)batchingConfig.BatchAgent;
