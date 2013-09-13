@@ -51,7 +51,7 @@ namespace Microsoft.PlayerFramework
             posterElement.Stretch = e.NewValue;
         }
 
-        private void InitPoster()
+        void InitPoster()
         {
             if (MediaPlayer.PosterSource != null)
             {
@@ -66,7 +66,7 @@ namespace Microsoft.PlayerFramework
             }
         }
 
-        private void DestroyPoster()
+        void DestroyPoster()
         {
             if (posterElement != null)
             {
@@ -77,6 +77,7 @@ namespace Microsoft.PlayerFramework
             }
         }
 
+        /// <inheritdoc /> 
         public void Load()
         {
             posterContainer = MediaPlayer.Containers.OfType<Panel>().FirstOrDefault(e => e.Name == MediaPlayerTemplateParts.PosterContainer);
@@ -87,9 +88,11 @@ namespace Microsoft.PlayerFramework
             }
         }
 
+        /// <inheritdoc /> 
         public void Update(IMediaSource mediaSource)
         { }
 
+        /// <inheritdoc /> 
         public void Unload()
         {
             if (posterContainer != null)
@@ -99,6 +102,7 @@ namespace Microsoft.PlayerFramework
             }
         }
 
+        /// <inheritdoc /> 
         public MediaPlayer MediaPlayer { get; set; }
     }
 }
