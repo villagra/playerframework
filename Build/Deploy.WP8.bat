@@ -61,7 +61,7 @@ copy Phone.SL.Analytics\bin\Release\Microsoft.PlayerFramework.Analytics.xml					
 copy Phone.SL.Adaptive.Analytics\bin\Release\Microsoft.PlayerFramework.Adaptive.Analytics.dll     Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.dll								  Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.xml								  Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
-copy Phone.AudienceInsight\bin\Release\Microsoft.WP8.AudienceInsight.dll								  Build\Microsoft.AudienceInsight.WP8\References\CommonConfiguration\neutral\
+copy Phone.AudienceInsight\bin\Release\Microsoft.AudienceInsight.dll								  Build\Microsoft.AudienceInsight.WP8\References\CommonConfiguration\neutral\
 
 copy Phone.SL.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll  Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 copy Phone.WebVTT\bin\Release\Microsoft.WebVTT.dll					 Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
