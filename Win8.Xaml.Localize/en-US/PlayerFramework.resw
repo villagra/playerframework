@@ -117,10 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LoadButtonLabel" xml:space="preserve">
+    <value>PLAY</value>
+  </data>
+  <data name="MediaFeaturePackCancelLabel" xml:space="preserve">
+    <value>CLOSE</value>
+  </data>
+  <data name="MediaFeaturePackDownloadLabel" xml:space="preserve">
+    <value>GET IT NOW</value>
+  </data>
+  <data name="MediaFeaturePackRequiredLabel" xml:space="preserve">
+    <value>PLEASE INSTALL THE MICROSOFT WINDOWS 8 MEDIA FEATURE PACK TO CONTINUE.</value>
+  </data>
+  <data name="MediaFeaturePackRequiredText" xml:space="preserve">
+    <value>MEDIA FEATURE PACK REQUIRED</value>
+  </data>
+  <data name="MuteButtonLabel" xml:space="preserve">
+    <value>MUTE</value>
+  </data>
   <data name="PauseButtonLabel" xml:space="preserve">
     <value>PAUSE</value>
   </data>
   <data name="PlayButtonLabel" xml:space="preserve">
     <value>PLAY</value>
+  </data>
+  <data name="ReplayButtonLabel" xml:space="preserve">
+    <value>INSTANT REPLAY</value>
+  </data>
+  <data name="RetryButtonLabel" xml:space="preserve">
+    <value>RETRY</value>
+  </data>
+  <data name="RetryInstructionsText" xml:space="preserve">
+    <value>RETRY</value>
+  </data>
+  <data name="RewindButtonLabel" xml:space="preserve">
+    <value>REWIND</value>
+  </data>
+  <data name="SelectedIdentifierText" xml:space="preserve">
+    <value>(ON)</value>
+  </data>
+  <data name="SignalStrengthLabel" xml:space="preserve">
+    <value>SIGNAL STRENGTH</value>
+  </data>
+  <data name="SkipAheadButtonLabel" xml:space="preserve">
+    <value>SKIP AHEAD</value>
+  </data>
+  <data name="SkipAheadPointerOverStringFormat" xml:space="preserve">
+    <value>\+ss\s</value>
+  </data>
+  <data name="SkipBackButtonLabel" xml:space="preserve">
+    <value>SKIP BACK</value>
+  </data>
+  <data name="SkipBackPointerOverStringFormat" xml:space="preserve">
+    <value>\-ss\s</value>
+  </data>
+  <data name="SkipNextButtonLabel" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="SkipPreviousButtonLabel" xml:space="preserve">
+    <value>PREVIOUS</value>
+  </data>
+  <data name="SlowMotionButtonLabel" xml:space="preserve">
+    <value>SLOW MOTION</value>
+  </data>
+  <data name="StandardDefinitionLabel" xml:space="preserve">
+    <value>STANDARD DEFINITION</value>
+  </data>
+  <data name="StandardDefinitionText" xml:space="preserve">
+    <value>SD</value>
+  </data>
+  <data name="StopButtonLabel" xml:space="preserve">
+    <value>STOP</value>
+  </data>
+  <data name="TimeElapsedButtonLabel" xml:space="preserve">
+    <value>TIME ELAPSED/SKIP BACK</value>
+  </data>
+  <data name="TimelineLabel" xml:space="preserve">
+    <value>SEEK</value>
+  </data>
+  <data name="TimeRemainingButtonLabel" xml:space="preserve">
+    <value>TIME REMAINING/SKIP AHEAD</value>
+  </data>
+  <data name="TimeSpanReadableFormat" xml:space="preserve">
+    <value>h\:mm\:ss</value>
+  </data>
+  <data name="UnmuteButtonLabel" xml:space="preserve">
+    <value>UNMUTE</value>
+  </data>
+  <data name="VolumeLabel" xml:space="preserve">
+    <value>VOLUME</value>
+  </data>
+  <data name="VolumeMuteButtonLabel" xml:space="preserve">
+    <value>VOLUME/MUTE</value>
   </data>
 </root>
