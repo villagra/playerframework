@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 #if COMPRESSION
+#if WINDOWS_PHONE7
+using SharpCompress.Compressor.Deflate;
+using SharpCompress.Compressor;
+#else
 using System.IO.Compression;
+#endif
 #endif
 using System.Linq;
 using System.Text;
 using System.Xml;
+
 
 namespace Microsoft.AudienceInsight
 {
