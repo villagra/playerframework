@@ -257,10 +257,15 @@ namespace Microsoft.PlayerFramework
         /// <inheritdoc /> 
 #if SILVERLIGHT
         protected override void OnKeyDown(KeyEventArgs e)
+        {
 #else
         protected override void OnKeyDown(KeyRoutedEventArgs e)
-#endif
         {
+            if (e.Key == Windows.System.VirtualKey.Escape && IsFullScreen)
+            {
+                IsFullScreen = false;
+            }
+#endif
             base.OnKeyDown(e);
             OnUserInteraction(InteractionType.Hard, true);
         }
