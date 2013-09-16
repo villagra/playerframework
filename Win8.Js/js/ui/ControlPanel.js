@@ -29,6 +29,7 @@
         this._skipAheadElement = null;
         this._elapsedTimeElement = null;
         this._remainingTimeElement = null;
+        this._totalTimeElement = null;
         this._timelineElement = null;
         this._goLiveElement = null;
         this._captionsElement = null;
@@ -189,6 +190,15 @@
             }
         },
 
+        isTotalTimeHidden: {
+            get: function () {
+                return this._totalTimeElement.winControl.hidden;
+            },
+            set: function (value) {
+                this._totalTimeElement.winControl.hidden = value;
+            }
+        },
+
         isTimelineHidden: {
             get: function () {
                 return this._timelineElement.winControl.hidden;
@@ -331,6 +341,7 @@
             this._elapsedTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-elapsed-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: elapsedTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: elapsedTimeText; winControl.label: elapsedTimeLabel; winControl.tooltip: elapsedTimeTooltip; winControl.disabled: isElapsedTimeDisabled; winControl.onclick: skipBack PlayerFramework.Binding.setEventHandler;" }]);
             this._timelineElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-timeline-control", "data-win-control": "PlayerFramework.UI.Slider", "data-win-bind": "winControl.value: currentTime; winControl.min: startTime; winControl.max: endTime; winControl.progress: bufferedPercentage; winControl.label: timelineLabel; winControl.tooltip: timelineTooltip; winControl.disabled: isTimelineDisabled; winControl.thumbnailImageSrc: thumbnailImageSrc; winControl.isThumbnailVisible: isThumbnailVisible; winControl.markers: visualMarkers; winControl.onstart: onTimelineSliderStart PlayerFramework.Binding.setEventHandler; winControl.onupdate: onTimelineSliderUpdate PlayerFramework.Binding.setEventHandler; winControl.oncomplete: onTimelineSliderComplete PlayerFramework.Binding.setEventHandler; winControl.onskiptomarker: onTimelineSliderSkipToMarker PlayerFramework.Binding.setEventHandler;", "data-win-options": "{ altStep1: 100000000, altStep2: 300000000, altStep3: Infinity }" }]);
             this._remainingTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-remaining-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: remainingTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: remainingTimeText; winControl.label: remainingTimeLabel; winControl.tooltip: remainingTimeTooltip; winControl.disabled: isRemainingTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
+            this._totalTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-total-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: totalTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: totalTimeText; winControl.label: totalTimeLabel; winControl.tooltip: totalTimeTooltip; winControl.disabled: isTotalTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
             this._goLiveElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-go-live-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: goLiveText; winControl.label: goLiveLabel; winControl.tooltip: goLiveTooltip; winControl.disabled: isGoLiveDisabled; winControl.onclick: goLive PlayerFramework.Binding.setEventHandler;" }]);
             this._captionsElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-captions-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: captionsIcon; winControl.label: captionsLabel; winControl.tooltip: captionsTooltip; winControl.disabled: isCaptionsDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
             this._audioElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-audio-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: audioIcon; winControl.label: audioLabel; winControl.tooltip: audioTooltip; winControl.disabled: isAudioDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
@@ -364,6 +375,7 @@
                 isSkipAheadHidden: false,
                 isElapsedTimeHidden: false,
                 isRemainingTimeHidden: false,
+                isTotalTimeHidden: false,
                 isTimelineHidden: false,
                 isGoLiveHidden: false,
                 isCaptionsHidden: false,

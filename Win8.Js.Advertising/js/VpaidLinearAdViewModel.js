@@ -113,7 +113,7 @@
             this._bindEvent("adplaying", this._adPlayer, this._notifyProperties, ["playPauseIcon", "playPauseLabel", "playPauseTooltip", "isPlayPauseDisabled", "isPlayResumeDisabled", "isPauseDisabled"]);
             this._bindEvent("adpaused", this._adPlayer, this._notifyProperties, ["playPauseIcon", "playPauseLabel", "playPauseTooltip", "isPlayPauseDisabled", "isPlayResumeDisabled", "isPauseDisabled"]);
             this._bindEvent("aderror", this._adPlayer, this._notifyProperties, ["playPauseIcon", "playPauseLabel", "playPauseTooltip", "isPlayPauseDisabled", "isPlayResumeDisabled", "isPauseDisabled"]);
-            this._bindEvent("addurationchange", this._adPlayer, this._notifyProperties, ["endTime", "currentTime", "elapsedTime", "remainingTime"]);
+            this._bindEvent("addurationchange", this._adPlayer, this._notifyProperties, ["endTime", "currentTime", "elapsedTime", "remainingTime", "totalTime"]);
             this._bindEvent("adremainingtimechange", this._adPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindEvent("adskippablestatechange", this._adPlayer, this._notifyProperties, ["isSkipNextDisabled"]);
 
@@ -136,6 +136,7 @@
             this._bindProperty("isSkipAheadVisible", this._observableMediaPlayer, this._notifyProperties, ["isSkipAheadHidden"]);
             this._bindProperty("isElapsedTimeVisible", this._observableMediaPlayer, this._notifyProperties, ["isElapsedTimeHidden"]);
             this._bindProperty("isRemainingTimeVisible", this._observableMediaPlayer, this._notifyProperties, ["isRemainingTimeHidden"]);
+            this._bindProperty("isTotalTimeVisible", this._observableMediaPlayer, this._notifyProperties, ["isTotalTimeHidden"]);
             this._bindProperty("isTimelineVisible", this._observableMediaPlayer, this._notifyProperties, ["isTimelineHidden"]);
             this._bindProperty("isGoLiveVisible", this._observableMediaPlayer, this._notifyProperties, ["isGoLiveHidden"]);
             this._bindProperty("isCaptionsVisible", this._observableMediaPlayer, this._notifyProperties, ["isCaptionsHidden"]);

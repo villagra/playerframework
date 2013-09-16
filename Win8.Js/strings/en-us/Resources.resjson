@@ -58,6 +58,10 @@
     "RemainingTimeLabel":                   "Time remaining/Skip ahead",
     "RemainingTimeTooltip":                 "Skip ahead",
 
+    "TotalTimeText":                        "+{0}s",
+    "TotalTimeLabel":                       "Duration/Skip ahead",
+    "TotalTimeTooltip":                     "Skip ahead",
+
     "TimeFormat":                           "{hour.integer}:{minute.integer(2)}:{second.integer(2)}",
     "TimelineLabel":                        "Timeline",
     "TimelineTooltip":                      "Seek",

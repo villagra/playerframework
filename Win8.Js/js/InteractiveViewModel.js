@@ -460,6 +460,42 @@
             }
         },
 
+        totalTime: {
+            get: function () {
+                return PlayerFramework.Utilities.convertTicksToSeconds(this.endTime - this.startTime);
+            }
+        },
+
+        totalTimeText: {
+            get: function () {
+                return PlayerFramework.Utilities.formatResourceString("TotalTimeText", this._mediaPlayer.skipAheadInterval);
+            }
+        },
+
+        totalTimeLabel: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("TotalTimeLabel");
+            }
+        },
+
+        totalTimeTooltip: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("TotalTimeTooltip");
+            }
+        },
+
+        isTotalTimeDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isTotalTimeEnabled || !this._mediaPlayer.isTotalTimeAllowed;
+            }
+        },
+
+        isTotalTimeHidden: {
+            get: function () {
+                return !this._mediaPlayer.isTotalTimeVisible;
+            }
+        },
+
         timelineLabel: {
             get: function () {
                 return PlayerFramework.Utilities.getResourceString("TimelineLabel");
@@ -781,15 +817,15 @@
         // Public Methods
         initialize: function () {
             // media player value properties
-            this._bindProperty("startTime", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime"]);
+            this._bindProperty("startTime", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "totalTime"]);
             this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "maxTime"]);
-            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime", "maxTime"]);
+            this._bindProperty("endTime", this._observableMediaPlayer, this._notifyProperties, ["endTime", "elapsedTime", "remainingTime", "totalTime", "maxTime"]);
             this._bindProperty("liveTime", this._observableMediaPlayer, this._notifyProperties, ["maxTime"]);
             this._bindProperty("virtualTime", this._observableMediaPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindProperty("buffered", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("duration", this._observableMediaPlayer, this._notifyProperties, ["bufferedPercentage"]);
             this._bindProperty("skipBackInterval", this._observableMediaPlayer, this._notifyProperties, ["elapsedTimeText"]);
-            this._bindProperty("skipAheadInterval", this._observableMediaPlayer, this._notifyProperties, ["remainingTimeText"]);
+            this._bindProperty("skipAheadInterval", this._observableMediaPlayer, this._notifyProperties, ["remainingTimeText", "totalTimeText"]);
             this._bindProperty("volume", this._observableMediaPlayer, this._notifyProperties, ["volume"]);
             this._bindProperty("muted", this._observableMediaPlayer, this._notifyProperties, ["volumeMuteIcon", "volumeMuteLabel", "volumeMuteTooltip", "volumeIcon", "muteIcon", "muteLabel", "muteTooltip"]);
             this._bindProperty("isFullScreen", this._observableMediaPlayer, this._notifyProperties, ["fullScreenIcon", "fullScreenLabel", "fullScreenTooltip"]);
@@ -839,6 +875,9 @@
             this._bindProperty("isRemainingTimeAllowed", this._observableMediaPlayer, this._notifyProperties, ["isRemainingTimeDisabled"]);
             this._bindProperty("isRemainingTimeEnabled", this._observableMediaPlayer, this._notifyProperties, ["isRemainingTimeDisabled"]);
             this._bindProperty("isRemainingTimeVisible", this._observableMediaPlayer, this._notifyProperties, ["isRemainingTimeHidden"]);
+            this._bindProperty("isTotalTimeAllowed", this._observableMediaPlayer, this._notifyProperties, ["isTotalTimeDisabled"]);
+            this._bindProperty("isTotalTimeEnabled", this._observableMediaPlayer, this._notifyProperties, ["isTotalTimeDisabled"]);
+            this._bindProperty("isTotalTimeVisible", this._observableMediaPlayer, this._notifyProperties, ["isTotalTimeHidden"]);
             this._bindProperty("isTimelineAllowed", this._observableMediaPlayer, this._notifyProperties, ["isTimelineDisabled"]);
             this._bindProperty("isTimelineEnabled", this._observableMediaPlayer, this._notifyProperties, ["isTimelineDisabled"]);
             this._bindProperty("isTimelineVisible", this._observableMediaPlayer, this._notifyProperties, ["isTimelineHidden"]);

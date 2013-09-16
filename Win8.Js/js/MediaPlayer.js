@@ -188,6 +188,8 @@
             this._isElapsedTimeVisible = true;
             this._isRemainingTimeEnabled = true;
             this._isRemainingTimeVisible = true;
+            this._isTotalTimeEnabled = true;
+            this._isTotalTimeVisible = false;
             this._isTimelineEnabled = true;
             this._isTimelineVisible = true;
             this._isGoLiveEnabled = true;
@@ -1563,6 +1565,41 @@
                 }
             },
 
+            /// <field name="isTotalTimeAllowed" type="Boolean">Gets a value that specifies whether interaction with the total time control is allowed based on the current state of the player.</field>
+            isTotalTimeAllowed: {
+                get: function () {
+                    return this.advertisingState !== PlayerFramework.AdvertisingState.loading && this.advertisingState !== PlayerFramework.AdvertisingState.linear && (this.playerState === PlayerFramework.PlayerState.opened || this.playerState === PlayerFramework.PlayerState.started || this.playerState === PlayerFramework.PlayerState.ended);
+                }
+            },
+
+            /// <field name="isTotalTimeEnabled" type="Boolean">Gets or sets a value that specifies whether the total time control is enabled.</field>
+            isTotalTimeEnabled: {
+                get: function () {
+                    return this._isTotalTimeEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isTotalTimeEnabled;
+                    if (oldValue !== value) {
+                        this._isTotalTimeEnabled = value;
+                        this._observableMediaPlayer.notify("isTotalTimeEnabled", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isTotalTimeVisible" type="Boolean">Gets or sets a value that specifies whether the total time control is visible.</field>
+            isTotalTimeVisible: {
+                get: function () {
+                    return this._isTotalTimeVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isTotalTimeVisible;
+                    if (oldValue !== value) {
+                        this._isTotalTimeVisible = value;
+                        this._observableMediaPlayer.notify("isTotalTimeVisible", value, oldValue);
+                    }
+                }
+            },
+
             /// <field name="isTimelineAllowed" type="Boolean">Gets a value that specifies whether interaction with the timeline control is allowed based on the current state of the player.</field>
             isTimelineAllowed: {
                 get: function () {
@@ -2646,8 +2683,8 @@
                 this._bindEvent("volumechange", this._mediaElement, this._notifyProperties, ["volume", "muted"]);
 
                 // property dependencies
-                this._bindProperty("advertisingState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
-                this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
+                this._bindProperty("advertisingState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTotalTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
+                this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTotalTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
                 this._bindProperty("paused", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isPauseAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed"]);
                 this._bindProperty("ended", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isPauseAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed"]);
                 this._bindProperty("playbackRate", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSlowMotion"]);

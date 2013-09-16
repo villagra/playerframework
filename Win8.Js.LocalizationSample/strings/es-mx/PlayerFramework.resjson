@@ -57,6 +57,10 @@
     "RemainingTimeText":                    "+{0}s",
     "RemainingTimeLabel":                   "Spanish: Time remaining/Skip ahead",
     "RemainingTimeTooltip":                 "Spanish: Skip ahead",
+    
+    "TotalTimeText":                        "+{0}s",
+    "TotalTimeLabel":                       "Spanish: Duration/Skip ahead",
+    "TotalTimeTooltip":                     "Spanish: Skip ahead",
 
     "TimeFormat":                           "{hour.integer}:{minute.integer(2)}:{second.integer(2)}",
     "TimelineLabel":                        "Spanish: Timeline",

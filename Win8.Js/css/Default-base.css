@@ -407,17 +407,17 @@
     transform: translate(0.5px, -0.12em);
 }
 
-.pf-elapsed-time-control, .pf-remaining-time-control {
+.pf-elapsed-time-control, .pf-remaining-time-control, .pf-total-time-control {
     width: auto !important;
 }
 
-.pf-elapsed-time-control .pf-button-container, .pf-remaining-time-control .pf-button-container {
+.pf-elapsed-time-control .pf-button-container, .pf-remaining-time-control .pf-button-container, .pf-total-time-control .pf-button-container {
     border: 0;
     border-radius: 0;
     background-color: transparent !important;
 }
 
-.pf-elapsed-time-control .pf-button-content, .pf-remaining-time-control .pf-button-content {
+.pf-elapsed-time-control .pf-button-content, .pf-remaining-time-control .pf-button-content,, .pf-total-time-control .pf-button-content {
     color: inherit !important;
 }
 
