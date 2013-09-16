@@ -23,7 +23,7 @@ namespace Xaml.PlayerFramework
 
         async void player_Loaded(object sender, RoutedEventArgs e)
         {
-            var configFileUrl = new Uri("/PlayerFrameworkSample;component/AudienceInsightConfig.xml", UriKind.Relative);
+            var configFileUrl = new Uri("ms-appx:///AudienceInsightConfig.xml");
             
             // Audience Insight config
 
