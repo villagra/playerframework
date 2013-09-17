@@ -473,6 +473,15 @@
         <Setter Property="AutomationProperties.AutomationId" Value="GoLiveButton"/>
     </Style>
 
+    <Style TargetType="local:InfoButton" BasedOn="{StaticResource MediaPlayerButtonPathStyle}">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}"/>
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Content" Value="i"/>
+        <Setter Property="Padding" Value="-1,-12,0,0"/>
+        <Setter Property="AutomationProperties.AutomationId" Value="InfoButton"/>
+    </Style>
+
     <Style TargetType="local:AudioSelectionButton" BasedOn="{StaticResource MediaPlayerButtonPathStyle}">
         <Setter Property="ContentTemplate">
             <Setter.Value>
@@ -1092,6 +1101,7 @@
                                     <local:CaptionSelectionButton x:Name="CaptionSelectionButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:AudioSelectionButton x:Name="AudioSelectionButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsAudioSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:GoLiveButton x:Name="GoLiveButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="18" Size="45"/>
+                                    <local:InfoButton x:Name="InfoButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="30" Size="45"/>
                                     <local:FullScreenButton x:Name="FullScreenButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFullScreenButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:MuteButton x:Name="MuteButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsMuteButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                 </StackPanel>
@@ -1290,6 +1300,7 @@
                         <Grid x:Name="InteractivityContainer" Visibility="Collapsed">
                             <local:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}"
                                 IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}"
+                                IsInfoButtonVisible="{TemplateBinding IsInfoVisible}"
                                 IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}"
                                 IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}"
                                 IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}"
