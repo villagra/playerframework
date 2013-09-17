@@ -107,6 +107,20 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
+        /// Identifies the IsInfoButtonVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsInfoButtonVisibleProperty = DependencyProperty.Register("IsInfoButtonVisible", typeof(bool), typeof(ControlPanel), new PropertyMetadata(false));
+
+        /// <summary>
+        /// Gets or sets if the InfoButton is visible or not.
+        /// </summary>
+        public bool IsInfoButtonVisible
+        {
+            get { return (bool)GetValue(IsInfoButtonVisibleProperty); }
+            set { SetValue(IsInfoButtonVisibleProperty, value); }
+        }
+
+        /// <summary>
         /// Identifies the IsAudioSelectionButtonVisible dependency property.
         /// </summary>
         public static readonly DependencyProperty IsAudioSelectionButtonVisibleProperty = DependencyProperty.Register("IsAudioSelectionButtonVisible", typeof(bool), typeof(ControlPanel), new PropertyMetadata(false));

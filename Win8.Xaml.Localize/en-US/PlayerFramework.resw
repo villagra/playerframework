@@ -210,4 +210,7 @@
   <data name="VolumeMuteButtonLabel" xml:space="preserve">
     <value>VOLUME/MUTE</value>
   </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
+    <value>MORE INFO</value>
+  </data>
 </root>

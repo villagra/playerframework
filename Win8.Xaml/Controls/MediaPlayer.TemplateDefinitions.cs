@@ -773,6 +773,7 @@ namespace Microsoft.PlayerFramework
             NotifyIsSkipBackAllowedChanged();
             NotifyIsSkipAheadAllowedChanged();
             NotifyIsScrubbingAllowedChanged();
+            NotifyIsInfoAllowedChanged();
 
             this.GoToVisualState(newValue.ToString());
             OnPlayerStateChanged(new RoutedPropertyChangedEventArgs<PlayerState>(oldValue, newValue));

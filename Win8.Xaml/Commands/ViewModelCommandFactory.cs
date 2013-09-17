@@ -244,6 +244,19 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
+        /// Creates a command used to bind to an info button.
+        /// </summary>
+        /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>
+        public static ViewModelCommand CreateInfoCommand()
+        {
+            return new ViewModelCommand(
+                vm => vm.InvokeInfo(),
+                vm => vm.IsInfoEnabled,
+                new HandlerReference<IInteractiveViewModel, RoutedEventHandler>((vm, eh) => vm.IsInfoEnabledChanged -= eh, (vm, eh) => vm.IsInfoEnabledChanged += eh)
+                );
+        }
+
+        /// <summary>
         /// Creates a command used to bind to a play/pause button.
         /// </summary>
         /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>

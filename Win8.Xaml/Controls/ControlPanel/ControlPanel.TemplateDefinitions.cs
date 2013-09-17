@@ -56,6 +56,7 @@ namespace Microsoft.PlayerFramework
         public const string DisplayModeButtonElement = "StretchButton";
 #endif
         public const string GoLiveButtonElement = "GoLiveButton";
+        public const string InfoButtonElement = "InfoButton";
         public const string SignalStrengthElement = "SignalStrength";
         public const string ResolutionIndicatorElement = "ResolutionIndicator";
     }
@@ -115,6 +116,7 @@ namespace Microsoft.PlayerFramework
     [TemplatePart(Name = ControlPanelTemplateParts.VolumeSliderElement, Type = typeof(Slider))]
     [TemplatePart(Name = ControlPanelTemplateParts.FullScreenButtonElement, Type = typeof(ToggleButton))]
     [TemplatePart(Name = ControlPanelTemplateParts.GoLiveButtonElement, Type = typeof(ButtonBase))]
+    [TemplatePart(Name = ControlPanelTemplateParts.InfoButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.SignalStrengthElement, Type = typeof(SignalStrength))]
     [TemplatePart(Name = ControlPanelTemplateParts.ResolutionIndicatorElement, Type = typeof(ResolutionIndicator))]
 #if SILVERLIGHT
@@ -232,6 +234,10 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected ButtonBase GoLiveButtonElement { get; private set; }
         /// <summary>
+        /// The info button.
+        /// </summary>
+        protected ButtonBase InfoButtonElement { get; private set; }
+        /// <summary>
         /// The signal strength indicator (usually adaptive only).
         /// </summary>
         protected SignalStrength SignalStrengthElement { get; private set; }
@@ -279,6 +285,7 @@ namespace Microsoft.PlayerFramework
 
             FullScreenButtonElement = GetTemplateChild(ControlPanelTemplateParts.FullScreenButtonElement) as ButtonBase;
             GoLiveButtonElement = GetTemplateChild(ControlPanelTemplateParts.GoLiveButtonElement) as ButtonBase;
+            InfoButtonElement = GetTemplateChild(ControlPanelTemplateParts.InfoButtonElement) as ButtonBase;
             SignalStrengthElement = GetTemplateChild(ControlPanelTemplateParts.SignalStrengthElement) as SignalStrength;
             ResolutionIndicatorElement = GetTemplateChild(ControlPanelTemplateParts.ResolutionIndicatorElement) as ResolutionIndicator;
 #if SILVERLIGHT

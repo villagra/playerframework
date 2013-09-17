@@ -113,6 +113,10 @@
     "StopLabel":                            "Spanish: Stop",
     "StopTooltip":                          "Spanish: Stop",
 
+    "InfoIcon":                             "\uE171",
+    "InfoLabel":                            "Spanish: Info",
+    "InfoTooltip":                          "Spanish: More Info",
+
     "SignalStrengthLabel":                  "Spanish: Signal strength",
     "SignalStrengthTooltip1":               "Spanish: Signal strength",
     "SignalStrengthTooltip2":               "Spanish: Signal strength (low)",

@@ -236,6 +236,18 @@ namespace Microsoft.PlayerFramework
         protected abstract void OnGoLive();
 
         /// <inheritdoc /> 
+        public void InvokeInfo()
+        {
+            OnInteracting();
+            OnInvokeInfo();
+        }
+
+        /// <summary>
+        /// Notifies the subclass that the user is attempting to invoke the more info feature
+        /// </summary>
+        protected abstract void OnInvokeInfo();
+
+        /// <inheritdoc /> 
         public void PlayResume()
         {
             OnInteracting();
@@ -382,6 +394,21 @@ namespace Microsoft.PlayerFramework
         {
             OnPropertyChanged(() => IsGoLiveEnabled);
             if (IsGoLiveEnabledChanged != null) IsGoLiveEnabledChanged(this, new RoutedEventArgs());
+        }
+
+        /// <inheritdoc /> 
+        public event RoutedEventHandler IsInfoEnabledChanged;
+
+        /// <inheritdoc /> 
+        public abstract bool IsInfoEnabled { get; }
+
+        /// <summary>
+        /// Indicates that the info enabled state may have changed.
+        /// </summary>
+        protected void NotifyIsInfoEnabledChanged()
+        {
+            OnPropertyChanged(() => IsInfoEnabled);
+            if (IsInfoEnabledChanged != null) IsInfoEnabledChanged(this, new RoutedEventArgs());
         }
 
         /// <inheritdoc /> 

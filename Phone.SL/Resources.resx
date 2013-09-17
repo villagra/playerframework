@@ -237,4 +237,7 @@
   <data name="AdLinkLabel" xml:space="preserve">
     <value>more info...</value>
   </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
+    <value>More Info</value>
+  </data>
 </root>

@@ -766,6 +766,36 @@
             }
         },
 
+        infoIcon: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("InfoIcon");
+            }
+        },
+
+        infoLabel: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("InfoLabel");
+            }
+        },
+
+        infoTooltip: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("InfoTooltip");
+            }
+        },
+
+        isInfoDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isInfoEnabled || !this._mediaPlayer.isInfoAllowed;
+            }
+        },
+
+        isInfoHidden: {
+            get: function () {
+                return !this._mediaPlayer.isInfoVisible;
+            }
+        },
+
         signalStrength: {
             get: function () {
                 return this._mediaPlayer.signalStrength;
@@ -935,6 +965,9 @@
             this._bindProperty("isStopAllowed", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
             this._bindProperty("isStopEnabled", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
             this._bindProperty("isStopVisible", this._observableMediaPlayer, this._notifyProperties, ["isStopHidden"]);
+            this._bindProperty("isInfoAllowed", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
+            this._bindProperty("isInfoEnabled", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
+            this._bindProperty("isInfoVisible", this._observableMediaPlayer, this._notifyProperties, ["isInfoHidden"]);
             this._bindProperty("isSignalStrengthAllowed", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthEnabled", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthVisible", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthHidden"]);
@@ -1072,6 +1105,10 @@
 
         stop: function () {
             this._mediaPlayer.stop();
+        },
+
+        info: function () {
+            this._mediaPlayer.info();
         },
 
         onTimelineSliderStart: function (e) {

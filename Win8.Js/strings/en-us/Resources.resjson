@@ -113,6 +113,10 @@
     "StopLabel":                            "Stop",
     "StopTooltip":                          "Stop",
 
+    "InfoIcon":                             "\uE171",
+    "InfoLabel":                            "Info",
+    "InfoTooltip":                          "More Info",
+
     "SignalStrengthLabel":                  "Signal strength",
     "SignalStrengthTooltip1":               "Signal strength",
     "SignalStrengthTooltip2":               "Signal strength (low)",

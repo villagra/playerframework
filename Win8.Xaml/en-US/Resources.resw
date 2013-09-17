@@ -246,4 +246,7 @@
   <data name="MediaFeaturePackDownloadLabel" xml:space="preserve">
     <value>Get it now</value>
   </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
+    <value>More Info</value>
+  </data>
 </root>

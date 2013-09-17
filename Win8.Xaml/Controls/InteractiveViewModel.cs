@@ -80,6 +80,7 @@ namespace Microsoft.PlayerFramework
             MediaPlayer.IsSkipAheadEnabledChanged += (s, e) => NotifyIsSkipAheadEnabledChanged();
             MediaPlayer.IsScrubbingEnabledChanged += (s, e) => NotifyIsScrubbingEnabledChanged();
             MediaPlayer.IsGoLiveEnabledChanged += (s, e) => NotifyIsGoLiveEnabledChanged();
+            MediaPlayer.IsInfoEnabledChanged += (s, e) => NotifyIsInfoEnabledChanged();
 
             MediaPlayer.IsPlayResumeAllowedChanged += (s, e) => NotifyIsPlayResumeEnabledChanged();
             MediaPlayer.IsPauseAllowedChanged += (s, e) => NotifyIsPauseEnabledChanged();
@@ -97,6 +98,7 @@ namespace Microsoft.PlayerFramework
             MediaPlayer.IsSkipAheadAllowedChanged += (s, e) => NotifyIsSkipAheadEnabledChanged();
             MediaPlayer.IsScrubbingAllowedChanged += (s, e) => NotifyIsScrubbingEnabledChanged();
             MediaPlayer.IsGoLiveAllowedChanged += (s, e) => NotifyIsGoLiveEnabledChanged();
+            MediaPlayer.IsInfoAllowedChanged += (s, e) => NotifyIsInfoEnabledChanged();
 
             MediaPlayer.IsMutedChanged += (s, e) => OnPropertyChanged(() => IsMuted);
             MediaPlayer.IsFullScreenChanged += (s, e) => OnPropertyChanged(() => IsFullScreen);
@@ -198,6 +200,12 @@ namespace Microsoft.PlayerFramework
         protected override void OnGoLive()
         {
             MediaPlayer.SeekToLive();
+        }
+
+        /// <inheritdoc /> 
+        protected override void OnInvokeInfo()
+        {
+            MediaPlayer.InvokeInfo();
         }
 
         /// <inheritdoc /> 
@@ -306,6 +314,15 @@ namespace Microsoft.PlayerFramework
         public override bool IsGoLiveEnabled
         {
             get { return MediaPlayer.IsGoLiveEnabled && MediaPlayer.IsGoLiveAllowed; }
+        }
+        #endregion
+
+        #region IsInfoEnabled
+
+        /// <inheritdoc /> 
+        public override bool IsInfoEnabled
+        {
+            get { return MediaPlayer.IsInfoEnabled && MediaPlayer.IsInfoAllowed; }
         }
         #endregion
 

@@ -199,6 +199,23 @@ namespace Microsoft.PlayerFramework
     }
 
     /// <summary>
+    /// Represents an info button that can be bound to MediaPlayer.InteractiveViewModel
+    /// </summary>
+    public class InfoButton : MediaPlayerButton
+    {
+        /// <summary>
+        /// Creates a new instance of InfoButton.
+        /// </summary>
+        public InfoButton()
+        {
+            this.DefaultStyleKey = typeof(InfoButton);
+
+            AutomationProperties.SetName(this, MediaPlayer.GetResourceString("InfoButtonLabel"));
+            Command = ViewModelCommandFactory.CreateInfoCommand();
+        }
+    }
+
+    /// <summary>
     /// Represents an audio stream selection button that can be bound to MediaPlayer.InteractiveViewModel
     /// </summary>
     public class AudioSelectionButton : MediaPlayerButton

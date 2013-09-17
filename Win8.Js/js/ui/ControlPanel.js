@@ -41,6 +41,7 @@
         this._muteElement = null;
         this._fullScreenElement = null;
         this._stopElement = null;
+        this._infoElement = null;
         this._signalStrengthElement = null;
         this._mediaQualityElement = null;
 
@@ -282,6 +283,15 @@
             }
         },
 
+        isInfoHidden: {
+            get: function () {
+                return this._infoElement.winControl.hidden;
+            },
+            set: function (value) {
+                this._infoElement.winControl.hidden = value;
+            }
+        },
+
         isSignalStrengthHidden: {
             get: function () {
                 return this._signalStrengthElement.winControl.hidden;
@@ -355,6 +365,7 @@
             this._totalTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-total-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: totalTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: totalTimeText; winControl.label: totalTimeLabel; winControl.tooltip: totalTimeTooltip; winControl.disabled: isTotalTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
             this._goLiveElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-go-live-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: goLiveText; winControl.label: goLiveLabel; winControl.tooltip: goLiveTooltip; winControl.disabled: isGoLiveDisabled; winControl.onclick: goLive PlayerFramework.Binding.setEventHandler;" }]);
             this._captionsElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-captions-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: captionsIcon; winControl.label: captionsLabel; winControl.tooltip: captionsTooltip; winControl.disabled: isCaptionsDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
+            this._infoElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-info-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: infoIcon; winControl.label: infoLabel; winControl.tooltip: infoTooltip; winControl.disabled: isInfoDisabled; winControl.onclick: info PlayerFramework.Binding.setEventHandler;" }]);
             this._audioElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-audio-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: audioIcon; winControl.label: audioLabel; winControl.tooltip: audioTooltip; winControl.disabled: isAudioDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
             this._volumeMuteContainerElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-volume-mute-container" }]);
             this._volumeMuteElement = PlayerFramework.Utilities.createElement(this._volumeMuteContainerElement, ["button", { "type": "button", "class": "pf-volume-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: volumeMuteIcon; winControl.label: volumeMuteLabel; winControl.tooltip: volumeMuteTooltip; winControl.disabled: isVolumeMuteDisabled; winControl.onclick: onVolumeMuteClick PlayerFramework.Binding.setEventHandler; onfocus: onVolumeMuteFocus PlayerFramework.Binding.setEventHandler;" }]);
@@ -396,6 +407,7 @@
                 isMuteHidden: false,
                 isFullScreenHidden: false,
                 isStopHidden: false,
+                isInfoHidden: false,
                 isSignalStrengthHidden: false,
                 isMediaQualityHidden: false
             });

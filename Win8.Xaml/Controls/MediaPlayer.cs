@@ -683,7 +683,15 @@ namespace Microsoft.PlayerFramework
         {
             OnInvokeAudioSelection(new RoutedEventArgs());
         }
-
+        
+        /// <summary>
+        /// Invokes the info dialog.
+        /// </summary>
+        public void InvokeInfo()
+        {
+            OnInvokeInfo(new RoutedEventArgs());
+        }
+        
         /// <summary>
         /// Seeks to the live position during live playback.
         /// </summary>
@@ -1082,7 +1090,12 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the InvokeAudioSelection method is called.
         /// </summary>
         public event RoutedEventHandler AudioSelectionInvoked;
-
+        
+        /// <summary>
+        /// Occurs when the InvokeInfo method is called.
+        /// </summary>
+        public event RoutedEventHandler InfoInvoked;
+        
         /// <summary>
         /// Occurs when the IsScrubbing property changes.
         /// </summary>
@@ -1200,6 +1213,58 @@ namespace Microsoft.PlayerFramework
         protected void NotifyIsGoLiveAllowedChanged()
         {
             if (IsGoLiveAllowedChanged != null) IsGoLiveAllowedChanged(this, new RoutedEventArgs());
+        }
+        #endregion
+
+        #region IsInfoEnabled
+
+        /// <summary>
+        /// Occurs when the IsInfoEnabled property changes.
+        /// </summary>
+        public event RoutedEventHandler IsInfoEnabledChanged;
+
+        /// <summary>
+        /// Identifies the IsInfoEnabled dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsInfoEnabledProperty = RegisterDependencyProperty<bool>("IsInfoEnabled", (t, o, n) => t.OnIsInfoEnabledChanged(), true);
+
+        void OnIsInfoEnabledChanged()
+        {
+            if (IsInfoEnabledChanged != null) IsInfoEnabledChanged(this, new RoutedEventArgs());
+        }
+
+        /// <summary>
+        /// Gets based on the current state whether Info can occur.
+        /// </summary>
+        [Category(Categories.Info)]
+        public bool IsInfoEnabled
+        {
+            get { return (bool)GetValue(IsInfoEnabledProperty); }
+            set { SetValue(IsInfoEnabledProperty, value); }
+        }
+
+        /// <summary>
+        /// Occurs when the IsInfoAllowed property changes.
+        /// </summary>
+        public event RoutedEventHandler IsInfoAllowedChanged;
+
+        /// <summary>
+        /// Gets whether more info is allowed based on the state of the player.
+        /// </summary>
+        public virtual bool IsInfoAllowed
+        {
+            get
+            {
+                return PlayerState != PlayerState.Unloaded;
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the info enabled state may have changed.
+        /// </summary>
+        protected void NotifyIsInfoAllowedChanged()
+        {
+            if (IsInfoAllowedChanged != null) IsInfoAllowedChanged(this, new RoutedEventArgs());
         }
         #endregion
 
@@ -2120,6 +2185,33 @@ namespace Microsoft.PlayerFramework
         {
             get { return (bool)GetValue(IsGoLiveVisibleProperty); }
             set { SetValue(IsGoLiveVisibleProperty, value); }
+        }
+        #endregion
+
+        #region IsInfoVisible
+        /// <summary>
+        /// Identifies the IsInfoVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsInfoVisibleProperty = RegisterDependencyProperty<bool>("IsInfoVisible", (t, o, n) => t.OnIsInfoVisibleChanged(), false);
+
+        void OnIsInfoVisibleChanged()
+        {
+            if (IsInfoVisibleChanged != null) IsInfoVisibleChanged(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Occurs when the IsInfoVisible property changes.
+        /// </summary>
+        public event EventHandler IsInfoVisibleChanged;
+
+        /// <summary>
+        /// Gets or sets if the interactive Info feature should be visible and therefore available for the user to control.
+        /// </summary>
+        [Category(Categories.Appearance)]
+        public bool IsInfoVisible
+        {
+            get { return (bool)GetValue(IsInfoVisibleProperty); }
+            set { SetValue(IsInfoVisibleProperty, value); }
         }
         #endregion
 
@@ -4520,6 +4612,11 @@ namespace Microsoft.PlayerFramework
             if (AudioSelectionInvoked != null) AudioSelectionInvoked(this, e);
         }
 
+        void OnInvokeInfo(RoutedEventArgs e)
+        {
+            if (InfoInvoked != null) InfoInvoked(this, e);
+        }
+        
         void OnSeekToLive(RoutedEventArgs e)
         {
             if (GoLive != null) GoLive(this, e);

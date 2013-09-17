@@ -57,7 +57,8 @@
         "volumechange",
         "waiting",
         "markerreached",
-        "stopped"
+        "stopped",
+        "infoinvoked"
     ];
 
     // MediaPlayer Class
@@ -111,7 +112,8 @@
         /// <event name="volumechange">Occurs when the volume is changed.</event>
         /// <event name="waiting">Occurs when playback stops because the next video frame is unavailable.</event>
         /// <event name="markerreached">Occurs when a marker has been played through.</event>
-        /// <event name="stopped">Occurs when stop button was pressed or stop method was invoked.</event>
+        /// <event name="stopped">Occurs when stop button was pressed or the stop method was invoked.</event>
+        /// <event name="infoinvoked">Occurs when info button is pressed or the info method was invoked.</event>
         MediaPlayer: WinJS.Class.define(function (element, options) {
             /// <summary>Creates a new instance of the MediaPlayer class.</summary>
             /// <param name="element" type="HTMLElement" domElement="true">The element that hosts the MediaPlayer control.</param>
@@ -212,6 +214,8 @@
             this._isFullScreenVisible = false;
             this._isStopEnabled = true;
             this._isStopVisible = false;
+            this._isInfoEnabled = true;
+            this._isInfoVisible = false;
             this._signalStrength = 0;
             this._isSignalStrengthEnabled = true;
             this._isSignalStrengthVisible = false;
@@ -1979,6 +1983,41 @@
                     }
                 }
             },
+            
+            /// <field name="isInfoAllowed" type="Boolean">Gets a value that specifies whether interaction with the info control is allowed based on the current state of the player.</field>
+            isInfoAllowed: {
+                get: function () {
+                    return this.playerState !== PlayerFramework.PlayerState.unloaded;
+                }
+            },
+
+            /// <field name="isInfoEnabled" type="Boolean">Gets or sets a value that specifies whether the info control is enabled.</field>
+            isInfoEnabled: {
+                get: function () {
+                    return this._isInfoEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isInfoEnabled;
+                    if (oldValue !== value) {
+                        this._isInfoEnabled = value;
+                        this._observableMediaPlayer.notify("isInfoEnabled", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isInfoVisible" type="Boolean">Gets or sets a value that specifies whether the info control is visible.</field>
+            isInfoVisible: {
+                get: function () {
+                    return this._isInfoVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isInfoVisible;
+                    if (oldValue !== value) {
+                        this._isInfoVisible = value;
+                        this._observableMediaPlayer.notify("isInfoVisible", value, oldValue);
+                    }
+                }
+            },
 
             /// <field name="signalStrength" type="Number">Gets or sets the signal strength of the current media source. This is useful in adaptive streaming scenarios.</field>
             signalStrength: {
@@ -2663,6 +2702,12 @@
                 this.dispatchEvent("stopped");
             },
 
+            info: function () {
+                /// <summary>raises the infoinvoked event used to indicate that more information about the current media should be displayed to the user.</summary>
+
+                this.dispatchEvent("infoinvoked");
+            },
+
             /************************ Private Methods ************************/
 
             _setElement: function (element) {
@@ -2739,7 +2784,7 @@
 
                 // property dependencies
                 this._bindProperty("advertisingState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTotalTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed"]);
-                this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTotalTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed", "isStopAllowed"]);
+                this._bindProperty("playerState", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseAllowed", "isPlayResumeAllowed", "isPauseAllowed", "isReplayAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSkipPreviousAllowed", "isSkipNextAllowed", "isSkipBackAllowed", "isSkipAheadAllowed", "isElapsedTimeAllowed", "isRemainingTimeAllowed", "isTotalTimeAllowed", "isTimelineAllowed", "isGoLiveAllowed", "isCaptionsAllowed", "isAudioAllowed", "isStopAllowed", "isInfoAllowed"]);
                 this._bindProperty("paused", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isPauseAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed"]);
                 this._bindProperty("ended", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isPauseAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed"]);
                 this._bindProperty("playbackRate", this._observableMediaPlayer, this._notifyProperties, ["isPlayResumeAllowed", "isRewindAllowed", "isFastForwardAllowed", "isSlowMotionAllowed", "isSlowMotion"]);

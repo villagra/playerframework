@@ -74,6 +74,8 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.IsFullScreenChanged += MediaPlayer_IsFullScreenChanged;
             MediaPlayer.IsMutedChanged += MediaPlayer_IsMutedChanged;
             MediaPlayer.VolumeChanged += MediaPlayer_VolumeChanged;
+            MediaPlayer.IsInfoEnabledChanged += MediaPlayer_IsInfoEnabledChanged;
+            MediaPlayer.IsInfoAllowedChanged += MediaPlayer_IsInfoEnabledChanged;
         }
 
         private void UnwireMediaPlayer()
@@ -81,6 +83,13 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.IsFullScreenChanged -= MediaPlayer_IsFullScreenChanged;
             MediaPlayer.IsMutedChanged -= MediaPlayer_IsMutedChanged;
             MediaPlayer.VolumeChanged -= MediaPlayer_VolumeChanged;
+            MediaPlayer.IsInfoEnabledChanged -= MediaPlayer_IsInfoEnabledChanged;
+            MediaPlayer.IsInfoAllowedChanged -= MediaPlayer_IsInfoEnabledChanged;
+        }
+
+        void MediaPlayer_IsInfoEnabledChanged(object sender, RoutedEventArgs e)
+        {
+            NotifyIsInfoEnabledChanged();
         }
 
         void MediaPlayer_VolumeChanged(object sender, RoutedEventArgs e)
@@ -292,6 +301,12 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <inheritdoc /> 
+        protected override void OnInvokeInfo()
+        {
+            MediaPlayer.InvokeInfo();
+        }
+
+        /// <inheritdoc /> 
         protected override void OnPlayResume()
         {
             Vpaid.ResumeAd();
@@ -342,6 +357,12 @@ namespace Microsoft.PlayerFramework.Advertising
         public override bool IsGoLiveEnabled
         {
             get { return false; }
+        }
+
+        /// <inheritdoc /> 
+        public override bool IsInfoEnabled
+        {
+            get { return MediaPlayer.IsInfoEnabled && MediaPlayer.IsInfoAllowed; }
         }
 
         /// <inheritdoc /> 

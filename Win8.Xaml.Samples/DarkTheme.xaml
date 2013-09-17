@@ -663,6 +663,13 @@
         <Setter Property="Content" Value="LIVE" />
         <Setter Property="AutomationProperties.AutomationId" Value="GoLiveButton" />
     </Style>
+    <Style TargetType="mmppf:InfoButton" BasedOn="{StaticResource Dark_MediaPlayerButtonStyle}" x:Key="Dark_InfoButton">
+        <Setter Property="FontFamily" Value="{StaticResource Dark_SymbolThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="AutomationProperties.AutomationId" Value="InfoButton"/>
+    </Style>
     <Style TargetType="mmppf:AudioSelectionButton" BasedOn="{StaticResource Dark_MediaPlayerButtonStyle}" x:Key="Dark_AudioSelectionButton">
         <Setter Property="FontFamily" Value="{StaticResource Dark_SymbolThemeFontFamily}" />
         <Setter Property="FontWeight" Value="Normal" />
@@ -1426,6 +1433,7 @@
                                     <mmppf:FullScreenButton x:Name="FullScreenButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFullScreenButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_FullScreenButton}" />
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsFarRight">
                                         <mmppf:GoLiveButton x:Name="GoLiveButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_GoLiveButton}" />
+                                        <mmppf:InfoButton x:Name="InfoButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" Style="{StaticResource Dark_InfoButton}"/>
                                         <mmppf:SignalStrength x:Name="SignalStrength" Value="{Binding SignalStrength}" Margin="4,0,0,0" VerticalAlignment="Center" Visibility="{Binding IsSignalStrengthVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Style="{StaticResource Dark_SignalStrength}" />
                                         <mmppf:ResolutionIndicator x:Name="ResolutionIndicator" MediaQuality="{Binding MediaQuality}" VerticalAlignment="Center" Margin="4,0,4,0" Visibility="{Binding IsResolutionIndicatorVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Style="{StaticResource Dark_ResolutionIndicator}" />
                                     </StackPanel>
@@ -1605,7 +1613,30 @@
                         </Grid>
                         <Grid x:Name="ErrorsContainer" Visibility="Collapsed" />
                         <Grid x:Name="InteractivityContainer" Visibility="Collapsed">
-                            <mmppf:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}" IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}" IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}" IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}" IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}" IsDurationButtonVisible="{TemplateBinding IsDurationVisible}" IsTimeRemainingButtonVisible="{TemplateBinding IsTimeRemainingVisible}" IsFastForwardButtonVisible="{TemplateBinding IsFastForwardVisible}" IsStopButtonVisible="{TemplateBinding IsStopVisible}" IsRewindButtonVisible="{TemplateBinding IsRewindVisible}" IsSkipPreviousButtonVisible="{TemplateBinding IsSkipPreviousVisible}" IsSkipNextButtonVisible="{TemplateBinding IsSkipNextVisible}" IsSkipBackButtonVisible="{TemplateBinding IsSkipBackVisible}" IsSkipAheadButtonVisible="{TemplateBinding IsSkipAheadVisible}" IsReplayButtonVisible="{TemplateBinding IsReplayVisible}" IsResolutionIndicatorVisible="{TemplateBinding IsResolutionIndicatorVisible}" IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}" IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}" IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}" IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}" IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}" IsTimelineVisible="{TemplateBinding IsTimelineVisible}" IsThumbnailVisible="{TemplateBinding IsThumbnailVisible}" Style="{StaticResource Dark_ControlPanel}" />
+                            <mmppf:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}" Style="{StaticResource Dark_ControlPanel}"
+                                IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}"
+                                IsInfoButtonVisible="{TemplateBinding IsInfoVisible}"
+                                IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}"
+                                IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}"
+                                IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}"
+                                IsDurationButtonVisible="{TemplateBinding IsDurationVisible}"
+                                IsTimeRemainingButtonVisible="{TemplateBinding IsTimeRemainingVisible}"
+                                IsFastForwardButtonVisible="{TemplateBinding IsFastForwardVisible}"
+                                IsStopButtonVisible="{TemplateBinding IsStopVisible}"
+                                IsRewindButtonVisible="{TemplateBinding IsRewindVisible}"
+                                IsSkipPreviousButtonVisible="{TemplateBinding IsSkipPreviousVisible}"
+                                IsSkipNextButtonVisible="{TemplateBinding IsSkipNextVisible}"
+                                IsSkipBackButtonVisible="{TemplateBinding IsSkipBackVisible}"
+                                IsSkipAheadButtonVisible="{TemplateBinding IsSkipAheadVisible}"
+                                IsReplayButtonVisible="{TemplateBinding IsReplayVisible}"
+                                IsResolutionIndicatorVisible="{TemplateBinding IsResolutionIndicatorVisible}"
+                                IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}"
+                                IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}"
+                                IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}"
+                                IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}"
+                                IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}"
+                                IsTimelineVisible="{TemplateBinding IsTimelineVisible}"
+                                IsThumbnailVisible="{TemplateBinding IsThumbnailVisible}"/>
                         </Grid>
                         <Grid x:Name="LoaderViewContainer" Visibility="Collapsed" />
                         <Grid x:Name="BufferingContainer" Visibility="Collapsed" />

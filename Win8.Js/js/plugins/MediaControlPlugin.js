@@ -171,9 +171,8 @@
         },
 
         _onStopPressed: function (e) {
-            if (!this.mediaPlayer.interactiveViewModel.isPauseDisabled) {
-                // there is no stop feature on the video tag, use pause instead
-                this.mediaPlayer.interactiveViewModel.pause();
+            if (!this.mediaPlayer.interactiveViewModel.isStopDisabled) {
+                this.mediaPlayer.interactiveViewModel.stop();
             }
         },
 

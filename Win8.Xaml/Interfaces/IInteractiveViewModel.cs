@@ -240,6 +240,11 @@ namespace Microsoft.PlayerFramework
         bool IsGoLiveEnabled { get; }
         
         /// <summary>
+        /// Gets the enabled state of the info feature.
+        /// </summary>
+        bool IsInfoEnabled { get; }
+                
+        /// <summary>
         /// Gets the thumbnail image to display
         /// </summary>
         ImageSource ThumbnailImageSource { get; }
@@ -323,7 +328,12 @@ namespace Microsoft.PlayerFramework
         /// Raised when the IsGoLiveEnabled property changes.
         /// </summary>
         event RoutedEventHandler IsGoLiveEnabledChanged;
-
+        
+        /// <summary>
+        /// Raised when the IsInfoEnabled property changes.
+        /// </summary>
+        event RoutedEventHandler IsInfoEnabledChanged;
+        
         /// <summary>
         /// Occurs when the value of the CurrentState property changes.
         /// </summary>
@@ -338,6 +348,11 @@ namespace Microsoft.PlayerFramework
         /// Invokes the audio stream selection feature.
         /// </summary>
         void InvokeAudioSelection();
+
+        /// <summary>
+        /// Invokes the more info feature
+        /// </summary>
+        void InvokeInfo();
         
         /// <summary>
         /// Seeks to the live position on the media. Only supported during live media playback.
