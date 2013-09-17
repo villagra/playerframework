@@ -796,6 +796,36 @@
             }
         },
 
+        displayModeIcon: {
+            get: function () {
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxIcon") : PlayerFramework.Utilities.getResourceString("DisplayModeFillIcon");
+            }
+        },
+
+        displayModeLabel: {
+            get: function () {
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxLabel") : PlayerFramework.Utilities.getResourceString("DisplayModeFillLabel");
+            }
+        },
+
+        displayModeTooltip: {
+            get: function () {
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxTooltip") : PlayerFramework.Utilities.getResourceString("DisplayModeFillTooltip");
+            }
+        },
+
+        isDisplayModeDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isDisplayModeEnabled || !this._mediaPlayer.isDisplayModeAllowed;
+            }
+        },
+
+        isDisplayModeHidden: {
+            get: function () {
+                return !this._mediaPlayer.isDisplayModeVisible;
+            }
+        },
+
         signalStrength: {
             get: function () {
                 return this._mediaPlayer.signalStrength;
@@ -968,6 +998,10 @@
             this._bindProperty("isInfoAllowed", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
             this._bindProperty("isInfoEnabled", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
             this._bindProperty("isInfoVisible", this._observableMediaPlayer, this._notifyProperties, ["isInfoHidden"]);
+            this._bindProperty("isDisplayModeAllowed", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
+            this._bindProperty("isDisplayModeEnabled", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
+            this._bindProperty("isDisplayModeVisible", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeHidden"]);
+            this._bindProperty("msZoom", this._observableMediaPlayer, this._notifyProperties, ["displayModeLabel", "displayModeTooltip", "displayModeIcon"]);
             this._bindProperty("isSignalStrengthAllowed", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthEnabled", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthVisible", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthHidden"]);
@@ -1109,6 +1143,10 @@
 
         info: function () {
             this._mediaPlayer.info();
+        },
+
+        toggleDisplayMode: function () {
+            this._mediaPlayer.msZoom = !this._mediaPlayer.msZoom;
         },
 
         onTimelineSliderStart: function (e) {

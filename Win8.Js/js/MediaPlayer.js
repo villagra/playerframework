@@ -216,6 +216,8 @@
             this._isStopVisible = false;
             this._isInfoEnabled = true;
             this._isInfoVisible = false;
+            this._isDisplayModeEnabled = true;
+            this._isDisplayModeVisible = false;
             this._signalStrength = 0;
             this._isSignalStrengthEnabled = true;
             this._isSignalStrengthVisible = false;
@@ -2015,6 +2017,41 @@
                     if (oldValue !== value) {
                         this._isInfoVisible = value;
                         this._observableMediaPlayer.notify("isInfoVisible", value, oldValue);
+                    }
+                }
+            },
+            
+            /// <field name="isDisplayModeAllowed" type="Boolean">Gets a value that specifies whether interaction with the displayMode control is allowed based on the current state of the player.</field>
+            isDisplayModeAllowed: {
+                get: function () {
+                    return true;
+                }
+            },
+
+            /// <field name="isDisplayModeEnabled" type="Boolean">Gets or sets a value that specifies whether the displayMode control is enabled.</field>
+            isDisplayModeEnabled: {
+                get: function () {
+                    return this._isDisplayModeEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isDisplayModeEnabled;
+                    if (oldValue !== value) {
+                        this._isDisplayModeEnabled = value;
+                        this._observableMediaPlayer.notify("isDisplayModeEnabled", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isDisplayModeVisible" type="Boolean">Gets or sets a value that specifies whether the displayMode control is visible.</field>
+            isDisplayModeVisible: {
+                get: function () {
+                    return this._isDisplayModeVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isDisplayModeVisible;
+                    if (oldValue !== value) {
+                        this._isDisplayModeVisible = value;
+                        this._observableMediaPlayer.notify("isDisplayModeVisible", value, oldValue);
                     }
                 }
             },

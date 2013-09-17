@@ -86,6 +86,12 @@
             }
         },
 
+        isDisplayModeDisabled: {
+            get: function () {
+                return true;
+            }
+        },
+
         visualMarkers: {
             get: function () {
                 return [];

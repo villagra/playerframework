@@ -117,6 +117,13 @@
     "InfoLabel":                            "Info",
     "InfoTooltip":                          "More Info",
 
+    "DisplayModeLetterboxIcon":             "\uE1D8",
+    "DisplayModeFillIcon":                  "\uE1D9",
+    "DisplayModeLetterboxLabel":            "Letterbox",
+    "DisplayModeFillLabel":                 "Fill",
+    "DisplayModeLetterboxTooltip":          "Letterbox",
+    "DisplayModeFillTooltip":               "Fill",
+
     "SignalStrengthLabel":                  "Signal strength",
     "SignalStrengthTooltip1":               "Signal strength",
     "SignalStrengthTooltip2":               "Signal strength (low)",

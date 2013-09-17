@@ -469,6 +469,10 @@
     font-size: 77%;
 }
 
+.pf-displaymode-control .pf-button-content {
+    font-size: 77%;
+}
+
 /* Flyouts */
 .pf-volume-flyout {
     display: -ms-flexbox;
