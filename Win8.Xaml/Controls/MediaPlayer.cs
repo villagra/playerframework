@@ -640,6 +640,7 @@ namespace Microsoft.PlayerFramework
         public void Stop()
         {
             _Stop();
+            if (Stopped != null) Stopped(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -820,6 +821,11 @@ namespace Microsoft.PlayerFramework
         public event RoutedEventHandler SeekCompleted;
 
 #endif
+        
+        /// <summary>
+        /// Occurs when the player is stopped. Typically, this indicates the app should dispose the player and navigate back to the previous page.
+        /// </summary>
+        public event EventHandler Stopped;
 
         /// <summary>
         /// Occurs when the template is loaded for the first time and all plugins have been loaded.
