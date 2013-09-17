@@ -109,6 +109,10 @@
     "ExitFullScreenLabel":                  "Exit full screen",
     "ExitFullScreenTooltip":                "Exit full screen",
 
+    "StopIcon":                             "\u25FC",
+    "StopLabel":                            "Stop",
+    "StopTooltip":                          "Stop",
+
     "SignalStrengthLabel":                  "Signal strength",
     "SignalStrengthTooltip1":               "Signal strength",
     "SignalStrengthTooltip2":               "Signal strength (low)",

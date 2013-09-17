@@ -40,6 +40,7 @@
         this._volumeElement = null;
         this._muteElement = null;
         this._fullScreenElement = null;
+        this._stopElement = null;
         this._signalStrengthElement = null;
         this._mediaQualityElement = null;
 
@@ -272,6 +273,15 @@
             }
         },
 
+        isStopHidden: {
+            get: function () {
+                return this._stopElement.winControl.hidden;
+            },
+            set: function (value) {
+                this._stopElement.winControl.hidden = value;
+            }
+        },
+
         isSignalStrengthHidden: {
             get: function () {
                 return this._signalStrengthElement.winControl.hidden;
@@ -333,6 +343,7 @@
             this._playPauseElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-play-pause-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: playPauseIcon; winControl.label: playPauseLabel; winControl.tooltip: playPauseTooltip; winControl.disabled: isPlayPauseDisabled; winControl.onclick: playPause PlayerFramework.Binding.setEventHandler;" }]);
             this._playResumeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-play-resume-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: playResumeIcon; winControl.label: playResumeLabel; winControl.tooltip: playResumeTooltip; winControl.disabled: isPlayResumeDisabled; winControl.onclick: playResume PlayerFramework.Binding.setEventHandler;" }]);
             this._pauseElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-pause-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: pauseIcon; winControl.label: pauseLabel; winControl.tooltip: pauseTooltip; winControl.disabled: isPauseDisabled; winControl.onclick: pause PlayerFramework.Binding.setEventHandler;" }]);
+            this._stopElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-stop-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: stopIcon; winControl.label: stopLabel; winControl.tooltip: stopTooltip; winControl.disabled: isStopDisabled; winControl.onclick: stop PlayerFramework.Binding.setEventHandler;" }]);
             this._fastForwardElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-fast-forward-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: fastForwardIcon; winControl.label: fastForwardLabel; winControl.tooltip: fastForwardTooltip; winControl.disabled: isFastForwardDisabled; winControl.onclick: fastForward PlayerFramework.Binding.setEventHandler;" }]);
             this._slowMotionElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-slow-motion-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: slowMotionIcon; winControl.label: slowMotionLabel; winControl.tooltip: slowMotionTooltip; winControl.disabled: isSlowMotionDisabled; winControl.onclick: slowMotion PlayerFramework.Binding.setEventHandler;" }]);
             this._skipNextElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-skip-next-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: skipNextIcon; winControl.label: skipNextLabel; winControl.tooltip: skipNextTooltip; winControl.disabled: isSkipNextDisabled; winControl.onclick: skipNext PlayerFramework.Binding.setEventHandler;" }]);
@@ -384,6 +395,7 @@
                 isVolumeHidden: false,
                 isMuteHidden: false,
                 isFullScreenHidden: false,
+                isStopHidden: false,
                 isSignalStrengthHidden: false,
                 isMediaQualityHidden: false
             });

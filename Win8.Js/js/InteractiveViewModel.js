@@ -736,6 +736,36 @@
             }
         },
 
+        stopIcon: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("StopIcon");
+            }
+        },
+
+        stopLabel: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("StopLabel");
+            }
+        },
+
+        stopTooltip: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("StopTooltip");
+            }
+        },
+
+        isStopDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isStopEnabled || !this._mediaPlayer.isStopAllowed;
+            }
+        },
+
+        isStopHidden: {
+            get: function () {
+                return !this._mediaPlayer.isStopVisible;
+            }
+        },
+
         signalStrength: {
             get: function () {
                 return this._mediaPlayer.signalStrength;
@@ -902,6 +932,9 @@
             this._bindProperty("isFullScreenAllowed", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenDisabled"]);
             this._bindProperty("isFullScreenEnabled", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenDisabled"]);
             this._bindProperty("isFullScreenVisible", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenHidden"]);
+            this._bindProperty("isStopAllowed", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
+            this._bindProperty("isStopEnabled", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
+            this._bindProperty("isStopVisible", this._observableMediaPlayer, this._notifyProperties, ["isStopHidden"]);
             this._bindProperty("isSignalStrengthAllowed", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthEnabled", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthVisible", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthHidden"]);
@@ -1035,6 +1068,10 @@
 
         toggleFullScreen: function () {
             this._mediaPlayer.isFullScreen = !this._mediaPlayer.isFullScreen;
+        },
+
+        stop: function () {
+            this._mediaPlayer.stop();
         },
 
         onTimelineSliderStart: function (e) {

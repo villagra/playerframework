@@ -165,6 +165,10 @@
             this._adPlayer.pauseAd();
         },
 
+        stop: function () {
+            this._adPlayer.stopAd();
+        },
+
         skipNext: function () {
             if (!this.dispatchEvent("skipnext")) {
                 this._adPlayer.skipAd();

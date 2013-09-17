@@ -109,6 +109,10 @@
     "ExitFullScreenLabel":                  "Spanish: Exit full screen",
     "ExitFullScreenTooltip":                "Spanish: Exit full screen",
 
+    "StopIcon":                             "\u25FC",
+    "StopLabel":                            "Spanish: Stop",
+    "StopTooltip":                          "Spanish: Stop",
+
     "SignalStrengthLabel":                  "Spanish: Signal strength",
     "SignalStrengthTooltip1":               "Spanish: Signal strength",
     "SignalStrengthTooltip2":               "Spanish: Signal strength (low)",
