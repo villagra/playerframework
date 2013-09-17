@@ -52,7 +52,7 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Creates a command used to bind to an instant replay button.
+        /// Creates a command used to bind to a replay button.
         /// </summary>
         /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>
         public static ViewModelCommand CreateReplayCommand()

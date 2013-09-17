@@ -180,7 +180,7 @@ namespace Microsoft.PlayerFramework
         bool IsStopEnabled { get; }
 
         /// <summary>
-        /// Gets the enabled state of the instant replay feature.
+        /// Gets the enabled state of the replay feature.
         /// </summary>
         bool IsReplayEnabled { get; }
 
@@ -409,7 +409,7 @@ namespace Microsoft.PlayerFramework
         void Stop();
 
         /// <summary>
-        /// Replay the media (instant replay).
+        /// Replay the media (e.g. instant replay).
         /// </summary>
         void Replay();
 

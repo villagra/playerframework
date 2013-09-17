@@ -596,18 +596,24 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Supports Instant Replay by subtracting the amount of time specified by the ReplayOffset property from the current Position.
+        /// Supports Replay by subtracting the amount of time specified by the ReplayOffset property from the current Position. If ReplayOffset is null, playback will restart from the beginning.
         /// </summary>
         public virtual void Replay()
         {
-            TimeSpan newPosition = VirtualPosition.Subtract(ReplayOffset);
-            if (newPosition < StartTime)
+            if (ReplayOffset.HasValue)
             {
-                newPosition = StartTime;
+                TimeSpan newPosition = VirtualPosition.Subtract(ReplayOffset.Value);
+                if (newPosition < StartTime)
+                {
+                    newPosition = StartTime;
+                }
+                Position = newPosition;
             }
-
-            Position = newPosition;
-
+            else
+            {
+                Position = StartTime; // start from the beginning.
+            }
+            
             if (CurrentState == MediaElementState.Paused)
             {
                 Play();
@@ -2943,15 +2949,15 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the ReplayOffset dependency property.
         /// </summary>
-        public static readonly DependencyProperty ReplayOffsetProperty = RegisterDependencyProperty<TimeSpan>("ReplayOffset", TimeSpan.FromSeconds(5));
+        public static readonly DependencyProperty ReplayOffsetProperty = RegisterDependencyProperty<TimeSpan?>("ReplayOffset", TimeSpan.FromSeconds(5));
 
         /// <summary>
-        /// Gets or sets the amount of time to reset the current play position back for an instant replay. Default 5 seconds.
+        /// Gets or sets the amount of time to reset the current play position back for the replay feature. Default 5 seconds. Set to null to indicate playback should start at the beginning.
         /// </summary>
         [Category(Categories.Advanced)]
-        public TimeSpan ReplayOffset
+        public TimeSpan? ReplayOffset
         {
-            get { return (TimeSpan)GetValue(ReplayOffsetProperty); }
+            get { return GetValue(ReplayOffsetProperty) as TimeSpan?; }
             set { SetValue(ReplayOffsetProperty, value); }
         }
         #endregion

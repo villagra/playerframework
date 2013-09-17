@@ -255,7 +255,7 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Notifies the subclass that the user has chosen the instant replay feature
+        /// Notifies the subclass that the user has chosen the replay feature
         /// </summary>
         protected abstract void OnReplay();
 

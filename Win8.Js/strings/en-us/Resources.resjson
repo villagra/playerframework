@@ -19,8 +19,8 @@
     "PauseTooltip":                         "Pause",
 
     "ReplayIcon":                           "\uE14A",
-    "ReplayLabel":                          "Instant replay",
-    "ReplayTooltip":                        "Instant replay",
+    "ReplayLabel":                          "Replay",
+    "ReplayTooltip":                        "Replay",
 
     "RewindIcon":                           "\u23EA",
     "RewindLabel":                          "Rewind",

@@ -19,8 +19,8 @@
     "PauseTooltip":                         "Spanish: Pause",
 
     "ReplayIcon":                           "\uE14A",
-    "ReplayLabel":                          "Spanish: Instant replay",
-    "ReplayTooltip":                        "Spanish: Instant replay",
+    "ReplayLabel":                          "Spanish: Replay",
+    "ReplayTooltip":                        "Spanish: Replay",
 
     "RewindIcon":                           "\u23EA",
     "RewindLabel":                          "Spanish: Rewind",

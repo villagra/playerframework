@@ -142,7 +142,7 @@
     <value>PLAY</value>
   </data>
   <data name="ReplayButtonLabel" xml:space="preserve">
-    <value>INSTANT REPLAY</value>
+    <value>REPLAY</value>
   </data>
   <data name="RetryButtonLabel" xml:space="preserve">
     <value>RETRY</value>

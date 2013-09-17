@@ -148,7 +148,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected FrameworkElement BorderElement { get; private set; }
         /// <summary>
-        /// The replay (instant replay) button.
+        /// The replay / instant replay button.
         /// </summary>
         protected ButtonBase ReplayButtonElement { get; private set; }
         /// <summary>

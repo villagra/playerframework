@@ -1159,7 +1159,7 @@
                 }
             },
 
-            /// <field name="replayOffset" type="Number">Gets or sets the amount of time (in seconds) to offset the current playback position during replay.</field>
+            /// <field name="replayOffset" type="Number">Gets or sets the amount of time (in seconds) to offset the current playback position during replay. Set to null to cause replay to play from the beginning.</field>
             replayOffset: {
                 get: function () {
                     return this._replayOffset;
@@ -2489,9 +2489,14 @@
             },
 
             replay: function () {
-                /// <summary>Supports instant replay by applying an offset to the current playback position.</summary>
+                /// <summary>Supports replay by applying replayOffset to the current playback position or by restarting at the beginning if replayOffset is null.</summary>
 
-                this.currentTime = Math.max(this.initialTime, this.currentTime - this.replayOffset);
+                if (this.replayOffset === null) {
+                    this.currentTime = this.initialTime;
+                }
+                else {
+                    this.currentTime = Math.max(this.initialTime, this.currentTime - this.replayOffset);
+                }
                 this.play();
             },
 

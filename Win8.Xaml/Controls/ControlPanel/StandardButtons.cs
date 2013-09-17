@@ -489,7 +489,7 @@ namespace Microsoft.PlayerFramework
     }
 
     /// <summary>
-    /// Represents an instant replay button that can be bound to MediaPlayer.InteractiveViewModel
+    /// Represents a replay button that can be bound to MediaPlayer.InteractiveViewModel
     /// </summary>
     public class ReplayButton : MediaPlayerButton
     {
