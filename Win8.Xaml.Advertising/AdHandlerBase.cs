@@ -76,6 +76,11 @@ namespace Microsoft.PlayerFramework.Advertising
         public event EventHandler<DeactivateAdUnitEventArgs> DeactivateAdUnit;
 
         /// <summary>
+        /// Indicates that the active ad player has changed.
+        /// </summary>
+        public event EventHandler<NavigationRequestEventArgs> NavigationRequested;
+
+        /// <summary>
         /// Creates a new instance of AdHandlerBase
         /// </summary>
         public AdHandlerBase()
@@ -578,6 +583,13 @@ namespace Microsoft.PlayerFramework.Advertising
         protected virtual async void RequestNavigation(string url)
 #endif
         {
+            if (NavigationRequested != null)
+            {
+                var eventArgs = new NavigationRequestEventArgs(url);
+                NavigationRequested(this, eventArgs);
+                if (eventArgs.Cancel) return;
+            }
+
             if (!string.IsNullOrEmpty(url))
             {
 #if WINDOWS_PHONE 

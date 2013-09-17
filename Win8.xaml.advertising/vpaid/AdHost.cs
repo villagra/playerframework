@@ -2,6 +2,7 @@
 #if SILVERLIGHT
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 #else
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -34,9 +35,9 @@ namespace Microsoft.PlayerFramework.Advertising
         public event RoutedEventHandler Navigated;
 
         /// <summary>
-        /// Gets the HyperlinkButton control.
+        /// Gets the Button control.
         /// </summary>
-        protected HyperlinkButton ClickThroughButton { get; private set; }
+        protected ButtonBase ClickThroughButton { get; private set; }
 
         /// <summary>
         /// Indicates that the template has been loaded.
@@ -50,17 +51,26 @@ namespace Microsoft.PlayerFramework.Advertising
         protected override void OnApplyTemplate()
 #endif
         {
+            if (ClickThroughButton != null)
+            {
+                ClickThroughButton.Click -= ClickThroughButton_Click;
+            }
+
             base.OnApplyTemplate();
 
-            ClickThroughButton = base.GetTemplateChild("ClickThroughButton") as HyperlinkButton;
+            ClickThroughButton = base.GetTemplateChild("ClickThroughButton") as ButtonBase;
             if (ClickThroughButton != null)
             {
                 ClickThroughButton.Visibility = navigateUri != null ? Visibility.Visible : Visibility.Collapsed;
                 ClickThroughButton.Click += ClickThroughButton_Click;
-                ClickThroughButton.NavigateUri = navigateUri;
+                var hyperlink = ClickThroughButton as HyperlinkButton;
+                if (hyperlink != null)
+                {
+                    hyperlink.NavigateUri = navigateUri;
 #if SILVERLIGHT
-                ClickThroughButton.TargetName = "_blank";
+                    hyperlink.TargetName = "_blank";
 #endif
+                }
 #if WINDOWS_PHONE
                 ClickThroughButton.Content = ClickThroughButton.Content ?? MediaPlayer.GetResourceString("AdLinkLabel");
 #endif
@@ -74,7 +84,7 @@ namespace Microsoft.PlayerFramework.Advertising
             }
 
             IsTemplateLoaded = true;
-            AdLinear = adLinear;
+            AdLinear = adLinear; // force the visual state to get set
         }
 
         void ClickThroughButton_Click(object sender, RoutedEventArgs e)
@@ -95,7 +105,11 @@ namespace Microsoft.PlayerFramework.Advertising
                 if (ClickThroughButton != null)
                 {
                     ClickThroughButton.Visibility = navigateUri != null ? Visibility.Visible : Visibility.Collapsed;
-                    ClickThroughButton.NavigateUri = navigateUri;
+                    var hyperlink = ClickThroughButton as HyperlinkButton;
+                    if (hyperlink != null)
+                    {
+                        hyperlink.NavigateUri = navigateUri;
+                    }
                 }
             }
         }

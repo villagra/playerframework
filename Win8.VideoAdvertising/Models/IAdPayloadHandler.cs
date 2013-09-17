@@ -175,6 +175,8 @@ namespace Microsoft.VideoAdvertising
         }
 
         public string Url { get; private set; }
+
+        public bool Cancel { get; set; }
     }
 
     public enum AdStatus
