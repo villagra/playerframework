@@ -243,6 +243,8 @@
             this._simulatedPlaybackRateTimer = null;
             this._isThumbnailVisible = false;
             this._thumbnailImageSrc = null;
+            this._mediaDescription = "";
+            this._mediaMetadata = null;
 
             this._setElement(element);
             this._setOptions(options);
@@ -1060,6 +1062,20 @@
                 }
             },
 
+            /// <field name="mediaMetadata" type="Object">Gets or sets metadata associated with the media.</field>
+            mediaMetadata: {
+                get: function () {
+                    return this._mediaMetadata;
+                },
+                set: function (value) {
+                    var oldValue = this._mediaMetadata;
+                    if (oldValue !== value) {
+                        this._mediaMetadata = value;
+                        this._observableMediaPlayer.notify("mediaMetadata", value, oldValue);
+                    }
+                }
+            },
+            
             /// <field name="isPlayPauseAllowed" type="Boolean">Gets a value that specifies whether interaction with the play/pause control is allowed based on the current state of the player.</field>
             isPlayPauseAllowed: {
                 get: function () {

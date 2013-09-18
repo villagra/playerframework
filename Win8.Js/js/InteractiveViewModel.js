@@ -904,6 +904,12 @@
             }
         },
 
+        mediaMetadata: {
+            get: function () {
+                return this._mediaPlayer.mediaMetadata;
+            }
+        },
+        
         // Public Methods
         initialize: function () {
             // media player value properties
@@ -924,6 +930,7 @@
             this._bindProperty("visualMarkers", this._observableMediaPlayer, this._notifyProperties, ["visualMarkers"]);
             this._bindProperty("thumbnailImageSrc", this._observableMediaPlayer, this._notifyProperties, ["thumbnailImageSrc"]);
             this._bindProperty("isThumbnailVisible", this._observableMediaPlayer, this._notifyProperties, ["isThumbnailVisible"]);
+            this._bindProperty("mediaMetadata", this._observableMediaPlayer, this._notifyProperties, ["mediaMetadata"]);
 
             // media player interaction properties
             this._bindProperty("isPlayPauseAllowed", this._observableMediaPlayer, this._notifyProperties, ["isPlayPauseDisabled"]);
