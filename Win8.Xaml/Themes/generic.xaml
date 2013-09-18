@@ -377,6 +377,14 @@
         <Setter Property="AutomationProperties.AutomationId" Value="InfoButton"/>
     </Style>
 
+    <Style TargetType="local:MoreButton" BasedOn="{StaticResource MediaPlayerButtonStyle}">
+        <Setter Property="FontFamily" Value="{StaticResource SymbolThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="AutomationProperties.AutomationId" Value="MoreButton"/>
+    </Style>
+
     <Style TargetType="local:AudioSelectionButton" BasedOn="{StaticResource MediaPlayerButtonStyle}">
         <Setter Property="FontFamily" Value="{StaticResource SymbolThemeFontFamily}"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -1185,6 +1193,7 @@
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsFarRight">
                                         <local:GoLiveButton x:Name="GoLiveButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
                                         <local:InfoButton x:Name="InfoButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
+                                        <local:MoreButton x:Name="MoreButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsMoreButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>
                                         <local:SignalStrength x:Name="SignalStrength" Value="{Binding SignalStrength}" Margin="4,0,0,0" VerticalAlignment="Center" Visibility="{Binding IsSignalStrengthVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}"/>
                                         <local:ResolutionIndicator x:Name="ResolutionIndicator" MediaQuality="{Binding MediaQuality}" VerticalAlignment="Center" Margin="4,0,4,0" Visibility="{Binding IsResolutionIndicatorVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}"/>
                                     </StackPanel>
@@ -1368,6 +1377,7 @@
                             <local:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}"
                                 IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}"
                                 IsInfoButtonVisible="{TemplateBinding IsInfoVisible}"
+                                IsMoreButtonVisible="{TemplateBinding IsMoreVisible}"
                                 IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}"
                                 IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}"
                                 IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}"

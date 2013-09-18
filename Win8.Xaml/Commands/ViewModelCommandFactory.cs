@@ -257,6 +257,19 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
+        /// Creates a command used to bind to an more button.
+        /// </summary>
+        /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>
+        public static ViewModelCommand CreateMoreCommand()
+        {
+            return new ViewModelCommand(
+                vm => vm.InvokeMore(),
+                vm => vm.IsMoreEnabled,
+                new HandlerReference<IInteractiveViewModel, RoutedEventHandler>((vm, eh) => vm.IsMoreEnabledChanged -= eh, (vm, eh) => vm.IsMoreEnabledChanged += eh)
+                );
+        }
+        
+        /// <summary>
         /// Creates a command used to bind to a play/pause button.
         /// </summary>
         /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>

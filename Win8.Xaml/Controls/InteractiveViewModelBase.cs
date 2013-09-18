@@ -248,6 +248,18 @@ namespace Microsoft.PlayerFramework
         protected abstract void OnInvokeInfo();
 
         /// <inheritdoc /> 
+        public void InvokeMore()
+        {
+            OnInteracting();
+            OnInvokeMore();
+        }
+
+        /// <summary>
+        /// Notifies the subclass that the user is attempting to invoke the more feature
+        /// </summary>
+        protected abstract void OnInvokeMore();
+
+        /// <inheritdoc /> 
         public void PlayResume()
         {
             OnInteracting();
@@ -409,6 +421,21 @@ namespace Microsoft.PlayerFramework
         {
             OnPropertyChanged(() => IsInfoEnabled);
             if (IsInfoEnabledChanged != null) IsInfoEnabledChanged(this, new RoutedEventArgs());
+        }
+
+        /// <inheritdoc /> 
+        public event RoutedEventHandler IsMoreEnabledChanged;
+
+        /// <inheritdoc /> 
+        public abstract bool IsMoreEnabled { get; }
+
+        /// <summary>
+        /// Indicates that the More enabled state may have changed.
+        /// </summary>
+        protected void NotifyIsMoreEnabledChanged()
+        {
+            OnPropertyChanged(() => IsMoreEnabled);
+            if (IsMoreEnabledChanged != null) IsMoreEnabledChanged(this, new RoutedEventArgs());
         }
 
         /// <inheritdoc /> 

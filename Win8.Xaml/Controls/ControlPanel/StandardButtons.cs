@@ -216,6 +216,23 @@ namespace Microsoft.PlayerFramework
     }
 
     /// <summary>
+    /// Represents an More button that can be bound to MediaPlayer.InteractiveViewModel
+    /// </summary>
+    public class MoreButton : MediaPlayerButton
+    {
+        /// <summary>
+        /// Creates a new instance of MoreButton.
+        /// </summary>
+        public MoreButton()
+        {
+            this.DefaultStyleKey = typeof(MoreButton);
+
+            AutomationProperties.SetName(this, MediaPlayer.GetResourceString("MoreButtonLabel"));
+            Command = ViewModelCommandFactory.CreateMoreCommand();
+        }
+    }
+
+    /// <summary>
     /// Represents an audio stream selection button that can be bound to MediaPlayer.InteractiveViewModel
     /// </summary>
     public class AudioSelectionButton : MediaPlayerButton

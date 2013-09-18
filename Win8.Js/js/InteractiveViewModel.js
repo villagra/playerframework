@@ -796,6 +796,36 @@
             }
         },
 
+        moreIcon: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("MoreIcon");
+            }
+        },
+
+        moreLabel: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("MoreLabel");
+            }
+        },
+
+        moreTooltip: {
+            get: function () {
+                return PlayerFramework.Utilities.getResourceString("MoreTooltip");
+            }
+        },
+
+        isMoreDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isMoreEnabled || !this._mediaPlayer.isMoreAllowed;
+            }
+        },
+
+        isMoreHidden: {
+            get: function () {
+                return !this._mediaPlayer.isMoreVisible;
+            }
+        },
+
         displayModeIcon: {
             get: function () {
                 return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxIcon") : PlayerFramework.Utilities.getResourceString("DisplayModeFillIcon");
@@ -1005,6 +1035,9 @@
             this._bindProperty("isInfoAllowed", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
             this._bindProperty("isInfoEnabled", this._observableMediaPlayer, this._notifyProperties, ["isInfoDisabled"]);
             this._bindProperty("isInfoVisible", this._observableMediaPlayer, this._notifyProperties, ["isInfoHidden"]);
+            this._bindProperty("isMoreAllowed", this._observableMediaPlayer, this._notifyProperties, ["isMoreDisabled"]);
+            this._bindProperty("isMoreEnabled", this._observableMediaPlayer, this._notifyProperties, ["isMoreDisabled"]);
+            this._bindProperty("isMoreVisible", this._observableMediaPlayer, this._notifyProperties, ["isMoreHidden"]);
             this._bindProperty("isDisplayModeAllowed", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
             this._bindProperty("isDisplayModeEnabled", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
             this._bindProperty("isDisplayModeVisible", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeHidden"]);
@@ -1150,6 +1183,10 @@
 
         info: function () {
             this._mediaPlayer.info();
+        },
+
+        more: function () {
+            this._mediaPlayer.more();
         },
 
         toggleDisplayMode: function () {

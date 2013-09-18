@@ -81,6 +81,7 @@ namespace Microsoft.PlayerFramework
             MediaPlayer.IsScrubbingEnabledChanged += (s, e) => NotifyIsScrubbingEnabledChanged();
             MediaPlayer.IsGoLiveEnabledChanged += (s, e) => NotifyIsGoLiveEnabledChanged();
             MediaPlayer.IsInfoEnabledChanged += (s, e) => NotifyIsInfoEnabledChanged();
+            MediaPlayer.IsMoreEnabledChanged += (s, e) => NotifyIsMoreEnabledChanged();
 
             MediaPlayer.IsPlayResumeAllowedChanged += (s, e) => NotifyIsPlayResumeEnabledChanged();
             MediaPlayer.IsPauseAllowedChanged += (s, e) => NotifyIsPauseEnabledChanged();
@@ -209,6 +210,12 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <inheritdoc /> 
+        protected override void OnInvokeMore()
+        {
+            MediaPlayer.InvokeMore();
+        }
+
+        /// <inheritdoc /> 
         protected override void OnPlayResume()
         {
             MediaPlayer.PlayResume();
@@ -323,6 +330,15 @@ namespace Microsoft.PlayerFramework
         public override bool IsInfoEnabled
         {
             get { return MediaPlayer.IsInfoEnabled && MediaPlayer.IsInfoAllowed; }
+        }
+        #endregion
+
+        #region IsMoreEnabled
+
+        /// <inheritdoc /> 
+        public override bool IsMoreEnabled
+        {
+            get { return MediaPlayer.IsMoreEnabled; }
         }
         #endregion
 

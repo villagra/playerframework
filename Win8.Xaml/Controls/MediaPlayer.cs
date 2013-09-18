@@ -691,6 +691,14 @@ namespace Microsoft.PlayerFramework
         {
             OnInvokeInfo(new RoutedEventArgs());
         }
+
+        /// <summary>
+        /// Invokes the more dialog.
+        /// </summary>
+        public void InvokeMore()
+        {
+            OnInvokeMore(new RoutedEventArgs());
+        }
         
         /// <summary>
         /// Seeks to the live position during live playback.
@@ -1095,6 +1103,11 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the InvokeInfo method is called.
         /// </summary>
         public event RoutedEventHandler InfoInvoked;
+
+        /// <summary>
+        /// Occurs when the InvokeMore method is called.
+        /// </summary>
+        public event RoutedEventHandler MoreInvoked;
         
         /// <summary>
         /// Occurs when the IsScrubbing property changes.
@@ -1266,6 +1279,35 @@ namespace Microsoft.PlayerFramework
         {
             if (IsInfoAllowedChanged != null) IsInfoAllowedChanged(this, new RoutedEventArgs());
         }
+        #endregion
+
+        #region IsMoreEnabled
+
+        /// <summary>
+        /// Occurs when the IsMoreEnabled property changes.
+        /// </summary>
+        public event RoutedEventHandler IsMoreEnabledChanged;
+
+        /// <summary>
+        /// Identifies the IsMoreEnabled dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsMoreEnabledProperty = RegisterDependencyProperty<bool>("IsMoreEnabled", (t, o, n) => t.OnIsMoreEnabledChanged(), true);
+
+        void OnIsMoreEnabledChanged()
+        {
+            if (IsMoreEnabledChanged != null) IsMoreEnabledChanged(this, new RoutedEventArgs());
+        }
+
+        /// <summary>
+        /// Gets based on the current state whether More can occur.
+        /// </summary>
+        [Category(Categories.Info)]
+        public bool IsMoreEnabled
+        {
+            get { return (bool)GetValue(IsMoreEnabledProperty); }
+            set { SetValue(IsMoreEnabledProperty, value); }
+        }
+
         #endregion
 
         #region IsPlayResumeEnabled
@@ -2212,6 +2254,33 @@ namespace Microsoft.PlayerFramework
         {
             get { return (bool)GetValue(IsInfoVisibleProperty); }
             set { SetValue(IsInfoVisibleProperty, value); }
+        }
+        #endregion
+
+        #region IsMoreVisible
+        /// <summary>
+        /// Identifies the IsMoreVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsMoreVisibleProperty = RegisterDependencyProperty<bool>("IsMoreVisible", (t, o, n) => t.OnIsMoreVisibleChanged(), false);
+
+        void OnIsMoreVisibleChanged()
+        {
+            if (IsMoreVisibleChanged != null) IsMoreVisibleChanged(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Occurs when the IsMoreVisible property changes.
+        /// </summary>
+        public event EventHandler IsMoreVisibleChanged;
+
+        /// <summary>
+        /// Gets or sets if the interactive More feature should be visible and therefore available for the user to control.
+        /// </summary>
+        [Category(Categories.Appearance)]
+        public bool IsMoreVisible
+        {
+            get { return (bool)GetValue(IsMoreVisibleProperty); }
+            set { SetValue(IsMoreVisibleProperty, value); }
         }
         #endregion
 
@@ -4615,6 +4684,11 @@ namespace Microsoft.PlayerFramework
         void OnInvokeInfo(RoutedEventArgs e)
         {
             if (InfoInvoked != null) InfoInvoked(this, e);
+        }
+
+        void OnInvokeMore(RoutedEventArgs e)
+        {
+            if (MoreInvoked != null) MoreInvoked(this, e);
         }
         
         void OnSeekToLive(RoutedEventArgs e)

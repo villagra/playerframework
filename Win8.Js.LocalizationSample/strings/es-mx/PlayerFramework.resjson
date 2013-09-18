@@ -117,6 +117,10 @@
     "InfoLabel":                            "Spanish: Info",
     "InfoTooltip":                          "Spanish: More Info",
 
+    "MoreIcon":                             "\uE10C",
+    "MoreLabel":                            "Spanish: More...",
+    "MoreTooltip":                          "Spanish: More...",
+
     "DisplayModeLetterboxIcon":             "\uE1D8",
     "DisplayModeFillIcon":                  "\uE1D9",
     "DisplayModeLetterboxLabel":            "Spanish: Letterbox",

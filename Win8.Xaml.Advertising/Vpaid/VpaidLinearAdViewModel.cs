@@ -76,6 +76,7 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.VolumeChanged += MediaPlayer_VolumeChanged;
             MediaPlayer.IsInfoEnabledChanged += MediaPlayer_IsInfoEnabledChanged;
             MediaPlayer.IsInfoAllowedChanged += MediaPlayer_IsInfoEnabledChanged;
+            MediaPlayer.IsMoreEnabledChanged += MediaPlayer_IsMoreEnabledChanged;
         }
 
         private void UnwireMediaPlayer()
@@ -85,11 +86,17 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.VolumeChanged -= MediaPlayer_VolumeChanged;
             MediaPlayer.IsInfoEnabledChanged -= MediaPlayer_IsInfoEnabledChanged;
             MediaPlayer.IsInfoAllowedChanged -= MediaPlayer_IsInfoEnabledChanged;
+            MediaPlayer.IsMoreEnabledChanged -= MediaPlayer_IsMoreEnabledChanged;
         }
 
         void MediaPlayer_IsInfoEnabledChanged(object sender, RoutedEventArgs e)
         {
             NotifyIsInfoEnabledChanged();
+        }
+
+        void MediaPlayer_IsMoreEnabledChanged(object sender, RoutedEventArgs e)
+        {
+            NotifyIsMoreEnabledChanged();
         }
 
         void MediaPlayer_VolumeChanged(object sender, RoutedEventArgs e)
@@ -307,6 +314,12 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <inheritdoc /> 
+        protected override void OnInvokeMore()
+        {
+            MediaPlayer.InvokeMore();
+        }
+
+        /// <inheritdoc /> 
         protected override void OnPlayResume()
         {
             Vpaid.ResumeAd();
@@ -363,6 +376,12 @@ namespace Microsoft.PlayerFramework.Advertising
         public override bool IsInfoEnabled
         {
             get { return MediaPlayer.IsInfoEnabled && MediaPlayer.IsInfoAllowed; }
+        }
+
+        /// <inheritdoc /> 
+        public override bool IsMoreEnabled
+        {
+            get { return MediaPlayer.IsMoreEnabled; }
         }
 
         /// <inheritdoc /> 

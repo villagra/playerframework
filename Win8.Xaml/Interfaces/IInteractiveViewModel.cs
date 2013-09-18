@@ -243,6 +243,11 @@ namespace Microsoft.PlayerFramework
         /// Gets the enabled state of the info feature.
         /// </summary>
         bool IsInfoEnabled { get; }
+
+        /// <summary>
+        /// Gets the enabled state of the more feature.
+        /// </summary>
+        bool IsMoreEnabled { get; }
                 
         /// <summary>
         /// Gets the thumbnail image to display
@@ -333,6 +338,11 @@ namespace Microsoft.PlayerFramework
         /// Raised when the IsInfoEnabled property changes.
         /// </summary>
         event RoutedEventHandler IsInfoEnabledChanged;
+
+        /// <summary>
+        /// Raised when the IsMoreEnabled property changes.
+        /// </summary>
+        event RoutedEventHandler IsMoreEnabledChanged;
         
         /// <summary>
         /// Occurs when the value of the CurrentState property changes.
@@ -353,6 +363,11 @@ namespace Microsoft.PlayerFramework
         /// Invokes the more info feature
         /// </summary>
         void InvokeInfo();
+
+        /// <summary>
+        /// Invokes the more feature
+        /// </summary>
+        void InvokeMore();
         
         /// <summary>
         /// Seeks to the live position on the media. Only supported during live media playback.

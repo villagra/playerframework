@@ -42,6 +42,7 @@
         this._fullScreenElement = null;
         this._stopElement = null;
         this._infoElement = null;
+        this._moreElement = null;
         this._displayModeElement = null;
         this._signalStrengthElement = null;
         this._mediaQualityElement = null;
@@ -293,6 +294,15 @@
             }
         },
 
+        isMoreHidden: {
+            get: function () {
+                return this._moreElement.winControl.hidden;
+            },
+            set: function (value) {
+                this._moreElement.winControl.hidden = value;
+            }
+        },
+
         isDisplayModeHidden: {
             get: function () {
                 return this._displayModeElement.winControl.hidden;
@@ -384,6 +394,7 @@
             this._volumeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-volume-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: volumeIcon; winControl.label: volumeLabel; winControl.tooltip: volumeTooltip; winControl.disabled: isVolumeDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
             this._muteElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: muteIcon; winControl.label: muteLabel; winControl.tooltip: muteTooltip; winControl.disabled: isMuteDisabled; winControl.onclick: toggleMuted PlayerFramework.Binding.setEventHandler;" }]);
             this._fullScreenElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-full-screen-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: fullScreenIcon; winControl.label: fullScreenLabel; winControl.tooltip: fullScreenTooltip; winControl.disabled: isFullScreenDisabled; winControl.onclick: toggleFullScreen PlayerFramework.Binding.setEventHandler;" }]);
+            this._moreElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-more-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: moreIcon; winControl.label: moreLabel; winControl.tooltip: moreTooltip; winControl.disabled: isMoreDisabled; winControl.onclick: more PlayerFramework.Binding.setEventHandler;" }]);
             this._signalStrengthElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-signal-strength-control", "data-win-control": "PlayerFramework.UI.Meter", "data-win-bind": "winControl.value: signalStrength; winControl.label: signalStrengthLabel; winControl.tooltip: signalStrengthTooltip; winControl.disabled: isSignalStrengthDisabled;" }]);
             this._mediaQualityElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-media-quality-control", "data-win-control": "PlayerFramework.UI.Indicator", "data-win-bind": "winControl.value: mediaQuality; winControl.label: mediaQualityLabel; winControl.tooltip: mediaQualityTooltip; winControl.disabled: isMediaQualityDisabled;" }]);
 
@@ -419,6 +430,7 @@
                 isFullScreenHidden: false,
                 isStopHidden: false,
                 isInfoHidden: false,
+                isMoreHidden: false,
                 isDisplayModeHidden: false,
                 isSignalStrengthHidden: false,
                 isMediaQualityHidden: false

@@ -269,6 +269,13 @@
         <Setter Property="AutomationProperties.AutomationId" Value="InfoButton"/>
     </Style>
 
+    <Style TargetType="local:MoreButton" BasedOn="{StaticResource MediaPlayerButtonStyle}">
+        <Setter Property="FontFamily" Value="{StaticResource SymbolThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="AutomationProperties.AutomationId" Value="MoreButton"/>
+    </Style>
+
     <Style TargetType="local:AudioSelectionButton" BasedOn="{StaticResource MediaPlayerButtonStyle}">
         <Setter Property="FontFamily" Value="{StaticResource SymbolThemeFontFamily}"/>
         <Setter Property="FontWeight" Value="Normal"/>
@@ -841,6 +848,7 @@
                                     <local:InfoButton x:Name="InfoButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="18" Size="45"/>
                                     <local:FullScreenButton x:Name="FullScreenButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFullScreenButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
                                     <local:MuteButton x:Name="MuteButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsMuteButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="25" Size="45"/>
+                                    <local:MoreButton x:Name="MoreButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsMoreButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0" FontSize="18" Size="45"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
@@ -1038,6 +1046,7 @@
                             <local:ControlPanel x:Name="ControlPanel" ViewModel="{TemplateBinding InteractiveViewModel}"
                                 IsGoLiveButtonVisible="{TemplateBinding IsGoLiveVisible}"
                                 IsInfoButtonVisible="{TemplateBinding IsInfoVisible}"
+                                IsMoreButtonVisible="{TemplateBinding IsMoreVisible}"
                                 IsAudioSelectionButtonVisible="{TemplateBinding IsAudioSelectionVisible}"
                                 IsCaptionSelectionButtonVisible="{TemplateBinding IsCaptionSelectionVisible}"
                                 IsTimeElapsedButtonVisible="{TemplateBinding IsTimeElapsedVisible}"

@@ -58,7 +58,8 @@
         "waiting",
         "markerreached",
         "stopped",
-        "infoinvoked"
+        "infoinvoked",
+        "moreinvoked"
     ];
 
     // MediaPlayer Class
@@ -114,6 +115,7 @@
         /// <event name="markerreached">Occurs when a marker has been played through.</event>
         /// <event name="stopped">Occurs when stop button was pressed or the stop method was invoked.</event>
         /// <event name="infoinvoked">Occurs when info button is pressed or the info method was invoked.</event>
+        /// <event name="moreinvoked">Occurs when more button is pressed or the more method was invoked.</event>
         MediaPlayer: WinJS.Class.define(function (element, options) {
             /// <summary>Creates a new instance of the MediaPlayer class.</summary>
             /// <param name="element" type="HTMLElement" domElement="true">The element that hosts the MediaPlayer control.</param>
@@ -216,6 +218,8 @@
             this._isStopVisible = false;
             this._isInfoEnabled = true;
             this._isInfoVisible = false;
+            this._isMoreEnabled = true;
+            this._isMoreVisible = false;
             this._isDisplayModeEnabled = true;
             this._isDisplayModeVisible = false;
             this._signalStrength = 0;
@@ -2036,6 +2040,41 @@
                     }
                 }
             },
+                        
+            /// <field name="isMoreAllowed" type="Boolean">Gets a value that specifies whether interaction with the more control is allowed based on the current state of the player.</field>
+            isMoreAllowed: {
+                get: function () {
+                    return true;
+                }
+            },
+
+            /// <field name="isMoreEnabled" type="Boolean">Gets or sets a value that specifies whether the more control is enabled.</field>
+            isMoreEnabled: {
+                get: function () {
+                    return this._isMoreEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isMoreEnabled;
+                    if (oldValue !== value) {
+                        this._isMoreEnabled = value;
+                        this._observableMediaPlayer.notify("isMoreEnabled", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isMoreVisible" type="Boolean">Gets or sets a value that specifies whether the more control is visible.</field>
+            isMoreVisible: {
+                get: function () {
+                    return this._isMoreVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isMoreVisible;
+                    if (oldValue !== value) {
+                        this._isMoreVisible = value;
+                        this._observableMediaPlayer.notify("isMoreVisible", value, oldValue);
+                    }
+                }
+            },
             
             /// <field name="isDisplayModeAllowed" type="Boolean">Gets a value that specifies whether interaction with the displayMode control is allowed based on the current state of the player.</field>
             isDisplayModeAllowed: {
@@ -2759,6 +2798,12 @@
                 /// <summary>raises the infoinvoked event used to indicate that more information about the current media should be displayed to the user.</summary>
 
                 this.dispatchEvent("infoinvoked");
+            },
+
+            more: function () {
+                /// <summary>raises the moreinvoked event typically used to indicate that more options that were unable to fit in the control panel should be presented to the user (usually in the form of a flyout).</summary>
+
+                this.dispatchEvent("moreinvoked");
             },
 
             /************************ Private Methods ************************/
