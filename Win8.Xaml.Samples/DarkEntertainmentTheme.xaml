@@ -665,6 +665,20 @@
         <Setter Property="Content" Value="LIVE" />
         <Setter Property="AutomationProperties.AutomationId" Value="GoLiveButton" />
     </Style>
+    <Style TargetType="mmppf:InfoButton" BasedOn="{StaticResource Dark_MediaPlayerButtonStyle}" x:Key="Dark_InfoButton">
+        <Setter Property="FontFamily" Value="{StaticResource Dark_SymbolThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="AutomationProperties.AutomationId" Value="InfoButton"/>
+    </Style>
+    <Style TargetType="mmppf:MoreButton" BasedOn="{StaticResource Dark_MediaPlayerButtonStyle}" x:Key="Dark_MoreButton">
+        <Setter Property="FontFamily" Value="{StaticResource Dark_SymbolThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="AutomationProperties.AutomationId" Value="MoreButton"/>
+    </Style>
     <Style TargetType="mmppf:AudioSelectionButton" BasedOn="{StaticResource Dark_MediaPlayerButtonStyle}" x:Key="Dark_AudioSelectionButton">
         <Setter Property="FontFamily" Value="{StaticResource Dark_SymbolThemeFontFamily}" />
         <Setter Property="FontWeight" Value="Normal" />
@@ -1473,7 +1487,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="Border" DataContext="{TemplateBinding ViewModel}">
                             <Border.Resources>
-                                <mmppf:BoolToVisibilityConverter x:Key="Dark_VisibleIfConverter" />
+                                <mmppf:BoolToVisibilityConverter x:Key="VisibleIfConverter" />
                             </Border.Resources>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -1482,15 +1496,15 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearLeft">
-                                        <mmppf:SkipPreviousButton Style="{StaticResource Dark_SkipPreviousButton}" x:Name="SkipPreviousButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipPreviousButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
-                                        <mmppf:RewindButton Style="{StaticResource Dark_RewindButton}" x:Name="RewindButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Padding="0,0,5,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
-                                        <mmppf:SkipBackButton Style="{StaticResource Dark_SkipBackButton}" x:Name="SkipBackButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipBackButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:SkipPreviousButton Style="{StaticResource Dark_SkipPreviousButton}" x:Name="SkipPreviousButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipPreviousButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:RewindButton Style="{StaticResource Dark_RewindButton}" x:Name="RewindButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Padding="0,0,5,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:SkipBackButton Style="{StaticResource Dark_SkipBackButton}" x:Name="SkipBackButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipBackButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
                                     </StackPanel>
-                                    <mmppf:PlayPauseButton Style="{StaticResource Dark_PlayPauseButton}" x:Name="PlayPauseButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsPlayPauseButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="140" FontSize="80" Margin="25,0,25,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                    <mmppf:PlayPauseButton Style="{StaticResource Dark_PlayPauseButton}" x:Name="PlayPauseButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsPlayPauseButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="140" FontSize="80" Margin="25,0,25,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
                                     <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearRight">
-                                        <mmppf:SkipAheadButton Style="{StaticResource Dark_SkipAheadButton}" x:Name="SkipAheadButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipAheadButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
-                                        <mmppf:FastForwardButton Style="{StaticResource Dark_FastForwardButton}" x:Name="FastForwardButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Padding="5,0,0,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
-                                        <mmppf:SkipNextButton Style="{StaticResource Dark_SkipNextButton}" x:Name="SkipNextButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipNextButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:SkipAheadButton Style="{StaticResource Dark_SkipAheadButton}" x:Name="SkipAheadButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipAheadButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" Padding="0,-10,0,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:FastForwardButton Style="{StaticResource Dark_FastForwardButton}" x:Name="FastForwardButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Padding="5,0,0,7" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
+                                        <mmppf:SkipNextButton Style="{StaticResource Dark_SkipNextButton}" x:Name="SkipNextButton" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsSkipNextButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Size="70" FontSize="40" Margin="10,0,10,0" StrokeThickness="0" Background="{StaticResource Dark_ItemBackgroundThemeBrush}" />
                                     </StackPanel>
                                 </StackPanel>
                                 <Grid x:Name="TimelineContainer" Grid.Row="1" Background="{StaticResource Dark_ItemBackgroundThemeBrush}">
@@ -1500,9 +1514,9 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <mmppf:TimeElapsedButton Style="{StaticResource Dark_TimeElapsedButton}" x:Name="TimeElapsedButton" Grid.Column="0" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" />
-                                        <!--<mmppf:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0"/>-->
-                                        <mmppf:Timeline Style="{StaticResource Dark_Timeline}" Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                        <mmppf:TimeElapsedButton Style="{StaticResource Dark_TimeElapsedButton}" x:Name="TimeElapsedButton" Grid.Column="0" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" />
+                                        <!--<mmppf:Timeline x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0"/>-->
+                                        <mmppf:Timeline Style="{StaticResource Dark_Timeline}" Height="25" Padding="0,10,0,10" x:Name="Timeline" Grid.Column="1" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                             <mmppf:Timeline.SliderStyle>
                                                 <Style TargetType="mmppf:SeekableSlider">
                                                     <Setter Property="Foreground" Value="{StaticResource Dark_ButtonForegroundThemeBrush}" />
@@ -1534,8 +1548,8 @@
                                                 </Border>
                                             </mmppf:Timeline.ThumbnailContent>
                                         </mmppf:Timeline>
-                                        <mmppf:TimeRemainingButton Style="{StaticResource Dark_TimeRemainingButton}" x:Name="TimeRemainingButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" />
-                                        <mmppf:DurationButton Style="{StaticResource Dark_DurationButton}" x:Name="DurationButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Dark_VisibleIfConverter}}" Margin="8,0,8,0" />
+                                        <mmppf:TimeRemainingButton Style="{StaticResource Dark_TimeRemainingButton}" x:Name="TimeRemainingButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" />
+                                        <mmppf:DurationButton Style="{StaticResource Dark_DurationButton}" x:Name="DurationButton" Grid.Column="2" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0" />
                                     </Grid>
                                 </Grid>
                             </Grid>
