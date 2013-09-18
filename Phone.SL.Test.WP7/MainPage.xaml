@@ -19,7 +19,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <mmppf:MediaPlayer Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
+        <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
     </Grid>
 
     <!--Sample code showing usage of ApplicationBar-->
