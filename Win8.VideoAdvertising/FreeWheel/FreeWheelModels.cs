@@ -75,7 +75,7 @@ namespace Microsoft.VideoAdvertising
         still_image_click_to_content,
         linear_animation,
         linear_animation_click_to_content,
-        fixed_size_intearactive,
+        fixed_size_interactive,
         fixed_size_interactive_click_to_content,
         video,
         video_click_to_content,
