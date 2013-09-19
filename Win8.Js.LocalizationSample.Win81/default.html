@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Localization Sample</title>
+
+        <!-- WinJS references -->
+        <link href="//Microsoft.WinJS.2.0.Preview/css/ui-dark.css" rel="stylesheet">
+        <script src="//Microsoft.WinJS.2.0.Preview/js/base.js"></script>
+        <script src="//Microsoft.WinJS.2.0.Preview/js/ui.js"></script>
+
+        <!-- PlayerFramework references -->
+        <link href="/Microsoft.PlayerFramework.Js/css/Default-base.css" rel="stylesheet">
+        <link href="/Microsoft.PlayerFramework.Js/css/Default-dark.css" rel="stylesheet">
+        <script src="/Microsoft.PlayerFramework.Js/js/PlayerFramework.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/InteractiveViewModel.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/MediaPlayer.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/ui/Button.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/ui/ControlPanel.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/ui/Indicator.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/ui/Meter.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/ui/Slider.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/PluginBase.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/TrackingPluginBase.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/BufferingPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/ControlPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/ErrorPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/LoaderPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/PlaylistPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/PlayTimeTrackingPlugin.js"></script>
+        <script src="/Microsoft.PlayerFramework.Js/js/plugins/PositionTrackingPlugin.js"></script>
+
+        <!-- Application references -->
+        <link href="/css/default.css" rel="stylesheet">
+        <script src="/js/default.js"></script>
+    </head>
+    <body>
+        <header aria-label="Header content" role="banner">
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Localization Sample</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            <header>
+                <h4>Demonstrates how to localize the player by providing a custom resource file</h4>
+            </header>
+            <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                width: 800,
+                height: 450,
+                autoload: false,
+                autoplay: true,
+                isPlayPauseVisible: true,
+                isPlayResumeVisible: false,
+                isPauseVisible: false,
+                isReplayVisible: true,
+                isRewindVisible: true,
+                isFastForwardVisible: true,
+                isSlowMotionVisible: true,
+                isSkipPreviousVisible: true,
+                isSkipNextVisible: true,
+                isSkipBackVisible: false,
+                isSkipAheadVisible: false,
+                isElapsedTimeVisible: true,
+                isRemainingTimeVisible: true,
+                isTimelineVisible: true,
+                isGoLiveVisible: false,
+                isCaptionsVisible: false,
+                isAudioVisible: true,
+                isVolumeMuteVisible: true,
+                isVolumeVisible: false,
+                isMuteVisible: false,
+                isFullScreenVisible: true,
+                isSignalStrengthVisible: true,
+                isMediaQualityVisible: true,
+                src: 'http://smf.blob.core.windows.net/samples/videos/wildlife.mp4'
+            }"></div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+﻿body {
+    overflow: auto;
+}
+
+header[role=banner] {
+    margin-left: 120px;
+}
+
+    header[role=banner] .titlearea {
+        margin-top: 37px;
+    }
+
+        header[role=banner] .titlearea .pagetitle {
+            width: calc(100% - 20px);
+        }
+
+section[role=main] {
+    margin-left: 120px;
+}
+
+    section[role=main] header h4 {
+        margin-bottom: 16px;
+        margin-top: 20px;
+    }
+
+@media screen and (-ms-view-state: snapped) {
+    header[role=banner] {
+        margin-left: 20px;
+    }
+
+        header[role=banner] .titlearea {
+            margin-top: 68px;
+        }
+
+    section[role=main] {
+        margin-left: 20px;
+    }
+}

@@ -56,6 +56,7 @@
         "updated",
         "volumechange",
         "waiting",
+        "msneedkey",
         "markerreached",
         "stopped",
         "infoinvoked",
@@ -112,6 +113,7 @@
         /// <event name="updated">Occurs when the player is updated with a new media source (e.g when the current playlist item is changed).</event>
         /// <event name="volumechange">Occurs when the volume is changed.</event>
         /// <event name="waiting">Occurs when playback stops because the next video frame is unavailable.</event>
+        /// <event name="msneedkey">Occurs when a key is needed to decrypt the media data.</event> 
         /// <event name="markerreached">Occurs when a marker has been played through.</event>
         /// <event name="stopped">Occurs when stop button was pressed or the stop method was invoked.</event>
         /// <event name="infoinvoked">Occurs when info button is pressed or the info method was invoked.</event>
@@ -341,7 +343,7 @@
                         if (value) {
                             for (var i = 0; i < value.length; i++) {
                                 var sourceObj = value[i];
-                                PlayerFramework.Utilities.createElement(this._mediaElement, [ "source", sourceObj ]);
+                                PlayerFramework.Utilities.createElement(this._mediaElement, ["source", sourceObj]);
                             }
                         }
 
@@ -371,12 +373,12 @@
                         if (value) {
                             for (var i = 0; i < value.length; i++) {
                                 var trackObj = value[i];
-                                PlayerFramework.Utilities.createElement(this._mediaElement, [ "track", trackObj ]);
+                                PlayerFramework.Utilities.createElement(this._mediaElement, ["track", trackObj]);
                             }
                         }
 
                         // HACK: add dummy track required to show captions without native controls
-                        this._dummyTrack = PlayerFramework.Utilities.createElement(this._mediaElement, [ "track", { "default": true } ]).track;
+                        this._dummyTrack = PlayerFramework.Utilities.createElement(this._mediaElement, ["track", { "default": true }]).track;
 
                         this._tracks = value;
                         this._observableMediaPlayer.notify("tracks", value, oldValue);
@@ -651,31 +653,25 @@
                 set: function (value) {
                     var oldValue = this.playbackRate;
                     if (oldValue !== value) {
-                        if (!this.isTrickPlayEnabled)
-                        {
+                        if (!this.isTrickPlayEnabled) {
                             this._simulatedPlaybackRate = value;
-                            if (value === 1.0 || value === 0.0)
-                            {
+                            if (value === 1.0 || value === 0.0) {
                                 window.clearInterval(this._simulatedPlaybackRateTimer);
                                 this._simulatedPlaybackRateTimer = null;
-                                if (oldValue !== 1.0 || oldValue !== 0.0)
-                                {
+                                if (oldValue !== 1.0 || oldValue !== 0.0) {
                                     this.currentTime = this.virtualTime; // we're coming out of simulated trick play, sync positions
                                 }
                                 this._mediaElement.playbackRate = value;
                             }
-                            else
-                            {
-                                if (oldValue === 1.0 || oldValue === 0.0)
-                                {
+                            else {
+                                if (oldValue === 1.0 || oldValue === 0.0) {
                                     this._mediaElement.playbackRate = 0;
                                     this._simulatedPlaybackRateTimer = window.setInterval(this._onSimulatedPlaybackRateTimerTick.bind(this), 250);
                                 }
                                 this.dispatchEvent("ratechange"); // manually raise event since we didn't actually set the mediaElement's playback rate
                             }
                         }
-                        else
-                        {
+                        else {
                             this._mediaElement.playbackRate = value;
                         }
                         this._observableMediaPlayer.notify("playbackRate", value, oldValue);
@@ -1079,7 +1075,7 @@
                     }
                 }
             },
-            
+
             /// <field name="isPlayPauseAllowed" type="Boolean">Gets a value that specifies whether interaction with the play/pause control is allowed based on the current state of the player.</field>
             isPlayPauseAllowed: {
                 get: function () {
@@ -1924,8 +1920,8 @@
                             this._shimElement.style.display = "none";
                         }
 
-                        if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped)
-                        {
+                        // TODO: Test on Win8.1
+                        if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
                             Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
                         }
 
@@ -2005,7 +2001,7 @@
                     }
                 }
             },
-            
+
             /// <field name="isInfoAllowed" type="Boolean">Gets a value that specifies whether interaction with the info control is allowed based on the current state of the player.</field>
             isInfoAllowed: {
                 get: function () {
@@ -2040,7 +2036,7 @@
                     }
                 }
             },
-                        
+
             /// <field name="isMoreAllowed" type="Boolean">Gets a value that specifies whether interaction with the more control is allowed based on the current state of the player.</field>
             isMoreAllowed: {
                 get: function () {
@@ -2075,7 +2071,7 @@
                     }
                 }
             },
-            
+
             /// <field name="isDisplayModeAllowed" type="Boolean">Gets a value that specifies whether interaction with the displayMode control is allowed based on the current state of the player.</field>
             isDisplayModeAllowed: {
                 get: function () {
@@ -2441,6 +2437,27 @@
                 }
             },
 
+            /// <field name="msKeys" type="MSMediaKeys">Gets the MSMediaKeys object, which is used for decrypting media data, that is associated with this media element.</field>
+            msKeys: {
+                get: function () {
+                    return this._mediaElement.msKeys;
+                }
+            },
+
+            /// <field name="msPlayToPreferredSourceUri" type="String">Gets or sets the path to the preferred media source. This enables the Play To target device to stream the media content, which can be DRM protected, from a different location, such as a cloud media server.</field>
+            msPlayToPreferredSourceUri: {
+                get: function () {
+                    return this._mediaElement.msPlayToPreferredSourceUri;
+                },
+                set: function (value) {
+                    var oldValue = this._mediaElement.msPlayToPreferredSourceUri;
+                    if (oldValue !== value) {
+                        this._mediaElement.msPlayToPreferredSourceUri = value;
+                        this._observableMediaPlayer.notify("msPlayToPreferredSourceUri", value, oldValue);
+                    }
+                }
+            },
+
             /// <field name="testForMediaPack" type="Boolean">Gets or sets whether a test for the media feature pack should be performed prior to allowing content to be laoded. This is useful to enable if Windows 8 N/KN users will be using this app.</field>
             testForMediaPack: {
                 get: function () {
@@ -2704,6 +2721,22 @@
                 }
             },
 
+            addTextTrack: function (kind, label, language) {
+                /// <summary>Create a new TextTrack object to add to an HTML5 video.</summary>
+                /// <param name="kind" type="String">The type of text track.</param>
+                /// <param name="label" type="String" optional="true">A user readable title for a text track.</param>
+                /// <param name="language" type="String" optional="true">The BCP47 language tag of the track. For example "en" for English or "fr" for French.</param>
+
+                return this._mediaElement.addTextTrack(kind, label, language);
+            },
+
+            msSetMediaKeys: function (mediaKeys) {
+                /// <summary>Sets the MSMediaKeys to be used for decrypting media data.</summary>
+                /// <param name="mediaKeys" type="MSMediaKeys">The media keys to use for decrypting media data. </param>
+
+                this._mediaElement.msSetMediaKeys(mediaKeys);
+            },
+
             dispose: function () {
                 /// <summary>Shuts down and releases all resources.</summary>
 
@@ -2867,6 +2900,7 @@
                 this._bindEvent("timeupdate", this._mediaElement, this._onMediaElementTimeUpdate);
                 this._bindEvent("volumechange", this._mediaElement, this._onMediaElementVolumeChange);
                 this._bindEvent("waiting", this._mediaElement, this._onMediaElementWaiting);
+                this._bindEvent("msneedkey", this._mediaElement, this._onMediaElementMSNeedKey);
 
                 // property notifications
                 this._bindEvent("emptied", this._mediaElement, this._notifyProperties, ["currentTime", "virtualTime", "paused", "ended", "buffered"]);
@@ -3265,6 +3299,10 @@
 
             _onMediaElementMSVideoOptimalLayoutChanged: function (e) {
                 this.dispatchEvent("MSVideoOptimalLayoutChanged");
+            },
+
+            _onMediaElementMSNeedKey: function (e) {
+                this.dispatchEvent("msneedkey");
             },
 
             _onMediaElementPause: function (e) {

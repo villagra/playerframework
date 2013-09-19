@@ -1,0 +1,14 @@
+﻿<Page
+    x:Class="Microsoft.PlayerFramework.Xaml.Localize.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.Xaml.Localize"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4"/>
+    </Grid>
+</Page>

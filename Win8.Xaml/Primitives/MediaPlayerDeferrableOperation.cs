@@ -35,6 +35,19 @@ namespace Microsoft.PlayerFramework
             SourceStream = sourceStream;
             MimeType = mimeType;
         }
+        
+#if WINDOWS81
+        internal MediaLoadingEventArgs(MediaPlayerDeferrableOperation deferrableOperation, Windows.Media.Core.IMediaSource source)
+            : base(deferrableOperation)
+        {
+            MediaStreamSource = source;
+        }
+
+        /// <summary>
+        /// Gets or sets the media stream source of the loading operation. This may be null if the source is a Uri.
+        /// </summary>
+        public Windows.Media.Core.IMediaSource MediaStreamSource { get; set; }
+#endif
 
         /// <summary>
         /// Gets or sets the source stream of the loading operation. This may be null if the source is a Uri.

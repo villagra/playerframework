@@ -4,7 +4,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class MAST
     {
-        public MAST()
+        internal MAST()
         {
             Triggers = new List<Trigger>();
         }
@@ -14,7 +14,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Trigger
     {
-        public Trigger()
+        internal Trigger()
         {
             Sources = new List<Source>();
             EndConditions = new List<Condition>();
@@ -34,7 +34,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Condition
     {
-        public Condition()
+        internal Condition()
         {
             Conditions = new List<Condition>();
         }
@@ -69,7 +69,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Target
     {
-        public Target()
+        internal Target()
         {
             Targets = new List<Target>();
         }
@@ -83,7 +83,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Source
     {
-        public Source()
+        internal Source()
         {
             Targets = new List<Target>();
             Sources = new List<Source>();

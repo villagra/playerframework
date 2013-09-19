@@ -131,6 +131,7 @@
     <Compile Include="CompanionHost.cs" />
     <Compile Include="FreeWheelPlugin.Attached.cs" />
     <Compile Include="FreeWheelPlugin.cs" />
+    <Compile Include="Helpers\MarkerHelper.cs" />
     <Compile Include="VmapScheduler.Attached.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\MediaPlayerExtensions.cs" />

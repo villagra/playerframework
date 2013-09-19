@@ -127,7 +127,6 @@
     <Compile Include="FreeWheel\FreeWheelModels.cs" />
     <Compile Include="AdTracking.cs" />
     <Compile Include="Helpers\LinqExtensions.cs" />
-    <Compile Include="Helpers\MarkerHelper.cs" />
     <Compile Include="Helpers\TaskHelpers.cs" />
     <Compile Include="Helpers\VastHelpers.cs" />
     <Compile Include="Helpers\VpaidExtensions.cs" />

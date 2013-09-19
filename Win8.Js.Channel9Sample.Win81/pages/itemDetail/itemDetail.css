@@ -1,0 +1,92 @@
+﻿.itemdetailpage .content {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    position: relative;
+    z-index: 0;
+}
+
+    .itemdetailpage .content article {
+        /* Define a multi-column, horizontally scrolling article by default. */
+        column-fill: auto;
+        column-gap: 80px;
+        column-width: 480px;
+        width: 480px;
+        height: calc(100% - 183px);
+        margin-left: 120px;
+        margin-top: 133px;
+    }
+
+        .itemdetailpage .content article header .item-title {
+            margin-bottom: 10px;
+        }
+
+        .itemdetailpage .content article header .item-date, .itemdetailpage .content article header .item-author, .itemdetailpage .content article header .item-tags {
+            font-size: 10pt;
+        }
+
+        .itemdetailpage .content article .item-image {
+            display: -ms-grid;
+            -ms-grid-columns: 1fr;
+            -ms-grid-rows: 1fr;
+            width: 460px;
+            height: 276px;
+            margin-top: 16px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 506px auto;
+        }
+
+            .itemdetailpage .content article .item-image .pf-button {
+                width: 100px;
+                height: 100px;
+                font-size: 60px;
+                -ms-grid-row-align: center;
+                -ms-grid-column-align: center;
+            }
+
+        .itemdetailpage .content article .item-description p {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+
+@media screen and (-ms-view-state: snapped) {
+    .itemdetailpage .content {
+        -ms-grid-row: 2;
+        -ms-grid-row-span: 1;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+        .itemdetailpage .content article {
+            /* Define a single column, vertically scrolling article in snapped mode. */
+            -ms-grid-columns: 300px 1fr;
+            -ms-grid-row: 2;
+            -ms-grid-rows: auto 60px;
+            display: -ms-grid;
+            width: 300px;
+            height: 100%;
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+
+            .itemdetailpage .content article .item-image {
+                width: 280px;
+                height: 168px;
+                background-size: 308px auto;
+            }
+
+            .itemdetailpage .content article .item-description {
+                padding-bottom: 60px;
+            }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .itemdetailpage .content article {
+        margin-left: 100px;
+    }
+}

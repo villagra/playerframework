@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Channel 9 Sample</title>
+        <link href="/pages/itemPlayer/itemPlayer.css" rel="stylesheet">
+        <script src="/pages/itemPlayer/itemPlayer.js"></script>
+    </head>
+    <body>
+        <div class="itemplayerpage fragment">
+            <header aria-label="Header content" role="banner">
+                <button type="button" class="win-backbutton" aria-label="Back" disabled></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle">This Week On Channel 9</span>
+                </h1>
+            </header>
+            <div class="content" aria-label="Main content" role="main">
+                <article>
+                    <div>
+                        <header>
+                            <h2 class="item-title" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.title Converters.itemTitleConverter"></h2>
+                            <div class="item-date" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.date Converters.itemDateConverter"></div>
+                            <div class="item-author" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.author Converters.itemAuthorConverter"></div>
+                            <div class="item-tags" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.tags Converters.itemTagsConverter"></div>
+                        </header>
+                        <!-- NOTE: isFullScreenEnabled=false prevents ESC and F11 from toggling full screen mode -->
+                        <div id="mediaPlayer" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                            msZoom: true,
+                            autoplay: true,
+                            autohideBehavior: PlayerFramework.AutohideBehavior.all,
+                            interactiveDeactivationMode: PlayerFramework.InteractionType.all,
+                            isSkipPreviousVisible: true,
+                            isSkipNextVisible: true,
+                            isFullScreenEnabled: false,
+                            isFullScreen: true
+                        }"></div>
+                    </div>
+                </article>
+            </div>
+            <div id="aboutFlyout" data-win-control="WinJS.UI.Flyout">
+                <h2 class="item-title" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.title Converters.itemTitleConverter"></h2>
+                <div class="item-date" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.date Converters.itemDateConverter"></div>
+                <div class="item-author" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.author Converters.itemAuthorConverter"></div>
+                <div class="item-tags" data-win-bind="textContent: playlistPlugin.currentPlaylistItem.data.tags Converters.itemTagsConverter"></div>                
+            </div>
+            <div id="topAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'top', layout: 'custom' }">
+                <button id="backButton" type="button" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ icon: 'back' }" aria-label="Back"></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle">This Week On Channel 9</span>
+                </h1>
+            </div>
+            <div id="bottomAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="{ placement: 'bottom' }">
+                <button id="aboutButton" type="button" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ icon: 'i', label: 'About', type: 'flyout' }" aria-label="About"></button>
+            </div>
+        </div>
+    </body>
+</html>

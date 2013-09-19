@@ -56,7 +56,7 @@
                     // TODO: support application/x-javascript
                 }
                 else{
-                    if (this._supportsMimeType(creativeSource.mimeType, this.supportedVideoMimeTypes) || this.mediaPlayer.canPlayType(creativeSource.codec)) {
+                    if (this._supportsMimeType(creativeSource.mimeType, this.supportedVideoMimeTypes) || this._canPlayType(creativeSource.codec)) {
                         var result = new PlayerFramework.Advertising.VpaidVideoAdPlayer(creativeSource.skippableOffset || Microsoft.VideoAdvertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruLinearText);
                         result.msAudioCategory = this.mediaPlayer.msAudioCategory;
                         return result;
@@ -80,6 +80,15 @@
         },
 
         // Private Methods
+        _canPlayType: function(codec) {
+            try {
+                return this.mediaPlayer.canPlayType(codec);
+            } catch (e) {
+                // HACK: this will crash on some types due to bug in IE
+                return false;
+            }
+        },
+
         _setOptions: function (options) {
             PlayerFramework.Utilities.setOptions(this, options, {
                 isEnabled: true,

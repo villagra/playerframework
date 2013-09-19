@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="206c16d2-8380-4df5-aec1-11f715defa59" Version="1.1.0.0" Publisher="CN=WillA" />
+  <Properties>
+    <DisplayName>Microsoft Player Framework Channel 9 Sample (JavaScript)</DisplayName>
+    <PublisherDisplayName>WillA</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <m2:VisualElements DisplayName="Microsoft Player Framework Channel 9 Sample (JavaScript)" Description="Channel 9 sample application using the JavaScript version of the Microsoft Player Framework" BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="images\logo.png" Square30x30Logo="images\smalllogo.png">
+        <m2:DefaultTile>
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="images\splashscreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

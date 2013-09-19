@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml;
 #endif
 
-namespace Microsoft.VideoAdvertising
+namespace Microsoft.PlayerFramework.Advertising
 {
     public sealed class MarkerHelper
     {

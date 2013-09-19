@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples</title>
+        <link href="groupeditems.css" rel="stylesheet">
+        <script src="groupeditems.js"></script>
+    </head>
+    <body>
+        <div class="headertemplate" data-win-control="WinJS.Binding.Template">
+            <button type="button" class="group-header win-type-x-large win-type-interactive" data-win-bind="groupKey: key" onclick="Application.navigator.pageControl.navigateToGroup(event.srcElement.groupKey)" role="link" tabindex="-1">
+                <span class="group-title win-type-ellipsis" data-win-bind="textContent: title"></span>
+                <span class="group-chevron"></span>
+            </button>
+        </div>
+        <div class="itemtemplate" data-win-control="WinJS.Binding.Template">
+            <div class="item">
+                <img class="item-image" src="#" data-win-bind="src: backgroundImage; alt: title" />
+                <div class="item-overlay">
+                    <h4 class="item-title" data-win-bind="textContent: title"></h4>
+                    <h6 class="item-description win-type-ellipsis" data-win-bind="textContent: description"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="groupeditemspage fragment">
+            <header aria-label="Header content" role="banner">
+                <button data-win-control="WinJS.UI.BackButton"></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle">Microsoft Player Framework Samples</span>
+                </h1>
+            </header>
+            <section aria-label="Main content" role="main">
+                <div class="groupeditemslist win-selectionstylefilled" aria-label="List of groups" data-win-control="WinJS.UI.ListView" data-win-options="{ selectionMode: 'none' }"></div>
+            </section>
+        </div>
+    </body>
+</html>

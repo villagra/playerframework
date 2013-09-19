@@ -1,0 +1,35 @@
+﻿<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>NAB DASH demo</title>
+    <link>http://www.windowsazure.com</link>
+    <description>A list of compatible DASH streams for the NAB demo.</description>
+    <item>
+      <title>Sintel</title>
+      <description>2010 - Blender Foundation</description>
+      <media:content url="http://wams.edgesuite.net/media/SintelTrailer_MP4_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)" duration="52" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/7de547d761.jpg" height="160" width="69"/>
+      </media:content>
+    </item>
+    <item>
+      <title>Big Buck Bunny</title>
+      <description>2008 - Blender Foundation</description>
+      <media:content url="http://wams.edgesuite.net/media/MPTExpressionData02/BigBuckBunny_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)" duration="596" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/698e569172.jpg" height="160" width="90"/>
+      </media:content>
+    </item>
+    <item>
+      <title>Elephants Dream</title>
+      <description>2006 - Blender Foundation</description>
+      <media:content url="http://wams.edgesuite.net/media/MPTExpressionData01/ElephantsDream_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)" duration="653" medium="video" isDefault="true">
+        <media:thumbnail url="http://www.blender.org/typo3temp/pics/f0a77d94e3.jpg" height="160" width="90"/>
+      </media:content>
+    </item>
+    <item>
+      <title>Tears of Steel</title>
+      <description>2012 - Blender Foundation</description>
+      <media:content url="http://wams.edgesuite.net/media/Tears_of_Steel_Smooth_1080p/tears_of_steel_1080p.ism/Manifest(format=mpd-time-csf)" duration="734" medium="video" isDefault="true">
+        <media:thumbnail url="http://smf.blob.core.windows.net/samples/videos/Tears-of-Steel.jpg" height="160" width="102"/>
+      </media:content>
+    </item>
+  </channel>
+</rss>

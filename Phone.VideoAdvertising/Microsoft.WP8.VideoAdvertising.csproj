@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -119,9 +119,6 @@
     </Compile>
     <Compile Include="..\Win8.videoadvertising\helpers\Extensions.cs">
       <Link>Helpers\Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Win8.videoadvertising\helpers\MarkerHelper.cs">
-      <Link>Helpers\MarkerHelper.cs</Link>
     </Compile>
     <Compile Include="..\Win8.videoadvertising\helpers\TaskHelpers.cs">
       <Link>Helpers\TaskHelpers.cs</Link>

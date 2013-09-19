@@ -162,6 +162,22 @@ namespace Microsoft.PlayerFramework
         }
 
 #if NETFX_CORE
+#if WINDOWS81
+        /// <summary>
+        /// Identifies the MediaStreamSource dependency property.
+        /// </summary>
+        public static readonly DependencyProperty MediaStreamSourceProperty = DependencyProperty.Register("MediaStreamSource", typeof(Windows.Media.Core.IMediaSource), typeof(PlaylistItem), null);
+
+        /// <summary>
+        /// Gets or sets the media stream source for the playlistitem
+        /// </summary>
+        public Windows.Media.Core.IMediaSource MediaStreamSource
+        {
+            get { return GetValue(MediaStreamSourceProperty) as Windows.Media.Core.IMediaSource; }
+            set { SetValue(MediaStreamSourceProperty, value); }
+        }
+#endif
+
         /// <summary>
         /// Identifies the SourceStream dependency property.
         /// </summary>

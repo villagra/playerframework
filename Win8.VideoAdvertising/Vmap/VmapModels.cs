@@ -5,7 +5,7 @@ namespace Microsoft.VideoAdvertising
 {
     public sealed class Vmap
     {
-        public Vmap()
+        internal Vmap()
         {
             AdBreaks = new List<VmapAdBreak>();
             Extensions = new List<VmapExtension>();
@@ -18,7 +18,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class VmapAdBreak
     {
-        public VmapAdBreak()
+        internal VmapAdBreak()
         {
             TrackingEvents = new List<VmapTrackingEvent>();
             Extensions = new List<VmapExtension>();
@@ -34,7 +34,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class VmapAdSource
     {
-        public VmapAdSource()
+        internal VmapAdSource()
         {
             Id = string.Empty;
             VastData = string.Empty;
@@ -55,6 +55,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class VmapTrackingEvent
     {
+        internal VmapTrackingEvent()
+        { }
+
         public Uri TrackingUri { get; set; }
         public VmapTrackingEventType EventType { get; set; }
     }
@@ -68,6 +71,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class VmapExtension
     {
+        internal VmapExtension()
+        { }
+
         public string Xml { get; set; }
         public string Type { get; set; }
     }

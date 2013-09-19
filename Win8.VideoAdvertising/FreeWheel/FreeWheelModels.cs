@@ -8,7 +8,7 @@ namespace Microsoft.VideoAdvertising
 {
     public sealed class FWAdResponse
     {
-        public FWAdResponse()
+        internal FWAdResponse()
         {
             Errors = new List<FWError>();
             Ads = new List<FWAd>();
@@ -33,7 +33,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWAd
     {
-        public FWAd()
+        internal FWAd()
         {
             Creatives = new List<FWCreative>();
         }
@@ -48,13 +48,16 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWParameter
     {
+        internal FWParameter()
+        { }
+
         public string Name { get; set; }
         public string Category { get; set; }
     }
 
     public sealed class FWCreative
     {
-        public FWCreative()
+        internal FWCreative()
         {
             CreativeRenditions = new List<FWCreativeRendition>();
             Parameters = new List<FWParameter>();
@@ -96,7 +99,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWCreativeRendition
     {
-        public FWCreativeRendition()
+        internal FWCreativeRendition()
         {
             OtherAssets = new List<FWAsset>();
             Parameters = new List<FWParameter>();
@@ -136,6 +139,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWAsset
     {
+        internal FWAsset()
+        { }
+
         public string Content { get; set; }
         public string Id { get; set; }
         public string ContentType { get; set; }
@@ -147,7 +153,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWSiteSection
     {
-        public FWSiteSection()
+        internal FWSiteSection()
         {
             AdSlots = new List<FWAdSlot>();
         }
@@ -161,7 +167,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWVideoPlayer
     {
-        public FWVideoPlayer()
+        internal FWVideoPlayer()
         {
             AdSlots = new List<FWAdSlot>();
         }
@@ -172,7 +178,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWVideoAsset
     {
-        public FWVideoAsset()
+        internal FWVideoAsset()
         {
             AdSlots = new List<FWTemporalAdSlot>();
             EventCallbacks = new List<FWEventCallback>();
@@ -187,7 +193,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWTemporalAdSlot : IFWAdSlot
     {
-        public FWTemporalAdSlot()
+        internal FWTemporalAdSlot()
         {
             SelectedAds = new List<FWAdReference>();
             EventCallbacks = new List<FWEventCallback>();
@@ -212,7 +218,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWNonTemporalAdSlot : IFWAdSlot
     {
-        public FWNonTemporalAdSlot()
+        internal FWNonTemporalAdSlot()
         {
             SelectedAds = new List<FWAdReference>();
             Parameters = new List<FWParameter>();
@@ -229,7 +235,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWAdSlot : IFWAdSlot
     {
-        public FWAdSlot()
+        internal FWAdSlot()
         {
             SelectedAds = new List<FWAdReference>();
         }
@@ -257,7 +263,7 @@ namespace Microsoft.VideoAdvertising
             DefaultImpression = "defaultImpression";
         }
 
-        public FWEventCallback()
+        internal FWEventCallback()
         {
             TrackingUrls = new List<FWUrl>();
         }
@@ -281,6 +287,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWUrl
     {
+        internal FWUrl()
+        { }
+
         public string Name { get; set; }
         public string Value { get; set; }
     }
@@ -296,7 +305,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWAdReference
     {
-        public FWAdReference()
+        internal FWAdReference()
         {
             EventCallbacks = new List<FWEventCallback>();
             CompanionAds = new List<FWAdReference>();
@@ -316,7 +325,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWVisitor
     {
-        public FWVisitor()
+        internal FWVisitor()
         {
             HttpHeaders = new List<FWHttpHeader>();
         }
@@ -328,18 +337,27 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FWState
     {
+        internal FWState()
+        { }
+
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
     public sealed class FWHttpHeader
     {
+        internal FWHttpHeader()
+        { }
+
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
     public sealed class FWError
     {
+        internal FWError()
+        { }
+
         public string Severity { get; set; }
         public string Name { get; set; }
         public string Id { get; set; }

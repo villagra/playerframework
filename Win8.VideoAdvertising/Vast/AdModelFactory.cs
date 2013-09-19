@@ -16,6 +16,91 @@ namespace Microsoft.VideoAdvertising
 {
     public static partial class AdModelFactory
     {
+        public static AdDocumentPayload CreateAdDocumentPayload()
+        {
+            return new AdDocumentPayload();
+        }
+
+        public static AdPod CreateAdPod()
+        {
+            return new AdPod();
+        }
+
+        public static Ad CreateAd()
+        {
+            return new Ad();
+        }
+
+        public static CreativeLinear CreateCreativeLinear()
+        {
+            return new CreativeLinear();
+        }
+
+        public static CreativeNonLinears CreateCreativeNonLinears()
+        {
+            return new CreativeNonLinears();
+        }
+
+        public static CreativeCompanions CreateCreativeCompanions()
+        {
+            return new CreativeCompanions();
+        }
+
+        public static NonLinear CreateNonLinear()
+        {
+            return new NonLinear();
+        }
+
+        public static Companion CreateCompanion()
+        {
+            return new Companion();
+        }
+
+        public static MediaFile CreateMediaFile()
+        {
+            return new MediaFile();
+        }
+
+        public static IFrameResource CreateIFrameResource()
+        {
+            return new IFrameResource();
+        }
+
+        public static HtmlResource CreateHtmlResource()
+        {
+            return new HtmlResource();
+        }
+
+        public static StaticResource CreateStaticResource()
+        {
+            return new StaticResource();
+        }
+
+        public static TrackingEvent CreateTrackingEvent()
+        {
+            return new TrackingEvent();
+        }
+
+        public static Icon CreateIcon()
+        {
+            return new Icon();
+        }
+
+        public static Extension CreateExtension()
+        {
+            return new Extension();
+        }
+
+        public static AdSystem CreateAdSystem()
+        {
+            return new AdSystem();
+        }
+
+        public static Pricing CreatePricing()
+        {
+            return new Pricing();
+        }
+        
         /// <summary>
         /// Provides a fallback ad pod to use in the event that a wrapper does not return an ad.
         /// </summary>

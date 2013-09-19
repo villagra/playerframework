@@ -99,9 +99,6 @@
     <Compile Include="..\Win8.videoadvertising\helpers\Extensions.cs">
       <Link>Helpers\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.videoadvertising\helpers\MarkerHelper.cs">
-      <Link>Helpers\MarkerHelper.cs</Link>
-    </Compile>
     <Compile Include="..\Win8.videoadvertising\helpers\TaskHelpers.cs">
       <Link>Helpers\TaskHelpers.cs</Link>
     </Compile>

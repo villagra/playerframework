@@ -1176,6 +1176,73 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+#if WINDOWS81
+        #region AreTransportControlsEnabled
+
+        bool _AreTransportControlsEnabled
+        {
+            get { return MediaElementElement != null ? MediaElementElement.AreTransportControlsEnabled : DefaultAreTransportControlsEnabled; }
+            set { RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.AreTransportControlsEnabled = value; }); }
+        }
+
+        static bool DefaultAreTransportControlsEnabled
+        {
+            get { return GetDefaultValue<bool>(MediaElement.AreTransportControlsEnabledProperty); }
+        }
+
+        #endregion
+
+        #region IsFullWindow
+
+        bool _IsFullWindow
+        {
+            get { return MediaElementElement != null ? MediaElementElement.IsFullWindow : DefaultIsFullWindow; }
+            set { RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.IsFullWindow = value; }); }
+        }
+
+        static bool DefaultIsFullWindow
+        {
+            get { return GetDefaultValue<bool>(MediaElement.IsFullWindowProperty); }
+        }
+
+        #endregion
+
+        #region PlayToPreferredSourceUri
+
+        Uri _PlayToPreferredSourceUri
+        {
+            get { return MediaElementElement != null ? MediaElementElement.PlayToPreferredSourceUri : DefaultPlayToPreferredSourceUri; }
+            set
+            {
+                if (!IsInDesignMode)
+                {
+                    RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.PlayToPreferredSourceUri = value; });
+                }
+            }
+        }
+
+        static Uri DefaultPlayToPreferredSourceUri
+        {
+            get { return GetDefaultRefValue<Uri>(MediaElement.PlayToPreferredSourceUriProperty); }
+        }
+
+        #endregion
+
+        #region Stretch
+
+        Stretch _Stretch
+        {
+            get { return MediaElementElement != null ? MediaElementElement.Stretch : DefaultStretch; }
+            set { RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.Stretch = value; }); }
+        }
+
+        static Stretch DefaultStretch
+        {
+            get { return GetDefaultValue<Stretch>(MediaElement.StretchProperty); }
+        }
+
+        #endregion
+#endif
 #endif
 
         #region IsCaptionsActive
@@ -1223,7 +1290,7 @@ namespace Microsoft.PlayerFramework
                     {
                         Application.Current.Host.Content.IsFullScreen = value;
                     }
-#elif NETFX_CORE
+#elif NETFX_CORE && !WINDOWS81
                     if (value && Windows.UI.ViewManagement.ApplicationView.Value == Windows.UI.ViewManagement.ApplicationViewState.Snapped)
                     {
                         Windows.UI.ViewManagement.ApplicationView.TryUnsnap();
@@ -1870,6 +1937,13 @@ namespace Microsoft.PlayerFramework
         {
             RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.SetSource(stream, mimeType); });
         }
+
+#if WINDOWS81
+        void _SetMediaStreamSource(Windows.Media.Core.IMediaSource source)
+        {
+            RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.SetMediaStreamSource(source); });
+        }
+#endif
 #endif
 
         #endregion

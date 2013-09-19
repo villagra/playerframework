@@ -351,6 +351,12 @@ namespace Microsoft.PlayerFramework
                 {
                     mediaPlayer.SetSource(playlistItem.SourceStream, playlistItem.MimeType);
                 }
+#if WINDOWS81
+                else if (playlistItem != null && playlistItem.MediaStreamSource != null)
+                {
+                    mediaPlayer.SetMediaStreamSource(playlistItem.MediaStreamSource);
+                }
+#endif
 #else
                 else if (playlistItem != null && playlistItem.SourceStream != null)
                 {

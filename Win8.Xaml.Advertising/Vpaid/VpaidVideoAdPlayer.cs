@@ -60,7 +60,11 @@ namespace Microsoft.PlayerFramework.Advertising
             IsHitTestVisible = false;
             mediaElement = new MediaElement();
             Background = new SolidColorBrush(Colors.Black);
+#if WINDOWS81
+            Opacity = 0.01; // HACK: Win8.1 won't load the video if opacity = 0
+#else
             Opacity = 0;
+#endif
             State = AdState.None;
             AdLinear = true;
 

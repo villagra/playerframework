@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples - Plain Text Captions</title>
+        <link href="../../itemdetail.css" rel="stylesheet">
+        <script src="../../itemdetail.js"></script>
+        <script src="plaintext.js"></script>
+    </head>
+    <body>
+        <div class="itemdetailpage fragment plaintext">
+            <header aria-label="Header content" role="banner">
+                <button data-win-control="WinJS.UI.BackButton"></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle"></span>
+                </h1>
+            </header>
+            <div class="content" aria-label="Main content" role="main">
+                <article>
+                    <div>
+                        <header>
+                            <h2 class="item-subtitle"></h2>
+                            <h4 class="item-description"></h4>
+                        </header>
+                        <div class="item-player">
+                            <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                                width: 640,
+                                height: 360,
+                                autoplay: true,
+                                isCaptionsVisible: true,
+                                src: 'http://smf.blob.core.windows.net/samples/videos/RealPCPride.mp4',
+                                tracks: [
+                                    {
+                                        kind: 'captions',
+                                        label: 'English captions',
+                                        src: 'http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride_native_en.xml',
+                                        srclang: 'en',
+                                        default: true
+                                    },
+                                    {
+                                        kind: 'captions',
+                                        label: 'Spanish captions',
+                                        src: 'http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride_native_es.xml',
+                                        srclang: 'es'
+                                    }
+                                ],
+                                captionsPlugin: {
+                                    isEnabled: false
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </body>
+</html>

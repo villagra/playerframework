@@ -213,4 +213,7 @@
   <data name="InfoButtonLabel" xml:space="preserve">
     <value>MORE INFO</value>
   </data>
+  <data name="MoreButtonLabel" xml:space="preserve">
+    <value>MORE...</value>
+  </data>
 </root>

@@ -5,7 +5,7 @@ namespace Microsoft.VideoAdvertising
 {
     public sealed class AdDocumentPayload
     {
-        public AdDocumentPayload()
+        internal AdDocumentPayload()
         {
             AdPods = new List<AdPod>();
         }
@@ -19,7 +19,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class AdPod
     {
-        public AdPod()
+        internal AdPod()
         {
             Ads = new List<Ad>();
         }
@@ -29,7 +29,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Ad
     {
-        public Ad()
+        internal Ad()
         {
             Impressions = new List<string>();
             Errors = new List<string>();
@@ -74,7 +74,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class CreativeLinear : ICreative
     {
-        public CreativeLinear()
+        internal CreativeLinear()
         {
             MediaFiles = new List<MediaFile>();
             Extensions = new List<object>();
@@ -116,7 +116,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class CreativeNonLinears : ICreative
     {
-        public CreativeNonLinears()
+        internal CreativeNonLinears()
         {
             NonLinears = new List<NonLinear>();
             TrackingEvents = new List<TrackingEvent>();
@@ -137,7 +137,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class CreativeCompanions : ICreative
     {
-        public CreativeCompanions()
+        internal CreativeCompanions()
         {
             Companions = new List<Companion>();
             Id = string.Empty;
@@ -157,7 +157,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class NonLinear
     {
-        public NonLinear()
+        internal NonLinear()
         {
             Extensions = new List<object>();
             ClickTracking = new List<string>();
@@ -197,7 +197,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Companion : ICompanionSource
     {
-        public Companion()
+        internal Companion()
         {
             Extensions = new List<object>();
             ClickTracking = new List<string>();
@@ -289,7 +289,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class MediaFile
     {
-        public MediaFile()
+        internal MediaFile()
         {
             Id = string.Empty;
             Type = string.Empty;
@@ -335,16 +335,25 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class IFrameResource : IResource
     {
+        internal IFrameResource()
+        { }
+
         public Uri Value { get; set; }
     }
 
     public sealed class HtmlResource : IResource
     {
+        internal HtmlResource()
+        { }
+
         public string Value { get; set; }
     }
 
     public sealed class StaticResource : IResource
     {
+        internal StaticResource()
+        { }
+
         public string CreativeType { get; set; }
 
         public Uri Value { get; set; }
@@ -355,6 +364,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class TrackingEvent
     {
+        internal TrackingEvent()
+        { }
+
         public TrackingType Type { get; set; }
 
         public FlexibleOffset Offset { get; set; }
@@ -364,7 +376,7 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Icon
     {
-        public Icon()
+        internal Icon()
         {
             ClickTracking = new List<string>();
             ViewTracking = new List<string>();
@@ -401,6 +413,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Extension
     {
+        internal Extension()
+        { }
+
         public string Type { get; set; }
 
         public string Value { get; set; }
@@ -408,6 +423,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class AdSystem
     {
+        internal AdSystem()
+        { }
+
         public string Version { get; set; }
 
         public string Value { get; set; }
@@ -415,6 +433,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class Pricing
     {
+        internal Pricing()
+        { }
+
         public PricingModel Model { get; set; }
 
         public string Currency { get; set; }
@@ -468,6 +489,9 @@ namespace Microsoft.VideoAdvertising
 
     public sealed class FlexibleOffset
     {
+        internal FlexibleOffset()
+        { }
+
         public static FlexibleOffset FromTimeSpan(TimeSpan absoluteOffset)
         {
             return new FlexibleOffset()

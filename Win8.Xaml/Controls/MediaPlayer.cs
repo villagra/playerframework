@@ -613,7 +613,7 @@ namespace Microsoft.PlayerFramework
             {
                 Position = StartTime; // start from the beginning.
             }
-            
+
             if (CurrentState == MediaElementState.Paused)
             {
                 Play();
@@ -683,7 +683,7 @@ namespace Microsoft.PlayerFramework
         {
             OnInvokeAudioSelection(new RoutedEventArgs());
         }
-        
+
         /// <summary>
         /// Invokes the info dialog.
         /// </summary>
@@ -699,7 +699,7 @@ namespace Microsoft.PlayerFramework
         {
             OnInvokeMore(new RoutedEventArgs());
         }
-        
+
         /// <summary>
         /// Seeks to the live position during live playback.
         /// </summary>
@@ -842,8 +842,14 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public event RoutedEventHandler SeekCompleted;
 
+#if WINDOWS81
+        /// <summary>
+        /// Occurs when the Stretch property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<Stretch> StretchChanged;
 #endif
-        
+#endif
+
         /// <summary>
         /// Occurs when the player is stopped. Typically, this indicates the app should dispose the player and navigate back to the previous page.
         /// </summary>
@@ -1098,7 +1104,7 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the InvokeAudioSelection method is called.
         /// </summary>
         public event RoutedEventHandler AudioSelectionInvoked;
-        
+
         /// <summary>
         /// Occurs when the InvokeInfo method is called.
         /// </summary>
@@ -1108,7 +1114,7 @@ namespace Microsoft.PlayerFramework
         /// Occurs when the InvokeMore method is called.
         /// </summary>
         public event RoutedEventHandler MoreInvoked;
-        
+
         /// <summary>
         /// Occurs when the IsScrubbing property changes.
         /// </summary>
@@ -4072,6 +4078,103 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+#if WINDOWS81
+        #region AreTransportControlsEnabled
+
+        /// <summary>
+        /// Identifies the AreTransportControlsEnabled dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AreTransportControlsEnabledProperty = RegisterDependencyProperty<bool>("AreTransportControlsEnabled", (t, o, n) => t.OnAreTransportControlsEnabledChanged(n), DefaultAreTransportControlsEnabled);
+
+        void OnAreTransportControlsEnabledChanged(bool newValue)
+        {
+            _AreTransportControlsEnabled = newValue;
+        }
+
+        /// <summary>
+        /// Gets or sets a value that determines whether the standard MediaElement transport controls are enabled. Recommended use is to set to False and use player framework transport controls instead.
+        /// </summary>
+        [Category(Categories.Common)]
+        public bool AreTransportControlsEnabled
+        {
+            get { return (bool)GetValue(AreTransportControlsEnabledProperty); }
+            set { SetValue(AreTransportControlsEnabledProperty, value); }
+        }
+
+        #endregion
+
+        #region IsFullWindow
+
+        /// <summary>
+        /// Identifies the IsFullWindow dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsFullWindowProperty = RegisterDependencyProperty<bool>("IsFullWindow", (t, o, n) => t.OnIsFullWindowChanged(n), DefaultIsFullWindow);
+
+        void OnIsFullWindowChanged(bool newValue)
+        {
+            _IsFullWindow = newValue;
+        }
+
+        /// <summary>
+        /// Gets a value that specifies if the MediaElement is rendering in full window mode. Setting this property enables or disables full window rendering.
+        /// </summary>
+        [Category(Categories.Common)]
+        public bool IsFullWindow
+        {
+            get { return (bool)GetValue(IsFullWindowProperty); }
+            set { SetValue(IsFullWindowProperty, value); }
+        }
+
+        #endregion
+
+        #region PlayToPreferredSourceUri
+
+        /// <summary>
+        /// Identifies the PlayToPreferredSourceUri dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PlayToPreferredSourceUriProperty = RegisterDependencyProperty<Uri>("PlayToPreferredSourceUri", (t, o, n) => t.OnPlayToPreferredSourceUriChanged(n), DefaultPlayToPreferredSourceUri);
+
+        void OnPlayToPreferredSourceUriChanged(Uri newValue)
+        {
+            _PlayToPreferredSourceUri = newValue;
+        }
+
+        /// <summary>
+        /// Gets or sets the path to the preferred media source. This enables the Play To target device to stream the media content, which can be DRM protected, from a different location, such as a cloud media server.
+        /// </summary>
+        [Category(Categories.Advanced)]
+        public Uri PlayToPreferredSourceUri
+        {
+            get { return GetValue(PlayToPreferredSourceUriProperty) as Uri; }
+            set { SetValue(PlayToPreferredSourceUriProperty, value); }
+        }
+
+        #endregion
+
+        #region Stretch
+        /// <summary>
+        /// Identifies the Stretch dependency property.
+        /// </summary>
+        public static readonly DependencyProperty StretchProperty = RegisterDependencyProperty<Stretch>("Stretch", (t, o, n) => t.OnStretchChanged(o, n), DefaultStretch);
+
+        void OnStretchChanged(Stretch oldValue, Stretch newValue)
+        {
+            _Stretch = newValue;
+            OnStretchChanged(new RoutedPropertyChangedEventArgs<Stretch>(oldValue, newValue));
+        }
+
+        /// <summary>
+        /// Gets or sets a Stretch value that describes how to fill the destination rectangle. The default is Uniform.
+        /// You can also cycle through the enumerations by calling the CycleDisplayMode method.
+        /// </summary>
+        [Category(Categories.Appearance)]
+        public Stretch Stretch
+        {
+            get { return (Stretch)GetValue(StretchProperty); }
+            set { SetValue(StretchProperty, value); }
+        }
+        #endregion
+#endif
 #endif
 
         #region AudioStreamCount
@@ -4519,6 +4622,12 @@ namespace Microsoft.PlayerFramework
             {
                 _SetSource(loadingInstruction.SourceStream, loadingInstruction.MimeType);
             }
+#if WINDOWS81
+            else if (loadingInstruction.MediaStreamSource != null)
+            {
+                _SetMediaStreamSource(loadingInstruction.MediaStreamSource);
+            }
+#endif
 #else
             else if (loadingInstruction.SourceStream != null)
             {
@@ -4540,6 +4649,14 @@ namespace Microsoft.PlayerFramework
             return await OnMediaLoadingAsync(args);
         }
 
+#if WINDOWS81
+        private async Task<MediaLoadingInstruction> OnMediaLoadingAsync(Windows.Media.Core.IMediaSource source)
+        {
+            var deferrableOperation = new MediaPlayerDeferrableOperation(cts);
+            var args = new MediaLoadingEventArgs(deferrableOperation, source);
+            return await OnMediaLoadingAsync(args);
+        }
+#endif
 #else
         private async Task<MediaLoadingInstruction> OnMediaLoadingAsync(MediaStreamSource mediaStreamSource)
         {
@@ -4690,7 +4807,7 @@ namespace Microsoft.PlayerFramework
         {
             if (MoreInvoked != null) MoreInvoked(this, e);
         }
-        
+
         void OnSeekToLive(RoutedEventArgs e)
         {
             if (GoLive != null) GoLive(this, e);
@@ -4854,6 +4971,13 @@ namespace Microsoft.PlayerFramework
 #endif
         }
 #else
+#if WINDOWS81
+        void OnStretchChanged(RoutedPropertyChangedEventArgs<Stretch> e)
+        {
+            if (StretchChanged != null) StretchChanged(this, e);
+        }
+#endif
+
         /// <summary>
         /// Performs an async Seek. This can also be accomplished by setting the Position property and waiting for SeekCompleted to fire.
         /// </summary>
@@ -4943,7 +5067,7 @@ namespace Microsoft.PlayerFramework
                     OnPositionChanged(new RoutedPropertyChangedEventArgs<TimeSpan>(previousPosition, newPosition));
                 }
             }
-            
+
             if (newPosition != previousVirtualPosition)
             {
                 if (!IsScrubbing)
@@ -5038,6 +5162,7 @@ namespace Microsoft.PlayerFramework
             SetValue(ActualStereo3DVideoPackingModeProperty, _ActualStereo3DVideoPackingMode);
             SetValue(IsAudioOnlyProperty, _IsAudioOnly);
 #endif
+            SetValueWithoutCallback(PlaybackRateProperty, _PlaybackRate); // HACK: Windows 8.1 will change this value without raising RateChanged
             SetValue(AudioStreamIndexProperty, _AudioStreamIndex);
             SetValue(AudioStreamCountProperty, _AudioStreamCount);
             SetValue(CanPauseProperty, _CanPause);
@@ -5460,6 +5585,9 @@ namespace Microsoft.PlayerFramework
                 SourceStream = args.SourceStream;
 #if NETFX_CORE
                 MimeType = args.MimeType;
+#if WINDOWS81
+                MediaStreamSource = args.MediaStreamSource;
+#endif
 #else
                 MediaStreamSource = args.MediaStreamSource;
 #endif
@@ -5467,6 +5595,9 @@ namespace Microsoft.PlayerFramework
 
             public Uri Source { get; private set; }
 #if NETFX_CORE
+#if WINDOWS81
+            public Windows.Media.Core.IMediaSource MediaStreamSource { get; private set; }
+#endif
             public IRandomAccessStream SourceStream { get; private set; }
             public string MimeType { get; private set; }
 #else

@@ -1,0 +1,119 @@
+﻿// For details on localizing a Windows app, see: http://go.microsoft.com/fwlink/?LinkId=212836
+
+{
+    "ErrorText":                            "Spanish: The video failed to play.",
+    "ErrorIcon":                            "\uE102",
+    "ErrorLabel":                           "Spanish: Try again",
+    "ErrorTooltip":                         "Spanish: Try again",
+
+    "LoaderIcon":                           "\uE102",
+    "LoaderLabel":                          "Spanish: Load video",
+    "LoaderTooltip":                        "Spanish: Load video",
+
+    "PlayIcon":                             "\uE102",
+    "PlayLabel":                            "Spanish: Play",
+    "PlayTooltip":                          "Spanish: Play",
+
+    "PauseIcon":                            "\uE103",
+    "PauseLabel":                           "Spanish: Pause",
+    "PauseTooltip":                         "Spanish: Pause",
+
+    "ReplayIcon":                           "\uE14A",
+    "ReplayLabel":                          "Spanish: Instant replay",
+    "ReplayTooltip":                        "Spanish: Instant replay",
+
+    "RewindIcon":                           "\u23EA",
+    "RewindLabel":                          "Spanish: Rewind",
+    "RewindTooltip":                        "Spanish: Rewind",
+
+    "FastForwardIcon":                      "\u23E9",
+    "FastForwardLabel":                     "Spanish: Fast forward",
+    "FastForwardTooltip":                   "Spanish: Fast forward",
+
+    "SlowMotionIcon":                       "\u23CF",
+    "SlowMotionLabel":                      "Spanish: Slow motion",
+    "SlowMotionTooltip":                    "Spanish: Slow motion",
+
+    "SkipPreviousIcon":                     "\uE100",
+    "SkipPreviousLabel":                    "Spanish: Previous",
+    "SkipPreviousTooltip":                  "Spanish: Previous",
+
+    "SkipNextIcon":                         "\uE101",
+    "SkipNextLabel":                        "Spanish: Next",
+    "SkipNextTooltip":                      "Spanish: Next",
+
+    "SkipBackIcon":                         "\u23EE",
+    "SkipBackLabel":                        "Spanish: Skip back",
+    "SkipBackTooltip":                      "Spanish: Skip back",
+
+    "SkipAheadIcon":                        "\u23ED",
+    "SkipAheadLabel":                       "Spanish: Skip ahead",
+    "SkipAheadTooltip":                     "Spanish: Skip ahead",
+
+    "ElapsedTimeText":                      "-{0}s",
+    "ElapsedTimeLabel":                     "Spanish: Time elapsed/Skip back",
+    "ElapsedTimeTooltip":                   "Spanish: Skip back",
+
+    "RemainingTimeText":                    "+{0}s",
+    "RemainingTimeLabel":                   "Spanish: Time remaining/Skip ahead",
+    "RemainingTimeTooltip":                 "Spanish: Skip ahead",
+
+    "TimeFormat":                           "{hour.integer}:{minute.integer(2)}:{second.integer(2)}",
+    "TimelineLabel":                        "Spanish: Timeline",
+    "TimelineTooltip":                      "Spanish: Seek",
+
+    "GoLiveText":                           "LIVE",
+    "GoLiveLabel":                          "Spanish: Go live",
+    "GoLiveTooltip":                        "Spanish: Go live",
+
+    "AudioIcon":                            "\uE164",
+    "AudioLabel":                           "Spanish: Audio tracks",
+    "AudioTooltip":                         "Spanish: Show audio selection menu",
+    "AudioCommandLabel_Selected":           "Spanish: {0} (On)",
+    "AudioCommandLabel_Unselected":         "Spanish: {0}",
+    "AudioTrackLabel_Untitled":             "Spanish: untitled",
+
+    "CaptionsIcon":                         "\uE190",
+    "CaptionsLabel":                        "Spanish: Closed captions",
+    "CaptionsTooltip":                      "Spanish: Show captioning selection menu",
+    "CaptionsCommandLabel_Off":             "Spanish: Off",
+    "CaptionsCommandLabel_Selected":        "Spanish: {0} (On)",
+    "CaptionsCommandLabel_Unselected":      "Spanish: {0}",
+    "CaptionTrackLabel_Untitled":           "Spanish: untitled",
+
+    "VolumeMuteIcon":                       "\uE15D",
+    "VolumeMuteLabel":                      "Spanish: Volume/Mute",
+    "VolumeMuteTooltip":                    "Spanish: Volume/Mute",
+
+    "VolumeIcon":                           "\uE15D",
+    "VolumeLabel":                          "Spanish: Volume",
+    "VolumeTooltip":                        "Spanish: Volume",
+
+    "MuteIcon":                             "\uE15D",
+    "MuteLabel":                            "Spanish: Mute",
+    "MuteTooltip":                          "Spanish: Mute",
+
+    "UnmuteIcon":                           "\uE198",
+    "UnmuteLabel":                          "Spanish: Unmute",
+    "UnmuteTooltip":                        "Spanish: Unmute",
+
+    "FullScreenIcon":                       "\uE1D9",
+    "FullScreenLabel":                      "Spanish: Full screen",
+    "FullScreenTooltip":                    "Spanish: Full screen",
+
+    "ExitFullScreenIcon":                   "\uE1D8",
+    "ExitFullScreenLabel":                  "Spanish: Exit full screen",
+    "ExitFullScreenTooltip":                "Spanish: Exit full screen",
+
+    "SignalStrengthLabel":                  "Spanish: Signal strength",
+    "SignalStrengthTooltip1":               "Spanish: Signal strength",
+    "SignalStrengthTooltip2":               "Spanish: Signal strength (low)",
+    "SignalStrengthTooltip3":               "Spanish: Signal strength (medium)",
+    "SignalStrengthTooltip4":               "Spanish: Signal strength (high)",
+
+    "MediaQuality_HD":                      "HD",
+    "MediaQuality_SD":                      "SD",
+    "MediaQualityLabel":                    "Spanish: Media quality",
+    "MediaQualityTooltip_HD":               "Spanish: Media quality (high definition)",
+    "MediaQualityTooltip_SD":               "Spanish: Media quality (standard definition)"
+}
