@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="logButton" Content="Send a log" Click="logButton_Click"/>
+        <Button x:Name="logButton" Content="Send a log" Click="logButton_Click" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
