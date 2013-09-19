@@ -567,6 +567,40 @@ namespace Microsoft.PlayerFramework
             });
         }
 
+#if WINDOWS81
+        /// <summary>
+        /// Sets the Source of the MediaElement to the specified MediaStreamSource.
+        /// </summary>
+        /// <param name="source">The media source.</param>
+        public void SetMediaStreamSource(Windows.Media.Core.IMediaSource source)
+        {
+            RegisterApplyTemplateAction(async () =>
+            {
+                if (AutoLoad || source == null)
+                {
+                    bool proceed = true;
+                    MediaLoadingInstruction loadingResult = null;
+                    if (source != null)
+                    {
+                        loadingResult = await OnMediaLoadingAsync(source);
+                        proceed = loadingResult != null;
+                    }
+                    if (proceed)
+                    {
+                        LoadSource(loadingResult);
+                    }
+                    else
+                    {
+                        OnMediaFailure(null);
+                    }
+                }
+                else
+                {
+                    PendingLoadAction = () => SetMediaStreamSource(source);
+                }
+            });
+        }
+#endif
 #endif
 
         /// <summary>
