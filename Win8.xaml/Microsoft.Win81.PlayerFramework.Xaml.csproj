@@ -125,11 +125,13 @@
     <Compile Include="Controls\ControlPanel\ControlPanel.cs" />
     <Compile Include="Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs" />
     <Compile Include="Controls\ControlPanel\MediaPlayerButton.cs" />
+    <Compile Include="Controls\ControlPanel\ThumbnailView.cs" />
     <Compile Include="Controls\ControlPanel\VolumeSlider.cs" />
     <Compile Include="Controls\ControlPanel\ResolutionIndicator.cs" />
     <Compile Include="Controls\ControlPanel\StandardButtons.cs" />
     <Compile Include="Controls\ControlPanel\VolumeButton.cs" />
     <Compile Include="Extensions\VisualTreeExtensions.cs" />
+    <Compile Include="Plugins\DisplayRequestPlugin.cs" />
     <Compile Include="Plugins\MediaControlPlugin.cs" />
     <Compile Include="Controls\MediaPackHelper.cs" />
     <Compile Include="Primitives\AdvertisingStateEnum.cs" />

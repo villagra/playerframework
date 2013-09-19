@@ -128,6 +128,7 @@
     <Compile Include="AdHandlerBase.cs" />
     <Compile Include="ClipAdPayload.cs" />
     <Compile Include="CompanionHost.cs" />
+    <Compile Include="FreeWheelPlugin.Attached.cs" />
     <Compile Include="FreeWheelPlugin.cs" />
     <Compile Include="Helpers\MarkerHelper.cs" />
     <Compile Include="VmapScheduler.Attached.cs" />

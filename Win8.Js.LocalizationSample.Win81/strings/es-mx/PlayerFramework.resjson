@@ -19,8 +19,8 @@
     "PauseTooltip":                         "Spanish: Pause",
 
     "ReplayIcon":                           "\uE14A",
-    "ReplayLabel":                          "Spanish: Instant replay",
-    "ReplayTooltip":                        "Spanish: Instant replay",
+    "ReplayLabel":                          "Spanish: Replay",
+    "ReplayTooltip":                        "Spanish: Replay",
 
     "RewindIcon":                           "\u23EA",
     "RewindLabel":                          "Spanish: Rewind",
@@ -57,6 +57,10 @@
     "RemainingTimeText":                    "+{0}s",
     "RemainingTimeLabel":                   "Spanish: Time remaining/Skip ahead",
     "RemainingTimeTooltip":                 "Spanish: Skip ahead",
+
+    "TotalTimeText":                        "+{0}s",
+    "TotalTimeLabel":                       "Duration/Skip ahead",
+    "TotalTimeTooltip":                     "Skip ahead",
 
     "TimeFormat":                           "{hour.integer}:{minute.integer(2)}:{second.integer(2)}",
     "TimelineLabel":                        "Spanish: Timeline",
@@ -104,6 +108,25 @@
     "ExitFullScreenIcon":                   "\uE1D8",
     "ExitFullScreenLabel":                  "Spanish: Exit full screen",
     "ExitFullScreenTooltip":                "Spanish: Exit full screen",
+    
+    "StopIcon":                             "\u25FC",
+    "StopLabel":                            "Stop",
+    "StopTooltip":                          "Stop",
+
+    "InfoIcon":                             "\uE171",
+    "InfoLabel":                            "Info",
+    "InfoTooltip":                          "More Info",
+
+    "MoreIcon":                             "\uE10C",
+    "MoreLabel":                            "More...",
+    "MoreTooltip":                          "More...",
+
+    "DisplayModeLetterboxIcon":             "\uE1D8",
+    "DisplayModeFillIcon":                  "\uE1D9",
+    "DisplayModeLetterboxLabel":            "Letterbox",
+    "DisplayModeFillLabel":                 "Fill",
+    "DisplayModeLetterboxTooltip":          "Letterbox",
+    "DisplayModeFillTooltip":               "Fill",
 
     "SignalStrengthLabel":                  "Spanish: Signal strength",
     "SignalStrengthTooltip1":               "Spanish: Signal strength",
