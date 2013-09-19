@@ -1,5 +1,6 @@
 @pushd %~dp0%
 
+call Cleanup.bat
 call Build.Win8.Xaml.bat
 call Build.Win8.JS.bat
 call Build.Win81.Xaml.bat
