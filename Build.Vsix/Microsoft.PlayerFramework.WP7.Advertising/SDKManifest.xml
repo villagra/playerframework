@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<FileList
+  DisplayName = "Microsoft Player Framework Advertising Plugin"
+  ProductFamilyName = "Microsoft.PlayerFramework"
+  TargetFramework = "WindowsPhone,Version=v7.1"
+  MinVSVersion = "11.0"
+  MoreInfo = "http://playerframework.codeplex.com">
+  <File Reference="Microsoft.PlayerFramework.Advertising.dll"/>
+  <File Reference="Microsoft.VideoAdvertising.dll"/>
+</FileList>

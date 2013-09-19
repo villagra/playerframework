@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<FileList
+  Identity = "MMP.PF.Metro.TimedText.JS.SDK, Version=1.0"
+  DisplayName = "Microsoft Player Framework Timed Text Plugin"
+  MinVSVersion = "11.0"
+  MinToolsVersion = "4.0"
+  AppliesTo = "WindowsAppContainer + (JavaScript)"
+  ReferenceManagerEnumeration = "Files">
+    <File Content="js\PlayerFramework.TimedText.js" />
+    <File Content="css\PlayerFramework.TimedText.css" />
+    <DependsOn Identity = "Microsoft.WinJS.1.0, Version=1.0"/>
+    <DependsOn Identity = "MMP.PF.Metro.JS.SDK, Version=1.0"/>
+</FileList>

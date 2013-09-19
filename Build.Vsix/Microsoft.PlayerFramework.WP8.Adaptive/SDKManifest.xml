@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<FileList
+  DisplayName = "Microsoft Player Framework Adaptive Streaming Plugin"
+  ProductFamilyName = "Microsoft.PlayerFramework"
+  TargetFramework = "WindowsPhone,Version=v8.0"
+  MinVSVersion = "11.0"
+  MoreInfo = "http://playerframework.codeplex.com">
+  <File Reference="Microsoft.PlayerFramework.Adaptive.dll"/>
+</FileList>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<FileList
+  DisplayName = "Microsoft Player Framework Analytics Plugin"
+  ProductFamilyName = "Microsoft.PlayerFramework"
+  TargetFramework = "WindowsPhone,Version=v7.1"
+  MinVSVersion = "11.0"
+  MoreInfo = "http://playerframework.codeplex.com">
+  <File Reference="Microsoft.VideoAnalytics.dll"/>
+  <File Reference="Microsoft.VideoAnalytics.xml"/>
+  <File Reference="Microsoft.PlayerFramework.Analytics.dll"/>
+  <File Reference="Microsoft.PlayerFramework.Analytics.xml"/>
+  <File Reference="Microsoft.PlayerFramework.Adaptive.Analytics.dll"/>
+  <File Reference="ZLib.dll"/>
+</FileList>

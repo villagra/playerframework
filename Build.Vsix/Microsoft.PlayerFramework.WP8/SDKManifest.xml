@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<FileList
+  DisplayName = "Microsoft Player Framework"
+  ProductFamilyName = "Microsoft.PlayerFramework"
+  TargetFramework = "WindowsPhone,Version=v8.0"
+  MinVSVersion = "11.0"
+  MoreInfo = "http://playerframework.codeplex.com">
+  <File Reference="Microsoft.PlayerFramework.dll">
+    <ToolboxItems VSCategory="Toolbox.Common" BlendCategory="Media">
+	    <Item Type="Microsoft.PlayerFramework.MediaPlayer"/>
+    </ToolboxItems>
+  </File>
+</FileList>
