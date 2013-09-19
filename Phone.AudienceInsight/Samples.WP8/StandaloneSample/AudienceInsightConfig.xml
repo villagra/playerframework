@@ -6,7 +6,7 @@
     <WCF>0</WCF>
     <relative>0</relative>
     <binaryBinding>0</binaryBinding>
-    <compressed>0</compressed>
+    <compression>0</compression>
     <serializationFormat>json</serializationFormat>
     <maxOpenTimeSeconds>5</maxOpenTimeSeconds>
     <maxSendTimeSeconds>5</maxSendTimeSeconds>
