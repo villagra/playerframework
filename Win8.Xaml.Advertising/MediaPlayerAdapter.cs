@@ -14,7 +14,7 @@ using Windows.Foundation;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-    internal class MediaPlayerAdapter : IPlayer
+    internal class MediaPlayerAdapter : IPlayer, IDisposable
     {
 #if SILVERLIGHT
         public event EventHandler FullscreenChanged;
@@ -29,7 +29,6 @@ namespace Microsoft.PlayerFramework.Advertising
 #endif
 
         protected MediaPlayer MediaPlayer { get; private set; }
-        protected FrameworkElement AdContainer { get; private set; }
 
         public MediaPlayerAdapter(MediaPlayer mediaPlayer)
         {
@@ -37,8 +36,7 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.VolumeChanged += MediaPlayer_VolumeChanged;
             MediaPlayer.IsFullScreenChanged += MediaPlayer_IsFullScreenChanged;
             MediaPlayer.IsMutedChanged += MediaPlayer_IsMutedChanged;
-            AdContainer = MediaPlayer.Containers.OfType<FrameworkElement>().FirstOrDefault(f => f.Name == MediaPlayerTemplateParts.AdvertisingContainer);
-            AdContainer.SizeChanged += AdContainer_SizeChanged;
+            MediaPlayer.SizeChanged += MediaPlayer_SizeChanged;
         }
 
         void MediaPlayer_IsMutedChanged(object sender, RoutedPropertyChangedEventArgs<bool> e)
@@ -55,7 +53,7 @@ namespace Microsoft.PlayerFramework.Advertising
             if (VolumeChanged != null) VolumeChanged(this, EventArgs.Empty);
         }
 
-        void AdContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+        void MediaPlayer_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (DimensionsChanged != null) DimensionsChanged(this, EventArgs.Empty);
         }
@@ -108,7 +106,7 @@ namespace Microsoft.PlayerFramework.Advertising
             get
             {
 #if NETFX_CORE
-                var size = new Size(AdContainer.ActualWidth, AdContainer.ActualHeight);
+                var size = new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight);
                 switch (Windows.Graphics.Display.DisplayProperties.ResolutionScale)
                 {
                     case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
@@ -121,11 +119,11 @@ namespace Microsoft.PlayerFramework.Advertising
                 return size;
 #elif WINDOWS_PHONE && !WINDOWS_PHONE7
                 double scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
-                int w = (int)Math.Ceiling(AdContainer.ActualWidth * scale);
-                int h = (int)Math.Ceiling(AdContainer.ActualHeight * scale);
+                int w = (int)Math.Ceiling(MediaPlayer.ActualWidth * scale);
+                int h = (int)Math.Ceiling(MediaPlayer.ActualHeight * scale);
                 return new Size(w, h);
 #else
-                return new Size(AdContainer.ActualWidth, AdContainer.ActualHeight);
+                return new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight);
 #endif
             }
             set
@@ -141,6 +139,15 @@ namespace Microsoft.PlayerFramework.Advertising
             {
                 return MediaPlayer.Position;
             }
+        }
+
+        public void Dispose()
+        {
+            MediaPlayer.VolumeChanged -= MediaPlayer_VolumeChanged;
+            MediaPlayer.IsFullScreenChanged -= MediaPlayer_IsFullScreenChanged;
+            MediaPlayer.IsMutedChanged -= MediaPlayer_IsMutedChanged;
+            MediaPlayer.SizeChanged -= MediaPlayer_SizeChanged;
+            MediaPlayer = null;
         }
     }
 }

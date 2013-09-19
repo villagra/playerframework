@@ -255,6 +255,8 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
             MediaPlayer.PlayerStateChanged -= MediaPlayer_PlayerStateChanged;
             base.UnwireController();
+            if (Player is IDisposable) ((IDisposable)Player).Dispose();
+            Player = null;
         }
 
         /// <inheritdoc /> 
