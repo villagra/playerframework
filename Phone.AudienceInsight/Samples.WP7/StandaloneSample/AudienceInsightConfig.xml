@@ -127,7 +127,7 @@
         <Value Name="RelatedLogId" Id="rid" Optional="1" />
         <Value Name="TimeStamp" Id="tik" />
         <Value Name="VideoId" Id="oid" />
-        <!--<Value Name="Language" Id="msg" />-->
+        <Value Name="Language" Id="msg" />
       </Log>
       <Log Type="CaptionTrackSelect" Id="ClosedCaptionOff" Conditions="Language=">
         <Value Name="Type" Id="typ" />
@@ -178,28 +178,6 @@
         <Value Name="EdgeIP" Id="s03" />
         <Value Name="IsLive" Id="liv" />
       </Log>
-      <!--<Log Type="RetryFailed" Id="RetryFailed">
-        <Value Name="Type" Id="typ" />
-        <Value Name="LogId" Id="lid" />
-        <Value Name="RelatedLogId" Id="rid" Optional="1" />
-        <Value Name="TimeStamp" Id="tik" />
-        <Value Name="VideoId" Id="oid" />
-        <Value Name="VideoSessionId" Id="osd" />
-        <Value Name="VideoSessionDuration" Id="odr" />
-        <Value Name="EdgeIP" Id="s03" />
-        <Value Name="IsLive" Id="liv" />
-      </Log>
-      <Log Type="RetrySucceeded" Id="RetrySucceeded">
-        <Value Name="Type" Id="typ" />
-        <Value Name="LogId" Id="lid" />
-        <Value Name="RelatedLogId" Id="rid" Optional="1" />
-        <Value Name="TimeStamp" Id="tik" />
-        <Value Name="VideoId" Id="oid" />
-        <Value Name="VideoSessionId" Id="osd" />
-        <Value Name="VideoSessionDuration" Id="odr" />
-        <Value Name="EdgeIP" Id="s03" />
-        <Value Name="IsLive" Id="liv" />
-      </Log>-->
       <Log Type="ClipEvent" Id="VideoClipStarted" Conditions="ClipEventType=Started">
         <Value Name="Type" Id="typ" />
         <Value Name="LogId" Id="lid" />
@@ -257,17 +235,15 @@
         <Value Name="DroppedFrames" Id="s08" />
         <Value Name="RenderedFrames" Id="s09" />
         <Value Name="HttpErrorCount" Id="s10" />
-        <Value Name="ProcessCPULoad" Id="s11" />
-        <Value Name="VideoDownloadLatencyMilliseconds" Id="s12" />
-        <Value Name="MaxBitRate" Id="s13" />
-        <Value Name="MaxBitRateMilliseconds" Id="s14" />
-        <!--<Value Name="AudioDownloadLatencyMilliseconds" Id="s15" />-->
-        <!--<Value Name="SystemCPULoad" Id="s16" />-->
-        <!--<Value Name="PerceivedBandwidth" Id="s17" />-->
-        <!--<Value Name="VideoBufferSize" Id="s18" />-->
-        <!--<Value Name="AudioBufferSize" Id="s19" />-->
-        <!--<Value Name="DvrOperationCount" Id="s20" />-->
-        <!--<Value Name="FullScreenChangeCount" Id="s21" />-->
+        <Value Name="VideoDownloadLatencyMilliseconds" Id="s11" />
+        <Value Name="MaxBitRate" Id="s12" />
+        <Value Name="MaxBitRateMilliseconds" Id="s13" />
+        <Value Name="AudioDownloadLatencyMilliseconds" Id="s14" />
+        <Value Name="PerceivedBandwidth" Id="s15" />
+        <Value Name="VideoBufferSize" Id="s16" />
+        <Value Name="AudioBufferSize" Id="s17" />
+        <Value Name="DvrOperationCount" Id="s18" />
+        <Value Name="FullScreenChangeCount" Id="s19" />
         <Value Name="IsLive" Id="liv" />
       </Log>
 
