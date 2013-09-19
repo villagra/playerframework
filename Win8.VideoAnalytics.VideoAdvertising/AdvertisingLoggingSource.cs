@@ -6,10 +6,17 @@ using System.Text;
 
 namespace Microsoft.VideoAnalytics.VideoAdvertising
 {
+    /// <summary>
+    /// Adapter class that allows advertising tracking events to be logged via analytics
+    /// </summary>
     public sealed class AdvertisingLoggingSource : ILoggingSource
     {
         public event EventHandler<LogEventArgs> LogCreated;
 
+        /// <summary>
+        /// Creates an AdvertisingLoggingSource object that generates logs based on advertising tracking events
+        /// </summary>
+        /// <param name="adHandlerController">The AdHandlerController that the AdvertisingLoggingSource will monitor for tracking events.</param>
         public AdvertisingLoggingSource(AdHandlerController adHandlerController)
         {
             adHandlerController.AdTrackingEventOccurred += adHandlerController_AdTrackingEventOccurred;
@@ -46,6 +53,9 @@ namespace Microsoft.VideoAnalytics.VideoAdvertising
         }
     }
 
+    /// <summary>
+    /// An ILog implementation that represents an ad tracking event.
+    /// </summary>
     public sealed class AdEventLog : ILog
     {
         public AdEventLog()
