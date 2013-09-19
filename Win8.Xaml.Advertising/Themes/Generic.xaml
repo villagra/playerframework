@@ -14,7 +14,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <Grid x:Name="LayoutRoot">
+                    <Grid x:Name="LayoutRoot" Background="#00000000">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="AdvertisingStates">
                                 <VisualState x:Name="Linear"/>
