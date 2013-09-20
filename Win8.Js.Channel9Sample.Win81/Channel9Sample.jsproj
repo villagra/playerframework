@@ -79,7 +79,7 @@
   <ItemGroup>
     <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0" />
     <SDKReference Include="Microsoft.VCLibs, Version=12.0" />
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.Win81.AdaptiveStreaming.csproj" />

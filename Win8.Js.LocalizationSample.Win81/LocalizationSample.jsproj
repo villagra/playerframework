@@ -68,10 +68,10 @@
     <PRIResource Include="strings\es-mx\PlayerFramework.resjson" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <ProjectReference Include="..\Win8.Js\Microsoft.Win81.PlayerFramework.Js.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.Js\Microsoft.Win81.PlayerFramework.Js.csproj" />
+    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

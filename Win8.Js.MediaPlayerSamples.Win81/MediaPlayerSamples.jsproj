@@ -132,9 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0" />
-    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.5.1891.0" />
+    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.8.1947.0" />
     <SDKReference Include="Microsoft.VCLibs, Version=12.0" />
-    <SDKReference Include="Microsoft.WinJS.2.0.Preview, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.Win81.AdaptiveStreaming.Analytics.csproj" />

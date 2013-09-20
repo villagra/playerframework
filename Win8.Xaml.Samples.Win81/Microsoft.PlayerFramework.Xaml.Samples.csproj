@@ -395,7 +395,7 @@
     <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
       <Name>Microsoft Smooth Streaming Client SDK for Windows 8.1%28Beta%29</Name>
     </SDKReference>
-    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.5.1891.0">
+    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.8.1947.0">
       <Name>Microsoft PlayReady Client SDK</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, Version=12.0">
