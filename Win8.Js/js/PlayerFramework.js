@@ -127,14 +127,27 @@
         all: 3
     };
 
-    var TextTrackMode = {
-        /// <field>The track is disabled.</field>
-        off: 0,
-        /// <field>The track is active, but the player is not actively displaying cues.</field>
-        hidden: 1,
-        /// <field>The track is active and the player is actively displaying cues.</field>
-        showing: 2
-    };
+    var TextTrackMode;
+    if (WinJS.Utilities.Scheduler === undefined) {
+        TextTrackMode = {
+            /// <field>The track is disabled.</field>
+            off: 0,
+            /// <field>The track is active, but the player is not actively displaying cues.</field>
+            hidden: 1,
+            /// <field>The track is active and the player is actively displaying cues.</field>
+            showing: 2
+        };
+    }
+    else {
+        TextTrackMode = {
+            /// <field>The track is disabled.</field>
+            off: "off",
+            /// <field>The track is active, but the player is not actively displaying cues.</field>
+            hidden: "hidden",
+            /// <field>The track is active and the player is actively displaying cues.</field>
+            showing: "showing"
+        };
+    }
 
     var TextTrackDisplayMode = {
         /// <field>Indicates tracks should not be displayed.</field>
