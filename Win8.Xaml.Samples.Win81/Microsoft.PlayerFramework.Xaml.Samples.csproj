@@ -414,10 +414,6 @@
       <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
       <Name>Microsoft.Media.ISO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2d385553-240d-4f31-a78f-72686bb2613b}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.Win81.AdaptiveStreaming.Analytics.csproj">
       <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
       <Name>Microsoft.Win81.AdaptiveStreaming.Analytics</Name>

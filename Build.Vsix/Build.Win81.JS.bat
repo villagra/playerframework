@@ -177,7 +177,6 @@ copy ..\Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStrea
 copy ..\Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																	Microsoft.PlayerFramework.Js.Win81.Analytics\References\CommonConfiguration\x86\
 copy ..\Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																	Microsoft.PlayerFramework.Js.Win81.Analytics\References\CommonConfiguration\x64\
 copy ..\Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd																	Microsoft.PlayerFramework.Js.Win81.Analytics\References\CommonConfiguration\ARM\
-copy ..\Lib\Portable\ZLib\bin\Release\ZLib.dll																															Microsoft.PlayerFramework.Js.Win81.Analytics\References\CommonConfiguration\neutral\
 
 copy ..\Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.pri																				Microsoft.PlayerFramework.Win81.Dash\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Dash\
 copy ..\Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd																				Microsoft.PlayerFramework.Win81.Dash\References\CommonConfiguration\x86\
