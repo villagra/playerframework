@@ -147,7 +147,6 @@ copy ..\Win8.Xaml.Analytics\bin\Release\Microsoft.PlayerFramework.Analytics.pri	
 copy ..\Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral\
 @rem copy ..\Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.xml		Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral\
 copy ..\Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.pri			Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics\
-copy ..\Lib\Portable\ZLib\bin\Release\ZLib.dll									Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral\
 
 copy ..\Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.pri				Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.AdaptiveStreaming.Analytics\
 copy ..\Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86\
