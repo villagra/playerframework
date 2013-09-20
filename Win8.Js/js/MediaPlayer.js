@@ -1920,7 +1920,6 @@
                             this._shimElement.style.display = "none";
                         }
 
-                        // TODO: Test on Win8.1
                         if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
                             Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
                         }
