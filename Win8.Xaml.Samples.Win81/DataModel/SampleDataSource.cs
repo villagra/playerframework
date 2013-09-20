@@ -347,6 +347,11 @@ namespace Microsoft.PlayerFramework.Samples.Data
         static IEnumerable<SampleDataItem> GetAdvancedSamples()
         {
             yield return new SampleDataItem(
+                    "Thumbnails",
+                    typeof(ThumbnailPage),
+                    "Demonstrates how to show thumbnails during scrubbing, RW, & FF operations.");
+
+            yield return new SampleDataItem(
                     "Tracking",
                     typeof(TrackingPage),
                     "Demonstrates how to get tracking events for analytics purposes.");
