@@ -339,7 +339,7 @@ namespace Microsoft.VideoAnalytics
         /// Call to send a log to the logging service and stamp it with additional data related to the current video.
         /// </summary>
         /// <param name="log">The log to send.</param>
-        public async void SendLog(ILog log)
+        public void SendLog(ILog log)
         {
             // add all the extra info to the log
             log.ExtraData.Add("VideoSessionId", VideoSessionId);
