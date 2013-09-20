@@ -7,6 +7,9 @@ rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.TimedText\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.WebVTT\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.Dash\References"
+rmdir /s /q "Microsoft.AudienceInsight.WP8\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics.Advertising\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References"
 
 mkdir "Microsoft.PlayerFramework.WP8\References"
 mkdir "Microsoft.PlayerFramework.WP8\References\CommonConfiguration"
@@ -29,6 +32,15 @@ mkdir "Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutr
 mkdir "Microsoft.PlayerFramework.WP8.Dash\References"
 mkdir "Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral"
+mkdir "Microsoft.AudienceInsight.WP8\References"
+mkdir "Microsoft.AudienceInsight.WP8\References\CommonConfiguration"
+mkdir "Microsoft.AudienceInsight.WP8\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.Advertising\References"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.Advertising\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.Advertising\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References\CommonConfiguration\neutral"
 
 cd..
 
@@ -49,13 +61,16 @@ copy Phone.SL.Analytics\bin\Release\Microsoft.PlayerFramework.Analytics.xml					
 copy Phone.SL.Adaptive.Analytics\bin\Release\Microsoft.PlayerFramework.Adaptive.Analytics.dll     Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.dll								  Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.xml								  Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
-copy Lib\Portable\ZLib\bin\Release\ZLib.dll														  Build\Microsoft.PlayerFramework.WP8.Analytics\References\CommonConfiguration\neutral\
+copy Phone.AudienceInsight\bin\Release\Microsoft.AudienceInsight.dll								  Build\Microsoft.AudienceInsight.WP8\References\CommonConfiguration\neutral\
 
 copy Phone.SL.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll  Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 copy Phone.WebVTT\bin\Release\Microsoft.WebVTT.dll					 Build\Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 
 copy Phone.SL.Adaptive.Dash\bin\Release\Microsoft.PlayerFramework.Adaptive.Dash.dll		Build\Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
 copy Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll				Build\Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
+
+copy Phone.VideoAnalytics.VideoAdvertising\bin\Release\Microsoft.VideoAnalytics.VideoAdvertising.dll		Build\Microsoft.PlayerFramework.WP8.Analytics.Advertising\References\CommonConfiguration\neutral\
+copy Phone.VideoAnalytics.AudienceInsight\bin\Release\Microsoft.VideoAnalytics.AudienceInsight.dll		Build\Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References\CommonConfiguration\neutral\
 
 @popd
 

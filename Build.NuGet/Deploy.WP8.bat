@@ -26,7 +26,10 @@ copy Phone.SL.Analytics\bin\Release\Microsoft.PlayerFramework.Analytics.xml					
 copy Phone.SL.Adaptive.Analytics\bin\Release\Microsoft.PlayerFramework.Adaptive.Analytics.dll   Build.NuGet\Microsoft.PlayerFramework.Analytics\lib\windowsphone8\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.dll								Build.NuGet\Microsoft.PlayerFramework.Analytics\lib\windowsphone8\
 copy Phone.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.xml								Build.NuGet\Microsoft.PlayerFramework.Analytics\lib\windowsphone8\
-copy Lib\Portable\ZLib\bin\Release\ZLib.dll														Build.NuGet\Microsoft.PlayerFramework.Analytics\lib\windowsphone8\
+
+copy Phone.AudienceInsight\bin\Release\Microsoft.AudienceInsight.dll   Build.NuGet\Microsoft.AudienceInsight\lib\windowsphone8\
+copy Phone.VideoAnalytics.VideoAdvertising\bin\Release\Microsoft.VideoAnalytics.VideoAdvertising.dll   Build.NuGet\Microsoft.Analytics.Advertising\lib\windowsphone8\
+copy Phone.VideoAnalytics.AudienceInsight\bin\Release\Microsoft.VideoAnalytics.AudienceInsight.dll   Build.NuGet\Microsoft.Analytics.AudienceInsight\lib\windowsphone8\
 
 copy Phone.SL.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll							Build.NuGet\Microsoft.PlayerFramework.WebVTT\lib\windowsphone8\
 copy Phone.WebVTT\bin\Release\Microsoft.WebVTT.dll												Build.NuGet\Microsoft.PlayerFramework.WebVTT\lib\windowsphone8\

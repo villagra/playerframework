@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Microsoft.AudienceInsight</id>
+    <version>1.0.0</version>
+    <title>Microsoft Audience Insight Client SDK</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://playerframework.codeplex.com/license</licenseUrl>
+    <projectUrl>http://playerframework.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Microsoft Audience Insight Client SDK</description>
+    <releaseNotes>Pre-release</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>microsoft audienceinsight analytics WP7 WP8</tags>
+    <dependencies>
+      <group targetFramework="wp71">
+        <dependency id="Microsoft.Bcl" version="1.0.19" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.7" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.16" />
+      </group>
+      <group targetFramework="windowsphone8"/>
+    </dependencies>
+  </metadata>
+</package>

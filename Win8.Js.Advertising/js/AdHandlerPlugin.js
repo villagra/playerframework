@@ -48,6 +48,12 @@
             }
         },
 
+        adHandlerController: {
+            get: function () {
+                return this._controller;
+            }
+        },
+        
         adPayloadHandlers: {
             get: function () {
                 if (this._controller) {

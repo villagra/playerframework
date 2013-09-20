@@ -119,10 +119,6 @@
       <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
       <Name>Microsoft.Media.ISO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj">
       <Project>{884A1566-4580-4C68-A6AC-0F13D3293AAB}</Project>
       <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics</Name>
