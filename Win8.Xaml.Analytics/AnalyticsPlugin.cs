@@ -79,6 +79,11 @@ namespace Microsoft.PlayerFramework.Analytics
         public AnalyticsConfig AnalyticsConfig { get; set; }
 
         /// <summary>
+        /// Gets the analytics collector object used by the analytics plugin to collect data
+        /// </summary>
+        public AnalyticsCollector AnalyticsCollector { get { return collector; } }
+
+        /// <summary>
         /// Gets a collection of data to add to each log only for the current media. (e.g. 'VideoId')
         /// </summary>
         public IDictionary<string, object> MediaData { get; private set; }

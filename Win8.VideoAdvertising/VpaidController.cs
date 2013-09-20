@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Windows;
 #else
 using Windows.Foundation;
+using System.Diagnostics;
 #endif
 
 namespace Microsoft.VideoAdvertising
@@ -183,6 +184,11 @@ namespace Microsoft.VideoAdvertising
         /// The ad player is requesting to log something.
         /// </summary>
         public event EventHandler<ActiveAdUnitLogEventArgs> Log;
+
+        /// <summary>
+        /// An ad tracking event occurred.
+        /// </summary>
+        public event EventHandler<AdTrackingEventEventArgs> AdTrackingEventOccurred;
 
         /// <summary>
         /// The progress of the ad has changed.
@@ -594,6 +600,9 @@ namespace Microsoft.VideoAdvertising
 
         protected void TrackEvent(ActiveAdUnit adUnit, TrackingType eventToTrack)
         {
+            if (AdTrackingEventOccurred != null) 
+                AdTrackingEventOccurred(this, new AdTrackingEventEventArgs(adUnit.CreativeSource, eventToTrack));
+            
             foreach (var trackingEvent in adUnit.CreativeSource.TrackingEvents.Where(te => te.Type == eventToTrack))
             {
                 var url = trackingEvent.Value;

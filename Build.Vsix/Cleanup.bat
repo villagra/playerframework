@@ -20,6 +20,12 @@ rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.TimedText\References\"
 rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Win8.Dash\References\"
+rmdir /s /q "Microsoft.AudienceInsight.Win8\Redist\"
+rmdir /s /q "Microsoft.AudienceInsight.Win8\References\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\"
 
 rmdir /s /q "Microsoft.PlayerFramework.Xaml\Redist"
 rmdir /s /q "Microsoft.PlayerFramework.Xaml\References"
@@ -75,6 +81,9 @@ rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.TimedText\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.WebVTT\References"
 rmdir /s /q "Microsoft.PlayerFramework.WP8.Dash\References"
+rmdir /s /q "Microsoft.AudienceInsight.WP8\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics.Advertising\References"
+rmdir /s /q "Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight\References"
 
 @popd
 

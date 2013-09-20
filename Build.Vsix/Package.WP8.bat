@@ -23,6 +23,15 @@ cd ..\Microsoft.PlayerFramework.WP8.Analytics
 cd ..\Microsoft.PlayerFramework.WP8.Dash
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.Dash.zip "*"
 
+cd ..\Microsoft.PlayerFramework.WP8.Analytics.Advertising
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.Analytics.Advertising.zip "*"
+
+@rem cd ..\Microsoft.AudienceInsight.WP8
+@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.AudienceInsight.WP8.zip "*"
+
+@rem cd ..\Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight
+@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight.zip "*"
+
 
 cd ..\Microsoft.PlayerFramework
 
@@ -33,6 +42,9 @@ move Microsoft.PlayerFramework.WP8.WebVTT.zip Microsoft.PlayerFramework.WP8.WebV
 move Microsoft.PlayerFramework.WP8.Advertising.zip Microsoft.PlayerFramework.WP8.Advertising.vsix
 move Microsoft.PlayerFramework.WP8.Analytics.zip Microsoft.PlayerFramework.WP8.Analytics.vsix
 move Microsoft.PlayerFramework.WP8.Dash.zip Microsoft.PlayerFramework.WP8.Dash.vsix
+move Microsoft.PlayerFramework.WP8.Analytics.Advertising.zip Microsoft.PlayerFramework.WP8.Analytics.Advertising.vsix
+@rem move Microsoft.AudienceInsight.WP8.zip Microsoft.AudienceInsight.WP8.vsix
+@rem move Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.WP8.Analytics.AudienceInsight.vsix
 
 @popd
 

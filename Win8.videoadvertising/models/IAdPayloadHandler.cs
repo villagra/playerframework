@@ -19,6 +19,7 @@ namespace Microsoft.VideoAdvertising
         event EventHandler<ActivateAdUnitEventArgs> ActivateAdUnit;
         event EventHandler<DeactivateAdUnitEventArgs> DeactivateAdUnit;
         event EventHandler<AdFailureEventArgs> AdFailure;
+        event EventHandler<AdTrackingEventEventArgs> AdTrackingEventOccurred;
         
 #if SILVERLIGHT
         Task PreloadAdAsync(IAdSource adSource, CancellationToken cancellationToken);
@@ -29,6 +30,33 @@ namespace Microsoft.VideoAdvertising
         IAsyncActionWithProgress<AdStatus> PlayAdAsync(IAdSource adSource, TimeSpan? startTimeout);
         IAsyncOperation<bool> CancelAd(bool force);
 #endif
+    }
+
+    public sealed class AdTrackingEventEventArgs
+#if SILVERLIGHT
+ : EventArgs
+#endif
+    {
+        public AdTrackingEventEventArgs(ICreativeSource creativeSource, TrackingType trackingType)
+        {
+            CreativeSource = creativeSource;
+            TrackingType = trackingType;
+        }
+
+        /// <summary>
+        /// The creative source associated with the playing ad unit.
+        /// </summary>
+        public ICreativeSource CreativeSource { get; private set; }
+
+        /// <summary>
+        /// The type of tracking event that occurred
+        /// </summary>
+        public TrackingType TrackingType { get; private set; }
+
+        /// <summary>
+        /// The playback position of the main content.
+        /// </summary>
+        public TimeSpan CurrentPosition { get; set; }
     }
 
     public sealed class AdFailureEventArgs

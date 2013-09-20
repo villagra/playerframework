@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.WP7.VideoAnalytics</RootNamespace>
-    <AssemblyName>Microsoft.WP7.VideoAnalytics</AssemblyName>
+    <RootNamespace>Microsoft.VideoAnalytics</RootNamespace>
+    <AssemblyName>Microsoft.VideoAnalytics</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -73,32 +73,14 @@
     <Compile Include="..\Win8.VideoAnalytics\AnalyticsCollector.cs">
       <Link>AnalyticsCollector.cs</Link>
     </Compile>
-    <Compile Include="..\win8.videoanalytics\audienceinsight\BatchAgentFactory.cs">
-      <Link>AudienceInsight\BatchAgentFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\audienceinsight\BatchingConfigFactory.cs">
-      <Link>AudienceInsight\BatchingConfigFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\audienceinsight\ResponseDeserializer.cs">
-      <Link>AudienceInsight\ResponseDeserializer.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\audienceinsight\RESTDataClient.cs">
-      <Link>AudienceInsight\RESTDataClient.cs</Link>
-    </Compile>
     <Compile Include="..\win8.videoanalytics\config\AnalyticsConfig.cs">
       <Link>Config\AnalyticsConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\config\BatchingConfig.cs">
-      <Link>Config\BatchingConfig.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\config\EdgeServerConfig.cs">
       <Link>Config\EdgeServerConfig.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\config\LoggingConfig.cs">
       <Link>Config\LoggingConfig.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\config\MappingPolicy.cs">
-      <Link>Config\MappingPolicy.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\config\QualityConfig.cs">
       <Link>Config\QualityConfig.cs</Link>
@@ -130,32 +112,11 @@
     <Compile Include="..\win8.videoanalytics\extensions\XmlReaderExtensions.cs">
       <Link>Extensions\XmlReaderExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\Batch.cs">
-      <Link>Logging\Batch.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\BatchEventArgs.cs">
-      <Link>Logging\BatchEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\BatchingExceptionEventArgs.cs">
-      <Link>Logging\BatchingExceptionEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\BatchingLogAgent.cs">
-      <Link>Logging\BatchingLogAgent.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\IBatchAgent.cs">
-      <Link>Logging\IBatchAgent.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\ILogFilter.cs">
-      <Link>Logging\ILogFilter.cs</Link>
-    </Compile>
     <Compile Include="..\win8.videoanalytics\logging\ILoggingSource.cs">
       <Link>Logging\ILoggingSource.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\logging\ILoggingTarget.cs">
       <Link>Logging\ILoggingTarget.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\InstanceDataClient.cs">
-      <Link>Logging\InstanceDataClient.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\logging\Log.cs">
       <Link>Logging\Log.cs</Link>
@@ -165,12 +126,6 @@
     </Compile>
     <Compile Include="..\win8.videoanalytics\logging\LoggingService.cs">
       <Link>Logging\LoggingService.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\MappedLogs.cs">
-      <Link>Logging\MappedLogs.cs</Link>
-    </Compile>
-    <Compile Include="..\win8.videoanalytics\logging\QueueManager.cs">
-      <Link>Logging\QueueManager.cs</Link>
     </Compile>
     <Compile Include="..\win8.videoanalytics\logs\AppStartLog.cs">
       <Link>Logs\AppStartLog.cs</Link>
@@ -265,17 +220,10 @@
     <Compile Include="..\win8.videoanalytics\reports\ReportTypes.cs">
       <Link>Reports\ReportTypes.cs</Link>
     </Compile>
-    <Compile Include="Compatibility\HttpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Lib\Portable\ZLib\ZLib.csproj">
-      <Project>{2D385553-240D-4F31-A78F-72686BB2613B}</Project>
-      <Name>ZLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />

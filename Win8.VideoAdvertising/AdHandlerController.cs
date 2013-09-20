@@ -48,6 +48,7 @@ namespace Microsoft.VideoAdvertising
         public event EventHandler<ActivateAdUnitEventArgs> ActivateAdUnit;
         public event EventHandler<DeactivateAdUnitEventArgs> DeactivateAdUnit;
         public event EventHandler<AdFailureEventArgs> AdFailure;
+        public event EventHandler<AdTrackingEventEventArgs> AdTrackingEventOccurred;
 
         public AdHandlerController()
         {
@@ -101,6 +102,7 @@ namespace Microsoft.VideoAdvertising
             handler.UnloadPlayer -= Handler_UnloadPlayer;
             handler.ActivateAdUnit -= Handler_ActivateAdUnit;
             handler.DeactivateAdUnit -= Handler_DeactivateAdUnit;
+            handler.AdTrackingEventOccurred -= Handler_AdTrackingEventOccurred;
             activePayloadHandlers.Remove(handler);
         }
 
@@ -111,9 +113,9 @@ namespace Microsoft.VideoAdvertising
             handler.UnloadPlayer += Handler_UnloadPlayer;
             handler.ActivateAdUnit += Handler_ActivateAdUnit;
             handler.DeactivateAdUnit += Handler_DeactivateAdUnit;
+            handler.AdTrackingEventOccurred += Handler_AdTrackingEventOccurred;
             activePayloadHandlers.Add(handler);
         }
-
 
 #if SILVERLIGHT
         public async Task PreloadAdAsync(IAdSource adSource, CancellationToken cancellationToken)
@@ -294,6 +296,10 @@ namespace Microsoft.VideoAdvertising
             if (LoadPlayer != null) LoadPlayer(this, e);
         }
 
+        void Handler_AdTrackingEventOccurred(object sender, AdTrackingEventEventArgs e)
+        {
+            if (AdTrackingEventOccurred != null) AdTrackingEventOccurred(this, e);
+        }
 
 #if SILVERLIGHT
         public async Task CancelActiveAds()

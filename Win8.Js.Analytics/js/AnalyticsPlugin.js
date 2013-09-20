@@ -58,6 +58,12 @@
                 this._analyticsConfig = value;
             }
         },
+        
+        analyticsCollector: {
+            get: function () {
+                return this._collector;
+            }
+        },
 
         sessionData: {
             get: function () {

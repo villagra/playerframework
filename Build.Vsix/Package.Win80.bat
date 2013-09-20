@@ -20,6 +20,15 @@ cd ..\Microsoft.PlayerFramework.Js.Analytics
 cd ..\Microsoft.PlayerFramework.Win8.Dash
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Dash.zip "*"
 
+cd ..\Microsoft.PlayerFramework.Win8.Analytics.Advertising
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Analytics.Advertising.zip "*"
+
+@rem cd ..\Microsoft.AudienceInsight.Win8
+@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.AudienceInsight.Win8.zip "*"
+
+@rem cd ..\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight
+@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.zip "*"
+
 cd ..\Microsoft.PlayerFramework.Xaml
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.zip "*"
 
@@ -48,6 +57,9 @@ move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.Tim
 move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.vsix
 move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.vsix
 move Microsoft.PlayerFramework.Win8.Dash.zip Microsoft.PlayerFramework.Win8.Dash.vsix
+move Microsoft.PlayerFramework.Win8.Analytics.Advertising.zip Microsoft.PlayerFramework.Win8.Analytics.Advertising.vsix
+@rem move Microsoft.AudienceInsight.Win8.zip Microsoft.AudienceInsight.Win8.vsix
+@rem move Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.vsix
 
 move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.vsix
 move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.vsix
