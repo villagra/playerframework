@@ -5490,7 +5490,11 @@ namespace Microsoft.PlayerFramework
             {
                 if (defaultResourceLoader == null)
                 {
+#if WINDOWS81
+                    defaultResourceLoader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework");
+#else
                     defaultResourceLoader = new ResourceLoader("Microsoft.PlayerFramework");
+#endif
                 }
                 return defaultResourceLoader;
             }

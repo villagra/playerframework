@@ -31,7 +31,6 @@ namespace Microsoft.PlayerFramework.Xaml.Localize
         public App()
         {
             this.InitializeComponent();
-            MediaPlayer.ResourceLoader = new ResourceLoader("PlayerFramework");
             this.Suspending += OnSuspending;
         }
 

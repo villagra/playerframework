@@ -23,6 +23,11 @@ namespace Microsoft.PlayerFramework.Xaml.Localize
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        static MainPage()
+        {
+            MediaPlayer.ResourceLoader = ResourceLoader.GetForCurrentView("PlayerFramework");
+        }
+
         public MainPage()
         {
             this.InitializeComponent();
