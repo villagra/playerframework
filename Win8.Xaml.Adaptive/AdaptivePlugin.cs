@@ -248,18 +248,34 @@ namespace Microsoft.PlayerFramework.Adaptive
         {
             if (AutoRestrictSize)
             {
+                double scale = 1.0;
+#if WINDOWS81
+                switch (DisplayInformation.GetForCurrentView().ResolutionScale)
+                {
+                    case ResolutionScale.Scale120Percent:
+                        scale = 1.2;
+                        break;
+                    case ResolutionScale.Scale150Percent:
+                        scale = 1.5;
+                        break;
+                    case ResolutionScale.Scale160Percent:
+                        scale = 1.6;
+                        break;
+                    case ResolutionScale.Scale225Percent:
+                        scale = 2.25;
+                        break;
+#else
                 switch (DisplayProperties.ResolutionScale)
                 {
+#endif
                     case ResolutionScale.Scale180Percent:
-                        Manager.MaxSize = new Size(Math.Round(size.Width * 1.8), Math.Round(size.Height * 1.8));
+                        scale = 1.8;
                         break;
                     case ResolutionScale.Scale140Percent:
-                        Manager.MaxSize = new Size(Math.Round(size.Width * 1.4), Math.Round(size.Height * 1.4));
-                        break;
-                    default:
-                        Manager.MaxSize = size;
+                        scale = 1.4;
                         break;
                 }
+                Manager.MaxSize = new Size(Math.Round(size.Width * scale), Math.Round(size.Height * scale));
             }
             else
             {

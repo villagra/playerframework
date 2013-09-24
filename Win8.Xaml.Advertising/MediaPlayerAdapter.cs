@@ -10,6 +10,7 @@ using System.Windows.Browser;
 #else
 using Windows.UI.Xaml;
 using Windows.Foundation;
+using Windows.Graphics.Display;
 #endif
 
 namespace Microsoft.PlayerFramework.Advertising
@@ -106,17 +107,34 @@ namespace Microsoft.PlayerFramework.Advertising
             get
             {
 #if NETFX_CORE
-                var size = new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight);
-                switch (Windows.Graphics.Display.DisplayProperties.ResolutionScale)
+                double scale = 1.0;
+#if WINDOWS81
+                switch (DisplayInformation.GetForCurrentView().ResolutionScale)
                 {
-                    case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
-                        size = new Size(Math.Round(size.Width * 1.8), Math.Round(size.Height * 1.8));
+                    case ResolutionScale.Scale120Percent:
+                        scale = 1.2;
                         break;
-                    case Windows.Graphics.Display.ResolutionScale.Scale140Percent:
-                        size = new Size(Math.Round(size.Width * 1.4), Math.Round(size.Height * 1.4));
+                    case ResolutionScale.Scale150Percent:
+                        scale = 1.5;
+                        break;
+                    case ResolutionScale.Scale160Percent:
+                        scale = 1.6;
+                        break;
+                    case ResolutionScale.Scale225Percent:
+                        scale = 2.25;
+                        break;
+#else
+                switch (DisplayProperties.ResolutionScale)
+                {
+#endif
+                    case ResolutionScale.Scale180Percent:
+                        scale = 1.8;
+                        break;
+                    case ResolutionScale.Scale140Percent:
+                        scale = 1.4;
                         break;
                 }
-                return size;
+                return new Size(Math.Round(MediaPlayer.ActualWidth * scale), Math.Round(MediaPlayer.ActualHeight * scale));
 #elif WINDOWS_PHONE && !WINDOWS_PHONE7
                 double scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
                 int w = (int)Math.Ceiling(MediaPlayer.ActualWidth * scale);
