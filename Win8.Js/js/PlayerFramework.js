@@ -5,6 +5,7 @@
     var invalidArgument = "Invalid argument.";
     var invalidResourceId = "Invalid resource identifier: {0}";
     var zeroDate = new Date(0, 0, 0, 0, 0, 0, 0);
+    var isWinJS1 = (WinJS.Utilities.Scheduler === undefined);
 
     // Globalization
     var languages = Windows.System.UserProfile.GlobalizationPreferences.languages;
@@ -128,7 +129,7 @@
     };
 
     var TextTrackMode;
-    if (WinJS.Utilities.Scheduler === undefined) {
+    if (isWinJS1) {
         TextTrackMode = {
             /// <field>The track is disabled.</field>
             off: 0,
@@ -720,12 +721,18 @@
         /// <summary>Measures the size of a DOM element.</summary>
         /// <param name="element" type="HTMLElement" domElement="true">The element to measure.</param>
         /// <returns type="Object">The element size.</returns>
-        var scale = Windows.Graphics.Display.DisplayProperties.resolutionScale / 100;
+        var scale = 1.0;
+        if (isWinJS1) {
+            var scale = Windows.Graphics.Display.DisplayProperties.resolutionScale / 100;
+        }
+        else {
+            var scale = Windows.Graphics.Display.DisplayInformation.getForCurrentView().resolutionScale / 100;
+        }
         var w = Math.ceil(WinJS.Utilities.getTotalWidth(element) * scale); // use ceil instead of round because WinJS reports whole numbers only
         var h = Math.ceil(WinJS.Utilities.getTotalHeight(element) * scale);
         return { width: w, height: h };
     }
-
+    
     function addHideFocusClass(element) {
         /// <summary>Prevents the specified element from showing focus.</summary>
         /// <param name="element" type="HTMLElement">The target element.</param>
