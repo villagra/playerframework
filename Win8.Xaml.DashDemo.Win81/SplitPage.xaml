@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<Page
     x:Name="pageRoot"
     x:Class="Microsoft.PlayerFramework.Xaml.DashDemo.SplitPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
@@ -24,7 +24,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -48,12 +48,13 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button
-                x:Name="backButton"
-                Click="GoBack"
-                IsEnabled="{Binding DefaultViewModel.CanGoBack, ElementName=pageRoot}"
-                Style="{StaticResource BackButtonStyle}"/>
-                <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
+                <Button x:Name="backButton" Margin="39,0,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+                <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Grid.Column="1" IsHitTestVisible="false" TextWrapping="NoWrap"/>
             </Grid>
             <Image Source="/Assets/azuremedialogo.png" Grid.Column="1" Stretch="None" VerticalAlignment="Top"/>
         </Grid>
@@ -225,4 +226,4 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
-</common:LayoutAwarePage>
+</Page>

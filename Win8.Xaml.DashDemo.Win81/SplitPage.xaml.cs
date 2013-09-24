@@ -2,6 +2,7 @@
 using Microsoft.AdaptiveStreaming.Dash;
 using Microsoft.Media.AdaptiveStreaming;
 using Microsoft.PlayerFramework.Adaptive;
+using Microsoft.PlayerFramework.Xaml.DashDemo.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // The Split Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234234
 
@@ -18,13 +20,23 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
     /// A page that displays a group title, a list of items within the group, and details for the
     /// currently selected item.
     /// </summary>
-    public sealed partial class SplitPage : Microsoft.PlayerFramework.Xaml.DashDemo.Common.LayoutAwarePage
+    public sealed partial class SplitPage : Page
     {
         readonly ObservableCollection<string> RequestCollection = new ObservableCollection<string>();
         DashDownloaderPlugin dashDownloaderPlugin;
         AdaptivePlugin adaptivePlugin;
         StreamState CurrentStreamState = StreamState.Closed;
         Uri manifestUri;
+        NavigationHelper navigationHelper;
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
 
         enum StreamState
         { 
@@ -36,6 +48,12 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
         public SplitPage()
         {
             this.InitializeComponent();
+            
+            // Setup the navigation helper
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
+
             adaptivePlugin = new AdaptivePlugin();
             player.Plugins.Add(adaptivePlugin);
 
@@ -170,14 +188,16 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
         /// Populates the page with content passed during navigation.  Any saved state is also
         /// provided when recreating a page from a prior session.
         /// </summary>
-        /// <param name="navigationParameter">The parameter value passed to
-        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested.
+        /// <param name="sender">
+        /// The source of the event; typically <see cref="NavigationHelper"/>
         /// </param>
-        /// <param name="pageState">A dictionary of state preserved by this page during an earlier
-        /// session.  This will be null the first time a page is visited.</param>
-        protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
+        /// <param name="e">Event data that provides both the navigation parameter passed to
+        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
+        /// a dictionary of state preserved by this page during an earlier
+        /// session.  The state will be null the first time a page is visited.</param>
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            player.Source = new Uri((string)navigationParameter);
+            player.Source = new Uri((string)e.NavigationParameter);
         }
 
         /// <summary>
@@ -185,8 +205,13 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
         /// page is discarded from the navigation cache.  Values must conform to the serialization
         /// requirements of <see cref="SuspensionManager.SessionState"/>.
         /// </summary>
-        /// <param name="pageState">An empty dictionary to be populated with serializable state.</param>
-        protected override void SaveState(Dictionary<String, Object> pageState)
+        /// <param name="navigationParameter">The parameter value passed to
+        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested.
+        /// </param>
+        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/></param>
+        /// <param name="e">Event data that provides an empty dictionary to be populated with
+        /// serializable state.</param>
+        private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
             Clear();
 
@@ -201,6 +226,29 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
             player.Dispose();
             adaptivePlugin = null;
             dashDownloaderPlugin = null;
+        }
+
+        #endregion
+
+        #region NavigationHelper registration
+
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// 
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
+        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion

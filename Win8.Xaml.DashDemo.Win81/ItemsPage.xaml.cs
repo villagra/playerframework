@@ -1,5 +1,5 @@
 ﻿using MediaRSS;
-using Microsoft.PlayerFramework.Xaml.DashDemo.Data;
+using Microsoft.PlayerFramework.Xaml.DashDemo.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,23 +24,31 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
     /// A page that displays a collection of item previews.  In the Split Application this page
     /// is used to display and select one of the available groups.
     /// </summary>
-    public sealed partial class ItemsPage : Microsoft.PlayerFramework.Xaml.DashDemo.Common.LayoutAwarePage
+    public sealed partial class ItemsPage : Page
     {
+
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
         public ItemsPage()
         {
             this.InitializeComponent();
+
+            // Setup the navigation helper
+            this.navigationHelper = new NavigationHelper(this);
+            navigationHelper.LoadState += navigationHelper_LoadState;
         }
 
-        /// <summary>
-        /// Populates the page with content passed during navigation.  Any saved state is also
-        /// provided when recreating a page from a prior session.
-        /// </summary>
-        /// <param name="navigationParameter">The parameter value passed to
-        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested.
-        /// </param>
-        /// <param name="pageState">A dictionary of state preserved by this page during an earlier
-        /// session.  This will be null the first time a page is visited.</param>
-        protected override async void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
+        async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             try
             {
@@ -52,6 +60,14 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
                 // fallback
                 LoadFallback();
             }
+        }
+
+        /// <summary>
+        /// This can be changed to a strongly typed view model.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
         }
 
         async void LoadFallback()
@@ -74,5 +90,28 @@ namespace Microsoft.PlayerFramework.Xaml.DashDemo
             var url = media.Source.OriginalString;
             this.Frame.Navigate(typeof(SplitPage), url);
         }
+
+        #region NavigationHelper registration
+
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// 
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
+        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
     }
 }
