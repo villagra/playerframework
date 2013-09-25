@@ -36,6 +36,11 @@ namespace Microsoft.PlayerFramework.TimedText
         protected TimedTextCaptions captionsPanel;
 
         /// <summary>
+        /// Occurs when a caption region is reached.
+        /// </summary>
+        public event EventHandler<CaptionParsedEventArgs> CaptionParsed;
+
+        /// <summary>
         /// Creates a new instance of the CaptionsPlugin
         /// </summary>
         public CaptionsPlugin()
@@ -160,6 +165,7 @@ namespace Microsoft.PlayerFramework.TimedText
                 //PoC: to use a custom marker manager
                 //captionsPanel = new TimedTextCaptions(new MarkerManager<CaptionRegion>(MediaPlayer), m => new MarkerManager<TimedTextElement>(MediaPlayer) { Markers = m });
                 captionsPanel = new TimedTextCaptions();
+                captionsPanel.CaptionParsed += captionsPanel_CaptionParsed;
                 captionsPanel.NaturalVideoSize = new Size(MediaPlayer.NaturalVideoWidth, MediaPlayer.NaturalVideoHeight);
                 if (TimedTextCaptionsStyle != null) captionsPanel.Style = TimedTextCaptionsStyle;
                 if (CaptionRegionStyle != null) captionsPanel.CaptionBlockRegionStyle = CaptionRegionStyle;
@@ -190,6 +196,7 @@ namespace Microsoft.PlayerFramework.TimedText
             captionsContainer.Children.Remove(captionsPanel);
             captionsContainer = null;
             captionsPanel.Clear();
+            captionsPanel.CaptionParsed -= captionsPanel_CaptionParsed;
             captionsPanel = null;
             IsSourceLoaded = false;
         }
@@ -203,6 +210,11 @@ namespace Microsoft.PlayerFramework.TimedText
         {
             captionsPanel.Clear();
             RefreshCaption(caption, true);
+        }
+
+        void captionsPanel_CaptionParsed(object sender, CaptionParsedEventArgs e)
+        {
+            if (CaptionParsed != null) CaptionParsed(this, e);
         }
 
         void caption_PayloadChanged(object sender, EventArgs e)
