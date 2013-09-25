@@ -31,6 +31,8 @@ namespace Microsoft.PlayerFramework.TimedText
     {
         Panel captionsContainer;
         DispatcherTimer timer;
+        Style timedTextCaptionsStyle;
+        Style captionRegionStyle;
         protected TimedTextCaptions captionsPanel;
 
         /// <summary>
@@ -54,7 +56,34 @@ namespace Microsoft.PlayerFramework.TimedText
         /// <summary>
         /// Gets or sets the style to be used for the TimedTextCaptions
         /// </summary>
-        public Style TimedTextCaptionsStyle { get; set; }
+        public Style TimedTextCaptionsStyle
+        {
+            get { return timedTextCaptionsStyle; }
+            set
+            {
+                timedTextCaptionsStyle = value;
+                if (captionsPanel != null)
+                {
+                    captionsPanel.Style = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the style to be used for each CaptionBlockRegion instance.
+        /// </summary>
+        public Style CaptionRegionStyle
+        {
+            get { return captionRegionStyle; }
+            set
+            {
+                captionRegionStyle = value;
+                if (captionsPanel != null)
+                {
+                    captionsPanel.CaptionBlockRegionStyle = value;
+                }
+            }
+        }
 
         void MediaPlayer_SelectedCaptionChanged(object sender, RoutedPropertyChangedEventArgs<PlayerFramework.Caption> e)
         {
@@ -133,6 +162,8 @@ namespace Microsoft.PlayerFramework.TimedText
                 captionsPanel = new TimedTextCaptions();
                 captionsPanel.NaturalVideoSize = new Size(MediaPlayer.NaturalVideoWidth, MediaPlayer.NaturalVideoHeight);
                 if (TimedTextCaptionsStyle != null) captionsPanel.Style = TimedTextCaptionsStyle;
+                if (CaptionRegionStyle != null) captionsPanel.CaptionBlockRegionStyle = CaptionRegionStyle;
+
                 MediaPlayer.IsCaptionsActive = (MediaPlayer.SelectedCaption as Caption != null);
                 captionsContainer.Children.Add(captionsPanel);
                 UpdateCaption(MediaPlayer.SelectedCaption as Caption);

@@ -62,7 +62,7 @@ namespace Microsoft.TimedText
             captionManager.MarkerLeft += captionManager_MarkerLeft;
             captionManager.MarkerReached += captionManager_MarkerReached;
         }
-        
+                
 #if SILVERLIGHT
         public override void OnApplyTemplate()
 #else
@@ -77,6 +77,8 @@ namespace Microsoft.TimedText
                 UpdateCaptions(lastPosition.Value);
             }
         }
+
+        public Style CaptionBlockRegionStyle { get; set; }
 
         public async Task AugmentTtml(string ttml, TimeSpan startTime, TimeSpan endTime)
         {
@@ -126,11 +128,10 @@ namespace Microsoft.TimedText
 #else
                 var children = region.Children;
 #endif
-                var regionBlock = new CaptionBlockRegion()
-                {
-                    CaptionRegion = region,
-                    CaptionManager = regionManagerFactory(children),
-                };
+                var regionBlock = new CaptionBlockRegion();
+                if (CaptionBlockRegionStyle != null) regionBlock.Style = CaptionBlockRegionStyle;
+                regionBlock.CaptionRegion = region;
+                regionBlock.CaptionManager = regionManagerFactory(children);
                 regions.Add(region, regionBlock);
                 CaptionsPresenterElement.Children.Add(regionBlock);
                 regionBlock.ApplyTemplate();
