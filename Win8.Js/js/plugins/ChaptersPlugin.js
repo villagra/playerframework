@@ -142,10 +142,14 @@
         },
 
         _addToVisualMarkers: function (markers) {
-            var allMarkers = this.mediaPlayer.visualMarkers;
+            var allMarkers = [];
             for (var i = 0; i < markers.length; i++) {
                 var marker = markers[i];
                 this._chapterMarkers.push(marker);
+                allMarkers.push(marker);
+            }
+            for (var i = 0; i < this.mediaPlayer.visualMarkers.length; i++) {
+                var marker = this.mediaPlayer.visualMarkers[i];
                 allMarkers.push(marker);
             }
             this.mediaPlayer.visualMarkers = allMarkers;
