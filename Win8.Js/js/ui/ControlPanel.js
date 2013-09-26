@@ -48,8 +48,6 @@
         this._mediaQualityElement = null;
 
         this._flyoutContainerElement = null;
-        this._captionsMenuElement = null;
-        this._audioMenuElement = null;
         this._volumeFlyoutElement = null;
 
         this._setElement(element);
@@ -340,22 +338,16 @@
                     this._audioElement.winControl.flyout = null;
                     this._volumeElement.winControl.flyout = null;
 
-                    PlayerFramework.Utilities.removeElement(this._captionsMenuElement);
-                    PlayerFramework.Utilities.removeElement(this._audioMenuElement);
                     PlayerFramework.Utilities.removeElement(this._volumeFlyoutElement);
                 }
 
                 this._flyoutContainerElement = value;
 
                 if (this._flyoutContainerElement) {
-                    this._captionsMenuElement = PlayerFramework.Utilities.createElement(this._flyoutContainerElement, ["div", { "class": "pf-captions-menu", "data-win-control": "WinJS.UI.Menu", "data-win-bind": "winControl.onbeforeshow: onCaptionsMenuBeforeShow PlayerFramework.Binding.setEventHandler;" }]);
-                    this._audioMenuElement = PlayerFramework.Utilities.createElement(this._flyoutContainerElement, ["div", { "class": "pf-audio-menu", "data-win-control": "WinJS.UI.Menu", "data-win-bind": "winControl.onbeforeshow: onAudioMenuBeforeShow PlayerFramework.Binding.setEventHandler;" }]);
                     this._volumeFlyoutElement = PlayerFramework.Utilities.createElement(this._flyoutContainerElement, ["div", { "class": "pf-volume-flyout", "data-win-control": "WinJS.UI.Flyout" }, ["button", { "type": "button", "class": "pf-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: muteIcon; winControl.label: muteLabel; winControl.tooltip: muteTooltip; winControl.disabled: isMuteDisabled; winControl.onclick: toggleMuted PlayerFramework.Binding.setEventHandler;" }], ["hr"], ["div", { "class": "pf-volume-slider-control", "data-win-control": "PlayerFramework.UI.Slider", "data-win-bind": "winControl.value: volume; winControl.label: volumeLabel; winControl.tooltip: volumeTooltip; winControl.disabled: isVolumeDisabled; winControl.onupdate: onVolumeSliderUpdate PlayerFramework.Binding.setEventHandler;", "data-win-options": "{ altStep1: 5, vertical: true }" }]]);
 
                     WinJS.UI.processAll(this._flyoutContainerElement);
 
-                    this._captionsElement.winControl.flyout = this._captionsMenuElement.winControl;
-                    this._audioElement.winControl.flyout = this._audioMenuElement.winControl;
                     this._volumeElement.winControl.flyout = this._volumeFlyoutElement.winControl;
                 }
             }
@@ -384,10 +376,10 @@
             this._remainingTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-remaining-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: remainingTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: remainingTimeText; winControl.label: remainingTimeLabel; winControl.tooltip: remainingTimeTooltip; winControl.disabled: isRemainingTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
             this._totalTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-total-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: totalTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: totalTimeText; winControl.label: totalTimeLabel; winControl.tooltip: totalTimeTooltip; winControl.disabled: isTotalTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
             this._goLiveElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-go-live-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: goLiveText; winControl.label: goLiveLabel; winControl.tooltip: goLiveTooltip; winControl.disabled: isGoLiveDisabled; winControl.onclick: goLive PlayerFramework.Binding.setEventHandler;" }]);
-            this._captionsElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-captions-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: captionsIcon; winControl.label: captionsLabel; winControl.tooltip: captionsTooltip; winControl.disabled: isCaptionsDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
+            this._captionsElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-captions-control pf-captionselection-anchor", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: captionsIcon; winControl.label: captionsLabel; winControl.tooltip: captionsTooltip; winControl.disabled: isCaptionsDisabled; winControl.onclick: captions PlayerFramework.Binding.setEventHandler;" }]);
             this._displayModeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-displaymode-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: displayModeIcon; winControl.label: displayModeLabel; winControl.tooltip: displayModeTooltip; winControl.disabled: isDisplayModeDisabled; winControl.onclick: toggleDisplayMode PlayerFramework.Binding.setEventHandler;" }]);
             this._infoElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-info-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: infoIcon; winControl.label: infoLabel; winControl.tooltip: infoTooltip; winControl.disabled: isInfoDisabled; winControl.onclick: info PlayerFramework.Binding.setEventHandler;" }]);
-            this._audioElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-audio-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: audioIcon; winControl.label: audioLabel; winControl.tooltip: audioTooltip; winControl.disabled: isAudioDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
+            this._audioElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-audio-control pf-audioselection-anchor", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: audioIcon; winControl.label: audioLabel; winControl.tooltip: audioTooltip; winControl.disabled: isAudioDisabled; winControl.onclick: audio PlayerFramework.Binding.setEventHandler;" }]);
             this._volumeMuteContainerElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-volume-mute-container" }]);
             this._volumeMuteElement = PlayerFramework.Utilities.createElement(this._volumeMuteContainerElement, ["button", { "type": "button", "class": "pf-volume-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: volumeMuteIcon; winControl.label: volumeMuteLabel; winControl.tooltip: volumeMuteTooltip; winControl.disabled: isVolumeMuteDisabled; winControl.onclick: onVolumeMuteClick PlayerFramework.Binding.setEventHandler; onfocus: onVolumeMuteFocus PlayerFramework.Binding.setEventHandler;" }]);
             this._volumeMuteSliderElement = PlayerFramework.Utilities.createElement(this._volumeMuteContainerElement, ["div", { "class": "pf-volume-slider-control", "style": "display: none;", "data-win-control": "PlayerFramework.UI.Slider", "data-win-bind": "winControl.value: volume; winControl.label: volumeLabel; winControl.tooltip: volumeTooltip; winControl.disabled: isVolumeMuteDisabled; winControl.onupdate: onVolumeMuteSliderUpdate PlayerFramework.Binding.setEventHandler; onfocusin: onVolumeMuteSliderFocusIn PlayerFramework.Binding.setEventHandler; onfocusout: onVolumeMuteSliderFocusOut PlayerFramework.Binding.setEventHandler; onmspointerover: onVolumeMuteSliderMSPointerOver PlayerFramework.Binding.setEventHandler; onmspointerout: onVolumeMuteSliderMSPointerOut PlayerFramework.Binding.setEventHandler; ontransitionend: onVolumeMuteSliderTransitionEnd PlayerFramework.Binding.setTransitionEndEventHandler;", "data-win-options": "{ altStep1: 5, vertical: true, hidden: true }" }]);

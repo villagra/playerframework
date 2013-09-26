@@ -1156,14 +1156,6 @@
             this._mediaPlayer._seekToLive();
         },
 
-        setCurrentCaptionTrack: function (track) {
-            this._mediaPlayer.currentCaptionTrack = track;
-        },
-
-        setCurrentAudioTrack: function (track) {
-            this._mediaPlayer.currentAudioTrack = track;
-        },
-
         setVolume: function (volume) {
             this._mediaPlayer.muted = false;
             this._mediaPlayer.volume = volume;
@@ -1193,6 +1185,14 @@
             this._mediaPlayer.msZoom = !this._mediaPlayer.msZoom;
         },
 
+        captions: function () {
+            this._mediaPlayer.captions();
+        },
+
+        audio: function () {
+            this._mediaPlayer.audio();
+        },
+
         onTimelineSliderStart: function (e) {
             var time = this._getMediaPlayerTime(e.target.winControl.value);
             this.startScrub(time);
@@ -1214,71 +1214,7 @@
             var time = this._getMediaPlayerTime(markerTime);
             this._mediaPlayer._seek(time);
         },
-
-        onCaptionsMenuBeforeShow: function (e) {
-            var flyout = e.target.winControl;
-            var tracks = this._mediaPlayer.captionTracks;
-            var currentTrack = this._mediaPlayer.currentCaptionTrack;
-            var commands = [];
-
-            if (currentTrack) {
-                var command = new WinJS.UI.MenuCommand();
-                command.flyout = flyout;
-                command.label = PlayerFramework.Utilities.getResourceString("CaptionsCommandLabel_Off");
-                command.onclick = this._onCaptionsMenuCommandClick.bind(this, null);
-                commands.push(command);
-            }
-
-            if (tracks) {
-                for (var i = 0; i < tracks.length; i++) {
-                    var track = tracks[i];
-                    var label = track.label;
-
-                    if (!label) {
-                        label = PlayerFramework.Utilities.getResourceString("CaptionTrackLabel_Untitled");
-                    }
-
-                    var command = new WinJS.UI.MenuCommand();
-                    command.flyout = flyout;
-                    command.label = (track === currentTrack) ? PlayerFramework.Utilities.formatResourceString("CaptionsCommandLabel_Selected", label) : PlayerFramework.Utilities.formatResourceString("CaptionsCommandLabel_Unselected", label);
-                    command.onclick = this._onCaptionsMenuCommandClick.bind(this, track);
-                    commands.push(command);
-                }
-            }
-
-            flyout.commands = commands;
-        },
-
-        onAudioMenuBeforeShow: function (e) {
-            var flyout = e.target.winControl;
-            var tracks = this._mediaPlayer.audioTracks;
-            var currentTrack = this._mediaPlayer.currentAudioTrack;
-            var commands = [];
-
-            if (tracks) {
-                for (var i = 0; i < tracks.length; i++) {
-                    var track = tracks[i];
-                    var label = track.label;
-
-                    if (!label && track.language) {
-                        label = new Windows.Globalization.Language(track.language).displayName;
-                    }
-
-                    if (!label) {
-                        label = PlayerFramework.Utilities.getResourceString("AudioTrackLabel_Untitled");
-                    }
-
-                    var command = new WinJS.UI.MenuCommand();
-                    command.flyout = flyout;
-                    command.label = (track === currentTrack) ? PlayerFramework.Utilities.formatResourceString("AudioCommandLabel_Selected", label) : PlayerFramework.Utilities.formatResourceString("AudioCommandLabel_Unselected", label);
-                    command.onclick = this._onAudioMenuCommandClick.bind(this, track);
-                    commands.push(command);
-                }
-            }
-
-            flyout.commands = commands;
-        },
-
+        
         onVolumeSliderUpdate: function (e) {
             var volume = this._getMediaPlayerVolume(e.target.winControl.value);
             this.setVolume(volume);
@@ -1346,16 +1282,6 @@
         },
 
         // Private Methods
-        _onCaptionsMenuCommandClick: function (track, e) {
-            window.setImmediate(this.setCurrentCaptionTrack.bind(this, track));
-            e.target.winControl.flyout.hide();
-        },
-
-        _onAudioMenuCommandClick: function (track, e) {
-            window.setImmediate(this.setCurrentAudioTrack.bind(this, track));
-            e.target.winControl.flyout.hide();
-        },
-
         _showVolumeMuteSlider: function (slider) {
             slider.style.display = "";
             slider.winControl.hidden = false;

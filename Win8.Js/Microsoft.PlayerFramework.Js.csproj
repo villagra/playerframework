@@ -117,6 +117,8 @@
     <Content Include="images\thumb-dark.png" />
     <Content Include="images\thumb-light.png" />
     <Content Include="js\DynamicTextTrack.js" />
+    <Content Include="js\plugins\AudioSelectorPlugin.js" />
+    <Content Include="js\plugins\CaptionSelectorPlugin.js" />
     <Content Include="js\plugins\ChaptersPlugin.js" />
     <Content Include="js\plugins\DisplayRequestPlugin.js" />
     <Content Include="js\plugins\MediaPackPlugin.js" />

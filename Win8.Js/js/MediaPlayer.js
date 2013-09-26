@@ -60,7 +60,9 @@
         "markerreached",
         "stopped",
         "infoinvoked",
-        "moreinvoked"
+        "moreinvoked",
+        "captionsinvoked",
+        "audioinvoked"
     ];
 
     // MediaPlayer Class
@@ -118,6 +120,8 @@
         /// <event name="stopped">Occurs when stop button was pressed or the stop method was invoked.</event>
         /// <event name="infoinvoked">Occurs when info button is pressed or the info method was invoked.</event>
         /// <event name="moreinvoked">Occurs when more button is pressed or the more method was invoked.</event>
+        /// <event name="captionsinvoked">Occurs when closed captions button is pressed or the captions method was invoked.</event>
+        /// <event name="audioinvoked">Occurs when audio track selection button is pressed or the audio method was invoked.</event>
         MediaPlayer: WinJS.Class.define(function (element, options) {
             /// <summary>Creates a new instance of the MediaPlayer class.</summary>
             /// <param name="element" type="HTMLElement" domElement="true">The element that hosts the MediaPlayer control.</param>
@@ -2836,6 +2840,18 @@
                 /// <summary>raises the moreinvoked event typically used to indicate that more options that were unable to fit in the control panel should be presented to the user (usually in the form of a flyout).</summary>
 
                 this.dispatchEvent("moreinvoked");
+            },
+
+            captions: function () {
+                /// <summary>raises the captionsinvoked event used to indicate that closed options should be toggled on/off or that a caption selection dialog should be presented to the user (usually in the form of a flyout).</summary>
+
+                this.dispatchEvent("captionsinvoked");
+            },
+
+            audio: function () {
+                /// <summary>raises the audioinvoked event used to indicate that an audio selection dialog should be presented to the user (usually in the form of a flyout).</summary>
+
+                this.dispatchEvent("audioinvoked");
             },
 
             /************************ Private Methods ************************/
