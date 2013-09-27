@@ -5,6 +5,9 @@ using Windows.UI.Xaml.Media;
 
 namespace Microsoft.PlayerFramework
 {
+    /// <summary>
+    /// Control used to display a thumbnail image (typically while scrubbing)
+    /// </summary>
     public sealed class ThumbnailView : Control
     {
         int currentImageElementIndex = 0;
@@ -12,13 +15,20 @@ namespace Microsoft.PlayerFramework
         readonly Image[] imageElements = new Image[imageElementCount];
         bool isTemplateApplied = false;
 
+        /// <summary>
+        /// Indicates that the thumbnail failed to load.
+        /// </summary>
         public event EventHandler<ThumbnailLoadFailedEventArgs> ThumbnailLoadFailed;
 
+        /// <summary>
+        /// Creates a new instance of ThumbnailView
+        /// </summary>
         public ThumbnailView()
         {
             this.DefaultStyleKey = typeof(ThumbnailView);
         }
 
+        /// <inheritdoc /> 
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -78,7 +88,7 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Gets or sets the pattern of the Uri to use.
+        /// Gets or sets the image of the thumbnail.
         /// </summary>
         public ImageSource ThumbnailImageSource
         {
@@ -87,6 +97,9 @@ namespace Microsoft.PlayerFramework
         }
     }
 
+    /// <summary>
+    /// EventArgs associated with a thumbnail failure.
+    /// </summary>
     public sealed class ThumbnailLoadFailedEventArgs : EventArgs
     {
         internal ThumbnailLoadFailedEventArgs(string errorMessage)
@@ -94,6 +107,9 @@ namespace Microsoft.PlayerFramework
             ErrorMessage = errorMessage;
         }
 
+        /// <summary>
+        /// The error message associated with the failure.
+        /// </summary>
         public string ErrorMessage { get; private set; }
     }
 }

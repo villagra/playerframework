@@ -287,6 +287,7 @@ namespace Microsoft.PlayerFramework
         /// Updates the media source on the player. This is called internally when a new playlist item is selected.
         /// </summary>
         /// <param name="mediaPlayer">The MediaPlayer to load the media source (playlist item) into.</param>
+        /// <param name="oldMediaSource">The old media source (this is usually a PlaylistItem object).</param>
         /// <param name="newMediaSource">The new media source (this is usually a PlaylistItem object).</param>
         public static void UpdateMediaSource(MediaPlayer mediaPlayer, IMediaSource oldMediaSource, IMediaSource newMediaSource)
         {
