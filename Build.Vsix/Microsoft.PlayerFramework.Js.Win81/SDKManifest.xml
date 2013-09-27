@@ -14,5 +14,5 @@
     <File Content="css\PlayerFramework-light.css" />
     <File Content="css\PlayerFramework-Entertainment-dark.css" />
     <File Content="css\PlayerFramework-Entertainment-light.css" />
-    <DependsOn Identity = "Microsoft.WinJS.2.0.Preview, Version=1.0.9431.0"/>
+    <DependsOn Identity = "Microsoft.WinJS.2.0, Version=1.0.9600.16384"/>
 </FileList>

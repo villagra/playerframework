@@ -10,7 +10,7 @@
   MaxOSVersionTested="6.3.0"
   ReferenceManagerEnumeration = "Files">
     <File Content="js\PlayerFramework.Adaptive.js" />
-    <DependsOn Identity = "Microsoft.WinJS.2.0.Preview, Version=1.0.9431.0"/>
+    <DependsOn Identity = "Microsoft.WinJS.2.0, Version=1.0.9600.16384"/>
     <DependsOn Identity = "MMP.PF.Win81.JS.SDK, Version=1.0"/>
     <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
 </FileList>
