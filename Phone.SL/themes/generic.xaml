@@ -1006,7 +1006,13 @@
                                 </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="PlayerStates">
-                                <VisualState x:Name="Unloaded"/>
+                                <VisualState x:Name="Unloaded">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="PosterContainer">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Pending">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="LoaderViewContainer">
