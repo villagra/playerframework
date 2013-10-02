@@ -23,11 +23,18 @@
             throw invalidMediaPlayer;
         }
 
+        this._state = PlayerFramework.ViewModelState.unloaded;
         this._mediaPlayer = mediaPlayer;
         this._observableMediaPlayer = WinJS.Binding.as(mediaPlayer);
         this._observableViewModel = WinJS.Binding.as(this);
     }, {
         // Public Properties
+        state: {
+            get: function () {
+                return this._state;
+            }
+        },
+
         startTime: {
             get: function () {
                 return this._getViewModelTime(this._mediaPlayer.startTime);
@@ -939,9 +946,15 @@
                 return this._mediaPlayer.mediaMetadata;
             }
         },
-        
+
         // Public Methods
         initialize: function () {
+            // media player events
+            this._bindEvent("pause", this._mediaPlayer, this._onMediaPlayerPause);
+            this._bindEvent("playing", this._mediaPlayer, this._onMediaPlayerPlaying);
+            this._bindEvent("emptied", this._mediaPlayer, this._onMediaPlayerEmptied);
+            this._bindEvent("loadstart", this._mediaPlayer, this._onMediaPlayerLoadStart);
+
             // media player value properties
             this._bindProperty("startTime", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "totalTime"]);
             this._bindProperty("isStartTimeOffset", this._observableMediaPlayer, this._notifyProperties, ["startTime", "endTime", "currentTime", "elapsedTime", "remainingTime", "maxTime"]);
@@ -1161,7 +1174,7 @@
             this._mediaPlayer.volume = volume;
         },
 
-        toggleMuted: function() {
+        toggleMuted: function () {
             this._mediaPlayer.muted = !this._mediaPlayer.muted;
         },
 
@@ -1214,7 +1227,7 @@
             var time = this._getMediaPlayerTime(markerTime);
             this._mediaPlayer._seek(time);
         },
-        
+
         onVolumeSliderUpdate: function (e) {
             var volume = this._getMediaPlayerVolume(e.target.winControl.value);
             this.setVolume(volume);
@@ -1349,7 +1362,7 @@
                 this._observableViewModel.notify(propertyName, this[propertyName]);
             }
         },
-        
+
         _onSkipPrevious: function (marker) {
             if (marker) {
                 var markerTime = PlayerFramework.Utilities.convertSecondsToTicks(marker.time);
@@ -1376,7 +1389,27 @@
                     }
                 }
             }
-        }
+        },
+
+        _onMediaPlayerPause: function (e) {
+            this._state = PlayerFramework.ViewModelState.paused;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onMediaPlayerPlaying: function (e) {
+            this._state = PlayerFramework.ViewModelState.playing;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onMediaPlayerEmptied: function (e) {
+            this._state = PlayerFramework.ViewModelState.unloaded;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onMediaPlayerLoadStart: function (e) {
+            this._state = PlayerFramework.ViewModelState.loading;
+            this.dispatchEvent("statechanged");
+        },
     });
 
     // InteractiveViewModel Mixins

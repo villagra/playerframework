@@ -99,6 +99,11 @@
             this._bindEvent("adremainingtimechange", this._adPlayer, this._notifyProperties, ["currentTime", "elapsedTime", "remainingTime"]);
             this._bindEvent("adskippablestatechange", this._adPlayer, this._notifyProperties, ["isSkipNextDisabled"]);
 
+            this._bindEvent("adpaused", this._adPlayer, this._onAdPlayerPaused);
+            this._bindEvent("adplaying", this._adPlayer, this._onAdPlayerPlaying);
+            this._bindEvent("adstopped", this._adPlayer, this._onAdPlayerStopped);
+            this._bindEvent("adloaded", this._adPlayer, this._onAdPlayerLoaded);
+
             // media player value properties
             this._bindProperty("volume", this._observableMediaPlayer, this._notifyProperties, ["volume"]);
             this._bindProperty("muted", this._observableMediaPlayer, this._notifyProperties, ["volumeMuteIcon", "volumeMuteLabel", "volumeMuteTooltip", "volumeIcon", "muteIcon", "muteLabel", "muteTooltip"]);
@@ -151,6 +156,26 @@
                 this._adPlayer.skipAd();
             }
         },
+
+        _onAdPlayerPaused: function (e) {
+            this._state = PlayerFramework.ViewModelState.paused;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onAdPlayerPlaying: function (e) {
+            this._state = PlayerFramework.ViewModelState.playing;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onAdPlayerStopped: function (e) {
+            this._state = PlayerFramework.ViewModelState.unloaded;
+            this.dispatchEvent("statechanged");
+        },
+
+        _onAdPlayerLoaded: function (e) {
+            this._state = PlayerFramework.ViewModelState.loading;
+            this.dispatchEvent("statechanged");
+        }
     });
 
     // VpaidLinearAdViewModel Exports

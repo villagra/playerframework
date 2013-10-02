@@ -172,6 +172,17 @@
         error: 3
     };
 
+    var ViewModelState = {
+        /// <field>No media is loaded.
+        unloaded: 0,
+        /// <field>The media is loading.</field>
+        loading: 1,
+        /// <field>The media is paused.</field>
+        paused: 2,
+        /// <field>The media is playing.</field>
+        playing: 3
+    };
+
     // Functions
     function formatTime(value) {
         /// <summary>Formats the specified time value (in seconds) as a string.</summary>
@@ -1082,7 +1093,8 @@
         InteractionType: InteractionType,
         TextTrackMode: TextTrackMode,
         TextTrackDisplayMode: TextTrackDisplayMode,
-        TextTrackReadyState: TextTrackReadyState
+        TextTrackReadyState: TextTrackReadyState,
+        ViewModelState: ViewModelState
     });
 
     WinJS.Namespace.define("PlayerFramework.Utilities", {
