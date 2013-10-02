@@ -1924,8 +1924,10 @@
                             this._shimElement.style.display = "none";
                         }
 
-                        if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
-                            Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
+                        if (isWinJS1) {
+                            if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
+                                Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
+                            }
                         }
 
                         this._isFullScreen = value;
