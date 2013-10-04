@@ -123,11 +123,11 @@
     <Content Include="js\plugins\CaptionSelectorPlugin.js" />
     <Content Include="js\plugins\ChaptersPlugin.js" />
     <Content Include="js\plugins\DisplayRequestPlugin.js" />
-    <Content Include="js\plugins\MediaControlPlugin.js" />
     <Content Include="js\plugins\MediaPackPlugin.js" />
     <Content Include="js\plugins\PlayTimeTrackingPlugin.js" />
     <Content Include="js\plugins\PluginBase.js" />
     <Content Include="js\plugins\PositionTrackingPlugin.js" />
+    <Content Include="js\plugins\SystemTransportControlsPlugin.js" />
     <Content Include="js\plugins\TrackingPluginBase.js" />
     <Content Include="js\ui\ControlPanel.js" />
     <Content Include="js\ui\Indicator.js" />
