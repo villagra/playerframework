@@ -140,6 +140,8 @@ namespace Microsoft.PlayerFramework.Advertising
 #elif SILVERLIGHT
             WebView.LoadCompleted += WebView_LoadCompleted;
             // TODO: WebView.NavigationFailed += WebView_NavigationFailed;
+#elif WINDOWS81
+            WebView.NavigationCompleted += WebView_NavigationCompleted;
 #else
             WebView.LoadCompleted += WebView_LoadCompleted;
             WebView.NavigationFailed += WebView_NavigationFailed;
@@ -147,6 +149,20 @@ namespace Microsoft.PlayerFramework.Advertising
             State = AdState.Loading;
             adSkippableState = false;
         }
+
+#if WINDOWS81
+        void WebView_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs e)
+        {
+            if (e.IsSuccess)
+            {
+                OnNavigationSuccess();
+            }
+            else
+            {
+                OnNavigationFailed(e.WebErrorStatus.ToString());
+            }
+        }
+#else
 
 #if WINDOWS_PHONE
         void WebView_NavigationFailed(object sender, System.Windows.Navigation.NavigationFailedEventArgs e)
@@ -156,20 +172,14 @@ namespace Microsoft.PlayerFramework.Advertising
         void WebView_NavigationFailed(object sender, WebViewNavigationFailedEventArgs e)
 #endif
         {
-            if (State != AdState.Complete && State != AdState.Failed)
-            {
-                State = AdState.Failed;
-                Teardown();
-                var args = new VpaidMessageEventArgs();
 #if WINDOWS_PHONE
-                args.Message = e.Exception.ToString();
+            var error = e.Exception.ToString();
 #elif SILVERLIGHT
-                args.Message = "Unknown error";
+            var error = "Unknown error";
 #else
-                args.Message = e.WebErrorStatus.ToString();
+            var error = e.WebErrorStatus.ToString();
 #endif
-                if (AdError != null) AdError(this, args);
-            }
+            OnNavigationFailed(error);
         }
 
 #if WINDOWS_PHONE
@@ -179,6 +189,24 @@ namespace Microsoft.PlayerFramework.Advertising
 #else
         void WebView_LoadCompleted(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
 #endif
+        {
+            OnNavigationSuccess();
+        }
+#endif
+
+        void OnNavigationFailed(string error)
+        {
+            if (State != AdState.Complete && State != AdState.Failed)
+            {
+                State = AdState.Failed;
+                Teardown();
+                var args = new VpaidMessageEventArgs();
+                args.Message = error;
+                if (AdError != null) AdError(this, args);
+            }
+        }
+
+        void OnNavigationSuccess()
         {
             State = AdState.Loaded;
             if (AdLoaded != null) AdLoaded(this, EventArgs.Empty);
@@ -318,6 +346,8 @@ namespace Microsoft.PlayerFramework.Advertising
 #elif SILVERLIGHT
             WebView.LoadCompleted -= WebView_LoadCompleted;
             // TODO: WebView.NavigationFailed -= WebView_NavigationFailed;
+#elif WINDOWS81
+            WebView.NavigationCompleted -= WebView_NavigationCompleted;
 #else
             WebView.LoadCompleted -= WebView_LoadCompleted;
             WebView.NavigationFailed -= WebView_NavigationFailed;
