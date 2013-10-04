@@ -32,6 +32,11 @@
         state: {
             get: function () {
                 return this._state;
+            },
+            set: function (value) {
+                var oldValue = this._state;
+                this._state = value;
+                this._observableViewModel.notify("state", this._state, oldValue);
             }
         },
 
@@ -1392,23 +1397,19 @@
         },
 
         _onMediaPlayerPause: function (e) {
-            this._state = PlayerFramework.ViewModelState.paused;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.paused;
         },
 
         _onMediaPlayerPlaying: function (e) {
-            this._state = PlayerFramework.ViewModelState.playing;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.playing;
         },
 
         _onMediaPlayerEmptied: function (e) {
-            this._state = PlayerFramework.ViewModelState.unloaded;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.unloaded;
         },
 
         _onMediaPlayerLoadStart: function (e) {
-            this._state = PlayerFramework.ViewModelState.loading;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.loading;
         },
     });
 

@@ -18,6 +18,12 @@
         this._adPlayer = adPlayer;
 
         PlayerFramework.InteractiveViewModel.call(this, mediaPlayer);
+
+        if (mediaPlayer.paused) {
+            this._state = PlayerFramework.ViewModelState.paused;
+        } else {
+            this._state = PlayerFramework.ViewModelState.playing;
+        }
     }, {
         // Public Methods
         playPause: function (e) {

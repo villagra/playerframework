@@ -18,6 +18,8 @@
         this._adPlayer = adPlayer;
 
         PlayerFramework.InteractiveViewModel.call(this, mediaPlayer);
+
+        this._state = PlayerFramework.ViewModelState.loading;
     }, {
         // Public Properties
         startTime: {
@@ -158,26 +160,22 @@
         },
 
         _onAdPlayerPaused: function (e) {
-            this._state = PlayerFramework.ViewModelState.paused;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.paused;
         },
 
         _onAdPlayerPlaying: function (e) {
-            this._state = PlayerFramework.ViewModelState.playing;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.playing;
         },
 
         _onAdPlayerStopped: function (e) {
-            this._state = PlayerFramework.ViewModelState.unloaded;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.unloaded;
         },
 
         _onAdPlayerLoaded: function (e) {
-            this._state = PlayerFramework.ViewModelState.loading;
-            this.dispatchEvent("statechanged");
+            this.state = PlayerFramework.ViewModelState.loading;
         }
     });
-
+    
     // VpaidLinearAdViewModel Exports
     WinJS.Namespace.define("PlayerFramework.Advertising", {
         VpaidLinearAdViewModel: VpaidLinearAdViewModel
