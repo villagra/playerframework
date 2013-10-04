@@ -86,7 +86,11 @@ namespace Microsoft.PlayerFramework
 #if SILVERLIGHT
                 new PosterPlugin(),
 #elif NETFX_CORE
+#if WINDOWS81
+                new SystemTransportControlsPlugin(),
+#else
                 new MediaControlPlugin(),
+#endif
                 new DisplayRequestPlugin(),
 #endif
             });
