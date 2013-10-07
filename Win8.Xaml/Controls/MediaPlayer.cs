@@ -5276,6 +5276,8 @@ namespace Microsoft.PlayerFramework
             SetValue(AudioStreamCountProperty, DefaultAudioStreamCount);
             // do not actually push value into MediaElement or it will throw since media is closed.
             SetValueWithoutCallback(AudioStreamIndexProperty, DefaultAudioStreamIndex);
+            AvailableAudioStreams.Clear();
+
             SetValue(CanPauseProperty, DefaultCanPause);
             SetValue(CanSeekProperty, DefaultCanSeek);
             SetValue(StartTimeProperty, TimeSpan.Zero);
