@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<FileList
-  Identity = "Microsoft.PlayerFramework.Analytics.AudienceInsight, Version=1.0"
-  DisplayName = "Microsoft Player Framework Analytics Audience Insight Adapter"
-  MinVSVersion = "11.0"
-  MinToolsVersion = "4.0"
-  AppliesTo = "WindowsAppContainer"
-  ReferenceManagerEnumeration = "Files">
-</FileList>
