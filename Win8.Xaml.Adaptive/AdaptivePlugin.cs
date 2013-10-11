@@ -9,10 +9,6 @@ using Windows.Graphics.Display;
 
 namespace Microsoft.PlayerFramework.Adaptive
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// Represents a plugin that can be used to automatically intialize the smooth streaming SDK.
     /// </summary>

@@ -13,10 +13,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// A plugin that is capable of downloading a MAST source file, parsing it and using it to schedule when ads should play.
     /// </summary>

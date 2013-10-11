@@ -12,10 +12,6 @@ using Windows.UI.Xaml;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// Provides a default implementation of IAdPlayerFactoryPlugin that is capable of serving linear video ads or nonlinear image ads.
     /// </summary>

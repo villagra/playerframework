@@ -19,10 +19,6 @@ namespace Microsoft.PlayerFramework
     /// A plugin used to show the user that the media is buffering.
     /// </summary>
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Justification = "Correctly named architectural pattern")]
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     public sealed class BufferingPlugin : PluginBase
     {
         BufferingView bufferingView;

@@ -12,10 +12,6 @@ namespace Microsoft.PlayerFramework
     /// <summary>
     /// An plugin responsible for turning MediaElement markers into visual markers that can be seen in the timeline.
     /// </summary>
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     public class ChaptersPlugin : IPlugin
     {
         const string DefaultMarkerType = "NAME";

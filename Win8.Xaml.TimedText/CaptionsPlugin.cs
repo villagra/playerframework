@@ -20,10 +20,6 @@ using Windows.Foundation;
 
 namespace Microsoft.PlayerFramework.TimedText
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// A player framework plugin capable of displaying timed text captions.
     /// </summary>

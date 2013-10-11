@@ -159,9 +159,6 @@
     <Compile Include="Controls\InteractiveViewModelBase.cs" />
     <Compile Include="Controls\MediaPlayer.cs" />
     <Compile Include="Controls\MediaPlayer.TemplateDefinitions.cs" />
-    <Compile Include="Controls\PluginsFactory.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Converters\MulticastConverter.cs" />

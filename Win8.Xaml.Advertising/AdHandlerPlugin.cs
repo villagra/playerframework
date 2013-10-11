@@ -23,10 +23,6 @@ using Windows.System;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// The main player framework plugin to handle ads. Ads can come from various scheduler plugins or be called directly.
     /// </summary>
@@ -237,12 +233,10 @@ namespace Microsoft.PlayerFramework.Advertising
             MediaPlayer.PlayerStateChanged += MediaPlayer_PlayerStateChanged;
             MediaPlayer.MediaClosed += MediaPlayer_MediaClosed;
 
-#if !MEF
             if (AutoLoadAdPlayerFactoryPlugin)
             {
                 MediaPlayer.Plugins.Add(new AdPlayerFactoryPlugin());
             }
-#endif
         }
 
         void IPlugin.Update(IMediaSource mediaSource)

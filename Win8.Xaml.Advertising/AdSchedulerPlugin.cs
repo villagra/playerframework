@@ -16,10 +16,6 @@ using Windows.UI.Xaml.Media;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-#if MEF
-    //[System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    //[System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// The primary plugin used to help schedule ads.
     /// Internally, this plugin calls AdHandlerPlugin when it is time to actually play or preload an ad.

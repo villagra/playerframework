@@ -19,10 +19,6 @@ namespace Microsoft.PlayerFramework
     /// A plugin used to display a UI with a play button on it to let the user choose to load the media.
     /// </summary>
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Justification = "Correctly named architectural pattern")]
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     public sealed class LoaderPlugin : PluginBase
     {
         LoaderView loaderView;

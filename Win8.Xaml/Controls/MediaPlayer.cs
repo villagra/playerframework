@@ -9,10 +9,6 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics.CodeAnalysis;
-#if MEF
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-#endif
 #if SILVERLIGHT
 using System.Windows;
 using System.Windows.Controls;
@@ -59,6 +55,7 @@ namespace Microsoft.PlayerFramework
             cts = new CancellationTokenSource();
             AllowMediaStartingDeferrals = true;
             AutoLoadPlugins = true;
+            InitializeAutoLoadPluginTypes();
 
             SetValueWithoutCallback(SupportedPlaybackRatesProperty, DefaultSupportedPlaybackRates);
             SetValueWithoutCallback(VisualMarkersProperty, new ObservableCollection<VisualMarker>());
@@ -208,11 +205,7 @@ namespace Microsoft.PlayerFramework
 
             if (!pluginsLoaded)
             {
-#if SILVERLIGHT || !MEF
                 InitializePlugins();
-#else
-                await InitializePlugins();
-#endif
                 pluginsLoaded = true;
             }
 
@@ -240,11 +233,7 @@ namespace Microsoft.PlayerFramework
 
         #region Plugins
 
-#if SILVERLIGHT || !MEF
         void InitializePlugins()
-#else
-        async Task InitializePlugins()
-#endif
         {
             // initialize any plugins already in the collection
             var pluginsToLoad = Plugins.ToList();
@@ -259,26 +248,21 @@ namespace Microsoft.PlayerFramework
                 pluginsToLoad = Plugins.Except(loadedPlugins).ToList();
             } while (pluginsToLoad.Any()); // do it again if more plugins were added
 
-            // load more plugins via MEF
+            // load stock plugins
             if (AutoLoadPlugins)
             {
-                var PluginsManager = new PluginsFactory();
-#if SILVERLIGHT || !MEF
-                PluginsManager.ImportPlugins();
-#else
-                await PluginsManager.ImportPlugins();
-#endif
-                if (PluginsManager.Plugins != null)
+                var plugins = GetAutoloadedPlugins();
+                if (plugins.Any())
                 {
                     // we want to load the plugins ourselves instead of in this event. This allows us to add them all before loading the first one.
                     Plugins.CollectionChanged -= Plugins_CollectionChanged;
                     try
                     {
-                        foreach (var plugin in PluginsManager.Plugins)
+                        foreach (var plugin in plugins)
                         {
                             Plugins.Add(plugin);
                         }
-                        foreach (var plugin in PluginsManager.Plugins)
+                        foreach (var plugin in plugins)
                         {
                             plugin.MediaPlayer = this;
                             plugin.Load();
@@ -294,9 +278,49 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Gets or sets whether plugins should be automatically discovered. MEF (Managed Extensibility Framework) is used to discover plugins.
+        /// Gets the list of stock plugin types to load (if AutoLoadPlugins = true). 
+        /// You can remove types from this list if you do not want specific ones to be loaded. This is particularily useful if you want ot add the plugin manually in Xaml in order to set default properties on that plugin.
+        /// </summary>
+        public IList<Type> AutoLoadPluginTypes { get; private set; }
+
+        private IList<IPlugin> GetAutoloadedPlugins()
+        {
+            var result = new List<IPlugin>();
+            foreach (var t in AutoLoadPluginTypes)
+            {
+                var plugin = Activator.CreateInstance(t) as IPlugin;
+                if (plugin != null) result.Add(plugin);
+            }
+            return result;
+        }
+
+        private void InitializeAutoLoadPluginTypes()
+        {
+            AutoLoadPluginTypes = new List<Type>();
+            AutoLoadPluginTypes.Add(typeof(BufferingPlugin));
+            AutoLoadPluginTypes.Add(typeof(CaptionSelectorPlugin));
+            AutoLoadPluginTypes.Add(typeof(AudioSelectionPlugin));
+            AutoLoadPluginTypes.Add(typeof(ChaptersPlugin));
+            AutoLoadPluginTypes.Add(typeof(ErrorPlugin));
+            AutoLoadPluginTypes.Add(typeof(LoaderPlugin));
+
+#if SILVERLIGHT
+            AutoLoadPluginTypes.Add(typeof(PosterPlugin));
+#elif NETFX_CORE
+#if WINDOWS81
+            AutoLoadPluginTypes.Add(typeof(SystemTransportControlsPlugin));
+#else
+            AutoLoadPluginTypes.Add(typeof(MediaControlPlugin));
+#endif
+            AutoLoadPluginTypes.Add(typeof(DisplayRequestPlugin));
+#endif
+        }
+
+
+        /// <summary>
+        /// Gets or sets whether stock plugins should be automatically loaded. Default is true.
         /// Set to false to optimize if you are not using any plugins or if you want to manually set which plugins are connected.
-        /// You can programmatically connect plugins by adding to the Plugins collection. Default is true.
+        /// Or, you can programmatically add plugins by adding to the Plugins collection or remove stock plugins by modifying the AutoLoadPluginTypes collection.
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", Justification = "Correctly named architectural pattern")]
         [Category(Categories.Advanced)]

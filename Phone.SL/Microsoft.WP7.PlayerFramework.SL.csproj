@@ -144,9 +144,6 @@
     <Compile Include="..\Win8.xaml\controls\MediaPlayer.TemplateDefinitions.cs">
       <Link>Controls\MediaPlayer.TemplateDefinitions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml\controls\PluginsFactory.cs">
-      <Link>Controls\PluginsFactory.cs</Link>
-    </Compile>
     <Compile Include="..\Win8.xaml\converters\BoolToVisibilityConverter.cs">
       <Link>Converters\BoolToVisibilityConverter.cs</Link>
     </Compile>

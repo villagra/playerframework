@@ -17,10 +17,6 @@ using Windows.UI.Xaml.Media;
 
 namespace Microsoft.PlayerFramework.CaptionMarkers
 {
-#if MEF
-    [System.ComponentModel.Composition.PartCreationPolicy(System.ComponentModel.Composition.CreationPolicy.NonShared)]
-    [System.ComponentModel.Composition.Export(typeof(IPlugin))]
-#endif
     /// <summary>
     /// Represents a plugin for the player framework that can show closed captions
     /// </summary>
