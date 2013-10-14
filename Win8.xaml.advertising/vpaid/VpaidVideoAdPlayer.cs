@@ -26,6 +26,7 @@ namespace Microsoft.PlayerFramework.Advertising
     public class VpaidVideoAdPlayer : AdHost, IVpaid2
     {
         private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(250) };
+        private bool adCompleted;
 
         protected MediaElement mediaElement;
 #if WINDOWS_PHONE
@@ -174,6 +175,7 @@ namespace Microsoft.PlayerFramework.Advertising
                 }
             }
 
+            adCompleted = false;
             // create markers for the quartile events
             mediaElement.Markers.Add(new TimelineMarker() { Type = Marker_FirstQuartile, Time = TimeSpan.FromSeconds(AdDuration.TotalSeconds * .25) });
             mediaElement.Markers.Add(new TimelineMarker() { Type = Marker_Midpoint, Time = TimeSpan.FromSeconds(AdDuration.TotalSeconds * .5) });
@@ -251,7 +253,11 @@ namespace Microsoft.PlayerFramework.Advertising
                     mediaElement.Markers.Remove(marker);
                     break;
                 case Marker_DurationReached:
-                    if (AdVideoComplete != null) AdVideoComplete(this, EventArgs.Empty);
+                    if (!adCompleted)
+                    {
+                        adCompleted = true;
+                        if (AdVideoComplete != null) AdVideoComplete(this, EventArgs.Empty);
+                    }
                     mediaElement.Markers.Remove(marker);
                     StopAd();
                     break;
@@ -297,7 +303,11 @@ namespace Microsoft.PlayerFramework.Advertising
 
         void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            if (AdVideoComplete != null) AdVideoComplete(this, EventArgs.Empty);
+            if (!adCompleted)
+            {
+                adCompleted = true;
+                if (AdVideoComplete != null) AdVideoComplete(this, EventArgs.Empty);
+            }
             OnAdEnding();
         }
 
