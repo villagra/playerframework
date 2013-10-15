@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.PlayerFramework.Samples.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,20 +20,24 @@ namespace Microsoft.PlayerFramework.Samples
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EntertainmentAppPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
+    public sealed partial class EntertainmentAppPage : Page
     {
+        private NavigationHelper navigationHelper;
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
         public EntertainmentAppPage()
         {
             this.InitializeComponent();
+            this.navigationHelper = new NavigationHelper(this);
             UpdateViewModel(player.InteractiveViewModel);
             player.InteractiveViewModelChanged += player_InteractiveViewModelChanged;
-
-            ReplayButton.Loaded += StartLayoutUpdates;
-            ReplayButton.Unloaded += StopLayoutUpdates;
-            CaptionSelectionButton.Loaded += StartLayoutUpdates;
-            CaptionSelectionButton.Unloaded += StopLayoutUpdates;
-            AudioSelectionButton.Loaded += StartLayoutUpdates;
-            AudioSelectionButton.Unloaded += StopLayoutUpdates;
 
             // register the control panel so it participates in view state changes
             player.Initialized += player_Initialized;
@@ -40,9 +45,6 @@ namespace Microsoft.PlayerFramework.Samples
 
         void player_Initialized(object sender, RoutedEventArgs e)
         {
-            player.ControlPanel.Loaded += StartLayoutUpdates;
-            player.ControlPanel.Unloaded += StopLayoutUpdates;
-
             var audioSelectionPlugin = player.Plugins.OfType<AudioSelectionPlugin>().FirstOrDefault();
             audioSelectionPlugin.AudioSelectionViewStyle = new Style(typeof(AudioSelectionView));
             audioSelectionPlugin.AudioSelectionViewStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(0, 0, 0, 90)));
@@ -64,11 +66,15 @@ namespace Microsoft.PlayerFramework.Samples
             AudioSelectionButton.ViewModel = vm;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            backButton.Command = this.navigationHelper.GoBackCommand;
+        }
+
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             player.Initialized -= player_Initialized;
-            player.ControlPanel.Loaded -= StartLayoutUpdates;
-            player.ControlPanel.Unloaded -= StopLayoutUpdates;
             player.Dispose();
             base.OnNavigatedFrom(e);
         }

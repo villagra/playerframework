@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.PlayerFramework.Samples.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,8 +24,18 @@ namespace Microsoft.PlayerFramework.Samples
     /// <summary>
     /// WARNING: you must set your Build Configuration to AnyCPU to play this demo.
     /// </summary>
-    public sealed partial class PlayReadyPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
+    public sealed partial class PlayReadyPage : Page
     {
+        private NavigationHelper navigationHelper;
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
         const string LAURL = "http://playready.directtaps.net/win/rightsmanager.asmx";
 
         MediaProtectionServiceCompletion _serviceCompletionNotifier = null;
@@ -40,6 +51,7 @@ namespace Microsoft.PlayerFramework.Samples
         public PlayReadyPage()
         {
             this.InitializeComponent();
+            this.navigationHelper = new NavigationHelper(this);
 
             var protectionManager = new MediaProtectionManager();
             protectionManager.ComponentLoadFailed += ProtectionManager_ComponentLoadFailed;
@@ -78,6 +90,12 @@ namespace Microsoft.PlayerFramework.Samples
         void HandleServiceRequest_Finished(bool bResult)
         {
             _serviceCompletionNotifier.Complete(bResult);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

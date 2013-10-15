@@ -1,5 +1,3 @@
-﻿using Microsoft.PlayerFramework.Samples.Common;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.PlayerFramework.Samples.Common;
 
 // The Grid App template is documented at http://go.microsoft.com/fwlink/?LinkId=234226
 
@@ -32,23 +31,24 @@ namespace Microsoft.PlayerFramework.Samples
         public App()
         {
             this.InitializeComponent();
-            //Application.Current.RequestedTheme = ApplicationTheme.Light;
             this.Suspending += OnSuspending;
-        }
-
-        static App()
-        {
-            SuspensionManager.KnownTypes.Add(typeof(MediaPlayerState));
         }
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used when the application is launched to open a specific file, to display
-        /// search results, and so forth.
+        /// will be used such as when the application is launched to open a specific file.
         /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs args)
+        /// <param name="e">Details about the launch request and process.</param>
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                this.DebugSettings.EnableFrameRateCounter = true;
+            }
+#endif
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -60,8 +60,10 @@ namespace Microsoft.PlayerFramework.Samples
                 rootFrame = new Frame();
                 //Associate the frame with a SuspensionManager key                                
                 SuspensionManager.RegisterFrame(rootFrame, "AppFrame");
+                // Set the default language
+                rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
 
-                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     // Restore the saved session state only when appropriate
                     try
@@ -83,7 +85,7 @@ namespace Microsoft.PlayerFramework.Samples
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), "AllGroups"))
+                if (!rootFrame.Navigate(typeof(MainPage)))
                 {
                     throw new Exception("Failed to create initial page");
                 }

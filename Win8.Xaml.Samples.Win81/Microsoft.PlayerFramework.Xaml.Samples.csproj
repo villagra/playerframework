@@ -161,15 +161,14 @@
     <Compile Include="Captions\PlainTextPage.xaml.cs">
       <DependentUpon>PlainTextPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Common\BooleanNegationConverter.cs" />
-    <Compile Include="Common\LayoutAwarePage.cs" />
-    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="DataModel\SampleData.cs" />
     <Compile Include="Extensions\MediaPlayerExtensions.cs" />
     <Compile Include="PlayReadyPage.xaml.cs">
       <DependentUpon>PlayReadyPage.xaml</DependentUpon>
@@ -306,10 +305,6 @@
     <Page Include="Captions\PlainTextPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Common\StandardStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="DarkEntertainmentTheme.xaml">
       <Generator>MSBuild:Compile</Generator>

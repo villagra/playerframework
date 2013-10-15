@@ -1,4 +1,5 @@
-﻿<common:LayoutAwarePage
+<Page
+    x:Name="pageRoot"
     x:Class="Microsoft.PlayerFramework.Samples.SuspendResumePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,7 +11,7 @@
     NavigationCacheMode="Disabled"
     mc:Ignorable="d">
 
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!--<mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4"/>-->
 
 
@@ -27,7 +28,7 @@
     </Grid>
     <Page.TopAppBar>
         <AppBar>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <AppBarButton x:Name="backButton" Icon="Back"/>
         </AppBar>
     </Page.TopAppBar>
-</common:LayoutAwarePage>
+</Page>

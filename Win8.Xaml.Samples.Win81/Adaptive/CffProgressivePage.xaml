@@ -1,4 +1,5 @@
-﻿<common:LayoutAwarePage
+<Page
+    x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.CffProgressivePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,7 +10,7 @@
     xmlns:mmppf="using:Microsoft.PlayerFramework"
     mc:Ignorable="d">
 
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer 
             x:Name="player" 
             IsResolutionIndicatorVisible="True"
@@ -18,7 +19,7 @@
     </Grid>
     <Page.TopAppBar>
         <AppBar>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <AppBarButton x:Name="backButton" Icon="Back"/>
         </AppBar>
     </Page.TopAppBar>
-</common:LayoutAwarePage>
+</Page>

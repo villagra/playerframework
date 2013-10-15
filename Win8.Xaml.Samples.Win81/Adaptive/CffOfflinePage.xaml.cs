@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.PlayerFramework.Samples.Common;
 using Microsoft.PlayerFramework.Adaptive;
 using Windows.Storage.Pickers;
 using Microsoft.PlayerFramework.TimedText;
@@ -22,13 +23,24 @@ namespace Microsoft.PlayerFramework.Samples
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CffOfflinePage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
+    public sealed partial class CffOfflinePage : Page
     {
+        private NavigationHelper navigationHelper;
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
         AdaptivePlugin adaptivePlugin;
 
         public CffOfflinePage()
         {
             this.InitializeComponent();
+            this.navigationHelper = new NavigationHelper(this);
             adaptivePlugin = new AdaptivePlugin();
             player.Plugins.Add(adaptivePlugin);
 
@@ -49,6 +61,12 @@ namespace Microsoft.PlayerFramework.Samples
                 adaptivePlugin.DownloaderPlugin = new Microsoft.AdaptiveStreaming.Dash.CffOfflineDownloaderPlugin(file);
                 player.Source = new Uri(string.Format("ms-sstr://local/{0}", file.Name)); // create a dummy url, this can actually be anything.
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

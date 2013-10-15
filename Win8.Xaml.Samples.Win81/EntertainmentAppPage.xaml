@@ -1,4 +1,5 @@
-﻿<common:LayoutAwarePage
+<Page
+    x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.EntertainmentAppPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -15,6 +16,119 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/EntertainmentTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="AppBarButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource AppBarItemForegroundThemeBrush}"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="AutomationProperties.ItemType" Value="App Bar Button"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Width="100" Background="Transparent">
+                                <StackPanel VerticalAlignment="Top" Margin="0,14,0,13">
+                                    <Grid Width="40" Height="40" Margin="0,0,0,5" HorizontalAlignment="Center">
+                                        <TextBlock x:Name="BackgroundGlyph" Text="&#xE0A8;" FontFamily="Segoe UI Symbol" FontSize="53.333" Margin="-4,-19,0,0" Foreground="{StaticResource AppBarItemBackgroundThemeBrush}"/>
+                                        <TextBlock x:Name="OutlineGlyph" Text="&#xE0A7;" FontFamily="Segoe UI Symbol" FontSize="53.333" Margin="-4,-19,0,0"/>
+                                        <ContentPresenter x:Name="Content" HorizontalAlignment="Center" Margin="-1,-1,0,0" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <TextBlock
+                                x:Name="TextLabel"
+                                Text="{TemplateBinding AutomationProperties.Name}"
+                                Margin="0,0,2,0"
+                                Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
+                                FontSize="12"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                TextAlignment="Center"
+                                Width="88"
+                                MaxHeight="32"
+                                TextTrimming="WordEllipsis"/>
+                                </StackPanel>
+                                <Rectangle
+                                x:Name="FocusVisualWhite"
+                                IsHitTestVisible="False"
+                                Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}"
+                                StrokeEndLineCap="Square"
+                                StrokeDashArray="1,1"
+                                Opacity="0"
+                                StrokeDashOffset="1.5"/>
+                                <Rectangle
+                                x:Name="FocusVisualBlack"
+                                IsHitTestVisible="False"
+                                Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}"
+                                StrokeEndLineCap="Square"
+                                StrokeDashArray="1,1"
+                                Opacity="0"
+                                StrokeDashOffset="0.5"/>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemPointerOverBackgroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemPointerOverForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                            Storyboard.TargetName="OutlineGlyph"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0"/>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackgroundGlyph" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemPressedForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="OutlineGlyph" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextLabel" Storyboard.TargetProperty="Foreground">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppBarItemDisabledForegroundThemeBrush}"/>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="FocusStates">
+                                        <VisualState x:Name="Focused">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                Storyboard.TargetName="FocusVisualWhite"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="0"/>
+                                                <DoubleAnimation
+                                                Storyboard.TargetName="FocusVisualBlack"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="0"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Unfocused" />
+                                        <VisualState x:Name="PointerFocused" />
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <mmppf:PlaylistPlugin x:Key="PlaylistPlugin">
                 <mmppf:PlaylistPlugin.Playlist>
@@ -46,10 +160,10 @@
             <mmppf:PlaylistCommands x:Key="PlaylistCommands" PlaylistPlugin="{StaticResource PlaylistPlugin}"/>
 
         </ResourceDictionary>
-        
+
     </Page.Resources>
 
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Grid.Row="1" IsSkipPreviousVisible="True" IsSkipNextVisible="True">
             <mmppf:MediaPlayer.Plugins>
                 <StaticResource ResourceKey="PlaylistPlugin"/>
@@ -75,7 +189,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <AppBarButton x:Name="backButton" Icon="Back"/>
                 <ComboBox MinWidth="300" Grid.Column="1" FontSize="30" ItemsSource="{Binding Playlist}" SelectedItem="{Binding CurrentPlaylistItem, Mode=TwoWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -98,20 +212,20 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <StackPanel Grid.Column="3" Orientation="Horizontal">
-                    <Button Command="{Binding PreviousPlaylistItemCommand, Source={StaticResource PlaylistCommands}}" Visibility="{Binding PreviousPlaylistItem, Converter={StaticResource IsNotNull}}">
+                    <AppBarButton Command="{Binding PreviousPlaylistItemCommand, Source={StaticResource PlaylistCommands}}" Visibility="{Binding PreviousPlaylistItem, Converter={StaticResource IsNotNull}}">
                         <StackPanel DataContext="{Binding PreviousPlaylistItem}">
                             <Image MaxWidth="90" MaxHeight="60" Source="{Binding (mmppf:PlaylistItemMetadata.Thumbnail)}"/>
                             <TextBlock FontSize="14" Text="Previous Episode" Foreground="#88FFFFFF"/>
                         </StackPanel>
-                    </Button>
-                    <Button Command="{Binding NextPlaylistItemCommand, Source={StaticResource PlaylistCommands}}" Visibility="{Binding NextPlaylistItem, Converter={StaticResource IsNotNull}}">
+                    </AppBarButton>
+                    <AppBarButton Command="{Binding NextPlaylistItemCommand, Source={StaticResource PlaylistCommands}}" Visibility="{Binding NextPlaylistItem, Converter={StaticResource IsNotNull}}">
                         <StackPanel DataContext="{Binding NextPlaylistItem}">
                             <Image MaxWidth="90" MaxHeight="60" Source="{Binding (mmppf:PlaylistItemMetadata.Thumbnail)}"/>
                             <TextBlock FontSize="14" Text="Next Episode" Foreground="#88FFFFFF"/>
                         </StackPanel>
-                    </Button>
+                    </AppBarButton>
                 </StackPanel>
             </Grid>
         </AppBar>
     </Page.TopAppBar>
-</common:LayoutAwarePage>
+</Page>

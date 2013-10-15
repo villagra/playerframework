@@ -1,4 +1,5 @@
-﻿<common:LayoutAwarePage
+<Page
+    x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.InstreamTtmlPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,7 +12,7 @@
     xmlns:ttml="using:Microsoft.PlayerFramework.TimedText"
     mc:Ignorable="d">
 
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" IsCaptionSelectionVisible="True">
             <mmppf:MediaPlayer.Plugins>
                 <adaptive:AdaptivePlugin InstreamCaptionsEnabled="True"/>
@@ -21,7 +22,7 @@
     </Grid>
     <Page.TopAppBar>
         <AppBar>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <AppBarButton x:Name="backButton" Icon="Back"/>
         </AppBar>
     </Page.TopAppBar>
-</common:LayoutAwarePage>
+</Page>
