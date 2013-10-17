@@ -1924,7 +1924,7 @@
                             this._shimElement.style.display = "none";
                         }
 
-                        if (isWinJS1) {
+                        if (PlayerFramework.Utilities.isWinJS1) {
                             if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
                                 Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
                             }

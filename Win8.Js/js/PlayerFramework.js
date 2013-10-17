@@ -1135,7 +1135,8 @@
         createEventProperties: createEventProperties,
         eventBindingMixin: eventBindingMixin,
         propertyBindingMixin: propertyBindingMixin,
-        DeferrableOperation: DeferrableOperation
+        DeferrableOperation: DeferrableOperation,
+        isWinJS1: isWinJS1
     });
 
     WinJS.Namespace.define("PlayerFramework.Binding", {
