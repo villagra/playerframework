@@ -13,10 +13,11 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <PackageCertificateThumbprint>CC273DC82302A7BE69FDDBFA2F011BE3AA8E1B0F</PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Test_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>69A0EAAC35C05F7950C6F0403162552A7D476B14</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Samples_TemporaryKey.pfx</PackageCertificateKeyFile>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -231,7 +232,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
-    <None Include="Microsoft.PlayerFramework.Xaml.Test_TemporaryKey.pfx" />
+    <None Include="Microsoft.PlayerFramework.Xaml.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

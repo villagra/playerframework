@@ -49,6 +49,10 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <VisualStudioVersion>12.0</VisualStudioVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>946C36C50FB91918109E40CB5570667B28C27331</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>MediaPlayerSamples_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -63,6 +67,7 @@
     <Content Include="js\navigator.js" />
     <Content Include="js\default.js" />
     <Content Include="js\data.js" />
+    <None Include="MediaPlayerSamples_TemporaryKey.pfx" />
     <Content Include="pages\groupdetail\groupdetail.css" />
     <Content Include="pages\groupdetail\groupdetail.html" />
     <Content Include="pages\groupdetail\groupdetail.js" />
