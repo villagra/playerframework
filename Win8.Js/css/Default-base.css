@@ -281,6 +281,10 @@
     overflow: hidden;
 }
 
+.pf-slider-container .pf-slider-marker-container {
+    pointer-events: none;
+}
+
 .pf-slider-container .pf-slider-thumbnail-container {
     overflow: visible;
 }
@@ -515,6 +519,7 @@
     width: 3px;
     left: -1.5px;
     height: 11px;
+    pointer-events: all;
 }
 
 .pf-slider-thumbnailView {
