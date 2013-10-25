@@ -5,6 +5,8 @@
 using System;
 using System.Linq;
 using Microsoft.VideoAdvertising;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 #if SILVERLIGHT
 using System.Windows;
@@ -277,8 +279,9 @@ namespace Microsoft.PlayerFramework.Advertising
             OnStartAd();
         }
 
-        protected virtual void OnStartAd()
+        protected virtual async void OnStartAd()
         {
+            var startTask = GetStateChangedTask(MediaElementState.Playing);
 #if WINDOWS_PHONE
             if (pendingMediaUri == null)
             {
@@ -294,6 +297,12 @@ namespace Microsoft.PlayerFramework.Advertising
 #else
             mediaElement.Play();
 #endif
+            try
+            {
+                await startTask;
+                OnAdStarted();
+            }
+            catch (OperationCanceledException) { /* teardown occured */ }
         }
 
         void AdPlayer_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -311,6 +320,21 @@ namespace Microsoft.PlayerFramework.Advertising
             OnAdEnding();
         }
 
+        readonly Dictionary<MediaElementState, TaskCompletionSource<object>> stateChangedTasks = new Dictionary<MediaElementState, TaskCompletionSource<object>>();
+        Task GetStateChangedTask(MediaElementState state)
+        {
+            if (stateChangedTasks.ContainsKey(state))
+            {
+                return stateChangedTasks[state].Task;
+            }
+            else
+            {
+                var result = new TaskCompletionSource<object>();
+                stateChangedTasks.Add(state, result);
+                return result.Task;
+            }
+        }
+
         void MediaElement_CurrentStateChanged(object sender, RoutedEventArgs e)
         {
             if (mediaElement.CurrentState == MediaElementState.Playing)
@@ -322,37 +346,12 @@ namespace Microsoft.PlayerFramework.Advertising
                 timer.Stop();
             }
 
-            switch (mediaElement.CurrentState)
+            // completes the appropriate task created via GetStateChangedTask and removes it from the collection.
+            if (stateChangedTasks.ContainsKey(mediaElement.CurrentState))
             {
-                case MediaElementState.Playing:
-                    if (State == AdState.Starting)
-                    {
-                        OnAdStarted();
-                    }
-                    else if (State == AdState.Paused)
-                    {
-                        State = AdState.Playing;
-                        if (AdPlaying != null) AdPlaying(this, EventArgs.Empty);
-                    }
-                    break;
-                case MediaElementState.Paused:
-#if WINDOWS_PHONE // HACK: WP will fire Paused StateChanged just prior to MediaEnded, instead, let MediaEnded fire first.
-                    Dispatcher.BeginInvoke(() =>
-                    {
-#endif
-                        if (State == AdState.Playing)
-                        {
-                            State = AdState.Paused;
-                            if (AdPaused != null) AdPaused(this, EventArgs.Empty);
-                        }
-#if WINDOWS_PHONE
-                    });
-#endif
-                    break;
-                case MediaElementState.Stopped:
-                case MediaElementState.Closed:
-                    OnAdEnding();
-                    break;
+                var tcs = stateChangedTasks[mediaElement.CurrentState];
+                stateChangedTasks.Remove(mediaElement.CurrentState);
+                tcs.TrySetResult(null);
             }
         }
 
@@ -380,9 +379,21 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <inheritdoc />
-        public void StopAd()
+        public async void StopAd()
         {
+            var stopTask = GetStateChangedTask(MediaElementState.Stopped);
+            var closeTask = GetStateChangedTask(MediaElementState.Closed);
             mediaElement.Stop();
+            try
+            {
+#if WINDOWS_PHONE7
+                await TaskEx.WhenAny(stopTask, closeTask);
+#else
+                await Task.WhenAny(stopTask, closeTask);
+#endif
+                OnAdEnding();
+            }
+            catch (OperationCanceledException) { /* teardown occured */ }
         }
 
         /// <summary>
@@ -412,6 +423,13 @@ namespace Microsoft.PlayerFramework.Advertising
 #if !HACK_MARKERREACHED
             mediaElement.MarkerReached -= MediaElement_MarkerReached;
 #endif
+            // cancel any active tasks and remove them from the dictionary
+            foreach (var task in stateChangedTasks)
+            {
+                task.Value.TrySetCanceled();
+            }
+            stateChangedTasks.Clear();
+
             OnTeardown();
             this.Content = null;
             mediaElement = null;
@@ -433,15 +451,37 @@ namespace Microsoft.PlayerFramework.Advertising
         }
 
         /// <inheritdoc />
-        public void PauseAd()
+        public async void PauseAd()
         {
+            var pauseTask = GetStateChangedTask(MediaElementState.Paused);
             mediaElement.Pause();
+            try
+            {
+                await pauseTask;
+                if (State == AdState.Playing)
+                {
+                    State = AdState.Paused;
+                    if (AdPaused != null) AdPaused(this, EventArgs.Empty);
+                }
+            }
+            catch (OperationCanceledException) { /* teardown occured */ }
         }
 
         /// <inheritdoc />
-        public void ResumeAd()
+        public async void ResumeAd()
         {
+            var playTask = GetStateChangedTask(MediaElementState.Playing);
             mediaElement.Play();
+            try
+            {
+                await playTask;
+                if (State == AdState.Paused)
+                {
+                    State = AdState.Playing;
+                    if (AdPlaying != null) AdPlaying(this, EventArgs.Empty);
+                }
+            }
+            catch (OperationCanceledException) { /* teardown occured */ }
         }
 
         /// <inheritdoc />
