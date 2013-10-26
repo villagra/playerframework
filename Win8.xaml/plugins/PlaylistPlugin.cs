@@ -337,6 +337,8 @@ namespace Microsoft.PlayerFramework
                 {
                     mediaPlayer.AvailableAudioStreams.Add(audioStream);
                 }
+
+                mediaPlayer.SelectedCaption = null;
                 mediaPlayer.AvailableCaptions.Clear();
                 foreach (var caption in newMediaSource.AvailableCaptions)
                 {
