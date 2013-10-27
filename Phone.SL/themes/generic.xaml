@@ -700,7 +700,7 @@
                             </Rectangle>
                             <Border x:Name="HorizontalAvailableBar" HorizontalAlignment="Left" IsHitTestVisible="True" Background="#00000000" />
                             <ContentPresenter x:Name="HorizontalForegroundContentPresenter" Margin="{TemplateBinding Padding}" Content="{TemplateBinding HorizontalForegroundContent}"/>
-                            <Rectangle x:Name="HorizontalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" HorizontalAlignment="Left" Width="{StaticResource SliderTrackThemeHeight}">
+                            <Rectangle x:Name="HorizontalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" HorizontalAlignment="Left" Width="{StaticResource SliderTrackThemeHeight}" IsHitTestVisible="False">
                                 <Rectangle.RenderTransform>
                                     <TranslateTransform/>
                                 </Rectangle.RenderTransform>
@@ -717,7 +717,7 @@
                             </Rectangle>
                             <Border x:Name="VerticalAvailableBar" VerticalAlignment="Bottom" IsHitTestVisible="True" Background="#00000000" />
                             <ContentPresenter x:Name="VerticalForegroundContentPresenter" Margin="{TemplateBinding Padding}" Content="{TemplateBinding VerticalForegroundContent}"/>
-                            <Rectangle x:Name="VerticalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" VerticalAlignment="Bottom" Height="{StaticResource SliderTrackThemeHeight}">
+                            <Rectangle x:Name="VerticalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" VerticalAlignment="Bottom" Height="{StaticResource SliderTrackThemeHeight}" IsHitTestVisible="False">
                                 <Rectangle.RenderTransform>
                                     <TranslateTransform/>
                                 </Rectangle.RenderTransform>
