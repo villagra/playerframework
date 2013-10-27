@@ -448,13 +448,16 @@ namespace Microsoft.PlayerFramework.Advertising
 
         void MediaPlayer_MarkerReached(object sender, TimelineMarkerRoutedEventArgs e)
         {
-            if (e.Marker.Type == MarkerType_Play)
+            if (!MediaPlayer.IsScrubbing) // scrubbing has it's own way of evaluating when ad markers are reached.
             {
-                PlayAdMarker(e.Marker);
-            }
-            else if (e.Marker.Type == MarkerType_Preload)
-            {
-                PreloadAdMarker(e.Marker);
+                if (e.Marker.Type == MarkerType_Play)
+                {
+                    PlayAdMarker(e.Marker);
+                }
+                else if (e.Marker.Type == MarkerType_Preload)
+                {
+                    PreloadAdMarker(e.Marker);
+                }
             }
         }
 
