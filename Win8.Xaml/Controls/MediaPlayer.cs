@@ -5021,6 +5021,7 @@ namespace Microsoft.PlayerFramework
         /// <returns>The task to await on. If true, the seek was successful, if false, the seek was trumped by a new value while it was waiting for a pending seek to complete.</returns>
         private Task<bool> SeekAsync(TimeSpan position)
         {
+            VirtualPosition = position;
             _Position = position;
 #if SILVERLIGHT && !WINDOWS_PHONE || WINDOWS_PHONE7
             return TaskEx.FromResult(true); // There is no SeekCompleted event in Silverlight's MediaElement, therefore we just assume true and rely on the MediaElement to buffer this for us.
