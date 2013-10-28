@@ -96,7 +96,7 @@ namespace Microsoft.PlayerFramework
 
         /// <summary>
         /// The amount of time into the media after which a skip back operation is treated as a reset (vs. going to the previous playlist item).
-        /// If not set, skip back will always reset the video instead of going to the previous playlist item.
+        /// If not set, skip back will always go to the previous playlist item.
         /// </summary>
         public TimeSpan? SkipBackThreshold
         {
