@@ -31,6 +31,11 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public event EventHandler Close;
 
+        /// <summary>
+        /// Indicates the selected caption changed.
+        /// </summary>
+        public event EventHandler SelectedCaptionChanged;
+
         DeselectableListBox CaptionsList;
         Panel LayoutRoot;
 
@@ -46,6 +51,9 @@ namespace Microsoft.PlayerFramework
             CaptionsList = GetTemplateChild("CaptionsList") as DeselectableListBox;
             LayoutRoot = GetTemplateChild("LayoutRoot") as Panel;
 
+            CaptionsList.ItemsSource = AvailableCaptions;
+            CaptionsList.SelectedItem = SelectedCaption;
+
             CaptionsList.SelectionChanged += ListBox_SelectionChanged;
 #if SILVERLIGHT
             LayoutRoot.MouseLeftButtonDown += LayoutRoot_MouseLeftButtonDown;
@@ -54,7 +62,7 @@ namespace Microsoft.PlayerFramework
             LayoutRoot.PointerPressed += LayoutRoot_PointerPressed;
 #endif
         }
-        
+
 #if SILVERLIGHT
         void CaptionsList_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -71,7 +79,47 @@ namespace Microsoft.PlayerFramework
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            SelectedCaption = CaptionsList.SelectedItem as Caption;
+            if (SelectedCaptionChanged != null) SelectedCaptionChanged(this, EventArgs.Empty);
             if (Close != null) Close(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// AvailableCaptions DependencyProperty definition.
+        /// </summary>
+        public static readonly DependencyProperty AvailableCaptionsProperty = DependencyProperty.Register("AvailableCaptions", typeof(IEnumerable<Caption>), typeof(CaptionSelectorView), new PropertyMetadata(null, (d, e) => ((CaptionSelectorView)d).OnAvailableCaptionsChanged(e.NewValue as IEnumerable<Caption>)));
+
+        /// <summary>
+        /// Gets or sets the collection of captions available.
+        /// </summary>
+        public IEnumerable<Caption> AvailableCaptions
+        {
+            get { return GetValue(AvailableCaptionsProperty) as IEnumerable<Caption>; }
+            set { SetValue(AvailableCaptionsProperty, value); }
+        }
+
+        void OnAvailableCaptionsChanged(IEnumerable<Caption> availableCaptions)
+        {
+            if (CaptionsList != null) CaptionsList.ItemsSource = availableCaptions;
+        }
+
+        /// <summary>
+        /// SelectedCaption DependencyProperty definition.
+        /// </summary>
+        public static readonly DependencyProperty SelectedCaptionProperty = DependencyProperty.Register("SelectedCaption", typeof(Caption), typeof(CaptionSelectorView), new PropertyMetadata(null, (d, e) => ((CaptionSelectorView)d).OnSelectedCaptionChanged(e.NewValue as Caption)));
+
+        /// <summary>
+        /// Gets or sets the selected caption.
+        /// </summary>
+        public Caption SelectedCaption
+        {
+            get { return GetValue(SelectedCaptionProperty) as Caption; }
+            set { SetValue(SelectedCaptionProperty, value); }
+        }
+
+        void OnSelectedCaptionChanged(Caption caption)
+        {
+            if (CaptionsList != null) CaptionsList.SelectedItem = caption;
         }
     }
 }

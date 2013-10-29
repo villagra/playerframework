@@ -1431,8 +1431,7 @@
                 <ControlTemplate TargetType="local:CaptionSelectorView">
                     <Grid x:Name="LayoutRoot" Background="#00000000">
                         <Border Background="{StaticResource PhoneForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <local:DeselectableListBox x:Name="CaptionsList" ItemsSource="{Binding AvailableCaptions}" SelectedItem="{Binding SelectedCaption, Mode=TwoWay}"
-                                                       Foreground="{StaticResource PhoneBackgroundBrush}" Margin="10" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                            <local:DeselectableListBox x:Name="CaptionsList" Foreground="{StaticResource PhoneBackgroundBrush}" Margin="10" FontSize="{StaticResource PhoneFontSizeLarge}"/>
                         </Border>
                     </Grid>
                 </ControlTemplate>

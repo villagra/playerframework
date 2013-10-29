@@ -128,6 +128,7 @@ namespace Microsoft.PlayerFramework
             if (ListBox != null)
             {
                 ListBox.ItemsSource = items;
+                ListBox.SelectedItem = SelectedItem;
             }
         }
 
@@ -147,10 +148,13 @@ namespace Microsoft.PlayerFramework
 
         void OnSelectedItemChanged(object newSelectedItem)
         {
-            items.IncludeStartingItem = newSelectedItem != null;
-            if (ListBox != null)
+            if (items != null)
             {
-                ListBox.SelectedItem = newSelectedItem;
+                items.IncludeStartingItem = newSelectedItem != null;
+                if (ListBox != null)
+                {
+                    ListBox.SelectedItem = newSelectedItem;
+                }
             }
         }
 

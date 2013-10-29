@@ -1485,7 +1485,7 @@
                 <ControlTemplate TargetType="local:CaptionSelectorView">
                     <Grid x:Name="LayoutRoot" Background="#00000000">
                         <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxForegroundThemeBrush}" Background="{StaticResource ListBoxFocusBackgroundThemeBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="{TemplateBinding Padding}">
-                            <local:DeselectableListBox x:Name="CaptionsList" MaxWidth="200"  ItemsSource="{Binding AvailableCaptions}" SelectedItem="{Binding SelectedCaption, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <local:DeselectableListBox x:Name="CaptionsList" MaxWidth="200" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <local:DeselectableListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding}"/>

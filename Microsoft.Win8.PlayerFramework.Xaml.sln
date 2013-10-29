@@ -427,6 +427,7 @@ Global
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x64.Build.0 = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{7DF397B9-FB55-42DB-A5B7-AD012D188953}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{7DF397B9-FB55-42DB-A5B7-AD012D188953}.Debug|Any CPU.Build.0 = Debug|x64

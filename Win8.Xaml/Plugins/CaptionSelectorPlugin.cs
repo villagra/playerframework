@@ -28,6 +28,7 @@ namespace Microsoft.PlayerFramework
         public Style CaptionSelectorViewStyle { get; set; }
 
         CaptionSelectorView captionSelectorView;
+        IInteractiveViewModel vm;
 
         /// <inheritdoc /> 
         protected override bool OnActivate()
@@ -58,13 +59,23 @@ namespace Microsoft.PlayerFramework
             {
                 captionSelectorView = new CaptionSelectorView();
                 if (CaptionSelectorViewStyle != null) captionSelectorView.Style = CaptionSelectorViewStyle;
-                captionSelectorView.SetBinding(FrameworkElement.DataContextProperty, new Binding() { Path = new PropertyPath("InteractiveViewModel"), Source = MediaPlayer });
+
+                vm = MediaPlayer.InteractiveViewModel;
+                captionSelectorView.AvailableCaptions = vm.AvailableCaptions;
+                captionSelectorView.SelectedCaption = vm.SelectedCaption;
+
                 SettingsContainer.Visibility = Visibility.Visible;
                 SettingsContainer.Children.Add(captionSelectorView);
                 captionSelectorView.Close += captionSelectorView_Close;
+                captionSelectorView.SelectedCaptionChanged += captionSelectorView_SelectedCaptionChanged;
                 deactivationMode = MediaPlayer.InteractiveDeactivationMode;
                 MediaPlayer.InteractiveDeactivationMode = InteractionType.None;
             }
+        }
+
+        void captionSelectorView_SelectedCaptionChanged(object sender, EventArgs e)
+        {
+            vm.SelectedCaption = captionSelectorView.SelectedCaption;
         }
 
         void captionSelectorView_Close(object sender, EventArgs e)
@@ -76,8 +87,11 @@ namespace Microsoft.PlayerFramework
         {
             if (captionSelectorView != null)
             {
+                captionSelectorView.SelectedCaptionChanged -= captionSelectorView_SelectedCaptionChanged;
                 captionSelectorView.Close -= captionSelectorView_Close;
                 captionSelectorView.Visibility = Visibility.Collapsed;
+                vm = null;
+
                 SettingsContainer.Children.Remove(captionSelectorView);
                 SettingsContainer.Visibility = Visibility.Collapsed;
                 MediaPlayer.InteractiveDeactivationMode = deactivationMode;
