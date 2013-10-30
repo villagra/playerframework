@@ -173,6 +173,7 @@ namespace Microsoft.VideoAdvertising
             var result = new FWParameter();
             result.Name = (string)element.Attribute("name");
             result.Category = (string)element.Attribute("category");
+            result.Value = element.Value;
             return result;
         }
 
@@ -676,6 +677,7 @@ namespace Microsoft.VideoAdvertising
                 index++;
                 var wrappedAds = new List<Ad>();
                 var linear = new CreativeLinear();
+                linear.AdParameters = string.Join("&", creative.Parameters.Select(p => Uri.EscapeDataString(p.Name) + "=" + Uri.EscapeDataString(p.Value)));
                 linear.Duration = creative.Duration;
                 linear.Sequence = index;
 
