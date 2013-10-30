@@ -1,18 +1,5 @@
-﻿// <copyright file="TimedTextMetadata.cs" company="Microsoft Corporation">
-// ===============================================================================
-// MICROSOFT CONFIDENTIAL
-// Microsoft Accessibility Business Unite
-// Incubation Lab
-// Project: Timed Text Library
-// ===============================================================================
-// Copyright 2009  Microsoft Corporation.  All rights reserved.
-// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
-// OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
-// LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-// FITNESS FOR A PARTICULAR PURPOSE.
-// ===============================================================================
-// </copyright>
-using System.Xml;
+﻿using System.Xml;
+
 namespace TimedText.Metadata
 {
     public abstract class MetadataElement : TimedText.TimedTextElementBase
