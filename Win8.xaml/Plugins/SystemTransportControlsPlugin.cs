@@ -18,25 +18,29 @@ namespace Microsoft.PlayerFramework
         /// <inheritdoc /> 
         protected override bool OnActivate()
         {
-            SystemControls = SystemMediaTransportControls.GetForCurrentView();
-            SystemControls.ButtonPressed += SystemControls_ButtonPressed;
-            RefreshFastForwardState();
-            RefreshRewindState();
-            RefreshStopState();
-            RefreshPlayState();
-            RefreshPauseState();
-            RefreshNextState();
-            RefreshPreviousState();
-            RefreshPlaybackStatus();
-
-            if (PlaylistPlugin != null)
+            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                PlaylistPlugin.Playlist.CollectionChanged += Playlist_CollectionChanged;
-                PlaylistPlugin.CurrentPlaylistItemChanged += PlaylistPlugin_CurrentPlaylistItemChanged;
+                SystemControls = SystemMediaTransportControls.GetForCurrentView();
+                SystemControls.ButtonPressed += SystemControls_ButtonPressed;
+                RefreshFastForwardState();
+                RefreshRewindState();
+                RefreshStopState();
+                RefreshPlayState();
+                RefreshPauseState();
+                RefreshNextState();
+                RefreshPreviousState();
+                RefreshPlaybackStatus();
+
+                if (PlaylistPlugin != null)
+                {
+                    PlaylistPlugin.Playlist.CollectionChanged += Playlist_CollectionChanged;
+                    PlaylistPlugin.CurrentPlaylistItemChanged += PlaylistPlugin_CurrentPlaylistItemChanged;
+                }
+                WireEvents(MediaPlayer.InteractiveViewModel);
+                MediaPlayer.InteractiveViewModelChanged += MediaPlayer_InteractiveViewModelChanged;
+                return true;
             }
-            WireEvents(MediaPlayer.InteractiveViewModel);
-            MediaPlayer.InteractiveViewModelChanged += MediaPlayer_InteractiveViewModelChanged;
-            return true;
+            else return false;
         }
 
         /// <inheritdoc /> 
