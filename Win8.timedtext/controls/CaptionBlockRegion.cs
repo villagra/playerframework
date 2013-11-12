@@ -568,59 +568,40 @@ namespace Microsoft.TimedText
             FrameworkElement contentElement;
 
             double outlineWidth = style.OutlineWidth.ToPixelLength(effectiveSize.Height);
+
             if (outlineWidth > 0)
             {
-                Grid cnv = new Grid();
+                switch (style.TextStyle)
+                {
+                    case TextStyle.Default:
+                        contentElement = AddOutlineTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
 
-                // do outline image up and to left
-                TextBlock tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = -outlineWidth };
-                // do outline image left
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = 0 };
+                    case TextStyle.DepressedEdge:
+                        contentElement = AddDepressedEdgeTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
 
-                // do outline image down and to right
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
-                // do outline image to right
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = 0 };
+                    case TextStyle.DropShadow:
+                        contentElement = AddDropShadowTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
 
-                // do outline image up and to right
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = -outlineWidth };
-                // do outline image up
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = 0, Y = -outlineWidth };
+                    case TextStyle.None:
+                        contentElement = textblock;
+                        break;
 
-                // do outline image down and to left
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = outlineWidth };
-                // do outline image down
-                tb2 = GetStyledTextblock(style, panelWidth, height, true);
-                SetContent(tb2, text);
-                cnv.Children.Add(tb2);
-                tb2.RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth };
+                    case TextStyle.Outline:
+                        contentElement = AddOutlineTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
 
-                // add the main text
-                cnv.Children.Add(textblock);
+                    case TextStyle.RaisedEdge:
+                        contentElement = AddRaisedEdgeTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
 
-                // add the border
-                contentElement = cnv;
+                    default:
+                        contentElement = AddOutlineTextStyle(text, style, panelWidth, height, textblock, outlineWidth);
+                        break;
+                }
+
             }
             else
             {
@@ -681,6 +662,195 @@ namespace Microsoft.TimedText
                 offset += elementWidth;
                 return offset;
             }
+        }
+
+        /// <summary>
+        /// Add raised edge text blocks to the lower left in front of the original textblock
+        /// </summary>
+        /// <param name="text">the text</param>
+        /// <param name="style">the style</param>
+        /// <param name="panelWidth">the panel width</param>
+        /// <param name="height">the height</param>
+        /// <param name="textblock">the original text block</param>
+        /// <param name="outlineWidth">the outline width</param>
+        /// <returns>a new Grid</returns>
+        private FrameworkElement AddRaisedEdgeTextStyle(string text, TimedTextStyle style, double panelWidth, double height, TextBlock textblock, double outlineWidth)
+        {
+            var textBlocks = new TextBlock[]
+            {
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true)
+            };
+
+            // trailing edge
+            // right
+            textBlocks[0].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = 0 };
+            // bottom
+            textBlocks[1].RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth };
+            // bottom right
+            textBlocks[2].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
+
+            var grid = new Grid();
+
+            grid.Children.Add(textblock);
+
+            foreach (var item in textBlocks)
+            {
+                item.Opacity = 0.25;
+                SetContent(item, text);
+                grid.Children.Add(item);
+            }
+
+            return grid;
+        }
+
+        /// <summary>
+        /// Add drop shadow text blocks to the lower right
+        /// </summary>
+        /// <param name="text">the text</param>
+        /// <param name="style">the style</param>
+        /// <param name="panelWidth">the panel width</param>
+        /// <param name="height">the height</param>
+        /// <param name="textblock">the original text block</param>
+        /// <param name="outlineWidth">the outline width</param>
+        /// <returns>a new Grid</returns>
+        private FrameworkElement AddDropShadowTextStyle(string text, TimedTextStyle style, double panelWidth, double height, TextBlock textblock, double outlineWidth)
+        {
+            var textBlocks = new TextBlock[]
+            {
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true)
+            };
+
+            // right
+            textBlocks[0].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = 0 };
+            // bottom
+            textBlocks[1].RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth };
+            // bottom right
+            textBlocks[2].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
+
+            var grid = new Grid();
+
+            foreach (var item in textBlocks)
+            {
+                item.Opacity = 0.75;
+                SetContent(item, text);
+                grid.Children.Add(item);
+            }
+
+            grid.Children.Add(textblock);
+
+            return grid;
+        }
+
+        /// <summary>
+        /// Depressed edge text has a dark leading edge
+        /// </summary>
+        /// <param name="text">the text</param>
+        /// <param name="style">the timed text style</param>
+        /// <param name="panelWidth">the panel width</param>
+        /// <param name="height">the height</param>
+        /// <param name="textblock">the original TextBlock</param>
+        /// <param name="outlineWidth">the outline width</param>
+        /// <returns>a new Grid</returns>
+        private FrameworkElement AddDepressedEdgeTextStyle(string text, TimedTextStyle style, double panelWidth, double height, TextBlock textblock, double outlineWidth)
+        {
+            var textBlocks = new TextBlock[]
+            {
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true),
+                GetStyledTextblock(style, panelWidth, height, true)
+            };
+
+            
+            // top left
+            textBlocks[0].RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = -outlineWidth };
+            // top
+            textBlocks[1].RenderTransform = new TranslateTransform() { X = 0, Y = -outlineWidth };
+            // left
+            textBlocks[2].RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = 0};
+
+            var grid = new Grid();
+
+            grid.Children.Add(textblock);
+
+            foreach (var item in textBlocks)
+            {
+                item.Opacity = 0.25;
+                SetContent(item, text);
+                grid.Children.Add(item);
+            }
+
+            return grid;
+        }
+
+        /// <summary>
+        /// Add outlined text style
+        /// </summary>
+        /// <param name="text">the text</param>
+        /// <param name="style">the timed text style</param>
+        /// <param name="panelWidth">the panel width</param>
+        /// <param name="height">the height</param>
+        /// <param name="textblock">the base text block</param>
+        /// <param name="outlineWidth">the outline width</param>
+        /// <returns>a Grid</returns>
+        private FrameworkElement AddOutlineTextStyle(string text, TimedTextStyle style, double panelWidth, double height, TextBlock textblock, double outlineWidth)
+        {
+            FrameworkElement contentElement;
+            Grid cnv = new Grid();
+
+            // do outline image up and to left
+            TextBlock tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = -outlineWidth };
+            // do outline image left
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = 0 };
+
+            // do outline image down and to right
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
+            // do outline image to right
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = 0 };
+
+            // do outline image up and to right
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = outlineWidth, Y = -outlineWidth };
+            // do outline image up
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = 0, Y = -outlineWidth };
+
+            // do outline image down and to left
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = -outlineWidth, Y = outlineWidth };
+            // do outline image down
+            tb2 = GetStyledTextblock(style, panelWidth, height, true);
+            SetContent(tb2, text);
+            cnv.Children.Add(tb2);
+            tb2.RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth };
+
+            // add the main text
+            cnv.Children.Add(textblock);
+
+            // add the border
+            contentElement = cnv;
+            return contentElement;
         }
 
         private TextBlock GetStyledTextblock(TimedTextStyle style, double width, double height, bool fOutline)

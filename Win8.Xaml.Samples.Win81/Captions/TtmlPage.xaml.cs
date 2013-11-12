@@ -38,6 +38,8 @@ namespace Microsoft.PlayerFramework.Samples
             this.navigationHelper = new NavigationHelper(this);
             player.Plugins.Add(new Microsoft.PlayerFramework.TimedText.CaptionsPlugin());
             player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
+
+            player.Plugins.Add(new Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

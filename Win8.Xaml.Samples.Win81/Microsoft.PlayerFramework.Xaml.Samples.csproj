@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -465,6 +465,14 @@
     <ProjectReference Include="..\Win8.Xaml\Microsoft.Win81.PlayerFramework.Xaml.csproj">
       <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
       <Name>Microsoft.Win81.PlayerFramework.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win81.Xaml.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings.csproj">
+      <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win81.Xaml.TTML.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings.csproj">
+      <Project>{664d44a9-0a3a-4c37-a668-68240004bb55}</Project>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

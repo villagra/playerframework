@@ -35,6 +35,12 @@ namespace Microsoft.TimedText
         private const FlowDirection DefaultDirection = FlowDirection.LeftToRight;
         private const Visibility DefaultVisibility = Visibility.Visible;
         private const TextWrapping DefaultWrapOption = TextWrapping.Wrap;
+
+        /// <summary>
+        /// Default text style
+        /// </summary>
+        private const TextStyle DefaultTextStyle = TextStyle.Default;
+
         private static readonly Color DefaultColor;
         private static readonly Color DefaultBackgroundColor;
         private static readonly Extent DefaultExtent;
@@ -86,6 +92,7 @@ namespace Microsoft.TimedText
             OutlineColor = DefaultOutlineColor;
             OutlineWidth = new Length { Value = 0.0, Unit = LengthUnit.Pixel };
             OutlineBlur = new Length { Value = 0.0, Unit = LengthUnit.Pixel };
+            this.TextStyle = DefaultTextStyle;
         }
 
         /// <summary>
@@ -269,6 +276,11 @@ namespace Microsoft.TimedText
         /// Gets or sets the zindex for the caption.
         /// </summary>
         public int ZIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text style
+        /// </summary>
+        public TextStyle TextStyle { get; set; }
 
         /// <summary>
         /// Creates a memberwise close of this style.
