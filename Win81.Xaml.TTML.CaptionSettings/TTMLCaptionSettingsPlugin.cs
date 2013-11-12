@@ -42,6 +42,8 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
 
             if (captionsPlugin == null)
             {
+                System.Diagnostics.Debug.WriteLine("No TTML CaptionsPlugin is installed in this player - caption settings will not be used.");
+
                 return false;
             }
 

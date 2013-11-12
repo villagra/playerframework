@@ -160,9 +160,17 @@
       <Project>{F03BC1C2-BC5C-476D-A715-09DA916F9943}</Project>
       <Name>Microsoft.WP8.PlayerFramework.SL.Analytics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.CaptionSettings\Microsoft.WP8.PlayerFramework.CaptionSettings.csproj">
+      <Project>{3A2A6D48-C42A-4A65-8F25-34F7931AC54F}</Project>
+      <Name>Microsoft.WP8.PlayerFramework.CaptionSettings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phone.SL.TimedText\Microsoft.WP8.PlayerFramework.SL.TimedText.csproj">
       <Project>{A3416419-9FAB-4539-8E64-79266669899F}</Project>
       <Name>Microsoft.WP8.PlayerFramework.SL.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.TTML.CaptionSettings\Microsoft.WP8.PlayerFramework.TTML.CaptionSettings.csproj">
+      <Project>{C6E13339-51E8-4158-9E1A-B12D24841ECD}</Project>
+      <Name>Microsoft.WP8.PlayerFramework.TTML.CaptionSettings</Name>
     </ProjectReference>
     <ProjectReference Include="..\Phone.SL.WebVTT\Microsoft.WP8.PlayerFramework.SL.WebVTT.csproj">
       <Project>{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}</Project>
