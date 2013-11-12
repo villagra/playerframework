@@ -23,6 +23,21 @@ namespace Microsoft.TimedText
 {
     public sealed class CaptionBlockRegion : Control
     {
+        /// <summary>
+        /// the minimum text rows to display
+        /// </summary>
+        private const uint MinimumTextRows = 2;
+
+        /// <summary>
+        /// The padding between lines
+        /// </summary>
+        private const uint LinePadding = 4;
+
+        /// <summary>
+        /// Padding to add to regions to insure that they don't get cut off
+        /// </summary>
+        private const double RegionPadding = 50.0;
+
         private TimeSpan _mediaPosition;
         private IMarkerManager<TimedTextElement> _captionManager;
         private IDictionary<CaptionElement, UIElement> _activeElements;
@@ -183,7 +198,10 @@ namespace Microsoft.TimedText
                     Origin origin = CaptionRegion.CurrentStyle.Origin;
                     Extent extent = CaptionRegion.CurrentStyle.Extent;
 
-                    double regionHeight = extent.Height.ToPixelLength(height);
+                    double minimumCaptionRegionHeight = CaptionRegion.CurrentStyle.FontSize.ToPixelLength(height) * MinimumTextRows + (LinePadding * (MinimumTextRows + 1));
+
+                    double regionHeight = RegionPadding + Math.Max(extent.Height.ToPixelLength(height), minimumCaptionRegionHeight);
+
                     double regionWidth = extent.Width.ToPixelLength(width);
 
                     CaptionsBorder.Width = regionWidth < 0 ? width : regionWidth;
@@ -195,7 +213,7 @@ namespace Microsoft.TimedText
                     CaptionsBorder.Margin = new Thickness
                     {
                         Left = origin.Left.ToPixelLength(width),
-                        Top = origin.Top.ToPixelLength(height)
+                        Top = Math.Min(origin.Top.ToPixelLength(height), height - regionHeight)
                     };
 
                     ApplyRegionStyles();
