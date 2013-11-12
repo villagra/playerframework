@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
-      <Name>Microsoft Smooth Streaming Client SDK for Windows 8.1%28Beta%29</Name>
+      <Name>Microsoft Smooth Streaming Client SDK for Windows 8.1</Name>
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
