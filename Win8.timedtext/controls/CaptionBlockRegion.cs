@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Documents;
 #else
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
@@ -878,11 +879,19 @@ namespace Microsoft.TimedText
             textblock.FontStyle = style.FontStyle;
             textblock.FontWeight = FontWeightConverter.Convert(style.FontWeight);
             textblock.VerticalAlignment = VerticalAlignment.Bottom;
+
+            if (style.FontFamily.Source == "_Smallcaps")
+            {
+                Typography.SetCapitals(textblock, FontCapitals.SmallCaps);
+            }
+            else
+            {
 #if SILVERLIGHT
-            textblock.FontFamily = style.FontFamily;
+                textblock.FontFamily = style.FontFamily;
 #else
             textblock.FontFamily = style.FontFamily.WindowsFontFamily;
 #endif
+            }
             if (!double.IsNaN(height) && height != 0)
             {
                 textblock.FontSize = Math.Round(style.FontSize.ToPixelLength(height));
