@@ -23,6 +23,12 @@ namespace Microsoft.WebVTT
 {
     public sealed class WebVTTPanel : Control
     {
+        /// <summary>
+        /// PanelBackground dependency property
+        /// </summary>
+        static readonly DependencyProperty PanelBackgroundProperty =
+            DependencyProperty.Register("PanelBackground", typeof(Brush), typeof(WebVTTPanel), new PropertyMetadata(null));
+
         private WebVTTCueRenderer renderer;
         private IList<WebVTTCue> activeCues;
         private Panel captionPanel;
@@ -251,6 +257,16 @@ namespace Microsoft.WebVTT
 
         static readonly DependencyProperty outlineBrushProperty = DependencyProperty.Register("OutlineBrush", typeof(Brush), typeof(WebVTTPanel), new PropertyMetadata(new SolidColorBrush(Colors.Black), (d, e) => ((WebVTTPanel)d).OnOutlineBrushChanged(e.NewValue as Brush)));
         public static DependencyProperty OutlineBrushProperty { get { return outlineBrushProperty; } }
+
+        /// <summary>
+        /// Gets or sets the panel background
+        /// </summary>
+        /// <remarks>The Background of the WebVTTLayoutPanel CaptionsPanel will be set with this property</remarks>
+        public Brush PanelBackground
+        {
+            get { return (Brush)GetValue(PanelBackgroundProperty); }
+            set { SetValue(PanelBackgroundProperty, value); }
+        }
 
         public Brush OutlineBrush
         {

@@ -37,7 +37,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
 
-                        <local:WebVTTLayoutPanel x:Name="CaptionsPanel" PaddingPercent="{TemplateBinding PaddingPercent}"/>
+                        <local:WebVTTLayoutPanel x:Name="CaptionsPanel" Background="{TemplateBinding PanelBackground}" PaddingPercent="{TemplateBinding PaddingPercent}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFrame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings", "Win81.Xaml.TTML.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings.csproj", "{664D44A9-0A3A-4C37-A668-68240004BB55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings", "Win81.Xaml.WebVTT.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings.csproj", "{673ADD5B-89F2-403E-A655-365CC925D65E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -396,6 +398,22 @@ Global
 		{664D44A9-0A3A-4C37-A668-68240004BB55}.Release|x64.Build.0 = Release|x64
 		{664D44A9-0A3A-4C37-A668-68240004BB55}.Release|x86.ActiveCfg = Release|x86
 		{664D44A9-0A3A-4C37-A668-68240004BB55}.Release|x86.Build.0 = Release|x86
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|ARM.Build.0 = Debug|ARM
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|x64.ActiveCfg = Debug|x64
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|x64.Build.0 = Debug|x64
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|x86.ActiveCfg = Debug|x86
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Debug|x86.Build.0 = Debug|x86
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|ARM.ActiveCfg = Release|ARM
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|ARM.Build.0 = Release|ARM
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|x64.ActiveCfg = Release|x64
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|x64.Build.0 = Release|x64
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|x86.ActiveCfg = Release|x86
+		{673ADD5B-89F2-403E-A655-365CC925D65E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

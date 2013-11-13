@@ -34,37 +34,37 @@ namespace Microsoft.WebVTT
             if (OutlineWidth > 0)
             {
                 // create adjacent textblocks
-                var textBlockOutline1 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline1 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.Left);
                 textBlockOutline1.Margin = new Thickness(OutlineWidth);
                 textBlockOutline1.RenderTransform = new TranslateTransform() { X = -OutlineWidth, Y = 0 };
                 textBlockOutline1.Foreground = OutlineBrush;
-                var textBlockOutline2 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline2 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.Top);
                 textBlockOutline2.Margin = new Thickness(OutlineWidth);
                 textBlockOutline2.RenderTransform = new TranslateTransform() { X = 0, Y = -OutlineWidth };
                 textBlockOutline2.Foreground = OutlineBrush;
-                var textBlockOutline3 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline3 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.Right);
                 textBlockOutline3.Margin = new Thickness(OutlineWidth);
                 textBlockOutline3.RenderTransform = new TranslateTransform() { X = OutlineWidth, Y = 0 };
                 textBlockOutline3.Foreground = OutlineBrush;
-                var textBlockOutline4 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline4 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.Bottom);
                 textBlockOutline4.Margin = new Thickness(OutlineWidth);
                 textBlockOutline4.RenderTransform = new TranslateTransform() { X = 0, Y = OutlineWidth };
                 textBlockOutline4.Foreground = OutlineBrush;
 
                 // create diagonal textblocks
-                var textBlockOutline5 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline5 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.TopLeft);
                 textBlockOutline5.Margin = new Thickness(OutlineWidth);
                 textBlockOutline5.RenderTransform = new TranslateTransform() { X = -OutlineWidth, Y = -OutlineWidth };
                 textBlockOutline5.Foreground = OutlineBrush;
-                var textBlockOutline6 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline6 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.TopRight);
                 textBlockOutline6.Margin = new Thickness(OutlineWidth);
                 textBlockOutline6.RenderTransform = new TranslateTransform() { X = OutlineWidth, Y = -OutlineWidth };
                 textBlockOutline6.Foreground = OutlineBrush;
-                var textBlockOutline7 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline7 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.BottomRight);
                 textBlockOutline7.Margin = new Thickness(OutlineWidth);
                 textBlockOutline7.RenderTransform = new TranslateTransform() { X = OutlineWidth, Y = OutlineWidth };
                 textBlockOutline7.Foreground = OutlineBrush;
-                var textBlockOutline8 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush);
+                var textBlockOutline8 = GetRenderedCueTextBlock(cue, alignment, OutlineBrush, TextPosition.BottomLeft);
                 textBlockOutline8.Margin = new Thickness(OutlineWidth);
                 textBlockOutline8.RenderTransform = new TranslateTransform() { X = -OutlineWidth, Y = OutlineWidth };
                 textBlockOutline8.Foreground = OutlineBrush;
@@ -79,7 +79,7 @@ namespace Microsoft.WebVTT
                 result.AddBlock(textBlockOutline8);
             }
 
-            var textBlock = GetRenderedCueTextBlock(cue, alignment, InnerBrush);
+            var textBlock = GetRenderedCueTextBlock(cue, alignment, InnerBrush, TextPosition.Center);
             textBlock.Margin = new Thickness(OutlineWidth);
             textBlock.Foreground = InnerBrush;
             result.AddBlock(textBlock);
@@ -87,7 +87,7 @@ namespace Microsoft.WebVTT
             return result;
         }
 
-        private TextBlock GetRenderedCueTextBlock(WebVTTCue cue, WebVTTAlignment alignment, Brush brush = null)
+        private TextBlock GetRenderedCueTextBlock(WebVTTCue cue, WebVTTAlignment alignment, Brush brush, TextPosition textPosition)
         {
             var content = cue.Content;
             var result = new TextBlock();
@@ -112,12 +112,12 @@ namespace Microsoft.WebVTT
                     break;
             }
 
-            CreateInlines(cue, content, result.Inlines, brush);
+            CreateInlines(cue, content, result.Inlines, brush, textPosition);
 
             return result;
         }
 
-        private void CreateInlines(WebVTTCue cue, IWebVTTInternalNode node, InlineCollection inlines, Brush brush = null)
+        private void CreateInlines(WebVTTCue cue, IWebVTTInternalNode node, InlineCollection inlines, Brush brush, TextPosition textPosition)
         {
             foreach (var child in node.Nodes)
             {
@@ -127,9 +127,9 @@ namespace Microsoft.WebVTT
                     inlines.Add(inline);
                     if (inline is Span && child is IWebVTTInternalNode)
                     {
-                        CreateInlines(cue, (IWebVTTInternalNode)child, ((Span)inline).Inlines, brush);
+                        CreateInlines(cue, (IWebVTTInternalNode)child, ((Span)inline).Inlines, brush, textPosition);
                     }
-                    if (NodeRendering != null) NodeRendering(this, new NodeRenderingEventArgs(cue, child, inline));
+                    if (NodeRendering != null) NodeRendering(this, new NodeRenderingEventArgs(cue, child, inline, textPosition));
                 }
             }
         }
@@ -189,16 +189,22 @@ namespace Microsoft.WebVTT
     public sealed class NodeRenderingEventArgs
 #endif
     {
-        public NodeRenderingEventArgs(WebVTTCue cue, IWebVTTNode node, Inline inline)
+        public NodeRenderingEventArgs(WebVTTCue cue, IWebVTTNode node, Inline inline, TextPosition textPosition)
         {
             Cue = cue;
             Node = node;
             Inline = inline;
+            TextPosition = textPosition;
         }
 
         public WebVTTCue Cue { get; private set; }
         public IWebVTTNode Node { get; private set; }
         public Inline Inline { get; private set; }
+
+        /// <summary>
+        /// Gets the text position
+        /// </summary>
+        public TextPosition TextPosition { get; private set; }
     }
 
 }

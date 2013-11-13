@@ -6,16 +6,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A3ABCCAA-B41B-4AB6-A1D9-A1E0D939B140}</ProjectGuid>
-    <OutputType>winmdobj</OutputType>
+    <ProjectGuid>{673ADD5B-89F2-403E-A655-365CC925D65E}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.WebVTT</RootNamespace>
-    <AssemblyName>Microsoft.WebVTT</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings</RootNamespace>
+    <AssemblyName>Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -101,41 +101,32 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Page Include="themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BlockDocumentReader.cs" />
-    <Compile Include="BoxElement.cs" />
-    <Compile Include="IWebVTTModels.cs" />
-    <Compile Include="Markers\MediaMarker.cs" />
-    <Compile Include="Markers\MediaMarkerCollection.cs" />
-    <Compile Include="Markers\MediaMarkerManager.cs" />
-    <Compile Include="Markers\Utilities\OrderedObservableCollection.cs" />
-    <Compile Include="TextPosition.cs" />
-    <Compile Include="WebVTTLayoutPanel.cs" />
-    <Compile Include="WebVTTCueRenderer.cs" />
-    <Compile Include="Extensions\UnicodeExtensions.cs" />
+    <Compile Include="WebVTTCaptionSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebVTTContentReader.cs" />
-    <Compile Include="WebVTTModels.cs" />
-    <Compile Include="WebVTTPanel.cs" />
-    <Compile Include="WebVTTParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
+    <None Include="MultilingualResources\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings_qps-ploc.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Win8.WebVTT\Microsoft.Win81.WebVTT.csproj">
+      <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
+      <Name>Microsoft.Win81.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.WebVTT\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.csproj">
+      <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml\Microsoft.Win81.PlayerFramework.Xaml.csproj">
+      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win81.Xaml.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings.csproj">
+      <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

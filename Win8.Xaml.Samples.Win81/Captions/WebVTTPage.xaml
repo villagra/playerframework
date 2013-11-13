@@ -9,12 +9,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
     xmlns:webvtt="using:Microsoft.PlayerFramework.WebVTT"
+    xmlns:webvttCaptions="using:Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/win8/captions/movie.mp4" IsCaptionSelectionVisible="True">
             <mmppf:MediaPlayer.Plugins>
                 <webvtt:WebVTTPlugin/>
+                <webvttCaptions:WebVTTCaptionSettingsPlugin/>
             </mmppf:MediaPlayer.Plugins>
             <mmppf:MediaPlayer.AvailableCaptions>
                 <mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/captions.vtt"/>
