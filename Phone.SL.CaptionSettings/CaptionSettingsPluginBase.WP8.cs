@@ -1,4 +1,12 @@
-﻿namespace Microsoft.PlayerFramework.CaptionSettings
+﻿// <copyright file="CaptionSettingsPluginBase.WP8.cs" company="Microsoft Corporation">
+// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter</author>
+// <email>mischero@microsoft.com</email>
+// <date>2013-11-14</date>
+// <summary>CaptionSettingsPluginBase partial class for Windows Phone 8</summary>
+
+namespace Microsoft.PlayerFramework.CaptionSettings
 {
     using System;
     using System.Globalization;
@@ -6,9 +14,6 @@
     using System.Windows.Media;
     using System.Windows.Navigation;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using Microsoft.PlayerFramework.CaptionSettings.Controls;
-    using System.Windows.Controls.Primitives;
-    using System.Windows.Controls;
 
     /// <summary>
     /// Windows Phone Caption Settings UI
@@ -19,7 +24,7 @@
         /// <summary>
         /// the isolated storage settings key for the caption settings
         /// </summary>
-        const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
+        private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
 
         /// <summary>
         /// the caption settings plug-in
@@ -40,50 +45,11 @@
         #region Methods
 
         /// <summary>
-        /// Activate the caption settings UI
-        /// </summary>
-        /// <param name="plugin">the plug-in</param>
-        /// <param name="loadCaptionSettings">the load caption settings event handler</param>
-        /// <param name="saveCaptionSettings">the save caption settings event handler</param>
-        internal void Activate(
-            CaptionSettingsPluginBase plugin,
-            EventHandler<CustomCaptionSettingsEventArgs> loadCaptionSettings,
-            EventHandler<CustomCaptionSettingsEventArgs> saveCaptionSettings)
-        {
-            this.plugin = plugin;
-            this.loadCaptionSettings = loadCaptionSettings;
-            this.saveCaptionSettings = saveCaptionSettings;
-
-            bool isCustomCaptionSettings = false;
-
-            object value;
-
-            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CaptionSettingsPage.OverrideDefaultKey, out value))
-            {
-                isCustomCaptionSettings = (bool)value;
-            }
-
-            if (isCustomCaptionSettings && IsolatedStorageSettings.ApplicationSettings.TryGetValue(LocalSettingsKey, out value))
-            {
-                var xml = value.ToString();
-
-                this.plugin.Settings = CustomCaptionSettings.FromString(xml);
-            }
-            else
-            {
-                this.plugin.Settings = new CustomCaptionSettings
-                {
-                    FontColor = Colors.White.ToCaptionSettingsColor()
-                };
-            }
-        }
-
-        /// <summary>
         /// Show the settings page if there is a CaptionsPlugin.
         /// </summary>
         /// <param name="service">the navigation service</param>
         /// <example>
-        /// This is the handler for an appbar menu button click event:
+        /// This is the handler for an app bar menu button click event:
         /// <code>
         /// private void CaptionSettings_Click(object sender, System.EventArgs e)
         /// {
@@ -124,6 +90,7 @@
             ////layoutRoot.Children.Add(popup);
 
             ////popup.IsOpen = true;
+
             var assembly = typeof(CaptionSettingsPage).Assembly;
 
             var assemblyName = System.IO.Path.GetFileNameWithoutExtension(assembly.ManifestModule.Name);
@@ -140,6 +107,45 @@
             {
                 CaptionSettingsPage.Settings = this.plugin.Settings;
                 CaptionSettingsPage.ApplyCaptionSettings = this.plugin.ApplyCaptionSettings;
+            }
+        }
+
+        /// <summary>
+        /// Activate the caption settings UI
+        /// </summary>
+        /// <param name="plugin">the plug-in</param>
+        /// <param name="loadCaptionSettings">the load caption settings event handler</param>
+        /// <param name="saveCaptionSettings">the save caption settings event handler</param>
+        internal void Activate(
+            CaptionSettingsPluginBase plugin,
+            EventHandler<CustomCaptionSettingsEventArgs> loadCaptionSettings,
+            EventHandler<CustomCaptionSettingsEventArgs> saveCaptionSettings)
+        {
+            this.plugin = plugin;
+            this.loadCaptionSettings = loadCaptionSettings;
+            this.saveCaptionSettings = saveCaptionSettings;
+
+            bool isCustomCaptionSettings = false;
+
+            object value;
+
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CaptionSettingsPage.OverrideDefaultKey, out value))
+            {
+                isCustomCaptionSettings = (bool)value;
+            }
+
+            if (isCustomCaptionSettings && IsolatedStorageSettings.ApplicationSettings.TryGetValue(LocalSettingsKey, out value))
+            {
+                var xml = value.ToString();
+
+                this.plugin.Settings = CustomCaptionSettings.FromString(xml);
+            }
+            else
+            {
+                this.plugin.Settings = new CustomCaptionSettings
+                {
+                    FontColor = Colors.White.ToCaptionSettingsColor()
+                };
             }
         }
 

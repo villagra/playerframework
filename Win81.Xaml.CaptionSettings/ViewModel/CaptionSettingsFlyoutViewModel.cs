@@ -179,6 +179,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         this.Settings.FontColor,
                         new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 });
 
+                    this.OnPropertyChanged();
                     this.OnPropertyChanged("IsFontColorEnabled");
                 }
             }
@@ -205,6 +206,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         this.Settings.BackgroundColor,
                         new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
 
+                    this.OnPropertyChanged();
                     this.OnPropertyChanged("IsBackgroundColorEnabled");
                 }
             }
@@ -230,6 +232,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         this.Settings.WindowColor,
                         new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
 
+                    this.OnPropertyChanged();
                     this.OnPropertyChanged("IsWindowColorEnabled");
                 }
             }

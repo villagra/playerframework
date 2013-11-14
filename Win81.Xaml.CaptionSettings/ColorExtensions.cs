@@ -10,6 +10,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 {
     using Microsoft.PlayerFramework.CaptionSettings.Model;
 
+#if WINDOWS_PHONE
+    using Media = System.Windows.Media;
+#else
+    using Media = Windows.UI;
+#endif
+
     /// <summary>
     /// Color extension methods
     /// </summary>
@@ -20,9 +26,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         /// <param name="color">the caption settings color</param>
         /// <returns>a Windows Color</returns>
-        public static Windows.UI.Color ToColor(this Color color)
+        public static Media.Color ToColor(this Color color)
         {
-            return Windows.UI.Color.FromArgb(
+            return Media.Color.FromArgb(
                 color.Alpha,
                 color.Red,
                 color.Green,
@@ -34,7 +40,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         /// <param name="color">a Windows color</param>
         /// <returns>a Caption Settings color</returns>
-        public static Color ToCaptionSettingsColor(this Windows.UI.Color color)
+        public static Color ToCaptionSettingsColor(this Media.Color color)
         {
             return new Color
             {

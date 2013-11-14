@@ -15,11 +15,11 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
     using Microsoft.PlayerFramework.TimedText;
     using Microsoft.TimedText;
 #if WINDOWS_PHONE
-    using System.Windows.Media;
     using FF = System.Windows.Media;
+    using Media = System.Windows.Media;
 #else
-    using Windows.UI;
     using FF = Microsoft.TimedText;
+    using Media = Windows.UI;
 #endif
 
     /// <summary>
@@ -36,6 +36,23 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Reset the selected caption to parse it with the new settings.
+        /// </summary>
+        /// <param name="settings">the updated caption settings</param>
+        public override void OnApplyCaptionSettings(CustomCaptionSettings settings)
+        {
+            var selectedCaption = this.MediaPlayer.SelectedCaption;
+
+            this.MediaPlayer.SelectedCaption = null;
+
+            this.MediaPlayer.SelectedCaption = selectedCaption;
+        }
+
+        /// <summary>
+        /// Attach the CaptionParsed event handler
+        /// </summary>
+        /// <returns>true if the TTML CaptionsPlugin is registered</returns>
         protected override bool OnActivate()
         {
             var captionsPlugin = this.MediaPlayer.GetCaptionsPlugin();
@@ -52,6 +69,9 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
             return base.OnActivate();
         }
 
+        /// <summary>
+        /// Detach the CaptionParsed event handler
+        /// </summary>
         protected override void OnDeactivate()
         {
             base.OnDeactivate();
@@ -62,19 +82,6 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
             {
                 captionsPlugin.CaptionParsed -= this.OnCaptionParsed;
             }
-        }
-
-        /// <summary>
-        /// Reset the selected caption to parse it with the new settings.
-        /// </summary>
-        /// <param name="settings">the updated caption settings</param>
-        public override void OnApplyCaptionSettings(CustomCaptionSettings settings)
-        {
-            var selectedCaption = this.MediaPlayer.SelectedCaption;
-
-            this.MediaPlayer.SelectedCaption = null;
-
-            this.MediaPlayer.SelectedCaption = selectedCaption;
         }
 
         #endregion
@@ -92,7 +99,6 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
             CustomCaptionSettings userSettings,
             bool isRoot)
         {
-
             if (isRoot)
             {
                 if (userSettings.WindowColor != null)
@@ -122,17 +128,14 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
                 };
             }
 
-//#if !WINDOWS_PHONE
             var fontFamily = GetFontFamily(userSettings);
 
             if (fontFamily != null)
             {
                 captionElement.Style.FontFamily = fontFamily;
             }
-//#endif
-            ApplyFontStyle(captionElement, userSettings);
 
-            // Todo: set other properties
+            ApplyFontStyle(captionElement, userSettings);
 
             var children = captionElement.Children as MediaMarkerCollection<TimedTextElement>;
 
@@ -163,21 +166,23 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
             {
                 case FontStyle.Default:
                     captionElement.Style.TextStyle = TextStyle.Default;
+                    
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Colors.Black;
+                    captionElement.Style.OutlineColor = Media.Colors.Black;
                     break;
 
                 case FontStyle.DepressedEdge:
                     captionElement.Style.TextStyle = TextStyle.DepressedEdge;
-                    captionElement.Style.OutlineColor = Colors.Black;
+                    captionElement.Style.OutlineColor = Media.Colors.Black;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
                     break;
 
                 case FontStyle.DropShadow:
                     captionElement.Style.TextStyle = TextStyle.DropShadow;
+                    
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
-                    captionElement.Style.OutlineColor = Colors.Black;
+                    captionElement.Style.OutlineColor = Media.Colors.Black;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 2, Unit = LengthUnit.Pixel };
                     break;
 
@@ -188,13 +193,13 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
                 case FontStyle.Outline:
                     captionElement.Style.TextStyle = TextStyle.Outline;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Colors.Black;
+                    captionElement.Style.OutlineColor = Media.Colors.Black;
                     break;
 
                 case FontStyle.RaisedEdge:
                     captionElement.Style.TextStyle = TextStyle.RaisedEdge;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Colors.Black;
+                    captionElement.Style.OutlineColor = Media.Colors.Black;
                     break;
             }
         }

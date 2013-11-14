@@ -273,7 +273,7 @@
             this.ShowListSelector(
                 AppResources.FontColor,
                 itemsSource,
-                viewModel.Settings.FontColorType,
+                viewModel.FontColorType,
                 OnFontColorTypeChanged,
                 "ColorTypeTemplate");
         }
@@ -285,7 +285,7 @@
             var selectedItem = (Model.ColorType)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.FontColorType = selectedItem;
+            viewModel.FontColorType = selectedItem;
 
             this.HideListSelector();
         }
@@ -297,7 +297,7 @@
             var selectedItem = (Model.ColorType)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.BackgroundColorType = selectedItem;
+            viewModel.BackgroundColorType = selectedItem;
 
             this.HideListSelector();
         }
@@ -309,7 +309,7 @@
             var selectedItem = (Model.ColorType)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.WindowColorType = selectedItem;
+            viewModel.WindowColorType = selectedItem;
 
             this.HideListSelector();
         }
@@ -332,7 +332,7 @@
                     ColorType.Semitransparent,
                     ColorType.Transparent
                 },
-                viewModel.Settings.BackgroundColorType,
+                viewModel.BackgroundColorType,
                 this.OnBackgroundColorTypeChanged,
                 "ColorTypeTemplate");
         }
@@ -350,7 +350,7 @@
                     ColorType.Semitransparent,
                     ColorType.Transparent
                 },
-                viewModel.Settings.WindowColorType,
+                viewModel.WindowColorType,
                 this.OnWindowColorTypeChanged,
                 "ColorTypeTemplate");
         }

@@ -91,6 +91,9 @@
     <Compile Include="..\Win81.Xaml.CaptionSettings\CaptionSettingsPluginBase.cs">
       <Link>CaptionSettingsPluginBase.cs</Link>
     </Compile>
+    <Compile Include="..\Win81.Xaml.CaptionSettings\ColorExtensions.cs">
+      <Link>ColorExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\Win81.Xaml.CaptionSettings\CustomCaptionSettingsEventArgs.cs">
       <Link>CustomCaptionSettingsEventArgs.cs</Link>
     </Compile>
@@ -128,7 +131,6 @@
       <DependentUpon>CaptionSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CaptionSettingsPluginBase.WP8.cs" />
-    <Compile Include="ColorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\CapitalsConverter.cs" />
     <Compile Include="ValueConverters\ColorConverter.cs" />
