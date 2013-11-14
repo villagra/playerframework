@@ -41,6 +41,12 @@ namespace Microsoft.WebVTT
 
         public event EventHandler<NodeRenderingEventArgs> NodeRendering;
 
+        /// <summary>
+        /// Text rendering event handler
+        /// </summary>
+        /// <remarks>This will be called for each caption TextBlock</remarks>
+        public event EventHandler<CaptionTextEventArgs> TextRendering;
+
         public WebVTTPanel()
         {
             this.DefaultStyleKey = typeof(WebVTTPanel);
@@ -48,6 +54,7 @@ namespace Microsoft.WebVTT
             renderer.OutlineBrush = OutlineBrush;
             renderer.OutlineWidth = OutlineWidth;
             renderer.NodeRendering += renderer_NodeRendering;
+            renderer.TextRendering += this.OnTextRendering;
             var _activeCues = new ObservableCollection<WebVTTCue>();
             _activeCues.CollectionChanged += _activeCues_CollectionChanged;
             activeCues = _activeCues;
@@ -58,6 +65,19 @@ namespace Microsoft.WebVTT
         {
             activeCues.Clear();
             // this will also cause all animations and elements to get removed
+        }
+
+        /// <summary>
+        ///  If a Text rendering handler is registered, call it.
+        /// </summary>
+        /// <param name="sender">the sender</param>
+        /// <param name="e">the caption text event arguments</param>
+        private void OnTextRendering(object sender, CaptionTextEventArgs e)
+        {
+            if (this.TextRendering != null)
+            {
+                this.TextRendering(this, e);
+            }
         }
 
         void _activeCues_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

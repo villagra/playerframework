@@ -8,28 +8,33 @@
 
 namespace Microsoft.PlayerFramework.CaptionSettings.Model
 {
+#if WINDOWS_PHONE
+#else
+    using Windows.UI.Xaml.Controls;
+#endif
+
     /// <summary>
     /// Color Type enumeration
     /// </summary>
     public enum ColorType
     {
         /// <summary>
-        /// Use the default color
+        /// Default color type
         /// </summary>
         Default,
 
         /// <summary>
-        /// Solid color
+        /// Solid color type
         /// </summary>
         Solid,
 
         /// <summary>
-        /// Transparent color
+        /// transparent color type (0 alpha)
         /// </summary>
         Transparent,
 
         /// <summary>
-        /// Semitransparent color
+        /// Semitransparent color type (127 alpha)
         /// </summary>
         Semitransparent
     }

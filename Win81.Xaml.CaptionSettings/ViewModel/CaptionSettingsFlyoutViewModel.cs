@@ -53,11 +53,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                     FontColor = Media.Colors.White.ToCaptionSettingsColor()
                 };
             }
+
+            var defaultText = Resources.AppResources.Default;
 #else
             var resources = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
 
             this.PreviewText = resources.GetString("PreviewText");
+            var defaultText = resources.GetString("Default");
+
 #endif
+
+
             this.FontFamilies = new FontFamily[]
             {
                 FontFamily.Default,
@@ -72,11 +78,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
 
             this.FontSizes = new string[]
             {
-#if WINDOWS_PHONE
-                Resources.AppResources.Default,
-#else
-                resources.GetString("Default"),
-#endif
+                defaultText,
                 "50",
                 "100",
                 "150",
@@ -130,7 +132,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         {
             get
             {
-                return this.IsEnabled && this.Settings != null && this.Settings.FontColorType != ColorType.Default;
+                return this.IsEnabled && this.Settings != null && this.Settings.FontColor != null;
             }
         }
 
@@ -138,7 +140,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         {
             get
             {
-                return this.IsEnabled && this.Settings != null && this.Settings.BackgroundColorType != ColorType.Default;
+                return this.IsEnabled && this.Settings != null && this.Settings.BackgroundColor != null;
             }
         }
 
@@ -146,7 +148,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         {
             get
             {
-                return this.IsEnabled && this.Settings != null && this.Settings.WindowColorType != ColorType.Default;
+                return this.IsEnabled && this.Settings != null && this.Settings.WindowColor != null;
             }
         }
 
@@ -155,6 +157,139 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         public string[] FontSizes { get; private set; }
 
         public FontStyle[] FontStyles { get; private set; }
+
+        public ColorType FontColorType
+        {
+            get
+            {
+                return GetColorType(this.Settings.FontColor);
+            }
+
+            set
+            {
+                if (this.FontColorType != value)
+                {
+                    if (this.Settings == null)
+                    {
+                        return;
+                    }
+
+                    this.Settings.FontColor = this.SetColorType(
+                        value,
+                        this.Settings.FontColor,
+                        new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 });
+
+                    this.OnPropertyChanged("IsFontColorEnabled");
+                }
+            }
+        }
+
+        public ColorType BackgroundColorType
+        {
+            get
+            {
+                return GetColorType(this.Settings.BackgroundColor);
+            }
+
+            set
+            {
+                if (this.BackgroundColorType != value)
+                {
+                    if (this.Settings == null)
+                    {
+                        return;
+                    }
+
+                    this.Settings.BackgroundColor = this.SetColorType(
+                        value,
+                        this.Settings.BackgroundColor,
+                        new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
+
+                    this.OnPropertyChanged("IsBackgroundColorEnabled");
+                }
+            }
+        }
+        public ColorType WindowColorType
+        {
+            get
+            {
+                return GetColorType(this.Settings.WindowColor);
+            }
+
+            set
+            {
+                if (this.WindowColorType != value)
+                {
+                    if (this.Settings == null)
+                    {
+                        return;
+                    }
+
+                    this.Settings.WindowColor = this.SetColorType(
+                        value,
+                        this.Settings.WindowColor,
+                        new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
+
+                    this.OnPropertyChanged("IsWindowColorEnabled");
+                }
+            }
+        }
+
+        private ColorType GetColorType(Color color)
+        {
+            if (this.Settings == null)
+            {
+                return ColorType.Default;
+            }
+
+            if (color == null)
+            {
+                return ColorType.Default;
+            }
+
+            switch (color.Alpha)
+            {
+                case 0:
+                    return ColorType.Transparent;
+
+                case 255:
+                    return ColorType.Solid;
+
+                default:
+                    return ColorType.Semitransparent;
+            }
+        }
+
+        private Color SetColorType(ColorType type, Color color, Color defaultColor)
+        {
+            if (color == null)
+            {
+                color = new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 };
+            }
+
+            switch (type)
+            {
+                case ColorType.Default:
+                    color = null;
+                    break;
+
+                case ColorType.Semitransparent:
+                    color.Alpha = 127;
+                    break;
+
+                case ColorType.Solid:
+                    color.Alpha = 255;
+                    break;
+
+                case ColorType.Transparent:
+                    color.Alpha = 0;
+                    break;
+            }
+
+            return color;
+
+        }
+
 
         public CustomCaptionSettings Settings
         {

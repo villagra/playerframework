@@ -30,12 +30,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         {
             if (value == null)
             {
-                return new SolidColorBrush(Windows.UI.Colors.Transparent);
+                return null;
             }
 
             var color = value as Color;
 
-            var xamlColor = Windows.UI.Color.FromArgb(255, color.Red, color.Green, color.Blue);
+            if (color == null)
+            {
+                return null;
+            }
+
+            var xamlColor = color.ToColor();
 
             return new SolidColorBrush(xamlColor);
         }

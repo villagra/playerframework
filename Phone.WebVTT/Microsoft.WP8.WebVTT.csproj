@@ -89,6 +89,9 @@
     <Compile Include="..\Win8.WebVTT\BoxElement.cs">
       <Link>BoxElement.cs</Link>
     </Compile>
+    <Compile Include="..\Win8.WebVTT\CaptionTextEventArgs.cs">
+      <Link>CaptionTextEventArgs.cs</Link>
+    </Compile>
     <Compile Include="..\Win8.WebVTT\Extensions\UnicodeExtensions.cs">
       <Link>Extensions\UnicodeExtensions.cs</Link>
     </Compile>

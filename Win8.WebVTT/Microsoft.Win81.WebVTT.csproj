@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="BlockDocumentReader.cs" />
     <Compile Include="BoxElement.cs" />
+    <Compile Include="CaptionTextEventArgs.cs" />
     <Compile Include="IWebVTTModels.cs" />
     <Compile Include="Markers\MediaMarker.cs" />
     <Compile Include="Markers\MediaMarkerCollection.cs" />

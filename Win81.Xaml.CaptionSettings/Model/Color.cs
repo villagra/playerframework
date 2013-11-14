@@ -13,8 +13,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
     /// <summary>
     /// Caption settings color
     /// </summary>
-    public class Color
+    public class Color : BindableBase
     {
+        /// <summary>
+        /// the alpha transparency (0-255)
+        /// </summary>
+        private byte alpha;
+
         /// <summary>
         /// Gets or sets the Red component
         /// </summary>
@@ -32,6 +37,23 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         /// </summary>
         [XmlAttribute]
         public byte Blue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transparency component (0-255)
+        /// </summary>
+        [XmlAttribute]
+        public byte Alpha
+        {
+            get
+            {
+                return this.alpha;
+            }
+
+            set
+            {
+                this.SetProperty(ref this.alpha, value);
+            }
+        }
 
         /// <summary>
         /// Compares two colors

@@ -95,28 +95,22 @@ namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
 
             if (isRoot)
             {
-                var opacity = GetOpacity(userSettings.WindowColorType);
-
-                if (opacity.HasValue && userSettings.WindowColor != null)
+                if (userSettings.WindowColor != null)
                 {
-                    captionElement.Style.BackgroundColor = userSettings.WindowColor.ToColor(opacity.Value);
+                    captionElement.Style.BackgroundColor = userSettings.WindowColor.ToColor();
                 }
             }
             else
             {
-                var opacity = GetOpacity(userSettings.BackgroundColorType);
-
-                if (opacity.HasValue && userSettings.BackgroundColor != null)
+                if (userSettings.BackgroundColor != null)
                 {
-                    captionElement.Style.BackgroundColor = userSettings.BackgroundColor.ToColor(opacity.Value);
+                    captionElement.Style.BackgroundColor = userSettings.BackgroundColor.ToColor();
                 }
             }
 
-            var fontColorOpacity = GetOpacity(userSettings.FontColorType);
-
-            if (fontColorOpacity.HasValue && userSettings.FontColor != null)
+            if (userSettings.FontColor != null)
             {
-                captionElement.Style.Color = userSettings.FontColor.ToColor(fontColorOpacity.Value);
+                captionElement.Style.Color = userSettings.FontColor.ToColor();
             }
 
             if (userSettings.FontSize.HasValue)

@@ -192,24 +192,26 @@
                     <TextBlock TextWrapping="Wrap" Text="Ignore default caption fonts and colors" x:Uid="EnableCaptionSettingsHeader"/>
                 </ToggleSwitch.Header>
             </ToggleSwitch>
-			<TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>			
-			
-			<ComboBox x:Name="Family" x:Uid="Family"
-				Header="Family"
-				ItemsSource="{Binding FontFamilies}"
-				SelectedItem="{Binding Settings.FontFamily, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}" 
-				IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" ItemTemplate="{StaticResource ResourceTemplate}"/>
-			<StackPanel x:Name="PreviewPanel" Orientation="Vertical">
-				<TextBlock x:Uid="Preview" Text="Preview" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,10"/>
-				<Controls:PreviewControl x:Name="Preview" 
+            <StackPanel x:Name="PreviewPanel" Orientation="Vertical">
+                <TextBlock x:Uid="Preview" Text="Preview" Style="{StaticResource GroupTitleTextStyle}" Margin="0,0,0,10"/>
+                <Controls:PreviewControl x:Name="Preview" 
 					Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}}" 
 					CaptionBackground="{Binding Settings.BackgroundColor, Converter={StaticResource ColorToBrushConverter}}" 
 					WindowColor="{Binding Settings.WindowColor, Converter={StaticResource ColorToBrushConverter}}" 
 					FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" OutlineWidth="1" 
 					CaptionFontStyle="DropShadow" 
 					FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
-					Typography.Capitals="{Binding Settings.FontFamily, Converter={StaticResource CaptialsConverter}}" PreviewText="Aaa Bbb Ccc Ddd"/>
-			</StackPanel>
+					Typography.Capitals="{Binding Settings.FontFamily, Converter={StaticResource CaptialsConverter}}" 
+                    PreviewText="Aaa Bbb Ccc Ddd"
+                    Margin="0,0,0,10"/>
+            </StackPanel>
+            <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>			
+			
+			<ComboBox x:Name="Family" x:Uid="Family"
+				Header="Family"
+				ItemsSource="{Binding FontFamilies}"
+				SelectedItem="{Binding Settings.FontFamily, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}" 
+				IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" ItemTemplate="{StaticResource ResourceTemplate}"/>
 			<ComboBox x:Name="CaptionFontSize" x:Uid="Size" ItemsSource="{Binding FontSizes}" Header="Size (%)" 
 				IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
 				Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}, Mode=TwoWay, TargetNullValue=Default}"/>
@@ -226,10 +228,11 @@
 					<ColumnDefinition/>
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<ComboBox x:Name="FontColorType" x:Uid="FontColor" Header="Font" 
+                <ComboBox x:Name="FontColorType" x:Uid="FontColor" Header="Font" 
 					IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
-					SelectedItem="{Binding Settings.FontColorType, Mode=TwoWay, TargetNullValue=Default}" ItemTemplate="{StaticResource ColorTypeTemplate}"/>
-				<Button x:Name="FontColorButton" Style="{StaticResource ColorButtonStyle}" 
+                    ItemTemplate="{StaticResource ColorTypeTemplate}"
+					SelectedItem="{Binding FontColorType, Mode=TwoWay}"/>
+                <Button x:Name="FontColorButton" Style="{StaticResource ColorButtonStyle}" 
 					IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}"
 					Template="{StaticResource ColorButtonTemplate}" >
 					<Button.Flyout>
@@ -249,8 +252,8 @@
 				</Grid.ColumnDefinitions>
 				<ComboBox x:Name="BackgroundColorType" x:Uid="BackgroundColor" Header="Background"
 					IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" 
-					SelectedItem="{Binding Settings.BackgroundColorType, Mode=TwoWay, TargetNullValue=Default}" 
-					ItemTemplate="{StaticResource ColorTypeTemplate}"/>
+					SelectedItem="{Binding BackgroundColorType, Mode=TwoWay}"                          
+                          ItemTemplate="{StaticResource ColorTypeTemplate}"/>
 				<Button x:Name="BackgroundColorButton" Style="{StaticResource ColorButtonStyle}" 
 					IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}">
 					<Button.Flyout>
@@ -271,8 +274,8 @@
 				</Grid.ColumnDefinitions>
 				<ComboBox x:Name="WindowColorType" x:Uid="WindowColor" Header="Window"  
 					IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
-					SelectedItem="{Binding Settings.WindowColorType, Mode=TwoWay, TargetNullValue=Default}" 
-					ItemTemplate="{StaticResource ColorTypeTemplate}"/>
+					SelectedItem="{Binding WindowColorType, Mode=TwoWay}"
+                    ItemTemplate="{StaticResource ColorTypeTemplate}"/>
 
 				<Button x:Name="WindowColorButton" Style="{StaticResource ColorButtonStyle}" 
 					IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}">

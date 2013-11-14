@@ -39,17 +39,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         /// <summary>
         /// the font color type
         /// </summary>
-        private ColorType fontColorType;
+        ////private ColorType fontColorType;
         
         /// <summary>
         /// the background color type
         /// </summary>
-        private ColorType backgroundColorType;
+        ////private ColorType backgroundColorType;
         
         /// <summary>
         /// the window color type
         /// </summary>
-        private ColorType windowColorType;
+        ////private ColorType windowColorType;
 
         /// <summary>
         /// the font color
@@ -70,12 +70,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         #region Constructors
         public CustomCaptionSettings()
         {
-            this.FontColorType = ColorType.Default;
-            this.BackgroundColorType = ColorType.Default;
-            this.WindowColorType = ColorType.Default;
+            ////this.FontColorType = ColorType.Default;
             this.FontStyle = Model.FontStyle.Default;
             this.FontFamily = Model.FontFamily.Default;
-            this.FontColor = new Color { Blue = 255, Green = 255, Red = 255 };
+            this.FontColor = new Color { Blue = 255, Green = 255, Red = 255, Alpha=255 };
         }
         #endregion
 
@@ -124,53 +122,54 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
 
             set
             {
-                System.Diagnostics.Debug.WriteLine("FontStyle Setter: {0}", value);
-
                 this.SetProperty(ref this.fontStyle, value);
             }
         }
 
-        [XmlElement]
-        public ColorType FontColorType
-        {
-            get
-            {
-                return this.fontColorType;
-            }
+        ////[XmlElement]
+        ////public ColorType FontColorType
+        ////{
+        ////    get
+        ////    {
+        ////        return this.fontColorType;
+        ////    }
 
-            set
-            {
-                this.SetProperty(ref this.fontColorType, value);
-            }
-        }
+        ////    set
+        ////    {
+        ////        this.SetProperty(ref this.fontColorType, value);
+        ////    }
+        ////}
 
-        [XmlElement]
-        public ColorType BackgroundColorType
-        {
-            get
-            {
-                return this.backgroundColorType;
-            }
+        ////[XmlElement]
+        ////public ColorType BackgroundColorType
+        ////{
+        ////    get
+        ////    {
+        ////        return this.backgroundColorType;
+        ////    }
 
-            set
-            {
-                this.SetProperty(ref this.backgroundColorType, value);
-            }
-        }
+        ////    set
+        ////    {
+        ////        this.SetProperty(ref this.backgroundColorType, value);
+        ////    }
+        ////}
 
-        [XmlElement]
-        public ColorType WindowColorType
-        {
-            get
-            {
-                return this.windowColorType;
-            }
+        ////[XmlElement]
+        ////public ColorType WindowColorType
+        ////{
+        ////    get
+        ////    {
+        ////        return this.windowColorType;
+        ////    }
 
-            set
-            {
-                this.SetProperty(ref this.windowColorType, value);
-            }
-        }
+        ////    set
+        ////    {
+        ////        if (this.SetProperty(ref this.windowColorType, value))
+        ////        {
+        ////            this.OnPropertyChanged("WindowColor");
+        ////        }
+        ////    }
+        ////}
 
         [XmlElement]
         public Color FontColor

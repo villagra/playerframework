@@ -11,8 +11,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
     using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
+    using Windows.ApplicationModel.Resources;
     using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Shapes;
 
     /// <summary>
     /// Caption Settings Flyout
@@ -27,17 +27,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
         #endregion
         /// <summary>
-        /// Initializes a new instance of the CaptionSettingsFlyout class.
+        /// Initializes a new instance of the CaptionSettingFlyout class.
         /// </summary>
         public CaptionSettingFlyout()
         {
             this.InitializeComponent();
 
+            var loader = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+
+            var viewModel = new CaptionSettingsFlyoutViewModel();
+
             this.FontColorType.ItemsSource = new ColorType[] 
             {
                 ColorType.Default,
                 ColorType.Solid,
-                ColorType.Semitransparent
+                ColorType.Semitransparent,
             };
 
             this.BackgroundColorType.ItemsSource = new ColorType[]
@@ -56,9 +60,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 ColorType.Transparent
             };
 
-            var viewModel = new CaptionSettingsFlyoutViewModel();
-
-            viewModel.PropertyChanged += this.value_PropertyChanged;
+            viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
             this.DataContext = viewModel;
 
             this.CaptionSettings = new CustomCaptionSettings();
@@ -101,12 +103,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
                 if (value != null)
                 {
-                    value.PropertyChanged += this.value_PropertyChanged;
+                    value.PropertyChanged += this.OnViewModelPropertyChanged;
                 }
             }
         }
 
-        void value_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        /// <summary>
+        /// If the IsEnabled value changes on the viewModel, save that value to the local settings
+        /// </summary>
+        /// <param name="sender">the view model</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (this.OnApplyCaptionSettings != null)
             {
@@ -121,6 +128,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
         }
 
+        /// <summary>
+        /// Update the font style when the user selects a different one
+        /// </summary>
+        /// <param name="sender">the font style combo box</param>
+        /// <param name="e">the selection changed event arguments</param>
         private void OnFontStyleChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedFontStyle = (FontStyle)this.CaptionFontStyle.SelectedItem;

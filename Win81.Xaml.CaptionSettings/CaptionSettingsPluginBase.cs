@@ -81,25 +81,25 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         /// <param name="colorType">the color type</param>
         /// <returns>the opacity from 0-100</returns>
-        protected static uint? GetOpacity(ColorType colorType)
-        {
-            switch (colorType)
-            {
-                case ColorType.Default:
-                    return null;
+        ////protected static uint? GetOpacity(ColorType colorType)
+        ////{
+        ////    switch (colorType)
+        ////    {
+        ////        case ColorType.Default:
+        ////            return null;
 
-                case ColorType.Semitransparent:
-                    return 50;
+        ////        case ColorType.Semitransparent:
+        ////            return 50;
 
-                case ColorType.Solid:
-                    return 100;
+        ////        case ColorType.Solid:
+        ////            return 100;
 
-                case ColorType.Transparent:
-                    return 0;
-            }
+        ////        case ColorType.Transparent:
+        ////            return 0;
+        ////    }
 
-            return null;
-        }
+        ////    return null;
+        ////}
 
         /// <summary>
         /// Activate the plug-in

@@ -83,8 +83,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Win81.Xaml.WebVTT.CaptionSettings\WebVTTCaptionSettings.cs">
-      <Link>WebVTTCaptionSettings.cs</Link>
+    <Compile Include="..\Win81.Xaml.WebVTT.CaptionSettings\WebVTTCaptionSettingsPlugin.cs">
+      <Link>WebVTTCaptionSettingsPlugin.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

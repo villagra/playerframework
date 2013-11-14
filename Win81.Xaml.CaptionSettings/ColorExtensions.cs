@@ -19,14 +19,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// Converts a CaptionSettings Color to a Windows Color
         /// </summary>
         /// <param name="color">the caption settings color</param>
-        /// <param name="opacity">the opacity (0-100)</param>
         /// <returns>a Windows Color</returns>
-        public static Windows.UI.Color ToColor(this Color color, uint opacity)
+        public static Windows.UI.Color ToColor(this Color color)
         {
-            var textOpacity = opacity * 255 / 100;
-
             return Windows.UI.Color.FromArgb(
-                System.Convert.ToByte(textOpacity),
+                color.Alpha,
                 color.Red,
                 color.Green,
                 color.Blue);
@@ -43,7 +40,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 Red = color.R,
                 Green = color.G,
-                Blue = color.B
+                Blue = color.B,
+                Alpha = color.A
             };
         }
     }
