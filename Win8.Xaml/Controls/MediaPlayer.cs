@@ -4511,7 +4511,8 @@ namespace Microsoft.PlayerFramework
                 {
                     if (oldValue != 1.0 || oldValue != 0.0)
                     {
-                        Position = VirtualPosition; // we're coming out of simulated trick play, sync positions
+                        bool canceled = false;
+                        Seek(VirtualPosition, out canceled); // we're coming out of simulated trick play, sync positions
                     }
                     _PlaybackRate = newValue;
                 }
