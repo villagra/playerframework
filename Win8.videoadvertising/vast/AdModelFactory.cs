@@ -100,7 +100,7 @@ namespace Microsoft.VideoAdvertising
         {
             return new Pricing();
         }
-        
+
         /// <summary>
         /// Provides a fallback ad pod to use in the event that a wrapper does not return an ad.
         /// </summary>
@@ -310,7 +310,6 @@ namespace Microsoft.VideoAdvertising
         {
             if (dest is CreativeLinear)
             {
-                var destLinear = (CreativeLinear)dest;
                 var linearWrapper = source as CreativeLinear;
                 if (linearWrapper != null)
                 {
@@ -334,13 +333,21 @@ namespace Microsoft.VideoAdvertising
                     foreach (var media in linearWrapper.MediaFiles)
                         linear.MediaFiles.Add(media);
 
-                    // always use the VAST duration
-                    destLinear.Duration = linearWrapper.Duration;
+                    // use the click through url from the wrapped doc
+                    if (linearWrapper.ClickThrough != null)
+                        linear.ClickThrough = linearWrapper.ClickThrough;
+
+                    linear.Id = linearWrapper.Id;
+                    linear.AdId = linearWrapper.AdId;
+                    if (linear.AdParameters == null) linear.AdParameters = linearWrapper.AdParameters;
+                    linear.Extensions.AddRange(linearWrapper.Extensions);
+                    linear.SkipOffset = linearWrapper.SkipOffset;
+                    linear.Duration = linearWrapper.Duration;
                 }
             }
             else if (dest is CreativeNonLinears)
             {
-                var nonLinearsWrapper = (CreativeNonLinears)source;
+                var nonLinearsWrapper = source as CreativeNonLinears;
                 if (nonLinearsWrapper != null)
                 {
                     var nonLinears = (CreativeNonLinears)dest;
