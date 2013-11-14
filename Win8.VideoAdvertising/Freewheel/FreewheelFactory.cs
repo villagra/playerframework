@@ -135,7 +135,7 @@ namespace Microsoft.VideoAdvertising
             result.Url = (string)element.Attribute("url");
             result.Name = (string)element.Attribute("name");
             result.Type = (FWCallbackType)Enum.Parse(typeof(FWCallbackType), (string)element.Attribute("type"), true);
-            result.ShowBrowser = element.GetBoolAttribute("showBrowser", true);
+            result.ShowBrowser = element.GetBoolAttribute("showBrowser", false);
             result.Use = (string)element.Attribute("use");
 
             var trackingUrlsXml = element.Element("trackingURLs");
