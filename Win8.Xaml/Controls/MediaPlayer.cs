@@ -774,7 +774,7 @@ namespace Microsoft.PlayerFramework
 
         internal void Seek(TimeSpan position, out bool cancel)
         {
-            var previousPosition = VirtualPosition;
+            var previousPosition = (position == VirtualPosition ? Position : VirtualPosition);
             var args = new SeekRoutedEventArgs(previousPosition, position);
             OnSeeked(args);
             cancel = args.Canceled;
@@ -833,7 +833,7 @@ namespace Microsoft.PlayerFramework
             if (!IsAudioOnly)
 #endif
             {
-                PlaybackRate = rateAfterScrub;
+                _PlaybackRate = rateAfterScrub;
             }
             SetValue(IsScrubbingProperty, false);
         }
@@ -851,7 +851,7 @@ namespace Microsoft.PlayerFramework
                 if (!IsAudioOnly)
 #endif
                 {
-                    PlaybackRate = 0;
+                    _PlaybackRate = 0;
                 }
                 SetValue(IsScrubbingProperty, true);
             }
@@ -3212,8 +3212,7 @@ namespace Microsoft.PlayerFramework
 
         void OnIsSlowMotionChanged(bool oldValue, bool newValue)
         {
-            if (newValue) PlaybackRate = SlowMotionPlaybackRate;
-            else PlaybackRate = DefaultPlaybackRate;
+            PlaybackRate = (newValue ? SlowMotionPlaybackRate : DefaultPlaybackRate);
             OnIsSlowMotionChanged(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue));
         }
 
