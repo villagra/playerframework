@@ -82,7 +82,10 @@ namespace Microsoft.PlayerFramework
 
         private void MediaPlayer_UpdateCompleted(object sender, RoutedEventArgs e)
         {
-            EvaluteTrackingEvents();
+            if (MediaPlayer.AdvertisingState == AdvertisingState.None || MediaPlayer.AdvertisingState == AdvertisingState.NonLinear)
+            {
+                EvaluteTrackingEvents();
+            }
         }
 
         private void EvaluteTrackingEvents()
