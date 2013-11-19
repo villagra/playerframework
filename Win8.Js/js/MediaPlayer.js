@@ -3044,7 +3044,7 @@
                         this._scrubPlaybackRate = this.playbackRate;
                         if (this._mediaElement.tagName !== "AUDIO") {
                             // better UX to not stop playback for audio
-                            this.playbackRate = 0;
+                            this._mediaElement.playbackRate = 0;
                         }
                     } else {
                         this._completeScrub(time, true);
@@ -3081,7 +3081,7 @@
                         this.currentTime = time;
                     }
                     if (this._mediaElement.tagName !== "AUDIO") {
-                        this.playbackRate = this._scrubPlaybackRate;
+                        this._mediaElement.playbackRate = this._scrubPlaybackRate;
                     }
                 }
             },
