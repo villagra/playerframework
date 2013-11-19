@@ -23,6 +23,12 @@ namespace Microsoft.WebVTT
 {
     public sealed class WebVTTPanel : Control
     {
+        /// <summary>
+        /// PanelBackground dependency property
+        /// </summary>
+        static readonly DependencyProperty PanelBackgroundProperty =
+            DependencyProperty.Register("PanelBackground", typeof(Brush), typeof(WebVTTPanel), new PropertyMetadata(null));
+
         private WebVTTCueRenderer renderer;
         private IList<WebVTTCue> activeCues;
         private Panel captionPanel;
@@ -35,6 +41,12 @@ namespace Microsoft.WebVTT
 
         public event EventHandler<NodeRenderingEventArgs> NodeRendering;
 
+        /// <summary>
+        /// Text rendering event handler
+        /// </summary>
+        /// <remarks>This will be called for each caption TextBlock</remarks>
+        public event EventHandler<CaptionTextEventArgs> TextRendering;
+
         public WebVTTPanel()
         {
             this.DefaultStyleKey = typeof(WebVTTPanel);
@@ -42,6 +54,7 @@ namespace Microsoft.WebVTT
             renderer.OutlineBrush = OutlineBrush;
             renderer.OutlineWidth = OutlineWidth;
             renderer.NodeRendering += renderer_NodeRendering;
+            renderer.TextRendering += this.OnTextRendering;
             var _activeCues = new ObservableCollection<WebVTTCue>();
             _activeCues.CollectionChanged += _activeCues_CollectionChanged;
             activeCues = _activeCues;
@@ -52,6 +65,19 @@ namespace Microsoft.WebVTT
         {
             activeCues.Clear();
             // this will also cause all animations and elements to get removed
+        }
+
+        /// <summary>
+        ///  If a Text rendering handler is registered, call it.
+        /// </summary>
+        /// <param name="sender">the sender</param>
+        /// <param name="e">the caption text event arguments</param>
+        private void OnTextRendering(object sender, CaptionTextEventArgs e)
+        {
+            if (this.TextRendering != null)
+            {
+                this.TextRendering(this, e);
+            }
         }
 
         void _activeCues_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -251,6 +277,16 @@ namespace Microsoft.WebVTT
 
         static readonly DependencyProperty outlineBrushProperty = DependencyProperty.Register("OutlineBrush", typeof(Brush), typeof(WebVTTPanel), new PropertyMetadata(new SolidColorBrush(Colors.Black), (d, e) => ((WebVTTPanel)d).OnOutlineBrushChanged(e.NewValue as Brush)));
         public static DependencyProperty OutlineBrushProperty { get { return outlineBrushProperty; } }
+
+        /// <summary>
+        /// Gets or sets the panel background
+        /// </summary>
+        /// <remarks>The Background of the WebVTTLayoutPanel CaptionsPanel will be set with this property</remarks>
+        public Brush PanelBackground
+        {
+            get { return (Brush)GetValue(PanelBackgroundProperty); }
+            set { SetValue(PanelBackgroundProperty, value); }
+        }
 
         public Brush OutlineBrush
         {

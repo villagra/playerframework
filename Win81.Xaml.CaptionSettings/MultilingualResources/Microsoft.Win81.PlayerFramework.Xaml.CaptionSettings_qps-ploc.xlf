@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="qps-ploc" original="Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings_Multilingual.prilog.xml" tool-id="MultilingualAppToolkit" product-name="Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings" product-version="1.0.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="2.1.1100.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml">
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\WindowColor\Header" xml:space="preserve">
+          <source>Window</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[4F770][!!_Ẃîйðòẅ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Updated" xml:space="preserve">
+          <source>Update</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[26237][!!_Üрðãťę_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Uniform" xml:space="preserve">
+          <source>Uniform</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[BC427][!!_Ûиįƒóŗm_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Character edge</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Undefined" xml:space="preserve">
+          <source>Default</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[EA27F][!!_Ðèƒãùłť_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Transparent" xml:space="preserve">
+          <source>Transparent</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[3744B][!!_Тŗâиşþàřêйť_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Solid" xml:space="preserve">
+          <source>Solid</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[EB376][!!_Ŝõľįð_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Smallcaps" xml:space="preserve">
+          <source>Small capitals</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1DE1A][!!_Şmãľļ ĉàþįτàļş_!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Size\Header" xml:space="preserve">
+          <source>Size (%)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[03239][!!_Şìžè (%)_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ShareTitle" xml:space="preserve">
+          <source>Caption Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[25E36][!!_Ćâþţįóи Ŝêťţîйģś_!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Share Title</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ShareInstructions\Text" xml:space="preserve">
+          <source>Once you configure your caption settings, share them with compatible apps.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[1A4FF][!!_Òηċê ÿòµ čóήƒìĝùŕé ўòûŗ ċàþтîóη śęţτíηğş, šнãřè ťĥęм ẁîτн ĉôмрãţìБļê áρρš._!!!!!!!!!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ShareDescription" xml:space="preserve">
+          <source>Caption settings for video playback apps</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[989C7][!!_Ĉãþтíôη ŝèτтîηğš ƒòŗ νîďêõ ρĺáўвàćĸ âþρś_!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ShareButton\Content" xml:space="preserve">
+          <source>Share Caption Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[95F83][!!_Ŝĥãŗê Čàрτįõη Śèττíйĝš_!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\SettingsInfo\Text" xml:space="preserve">
+          <source>Not all apps support all of the caption options.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[96F1C][!!_Ñóť àľľ áρрš śûρρõѓт âļł ôƒ ťћê ċáþťìòη õþτîõйś._!!!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\SettingsFlyout\Title" xml:space="preserve">
+          <source>Caption Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[E9ECF][!!_Ćâρτîõή Śéτţíήģŝ_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Semitransparent" xml:space="preserve">
+          <source>Semitransparent</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D0EB6][!!_Ŝêmíтŕâηŝрàѓèиţ_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\SaveCaptionOptions\Text" xml:space="preserve">
+          <source>Save Caption Options</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[937D1][!!_Şáνé Ċàрτíòή Òρţîòиş_!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\SampleText\Text" xml:space="preserve">
+          <source>To be or not to be, that is the question.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[B3D0D][!!_Ţó ъę õř ήõτ тò ъè, тћàτ îŝ ţђè qùęŝťîóη._!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\RoamingSettings\Content" xml:space="preserve">
+          <source>Save settings on all my devices.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[8E991][!!_Şáνę śèτťįиġş óή àļľ мý đèνîċéś._!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\RaisedEdge" xml:space="preserve">
+          <source>Raised edge</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[BA1AF][!!_Řâíşéđ èđģê_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Character edge</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ProportionalSerif" xml:space="preserve">
+          <source>Proporational serif</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[3A037][!!_Рŗõрòŕàţįôήãļ şèѓîƒ_!!!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\ProportionalSansSerif" xml:space="preserve">
+          <source>Proporational sans-serif</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[148BB][!!_Þŗôþõŗâţįôйâĺ śâйŝ-ŝéřîƒ_!!!!!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\PrivacyPolicy" xml:space="preserve">
+          <source>Privacy Policy</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[9F172][!!_ΡŕîνáčУ ÞòľíćУ_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\PreviewText" xml:space="preserve">
+          <source>Aaa Bbb Ccc Ddd</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[38741][!!_Ãàà Ьъь Čĉċ Ðđđ_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Preview\Text" xml:space="preserve">
+          <source>Preview</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[B86DE][!!_Ρŗęνìêẁ_!!]</target>
+        
+        <note from="MultilingualBuild" annotates="source" priority="2">Preview Label</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\PageTitle\Text" xml:space="preserve">
+          <source>Caption Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[3C08F][!!_Čãрťìòή Şêтťîиġś_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Outline" xml:space="preserve">
+          <source>Outline</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D1351][!!_Ôûτľîηę_!!]</target>
+        
+        <note from="MultilingualBuild" annotates="source" priority="2">Outline font style</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Options" xml:space="preserve">
+          <source>Options</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[0558D][!!_Òрťįõήŝ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Opacity\Text" xml:space="preserve">
+          <source>Opacity</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[45D32][!!_Óрãĉîţý_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\None" xml:space="preserve">
+          <source>None</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[9144B][!!_Ņôйè_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Character edge</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\MonospaceSerif" xml:space="preserve">
+          <source>Monospace serif</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[DE007][!!_Мõήòśрáćê šęѓįƒ_!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\MonospaceSansSerif" xml:space="preserve">
+          <source>Monospace sans-serif</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[56769][!!_Μóйõşрâĉê śâηš-ŝéѓįƒ_!!!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\LocalSettings\Content" xml:space="preserve">
+          <source>Save settings for only this device.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[48AD3][!!_Šáνę şęţтîήġš ƒóř óйļÿ τħíš đèνìčê._!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Language\Text" xml:space="preserve">
+          <source>Language</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[2421D][!!_Ľãйğµãğę_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\FontStyle\Header" xml:space="preserve">
+          <source>Font Style</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[DF46C][!!_₣ôηт Ŝтýļę_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\FontColor\Header" xml:space="preserve">
+          <source>Font</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[E2C6C][!!_₣óиť_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Font\Text" xml:space="preserve">
+          <source>Font</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D0EF0][!!_₣ôиţ_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font Family</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Family\Header" xml:space="preserve">
+          <source>Family</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[D2DFC][!!_₣ámìľÿ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\EnableCaptionSettingsHeader\Text" xml:space="preserve">
+          <source>Ignore default caption fonts and colors</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[334E7][!!_Íĝηõŗé ðèƒâùĺτ ĉâрτíõη ƒôηťš âиđ ċòłóŗš_!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\EasyReader\Header" xml:space="preserve">
+          <source>Easy Reader</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[B7474][!!_Ęãŝў Ŗêàðêŕ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\DropShadow" xml:space="preserve">
+          <source>Drop shadow</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[3ECA5][!!_Ðŕóþ ŝħãđòẁ_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Character edge</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\DepressedEdge" xml:space="preserve">
+          <source>Depressed edge</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FAE7C][!!_Ðêрŕéšşéđ éđġę_!!!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Character edge</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Default" xml:space="preserve">
+          <source>Default</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[A89E2][!!_Ðêƒâùĺť_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Cursive" xml:space="preserve">
+          <source>Cursive</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[52246][!!_Ċùřśìνé_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Color\Text" xml:space="preserve">
+          <source>Color</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[910E3][!!_Čõľõŕ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CharacterEdge\Text" xml:space="preserve">
+          <source>Font Style</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[31DE0][!!_₣òиţ Şţŷľè_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Character\Text" xml:space="preserve">
+          <source>Color</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[26D52][!!_Ĉôľõѓ_!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\Casual" xml:space="preserve">
+          <source>Casual</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[26A61][!!_Ćášµãł_!!]</target>
+          
+        <note from="MultilingualBuild" annotates="source" priority="2">Font name</note></trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CaptionWindow\Text" xml:space="preserve">
+          <source>Caption Window</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[0C6E1][!!_Čâρţíõй Ẅîйđõẅ_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CaptionSettingsShared" xml:space="preserve">
+          <source>Caption settings were shared with {0}.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[AB195][!!_Ćãρτîõи šèťťîиğş ŵêѓê śђãѓęđ ẁįτħ {0}._!!!!!!!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CaptionSettings" xml:space="preserve">
+          <source>Caption Settings</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[63BC5][!!_Čáþťîõи Ŝèťтįиģś_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CaptionLanguage\Header" xml:space="preserve">
+          <source>Caption Language</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[ED12F][!!_Ċâрτįóη Ļâηģúãģé_!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\CaptionBackground\Text" xml:space="preserve">
+          <source>Caption Background</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[FCFF3][!!_Čãρτįõи βãĉķĝřõúиð_!!!!!!]</target>
+        </trans-unit>
+        <trans-unit translate="yes" id="Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml\Resources\BackgroundColor\Header" xml:space="preserve">
+          <source>Background</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[CD04A][!!_Βáčķğŗóûηď_!!]</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

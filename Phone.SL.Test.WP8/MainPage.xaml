@@ -17,11 +17,17 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape"  Orientation="Landscape"
     shell:SystemTray.IsVisible="False">
-
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar>
+			<shell:ApplicationBar.MenuItems>
+				<shell:ApplicationBarMenuItem x:Name="CaptionSettings" Text="caption settings" Click="CaptionSettings_Click"/>
+			</shell:ApplicationBar.MenuItems>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-      <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
-        <!--IsCaptionSelectionVisible="True">-->
+        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
+            <!--IsCaptionSelectionVisible="True">-->
         <mmppf:MediaPlayer.Plugins>
           <!--creating adaptive plugin in code instead-->
           <!--<adaptive:AdaptivePlugin />-->
@@ -48,10 +54,13 @@
                 <ads:AdHandlerPlugin/>-->
           <!--<webvtt:WebVTTPlugin/>-->
         </mmppf:MediaPlayer.Plugins>
-        <!--<mmppf:MediaPlayer.AvailableCaptions>
-                <mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/captions.vtt"/>
-                <mmppf:Caption Description="German" Source="http://smf.blob.core.windows.net/samples/win8/captions/de-captions.vtt"/>
-            </mmppf:MediaPlayer.AvailableCaptions>-->
+          
+        <mmppf:MediaPlayer.AvailableCaptions>
+                <mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.en.captions.xml"/>
+                <mmppf:Caption Description="Spanish" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.es.captions.xml"/>
+                <!--<mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/captions.vtt"/>
+                <mmppf:Caption Description="German" Source="http://smf.blob.core.windows.net/samples/win8/captions/de-captions.vtt"/>-->
+        </mmppf:MediaPlayer.AvailableCaptions>
       </mmppf:MediaPlayer>
     </Grid>
 

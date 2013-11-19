@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptionMarkerFactory.cs" />
+    <Compile Include="Captions\TextStyle.cs" />
     <Compile Include="Captions\TunneledData.cs" />
     <Compile Include="Captions\PositionLength.cs" />
     <Compile Include="Captions\FontFamily.cs" />
