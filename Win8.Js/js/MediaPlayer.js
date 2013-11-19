@@ -3018,8 +3018,12 @@
 
             _seek: function (time) {
                 var previousTime = this._virtualTime;
-                this.currentTime = time;
-                this.dispatchEvent("seek", { previousTime: previousTime, time: time });
+                var e = { previousTime: previousTime, time: time, canceled: false };
+                this.dispatchEvent("seek", e);
+
+                if (!e.canceled) {
+                    this.currentTime = time;
+                }
             },
 
             _seekToLive: function () {
@@ -3075,9 +3079,9 @@
 
                     if (!e.canceled) {
                         this.currentTime = time;
-                        if (this._mediaElement.tagName !== "AUDIO") {
-                            this.playbackRate = this._scrubPlaybackRate;
-                        }
+                    }
+                    if (this._mediaElement.tagName !== "AUDIO") {
+                        this.playbackRate = this._scrubPlaybackRate;
                     }
                 }
             },

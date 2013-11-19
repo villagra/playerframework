@@ -254,7 +254,9 @@
         },
 
         _onMediaPlayerSeek: function (e) {
-            this.evaluate(e.detail.previousTime, e.detail.time, false, false);
+            if (!e.detail.canceled) {
+                e.detail.canceled = this.evaluate(e.detail.previousTime, e.detail.time, true, false);
+            }
         },
 
         _onMediaPlayerScrub: function (e) {
