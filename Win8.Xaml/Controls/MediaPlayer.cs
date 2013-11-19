@@ -4873,9 +4873,8 @@ namespace Microsoft.PlayerFramework
 
         void OnMediaFailed(ExceptionRoutedEventArgs e)
         {
-            if (MediaFailed != null) MediaFailed(this, e);
-
             SetValue(PlayerStateProperty, PlayerState.Failed);
+            if (MediaFailed != null) MediaFailed(this, e);
         }
 
         async void OnMediaEnded(MediaPlayerActionEventArgs e)
