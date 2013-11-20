@@ -663,7 +663,7 @@
                                 window.clearInterval(this._simulatedPlaybackRateTimer);
                                 this._simulatedPlaybackRateTimer = null;
                                 if (oldValue !== 1.0 || oldValue !== 0.0) {
-                                    this.currentTime = this.virtualTime; // we're coming out of simulated trick play, sync positions
+                                    this._seek(this.virtualTime); // we're coming out of simulated trick play, sync positions
                                 }
                                 this._mediaElement.playbackRate = value;
                             }
@@ -3017,7 +3017,7 @@
             },
 
             _seek: function (time) {
-                var previousTime = this._virtualTime;
+                var previousTime = (time === this._virtualTime ? this.currentTime : this._virtualTime);
                 var e = { previousTime: previousTime, time: time, canceled: false };
                 this.dispatchEvent("seek", e);
 
