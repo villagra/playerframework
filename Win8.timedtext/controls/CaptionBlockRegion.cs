@@ -881,16 +881,18 @@ namespace Microsoft.TimedText
             textblock.FontWeight = FontWeightConverter.Convert(style.FontWeight);
             textblock.VerticalAlignment = VerticalAlignment.Bottom;
 
+#if !WINDOWS_PHONE7
             if (style.FontFamily.Source == "_Smallcaps")
             {
                 Typography.SetCapitals(textblock, FontCapitals.SmallCaps);
             }
             else
+#endif
             {
 #if SILVERLIGHT
                 textblock.FontFamily = style.FontFamily;
 #else
-            textblock.FontFamily = style.FontFamily.WindowsFontFamily;
+                textblock.FontFamily = style.FontFamily.WindowsFontFamily;
 #endif
             }
             if (!double.IsNaN(height) && height != 0)

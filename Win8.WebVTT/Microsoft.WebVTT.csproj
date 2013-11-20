@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -108,11 +108,13 @@
   <ItemGroup>
     <Compile Include="BlockDocumentReader.cs" />
     <Compile Include="BoxElement.cs" />
+    <Compile Include="CaptionTextEventArgs.cs" />
     <Compile Include="IWebVTTModels.cs" />
     <Compile Include="Markers\MediaMarker.cs" />
     <Compile Include="Markers\MediaMarkerCollection.cs" />
     <Compile Include="Markers\MediaMarkerManager.cs" />
     <Compile Include="Markers\Utilities\OrderedObservableCollection.cs" />
+    <Compile Include="TextPosition.cs" />
     <Compile Include="WebVTTLayoutPanel.cs" />
     <Compile Include="WebVTTCueRenderer.cs" />
     <Compile Include="Extensions\UnicodeExtensions.cs" />

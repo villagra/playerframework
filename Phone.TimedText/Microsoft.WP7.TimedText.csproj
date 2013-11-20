@@ -73,6 +73,9 @@
     <Compile Include="..\Win8.TimedText\Captions\PositionLength.cs">
       <Link>Captions\PositionLength.cs</Link>
     </Compile>
+    <Compile Include="..\Win8.TimedText\Captions\TextStyle.cs">
+      <Link>Captions\TextStyle.cs</Link>
+    </Compile>
     <Compile Include="..\Win8.TimedText\Captions\TunneledData.cs">
       <Link>Captions\TunneledData.cs</Link>
     </Compile>
