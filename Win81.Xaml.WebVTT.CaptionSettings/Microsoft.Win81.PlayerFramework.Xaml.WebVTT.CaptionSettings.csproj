@@ -9,8 +9,8 @@
     <ProjectGuid>{673ADD5B-89F2-403E-A655-365CC925D65E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings</RootNamespace>
-    <AssemblyName>Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.WebVTT.CaptionSettings</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.WebVTT.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

@@ -37,7 +37,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         {
             if (this.loader == null)
             {
-                this.loader = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+                this.loader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
             }
 
             var text = this.loader.GetString(value.ToString());

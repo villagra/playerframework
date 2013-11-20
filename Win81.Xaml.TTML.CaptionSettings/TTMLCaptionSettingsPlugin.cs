@@ -6,7 +6,7 @@
 // <date>2013-11-07</date>
 // <summary>TTML Caption Settings Plug-in</summary>
 
-namespace Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
+namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 {
     using System.Collections.Generic;
     using System.Diagnostics;

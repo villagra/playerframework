@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.WP8.PlayerFramework.TTML.CaptionSettings")]
+[assembly: AssemblyTitle("Microsoft.PlayerFramework.TTML.CaptionSettings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.WP8.PlayerFramework.TTML.CaptionSettings")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

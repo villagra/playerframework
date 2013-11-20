@@ -33,7 +33,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             this.InitializeComponent();
 
-            var loader = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+            var loader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
 
             var viewModel = new CaptionSettingsFlyoutViewModel();
 

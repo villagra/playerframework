@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
     xmlns:webvtt="using:Microsoft.PlayerFramework.WebVTT"
-    xmlns:webvttCaptions="using:Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings"
+    xmlns:webvttCaptions="using:Microsoft.PlayerFramework.WebVTT.CaptionSettings"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

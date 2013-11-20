@@ -9,8 +9,8 @@
     <ProjectGuid>{664D44A9-0A3A-4C37-A668-68240004BB55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.CaptionSettings</RootNamespace>
-    <AssemblyName>Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.TTML.CaptionSettings</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.TTML.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

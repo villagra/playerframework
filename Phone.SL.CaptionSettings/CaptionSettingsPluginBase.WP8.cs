@@ -66,13 +66,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 return;
             }
 
-            bool isEnalbled = false;
+            bool isEnabled = false;
 
             object value;
 
             if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CaptionSettingsPage.OverrideDefaultKey, out value))
             {
-                isEnalbled = (bool)value;
+                isEnabled = (bool)value;
             }
 
             ////var control = new CaptionSettingsControl();
@@ -99,7 +99,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 CultureInfo.InvariantCulture,
                 "/{0};component/CaptionSettingsPage.xaml?IsEnabled={1}",
                 assemblyName,
-                isEnalbled);
+                isEnabled);
 
             var source = new Uri(uriString, UriKind.Relative);
 

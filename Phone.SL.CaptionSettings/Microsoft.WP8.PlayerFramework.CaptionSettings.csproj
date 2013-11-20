@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.PlayerFramework.CaptionSettings</RootNamespace>
-    <AssemblyName>Microsoft.WP8.PlayerFramework.CaptionSettings</AssemblyName>
+    <AssemblyName>Microsoft.PlayerFramework.CaptionSettings</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -84,9 +84,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Label="MultilingualAppToolkit">
-    <ToolkitRevision>2</ToolkitRevision>
-  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\Win81.Xaml.CaptionSettings\CaptionSettingsPluginBase.cs">
       <Link>CaptionSettingsPluginBase.cs</Link>
@@ -149,22 +146,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\AppResources.qps-ploc.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.qps-ploc.xlf</DependentUpon>
-      <culture>qps-ploc</culture>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <XliffResource Include="Resources\AppResources.qps-ploc.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>AppResources.qps-ploc.resx</LastGenOutput>
-    </XliffResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Phone.SL\Microsoft.WP8.PlayerFramework.SL.csproj">
@@ -174,7 +159,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.WindowsPhone.targets" Label="MultilingualAppToolkitForWindowsPhone" />
   <ProjectExtensions />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

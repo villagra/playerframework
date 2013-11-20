@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.PlayerFramework.CaptionSettings</RootNamespace>
-    <AssemblyName>Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml</AssemblyName>
+    <AssemblyName>Microsoft.PlayerFramework.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -149,9 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MultilingualResources\Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings_qps-ploc.xlf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win8.Xaml\Microsoft.Win81.PlayerFramework.Xaml.csproj">

@@ -6,11 +6,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Phone.SL.WebVTT.CaptionSettings")]
+[assembly: AssemblyTitle("Microsoft.PlayerFramework.WebVTT.CaptionSettings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Phone.SL.WebVTT.CaptionSettings")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

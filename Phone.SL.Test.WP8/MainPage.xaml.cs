@@ -5,7 +5,7 @@ using Microsoft.PlayerFramework;
 using Microsoft.PlayerFramework.Adaptive;
 using Microsoft.PlayerFramework.Adaptive.Analytics;
 using Microsoft.PlayerFramework.Analytics;
-using Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings;
+using Microsoft.PlayerFramework.TTML.CaptionSettings;
 using Microsoft.VideoAnalytics;
 using Microsoft.Web.Media.Diagnostics;
 using System;

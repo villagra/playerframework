@@ -48,7 +48,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         protected CaptionSettingsPluginBase()
         {
-            var loader = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+            var loader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
 
             this.SettingsCommandId = "CaptionSettings";
 

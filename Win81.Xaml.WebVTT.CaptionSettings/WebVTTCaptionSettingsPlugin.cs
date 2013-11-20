@@ -6,7 +6,7 @@
 // <date>2013-11-13</date>
 // <summary>WebVTT Caption Settings</summary>
 
-namespace Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings
+namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
 {
     using System.Collections.Generic;
     using System.Diagnostics;

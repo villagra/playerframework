@@ -56,7 +56,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
 
             var defaultText = Resources.AppResources.Default;
 #else
-            var resources = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+            var resources = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
 
             this.PreviewText = resources.GetString("PreviewText");
             var defaultText = resources.GetString("Default");
