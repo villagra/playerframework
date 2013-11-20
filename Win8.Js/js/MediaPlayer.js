@@ -1237,7 +1237,7 @@
             /// <field name="isRewindAllowed" type="Boolean">Gets a value that specifies whether interaction with the rewind control is allowed based on the current state of the player.</field>
             isRewindAllowed: {
                 get: function () {
-                    return this.advertisingState !== PlayerFramework.AdvertisingState.loading && this.advertisingState !== PlayerFramework.AdvertisingState.linear && (this.playerState === PlayerFramework.PlayerState.opened || this.playerState === PlayerFramework.PlayerState.started || this.playerState === PlayerFramework.PlayerState.ended) && !this.paused && !this.ended && this.playbackRate > -8;
+                    return this.advertisingState !== PlayerFramework.AdvertisingState.loading && this.advertisingState !== PlayerFramework.AdvertisingState.linear && (this.playerState === PlayerFramework.PlayerState.opened || this.playerState === PlayerFramework.PlayerState.started || this.playerState === PlayerFramework.PlayerState.ended) && !this.paused && !this.ended && this.playbackRate > -32;
                 }
             },
 
@@ -1272,7 +1272,7 @@
             /// <field name="isFastForwardAllowed" type="Boolean">Gets a value that specifies whether interaction with the fast forward control is allowed based on the current state of the player.</field>
             isFastForwardAllowed: {
                 get: function () {
-                    return this.advertisingState !== PlayerFramework.AdvertisingState.loading && this.advertisingState !== PlayerFramework.AdvertisingState.linear && (this.playerState === PlayerFramework.PlayerState.opened || this.playerState === PlayerFramework.PlayerState.started || this.playerState === PlayerFramework.PlayerState.ended) && !this.paused && !this.ended && this.playbackRate < 8;
+                    return this.advertisingState !== PlayerFramework.AdvertisingState.loading && this.advertisingState !== PlayerFramework.AdvertisingState.linear && (this.playerState === PlayerFramework.PlayerState.opened || this.playerState === PlayerFramework.PlayerState.started || this.playerState === PlayerFramework.PlayerState.ended) && !this.paused && !this.ended && this.playbackRate < 32;
                 }
             },
 
