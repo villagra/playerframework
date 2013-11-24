@@ -160,8 +160,8 @@
     <Compile Include="..\Win81.Xaml.CaptionSettings\Model\FontStyle.cs">
       <Link>Model\FontStyle.cs</Link>
     </Compile>
-    <Compile Include="..\Win81.Xaml.CaptionSettings\ValueConverters\CaptialsConverter.cs">
-      <Link>ValueConverters\CaptialsConverter.cs</Link>
+    <Compile Include="..\Win81.Xaml.CaptionSettings\ValueConverters\CapitalsConverter.cs">
+      <Link>ValueConverters\CapitalsConverter.cs</Link>
     </Compile>
     <Compile Include="..\Win81.Xaml.CaptionSettings\ValueConverters\ColorToBrushConverter.cs">
       <Link>ValueConverters\ColorToBrushConverter.cs</Link>
