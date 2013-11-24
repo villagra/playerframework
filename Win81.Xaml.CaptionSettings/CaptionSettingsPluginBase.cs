@@ -16,12 +16,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     /// </summary>
     public partial class CaptionSettingsPluginBase : PluginBase
     {
-        #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the CaptionsSettingsPluginBase class.
-        /// </summary>
-        #endregion
-
         #region Events
         /// <summary>
         /// Event to load caption settings
@@ -40,6 +34,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         public CustomCaptionSettings Settings { get; set; }
 
+        /// <summary>
+        /// Gets a value indicating whether this is using the default settings
+        /// </summary>
+        public bool IsDefault { get; private set; }
+
         #endregion
 
         #region Methods
@@ -49,6 +48,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="settings">the caption settings</param>
         public void ApplyCaptionSettings(CustomCaptionSettings settings)
         {
+            System.Diagnostics.Debug.WriteLineIf(settings != null, "Applying Caption Settings: " + settings.ToXmlString());
+
             if (this.MediaPlayer == null)
             {
                 return;
@@ -64,7 +65,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(this.Settings));
             }
 
-            this.Save(this.Settings);
+            this.Save();
         }
 
         /// <summary>
@@ -77,37 +78,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         }
 
         /// <summary>
-        /// Convert the color type to an opacity
-        /// </summary>
-        /// <param name="colorType">the color type</param>
-        /// <returns>the opacity from 0-100</returns>
-        ////protected static uint? GetOpacity(ColorType colorType)
-        ////{
-        ////    switch (colorType)
-        ////    {
-        ////        case ColorType.Default:
-        ////            return null;
-
-        ////        case ColorType.Semitransparent:
-        ////            return 50;
-
-        ////        case ColorType.Solid:
-        ////            return 100;
-
-        ////        case ColorType.Transparent:
-        ////            return 0;
-        ////    }
-
-        ////    return null;
-        ////}
-
-        /// <summary>
         /// Activate the plug-in
         /// </summary>
         /// <returns>true if the CaptionsPlugIn is also installed</returns>
         protected override bool OnActivate()
         {
-            this.Activate(this, this.OnLoadCaptionSettings, this.OnSaveCaptionSettings);
+            this.Activate();
 
             if (this.OnLoadCaptionSettings != null)
             {

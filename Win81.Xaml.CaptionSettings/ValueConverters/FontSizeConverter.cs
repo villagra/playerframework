@@ -62,6 +62,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
             }
         }
 
+        /// <summary>
+        /// Convert Back from a font size
+        /// </summary>
+        /// <param name="value">the font size as a string or percentage number 50-200</param>
+        /// <param name="targetType">the target type</param>
+        /// <param name="parameter">parameter not used</param>
+        /// <param name="language">language not used</param>
+        /// <returns>the integer font size</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             if (value == null)

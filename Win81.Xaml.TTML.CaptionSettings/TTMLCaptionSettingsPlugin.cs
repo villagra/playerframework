@@ -159,14 +159,14 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             if (userSettings.FontSize.HasValue)
             {
-                outlineWidth = System.Convert.ToDouble(userSettings.FontSize.Value) / 100.0; 
+                outlineWidth = System.Convert.ToDouble(userSettings.FontSize.Value) / 100.0;
             }
 
             switch (userSettings.FontStyle)
             {
                 case FontStyle.Default:
                     captionElement.Style.TextStyle = TextStyle.Default;
-                    
+
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
                     captionElement.Style.OutlineColor = Media.Colors.Black;
@@ -180,7 +180,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
                 case FontStyle.DropShadow:
                     captionElement.Style.TextStyle = TextStyle.DropShadow;
-                    
+
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineColor = Media.Colors.Black;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 2, Unit = LengthUnit.Pixel };
@@ -218,8 +218,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new FF.FontFamily("Courier New");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new FF.FontFamily("Cambria");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new FF.FontFamily("Consolas");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Arial");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new FF.FontFamily("Comic Sans MS");
+                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Segoe UI");
+                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new FF.FontFamily("Segoe Print");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new FF.FontFamily("Segoe Script");
 
                 // _Smallcaps is a unique keyword that will trigger the usage of Typography.SetCapitals(textblock, FontCapitals.SmallCaps)

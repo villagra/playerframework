@@ -21,6 +21,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
     /// </summary>
     public sealed partial class PreviewControl : UserControl
     {
+        #region Fields
         /// <summary>
         /// WindowColor dependency property
         /// </summary>
@@ -34,10 +35,18 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
             DependencyProperty.Register("CaptionBackground", typeof(Brush), typeof(PreviewControl), new PropertyMetadata(null, OnCaptionBackgroundChanged));
 
         /// <summary>
-        /// the font style
+        /// Caption Font Style dependency property
         /// </summary>
-        private FontStyle fontStyle;
+        public static readonly DependencyProperty CaptionFontStyleProperty =
+            DependencyProperty.Register(
+                "CaptionFontStyle",
+                typeof(FontStyle),
+                typeof(PreviewControl),
+                new PropertyMetadata(Model.FontStyle.Default, new PropertyChangedCallback(OnFontStyleChanged)));
 
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the PreviewControl class.
         /// </summary>
@@ -49,20 +58,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
 
             this.Loaded += this.PreviewControl_Loaded;
         }
+        #endregion
 
         /// <summary>
         /// Gets or sets the caption background brush
         /// </summary>
         public Brush CaptionBackground
         {
-            get 
-            { 
-                return (Brush)this.GetValue(CaptionBackgroundProperty); 
+            get
+            {
+                return (Brush)this.GetValue(CaptionBackgroundProperty);
             }
 
-            set 
-            { 
-                this.SetValue(CaptionBackgroundProperty, value); 
+            set
+            {
+                this.SetValue(CaptionBackgroundProperty, value);
             }
         }
 
@@ -80,17 +90,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// </summary>
         public FontStyle CaptionFontStyle
         {
-            get
-            {
-                return this.fontStyle;
-            }
-
-            set
-            {
-                this.fontStyle = value;
-
-                this.GoToFontStyleState();
-            }
+            get { return (FontStyle)this.GetValue(CaptionFontStyleProperty); }
+            set { this.SetValue(CaptionFontStyleProperty, value); }
         }
 
         /// <summary>
@@ -145,12 +146,24 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         #region Implementation
 
         /// <summary>
+        /// go to the font style state when the font style changes
+        /// </summary>
+        /// <param name="sender">the preview control</param>
+        /// <param name="args">the dependency property changed event arguments</param>
+        private static void OnFontStyleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            var previewControl = sender as PreviewControl;
+
+            previewControl.GoToFontStyleState();
+        }
+
+        /// <summary>
         /// Sets the preview background when the caption background changes
         /// </summary>
         /// <param name="dependencyObject">the PreviewControl</param>
         /// <param name="args">the dependency property changed event arguments</param>
         private static void OnCaptionBackgroundChanged(
-            DependencyObject dependencyObject, 
+            DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs args)
         {
             var previewControl = dependencyObject as PreviewControl;
@@ -188,7 +201,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                     {
                         var stateName = this.CaptionFontStyle.ToString();
 
+                        System.Diagnostics.Debug.WriteLine("Changing Preview state to {0}", stateName);
+
                         var stateChanged = VisualStateManager.GoToState(this, stateName, useTransitions);
+
+                        System.Diagnostics.Debug.WriteLineIf(!stateChanged, "Could not change preview state to " + stateName);
                     }));
             }
         }

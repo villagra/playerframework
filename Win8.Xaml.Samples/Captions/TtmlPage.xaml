@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
+    xmlns:ttmlcs="using:Microsoft.PlayerFramework.TTML.CaptionSettings"
     mc:Ignorable="d">
 
     <Grid Style="{StaticResource LayoutRootStyle}">
@@ -15,6 +16,9 @@
                 <mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.en.captions.xml"/>
                 <mmppf:Caption Description="Spanish" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.es.captions.xml"/>
             </mmppf:MediaPlayer.AvailableCaptions>
+            <mmppf:MediaPlayer.Plugins>
+                <ttmlcs:TTMLCaptionSettingsPlugin/>
+            </mmppf:MediaPlayer.Plugins>
         </mmppf:MediaPlayer>
     </Grid>
     <Page.TopAppBar>

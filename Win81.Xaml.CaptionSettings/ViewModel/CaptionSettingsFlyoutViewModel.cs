@@ -9,6 +9,7 @@
 namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
 {
     using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
 #if WINDOWS_PHONE
     using Media = System.Windows.Media;
@@ -18,6 +19,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
     /// <summary>
     /// Caption settings flyout view model
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
     public class CaptionSettingsFlyoutViewModel : BindableBase
     {
         #region Fields
@@ -25,18 +27,19 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         /// the settings
         /// </summary>
         private CustomCaptionSettings settings;
-        
+
         /// <summary>
         /// are the settings enabled?
         /// </summary>
         private bool isEnabled;
-        
+
         /// <summary>
         /// the preview text
         /// </summary>
         private string previewText;
         #endregion
 
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the CaptionSettingsFlyoutViewModel class.
         /// </summary>
@@ -56,13 +59,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
 
             var defaultText = Resources.AppResources.Default;
 #else
-            var resources = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
+            var resources = AssemblyResources.Get();
 
             this.PreviewText = resources.GetString("PreviewText");
             var defaultText = resources.GetString("Default");
 
 #endif
-
 
             this.FontFamilies = new FontFamily[]
             {
@@ -95,7 +97,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                 FontStyle.DropShadow
             };
         }
+        #endregion
 
+        #region Properties
+        /// <summary>
+        /// Gets or sets the preview text
+        /// </summary>
         public string PreviewText
         {
             get
@@ -128,6 +135,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the font color button is enabled
+        /// </summary>
         public bool IsFontColorEnabled
         {
             get
@@ -136,6 +146,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the background color button is enabled
+        /// </summary>
         public bool IsBackgroundColorEnabled
         {
             get
@@ -144,6 +157,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the window color button is enabled
+        /// </summary>
         public bool IsWindowColorEnabled
         {
             get
@@ -152,17 +168,34 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the font families
+        /// </summary>
         public FontFamily[] FontFamilies { get; private set; }
 
+        /// <summary>
+        /// Gets the font sizes
+        /// </summary>
         public string[] FontSizes { get; private set; }
 
+        /// <summary>
+        /// Gets the font styles
+        /// </summary>
         public FontStyle[] FontStyles { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the font color type
+        /// </summary>
         public ColorType FontColorType
         {
             get
             {
-                return GetColorType(this.Settings.FontColor);
+                if (this.Settings == null)
+                {
+                    return ColorType.Default;
+                }
+
+                return this.GetColorType(this.Settings.FontColor);
             }
 
             set
@@ -185,11 +218,19 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the background color type
+        /// </summary>
         public ColorType BackgroundColorType
         {
             get
             {
-                return GetColorType(this.Settings.BackgroundColor);
+                if (this.Settings == null)
+                {
+                    return ColorType.Default;
+                }
+
+                return this.GetColorType(this.Settings.BackgroundColor);
             }
 
             set
@@ -211,11 +252,20 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets the window color type
+        /// </summary>
         public ColorType WindowColorType
         {
             get
             {
-                return GetColorType(this.Settings.WindowColor);
+                if (this.Settings == null)
+                {
+                    return ColorType.Default;
+                }
+
+                return this.GetColorType(this.Settings.WindowColor);
             }
 
             set
@@ -238,6 +288,41 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the custom caption settings
+        /// </summary>
+        public CustomCaptionSettings Settings
+        {
+            get
+            {
+                return this.settings;
+            }
+
+            set
+            {
+                if (this.settings != null)
+                {
+                    this.settings.PropertyChanged -= this.CaptionSettingsPropertyChanged;
+                }
+
+                if (this.SetProperty(ref this.settings, value) && value != null)
+                {
+                    value.PropertyChanged += this.CaptionSettingsPropertyChanged;
+
+                    this.OnPropertyChanged("FontColorType");
+                    this.OnPropertyChanged("BackgroundColorType");
+                    this.OnPropertyChanged("WindowColorType");
+                }
+            }
+        }
+        #endregion
+
+        #region Implementation
+        /// <summary>
+        /// Gets the color type
+        /// </summary>
+        /// <param name="color">the color</param>
+        /// <returns>the color type</returns>
         private ColorType GetColorType(Color color)
         {
             if (this.Settings == null)
@@ -263,6 +348,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Sets a color type
+        /// </summary>
+        /// <param name="type">the color type</param>
+        /// <param name="color">the current color</param>
+        /// <param name="defaultColor">the default color</param>
+        /// <returns>the new color</returns>
         private Color SetColorType(ColorType type, Color color, Color defaultColor)
         {
             if (color == null)
@@ -290,29 +382,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
 
             return color;
-
-        }
-
-
-        public CustomCaptionSettings Settings
-        {
-            get
-            {
-                return this.settings;
-            }
-
-            set
-            {
-                if (this.settings != null)
-                {
-                    value.PropertyChanged -= this.value_PropertyChanged;
-                }
-
-                if (this.SetProperty(ref this.settings, value) && value != null)
-                {
-                    value.PropertyChanged += this.value_PropertyChanged;
-                }
-            }
         }
 
         /// <summary>
@@ -325,12 +394,18 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             this.OnPropertyChanged("IsWindowColorEnabled");
         }
 
-        private void value_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        /// <summary>
+        /// Caption settings property changes event handler
+        /// </summary>
+        /// <param name="sender">the Custom Caption Settings</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void CaptionSettingsPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "FontColorType" || e.PropertyName == "BackgroundColorType" || e.PropertyName == "WindowColorType")
             {
                 this.EnabledPropertyChanged();
             }
         }
+        #endregion
     }
 }

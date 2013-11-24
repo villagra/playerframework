@@ -5,7 +5,6 @@
 // <email>mischero@microsoft.com</email>
 // <date>2013-10-28</date>
 // <summary>Caption font style</summary>
-
 namespace Microsoft.PlayerFramework.CaptionSettings.Model
 {
     /// <summary>
