@@ -70,9 +70,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Add the settings pane and load the settings from local storage
         /// </summary>
-        /// <param name="plugin">the plug-in</param>
-        /// <param name="loadCaptionSettings">the load caption settings event handler</param>
-        /// <param name="saveCaptionSettings">the save caption settings event handler</param>
         internal void Activate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
@@ -102,7 +99,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Save the settings to local storage
         /// </summary>
-        /// <param name="captionSettings">the caption settings</param>
         internal void Save()
         {
             if (this.Settings == null)
@@ -203,7 +199,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             var captionSettings = flyout.CaptionSettings;
 
-            if (this.OnSaveCaptionSettings!= null)
+            if (this.OnSaveCaptionSettings != null)
             {
                 this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(captionSettings));
             }

@@ -110,16 +110,31 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
         }
 
+        /// <summary>
+        /// Hide the color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
         private void OnFontColorSelected(object sender, ColorEventArgs e)
         {
             this.FontColorButton.Flyout.Hide();
         }
 
+        /// <summary>
+        /// Hide the color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
         private void OnBackgroundColorSelected(object sender, ColorEventArgs e)
         {
             this.BackgroundColorButton.Flyout.Hide();
         }
 
+        /// <summary>
+        /// Hide the window color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
         private void OnWindowColorSelected(object sender, ColorEventArgs e)
         {
             this.WindowColorButton.Flyout.Hide();

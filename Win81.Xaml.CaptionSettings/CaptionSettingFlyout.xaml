@@ -18,7 +18,6 @@
 	d:DataContext="{d:DesignInstance ViewModel:CaptionSettingsFlyoutViewModel, IsDesignTimeCreatable=True}" VerticalContentAlignment="Stretch" 
 	BorderThickness="0">
     <SettingsFlyout.Resources>
-    	<ValueConverters:FontStyleConverter x:Key="FontStyleConverter"/>
     	<ValueConverters:FontFamilyConverter x:Key="FontFamilyConverter"/>
     	<ValueConverters:FontSizeConverter x:Key="FontSizeConverter" FontSize="30" />
         <ValueConverters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>

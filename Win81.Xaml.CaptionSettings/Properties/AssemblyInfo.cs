@@ -1,4 +1,12 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
+// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter</author>
+// <email>mischero@microsoft.com</email>
+// <date>2013-11-25</date>
+// <summary>Assembly Information</summary>
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
