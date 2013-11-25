@@ -239,11 +239,9 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="e">the caption parsed event arguments</param>
         private void OnCaptionParsed(object sender, Microsoft.TimedText.CaptionParsedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Caption parsed.");
-
             if (this.Settings == null)
             {
-                Debug.WriteLine("Captions parsed without user settings.");
+                ////Debug.WriteLine("Captions parsed without user settings.");
 
                 return;
             }

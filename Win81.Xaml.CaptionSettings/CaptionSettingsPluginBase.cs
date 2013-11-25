@@ -48,7 +48,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="settings">the caption settings</param>
         public void ApplyCaptionSettings(CustomCaptionSettings settings)
         {
-            System.Diagnostics.Debug.WriteLineIf(settings != null, "Applying Caption Settings: " + settings.ToXmlString());
+            ////System.Diagnostics.Debug.WriteLineIf(settings != null, "Applying Caption Settings: " + settings.ToXmlString());
 
             if (this.MediaPlayer == null)
             {

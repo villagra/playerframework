@@ -115,7 +115,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
             {
                 if (this.SetProperty(ref this.fontStyle, value))
                 {
-                    System.Diagnostics.Debug.WriteLine("Font Style changed to {0}", value);
+                    ////System.Diagnostics.Debug.WriteLine("Font Style changed to {0}", value);
                 }
             }
         }
