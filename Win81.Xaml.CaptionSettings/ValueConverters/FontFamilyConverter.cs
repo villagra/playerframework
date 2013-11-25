@@ -31,7 +31,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <param name="targetType">a Windows FontFamily</param>
         /// <param name="parameter">parameter not used</param>
         /// <param name="language">language not used</param>
-        /// <returns>a Windows.UI.Xaml.Media.FontFamily</returns>
+        /// <returns>a <see cref="Windows.UI.Xaml.Media.FontFamily"/></returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (this.fontMap == null)

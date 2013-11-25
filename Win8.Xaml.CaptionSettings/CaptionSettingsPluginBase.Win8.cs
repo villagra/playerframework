@@ -66,11 +66,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Gets or sets the settings command Id for the Settings pane
         /// </summary>
+        /// <remarks>default is "CaptionSettings"</remarks>
         public string SettingsCommandId { get; set; }
 
         /// <summary>
         /// Gets or sets the label for the settings pane
         /// </summary>
+        /// <remarks>default is "Caption Settings"</remarks>
         public string Label { get; set; }
 
         /// <summary>
