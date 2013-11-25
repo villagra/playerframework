@@ -91,7 +91,7 @@
                     FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
                     Typography.Capitals="{Binding Settings.FontFamily, Converter={StaticResource CaptialsConverter}}" 
                     PreviewText="Aaa Bbb Ccc Ddd"
-                    Margin="0,0,0,10"/>
+                    Margin="0,0,0,10" Height="Auto" MaxHeight="100"/>
             </StackPanel>
             <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>
             <StackPanel Orientation="Vertical">
