@@ -1,4 +1,12 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
+// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter</author>
+// <email>mischero@microsoft.com</email>
+// <date>2013-11-25</date>
+// <summary>Assembly Information</summary>
+
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
@@ -8,9 +16,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Microsoft.PlayerFramework.CaptionSettings")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Microsoft Corp.")]
 [assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Microsoft Corp.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
