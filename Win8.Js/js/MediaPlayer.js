@@ -3279,11 +3279,10 @@
             },
 
             _onMediaElementLoadedData: function (e) {
+                this.dispatchEvent("loadeddata");
                 if (this.startupTime) {
                     this.currentTime = this.startupTime;
                 }
-
-                this.dispatchEvent("loadeddata");
             },
 
             _onMediaElementLoadedMetadata: function (e) {
