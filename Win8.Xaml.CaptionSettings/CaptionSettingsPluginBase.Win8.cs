@@ -1,24 +1,27 @@
-﻿// <copyright file="CaptionSettingsPluginBase.Win81.cs" company="Microsoft Corporation">
-// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+﻿// <copyright file="CaptionSettingsPluginBase.Win8.cs" company="Michael S. Scherotter">
+// Copyright (c) 2013 Michael S. Scherotter All Rights Reserved
 // </copyright>
 // <author>Michael S. Scherotter</author>
-// <email>mischero@microsoft.com</email>
-// <date>2013-10-28</date>
-// <summary>Windows 8 Caption Settings UI</summary>
+// <email>synergist@charette.com</email>
+// <date>2013-11-23</date>
+// <summary>CaptionSetting Plugin Base partial class for Windows 8.</summary>
 
 namespace Microsoft.PlayerFramework.CaptionSettings
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using Microsoft.PlayerFramework.CaptionSettings.Controls;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using Windows.ApplicationModel.Resources;
+    using Windows.Foundation;
     using Windows.UI.ApplicationSettings;
+    using Windows.UI.Core;
     using Windows.UI.Popups;
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Controls.Primitives;
+    using Windows.UI.Xaml.Media.Animation;
 
     /// <summary>
-    /// Windows 8.1 Caption Settings Plugin Base partial class
+    /// Caption Settings Plugin Base partial class
     /// </summary>
     public partial class CaptionSettingsPluginBase
     {
@@ -27,6 +30,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// the local settings key
         /// </summary>
         private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
+
+        /// <summary>
+        /// The Narrow settings pane width
+        /// </summary>
+        private const int NarrowWidth = 346;
+
+        /// <summary>
+        /// the settings popup control
+        /// </summary>
+        private Popup settingsPopup;
+
+        /// <summary>
+        /// The Full window bounds
+        /// </summary>
+        private Rect windowBounds;
+
         #endregion
 
         #region Constructors
@@ -47,28 +66,25 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Gets or sets the settings command Id for the Settings pane
         /// </summary>
+        /// <remarks>default is "CaptionSettings"</remarks>
         public string SettingsCommandId { get; set; }
 
         /// <summary>
         /// Gets or sets the label for the settings pane
         /// </summary>
+        /// <remarks>default is "Caption Settings"</remarks>
         public string Label { get; set; }
 
         /// <summary>
         /// Gets or sets the index of the settings command
         /// </summary>
         public int? SettingsCommandIndex { get; set; }
-
-        /// <summary>
-        /// Gets or sets the settings flyout style (use style for SettingsFlyout)
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
-        public Style SettingsFlyoutStyle { get; set; }
         #endregion
 
-        #region Methods
+        #region Implementation
+
         /// <summary>
-        /// Add the settings pane and load the settings from local storage
+        /// Activate the plug-in
         /// </summary>
         internal void Activate()
         {
@@ -81,27 +97,35 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 var settingsString = value.ToString();
 
                 this.Settings = CustomCaptionSettings.FromString(settingsString);
+
+                this.IsDefault = false;
             }
             else
             {
                 this.Settings = new CustomCaptionSettings();
+
+                this.IsDefault = true;
             }
+
+            this.Settings.PropertyChanged += this.Settings_PropertyChanged;
         }
 
         /// <summary>
-        /// Detach the settings pane
+        /// Deactivate the plug-in
         /// </summary>
-        internal void Deactivate()
+        private void Deactivate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
+
+            this.Settings.PropertyChanged -= this.Settings_PropertyChanged;
         }
 
         /// <summary>
-        /// Save the settings to local storage
+        /// Save the settings
         /// </summary>
-        internal void Save()
+        private void Save()
         {
-            if (this.Settings == null || this.IsDefault)
+            if (this.IsDefault)
             {
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values.Remove(LocalSettingsKey);
             }
@@ -110,9 +134,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values[LocalSettingsKey] = this.Settings.ToXmlString();
             }
         }
-        #endregion
 
-        #region Implementation
         /// <summary>
         /// Adds the caption settings command to the plug-in
         /// </summary>
@@ -120,14 +142,20 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="args">the settings pane commands requested event arguments</param>
         private void CaptionsSettingsPlugin_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
         {
+            System.Diagnostics.Debug.Assert(this.MediaPlayer != null, "MediaPlayer is null.");
+
+            System.Diagnostics.Debug.Assert(!string.IsNullOrWhiteSpace(this.Label), "Label is null.");
+
+            System.Diagnostics.Debug.Assert(!string.IsNullOrWhiteSpace(this.SettingsCommandId), "SettingsCommandId is null.");
+
             if (this.MediaPlayer == null)
             {
                 return;
             }
 
             var command = (from item in args.Request.ApplicationCommands
-                                where item.Id.ToString() == this.SettingsCommandId
-                                select item).FirstOrDefault();
+                           where item.Id.ToString() == this.SettingsCommandId
+                           select item).FirstOrDefault();
 
             if (command == null)
             {
@@ -164,47 +192,80 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.OnLoadCaptionSettings(this, new CustomCaptionSettingsEventArgs(this.Settings));
             }
 
-            var flyout = new CaptionSettingFlyout
+            this.windowBounds = Window.Current.Bounds;
+
+            var transitions = new TransitionCollection();
+            transitions.Add(new EntranceThemeTransition());
+
+            Window.Current.Activated += this.Current_Activated;
+
+            var control = new CaptionSettingsControl
             {
                 CaptionSettings = this.Settings,
-                Style = this.SettingsFlyoutStyle
+                IsDefault = this.IsDefault,
             };
 
-            flyout.OnApplyCaptionSettings += this.OnApplyCaptionSettings;
+            control.IsDefaultChanged += delegate(object sender, System.EventArgs e)
+            {
+                this.IsDefault = control.IsDefault;
+            };
 
-            flyout.Unloaded += this.OnUnloaded;
+            var settingsControl = new SettingsControl
+            {
+                Style = this.Style,
+                Label = this.Label,
+                Content = control,
+                Width = NarrowWidth,
+                Height = this.windowBounds.Height
+            };
 
-            flyout.Show();
+            this.settingsPopup = new Popup
+            {
+                Child = settingsControl,
+                Transitions = transitions,
+                IsLightDismissEnabled = true,
+                Width = NarrowWidth,
+                Height = this.windowBounds.Height,
+            };
+
+            this.settingsPopup.Closed += this.OnPopupClosed;
+            this.settingsPopup.SetValue(Canvas.LeftProperty, this.windowBounds.Width - NarrowWidth);
+            this.settingsPopup.SetValue(Canvas.TopProperty, 0);
+
+            this.settingsPopup.IsOpen = true;
         }
 
         /// <summary>
-        /// Apply the caption settings
+        /// Apply the caption settings when the properties change
+        /// </summary>
+        /// <param name="sender">the settings</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            this.ApplyCaptionSettings(this.Settings);
+        }
+
+        /// <summary>
+        /// Show ads when the popup closes
         /// </summary>
         /// <param name="sender">the sender</param>
-        /// <param name="e">the custom caption settings event arguments</param>
-        private void OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
+        /// <param name="e">the event arguments</param>
+        private void OnPopupClosed(object sender, object e)
         {
-            this.ApplyCaptionSettings(e.Settings);
+            Window.Current.Activated -= this.Current_Activated;
         }
 
         /// <summary>
-        /// Save the caption settings when the flyout unloads.
+        /// Close the settings popup when the window is deactivated
         /// </summary>
-        /// <param name="sender">the flyout</param>
-        /// <param name="e">the routed event arguments</param>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
-        private void OnUnloaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        /// <param name="sender">the page</param>
+        /// <param name="e">the window activated event arguments</param>
+        private void Current_Activated(object sender, WindowActivatedEventArgs e)
         {
-            var flyout = sender as CaptionSettingFlyout;
-
-            var captionSettings = flyout.CaptionSettings;
-
-            if (this.OnSaveCaptionSettings != null)
+            if (e.WindowActivationState == CoreWindowActivationState.Deactivated)
             {
-                this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(captionSettings));
+                this.settingsPopup.IsOpen = false;
             }
-
-            this.Save();
         }
         #endregion
     }

@@ -37,21 +37,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         private FontStyle fontStyle;
 
         /// <summary>
-        /// the font color type
-        /// </summary>
-        ////private ColorType fontColorType;
-        
-        /// <summary>
-        /// the background color type
-        /// </summary>
-        ////private ColorType backgroundColorType;
-        
-        /// <summary>
-        /// the window color type
-        /// </summary>
-        ////private ColorType windowColorType;
-
-        /// <summary>
         /// the font color
         /// </summary>
         private Color fontColor;
@@ -68,16 +53,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the CustomCaptionSettings class.
+        /// </summary>
         public CustomCaptionSettings()
         {
             ////this.FontColorType = ColorType.Default;
             this.FontStyle = Model.FontStyle.Default;
             this.FontFamily = Model.FontFamily.Default;
-            this.FontColor = new Color { Blue = 255, Green = 255, Red = 255, Alpha=255 };
+            this.FontColor = new Color { Blue = 255, Green = 255, Red = 255, Alpha = 255 };
         }
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the font family
+        /// </summary>
         [XmlElement]
         public FontFamily FontFamily
         {
@@ -122,55 +113,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
 
             set
             {
-                this.SetProperty(ref this.fontStyle, value);
+                if (this.SetProperty(ref this.fontStyle, value))
+                {
+                    ////System.Diagnostics.Debug.WriteLine("Font Style changed to {0}", value);
+                }
             }
         }
 
-        ////[XmlElement]
-        ////public ColorType FontColorType
-        ////{
-        ////    get
-        ////    {
-        ////        return this.fontColorType;
-        ////    }
-
-        ////    set
-        ////    {
-        ////        this.SetProperty(ref this.fontColorType, value);
-        ////    }
-        ////}
-
-        ////[XmlElement]
-        ////public ColorType BackgroundColorType
-        ////{
-        ////    get
-        ////    {
-        ////        return this.backgroundColorType;
-        ////    }
-
-        ////    set
-        ////    {
-        ////        this.SetProperty(ref this.backgroundColorType, value);
-        ////    }
-        ////}
-
-        ////[XmlElement]
-        ////public ColorType WindowColorType
-        ////{
-        ////    get
-        ////    {
-        ////        return this.windowColorType;
-        ////    }
-
-        ////    set
-        ////    {
-        ////        if (this.SetProperty(ref this.windowColorType, value))
-        ////        {
-        ////            this.OnPropertyChanged("WindowColor");
-        ////        }
-        ////    }
-        ////}
-
+        /// <summary>
+        /// Gets or sets the font color
+        /// </summary>
         [XmlElement]
         public Color FontColor
         {
@@ -185,6 +137,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets the background color
+        /// </summary>
         [XmlElement]
         public Color BackgroundColor
         {
@@ -199,6 +154,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets the window color
+        /// </summary>
         [XmlElement]
         public Color WindowColor
         {
@@ -216,23 +174,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
 
         #region Methods
         /// <summary>
-        /// Gets the XML string for the user settings
-        /// </summary>
-        /// <returns>an XML string</returns>
-        public string ToXmlString()
-        {
-            var serializer = new XmlSerializer(typeof(CustomCaptionSettings));
-
-            using (var writer = new StringWriter(CultureInfo.InvariantCulture))
-            {
-                serializer.Serialize(writer, this);
-
-                return writer.GetStringBuilder().ToString();
-            }
-        }
-
-        /// <summary>
-        /// Creates a <see cref="UserSettings"/> object from an xml string
+        /// Creates a <see cref="CustomCaptionSettings"/> object from an xml 
+        /// string
         /// </summary>
         /// <param name="xml">the xml string</param>
         /// <returns>a new UserSettings</returns>
@@ -250,6 +193,23 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
                 return serializer.Deserialize(reader) as CustomCaptionSettings;
             }
         }
+
+        /// <summary>
+        /// Gets the XML string for the user settings
+        /// </summary>
+        /// <returns>an XML string</returns>
+        public string ToXmlString()
+        {
+            var serializer = new XmlSerializer(typeof(CustomCaptionSettings));
+
+            using (var writer = new StringWriter(CultureInfo.InvariantCulture))
+            {
+                serializer.Serialize(writer, this);
+
+                return writer.GetStringBuilder().ToString();
+            }
+        }
+
         #endregion
     }
 }

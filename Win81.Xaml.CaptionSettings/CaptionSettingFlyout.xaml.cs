@@ -9,6 +9,7 @@
 namespace Microsoft.PlayerFramework.CaptionSettings
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
     using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
     using Windows.ApplicationModel.Resources;
@@ -17,6 +18,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     /// <summary>
     /// Caption Settings Flyout
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
     public sealed partial class CaptionSettingFlyout : SettingsFlyout
     {
         #region Fields
@@ -33,7 +35,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             this.InitializeComponent();
 
-            var loader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
+            var loader = AssemblyResources.Get();
 
             var viewModel = new CaptionSettingsFlyoutViewModel();
 
@@ -106,6 +108,36 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     value.PropertyChanged += this.OnViewModelPropertyChanged;
                 }
             }
+        }
+
+        /// <summary>
+        /// Hide the color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
+        private void OnFontColorSelected(object sender, ColorEventArgs e)
+        {
+            this.FontColorButton.Flyout.Hide();
+        }
+
+        /// <summary>
+        /// Hide the color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
+        private void OnBackgroundColorSelected(object sender, ColorEventArgs e)
+        {
+            this.BackgroundColorButton.Flyout.Hide();
+        }
+
+        /// <summary>
+        /// Hide the window color picker
+        /// </summary>
+        /// <param name="sender">the color picker</param>
+        /// <param name="e">the color event arguments</param>
+        private void OnWindowColorSelected(object sender, ColorEventArgs e)
+        {
+            this.WindowColorButton.Flyout.Hide();
         }
 
         /// <summary>

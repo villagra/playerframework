@@ -18,13 +18,12 @@
 	d:DataContext="{d:DesignInstance ViewModel:CaptionSettingsFlyoutViewModel, IsDesignTimeCreatable=True}" VerticalContentAlignment="Stretch" 
 	BorderThickness="0">
     <SettingsFlyout.Resources>
-    	<ValueConverters:FontStyleConverter x:Key="FontStyleConverter"/>
     	<ValueConverters:FontFamilyConverter x:Key="FontFamilyConverter"/>
     	<ValueConverters:FontSizeConverter x:Key="FontSizeConverter" FontSize="30" />
         <ValueConverters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
         <ValueConverters:ColorTypeConverter x:Key="ColorTypeConverter"/>
         <ValueConverters:ResourceConverter x:Key="ResourceConverter"/>
-        <ValueConverters:CaptialsConverter x:Key="CaptialsConverter"/>
+        <ValueConverters:CapitalsConverter x:Key="CaptialsConverter"/>
         <ControlTemplate x:Key="ColorButtonTemplate" TargetType="Button">
         	<Grid>
         		<VisualStateManager.VisualStateGroups>
@@ -179,8 +178,6 @@
         	<Setter Property="BorderBrush" Value="DarkGray"/>
         </Style>
     </SettingsFlyout.Resources>
-
-    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
 	<Grid x:Name="LayoutRoot" >
 		<Grid.RowDefinitions>
 			<RowDefinition/>
@@ -203,6 +200,7 @@
 					FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 					Typography.Capitals="{Binding Settings.FontFamily, Converter={StaticResource CaptialsConverter}}" 
                     PreviewText="Aaa Bbb Ccc Ddd"
+                    MaxHeight="100"
                     Margin="0,0,0,10"/>
             </StackPanel>
             <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>			
@@ -237,7 +235,7 @@
 					Template="{StaticResource ColorButtonTemplate}" >
 					<Button.Flyout>
 						<Flyout>
-							<local:ColorPickerControl SelectedColor="{Binding Settings.FontColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnFontColorSelected"  SelectedColor="{Binding Settings.FontColor, Mode=TwoWay}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">
@@ -258,7 +256,7 @@
 					IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}">
 					<Button.Flyout>
 						<Flyout>
-							<local:ColorPickerControl SelectedColor="{Binding Settings.BackgroundColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnBackgroundColorSelected"  SelectedColor="{Binding Settings.BackgroundColor, Mode=TwoWay}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">
@@ -281,7 +279,7 @@
 					IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}">
 					<Button.Flyout>
 						<Flyout>
-							<local:ColorPickerControl SelectedColor="{Binding Settings.WindowColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnWindowColorSelected" SelectedColor="{Binding Settings.WindowColor, Mode=TwoWay}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">

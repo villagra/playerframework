@@ -19,7 +19,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
     public class ColorToBrushConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a <see cref="CaptionSettings.Portable.Color"/> to a <see cref="SolidColorBrush"/>
+        /// Converts a <see cref="CaptionSettings.Model.Color"/> to a <see cref="SolidColorBrush"/>
         /// </summary>
         /// <param name="value">a color</param>
         /// <param name="targetType">a Brush type</param>

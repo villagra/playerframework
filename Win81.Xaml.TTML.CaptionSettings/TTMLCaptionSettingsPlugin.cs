@@ -159,31 +159,39 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             if (userSettings.FontSize.HasValue)
             {
-                outlineWidth = System.Convert.ToDouble(userSettings.FontSize.Value) / 100.0; 
+                outlineWidth = System.Convert.ToDouble(userSettings.FontSize.Value) / 100.0;
+            }
+
+            var outlineColor = Media.Colors.Black;
+
+            if (userSettings.FontColor != null)
+            {
+                outlineColor = Media.Color.FromArgb(userSettings.FontColor.Alpha, 0, 0, 0);
+                captionElement.Style.Opacity = System.Convert.ToDouble(userSettings.FontColor.Alpha) / 255.0;
             }
 
             switch (userSettings.FontStyle)
             {
                 case FontStyle.Default:
                     captionElement.Style.TextStyle = TextStyle.Default;
-                    
+
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
 
                 case FontStyle.DepressedEdge:
                     captionElement.Style.TextStyle = TextStyle.DepressedEdge;
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
                     break;
 
                 case FontStyle.DropShadow:
                     captionElement.Style.TextStyle = TextStyle.DropShadow;
-                    
+
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
-                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 2, Unit = LengthUnit.Pixel };
+                    captionElement.Style.OutlineColor = outlineColor;
+                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 3, Unit = LengthUnit.Pixel };
                     break;
 
                 case FontStyle.None:
@@ -193,13 +201,13 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 case FontStyle.Outline:
                     captionElement.Style.TextStyle = TextStyle.Outline;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
 
                 case FontStyle.RaisedEdge:
                     captionElement.Style.TextStyle = TextStyle.RaisedEdge;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
             }
         }
@@ -218,8 +226,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new FF.FontFamily("Courier New");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new FF.FontFamily("Cambria");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new FF.FontFamily("Consolas");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Arial");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new FF.FontFamily("Comic Sans MS");
+                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Segoe UI");
+                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new FF.FontFamily("Segoe Print");
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new FF.FontFamily("Segoe Script");
 
                 // _Smallcaps is a unique keyword that will trigger the usage of Typography.SetCapitals(textblock, FontCapitals.SmallCaps)
@@ -239,11 +247,9 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="e">the caption parsed event arguments</param>
         private void OnCaptionParsed(object sender, Microsoft.TimedText.CaptionParsedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Caption parsed.");
-
             if (this.Settings == null)
             {
-                Debug.WriteLine("Captions parsed without user settings.");
+                ////Debug.WriteLine("Captions parsed without user settings.");
 
                 return;
             }

@@ -37,7 +37,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
 
             if (this.loader == null)
             {
-                this.loader = ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
+                this.loader = AssemblyResources.Get();
             }
 
             var text = this.loader.GetString(colorType.ToString());

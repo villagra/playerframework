@@ -25,21 +25,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// the isolated storage settings key for the caption settings
         /// </summary>
         private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
-
-        /// <summary>
-        /// the caption settings plug-in
-        /// </summary>
-        private CaptionSettingsPluginBase plugin;
-
-        /// <summary>
-        /// the save caption settings event handler
-        /// </summary>
-        private EventHandler<CustomCaptionSettingsEventArgs> saveCaptionSettings;
-
-        /// <summary>
-        /// the load caption settings event handler
-        /// </summary>
-        private EventHandler<CustomCaptionSettingsEventArgs> loadCaptionSettings;
         #endregion
 
         #region Methods
@@ -59,13 +44,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </example>
         public void ShowSettingsPage(NavigationService service)
         {
-            if (this.plugin == null)
-            {
-                System.Diagnostics.Debug.WriteLine("No CaptionsPlugin is in the MediaPlayer's Plugin collection.");
-
-                return;
-            }
-
             bool isEnabled = false;
 
             object value;
@@ -74,22 +52,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 isEnabled = (bool)value;
             }
-
-            ////var control = new CaptionSettingsControl();
-
-            ////control.Width = layoutRoot.ActualWidth;
-            ////control.Height = layoutRoot.ActualHeight;
-
-            ////control.Settings = this.plugin.Settings;
-
-            ////control.ApplyCaptionSettings = this.plugin.ApplyCaptionSettings;
-
-            ////var popup = new Popup();
-            ////popup.Child = control;
-
-            ////layoutRoot.Children.Add(popup);
-
-            ////popup.IsOpen = true;
 
             var assembly = typeof(CaptionSettingsPage).Assembly;
 
@@ -105,26 +67,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             if (service.Navigate(source))
             {
-                CaptionSettingsPage.Settings = this.plugin.Settings;
-                CaptionSettingsPage.ApplyCaptionSettings = this.plugin.ApplyCaptionSettings;
+                CaptionSettingsPage.Settings = this.Settings;
+                CaptionSettingsPage.ApplyCaptionSettings = this.ApplyCaptionSettings;
             }
         }
 
         /// <summary>
         /// Activate the caption settings UI
         /// </summary>
-        /// <param name="plugin">the plug-in</param>
-        /// <param name="loadCaptionSettings">the load caption settings event handler</param>
-        /// <param name="saveCaptionSettings">the save caption settings event handler</param>
-        internal void Activate(
-            CaptionSettingsPluginBase plugin,
-            EventHandler<CustomCaptionSettingsEventArgs> loadCaptionSettings,
-            EventHandler<CustomCaptionSettingsEventArgs> saveCaptionSettings)
+        internal void Activate()
         {
-            this.plugin = plugin;
-            this.loadCaptionSettings = loadCaptionSettings;
-            this.saveCaptionSettings = saveCaptionSettings;
-
             bool isCustomCaptionSettings = false;
 
             object value;
@@ -138,11 +90,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 var xml = value.ToString();
 
-                this.plugin.Settings = CustomCaptionSettings.FromString(xml);
+                this.Settings = CustomCaptionSettings.FromString(xml);
             }
             else
             {
-                this.plugin.Settings = new CustomCaptionSettings
+                this.Settings = new CustomCaptionSettings
                 {
                     FontColor = Colors.White.ToCaptionSettingsColor()
                 };
@@ -154,18 +106,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         internal void Deactivate()
         {
-            this.plugin = null;
-            this.saveCaptionSettings = null;
-            this.loadCaptionSettings = null;
         }
 
         /// <summary>
         /// Save to Isolated storage
         /// </summary>
-        /// <param name="captionSettings">the caption settings</param>
-        internal void Save(CustomCaptionSettings captionSettings)
+        internal void Save()
         {
-            IsolatedStorageSettings.ApplicationSettings[LocalSettingsKey] = captionSettings.ToXmlString();
+            IsolatedStorageSettings.ApplicationSettings[LocalSettingsKey] = this.Settings.ToXmlString();
         }
         #endregion
     }

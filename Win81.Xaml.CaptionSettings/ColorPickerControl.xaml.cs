@@ -6,12 +6,12 @@
 // <date>2013-11-14</date>
 // <summary>Color Picker Control</summary>
 
-namespace Microsoft.PlayerFramework.CaptionSettings
+namespace Microsoft.PlayerFramework.CaptionSettings.Controls
 {
+    using System;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Controls.Primitives;
     using Windows.UI.Xaml.Input;
     using Windows.UI.Xaml.Shapes;
 
@@ -37,6 +37,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             this.InitializeComponent();
         }
+
+        /// <summary>
+        /// Color selected event
+        /// </summary>
+        public event EventHandler<ColorEventArgs> ColorSelected;
 
         /// <summary>
         /// Gets or sets the selected color
@@ -86,11 +91,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     break;
             }
 
-            var flyoutPresenter = this.Parent as FlyoutPresenter;
-
-            var popup = flyoutPresenter.Parent as Popup;
-
-            popup.IsOpen = false;
+            if (this.ColorSelected != null)
+            {
+                this.ColorSelected(this, new ColorEventArgs(this.SelectedColor));
+            }
         }
     }
 }

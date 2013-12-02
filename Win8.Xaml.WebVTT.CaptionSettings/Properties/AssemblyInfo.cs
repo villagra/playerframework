@@ -1,24 +1,17 @@
-﻿// <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
-// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
-// </copyright>
-// <author>Michael S. Scherotter</author>
-// <email>mischero@microsoft.com</email>
-// <date>2013-12-02</date>
-// <summary>Assembly Information</summary>
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.PlayerFramework.TTML.CaptionSettings")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Win8.Xaml.WebVTT.CaptionSettings")]
+[assembly: AssemblyDescription("Microsoft Media Platform Player Framework WebVTT Caption Customization")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2013")]
+[assembly: AssemblyCompany("Microsoft Corp.")]
+[assembly: AssemblyProduct("Win8.Xaml.WebVTT.CaptionSettings")]
+[assembly: AssemblyCopyright("Copyright ©  2013 Microsoft Corp.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -35,3 +28,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
+[assembly: NeutralResourcesLanguageAttribute("en-US")]
