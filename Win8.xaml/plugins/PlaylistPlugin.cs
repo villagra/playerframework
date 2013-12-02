@@ -38,6 +38,16 @@ namespace Microsoft.PlayerFramework
         public event EventHandler CurrentPlaylistItemChanged;
 
         /// <summary>
+        /// Occurs when about to skip to the next playlist item. Allows cancellation.
+        /// </summary>
+        public event EventHandler<SkipToPlaylistItemEventArgs> SkippingNext;
+
+        /// <summary>
+        /// Occurs when about to skip to the next playlist item. Allows cancellation.
+        /// </summary>
+        public event EventHandler<SkipToPlaylistItemEventArgs> SkippingPrevious;
+
+        /// <summary>
         /// Playlist DependencyProperty definition.
         /// </summary>
         public static readonly DependencyProperty PlaylistProperty = DependencyProperty.Register("Playlist", typeof(ObservableCollection<PlaylistItem>), typeof(PlaylistPlugin), new PropertyMetadata(null, (d, e) => ((PlaylistPlugin)d).OnPlaylistChanged(e.OldValue as ObservableCollection<PlaylistItem>, e.NewValue as ObservableCollection<PlaylistItem>)));
@@ -244,7 +254,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public void GoToPreviousPlaylistItem()
         {
-            CurrentPlaylistItem = Playlist[CurrentPlaylistItemIndex - 1];
+            var playlistItem = Playlist[CurrentPlaylistItemIndex - 1];
+            var args = new SkipToPlaylistItemEventArgs(playlistItem);
+            if (SkippingPrevious != null) SkippingPrevious(this, args);
+            if (!args.Cancel)
+            {
+                CurrentPlaylistItem = playlistItem;
+            }
         }
 
         /// <summary>
@@ -252,7 +268,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public void GoToNextPlaylistItem()
         {
-            CurrentPlaylistItem = Playlist[CurrentPlaylistItemIndex + 1];
+            var playlistItem = Playlist[CurrentPlaylistItemIndex + 1];
+            var args = new SkipToPlaylistItemEventArgs(playlistItem);
+            if (SkippingNext != null) SkippingNext(this, args);
+            if (!args.Cancel)
+            {
+                CurrentPlaylistItem = playlistItem;
+            }
         }
 
         /// <summary>
@@ -306,7 +328,7 @@ namespace Microsoft.PlayerFramework
                 mediaPlayer.PosterSource = null;
                 mediaPlayer.Close();
             }
-            
+
             foreach (var plugin in mediaPlayer.Plugins)
             {
                 plugin.Update(newMediaSource);
@@ -376,6 +398,29 @@ namespace Microsoft.PlayerFramework
                 }
             }
         }
+    }
+
+
+    /// <summary>
+    /// EventArgs associated with a skip previous or next operation.
+    /// </summary>
+    public class SkipToPlaylistItemEventArgs : EventArgs
+    {
+        internal SkipToPlaylistItemEventArgs(PlaylistItem playlistItem)
+        {
+            Cancel = false;
+            PlaylistItem = playlistItem;
+        }
+
+        /// <summary>
+        /// Indicates that action should be aborted.
+        /// </summary>
+        public bool Cancel { get; set; }
+
+        /// <summary>
+        /// Gets the PlaylistItem being skipped to.
+        /// </summary>
+        public PlaylistItem PlaylistItem { get; private set; }
     }
 
     /// <summary>

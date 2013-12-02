@@ -6,6 +6,12 @@
         invalidPlaylistItem = "Invalid playlist item: Playlist must contain item.",
         invalidPlaylistItemIndex = "Invalid playlist item index: Playlist must contain item.";
 
+    // PlaylistPlugin Events
+    var events = [
+        "skippingnext",
+        "skippingback"
+    ];
+
     // PlaylistPlugin Class
     var PlaylistPlugin = WinJS.Class.derive(PlayerFramework.PluginBase, function (options) {
         if (!(this instanceof PlayerFramework.Plugins.PlaylistPlugin)) {
@@ -128,13 +134,23 @@
         // Public Methods
         goToPreviousPlaylistItem: function () {
             if (this.canGoToPreviousPlaylistItem()) {
-                this.currentPlaylistItem = this.playlist[this.currentPlaylistItemIndex - 1];
+                var playlistItem = this.playlist[this.currentPlaylistItemIndex - 1];
+                var args = { "playlistItem": playlistItem, "cancel": false };
+                this.dispatchEvent("skippingprevious", args);
+                if (!args.cancel) {
+                    this.currentPlaylistItem = playlistItem;
+                }
             }
         },
 
         goToNextPlaylistItem: function () {
             if (this.canGoToNextPlaylistItem()) {
-                this.currentPlaylistItem = this.playlist[this.currentPlaylistItemIndex + 1];
+                var playlistItem = this.playlist[this.currentPlaylistItemIndex + 1];
+                var args = { "playlistItem": playlistItem, "cancel": false };
+                this.dispatchEvent("skippingnext", args);
+                if (!args.cancel) {
+                    this.currentPlaylistItem = playlistItem;
+                }
             }
         },
 
@@ -255,6 +271,9 @@
             configurable: true
         }
     });
+
+    // TrackingPluginBase Mixins
+    WinJS.Class.mix(PlaylistPlugin, PlayerFramework.Utilities.createEventProperties(events));
 
     // PlaylistPlugin Exports
     WinJS.Namespace.define("PlayerFramework.Plugins", {
