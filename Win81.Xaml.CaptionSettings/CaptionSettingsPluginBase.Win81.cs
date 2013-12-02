@@ -35,7 +35,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         protected CaptionSettingsPluginBase()
         {
-            var loader = ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+            var loader = AssemblyResources.Get();
 
             this.SettingsCommandId = "CaptionSettings";
 
@@ -101,7 +101,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         internal void Save()
         {
-            if (this.Settings == null)
+            if (this.Settings == null || this.IsDefault)
             {
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values.Remove(LocalSettingsKey);
             }
@@ -203,8 +203,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(captionSettings));
             }
-
-            this.Settings = captionSettings;
 
             this.Save();
         }

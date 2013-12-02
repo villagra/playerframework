@@ -162,6 +162,14 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 outlineWidth = System.Convert.ToDouble(userSettings.FontSize.Value) / 100.0;
             }
 
+            var outlineColor = Media.Colors.Black;
+
+            if (userSettings.FontColor != null)
+            {
+                outlineColor = Media.Color.FromArgb(userSettings.FontColor.Alpha, 0, 0, 0);
+                captionElement.Style.Opacity = System.Convert.ToDouble(userSettings.FontColor.Alpha) / 255.0;
+            }
+
             switch (userSettings.FontStyle)
             {
                 case FontStyle.Default:
@@ -169,12 +177,12 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
 
                 case FontStyle.DepressedEdge:
                     captionElement.Style.TextStyle = TextStyle.DepressedEdge;
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
                     break;
 
@@ -182,8 +190,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                     captionElement.Style.TextStyle = TextStyle.DropShadow;
 
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
-                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 2, Unit = LengthUnit.Pixel };
+                    captionElement.Style.OutlineColor = outlineColor;
+                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 3, Unit = LengthUnit.Pixel };
                     break;
 
                 case FontStyle.None:
@@ -193,13 +201,13 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 case FontStyle.Outline:
                     captionElement.Style.TextStyle = TextStyle.Outline;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
 
                 case FontStyle.RaisedEdge:
                     captionElement.Style.TextStyle = TextStyle.RaisedEdge;
                     captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
-                    captionElement.Style.OutlineColor = Media.Colors.Black;
+                    captionElement.Style.OutlineColor = outlineColor;
                     break;
             }
         }

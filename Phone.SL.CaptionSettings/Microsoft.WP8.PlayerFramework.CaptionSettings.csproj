@@ -144,12 +144,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP8.PlayerFramework.SL.csproj">
-      <Project>{7D44BE21-5E5D-4CA0-8DF1-59B16122131C}</Project>
-      <Name>Microsoft.WP8.PlayerFramework.SL</Name>
-    </ProjectReference>
+    <SDKReference Include="Microsoft.PlayerFramework.WP8.Core, Version=1.8.2.2">
+      <Name>Microsoft Player Framework</Name>
+    </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

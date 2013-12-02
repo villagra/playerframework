@@ -53,22 +53,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 isEnabled = (bool)value;
             }
 
-            ////var control = new CaptionSettingsControl();
-
-            ////control.Width = layoutRoot.ActualWidth;
-            ////control.Height = layoutRoot.ActualHeight;
-
-            ////control.Settings = this.plugin.Settings;
-
-            ////control.ApplyCaptionSettings = this.plugin.ApplyCaptionSettings;
-
-            ////var popup = new Popup();
-            ////popup.Child = control;
-
-            ////layoutRoot.Children.Add(popup);
-
-            ////popup.IsOpen = true;
-
             var assembly = typeof(CaptionSettingsPage).Assembly;
 
             var assemblyName = System.IO.Path.GetFileNameWithoutExtension(assembly.ManifestModule.Name);

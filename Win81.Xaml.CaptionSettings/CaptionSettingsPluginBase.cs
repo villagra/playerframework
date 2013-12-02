@@ -55,14 +55,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 return;
             }
 
-            this.Settings = settings;
+            this.IsDefault = (settings == null);
 
             // let the derived class apply the settings
             this.OnApplyCaptionSettings(settings);
 
             if (this.OnSaveCaptionSettings != null)
             {
-                this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(this.Settings));
+                this.OnSaveCaptionSettings(this, new CustomCaptionSettingsEventArgs(settings));
             }
 
             this.Save();
