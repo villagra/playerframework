@@ -14,12 +14,12 @@
     <UserControl.Resources>
         <ValueConverters:NegateConverter x:Key="NegateConverter"/>
         <Style x:Key="PreviewTextStyle" TargetType="TextBlock" >
-            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+            <!--<Setter Property="TextTrimming" Value="CharacterEllipsis"/>-->
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="Text" Value="Aaa Bbb Ccc Ddd"/>
+            <Setter Property="Text" Value="Aaa Bbb Ccc"/>
         </Style>
     </UserControl.Resources>
     
