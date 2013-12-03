@@ -13,16 +13,16 @@ cd..
 "%SN%" -R Win8.Xaml.Adaptive\bin\x86\Release\Microsoft.AdaptiveStreaming.winmd							Win8.Xaml.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Xaml.Adaptive\bin\x64\Release\Microsoft.AdaptiveStreaming.winmd							Win8.Xaml.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Xaml.Adaptive\bin\ARM\Release\Microsoft.AdaptiveStreaming.winmd							Win8.Xaml.Adaptive\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Xaml.Advertising\bin\Release\Microsoft.VideoAdvertising.winmd								Win8.Xaml.Advertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.winmd												Win8.Xaml.WebVTT\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Xaml.Advertising\bin\Release\Microsoft.VideoAdvertising.winmd							Win8.Xaml.Advertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.winmd											Win8.Xaml.WebVTT\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming\bin\x86\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming\bin\x64\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.AdaptiveStreaming\bin\ARM\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.winmd									Win8.VideoAnalytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAdvertising\bin\Release\Microsoft.VideoAdvertising.winmd								Win8.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.winmd								Win8.VideoAnalytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAdvertising\bin\Release\Microsoft.VideoAdvertising.winmd							Win8.VideoAdvertising\Microsoft.PlayerFramework.snk
 
 @popd
 
@@ -80,6 +80,9 @@ mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\References"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TimedText"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Controls"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.TimedText\References\CommonConfiguration"
@@ -89,6 +92,9 @@ mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Controls"
+mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration"
@@ -131,6 +137,16 @@ copy ..\Win8.Xaml.TimedText\bin\Release\Microsoft.TimedText.dll					Microsoft.Pl
 copy ..\Win8.Xaml.TimedText\bin\Release\Microsoft.TimedText.pri					Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\
 copy ..\Win8.TimedText\bin\Release\Themes\generic.xbf							Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\themes\
 
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll		Microsoft.PlayerFramework.Xaml.Win81.TimedText\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml		Microsoft.PlayerFramework.Xaml.Win81.TimedText\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.Win81.TimedText\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.pri		Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\CaptionSettingFlyout.xbf									Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\ColorPickerControl.xbf									Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\Controls\PreviewControl.xbf								Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Controls\
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.Win81.TimedText\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.Win81.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings\
+
 copy ..\Win8.Xaml.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.dll		Microsoft.PlayerFramework.Xaml.Win81.Advertising\References\CommonConfiguration\neutral\
 copy ..\Win8.Xaml.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.xml		Microsoft.PlayerFramework.Xaml.Win81.Advertising\References\CommonConfiguration\neutral\
 copy ..\Win8.Xaml.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.pri		Microsoft.PlayerFramework.Xaml.Win81.Advertising\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Advertising\
@@ -161,6 +177,16 @@ copy ..\Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.winmd						Microsoft.Playe
 @rem copy ..\Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.xml					Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration\neutral\
 copy ..\Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.pri						Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\
 copy ..\Win8.WebVTT\bin\Release\Themes\generic.xaml								Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes\
+
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll			Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml			Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.pri			Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\CaptionSettingFlyout.xbf										Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\ColorPickerControl.xbf										Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\Controls\PreviewControl.xbf									Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Controls\
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.Win81.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Win81.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.Win81.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings\
 
 @popd
 

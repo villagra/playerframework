@@ -52,6 +52,10 @@ copy ..\Phone.SL.Adaptive\bin\Release\Microsoft.PlayerFramework.Adaptive.xml  Mi
 
 copy ..\Phone.SL.TimedText\bin\Release\Microsoft.PlayerFramework.TimedText.dll  Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
 copy ..\Phone.TimedText\bin\Release\Microsoft.TimedText.dll						Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.TTML.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.dll	Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.TTML.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll			Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.TTML.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.xml	Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.TTML.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml			Microsoft.PlayerFramework.WP8.TimedText\References\CommonConfiguration\neutral\
 
 copy ..\Phone.SL.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.dll	Microsoft.PlayerFramework.WP8.Advertising\References\CommonConfiguration\neutral\
 copy ..\Phone.VideoAdvertising\bin\Release\Microsoft.VideoAdvertising.dll			Microsoft.PlayerFramework.WP8.Advertising\References\CommonConfiguration\neutral\
@@ -65,6 +69,10 @@ copy ..\Phone.AudienceInsight\bin\Release\Microsoft.AudienceInsight.dll								 
 
 copy ..\Phone.SL.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll	Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 copy ..\Phone.WebVTT\bin\Release\Microsoft.WebVTT.dll						Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.WebVTT.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.dll	Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.WebVTT.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll			Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.WebVTT.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.xml	Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
+copy ..\Phone.SL.WebVTT.CaptionSettings\Bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml			Microsoft.PlayerFramework.WP8.WebVTT\References\CommonConfiguration\neutral\
 
 copy ..\Phone.SL.Adaptive.Dash\bin\Release\Microsoft.PlayerFramework.Adaptive.Dash.dll		Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
 copy ..\Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll				Microsoft.PlayerFramework.WP8.Dash\References\CommonConfiguration\neutral\
