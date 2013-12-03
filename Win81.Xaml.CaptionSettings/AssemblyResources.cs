@@ -21,7 +21,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <returns>the resource loader for the current view</returns>
         internal static ResourceLoader Get()
         {
-            return ResourceLoader.GetForCurrentView("Microsoft.Win81.PlayerFramework.CaptionSettingsPlugIn.Xaml/Resources");
+            return ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
         }
     }
 }
