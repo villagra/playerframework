@@ -13,11 +13,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.PlayerFramework.Xaml.CaptionSettings")]
+[assembly: AssemblyTitle("Microsoft.PlayerFramework.CaptionSettings")]
 [assembly: AssemblyDescription("Microsoft Media Platform Player Framework Caption Customization")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft Corp.")]
-[assembly: AssemblyProduct("Microsoft.PlayerFramework.Xaml.CaptionSettings")]
+[assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
 [assembly: AssemblyCopyright("Copyright ©  2013 Microsoft Corp.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
