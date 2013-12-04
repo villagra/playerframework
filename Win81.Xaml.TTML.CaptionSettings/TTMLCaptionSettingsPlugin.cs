@@ -128,8 +128,11 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 };
             }
 
+#if WINDOWS_PHONE
+            var fontFamily = FontMap.GetFontFamily(userSettings);
+#else
             var fontFamily = GetFontFamily(userSettings);
-
+#endif
             if (fontFamily != null)
             {
                 captionElement.Style.FontFamily = fontFamily;
