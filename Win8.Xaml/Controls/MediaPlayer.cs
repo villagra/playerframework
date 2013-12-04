@@ -5163,10 +5163,11 @@ namespace Microsoft.PlayerFramework
                 if (StartupPosition.HasValue)
                 {
 #if WINDOWS_PHONE
+                    var startupPosition = StartupPosition.Value;
                     // HACK: sometimes this is ignored on the phone if we don't set the position on the dispatcher
                     Dispatcher.BeginInvoke(() =>
                     {
-                        Position = StartupPosition.Value;
+                        Position = startupPosition;
                     });
 #else
                     Position = StartupPosition.Value;
