@@ -43,7 +43,7 @@ namespace Microsoft.PlayerFramework.Advertising
     }
 
     /// <summary>
-    /// A collection class containing the TrackingEvent objects associated with a PlaylistItem
+    /// A collection class containing the Advertisements objects associated with a PlaylistItem
     /// </summary>
     public class AdvertisementsCollection : ObservableCollection<Advertisement>
     { }
