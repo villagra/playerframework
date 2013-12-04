@@ -136,8 +136,14 @@ namespace Microsoft.PlayerFramework.Adaptive
 
         void Manager_EndOfLive(object sender, EventArgs e)
         {
-            MediaPlayer.LivePosition = null;
-            MediaPlayer.IsLive = false;
+            MediaPlayer.Dispatcher.BeginInvoke(() =>
+            {
+                if (MediaPlayer != null)
+                {
+                    MediaPlayer.LivePosition = null;
+                    MediaPlayer.IsLive = false;
+                }
+            });
         }
 
         void Manager_StateChanged(object sender, EventArgs e)
