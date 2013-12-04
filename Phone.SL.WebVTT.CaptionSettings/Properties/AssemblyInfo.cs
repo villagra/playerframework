@@ -1,13 +1,20 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿// <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
+// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter</author>
+// <email>mischero@microsoft.com</email>
+// <date>2013-12-04</date>
+// <summary>Assembly Information</summary>
+
+using System.Reflection;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Microsoft.PlayerFramework.WebVTT.CaptionSettings")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("WebVTT Caption Settings for Windows Phone 8 Apps using the Microsoft Media Platform Player Framework.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]

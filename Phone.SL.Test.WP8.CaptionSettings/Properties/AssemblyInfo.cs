@@ -13,11 +13,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.PlayerFramework.TTML.CaptionSettings")]
-[assembly: AssemblyDescription("TTML Caption Settings for Windows Phone 8 Apps.")]
+[assembly: AssemblyTitle("WP8.PlayerFramework.Test")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("WP8.PlayerFramework.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c6e13339-51e8-4158-9e1a-b12d24841ecd")]
+[assembly: Guid("e0bafb18-a798-4743-b3be-1491bbe512d9")]
 
 // Version information for an assembly consists of the following four values:
 //

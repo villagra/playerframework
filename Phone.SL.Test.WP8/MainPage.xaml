@@ -26,8 +26,8 @@
 	</phone:PhoneApplicationPage.ApplicationBar>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
-            <!--IsCaptionSelectionVisible="True">-->
+        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest"
+            IsCaptionSelectionVisible="True">
         <mmppf:MediaPlayer.Plugins>
           <!--creating adaptive plugin in code instead-->
           <!--<adaptive:AdaptivePlugin />-->
