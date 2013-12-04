@@ -216,7 +216,7 @@ namespace Microsoft.PlayerFramework
 
         private void RefreshPauseState()
         {
-            SystemControls.IsPauseEnabled = MediaPlayer.InteractiveViewModel != null && MediaPlayer.InteractiveViewModel.IsPauseEnabled;
+            SystemControls.IsPauseEnabled = MediaPlayer.InteractiveViewModel != null;
         }
 
         void Player_IsPlayResumeEnabledChanged(object sender, RoutedEventArgs e)
@@ -226,7 +226,7 @@ namespace Microsoft.PlayerFramework
 
         private void RefreshPlayState()
         {
-            SystemControls.IsPlayEnabled = MediaPlayer.InteractiveViewModel != null && MediaPlayer.InteractiveViewModel.IsPlayResumeEnabled;
+            SystemControls.IsPlayEnabled = MediaPlayer.InteractiveViewModel != null;
         }
 
         void Player_IsFastForwardEnabledChanged(object sender, RoutedEventArgs e)

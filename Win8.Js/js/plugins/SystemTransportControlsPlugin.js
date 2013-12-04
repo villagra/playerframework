@@ -178,7 +178,7 @@
         },
 
         _refreshPauseState: function () {
-            this.systemControls.isPauseEnabled = this.mediaPlayer.interactiveViewModel !== null && !this.mediaPlayer.interactiveViewModel.isPauseDisabled;
+            this.systemControls.isPauseEnabled = this.mediaPlayer.interactiveViewModel !== null;
         },
 
         _onIsPlayResumeDisabledChanged: function (e) {
@@ -186,7 +186,7 @@
         },
 
         _refreshPlayState: function () {
-            this.systemControls.isPlayEnabled = this.mediaPlayer.interactiveViewModel !== null && !this.mediaPlayer.interactiveViewModel.isPlayResumeDisabled;
+            this.systemControls.isPlayEnabled = this.mediaPlayer.interactiveViewModel !== null;
         },
 
         _onIsFastForwardDisabledChanged: function (e) {
