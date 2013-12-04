@@ -146,11 +146,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     args.Request.ApplicationCommands.Add(command);
                 }
             }
-            else
-            {
-                // the command is in the list so only hook up the Invoked handler
-                command.Invoked += this.OnShowCaptionSettings;
-            }
         }
 
         /// <summary>
