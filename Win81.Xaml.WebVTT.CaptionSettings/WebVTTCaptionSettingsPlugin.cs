@@ -33,6 +33,9 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
     /// <summary>
     /// WebVTT caption settings plug-in for MediaPlayer
     /// </summary>
+    /// <remarks>Do not call MediaPlayer.Dispose() when navigating away from 
+    /// the page hosting the player.
+    /// </remarks>
     public class WebVTTCaptionSettingsPlugin : CaptionSettingsPluginBase
     {
         #region Fields
@@ -214,7 +217,11 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                     break;
 
                 default:
+#if WINDOWS_PHONE
+                    e.TextBlock.FontFamily = FontMap.GetFontFamily(this.Settings);
+#else
                     e.TextBlock.FontFamily = this.GetFont();
+#endif
                     break;
             }
         }
@@ -445,8 +452,8 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                 this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new Media.FontFamily("Courier New");
                 this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new Media.FontFamily("Cambria");
                 this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new Media.FontFamily("Consolas");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new Media.FontFamily("Arial");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new Media.FontFamily("Comic Sans MS");
+                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new Media.FontFamily("Segoe UI");
+                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new Media.FontFamily("Segoe Print");
                 this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new Media.FontFamily("Segoe Script");
             }
 

@@ -1,4 +1,12 @@
-﻿using System.Reflection;
+﻿// <copyright file="AssemblyInfo.cs" company="Microsoft Corporation">
+// Copyright (c) 2013 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter</author>
+// <email>mischero@microsoft.com</email>
+// <date>2013-12-04</date>
+// <summary>Assembly Information</summary>
+
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
@@ -6,7 +14,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Microsoft.PlayerFramework.TTML.CaptionSettings")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("TTML Caption Settings for Windows Phone 8 Apps.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Microsoft Media Platform Player Framework")]

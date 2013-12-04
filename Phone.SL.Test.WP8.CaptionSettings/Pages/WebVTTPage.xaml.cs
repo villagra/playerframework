@@ -39,21 +39,11 @@ namespace WP8.PlayerFramework.Test.Pages
             this.Player.Plugins.Add(this.plugin);
 
             this.Player.SelectedCaption = this.Player.AvailableCaptions.First();
-
-            this.Unloaded += this.OnUnloaded;
         }
+
         #endregion
 
         #region Implementation
-        /// <summary>
-        /// Dispose of the player when this page unloads
-        /// </summary>
-        /// <param name="sender">the page</param>
-        /// <param name="e">the routed event arguments</param>
-        private void OnUnloaded(object sender, RoutedEventArgs e)
-        {
-            this.Player.Dispose();
-        }
 
         /// <summary>
         /// Show the caption settings page

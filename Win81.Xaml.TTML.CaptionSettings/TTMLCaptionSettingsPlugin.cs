@@ -25,7 +25,10 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
     /// <summary>
     /// TTML Caption Settings Plug-in for Microsoft Media Platform Player Framework
     /// </summary>
-    /// <remarks>TimedTextStyle.FontFamily is not implemented for Windows Phone 8.</remarks>
+    /// <remarks>TimedTextStyle.FontFamily is not implemented for Windows Phone 8.
+    /// Do not call MediaPlayer.Dispose() when navigating away from 
+    /// the page hosting the player.
+    /// </remarks>
     public class TTMLCaptionSettingsPlugin : CaptionSettingsPluginBase
     {
         #region Fields
