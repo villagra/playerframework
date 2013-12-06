@@ -628,6 +628,8 @@ namespace Microsoft.TimedText
                 contentElement = textblock;
             }
 
+            contentElement.Opacity = System.Convert.ToDouble(style.Color.A) / 255.0;
+            border.Opacity = System.Convert.ToDouble(style.Color.A) / 255.0;
             border.Child = contentElement;
             p.Children.Add(border);
 
@@ -713,6 +715,11 @@ namespace Microsoft.TimedText
 
             var grid = new Grid();
 
+            // The cache mode composites all of the elements together so the 
+            // opacity is applied to the whole grid instead of the individual 
+            // elements.
+            grid.CacheMode = new BitmapCache();
+
             grid.Children.Add(textblock);
 
             foreach (var item in textBlocks)
@@ -752,6 +759,11 @@ namespace Microsoft.TimedText
             textBlocks[2].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
 
             var grid = new Grid();
+
+            // The cache mode composites all of the elements together so the 
+            // opacity is applied to the whole grid instead of the individual 
+            // elements.
+            grid.CacheMode = new BitmapCache();
 
             foreach (var item in textBlocks)
             {
@@ -794,6 +806,11 @@ namespace Microsoft.TimedText
 
             var grid = new Grid();
 
+            // The cache mode composites all of the elements together so the 
+            // opacity is applied to the whole grid instead of the individual 
+            // elements.
+            grid.CacheMode = new BitmapCache();
+
             grid.Children.Add(textblock);
 
             foreach (var item in textBlocks)
@@ -821,6 +838,11 @@ namespace Microsoft.TimedText
             FrameworkElement contentElement;
             Grid cnv = new Grid();
 
+            // The cache mode composites all of the elements together so the 
+            // opacity is applied to the whole grid instead of the individual 
+            // elements.
+            cnv.CacheMode = new BitmapCache();
+            
             // do outline image up and to left
             TextBlock tb2 = GetStyledTextblock(style, panelWidth, height, true);
             SetContent(tb2, text);
@@ -899,7 +921,7 @@ namespace Microsoft.TimedText
             {
                 textblock.FontSize = Math.Round(style.FontSize.ToPixelLength(height));
             }
-            textblock.Foreground = GetCachedBrush(fOutline ? style.OutlineColor : style.Color);
+            textblock.Foreground = GetCachedBrush(fOutline ? style.OutlineColor : Color.FromArgb(255, style.Color.R, style.Color.G, style.Color.B));
 
             textblock.Opacity = style.Visibility == Visibility.Visible
                                     ? style.Opacity

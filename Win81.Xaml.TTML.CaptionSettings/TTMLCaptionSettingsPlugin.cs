@@ -97,12 +97,10 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="captionElement">the caption element</param>
         /// <param name="userSettings">the user settings</param>
         /// <param name="isRoot">is this the root element?</param>
-        /// <param name="height">the height of the MediaPlayer in pixels</param>
         private static void UpdateElement(
             TimedTextElement captionElement,
             CustomCaptionSettings userSettings,
-            bool isRoot,
-            double height)
+            bool isRoot)
         {
             if (isRoot)
             {
@@ -128,8 +126,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             {
                 captionElement.Style.FontSize = new Length
                 {
-                    Unit = LengthUnit.Pixel,
-                    Value = System.Convert.ToDouble(userSettings.FontSize.Value) * captionElement.Style.FontSize.ToPixelLength(height) / 100.0
+                    Unit = captionElement.Style.FontSize.Unit,
+                    Value = System.Convert.ToDouble(userSettings.FontSize.Value) * captionElement.Style.FontSize.Value / 100.0
                 };
             }
 
@@ -151,7 +149,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             {
                 foreach (var child in children)
                 {
-                    UpdateElement(child, userSettings, false, height);
+                    UpdateElement(child, userSettings, false);
                 }
             }
         }
@@ -174,8 +172,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             if (userSettings.FontColor != null)
             {
-                outlineColor = Media.Color.FromArgb(userSettings.FontColor.Alpha, 0, 0, 0);
-                captionElement.Style.Opacity = System.Convert.ToDouble(userSettings.FontColor.Alpha) / 255.0;
+                outlineColor = Media.Color.FromArgb(255, 0, 0, 0);
+                //captionElement.Style.Opacity = System.Convert.ToDouble(userSettings.FontColor.Alpha) / 255.0;
             }
 
             switch (userSettings.FontStyle)
@@ -273,7 +271,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             var captionRegion = e.CaptionMarker as CaptionRegion;
 
-            UpdateElement(captionRegion, this.Settings, true, this.MediaPlayer.ActualHeight);
+            UpdateElement(captionRegion, this.Settings, true);
         }
         #endregion
     }
