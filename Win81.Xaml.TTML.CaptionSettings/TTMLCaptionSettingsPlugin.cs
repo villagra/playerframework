@@ -96,20 +96,20 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// </summary>
         /// <param name="captionElement">the caption element</param>
         /// <param name="userSettings">the user settings</param>
-        /// <param name="isRoot">is this the root element?</param>
+        /// <param name="level">the 0-based level of the caption element</param>
         private static void UpdateElement(
             TimedTextElement captionElement,
             CustomCaptionSettings userSettings,
-            bool isRoot)
+            uint level)
         {
-            if (isRoot)
+            if (level == 0)
             {
                 if (userSettings.WindowColor != null)
                 {
                     captionElement.Style.BackgroundColor = userSettings.WindowColor.ToColor();
                 }
             }
-            else
+            else if (level == 1)
             {
                 if (userSettings.BackgroundColor != null)
                 {
@@ -149,7 +149,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             {
                 foreach (var child in children)
                 {
-                    UpdateElement(child, userSettings, false);
+                    UpdateElement(child, userSettings, level + 1);
                 }
             }
         }
@@ -271,7 +271,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             var captionRegion = e.CaptionMarker as CaptionRegion;
 
-            UpdateElement(captionRegion, this.Settings, true);
+            UpdateElement(captionRegion, this.Settings, 0);
         }
         #endregion
     }
