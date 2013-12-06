@@ -389,6 +389,7 @@
     <Content Include="Assets\SplashScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Captions\font_size_testcase.xml" />
     <Page Include="EntertainmentAppPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

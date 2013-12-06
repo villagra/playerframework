@@ -20,7 +20,6 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 #else
     using FF = Microsoft.TimedText;
     using Media = Windows.UI;
-    using Windows.Foundation;
 #endif
 
     /// <summary>
@@ -98,6 +97,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="captionElement">the caption element</param>
         /// <param name="userSettings">the user settings</param>
         /// <param name="isRoot">is this the root element?</param>
+        /// <param name="height">the height of the MediaPlayer in pixels</param>
         private static void UpdateElement(
             TimedTextElement captionElement,
             CustomCaptionSettings userSettings,
