@@ -112,6 +112,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             if (this.isListSelectorShown)
             {
                 this.HideListSelector();
+                this.RemoveSelectionChanged();
                 e.Cancel = true;
             }
             else
@@ -201,6 +202,18 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 viewModel.Settings.FontFamily,
                 this.OnFontFamilyChanged,
                 "FontFamilyTemplate");
+        }
+
+        private void RemoveSelectionChanged()
+        {
+            this.ListSelector.SelectionChanged -= this.OnBackgroundColorChanged;
+            this.ListSelector.SelectionChanged -= this.OnBackgroundColorTypeChanged;
+            this.ListSelector.SelectionChanged -= this.OnFontColorChanged;
+            this.ListSelector.SelectionChanged -= this.OnFontColorTypeChanged;
+            this.ListSelector.SelectionChanged -= this.OnFontFamilyChanged;
+            this.ListSelector.SelectionChanged -= this.OnFontStyleChanged;
+            this.ListSelector.SelectionChanged -= this.OnWindowColorChanged;
+            this.ListSelector.SelectionChanged -= this.OnWindowColorTypeChanged;
         }
 
         /// <summary>

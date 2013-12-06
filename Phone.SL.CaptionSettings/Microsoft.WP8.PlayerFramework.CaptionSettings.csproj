@@ -130,6 +130,7 @@
     <Compile Include="ValueConverters\ColorConverter.cs" />
     <Compile Include="ValueConverters\FontFamilyConverter.cs" />
     <Compile Include="ValueConverters\FontSizeConverter.cs" />
+    <Compile Include="ValueConverters\FontStyleConverter.cs" />
     <Compile Include="ValueConverters\ResourceConverter.cs" />
   </ItemGroup>
   <ItemGroup>

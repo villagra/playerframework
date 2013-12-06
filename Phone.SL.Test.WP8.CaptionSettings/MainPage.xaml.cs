@@ -26,6 +26,18 @@ namespace WP8.PlayerFramework.Test
             ////BuildLocalizedApplicationBar();
         }
 
+        /// <summary>
+        /// Show the settings page
+        /// </summary>
+        /// <param name="sender">the caption settings button</param>
+        /// <param name="e">the event arguments</param>
+        private void OnClickCaptionSettings(object sender, System.EventArgs e)
+        {
+            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+
+            plugin.ShowSettingsPage(this.NavigationService);
+        }
+
         // Sample code for building a localized ApplicationBar
         ////private void BuildLocalizedApplicationBar()
         ////{

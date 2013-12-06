@@ -14,6 +14,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System.Windows.Media;
     using System.Windows.Navigation;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Windows Phone Caption Settings UI
@@ -22,13 +23,39 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     {
         #region Fields
         /// <summary>
+        /// The Font Family Map
+        /// </summary>
+        private static Dictionary<Model.FontFamily, string> fontFamilyMap;
+        /// <summary>
         /// the isolated storage settings key for the caption settings
         /// </summary>
         private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Gets the Windows Phone Font Family name
+        /// </summary>
+        /// <param name="fontFamily">the caption font family</param>
+        /// <returns>the Windows Phone font family name</returns>
+        public static string GetFontFamilyName(Model.FontFamily fontFamily)
+        {
+            if (fontFamilyMap == null)
+            {
+                fontFamilyMap = new Dictionary<Model.FontFamily, string>();
 
+                fontFamilyMap[Model.FontFamily.Default] = null;
+                fontFamilyMap[Model.FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
+                fontFamilyMap[Model.FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
+                fontFamilyMap[Model.FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
+                fontFamilyMap[Model.FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[Model.FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Comic Sans MS");
+                fontFamilyMap[Model.FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Calibri Light");
+                fontFamilyMap[Model.FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
+            }
+
+            return fontFamilyMap[fontFamily];
+        }
         /// <summary>
         /// Show the settings page if there is a CaptionsPlugin.
         /// </summary>
@@ -51,6 +78,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CaptionSettingsPage.OverrideDefaultKey, out value))
             {
                 isEnabled = (bool)value;
+            }
+
+            if (this.Settings == null)
+            {
+                this.Activate();
+                this.Settings.PropertyChanged += Settings_PropertyChanged;
             }
 
             var assembly = typeof(CaptionSettingsPage).Assembly;
@@ -114,6 +147,38 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         internal void Save()
         {
             IsolatedStorageSettings.ApplicationSettings[LocalSettingsKey] = this.Settings.ToXmlString();
+        }
+        #endregion
+
+        #region Implementation
+        /// <summary>
+        /// Gets the font family from application data local settings if it has been overridden.
+        /// </summary>
+        /// <param name="fontFamily">the font family</param>
+        /// <param name="defaultName">the default font name</param>
+        /// <returns>the font family name</returns>
+        private static string GetDefaultFontFamily(Model.FontFamily fontFamily, string defaultName)
+        {
+            string fontName;
+
+            var keyName = string.Format(CultureInfo.InvariantCulture, "FontFamilies.{0}", fontFamily);
+
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(keyName, out fontName))
+            {
+                return fontName;
+            }
+
+            return defaultName;
+        }
+
+        /// <summary>
+        /// Save the settings when activated without a player
+        /// </summary>
+        /// <param name="sender">the settings</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            this.Save();
         }
         #endregion
     }

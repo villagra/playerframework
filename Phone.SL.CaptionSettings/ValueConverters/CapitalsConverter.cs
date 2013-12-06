@@ -11,6 +11,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
     using System;
     using System.Windows;
     using System.Windows.Data;
+    using System.Windows.Documents;
 
     /// <summary>
     /// Converts <see cref="Model.FontFamily"/> to <see cref="FontCapitals"/>

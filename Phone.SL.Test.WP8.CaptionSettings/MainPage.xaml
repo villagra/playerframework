@@ -12,6 +12,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Landscape"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar>
+			<shell:ApplicationBar.MenuItems>
+				<shell:ApplicationBarMenuItem x:Name="CaptionSettingsButton" Text="Caption Settings" Click="OnClickCaptionSettings"/>
+			</shell:ApplicationBar.MenuItems>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">

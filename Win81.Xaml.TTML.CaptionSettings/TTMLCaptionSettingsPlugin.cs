@@ -139,6 +139,13 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             if (fontFamily != null)
             {
                 captionElement.Style.FontFamily = fontFamily;
+
+#if WINDOWS_PHONE
+                if (userSettings.FontFamily == FontFamily.Cursive)
+                {
+                    captionElement.Style.FontStyle = System.Windows.FontStyles.Italic;
+                }
+#endif
             }
 
             ApplyFontStyle(captionElement, userSettings);

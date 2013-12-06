@@ -77,19 +77,27 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
             if (this.fontMap == null)
             {
                 this.fontMap = new Dictionary<Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily, Media.FontFamily>();
-
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new Media.FontFamily("Courier New");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new Media.FontFamily("Cambria");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new Media.FontFamily("Consolas");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new Media.FontFamily("Arial");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new Media.FontFamily("Comic Sans MS");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new Media.FontFamily("Segoe Script");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Smallcaps] = new Media.FontFamily("Segoe UI");
             }
 
-            var fontName = this.fontMap[fontFamily];
+            Media.FontFamily mediaFontFamily;
 
-            return fontName;
+            if (this.fontMap.TryGetValue(fontFamily, out mediaFontFamily))
+            {
+                return mediaFontFamily;
+            }
+
+            var fontName = CaptionSettingsPluginBase.GetFontFamilyName(fontFamily);
+
+            if (fontName == null)
+            {
+                return null;
+            }
+
+            mediaFontFamily = new Media.FontFamily(fontName);
+
+            this.fontMap[fontFamily] = mediaFontFamily;
+
+            return mediaFontFamily;
         }
 
         #endregion
