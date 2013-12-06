@@ -55,7 +55,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 return;
             }
 
-            this.IsDefault = settings == null;
+            //this.IsDefault = settings == null;
 
             // let the derived class apply the settings
             this.OnApplyCaptionSettings(settings);

@@ -149,14 +149,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             if (this.OnApplyCaptionSettings != null)
             {
+                var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
+
                 if (e.PropertyName == "IsEnabled")
                 {
-                    var dataContext = sender as CaptionSettingsFlyoutViewModel;
-
                     Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
                 }
 
-                this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(this.CaptionSettings));
+                var settings = dataContext.IsEnabled ? this.CaptionSettings : null;
+
+                this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(settings));
             }
         }
 

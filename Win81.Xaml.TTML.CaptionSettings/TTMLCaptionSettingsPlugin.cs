@@ -20,6 +20,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 #else
     using FF = Microsoft.TimedText;
     using Media = Windows.UI;
+    using Windows.Foundation;
 #endif
 
     /// <summary>
@@ -100,7 +101,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         private static void UpdateElement(
             TimedTextElement captionElement,
             CustomCaptionSettings userSettings,
-            bool isRoot)
+            bool isRoot,
+            double height)
         {
             if (isRoot)
             {
@@ -127,7 +129,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 captionElement.Style.FontSize = new Length
                 {
                     Unit = LengthUnit.Pixel,
-                    Value = System.Convert.ToDouble(userSettings.FontSize.Value) * captionElement.Style.FontSize.Value / 100.0
+                    Value = System.Convert.ToDouble(userSettings.FontSize.Value) * captionElement.Style.FontSize.ToPixelLength(height) / 100.0
                 };
             }
 
@@ -149,7 +151,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             {
                 foreach (var child in children)
                 {
-                    UpdateElement(child, userSettings, false);
+                    UpdateElement(child, userSettings, false, height);
                 }
             }
         }
@@ -228,22 +230,31 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             if (fontMap == null)
             {
                 fontMap = new Dictionary<Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily, FF.FontFamily>();
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Default] = null;
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new FF.FontFamily("Courier New");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new FF.FontFamily("Cambria");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new FF.FontFamily("Consolas");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Segoe UI");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new FF.FontFamily("Segoe Print");
-                fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new FF.FontFamily("Segoe Script");
 
                 // _Smallcaps is a unique keyword that will trigger the usage of Typography.SetCapitals(textblock, FontCapitals.SmallCaps)
                 // and the default font.
                 fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Smallcaps] = new FF.FontFamily("_Smallcaps");
             }
 
-            var fontName = fontMap[userSettings.FontFamily];
+            FF.FontFamily fontFamily;
 
-            return fontName;
+            if (fontMap.TryGetValue(userSettings.FontFamily, out fontFamily))
+            {
+                return fontFamily;
+            }
+
+            var name = GetFontFamilyName(userSettings.FontFamily);
+
+            if (name == null)
+            {
+                return null;
+            }
+
+            fontFamily = new FF.FontFamily(name);
+
+            fontMap[userSettings.FontFamily] = fontFamily;
+
+            return fontFamily;
         }
 
         /// <summary>
@@ -253,7 +264,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="e">the caption parsed event arguments</param>
         private void OnCaptionParsed(object sender, Microsoft.TimedText.CaptionParsedEventArgs e)
         {
-            if (this.Settings == null)
+            if (this.Settings == null || this.IsDefault)
             {
                 ////Debug.WriteLine("Captions parsed without user settings.");
 
@@ -262,7 +273,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             var captionRegion = e.CaptionMarker as CaptionRegion;
 
-            UpdateElement(captionRegion, this.Settings, true);
+            UpdateElement(captionRegion, this.Settings, true, this.MediaPlayer.ActualHeight);
         }
         #endregion
     }

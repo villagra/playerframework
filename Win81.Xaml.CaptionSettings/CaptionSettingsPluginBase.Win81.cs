@@ -8,11 +8,10 @@
 
 namespace Microsoft.PlayerFramework.CaptionSettings
 {
-    using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using Windows.ApplicationModel.Resources;
     using Windows.UI.ApplicationSettings;
     using Windows.UI.Popups;
     using Windows.UI.Xaml;
@@ -27,6 +26,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// the local settings key
         /// </summary>
         private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
+
+        /// <summary>
+        /// the font family map
+        /// </summary>
+        private static Dictionary<FontFamily, string> fontFamilyMap;
         #endregion
 
         #region Constructors
@@ -68,6 +72,30 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
         #region Methods
         /// <summary>
+        /// Gets the Windows font family mapped to the Captions font Family
+        /// </summary>
+        /// <param name="fontFamily">the captions font family</param>
+        /// <returns>the name of the Windows font family</returns>
+        public static string GetFontFamilyName(FontFamily fontFamily)
+        {
+            if (fontFamilyMap == null)
+            {
+                fontFamilyMap = new Dictionary<FontFamily, string>();
+
+                fontFamilyMap[FontFamily.Default] = null;
+                fontFamilyMap[FontFamily.MonospaceSerif]        = GetDefaultFontFamily(fontFamily, "Courier New");
+                fontFamilyMap[FontFamily.ProportionalSerif]     = GetDefaultFontFamily(fontFamily, "Times New Roman");
+                fontFamilyMap[FontFamily.MonospaceSansSerif]    = GetDefaultFontFamily(fontFamily, "Consolas");
+                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[FontFamily.Casual]                = GetDefaultFontFamily(fontFamily, "Segoe Print");
+                fontFamilyMap[FontFamily.Cursive]               = GetDefaultFontFamily(fontFamily, "Segoe Script");
+                fontFamilyMap[FontFamily.Smallcaps]             = GetDefaultFontFamily(fontFamily, "Tahoma");
+            }
+
+            return fontFamilyMap[fontFamily];
+        }
+
+        /// <summary>
         /// Add the settings pane and load the settings from local storage
         /// </summary>
         internal void Activate()
@@ -85,6 +113,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             else
             {
                 this.Settings = new CustomCaptionSettings();
+
+                this.IsDefault = true;
             }
         }
 
@@ -113,6 +143,28 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         #endregion
 
         #region Implementation
+        /// <summary>
+        /// Gets the font family from application data local settings if it has been overridden.
+        /// </summary>
+        /// <param name="fontFamily">the font family</param>
+        /// <param name="defaultName">the default font name</param>
+        /// <returns>the font family name</returns>
+        private static string GetDefaultFontFamily(FontFamily fontFamily, string defaultName)
+        {
+            var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Font Families", Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+            object value;
+
+            if (container.Values.TryGetValue(fontFamily.ToString(), out value))
+            {
+                string fontName = value.ToString();
+
+                return fontName;
+            }
+
+            return defaultName;
+        }
+
         /// <summary>
         /// Adds the caption settings command to the plug-in
         /// </summary>
@@ -179,6 +231,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the custom caption settings event arguments</param>
         private void OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
         {
+            this.IsDefault = e.Settings == null;
+
             this.ApplyCaptionSettings(e.Settings);
         }
 
