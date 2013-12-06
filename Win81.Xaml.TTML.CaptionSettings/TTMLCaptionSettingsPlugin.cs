@@ -131,11 +131,8 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
                 };
             }
 
-#if WINDOWS_PHONE
-            var fontFamily = FontMap.GetFontFamily(userSettings);
-#else
             var fontFamily = GetFontFamily(userSettings);
-#endif
+
             if (fontFamily != null)
             {
                 captionElement.Style.FontFamily = fontFamily;
@@ -180,7 +177,6 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
             if (userSettings.FontColor != null)
             {
                 outlineColor = Media.Color.FromArgb(255, 0, 0, 0);
-                //captionElement.Style.Opacity = System.Convert.ToDouble(userSettings.FontColor.Alpha) / 255.0;
             }
 
             switch (userSettings.FontStyle)

@@ -87,7 +87,6 @@
     <Compile Include="..\Win81.Xaml.TTML.CaptionSettings\TTMLCaptionSettingsPlugin.cs">
       <Link>TTMLCaptionSettingsPlugin.cs</Link>
     </Compile>
-    <Compile Include="FontMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

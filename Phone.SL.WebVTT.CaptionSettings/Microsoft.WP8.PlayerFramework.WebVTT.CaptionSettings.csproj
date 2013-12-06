@@ -87,7 +87,6 @@
     <Compile Include="..\Win81.Xaml.WebVTT.CaptionSettings\WebVTTCaptionSettingsPlugin.cs">
       <Link>WebVTTCaptionSettingsPlugin.cs</Link>
     </Compile>
-    <Compile Include="FontMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

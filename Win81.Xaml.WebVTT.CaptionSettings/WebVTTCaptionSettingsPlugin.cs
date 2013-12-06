@@ -10,14 +10,16 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
 {
     using System.Collections.Generic;
     using System.Diagnostics;
+#if WINDOWS_PHONE
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+#endif
     using Microsoft.PlayerFramework.CaptionSettings;
     using Microsoft.PlayerFramework.WebVTT;
     using Microsoft.WebVTT;
 
 #if WINDOWS_PHONE
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Documents;
     using Media = System.Windows.Media;
     using UI = System.Windows.Media;
 #else
@@ -217,11 +219,7 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                     break;
 
                 default:
-#if WINDOWS_PHONE
-                    e.TextBlock.FontFamily = FontMap.GetFontFamily(this.Settings);
-#else
                     e.TextBlock.FontFamily = this.GetFont();
-#endif
                     break;
             }
         }
@@ -448,16 +446,27 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
             if (this.fontMap == null)
             {
                 this.fontMap = new Dictionary<PlayerFramework.CaptionSettings.Model.FontFamily, Media.FontFamily>();
-
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSerif] = new Media.FontFamily("Courier New");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSerif] = new Media.FontFamily("Cambria");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.MonospaceSansSerif] = new Media.FontFamily("Consolas");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.ProportionalSansSerif] = new Media.FontFamily("Segoe UI");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Casual] = new Media.FontFamily("Segoe Print");
-                this.fontMap[Microsoft.PlayerFramework.CaptionSettings.Model.FontFamily.Cursive] = new Media.FontFamily("Segoe Script");
             }
 
-            return this.fontMap[this.Settings.FontFamily];
+            Media.FontFamily fontFamily;
+
+            if (this.fontMap.TryGetValue(this.Settings.FontFamily, out fontFamily))
+            {
+                return fontFamily;
+            }
+
+            var name = GetFontFamilyName(this.Settings.FontFamily);
+
+            if (name == null)
+            {
+                return null;
+            }
+
+            fontFamily = new Media.FontFamily(name);
+
+            this.fontMap[this.Settings.FontFamily] = fontFamily;
+
+            return fontFamily;
         }
         #endregion
     }
