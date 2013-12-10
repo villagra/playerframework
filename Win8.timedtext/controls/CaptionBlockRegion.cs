@@ -31,9 +31,9 @@ namespace Microsoft.TimedText
         private const uint MinimumTextRows = 2;
 
         /// <summary>
-        /// The padding between lines
+        /// The padding between lines as a percentage of the font size
         /// </summary>
-        private const uint LinePadding = 4;
+        private const double LinePadding = 0.5;
 
         /// <summary>
         /// Padding to add to regions to insure that they don't get cut off
@@ -187,7 +187,10 @@ namespace Microsoft.TimedText
             activeCaptions.ForEach(ShowCaption);
         }
 
-
+        /// <summary>
+        /// Update the size of the caption region and caption border based on 
+        /// the size declared in the TTML and the size of the text.
+        /// </summary>
         private void UpdateSize()
         {
             if (isTemplateApplied)
@@ -200,9 +203,15 @@ namespace Microsoft.TimedText
                     Origin origin = CaptionRegion.CurrentStyle.Origin;
                     Extent extent = CaptionRegion.CurrentStyle.Extent;
 
-                    double minimumCaptionRegionHeight = CaptionRegion.CurrentStyle.FontSize.ToPixelLength(height) * MinimumTextRows + (LinePadding * (MinimumTextRows + 1));
+                    var extentHeight = extent.Height.ToPixelLength(height);
+                    double pixelFontSize = CaptionRegion.CurrentStyle.FontSize.ToPixelLength(extentHeight);
 
-                    double regionHeight = RegionPadding + Math.Max(extent.Height.ToPixelLength(height), minimumCaptionRegionHeight);
+                    var pixelPadding = pixelFontSize * LinePadding; 
+                    double minimumCaptionRegionHeight = pixelFontSize * MinimumTextRows + (pixelPadding * (MinimumTextRows + 1));
+
+                    double regionHeight = extent.Height.ToPixelLength(height);
+                    
+                    regionHeight = RegionPadding + Math.Max(regionHeight, minimumCaptionRegionHeight);
 
                     double regionWidth = extent.Width.ToPixelLength(width);
 
@@ -215,7 +224,7 @@ namespace Microsoft.TimedText
                     CaptionsBorder.Margin = new Thickness
                     {
                         Left = origin.Left.ToPixelLength(width),
-                        Top = Math.Min(origin.Top.ToPixelLength(height), height - regionHeight)
+                        Top =  Math.Min(origin.Top.ToPixelLength(height), height - regionHeight)
                     };
 
                     ApplyRegionStyles();
