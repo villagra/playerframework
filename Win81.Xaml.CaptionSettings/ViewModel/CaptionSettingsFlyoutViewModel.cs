@@ -207,7 +207,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         return;
                     }
 
-                    this.Settings.FontColor = this.SetColorType(
+                    this.Settings.FontColor = SetColorType(
                         value,
                         this.Settings.FontColor,
                         new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 });
@@ -242,7 +242,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         return;
                     }
 
-                    this.Settings.BackgroundColor = this.SetColorType(
+                    this.Settings.BackgroundColor = SetColorType(
                         value,
                         this.Settings.BackgroundColor,
                         new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
@@ -277,7 +277,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                         return;
                     }
 
-                    this.Settings.WindowColor = this.SetColorType(
+                    this.Settings.WindowColor = SetColorType(
                         value,
                         this.Settings.WindowColor,
                         new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
@@ -317,6 +317,44 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         }
         #endregion
 
+        #region Methods
+        /// <summary>
+        /// Sets a color type
+        /// </summary>
+        /// <param name="type">the color type</param>
+        /// <param name="color">the current color</param>
+        /// <param name="defaultColor">the default color</param>
+        /// <returns>the new color</returns>
+        internal static Color SetColorType(ColorType type, Color color, Color defaultColor)
+        {
+            if (color == null)
+            {
+                color = new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 };
+            }
+
+            switch (type)
+            {
+                case ColorType.Default:
+                    color = null;
+                    break;
+
+                case ColorType.Semitransparent:
+                    color.Alpha = 127;
+                    break;
+
+                case ColorType.Solid:
+                    color.Alpha = 255;
+                    break;
+
+                case ColorType.Transparent:
+                    color.Alpha = 0;
+                    break;
+            }
+
+            return color;
+        }
+        #endregion
+
         #region Implementation
         /// <summary>
         /// Gets the color type
@@ -346,42 +384,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                 default:
                     return ColorType.Semitransparent;
             }
-        }
-
-        /// <summary>
-        /// Sets a color type
-        /// </summary>
-        /// <param name="type">the color type</param>
-        /// <param name="color">the current color</param>
-        /// <param name="defaultColor">the default color</param>
-        /// <returns>the new color</returns>
-        private Color SetColorType(ColorType type, Color color, Color defaultColor)
-        {
-            if (color == null)
-            {
-                color = new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 };
-            }
-
-            switch (type)
-            {
-                case ColorType.Default:
-                    color = null;
-                    break;
-
-                case ColorType.Semitransparent:
-                    color.Alpha = 127;
-                    break;
-
-                case ColorType.Solid:
-                    color.Alpha = 255;
-                    break;
-
-                case ColorType.Transparent:
-                    color.Alpha = 0;
-                    break;
-            }
-
-            return color;
         }
 
         /// <summary>

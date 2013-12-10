@@ -120,6 +120,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
                 IsolatedStorageSettings.ApplicationSettings[OverrideDefaultKey] = viewModel.IsEnabled;
+                IsolatedStorageSettings.ApplicationSettings.Save();
 
                 if (viewModel.IsEnabled)
                 {
@@ -204,6 +205,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 "FontFamilyTemplate");
         }
 
+        /// <summary>
+        /// Remove the selection changed event handlers
+        /// </summary>
         private void RemoveSelectionChanged()
         {
             this.ListSelector.SelectionChanged -= this.OnBackgroundColorChanged;
@@ -514,7 +518,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             var selectedItem = (Model.Color)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.FontColor = selectedItem;
+            viewModel.Settings.FontColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.FontColorType, selectedItem, selectedItem);
 
             this.HideListSelector();
         }
@@ -531,7 +535,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             var selectedItem = (Model.Color)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.BackgroundColor = selectedItem;
+            viewModel.Settings.BackgroundColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.BackgroundColorType, selectedItem, selectedItem);
 
             this.HideListSelector();
         }
@@ -548,7 +552,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             var selectedItem = (Model.Color)this.ListSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-            viewModel.Settings.WindowColor = selectedItem;
+            viewModel.Settings.WindowColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.WindowColorType, selectedItem, selectedItem);
 
             this.HideListSelector();
         }

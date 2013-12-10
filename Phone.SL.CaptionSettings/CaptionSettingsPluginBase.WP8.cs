@@ -9,12 +9,12 @@
 namespace Microsoft.PlayerFramework.CaptionSettings
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO.IsolatedStorage;
     using System.Windows.Media;
     using System.Windows.Navigation;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Windows Phone Caption Settings UI
@@ -23,13 +23,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     {
         #region Fields
         /// <summary>
-        /// The Font Family Map
-        /// </summary>
-        private static Dictionary<Model.FontFamily, string> fontFamilyMap;
-        /// <summary>
         /// the isolated storage settings key for the caption settings
         /// </summary>
         private const string LocalSettingsKey = "Microsoft.PlayerFramework.CaptionSettings";
+
+        /// <summary>
+        /// The Font Family Map
+        /// </summary>
+        private static Dictionary<Model.FontFamily, string> fontFamilyMap;
         #endregion
 
         #region Methods
@@ -56,6 +57,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             return fontFamilyMap[fontFamily];
         }
+
         /// <summary>
         /// Show the settings page if there is a CaptionsPlugin.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             if (this.Settings == null)
             {
                 this.Activate();
-                this.Settings.PropertyChanged += Settings_PropertyChanged;
+                this.Settings.PropertyChanged += this.Settings_PropertyChanged;
             }
 
             var assembly = typeof(CaptionSettingsPage).Assembly;
@@ -147,6 +149,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         internal void Save()
         {
             IsolatedStorageSettings.ApplicationSettings[LocalSettingsKey] = this.Settings.ToXmlString();
+            IsolatedStorageSettings.ApplicationSettings.Save();
         }
         #endregion
 
