@@ -331,6 +331,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             {
                 color = new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 };
             }
+            else
+            {
+                color = new Color { Alpha = color.Alpha, Blue = color.Blue, Green = color.Green, Red = color.Red };
+            }
 
             switch (type)
             {

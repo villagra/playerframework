@@ -8,6 +8,7 @@
 
 namespace Microsoft.PlayerFramework.CaptionSettings.Model
 {
+    using System.Globalization;
     using System.Xml.Serialization;
 
     /// <summary>
@@ -69,7 +70,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
                 return false;
             }
 
-            return this.Red == other.Red && this.Green == other.Green && this.Blue == other.Blue;
+            return this.Red == other.Red 
+                && this.Green == other.Green 
+                && this.Blue == other.Blue 
+                && this.Alpha == other.Alpha;
         }
 
         /// <summary>
@@ -78,9 +82,24 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
         /// <returns>the hash code</returns>
         public override int GetHashCode()
         {
-            var text = string.Format("#{0}{1}{2}", this.Red, this.Green, this.Blue);
+            var text = string.Format("#{0}{1}{2}{3}", this.Red, this.Green, this.Blue, this.Alpha);
 
             return text.GetHashCode();
+        }
+
+        /// <summary>
+        /// gets a string representation of the color
+        /// </summary>
+        /// <returns>a string like this: 125R,231G,210B,123A</returns>
+        public override string ToString()
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0}R,{1}G,{2}B,{3}A",
+                this.Red,
+                this.Green,
+                this.Blue,
+                this.Alpha);
         }
     }
 }
