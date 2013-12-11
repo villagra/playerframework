@@ -729,14 +729,14 @@ namespace Microsoft.TimedText
             // elements.
             grid.CacheMode = new BitmapCache();
 
-            grid.Children.Add(textblock);
 
             foreach (var item in textBlocks)
             {
-                item.Opacity = 0.25;
                 SetContent(item, text);
                 grid.Children.Add(item);
             }
+
+            grid.Children.Add(textblock);
 
             return grid;
         }
@@ -763,9 +763,9 @@ namespace Microsoft.TimedText
             // right
             textBlocks[0].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = 0 };
             // bottom
-            textBlocks[1].RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth };
+            textBlocks[1].RenderTransform = new TranslateTransform() { X = 0, Y = outlineWidth};
             // bottom right
-            textBlocks[2].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth };
+            textBlocks[2].RenderTransform = new TranslateTransform() { X = outlineWidth, Y = outlineWidth};
 
             var grid = new Grid();
 
@@ -776,7 +776,7 @@ namespace Microsoft.TimedText
 
             foreach (var item in textBlocks)
             {
-                item.Opacity = 0.75;
+                item.Opacity = 0.5;
                 SetContent(item, text);
                 grid.Children.Add(item);
             }
@@ -820,14 +820,14 @@ namespace Microsoft.TimedText
             // elements.
             grid.CacheMode = new BitmapCache();
 
-            grid.Children.Add(textblock);
 
             foreach (var item in textBlocks)
             {
-                item.Opacity = 0.25;
                 SetContent(item, text);
                 grid.Children.Add(item);
             }
+
+            grid.Children.Add(textblock);
 
             return grid;
         }

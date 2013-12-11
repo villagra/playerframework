@@ -8,7 +8,7 @@
     xmlns:vc="clr-namespace:Microsoft.PlayerFramework.CaptionSettings.ValueConverters"
     xmlns:ViewModel="clr-namespace:Microsoft.PlayerFramework.CaptionSettings.ViewModel"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
-    xmlns:Documents="System.Windows.Documents"
+    xmlns:Documents="System.Windows.Documents" x:Name="phoneApplicationPage"
     x:Class="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsPage"
     SupportedOrientations="Landscape" Orientation="Landscape"
     mc:Ignorable="d"
@@ -175,40 +175,34 @@
 								</DiscreteObjectKeyFrame.Value>
 							</DiscreteObjectKeyFrame>
 						</ObjectAnimationUsingKeyFrames>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
 						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Right">
 							<DiscreteObjectKeyFrame KeyTime="0">
 								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
+									<System:Int32>-1</System:Int32>
 								</DiscreteObjectKeyFrame.Value>
 							</DiscreteObjectKeyFrame>
 						</ObjectAnimationUsingKeyFrames>
 						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Bottom">
 							<DiscreteObjectKeyFrame KeyTime="0">
 								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
+									<System:Int32>-1</System:Int32>
 								</DiscreteObjectKeyFrame.Value>
 							</DiscreteObjectKeyFrame>
 						</ObjectAnimationUsingKeyFrames>
 						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="BottomRight">
 							<DiscreteObjectKeyFrame KeyTime="0">
 								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
+									<System:Int32>-1</System:Int32>
 								</DiscreteObjectKeyFrame.Value>
 							</DiscreteObjectKeyFrame>
 						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.FontFamily)" Storyboard.TargetName="Right">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<FontFamily>Portable User Interface</FontFamily>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 				<VisualState x:Name="DepressedEdge">
@@ -234,34 +228,13 @@
 								</DiscreteObjectKeyFrame.Value>
 							</DiscreteObjectKeyFrame>
 						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="TopLeft">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Top">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Left">
-							<DiscreteObjectKeyFrame KeyTime="0">
-								<DiscreteObjectKeyFrame.Value>
-									<System:Int32>1</System:Int32>
-								</DiscreteObjectKeyFrame.Value>
-							</DiscreteObjectKeyFrame>
-						</ObjectAnimationUsingKeyFrames>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Top" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Left" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="-2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="-2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Top" d:IsOptimized="True"/>
-						<DoubleAnimation Duration="0" To="-2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="Left" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Top" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Left" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Top" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="-1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="Left" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 				<VisualState x:Name="Outline">
@@ -353,6 +326,10 @@
 						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
 						<DoubleAnimation Duration="0" To="2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="0.4" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="OutlineEdges" d:IsOptimized="True"/>
 					</Storyboard>
 				</VisualState>
 			</VisualStateGroup>
@@ -421,80 +398,84 @@
 			<Grid x:Name="Preview" Grid.Column="1" Grid.Row="1" Background="Gray" VerticalAlignment="Top" IsHitTestVisible="False">
 				<Border x:Name="PreviewWindow" BorderThickness="1" Margin="10" Padding="10" Background="{Binding Settings.WindowColor, Converter={StaticResource ColorConverter}}">
 					<Border x:Name="PreviewBackground" BorderThickness="1" Padding="10" Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorConverter}}">
-						<Grid x:Name="PreviewTextElements">
-							<TextBlock x:Name="TopLeft" Style="{StaticResource PreviewTextStyle}" Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    Foreground="Black" FontSize="{Binding FontSize, ElementName=Center}" FontFamily="{Binding FontFamily, ElementName=Center}">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="-1" TranslateY="-1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="Top" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateY="-1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="TopRight" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="1" TranslateY="-1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="Left" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="-1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="Right" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="BottomLeft" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="-1" TranslateY="1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="Bottom" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateY="1"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
-							<TextBlock x:Name="BottomRight" Style="{StaticResource PreviewTextStyle}" 
-								FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-							    FontSize="{Binding FontSize, ElementName=Center}" 
-								FontFamily="{Binding FontFamily, ElementName=Center}"
-								 Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black">
-								<TextBlock.RenderTransform>
-									<CompositeTransform TranslateX="0" TranslateY="0"/>
-								</TextBlock.RenderTransform>
-							</TextBlock>
+						<Grid x:Name="PreviewTextElements" CacheMode="BitmapCache">
+							<Grid x:Name="OutlineEdges">
+								<TextBlock x:Name="TopLeft" Style="{StaticResource PreviewTextStyle}" Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									Foreground="Black" FontSize="{Binding FontSize, ElementName=Center}" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="-1" TranslateY="-1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="Top" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateY="-1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="TopRight" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="1" TranslateY="-1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="Left" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="-1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="Right" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="BottomLeft" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="-1" TranslateY="1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="Bottom" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateY="1"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+								<TextBlock x:Name="BottomRight" Style="{StaticResource PreviewTextStyle}" 
+									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
+									FontSize="{Binding FontSize, ElementName=Center}" 
+									FontFamily="{Binding FontFamily, ElementName=Center}"
+									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									<TextBlock.RenderTransform>
+										<CompositeTransform TranslateX="0" TranslateY="0"/>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+							</Grid>
 							<TextBlock x:Name="Center" Style="{StaticResource PreviewTextStyle}"            
                                 FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-                                Text="{Binding PreviewText}" Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"/>
+                                Text="{Binding PreviewText}" 
+								Foreground="{Binding Settings.FontColor, ConverterParameter=White, Converter={StaticResource ColorConverter}}" 
+								FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" VerticalAlignment="Stretch"/>
 						</Grid>
 					</Border>
 				</Border>

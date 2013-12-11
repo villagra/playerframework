@@ -200,7 +200,7 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
                     // Todo: look at code for calculation of OutlineWidth and OutlineBlur
                     captionElement.Style.OutlineColor = outlineColor;
-                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth * 3, Unit = LengthUnit.Pixel };
+                    captionElement.Style.OutlineWidth = new Length { Value = outlineWidth, Unit = LengthUnit.Pixel };
                     break;
 
                 case FontStyle.None:

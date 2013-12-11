@@ -99,6 +99,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             viewModel.IsEnabled = isEnabled;
 
+            this.UpdateFontStyle(viewModel.Settings);
+
             base.OnNavigatedTo(e);
         }
 
