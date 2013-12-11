@@ -59,8 +59,7 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
         public WebVTTCaptionSettingsPlugin()
         {
             this.DropShadowOffset = 1.5;
-            this.EdgeOffset = 2.5;
-            this.EdgeOpacity = 0.25;
+            this.EdgeOffset = 2;
             this.DropShadowBrush = new Media.SolidColorBrush(UI.Color.FromArgb(128, 0, 0, 0));
         }
         #endregion
@@ -76,12 +75,6 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
         /// Gets or sets the edge offset for DepressedEdge and RaisedEdge font styles
         /// </summary>
         public double EdgeOffset { get; set; }
-
-        /// <summary>
-        /// Gets or sets the edge opacity for DepressedEdge and RaisedEdge font styles 
-        /// </summary>
-        /// <remarks>default value is 0.25</remarks>
-        public double EdgeOpacity { get; set; }
 
         /// <summary>
         /// Gets or sets the drop shadow brush
@@ -306,8 +299,6 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                     {
                         X = offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
 
                 case TextPosition.Bottom:
@@ -315,8 +306,6 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                     {
                         Y = offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
                 case TextPosition.BottomRight:
                     e.TextBlock.RenderTransform = new Media.TranslateTransform
@@ -324,8 +313,6 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                         X = offset,
                         Y = offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
             }
         }
@@ -362,8 +349,6 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                         X = -offset,
                         Y = -offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
 
                 case TextPosition.Top:
@@ -371,16 +356,12 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
                     {
                         Y = -offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
                 case TextPosition.Left:
                     e.TextBlock.RenderTransform = new Media.TranslateTransform
                     {
                         X = -offset
                     };
-                    e.TextBlock.Opacity = this.EdgeOpacity;
-                    Canvas.SetZIndex(e.TextBlock, 1);
                     break;
             }
         }
