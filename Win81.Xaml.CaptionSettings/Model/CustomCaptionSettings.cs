@@ -132,11 +132,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
 
             set
             {
-                System.Diagnostics.Debug.WriteLine("Setting Font Color from {0} to {1}", this.fontColor, value);
-
                 if (this.SetProperty(ref this.fontColor, value))
                 {
-                    System.Diagnostics.Debug.WriteLine("Font Color Changed to {0}", value);
                 }
             }
         }
