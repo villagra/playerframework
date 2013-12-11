@@ -61,7 +61,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
             ////this.FontColorType = ColorType.Default;
             this.FontStyle = Model.FontStyle.Default;
             this.FontFamily = Model.FontFamily.Default;
-            this.FontColor = new Color { Blue = 255, Green = 255, Red = 255, Alpha = 255 };
+            //this.FontColor = new Color { Blue = 255, Green = 255, Red = 255, Alpha = 255 };
         }
         #endregion
 
