@@ -29,6 +29,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         {
             if (value == null)
             {
+                if (parameter != null && parameter.ToString() == "White")
+                {
+                    return new SolidColorBrush(Colors.White);
+                }
+
                 return null;
             }
 

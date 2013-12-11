@@ -129,10 +129,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
             else
             {
-                this.Settings = new CustomCaptionSettings
-                {
-                    FontColor = Colors.White.ToCaptionSettingsColor()
-                };
+                this.Settings = new CustomCaptionSettings();
             }
         }
 

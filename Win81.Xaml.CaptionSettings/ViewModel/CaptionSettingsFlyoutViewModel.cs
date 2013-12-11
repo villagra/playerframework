@@ -51,10 +51,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
 
             if (DesignerProperties.IsInDesignTool)
             {
-                this.Settings = new CustomCaptionSettings
-                {
-                    FontColor = Media.Colors.White.ToCaptionSettingsColor()
-                };
+                this.Settings = new CustomCaptionSettings();
             }
 
             var defaultText = Resources.AppResources.Default;

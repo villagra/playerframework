@@ -397,7 +397,7 @@
 							<ColumnDefinition Width="Auto"/>
 						</Grid.ColumnDefinitions>
 						<Button x:Name="FontColorTypeButton" Content="{Binding FontColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="FontColorTypeButton_Click"/>
-						<Button x:Name="FontColorButton" Grid.Column="1" IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}" Click="FontColorButton_Click" Background="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}}" Style="{StaticResource ColorButtonStyle}"/>
+						<Button x:Name="FontColorButton" Grid.Column="1" IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}" Click="FontColorButton_Click" Background="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" Style="{StaticResource ColorButtonStyle}"/>
 					</Grid>
 					<TextBlock Text="Background" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
 					<Grid>
@@ -494,7 +494,7 @@
 							</TextBlock>
 							<TextBlock x:Name="Center" Style="{StaticResource PreviewTextStyle}"            
                                 FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-                                Text="{Binding PreviewText}" Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}}" FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"/>
+                                Text="{Binding PreviewText}" Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"/>
 						</Grid>
 					</Border>
 				</Border>

@@ -53,7 +53,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 CaptionSettingsPage.Settings = new CustomCaptionSettings
                 {
-                    FontColor = Colors.White.ToCaptionSettingsColor()
                 };
             }
 
