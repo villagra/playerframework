@@ -21,13 +21,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Rectangle x:Name="White" Fill="White" Stroke="Black" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Black" Fill="Black" Stroke="Black" Grid.Column="1" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Red" Fill="Red" Stroke="Black" Grid.Column="2" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Green" Fill="Green" Stroke="Black" Grid.Column="3" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Blue" Fill="Blue" Stroke="Black" Grid.Row="1" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Yellow" Fill="Yellow" Stroke="Black" Grid.Row="1" Grid.Column="1" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Magenta" Fill="Magenta" Stroke="Black" Grid.Row="1" Grid.Column="2" Tapped="OnTappedColor"/>
-        <Rectangle x:Name="Cyan" Fill="Cyan" Stroke="Black" Grid.Row="1" Grid.Column="3" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="White" Fill="White" AutomationProperties.Name="White" Stroke="Black" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Black" Fill="Black" AutomationProperties.Name="Black" Stroke="Black" Grid.Column="1" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Red" Fill="Red" AutomationProperties.Name="Red" Stroke="Black" Grid.Column="2" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Green" Fill="Green" AutomationProperties.Name="Green" Stroke="Black" Grid.Column="3" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Blue" Fill="Blue" AutomationProperties.Name="Blue"  Stroke="Black" Grid.Row="1" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Yellow" Fill="Yellow" AutomationProperties.Name="Yellow" Stroke="Black" Grid.Row="1" Grid.Column="1" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Magenta" Fill="Magenta" AutomationProperties.Name="Magenta" Stroke="Black" Grid.Row="1" Grid.Column="2" Tapped="OnTappedColor"/>
+        <Rectangle x:Name="Cyan" Fill="Cyan" Stroke="Black" AutomationProperties.Name="Cyan" Grid.Row="1" Grid.Column="3" Tapped="OnTappedColor"/>
     </Grid>
 </UserControl>

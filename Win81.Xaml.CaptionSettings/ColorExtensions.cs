@@ -50,5 +50,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 Alpha = color.A
             };
         }
+
+        /// <summary>
+        /// Convert a Windows Color to a Caption Settings color
+        /// </summary>
+        /// <param name="color">a Windows color</param>
+        /// <param name="alpha">the alpha (transparency) value</param>
+        /// <returns>a Caption Settings color</returns>
+        public static Color ToCaptionSettingsColor(this Media.Color color, byte alpha)
+        {
+            return new Color
+            {
+                Red = color.R,
+                Green = color.G,
+                Blue = color.B,
+                Alpha = alpha
+            };
+        }
     }
 }

@@ -190,8 +190,10 @@
                 </ToggleSwitch.Header>
             </ToggleSwitch>
             <StackPanel x:Name="PreviewPanel" Orientation="Vertical">
-                <TextBlock x:Uid="Preview" Text="Preview" Style="{StaticResource GroupTitleTextStyle}" Margin="0,0,0,10"/>
+                <TextBlock x:Name="PreviewLabel" x:Uid="Preview" Text="Preview" Style="{StaticResource GroupTitleTextStyle}" Margin="0,0,0,10"/>
                 <Controls:PreviewControl x:Name="Preview" 
+                    AutomationProperties.Name="Caption Preview"
+                                         AutomationProperties.LabeledBy="{Binding ElementName=PreviewLabel}"
 					Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}}" 
 					CaptionBackground="{Binding Settings.BackgroundColor, Converter={StaticResource ColorToBrushConverter}}" 
 					WindowColor="{Binding Settings.WindowColor, Converter={StaticResource ColorToBrushConverter}}" 
@@ -235,7 +237,10 @@
 					Template="{StaticResource ColorButtonTemplate}" >
 					<Button.Flyout>
 						<Flyout>
-							<Controls:ColorPickerControl ColorSelected="OnFontColorSelected"  SelectedColor="{Binding Settings.FontColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnFontColorSelected"  
+                                                         AutomationProperties.Name="Font Color Picker"
+                                                         ColorType="{Binding FontColorType}"
+                                                         SelectedColor="{Binding Settings.FontColor, Mode=TwoWay}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">
@@ -256,7 +261,10 @@
 					IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}">
 					<Button.Flyout>
 						<Flyout>
-							<Controls:ColorPickerControl ColorSelected="OnBackgroundColorSelected"  SelectedColor="{Binding Settings.BackgroundColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnBackgroundColorSelected"  
+                                                         ColorType="{Binding BackgroundColorType}"
+                                                         AutomationProperties.Name="Background Color Picker"
+                                                         SelectedColor="{Binding Settings.BackgroundColor, Mode=TwoWay}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">
@@ -279,7 +287,10 @@
 					IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}">
 					<Button.Flyout>
 						<Flyout>
-							<Controls:ColorPickerControl ColorSelected="OnWindowColorSelected" SelectedColor="{Binding Settings.WindowColor, Mode=TwoWay}"/>
+							<Controls:ColorPickerControl ColorSelected="OnWindowColorSelected" 
+                                                         AutomationProperties.Name="Window Color Picker"
+                                                         SelectedColor="{Binding Settings.WindowColor, Mode=TwoWay}"
+                                                         ColorType="{Binding WindowColorType}"/>
 						</Flyout>
 					</Button.Flyout>
 					<Border Style="{StaticResource ColorSwatchBorderStyle}">
