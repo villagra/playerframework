@@ -161,7 +161,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:SettingsControl">
                     <Grid Background="{TemplateBinding Background}">
-                        <Grid Margin="40">
+                        <Grid Margin="40,40,0,40">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
@@ -175,13 +175,15 @@
                                 <Button x:Name="BackButton" Style="{StaticResource BackButtonStyle}" Margin="0,5,0,0" FontSize="44" VerticalAlignment="Center" HorizontalAlignment="Left" Height="Auto" Width="Auto"/>
                                 <TextBlock Text="{TemplateBinding Label}" Margin="10,0,0,0" Style="{StaticResource PageSubheaderTextStyle}" VerticalAlignment="Top"/>
                             </StackPanel>
-                            <ContentPresenter Margin="0,20,0,0" Grid.Row="1">
-                                <ContentPresenter.Transitions>
-                                    <TransitionCollection>
-                                        <EntranceThemeTransition IsStaggeringEnabled="True"/>
-                                    </TransitionCollection>
-                                </ContentPresenter.Transitions>
-                            </ContentPresenter>
+                            <ScrollViewer HorizontalScrollMode="Disabled" Margin="0,20,0,0" Grid.Row="1" Padding="0,0,40,0">
+                                <ContentPresenter>
+                                    <ContentPresenter.Transitions>
+                                        <TransitionCollection>
+                                            <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                                        </TransitionCollection>
+                                    </ContentPresenter.Transitions>
+                                </ContentPresenter>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </ControlTemplate>

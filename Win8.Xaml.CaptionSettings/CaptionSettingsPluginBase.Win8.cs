@@ -19,6 +19,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Controls.Primitives;
     using Windows.UI.Xaml.Media.Animation;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Caption Settings Plugin Base partial class
@@ -35,6 +36,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// The Narrow settings pane width
         /// </summary>
         private const int NarrowWidth = 346;
+
+        /// <summary>
+        /// the font family map
+        /// </summary>
+        private static Dictionary<FontFamily, string> fontFamilyMap;
 
         /// <summary>
         /// the settings popup control
@@ -81,7 +87,30 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         public int? SettingsCommandIndex { get; set; }
         #endregion
 
-        #region Implementation
+        #region Methods
+        /// <summary>
+        /// Gets the Windows font family mapped to the Captions font Family
+        /// </summary>
+        /// <param name="fontFamily">the captions font family</param>
+        /// <returns>the name of the Windows font family</returns>
+        public static string GetFontFamilyName(FontFamily fontFamily)
+        {
+            if (fontFamilyMap == null)
+            {
+                fontFamilyMap = new Dictionary<FontFamily, string>();
+
+                fontFamilyMap[FontFamily.Default] = null;
+                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
+                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
+                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
+                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Segoe Print");
+                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Segoe Script");
+                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
+            }
+
+            return fontFamilyMap[fontFamily];
+        }
 
         /// <summary>
         /// Activate the plug-in
@@ -108,6 +137,30 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             this.Settings.PropertyChanged += this.Settings_PropertyChanged;
+        }
+        #endregion
+
+        #region Implementation
+        /// <summary>
+        /// Gets the font family from application data local settings if it has been overridden.
+        /// </summary>
+        /// <param name="fontFamily">the font family</param>
+        /// <param name="defaultName">the default font name</param>
+        /// <returns>the font family name</returns>
+        private static string GetDefaultFontFamily(FontFamily fontFamily, string defaultName)
+        {
+            var container = Windows.Storage.ApplicationData.Current.LocalSettings.CreateContainer("Font Families", Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+            object value;
+
+            if (container.Values.TryGetValue(fontFamily.ToString(), out value))
+            {
+                string fontName = value.ToString();
+
+                return fontName;
+            }
+
+            return defaultName;
         }
 
         /// <summary>
