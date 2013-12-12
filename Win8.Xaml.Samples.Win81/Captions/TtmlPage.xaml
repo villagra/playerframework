@@ -15,7 +15,6 @@
             <mmppf:MediaPlayer.AvailableCaptions>
                 <mmppf:Caption Description="English" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.en.captions.xml"/>
                 <mmppf:Caption Description="Spanish" Source="http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride.es.captions.xml"/>
-                <mmppf:Caption Description="Size Test" Source="ms-appx:///Captions/font_size_testcase.xml"/>
             </mmppf:MediaPlayer.AvailableCaptions>
         </mmppf:MediaPlayer>
     </Grid>
