@@ -29,56 +29,7 @@
     			<VisualState x:Name="Default"/>
     			<VisualState x:Name="None">
     				<Storyboard>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopLeft">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Top">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopRight">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Left">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Right">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomLeft">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Bottom">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<Visibility>Collapsed</Visibility>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomRight">
+    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edges">
     						<DiscreteObjectKeyFrame KeyTime="0">
     							<DiscreteObjectKeyFrame.Value>
     								<Visibility>Collapsed</Visibility>
@@ -124,30 +75,6 @@
     							</DiscreteObjectKeyFrame.Value>
     						</DiscreteObjectKeyFrame>
     					</ObjectAnimationUsingKeyFrames>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Right">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Bottom">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="BottomRight">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
     				</Storyboard>
     			</VisualState>
     			<VisualState x:Name="DepressedEdge">
@@ -187,33 +114,10 @@
     							</DiscreteObjectKeyFrame.Value>
     						</DiscreteObjectKeyFrame>
     					</ObjectAnimationUsingKeyFrames>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopLeft" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Top" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.25" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Left" d:IsOptimized="True"/>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="TopLeft">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Top">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
-    					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.ZIndex)" Storyboard.TargetName="Left">
-    						<DiscreteObjectKeyFrame KeyTime="0">
-    							<DiscreteObjectKeyFrame.Value>
-    								<x:Int32>1</x:Int32>
-    							</DiscreteObjectKeyFrame.Value>
-    						</DiscreteObjectKeyFrame>
-    					</ObjectAnimationUsingKeyFrames>
     				</Storyboard>
     			</VisualState>
-    			<VisualState x:Name="Outline"/>
+    			<VisualState x:Name="Outline">
+    			</VisualState>
     			<VisualState x:Name="DropShadow">
     				<Storyboard>
     					<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopLeft">
@@ -251,9 +155,7 @@
     							</DiscreteObjectKeyFrame.Value>
     						</DiscreteObjectKeyFrame>
     					</ObjectAnimationUsingKeyFrames>
-    					<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Right" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Bottom" d:IsOptimized="True"/>
-    					<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BottomRight" d:IsOptimized="True"/>
+    					<DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Edges" d:IsOptimized="True"/>
     				</Storyboard>
     			</VisualState>
     		</VisualStateGroup>
@@ -263,69 +165,71 @@
                 <Grid.RenderTransform>
                     <CompositeTransform/>
                 </Grid.RenderTransform>
-                <TextBlock x:Name="TopLeft" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="Top" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="TopRight" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform TranslateX="{Binding OutlineWidth}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="Left" Text="{Binding Text, ElementName=Center}" 
-                           Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform 
-                            TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="Right" 
-                           Text="{Binding Text, ElementName=Center}" 
-                           Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform TranslateX="{Binding OutlineWidth}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="BottomLeft" 
-                           Text="{Binding Text, ElementName=Center}" 
-                           Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform 
-                            TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" 
-                            TranslateY="{Binding OutlineWidth}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="Bottom" 
-                           Text="{Binding Text, ElementName=Center}" 
-                           Style="{StaticResource PreviewTextStyle}"  
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" 
-                           Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform 
-                            TranslateY="{Binding OutlineWidth}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
-                <TextBlock x:Name="BottomRight" 
-                           Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}" 
-                    FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" 
-                           Foreground="Black" >
-                    <TextBlock.RenderTransform>
-                        <CompositeTransform TranslateX="{Binding OutlineWidth}" 
-                                            TranslateY="{Binding OutlineWidth}"/>
-                    </TextBlock.RenderTransform>
-                </TextBlock>
+                <Grid x:Name="Edges" CacheMode="BitmapCache">
+            		<TextBlock x:Name="TopLeft" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="Top" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="TopRight" Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform TranslateX="{Binding OutlineWidth}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="Left" Text="{Binding Text, ElementName=Center}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform 
+            					TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="Right" 
+            			Text="{Binding Text, ElementName=Center}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform TranslateX="{Binding OutlineWidth}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="BottomLeft" 
+            			Text="{Binding Text, ElementName=Center}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform 
+            					TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" 
+            					TranslateY="{Binding OutlineWidth}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="Bottom" 
+            			Text="{Binding Text, ElementName=Center}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" 
+            			Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform 
+            					TranslateY="{Binding OutlineWidth}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            		<TextBlock x:Name="BottomRight" 
+            			Text="{Binding Text, ElementName=Center}" Style="{StaticResource PreviewTextStyle}" 
+            			FontSize="{Binding FontSize, ElementName=userControl}" RenderTransformOrigin="0.5,0.5" 
+            			Foreground="Black" >
+            			<TextBlock.RenderTransform>
+            				<CompositeTransform TranslateX="{Binding OutlineWidth}" 
+            					TranslateY="{Binding OutlineWidth}"/>
+            			</TextBlock.RenderTransform>
+            		</TextBlock>
+            	</Grid>
                 <TextBlock x:Name="Center" Style="{StaticResource PreviewTextStyle}" 
                            Foreground="{Binding Foreground, ElementName=userControl}" 
                            FontSize="{Binding FontSize, ElementName=userControl}" />
