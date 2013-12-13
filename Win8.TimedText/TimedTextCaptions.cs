@@ -147,6 +147,7 @@ namespace Microsoft.TimedText
                 CaptionsPresenterElement.Children.Remove(presenter);
                 VisibleCaptions.Remove(region);
                 regions.Remove(region);
+                presenter.CaptionManager = null;
             }
             OnCaptionRegionLeft(region);
         }
