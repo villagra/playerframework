@@ -48,6 +48,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
             {
                 return DependencyProperty.UnsetValue;
             }
+            else if (fontFamily == FontFamily.Smallcaps)
+            {
+                return DependencyProperty.UnsetValue;
+            }
 
             return this.GetFontFamily(fontFamily);
         }

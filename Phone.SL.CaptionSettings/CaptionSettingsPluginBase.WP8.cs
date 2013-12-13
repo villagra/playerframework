@@ -48,9 +48,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 fontFamilyMap[Model.FontFamily.Default] = null;
                 fontFamilyMap[Model.FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
                 fontFamilyMap[Model.FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
-                fontFamilyMap[Model.FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
+
+                // Windows Phone does not have a real monospace sans serif like Consolas.
+                fontFamilyMap[Model.FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Calibri");
                 fontFamilyMap[Model.FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
                 fontFamilyMap[Model.FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Comic Sans MS");
+                
+                // Windows Phone does not have a real cursive font like Segoe Script.
                 fontFamilyMap[Model.FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Calibri Light");
                 fontFamilyMap[Model.FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
             }

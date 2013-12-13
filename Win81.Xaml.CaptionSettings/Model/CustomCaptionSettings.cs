@@ -78,7 +78,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Model
 
             set
             {
-                this.SetProperty(ref this.fontFamily, value);
+                ////System.Diagnostics.Debug.WriteLine("Font Family changing from {0} to {1}", this.fontFamily, value);
+
+                if (this.SetProperty(ref this.fontFamily, value))
+                {
+                    ////System.Diagnostics.Debug.WriteLine("Done.");
+                }
             }
         }
 

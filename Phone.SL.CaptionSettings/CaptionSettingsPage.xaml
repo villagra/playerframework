@@ -402,7 +402,8 @@
 							<Grid x:Name="OutlineEdges">
 								<TextBlock x:Name="TopLeft" Style="{StaticResource PreviewTextStyle}" Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
-									Foreground="Black" FontSize="{Binding FontSize, ElementName=Center}" VerticalAlignment="Stretch">
+									Foreground="Black" FontSize="{Binding FontSize, ElementName=Center}" VerticalAlignment="Stretch"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="-1" TranslateY="-1"/>
 									</TextBlock.RenderTransform>
@@ -410,7 +411,7 @@
 								<TextBlock x:Name="Top" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateY="-1"/>
@@ -419,7 +420,7 @@
 								<TextBlock x:Name="TopRight" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="1" TranslateY="-1"/>
@@ -428,7 +429,7 @@
 								<TextBlock x:Name="Left" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="-1"/>
@@ -437,7 +438,7 @@
 								<TextBlock x:Name="Right" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="1"/>
@@ -446,7 +447,7 @@
 								<TextBlock x:Name="BottomLeft" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="-1" TranslateY="1"/>
@@ -455,7 +456,7 @@
 								<TextBlock x:Name="Bottom" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
 									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateY="1"/>
@@ -464,18 +465,24 @@
 								<TextBlock x:Name="BottomRight" Style="{StaticResource PreviewTextStyle}" 
 									FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
 									FontSize="{Binding FontSize, ElementName=Center}" 
-									FontFamily="{Binding FontFamily, ElementName=Center}"
-									Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
+									FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
+                                    Text="{Binding PreviewText}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="Black" VerticalAlignment="Stretch">
 									<TextBlock.RenderTransform>
 										<CompositeTransform TranslateX="0" TranslateY="0"/>
 									</TextBlock.RenderTransform>
 								</TextBlock>
 							</Grid>
-							<TextBlock x:Name="Center" Style="{StaticResource PreviewTextStyle}"            
+							<TextBlock x:Name="Center" 
+                                Style="{StaticResource PreviewTextStyle}"
+                                FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
                                 FontStyle="{Binding Settings.FontFamily, Converter={StaticResource FontStyleConverter}}"
                                 Text="{Binding PreviewText}" 
 								Foreground="{Binding Settings.FontColor, ConverterParameter=White, Converter={StaticResource ColorConverter}}" 
 								FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" VerticalAlignment="Stretch"/>
+                            <!--<TextBlock x:Name="SmallCapsTest" 
+                                Style="{StaticResource PreviewTextStyle}"
+                                FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
+                                Text="{Binding PreviewText}" FontSize="40" Foreground="Red"/>-->
 						</Grid>
 					</Border>
 				</Border>

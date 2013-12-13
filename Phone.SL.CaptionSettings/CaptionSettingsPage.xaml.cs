@@ -101,6 +101,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             this.UpdateFontStyle(viewModel.Settings);
 
+            this.UpdateCaptials(viewModel.Settings);
+
             base.OnNavigatedTo(e);
         }
 
@@ -138,6 +140,49 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
         #region Implementation
         /// <summary>
+        /// update the capitals for all of the TextBlock elements in a panel.
+        /// </summary>
+        /// <param name="customCaptionSettings">the custom caption settings
+        /// </param>
+        /// <param name="panel">the panel</param>
+        /// <exception cref="ArgumentNullException">if customCaptionSettings 
+        /// or panel are null.</exception>
+        private static void UpdateCaptials(
+            CustomCaptionSettings customCaptionSettings, 
+            Panel panel)
+        {
+            if (customCaptionSettings == null)
+            {
+                throw new ArgumentNullException(
+                    "customCaptionSettings", 
+                    "customCaptionSettings cannot be null.");
+            }
+
+            if (panel == null)
+            {
+                throw new ArgumentNullException(
+                    "panel", 
+                    "panel cannot be null.");
+            }
+
+            var children = panel.Children.OfType<TextBlock>();
+
+            foreach (var item in children)
+            {
+                if (customCaptionSettings.FontFamily == Model.FontFamily.Smallcaps)
+                {
+                    Typography.SetCapitals(item, FontCapitals.SmallCaps);
+                }
+                else
+                {
+                    Typography.SetCapitals(item, FontCapitals.Normal);
+                }
+
+                ////System.Diagnostics.Debug.WriteLine("Captials for {0} are {1}", item.Name, Typography.GetCapitals(item));
+            }
+        }
+
+        /// <summary>
         /// Settings property changed
         /// </summary>
         /// <param name="sender">the sender</param>
@@ -165,7 +210,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             var stateName = customCaptionSettings.FontStyle.ToString();
 
-            VisualStateManager.GoToState(this, stateName, true);
+            VisualStateManager.GoToState(this, stateName, false);
         }
 
         /// <summary>
@@ -176,17 +221,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             var customCaptionSettings = sender as CustomCaptionSettings;
 
-            foreach (var item in this.PreviewTextElements.Children.OfType<TextBlock>())
-            {
-                if (customCaptionSettings.FontFamily == Model.FontFamily.Smallcaps)
-                {
-                    Typography.SetCapitals(item, FontCapitals.SmallCaps);
-                }
-                else
-                {
-                    Typography.SetCapitals(item, FontCapitals.Normal);
-                }
-            }
+            UpdateCaptials(customCaptionSettings, this.PreviewTextElements);
+
+            UpdateCaptials(customCaptionSettings, this.OutlineEdges);
         }
 
         /// <summary>
