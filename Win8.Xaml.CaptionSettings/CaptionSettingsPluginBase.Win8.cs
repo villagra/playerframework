@@ -258,7 +258,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 IsDefault = this.IsDefault,
             };
 
-            control.OnApplyCaptionSettings += control_OnApplyCaptionSettings;
+            control.OnApplyCaptionSettings += this.OnApplyCaptionSettings;
 
             control.IsDefaultChanged += delegate(object sender, System.EventArgs e)
             {
@@ -292,7 +292,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             this.settingsPopup.IsOpen = true;
         }
 
-        void control_OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
+        /// <summary>
+        /// Apply the caption settings from the control to the TTML
+        /// </summary>
+        /// <param name="sender">the caption settings control</param>
+        /// <param name="e">the custom caption settings event arguments</param>
+        private void OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
         {
             this.IsDefault = e.Settings == null;
 
