@@ -10,6 +10,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
 {
     using System;
     using System.Collections.Generic;
+    using Windows.UI.Xaml;
     using Windows.UI.Xaml.Data;
     using FF = Windows.UI.Xaml.Media;
 
@@ -37,24 +38,36 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
             if (this.fontMap == null)
             {
                 this.fontMap = new Dictionary<Model.FontFamily, FF.FontFamily>();
-
-                lock (this.fontMap)
-                {
-                    this.fontMap[Model.FontFamily.Casual] =
-                    this.fontMap[Model.FontFamily.Default] = null;
-                    this.fontMap[Model.FontFamily.MonospaceSerif] = new FF.FontFamily("Courier New");
-                    this.fontMap[Model.FontFamily.ProportionalSerif] = new FF.FontFamily("Cambria");
-                    this.fontMap[Model.FontFamily.MonospaceSansSerif] = new FF.FontFamily("Consolas");
-                    this.fontMap[Model.FontFamily.ProportionalSansSerif] = new FF.FontFamily("Segoe UI");
-                    this.fontMap[Model.FontFamily.Casual] = new FF.FontFamily("Segoe Print");
-                    this.fontMap[Model.FontFamily.Cursive] = new FF.FontFamily("Segoe Script");
-                    this.fontMap[Model.FontFamily.Smallcaps] = new FF.FontFamily("Segoe UI");
-                }
             }
 
             var captionFontFamily = (Model.FontFamily)value;
 
-            return this.fontMap[captionFontFamily];
+            if (captionFontFamily == Model.FontFamily.Default)
+            {
+                return DependencyProperty.UnsetValue;
+            }
+
+            FF.FontFamily fontFamily;
+
+            lock (this.fontMap)
+            {
+                if (this.fontMap.TryGetValue(captionFontFamily, out fontFamily))
+                {
+                    return fontFamily;
+                }
+
+                var familyName = CaptionSettingsPluginBase.GetFontFamilyName(captionFontFamily);
+
+                if (string.IsNullOrWhiteSpace(familyName))
+                {
+                    return DependencyProperty.UnsetValue;
+                }
+
+                fontFamily = new FF.FontFamily(familyName);
+                this.fontMap[captionFontFamily] = fontFamily;
+
+                return fontFamily;
+            }
         }
 
         /// <summary>

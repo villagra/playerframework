@@ -83,7 +83,7 @@
             <StackPanel x:Name="PreviewPanel" Orientation="Vertical">
                 <TextBlock x:Uid="Preview" Text="Preview" Style="{StaticResource GroupTitleTextStyle}" Margin="0,0,0,10"/>
                 <Controls:PreviewControl x:Name="Preview" 
-                    Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}}" 
+                    Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}, ConverterParameter=White}" 
                     CaptionBackground="{Binding Settings.BackgroundColor, Converter={StaticResource ColorToBrushConverter}}" 
                     WindowColor="{Binding Settings.WindowColor, Converter={StaticResource ColorToBrushConverter}}" 
                     FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" OutlineWidth="1" 
@@ -106,7 +106,7 @@
                 IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
                 Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}, Mode=TwoWay}"/>
             <TextBlock Text="Font Style" Style="{StaticResource HeaderStyle}"/>
-            <ComboBox x:Name="CaptionFontStyle" x:Uid="FontStyle" ItemsSource="{Binding FontStyles}" 
+            <ComboBox x:Name="CaptionFontStyle" ItemsSource="{Binding FontStyles}" 
                 IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
                 Style="{StaticResource ComboBoxStyle}" 
                 SelectedItem="{Binding Settings.FontStyle}"

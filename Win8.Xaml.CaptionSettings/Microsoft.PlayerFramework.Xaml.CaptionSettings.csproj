@@ -204,10 +204,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="..\Win81.Xaml.CaptionSettings\Strings\en-US\Resources.resw">
-      <Link>Strings\en-US\Resources.resw</Link>
-      <SubType>Designer</SubType>
-    </PRIResource>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

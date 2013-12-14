@@ -8,6 +8,7 @@
 
 namespace Microsoft.PlayerFramework.CaptionSettings
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.PlayerFramework.CaptionSettings.Controls;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
@@ -19,7 +20,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Controls.Primitives;
     using Windows.UI.Xaml.Media.Animation;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Caption Settings Plugin Base partial class
@@ -258,9 +258,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 IsDefault = this.IsDefault,
             };
 
+            control.OnApplyCaptionSettings += control_OnApplyCaptionSettings;
+
             control.IsDefaultChanged += delegate(object sender, System.EventArgs e)
             {
                 this.IsDefault = control.IsDefault;
+
+                this.ApplyCaptionSettings(this.Settings);
             };
 
             var settingsControl = new SettingsControl
@@ -286,6 +290,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             this.settingsPopup.SetValue(Canvas.TopProperty, 0);
 
             this.settingsPopup.IsOpen = true;
+        }
+
+        void control_OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
+        {
+            this.IsDefault = e.Settings == null;
+
+            this.ApplyCaptionSettings(e.Settings);
         }
 
         /// <summary>
