@@ -10,7 +10,9 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:Documents="System.Windows.Documents" x:Name="phoneApplicationPage"
     x:Class="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsPage"
-    SupportedOrientations="Landscape" Orientation="Landscape"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Landscape"
+    OrientationChanged="OnOrientationChanged"
+    Loaded="OnLoaded"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True" d:DataContext="{d:DesignInstance ViewModel:CaptionSettingsFlyoutViewModel, IsDesignTimeCreatable=True}">
 	<phone:PhoneApplicationPage.Resources>
@@ -57,6 +59,7 @@
         <Style x:Key="ColorButtonStyle" TargetType="Button">
         	<Setter Property="Width" Value="70"/>
         </Style>
+        <Style x:Key="CaptionSettingsPageTitleStyle" BasedOn="{StaticResource PhoneTextBlockBase}" TargetType="TextBlock"/>
     </phone:PhoneApplicationPage.Resources>
 	<phone:PhoneApplicationPage.FontSize>
 		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
@@ -333,20 +336,84 @@
 					</Storyboard>
 				</VisualState>
 			</VisualStateGroup>
+			<VisualStateGroup x:Name="OrientationStates">
+				<VisualState x:Name="Portrait">
+					<Storyboard>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.RowSpan)" Storyboard.TargetName="Preview">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>1</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Column)" Storyboard.TargetName="Preview">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>0</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.ColumnSpan)" Storyboard.TargetName="Preview">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>2</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="ListSelector">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<FontFamily>Portable User Interface</FontFamily>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Row)" Storyboard.TargetName="scrollViewer">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>2</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.ColumnSpan)" Storyboard.TargetName="scrollViewer">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>2</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.RowSpan)" Storyboard.TargetName="scrollViewer">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<System:Int32>1</System:Int32>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Preview">
+							<DiscreteObjectKeyFrame KeyTime="0">
+								<DiscreteObjectKeyFrame.Value>
+									<Thickness>10,0,0,20</Thickness>
+								</DiscreteObjectKeyFrame.Value>
+							</DiscreteObjectKeyFrame>
+						</ObjectAnimationUsingKeyFrames>
+					</Storyboard>
+				</VisualState>
+				<VisualState x:Name="Landscape"/>
+			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition/>
 		</Grid.RowDefinitions>
 
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock x:Name="PageTitle" Text="CAPTION SETTINGS" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock x:Name="PageTitle" Text="CAPTION SETTINGS" Style="{StaticResource CaptionSettingsPageTitleStyle}"/>
 		</StackPanel>
 
         <!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="Auto"/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
@@ -356,7 +423,7 @@
 			</Grid.ColumnDefinitions>
             
 			<CheckBox Content="Ignore default caption fonts and colors" Grid.ColumnSpan="2" IsChecked="{Binding IsEnabled, Mode=TwoWay}"/>
-			<ScrollViewer VerticalAlignment="Top" Grid.Row="1" Margin="0,0,10,0">
+			<ScrollViewer x:Name="scrollViewer" VerticalAlignment="Top" Grid.Row="1" Margin="0,0,10,0" Grid.RowSpan="2">
             
 				<StackPanel>
 					<TextBlock Text="Font" Style="{StaticResource PhoneTextGroupHeaderStyle}"/>
@@ -395,7 +462,7 @@
 					</Grid>
 				</StackPanel>
 			</ScrollViewer>
-			<Grid x:Name="Preview" Grid.Column="1" Grid.Row="1" Background="Gray" VerticalAlignment="Top" IsHitTestVisible="False">
+			<Grid x:Name="Preview" Margin="0,0,0,20" Grid.Column="1" Grid.Row="1" Background="Gray" VerticalAlignment="Top" IsHitTestVisible="False" Grid.RowSpan="2">
 				<Border x:Name="PreviewWindow" BorderThickness="1" Margin="10" Padding="10" Background="{Binding Settings.WindowColor, Converter={StaticResource ColorConverter}}">
 					<Border x:Name="PreviewBackground" BorderThickness="1" Padding="10" Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorConverter}}">
 						<Grid x:Name="PreviewTextElements" CacheMode="BitmapCache">

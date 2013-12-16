@@ -20,6 +20,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System.Windows.Media;
     using System.Windows.Navigation;
     using Microsoft.Phone.Controls;
+    using Microsoft.Phone.Shell;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
     using Microsoft.PlayerFramework.CaptionSettings.Resources;
     using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
@@ -39,6 +40,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// Is the list selector being shown
         /// </summary>
         private bool isListSelectorShown = false;
+
+        /// <summary>
+        /// the previous system tray visibility
+        /// </summary>
+        private bool previousSystemTryVisibility;
         #endregion
 
         #region Constructors
@@ -86,6 +92,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the navigation event arguments</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.previousSystemTryVisibility = SystemTray.IsVisible;
+
+            SystemTray.IsVisible = false;
+
             bool isEnabled = false;
 
             object value;
@@ -112,6 +122,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the navigating cancel event arguments</param>
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+            SystemTray.IsVisible = this.previousSystemTryVisibility;
+
             if (this.isListSelectorShown)
             {
                 this.HideListSelector();
@@ -656,6 +668,60 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.OnWindowColorChanged,
                 "ColorTemplate");
         }
+
+        /// <summary>
+        /// Update the page orientation when the orientation changes
+        /// </summary>
+        /// <param name="sender">the sender</param>
+        /// <param name="e">the orientation changed event arguments</param>
+        private void OnOrientationChanged(object sender, OrientationChangedEventArgs e)
+        {
+            this.GoToOrientationState(e.Orientation);
+        }
+
+        /// <summary>
+        /// Update the page orientation when the page loads
+        /// </summary>
+        /// <param name="sender">the page</param>
+        /// <param name="e">the routed event arguments</param>
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            this.GoToOrientationState(this.Orientation);
+
+            this.UpdateStyle();
+        }
+
+        /// <summary>
+        /// Update the styles on the page
+        /// </summary>
+        private void UpdateStyle()
+        {
+            var style = Application.Current.Resources["CaptionSettingsPageTitleStyle"] as Style;
+
+            if (style != null)
+            {
+                this.PageTitle.Style = style;
+            }
+        }
+
+        /// <summary>
+        /// Go to the orientation state
+        /// </summary>
+        /// <param name="orientation">the orientation state</param>
+        private void GoToOrientationState(PageOrientation orientation)
+        {
+            var stateName = "Landscape";
+
+            if (orientation == PageOrientation.Portrait ||
+                orientation == PageOrientation.PortraitDown ||
+                orientation == PageOrientation.PortraitUp)
+            {
+                stateName = "Portrait";
+            }
+
+            VisualStateManager.GoToState(this, stateName, false);
+        }
+
         #endregion
     }
 }
