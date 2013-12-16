@@ -224,11 +224,11 @@
     <value>Privacy Policy</value>
   </data>
   <data name="ProportionalSansSerif" xml:space="preserve">
-    <value>Proporational sans-serif</value>
+    <value>Proportional sans-serif</value>
     <comment>Font name</comment>
   </data>
   <data name="ProportionalSerif" xml:space="preserve">
-    <value>Proporational serif</value>
+    <value>Proportional serif</value>
     <comment>Font name</comment>
   </data>
   <data name="RaisedEdge" xml:space="preserve">
