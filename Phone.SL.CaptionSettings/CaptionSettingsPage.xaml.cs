@@ -55,6 +55,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             this.InitializeComponent();
 
+            this.UpdateStyle();
+
             if (DesignerProperties.IsInDesignTool)
             {
                 CaptionSettingsPage.Settings = new CustomCaptionSettings
@@ -687,8 +689,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             this.GoToOrientationState(this.Orientation);
-
-            this.UpdateStyle();
         }
 
         /// <summary>
@@ -696,6 +696,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         private void UpdateStyle()
         {
+            var captionSettingsPageStyle = Application.Current.Resources["CaptionSettingsPageStyle"] as Style;
+
+            if (captionSettingsPageStyle != null)
+            {
+                this.Style = captionSettingsPageStyle;
+            }
+
             var style = Application.Current.Resources["CaptionSettingsPageTitleStyle"] as Style;
 
             if (style != null)

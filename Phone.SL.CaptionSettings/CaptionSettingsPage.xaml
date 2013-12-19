@@ -427,40 +427,44 @@
             
 				<StackPanel>
 					<TextBlock Text="Font" Style="{StaticResource PhoneTextGroupHeaderStyle}"/>
-					<TextBlock Text="Family" Style="{StaticResource PhoneTextNormalStyle}"/>
-					<Button x:Name="FontFamilyButton" Content="{Binding Settings.FontFamily, Converter={StaticResource ResourceConverter}, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontFamilyButton_Click"/>
-					<TextBlock Text="Size (%)" Style="{StaticResource PhoneTextNormalStyle}" />
-					<Button x:Name="FontSizeButton" Content="{Binding Settings.FontSize, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontSizeButton_Click"/>
-					<TextBlock Text="Font Style" Style="{StaticResource PhoneTextNormalStyle}" />
-					<Button Content="{Binding Settings.FontStyle, Converter={StaticResource ResourceConverter}, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontStyleButton_Click"/>
-					<TextBlock Text="Color" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="12,0,-118,0" />
-					<TextBlock Text="Font" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
-					<Grid Margin="0">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>
-						</Grid.ColumnDefinitions>
-						<Button x:Name="FontColorTypeButton" Content="{Binding FontColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="FontColorTypeButton_Click"/>
-						<Button x:Name="FontColorButton" Grid.Column="1" IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}" Click="FontColorButton_Click" Background="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" Style="{StaticResource ColorButtonStyle}"/>
-					</Grid>
-					<TextBlock Text="Background" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>						</Grid.ColumnDefinitions>
-						<Button x:Name="BackgroundColorType" Content="{Binding BackgroundColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="BackgroundColorType_Click"/>
-						<Button x:Name="BackgroundColorButton" Grid.Column="1" IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}" Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorConverter}}" Click="BackgroundColorButton_Click" Style="{StaticResource ColorButtonStyle}"/>
-					</Grid>
-					<TextBlock Text="Window" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
-					<Grid >
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>
-						</Grid.ColumnDefinitions>
-						<Button x:Name="WindowColorType" Content="{Binding WindowColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="WindowColorType_Click"/>
-						<Button x:Name="WindowColorButton" Grid.Column="1" IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}" Background="{Binding Settings.WindowColor, Converter={StaticResource ColorConverter}}" Click="WindowColorButton_Click" Style="{StaticResource ColorButtonStyle}"/>
-					</Grid>
-				</StackPanel>
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="Family" Style="{StaticResource PhoneTextNormalStyle}"/>
+                        <Button x:Name="FontFamilyButton" Content="{Binding Settings.FontFamily, Converter={StaticResource ResourceConverter}, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontFamilyButton_Click"/>
+                        <TextBlock Text="Size (%)" Style="{StaticResource PhoneTextNormalStyle}" />
+                        <Button x:Name="FontSizeButton" Content="{Binding Settings.FontSize, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontSizeButton_Click"/>
+                        <TextBlock Text="Font Style" Style="{StaticResource PhoneTextNormalStyle}" />
+                        <Button Content="{Binding Settings.FontStyle, Converter={StaticResource ResourceConverter}, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}" Click="FontStyleButton_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Color" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="12,0,0,0" />
+                    <StackPanel Margin="10,0,0,0">
+					    <TextBlock Text="Font" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,0,0"/>
+					    <Grid Margin="0">
+						    <Grid.ColumnDefinitions>
+							    <ColumnDefinition/>
+							    <ColumnDefinition Width="Auto"/>
+						    </Grid.ColumnDefinitions>
+						    <Button x:Name="FontColorTypeButton" Content="{Binding FontColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="FontColorTypeButton_Click"/>
+						    <Button x:Name="FontColorButton" Grid.Column="1" IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}" Click="FontColorButton_Click" Background="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" Style="{StaticResource ColorButtonStyle}"/>
+					    </Grid>
+					    <TextBlock Text="Background" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,0,0"/>
+					    <Grid>
+						    <Grid.ColumnDefinitions>
+							    <ColumnDefinition/>
+							    <ColumnDefinition Width="Auto"/>						</Grid.ColumnDefinitions>
+						    <Button x:Name="BackgroundColorType" Content="{Binding BackgroundColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="BackgroundColorType_Click"/>
+						    <Button x:Name="BackgroundColorButton" Grid.Column="1" IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}" Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorConverter}}" Click="BackgroundColorButton_Click" Style="{StaticResource ColorButtonStyle}"/>
+					    </Grid>
+					    <TextBlock Text="Window" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
+					    <Grid >
+						    <Grid.ColumnDefinitions>
+							    <ColumnDefinition/>
+							    <ColumnDefinition Width="Auto"/>
+						    </Grid.ColumnDefinitions>
+						    <Button x:Name="WindowColorType" Content="{Binding WindowColorType, Converter={StaticResource ResourceConverter}}" IsEnabled="{Binding IsEnabled}" Click="WindowColorType_Click"/>
+						    <Button x:Name="WindowColorButton" Grid.Column="1" IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}" Background="{Binding Settings.WindowColor, Converter={StaticResource ColorConverter}}" Click="WindowColorButton_Click" Style="{StaticResource ColorButtonStyle}"/>
+					    </Grid>
+                    </StackPanel>
+                </StackPanel>
 			</ScrollViewer>
 			<Grid x:Name="Preview" Margin="0,0,0,20" Grid.Column="1" Grid.Row="1" Background="Gray" VerticalAlignment="Top" IsHitTestVisible="False" Grid.RowSpan="2">
 				<Border x:Name="PreviewWindow" BorderThickness="1" Margin="10" Padding="10" Background="{Binding Settings.WindowColor, Converter={StaticResource ColorConverter}}">
