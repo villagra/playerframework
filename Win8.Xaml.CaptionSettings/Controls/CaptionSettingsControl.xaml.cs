@@ -252,7 +252,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 {
                     var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-                    this.CaptionSettings.BackgroundColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.BackgroundColorType, color, new Model.Color { Alpha = 0, Red = 0, Green = 0, Blue = 0});
+                    this.CaptionSettings.BackgroundColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.BackgroundColorType, color, new Model.Color { Alpha = 0, Red = 0, Green = 0, Blue = 0 });
                 });
         }
 
@@ -269,7 +269,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 {
                     var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-                    this.CaptionSettings.WindowColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.WindowColorType, color, new Model.Color {Alpha = 0, Red=0, Green = 0, Blue = 0});
+                    this.CaptionSettings.WindowColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.WindowColorType, color, new Model.Color { Alpha = 0, Red = 0, Green = 0, Blue = 0 });
                 });
         }
         #endregion
