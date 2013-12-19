@@ -201,7 +201,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 sender, 
                 delegate(Model.Color color)
                 {
-                    this.CaptionSettings.FontColor = color;
+                    var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
+
+                    this.CaptionSettings.FontColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.FontColorType, color, new Model.Color { Alpha = 255, Red = 255, Green = 255, Blue = 255 });
                 });
         }
 
@@ -248,7 +250,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 sender, 
                 delegate(Model.Color color)
                 {
-                    this.CaptionSettings.BackgroundColor = color;
+                    var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
+
+                    this.CaptionSettings.BackgroundColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.BackgroundColorType, color, new Model.Color { Alpha = 0, Red = 0, Green = 0, Blue = 0});
                 });
         }
 
@@ -263,7 +267,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 sender, 
                 delegate(Model.Color color)
                 {
-                    this.CaptionSettings.WindowColor = color;
+                    var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
+
+                    this.CaptionSettings.WindowColor = CaptionSettingsFlyoutViewModel.SetColorType(viewModel.WindowColorType, color, new Model.Color {Alpha = 0, Red=0, Green = 0, Blue = 0});
                 });
         }
         #endregion
