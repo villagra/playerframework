@@ -225,6 +225,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                 VerticalOffset = buttonRect.Bottom < Window.Current.Bounds.Height / 2 ? buttonRect.Bottom : buttonRect.Top - colorPicker.Height,
             };
 
+            flyout.IsLightDismissEnabled = true;
+
             flyout.IsOpen = true;
 
             colorPicker.ColorSelected += new EventHandler<ColorEventArgs>(delegate(object sender2, ColorEventArgs colorSelected)

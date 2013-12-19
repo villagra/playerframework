@@ -309,6 +309,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
                     this.OnPropertyChanged("FontColorType");
                     this.OnPropertyChanged("BackgroundColorType");
                     this.OnPropertyChanged("WindowColorType");
+                    this.OnPropertyChanged("IsFontColorEnabled");
+                    this.OnPropertyChanged("IsBackgroundColorEnabled");
+                    this.OnPropertyChanged("IsWindowColorEnabled");
                 }
             }
         }
