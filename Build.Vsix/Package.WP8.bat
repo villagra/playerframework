@@ -14,6 +14,9 @@ cd ..\Microsoft.PlayerFramework.WP8.TimedText
 cd ..\Microsoft.PlayerFramework.WP8.WebVTT
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.WebVTT.zip "*"
 
+cd ..\Microsoft.PlayerFramework.WP8.CaptionSettings
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.CaptionSettings.zip "*"
+
 cd ..\Microsoft.PlayerFramework.WP8.Advertising
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.WP8.Advertising.zip "*"
 
@@ -39,6 +42,7 @@ move Microsoft.PlayerFramework.WP8.zip Microsoft.PlayerFramework.WP8.vsix
 move Microsoft.PlayerFramework.WP8.Adaptive.zip Microsoft.PlayerFramework.WP8.Adaptive.vsix
 move Microsoft.PlayerFramework.WP8.TimedText.zip Microsoft.PlayerFramework.WP8.TimedText.vsix
 move Microsoft.PlayerFramework.WP8.WebVTT.zip Microsoft.PlayerFramework.WP8.WebVTT.vsix
+move Microsoft.PlayerFramework.WP8.CaptionSettings.zip Microsoft.PlayerFramework.WP8.CaptionSettings.vsix
 move Microsoft.PlayerFramework.WP8.Advertising.zip Microsoft.PlayerFramework.WP8.Advertising.vsix
 move Microsoft.PlayerFramework.WP8.Analytics.zip Microsoft.PlayerFramework.WP8.Analytics.vsix
 move Microsoft.PlayerFramework.WP8.Dash.zip Microsoft.PlayerFramework.WP8.Dash.vsix
