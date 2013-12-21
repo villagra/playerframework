@@ -2,7 +2,7 @@
   <Metadata>
     <Identity Id="MMP.PF.Win81.Dash.SDK.VSIX.bb25c41c-f222-4f8c-acbe-b349c8a68ccc" Version="1.8.2.2" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework Dash Plugin</DisplayName>
-    <Description>Microsoft Media Platform: Player Framework Dash Plugin for Windows 8 Store Apps</Description>
+    <Description>Microsoft Media Platform: Player Framework Dash Plugin for Windows 8.1 Store Apps</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
     <License>License.rtf</License>
     <Icon>MMPPF.ico</Icon>
