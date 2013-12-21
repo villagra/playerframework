@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -470,13 +470,13 @@
       <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
       <Name>Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win81.Xaml.TTML.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings.csproj">
+    <ProjectReference Include="..\Win81.Xaml.TTML.Settings\Microsoft.Win81.PlayerFramework.Xaml.TTML.Settings.csproj">
       <Project>{664d44a9-0a3a-4c37-a668-68240004bb55}</Project>
-      <Name>Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings</Name>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.TTML.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win81.Xaml.WebVTT.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings.csproj">
+    <ProjectReference Include="..\Win81.Xaml.WebVTT.Settings\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.Settings.csproj">
       <Project>{673add5b-89f2-403e-a655-365cc925d65e}</Project>
-      <Name>Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings</Name>
+      <Name>Microsoft.Win81.PlayerFramework.Xaml.WebVTT.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

@@ -40,9 +40,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.VideoAnalytic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.CaptionSettings", "Phone.SL.CaptionSettings\Microsoft.WP8.PlayerFramework.CaptionSettings.csproj", "{3A2A6D48-C42A-4A65-8F25-34F7931AC54F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.TTML.CaptionSettings", "Phone.SL.TTML.CaptionSettings\Microsoft.WP8.PlayerFramework.TTML.CaptionSettings.csproj", "{C6E13339-51E8-4158-9E1A-B12D24841ECD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.TTML.Settings", "Phone.SL.TTML.Settings\Microsoft.WP8.PlayerFramework.TTML.Settings.csproj", "{C6E13339-51E8-4158-9E1A-B12D24841ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.WebVTT.CaptionSettings", "Phone.SL.WebVTT.CaptionSettings\Microsoft.WP8.PlayerFramework.WebVTT.CaptionSettings.csproj", "{DDF64C55-6D24-4F23-8740-1DCD346A388A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.WebVTT.Settings", "Phone.SL.WebVTT.Settings\Microsoft.WP8.PlayerFramework.WebVTT.Settings.csproj", "{DDF64C55-6D24-4F23-8740-1DCD346A388A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP8.PlayerFramework.SL.CaptionSettings.Test", "Phone.SL.Test.WP8.CaptionSettings\Microsoft.WP8.PlayerFramework.SL.CaptionSettings.Test.csproj", "{1BBDEFE9-B5A2-49CB-9441-5CFFF59A2597}"
 EndProject

@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage
+<phone:PhoneApplicationPage
     x:Class="WP8.PlayerFramework.Test.Pages.WebVTTPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,7 +13,7 @@
     mc:Ignorable="d"
     xmlns:mmppf="clr-namespace:Microsoft.PlayerFramework;assembly=Microsoft.PlayerFramework"
     xmlns:webvtt="clr-namespace:Microsoft.PlayerFramework.WebVTT;assembly=Microsoft.PlayerFramework.WebVTT"
-    xmlns:webvttCaptions="clr-namespace:Microsoft.PlayerFramework.WebVTT.CaptionSettings;assembly=Microsoft.PlayerFramework.WebVTT.CaptionSettings"
+    xmlns:webvttCaptions="clr-namespace:Microsoft.PlayerFramework.WebVTT.CaptionSettings;assembly=Microsoft.PlayerFramework.WebVTT.Settings"
     shell:SystemTray.IsVisible="True">
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar>

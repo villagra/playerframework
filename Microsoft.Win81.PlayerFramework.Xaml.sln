@@ -44,9 +44,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings", "Win81.Xaml.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.CaptionSettings.csproj", "{00C65BE5-8806-4AD5-A350-D48120E22028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings", "Win81.Xaml.TTML.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.TTML.CaptionSettings.csproj", "{664D44A9-0A3A-4C37-A668-68240004BB55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.TTML.Settings", "Win81.Xaml.TTML.Settings\Microsoft.Win81.PlayerFramework.Xaml.TTML.Settings.csproj", "{664D44A9-0A3A-4C37-A668-68240004BB55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings", "Win81.Xaml.WebVTT.CaptionSettings\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.CaptionSettings.csproj", "{673ADD5B-89F2-403E-A655-365CC925D65E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Win81.PlayerFramework.Xaml.WebVTT.Settings", "Win81.Xaml.WebVTT.Settings\Microsoft.Win81.PlayerFramework.Xaml.WebVTT.Settings.csproj", "{673ADD5B-89F2-403E-A655-365CC925D65E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -424,13 +424,13 @@
       <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.TimedText</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml.TTML.CaptionSettings\Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings.csproj">
+    <ProjectReference Include="..\Win8.Xaml.TTML.Settings\Microsoft.PlayerFramework.Xaml.TTML.Settings.csproj">
       <Project>{04deb5fc-de16-40b7-9490-36ab3fec0f10}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings</Name>
+      <Name>Microsoft.PlayerFramework.Xaml.TTML.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml.WebVTT.CaptionSettings\Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings.csproj">
+    <ProjectReference Include="..\Win8.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Xaml.WebVTT.Settings.csproj">
       <Project>{2406d3cf-7587-4cdf-8a1b-74877e45dda2}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings</Name>
+      <Name>Microsoft.PlayerFramework.Xaml.WebVTT.Settings</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.WebVTT\Microsoft.PlayerFramework.Xaml.WebVTT.csproj">
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
