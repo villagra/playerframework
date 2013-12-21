@@ -82,21 +82,33 @@ mkdir "Microsoft.PlayerFramework.Xaml.TimedText\References"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TimedText"
-mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\Redist"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\References"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\References"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT"
-mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\Redist"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\References"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\References"
 mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration"
@@ -144,9 +156,9 @@ copy ..\Win8.Xaml.TimedText\bin\Release\Microsoft.TimedText.dll					Microsoft.Pl
 copy ..\Win8.Xaml.TimedText\bin\Release\Microsoft.TimedText.pri					Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\
 copy ..\Win8.TimedText\bin\Release\Themes\generic.xaml							Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.TimedText\themes\
 
-copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration\neutral\
-copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration\neutral\
-copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.TimedText\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings\
+copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\References\CommonConfiguration\neutral\
+copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\References\CommonConfiguration\neutral\
+copy ..\Win8.Xaml.TTML.CaptionSettings\bin\Release\Microsoft.PlayerFramework.TTML.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.TTML.CaptionSettings\
 
 copy ..\Win8.Xaml.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.dll		Microsoft.PlayerFramework.Xaml.Advertising\References\CommonConfiguration\neutral\
 copy ..\Win8.Xaml.Advertising\bin\Release\Microsoft.PlayerFramework.Advertising.xml		Microsoft.PlayerFramework.Xaml.Advertising\References\CommonConfiguration\neutral\
@@ -179,9 +191,9 @@ copy ..\Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.winmd						Microsoft.Playe
 copy ..\Win8.Xaml.WebVTT\bin\Release\Microsoft.WebVTT.pri						Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\
 copy ..\Win8.WebVTT\bin\Release\Themes\generic.xaml								Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.WebVTT\themes\
 
-copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral\
-copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral\
-copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings\
+copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.xml	Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\References\CommonConfiguration\neutral\
+copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.dll	Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\References\CommonConfiguration\neutral\
+copy ..\Win8.Xaml.WebVTT.CaptionSettings\bin\Release\Microsoft.PlayerFramework.WebVTT.CaptionSettings.pri	Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT.CaptionSettings\
 
 copy ..\Win8.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll					Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration\neutral\
 copy ..\Win8.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml					Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration\neutral\

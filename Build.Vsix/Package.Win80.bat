@@ -41,8 +41,14 @@ cd ..\Microsoft.PlayerFramework.Xaml.Adaptive
 cd ..\Microsoft.PlayerFramework.Xaml.TimedText
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TimedText.zip "*"
 
+cd ..\Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings.zip "*"
+
 cd ..\Microsoft.PlayerFramework.Xaml.WebVTT
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.zip "*"
+
+cd ..\Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings
+"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.CaptionSettings
 "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.CaptionSettings.zip "*"
@@ -67,7 +73,9 @@ move Microsoft.PlayerFramework.Win8.Analytics.Advertising.zip Microsoft.PlayerFr
 move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.vsix
 move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.vsix
 move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml.TimedText.vsix
+move Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings.zip Microsoft.PlayerFramework.Xaml.TTML.CaptionSettings.vsix
 move Microsoft.PlayerFramework.Xaml.WebVTT.zip Microsoft.PlayerFramework.Xaml.WebVTT.vsix
+move Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings.zip Microsoft.PlayerFramework.Xaml.WebVTT.CaptionSettings.vsix
 move Microsoft.PlayerFramework.Xaml.CaptionSettings.zip Microsoft.PlayerFramework.Xaml.CaptionSettings.vsix
 move Microsoft.PlayerFramework.Xaml.Advertising.zip Microsoft.PlayerFramework.Xaml.Advertising.vsix
 move Microsoft.PlayerFramework.Xaml.Analytics.zip Microsoft.PlayerFramework.Xaml.Analytics.vsix
