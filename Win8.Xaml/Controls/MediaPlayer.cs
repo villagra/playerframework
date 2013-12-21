@@ -152,12 +152,10 @@ namespace Microsoft.PlayerFramework
                 if (isMediaLoaded)
                 {
                     SetValue(PlayerStateProperty, PlayerState.Loaded);
-                    UpdateTimer.Start();
                 }
                 else
                 {
                     SetValue(PlayerStateProperty, PlayerState.Unloaded);
-                    UpdateTimer.Stop();
                 }
             }
         }
@@ -4873,6 +4871,7 @@ namespace Microsoft.PlayerFramework
 
         void OnMediaFailed(ExceptionRoutedEventArgs e)
         {
+            UpdateTimer.Stop();
             SetValue(PlayerStateProperty, PlayerState.Failed);
             if (MediaFailed != null) MediaFailed(this, e);
         }
@@ -5022,6 +5021,7 @@ namespace Microsoft.PlayerFramework
         {
             VirtualPosition = position;
             _Position = position;
+            OnUpdate();
 #if SILVERLIGHT && !WINDOWS_PHONE || WINDOWS_PHONE7
             return TaskEx.FromResult(true); // There is no SeekCompleted event in Silverlight's MediaElement, therefore we just assume true and rely on the MediaElement to buffer this for us.
 #else
@@ -5162,24 +5162,24 @@ namespace Microsoft.PlayerFramework
             {
                 if (StartupPosition.HasValue)
                 {
-#if WINDOWS_PHONE
                     var startupPosition = StartupPosition.Value;
+#if WINDOWS_PHONE
                     // HACK: sometimes this is ignored on the phone if we don't set the position on the dispatcher
-                    Dispatcher.BeginInvoke(() =>
-                    {
-                        Position = startupPosition;
-                    });
-#else
-                    Position = StartupPosition.Value;
+                    await Dispatcher.InvokeAsync(() => { });
 #endif
+                    await SeekAsync(startupPosition);
                 }
+                else
+                {
+                    OnUpdate();   // simulate the timer tick ASAP so everyone can update things.
+                }
+
+                UpdateTimer.Start(); // start the update timer.
 
                 if (AutoPlay && AllowMediaStartingDeferrals)
                 {
                     _Play();
                 }
-
-                OnUpdate();   // simulate the timer tick ASAP so everyone can update things.
             }
         }
 
@@ -5289,6 +5289,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected virtual void OnMediaClosed()
         {
+            UpdateTimer.Stop();
             IsMediaLoaded = false;
 #if SILVERLIGHT && !WINDOWS_PHONE
             SetValue(AttributesProperty, DefaultAttributes);
