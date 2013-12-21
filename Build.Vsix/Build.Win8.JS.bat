@@ -12,26 +12,31 @@ cd..
 "%DEVENV%" /rebuild "Release|x64"    Microsoft.Win8.PlayerFramework.Js.sln
 "%DEVENV%" /rebuild "Release|ARM"    Microsoft.Win8.PlayerFramework.Js.sln
 
-"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd	Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming\bin\x86\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming\bin\x64\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming\bin\ARM\Release\Microsoft.AdaptiveStreaming.winmd						Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.winmd								Win8.VideoAnalytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAdvertising\bin\Release\Microsoft.VideoAdvertising.winmd							Win8.VideoAdvertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAnalytics.VideoAdvertising\bin\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd								Win8.VideoAnalytics.VideoAdvertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.VideoAnalytics.AudienceInsight\bin\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd								Win8.VideoAnalytics.AudienceInsight\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.winmd					Win8.Js.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Advertising\bin\Release\Microsoft.PlayerFramework.Js.Advertising.winmd				Win8.Js.Advertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd					Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd			Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd			Win8.AudienceInsight\Microsoft.PlayerFramework.snk
-
+"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.AdaptiveStreaming.Analytics.winmd		Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.AdaptiveStreaming.Analytics.winmd		Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.AdaptiveStreaming.Analytics.winmd		Win8.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming\bin\x86\Release\Microsoft.AdaptiveStreaming.winmd							Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming\bin\x64\Release\Microsoft.AdaptiveStreaming.winmd							Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming\bin\ARM\Release\Microsoft.AdaptiveStreaming.winmd							Win8.AdaptiveStreaming\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics\bin\Release\Microsoft.VideoAnalytics.winmd									Win8.VideoAnalytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAdvertising\bin\Release\Microsoft.VideoAdvertising.winmd								Win8.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.VideoAdvertising\bin\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd	Win8.VideoAnalytics.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.AudienceInsight\bin\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd	Win8.VideoAnalytics.AudienceInsight\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.winmd						Win8.Js.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Advertising\bin\Release\Microsoft.PlayerFramework.Js.Advertising.winmd					Win8.Js.Advertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd						Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd						Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd						Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.AdaptiveStreaming.Dash.winmd				Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.Dash.winmd				Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd				Win8.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd				Win8.VideoAnalytics.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.VideoAdvertising\bin\x64\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd				Win8.VideoAnalytics.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.VideoAdvertising\bin\ARM\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd				Win8.VideoAnalytics.VideoAdvertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd				Win8.VideoAnalytics.AudienceInsight\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.AudienceInsight\bin\x64\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd				Win8.VideoAnalytics.AudienceInsight\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.VideoAnalytics.AudienceInsight\bin\ARM\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd				Win8.VideoAnalytics.AudienceInsight\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd									Win8.AudienceInsight\Microsoft.PlayerFramework.snk
 
 @popd
 
@@ -125,13 +130,6 @@ mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\x86"
-mkdir "Microsoft.AudienceInsight.Win8\Redist"
-mkdir "Microsoft.AudienceInsight.Win8\References"
-mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration"
-mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral"
-mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight"
-mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration"
-mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist"
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\References"
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration"
@@ -152,6 +150,13 @@ mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\Commo
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x86"
+mkdir "Microsoft.AudienceInsight.Win8\Redist"
+mkdir "Microsoft.AudienceInsight.Win8\References"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight"
+mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration"
+mkdir "Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral"
 
 copyencoded ..\Win8.Js\css\Default-base.css+..\Win8.Js\css\Default-dark.css																								Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-dark.css
 copyencoded ..\Win8.Js\css\Default-base.css+..\Win8.Js\css\Default-light.css																							Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-light.css
@@ -217,18 +222,18 @@ copy ..\Win8.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.AdaptiveStreaming.
 copy ..\Win8.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.AdaptiveStreaming.Dash.winmd																				Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\ARM\
 copy ..\Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll																							Microsoft.PlayerFramework.Win8.Dash\References\CommonConfiguration\neutral\
 
-copy ..\Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.pri																															Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight\
-copy ..\Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd																															Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
-copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.pri																		Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.VideoAdvertising\
-copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x86\
-copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x64\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x64\
-copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\ARM\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd																		Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\ARM\
+copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.pri																Microsoft.PlayerFramework.Win8.Analytics.Advertising\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.VideoAdvertising\
+copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x86\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd															Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x86\
+copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\x64\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd															Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\x64\
+copy ..\Win8.VideoAnalytics.VideoAdvertising\bin\ARM\Release\Microsoft.VideoAnalytics.VideoAdvertising.winmd															Microsoft.PlayerFramework.Win8.Analytics.Advertising\References\CommonConfiguration\ARM\
 
-copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.pri																		Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.AudienceInsight\
-copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x86\
-copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x64\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x64\
-copy ..\Win8.VideoAnalytics.AudienceInsight\bin\ARM\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																		Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\ARM\
+copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.pri																Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.VideoAnalytics.AudienceInsight\
+copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x86\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x86\
+copy ..\Win8.VideoAnalytics.AudienceInsight\bin\x64\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\x64\
+copy ..\Win8.VideoAnalytics.AudienceInsight\bin\ARM\Release\Microsoft.VideoAnalytics.AudienceInsight.winmd																Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight\References\CommonConfiguration\ARM\
 
+copy ..\Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.pri																									Microsoft.AudienceInsight.Win8\Redist\CommonConfiguration\neutral\Microsoft.AudienceInsight\
+copy ..\Win8.AudienceInsight\bin\Release\Microsoft.AudienceInsight.winmd																								Microsoft.AudienceInsight.Win8\References\CommonConfiguration\neutral\
 
 @popd
 
