@@ -184,7 +184,7 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
         /// <param name="e">the caption text event arguments</param>
         private void OnTextRendering(object sender, CaptionTextEventArgs e)
         {
-            if (this.Settings == null)
+            if (this.Settings == null || this.IsDefault)
             {
                 return;
             }
