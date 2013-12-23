@@ -55,7 +55,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 return;
             }
 
-            ////this.IsDefault = settings == null;
+            // 12/23/2013 - set to default if a null caption settings is applied
+            // but do not set to false if a settings value is applied
+            if (settings == null)
+            {
+                this.IsDefault = true;
+            }
 
             // let the derived class apply the settings
             this.OnApplyCaptionSettings(settings);
