@@ -146,6 +146,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                         ApplyCaptionSettings(viewModel.Settings);
                     }
                 }
+                else
+                {
+                    if (ApplyCaptionSettings != null)
+                    {
+                        ApplyCaptionSettings(null);
+                    }
+                }
 
                 base.OnNavigatingFrom(e);
             }
