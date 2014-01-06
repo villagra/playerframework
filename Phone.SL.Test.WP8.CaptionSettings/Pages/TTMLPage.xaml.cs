@@ -18,13 +18,6 @@ namespace WP8.PlayerFramework.Test.Pages
     /// </summary>
     public partial class TTMLPage : PhoneApplicationPage
     {
-        #region Fields
-        /// <summary>
-        /// The TTML Caption Settings Plug-in
-        /// </summary>
-        private TTMLCaptionSettingsPlugin plugin;
-        #endregion
-
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the TTMLPage class.
@@ -32,10 +25,6 @@ namespace WP8.PlayerFramework.Test.Pages
         public TTMLPage()
         {
             this.InitializeComponent();
-
-            this.plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
-
-            this.Player.Plugins.Add(this.plugin);
 
             this.Player.SelectedCaption = this.Player.AvailableCaptions.First();
         }
@@ -49,7 +38,10 @@ namespace WP8.PlayerFramework.Test.Pages
         /// <param name="e">the event arguments</param>
         private void OnCaptionSettings(object sender, System.EventArgs e)
         {
-            this.plugin.ShowSettingsPage(this.NavigationService);
+            var plugin = (from item in this.Player.Plugins.OfType<TTMLCaptionSettingsPlugin>()
+                          select item).First();
+
+            plugin.ShowSettingsPopup(this, this.LayoutRoot);
         }
         #endregion
     }

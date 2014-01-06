@@ -12,13 +12,18 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO.IsolatedStorage;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
     using System.Windows.Media;
     using System.Windows.Navigation;
+    using Microsoft.Phone.Controls;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
 
     /// <summary>
     /// Windows Phone Caption Settings UI
     /// </summary>
+    [StyleTypedProperty(Property = "CaptionSettingsControlStyle", StyleTargetType = typeof(CaptionSettingsControl))]
     public partial class CaptionSettingsPluginBase
     {
         #region Fields
@@ -31,6 +36,23 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// The Font Family Map
         /// </summary>
         private static Dictionary<Model.FontFamily, string> fontFamilyMap;
+
+        /// <summary>
+        /// the popup
+        /// </summary>
+        private Popup popup;
+
+        /// <summary>
+        /// should video be paused when showing the popup?
+        /// </summary>
+        private bool pauseVideo;
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets the Style of the <see cref="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsControl"/>
+        /// </summary>
+        public Style CaptionSettingsControlStyle { get; set; }
         #endregion
 
         #region Methods
@@ -98,17 +120,133 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             var uriString = string.Format(
                 CultureInfo.InvariantCulture,
-                "/{0};component/CaptionSettingsPage.xaml?IsEnabled={1}",
+                "/{0};component/CaptionSettingsPage2.xaml?IsEnabled={1}",
                 assemblyName,
                 isEnabled);
 
             var source = new Uri(uriString, UriKind.Relative);
 
-            if (service.Navigate(source))
+            CaptionSettingsPage2.Settings = this.Settings;
+            CaptionSettingsPage2.ApplyCaptionSettings = this.ApplyCaptionSettings;
+            CaptionSettingsPage2.ControlStyle = this.CaptionSettingsControlStyle;
+
+            service.Navigate(source);
+        }
+
+        /// <summary>
+        /// Show the settings pane as a popup
+        /// </summary>
+        /// <param name="page">the current phone application page</param>
+        /// <param name="parent">the parent panel on the page (typically the 
+        /// LayoutRoot Grid)</param>
+        /// <param name="pauseVideo">true to pause the video when the popup is 
+        /// shown and play it when the popup is hidden.</param>
+        public void ShowSettingsPopup(PhoneApplicationPage page, Panel parent, bool pauseVideo = false)
+        {
+            if (this.popup != null && this.popup.IsOpen)
             {
-                CaptionSettingsPage.Settings = this.Settings;
-                CaptionSettingsPage.ApplyCaptionSettings = this.ApplyCaptionSettings;
+                return;
             }
+
+            this.pauseVideo = pauseVideo;
+
+            bool isEnabled = false;
+
+            object value;
+
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CaptionSettingsPage.OverrideDefaultKey, out value))
+            {
+                isEnabled = (bool)value;
+            }
+
+            if (this.Settings == null)
+            {
+                this.Activate();
+
+                this.Settings.PropertyChanged += this.Settings_PropertyChanged;
+            }
+
+            Border border = null;
+
+            if (this.popup == null)
+            {
+                page.BackKeyPress += this.OnBackKeyPress;
+
+                this.popup = new Popup
+                {
+                    Child = new Border
+                    {
+                        Child = new CaptionSettingsControl
+                        {
+                            ApplyCaptionSettings = this.ApplyCaptionSettings,
+                            Settings = this.Settings,
+                            Page = page,
+                            Width = page.ActualWidth,
+                            Height = page.ActualHeight,
+                            Style = this.CaptionSettingsControlStyle
+                        }
+                    }
+                };
+
+                this.popup.Opened += delegate(object sender, EventArgs e)
+                {
+                    if (this.MediaPlayer != null)
+                    {
+                        this.MediaPlayer.IsEnabled = false;
+
+                        if (this.pauseVideo)
+                        {
+                            if (this.MediaPlayer.CurrentState == MediaElementState.Playing)
+                            {
+                                this.MediaPlayer.Pause();
+                            }
+                        }
+                    }
+                };
+
+                this.popup.Closed += delegate(object sender, EventArgs e)
+                {
+                    if (this.MediaPlayer != null)
+                    {
+                        this.MediaPlayer.IsEnabled = false;
+
+                        if (this.pauseVideo)
+                        {
+                            if (this.MediaPlayer.CurrentState == MediaElementState.Paused)
+                            {
+                                this.MediaPlayer.Play();
+                            }
+                        }
+                    }
+                };
+
+                if (parent != null)
+                {
+                    parent.Children.Add(this.popup);
+                }
+
+                border = this.popup.Child as Border;
+            }
+            else
+            {
+                border = this.popup.Child as Border;
+
+                var control = border.Child as CaptionSettingsControl;
+
+                control.Page = page;
+                control.Style = this.CaptionSettingsControlStyle;
+            }
+
+            if (this.MediaPlayer == null)
+            {
+                border.Background = new SolidColorBrush(Colors.Black);
+            }
+            else
+            {
+                border.Background = null;
+            }
+
+            this.popup.IsOpen = true;
         }
 
         /// <summary>
@@ -183,6 +321,23 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             this.Save();
+        }
+
+        /// <summary>
+        /// If the popup is being shown handle the back button and hide the popup
+        /// </summary>
+        /// <param name="sender">the page</param>
+        /// <param name="e">the cancel event arguments</param>
+        private void OnBackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var page = sender as PhoneApplicationPage;
+
+            if (this.popup != null && this.popup.IsOpen)
+            {
+                e.Cancel = true;
+
+                this.popup.IsOpen = false;
+            }
         }
         #endregion
     }

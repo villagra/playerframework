@@ -38,6 +38,13 @@ namespace WP8.PlayerFramework.Test
             plugin.ShowSettingsPage(this.NavigationService);
         }
 
+        private void OnClickCaptionSettingsPopup(object sender, System.EventArgs e)
+        {
+            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+
+            plugin.ShowSettingsPopup(this, this.LayoutRoot);
+        }
+
         // Sample code for building a localized ApplicationBar
         ////private void BuildLocalizedApplicationBar()
         ////{
