@@ -208,7 +208,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 {
                     if (this.MediaPlayer != null)
                     {
-                        this.MediaPlayer.IsEnabled = false;
+                        this.MediaPlayer.IsEnabled = true;
 
                         if (this.pauseVideo)
                         {
