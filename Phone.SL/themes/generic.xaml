@@ -717,7 +717,7 @@
                             </Rectangle>
                             <Border x:Name="VerticalAvailableBar" VerticalAlignment="Bottom" IsHitTestVisible="True" Background="#00000000" />
                             <ContentPresenter x:Name="VerticalForegroundContentPresenter" Margin="{TemplateBinding Padding}" Content="{TemplateBinding VerticalForegroundContent}"/>
-                            <Rectangle x:Name="VerticalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" VerticalAlignment="Bottom" Height="{StaticResource SliderTrackThemeHeight}" IsHitTestVisible="False">
+                            <Rectangle x:Name="VerticalCenterElement" Fill="{TemplateBinding SliderThumbBackground}" DataContext="{TemplateBinding Value}" VerticalAlignment="Top" Height="{StaticResource SliderTrackThemeHeight}" IsHitTestVisible="False">
                                 <Rectangle.RenderTransform>
                                     <TranslateTransform/>
                                 </Rectangle.RenderTransform>
