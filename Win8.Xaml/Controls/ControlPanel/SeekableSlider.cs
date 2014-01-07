@@ -222,7 +222,7 @@ namespace Microsoft.PlayerFramework
                 {
                     if (Panel != null && Panel.ActualWidth > 0 && range > 0)
                     {
-                        var thumbWidth = Thumb == null ? 0 : Thumb.ActualWidth;
+                        var thumbWidth = ThumbElement == null ? 0 : ThumbElement.ActualWidth;
                         // calculate the pixel width of the available bar, need to take into
                         // account the _horizontalThumb width, otherwise the _horizontalThumb position is calculated differently
                         // then the available bar (the _horizontalThumb position takes into account the _horizontalThumb width)
@@ -248,7 +248,7 @@ namespace Microsoft.PlayerFramework
                 {
                     if (Panel != null && Panel.ActualHeight > 0 && range > 0)
                     {
-                        var thumbHeight = Thumb == null ? 0 : Thumb.ActualHeight;
+                        var thumbHeight = ThumbElement == null ? 0 : ThumbElement.ActualHeight;
                         // calculate the pixel width of the available bar, need to take into
                         // account the Thumb width, otherwise the Thumb position is calculated differently
                         // then the available bar (the Thumb position takes into account the Thumb width)
@@ -280,7 +280,7 @@ namespace Microsoft.PlayerFramework
 #endif
         {
             // take into account the scrubber _horizontalThumb size
-            double thumbWidth = (Thumb == null) ? 0 : Thumb.ActualWidth;
+            double thumbWidth = (ThumbElement == null) ? 0 : ThumbElement.ActualWidth;
             double panelWidth = Panel.ActualWidth - thumbWidth;
 
             if (panelWidth > 0)
@@ -293,11 +293,9 @@ namespace Microsoft.PlayerFramework
 #else
                 Point mousePosition = e.GetCurrentPoint(Panel).Position;
 #endif
-                double value = (mousePosition.X * range) / panelWidth;
-
-                // right now, the _horizontalThumb will be left-justified to the cursor, take
-                // into account the size of the _horizontalThumb and center it under the cursor
-                value -= ((thumbWidth / 2) * range) / Panel.ActualWidth;
+                double x = mousePosition.X - thumbWidth / 2;
+                x = Math.Min(Math.Max(0, x), panelWidth);
+                double value = (x * range) / panelWidth;
 
                 // offset from the min newValue
                 value += Minimum;
@@ -314,7 +312,7 @@ namespace Microsoft.PlayerFramework
 #endif
         {
             // take into account the scrubber _horizontalThumb size
-            double thumbHeight = (Thumb == null) ? 0 : Thumb.ActualHeight;
+            double thumbHeight = (ThumbElement == null) ? 0 : ThumbElement.ActualHeight;
             double panelHeight = Panel.ActualHeight - thumbHeight;
 
             if (panelHeight > 0)
@@ -327,11 +325,9 @@ namespace Microsoft.PlayerFramework
 #else
                 Point mousePosition = e.GetCurrentPoint(Panel).Position;
 #endif
-                double value = ((Panel.ActualHeight - mousePosition.Y) * range) / panelHeight;
-
-                // right now, the _horizontalThumb will be left-justified to the cursor, take
-                // into account the size of the _horizontalThumb and center it under the cursor
-                value -= ((thumbHeight / 2) * range) / Panel.ActualHeight;
+                double y = mousePosition.Y - thumbHeight / 2;
+                y = Math.Min(Math.Max(0, y), panelHeight);
+                double value = ((panelHeight - y) * range) / panelHeight;
 
                 // offset from the min newValue
                 value += Minimum;

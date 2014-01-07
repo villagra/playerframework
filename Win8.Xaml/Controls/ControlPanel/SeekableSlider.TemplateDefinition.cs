@@ -45,6 +45,11 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected Thumb Thumb { get; private set; }
 
+        /// <summary>
+        /// The thumb as an element instead of a Thumb. Needed for WP or custom templates that don't use a thumb control
+        /// </summary>
+        protected FrameworkElement ThumbElement { get; private set; }
+
         #region Template Children
 
         /// <inheritdoc /> 
@@ -66,12 +71,14 @@ namespace Microsoft.PlayerFramework
             {
                 Panel = GetTemplateChild(SeekableSliderTemplateParts.HorizontalTemplate) as FrameworkElement;
                 Thumb = GetTemplateChild(SeekableSliderTemplateParts.HorizontalThumb) as Thumb;
+                ThumbElement = Thumb ?? GetTemplateChild(SeekableSliderTemplateParts.HorizontalThumbElement) as FrameworkElement;
                 AvailableBar = GetTemplateChild(SeekableSliderTemplateParts.HorizontalAvailableBar) as FrameworkElement;
             }
             else
             {
                 Panel = GetTemplateChild(SeekableSliderTemplateParts.VerticalTemplate) as FrameworkElement;
                 Thumb = GetTemplateChild(SeekableSliderTemplateParts.VerticalThumb) as Thumb;
+                ThumbElement = Thumb ?? GetTemplateChild(SeekableSliderTemplateParts.VerticalThumbElement) as FrameworkElement;
                 AvailableBar = GetTemplateChild(SeekableSliderTemplateParts.VerticalAvailableBar) as FrameworkElement;
             }
         }
