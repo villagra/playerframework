@@ -116,6 +116,10 @@
     <Compile Include="..\Win81.Xaml.CaptionSettings\ViewModel\CaptionSettingsFlyoutViewModel.cs">
       <Link>ViewModel\CaptionSettingsFlyoutViewModel.cs</Link>
     </Compile>
+    <Compile Include="CaptionSettingsControl.cs" />
+    <Compile Include="CaptionSettingsPage2.xaml.cs">
+      <DependentUpon>CaptionSettingsPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\AppResources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +139,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CaptionSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CaptionSettingsPage2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

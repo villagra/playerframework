@@ -16,7 +16,8 @@
 		<shell:ApplicationBar>
 			<shell:ApplicationBar.MenuItems>
 				<shell:ApplicationBarMenuItem x:Name="CaptionSettingsButton" Text="Caption Settings" Click="OnClickCaptionSettings"/>
-			</shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="CaptionSettingsPopupButton" Text="Caption Settings Popup" Click="OnClickCaptionSettingsPopup"/>
+            </shell:ApplicationBar.MenuItems>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>
 
