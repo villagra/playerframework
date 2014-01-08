@@ -156,6 +156,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     if (this.page != null)
                     {
                         this.page.OrientationChanged += this.OnOrientationChanged;
+
+                        this.GoToOrientationState(this.page.Orientation);
                     }
                 }
             }

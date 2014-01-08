@@ -120,6 +120,7 @@
     <Compile Include="CaptionSettingsPage2.xaml.cs">
       <DependentUpon>CaptionSettingsPage2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CaptionSettingsPageOptions.cs" />
     <Compile Include="Resources\AppResources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
