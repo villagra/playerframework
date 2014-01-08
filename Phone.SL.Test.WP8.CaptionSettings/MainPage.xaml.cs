@@ -35,30 +35,43 @@ namespace WP8.PlayerFramework.Test
         {
             var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
 
-            plugin.ShowSettingsPage(this.NavigationService);
+            var options = new Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsPageOptions();
+
+            options.Orientation = PageOrientation.Portrait;
+            options.IsSystemTrayVisible = false;
+            options.SupportedOrientation = SupportedPageOrientation.PortraitOrLandscape;
+
+            plugin.ShowSettingsPage(this.NavigationService, options);
         }
 
+        /// <summary>
+        /// Show the caption settings page in portrait only with no system tray visible.
+        /// </summary>
+        /// <param name="sender">the button</param>
+        /// <param name="e">the event arguments</param>
+        private void OnClickCaptionSettingsPortrait(object sender, System.EventArgs e)
+        {
+            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+
+            var options = new Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsPageOptions();
+
+            options.Orientation = PageOrientation.Portrait;
+            options.IsSystemTrayVisible = false;
+            options.SupportedOrientation = SupportedPageOrientation.Portrait;
+
+            plugin.ShowSettingsPage(this.NavigationService, options);
+        }
+
+        /// <summary>
+        /// Show caption settings as a popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClickCaptionSettingsPopup(object sender, System.EventArgs e)
         {
             var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
 
             plugin.ShowSettingsPopup(this, this.LayoutRoot);
         }
-
-        // Sample code for building a localized ApplicationBar
-        ////private void BuildLocalizedApplicationBar()
-        ////{
-        ////    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        ////    ApplicationBar = new ApplicationBar();
-
-        ////    // Create a new button and set the text value to the localized string from AppResources.
-        ////    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        ////    appBarButton.Text = AppResources.AppBarButtonText;
-        ////    ApplicationBar.Buttons.Add(appBarButton);
-
-        ////    // Create a new menu item with the localized string from AppResources.
-        ////    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        ////    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        ////}
     }
 }

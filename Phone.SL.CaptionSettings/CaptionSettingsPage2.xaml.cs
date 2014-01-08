@@ -11,6 +11,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System;
     using System.Windows.Navigation;
     using Microsoft.Phone.Controls;
+    using Microsoft.Phone.Shell;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
 
     /// <summary>
@@ -29,6 +30,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             this.Control.Settings = Settings;
             this.Control.ApplyCaptionSettings = ApplyCaptionSettings;
             this.Control.Style = ControlStyle;
+
+            if (Options != null)
+            {
+                SystemTray.SetIsVisible(this, Options.IsSystemTrayVisible);
+
+                this.SupportedOrientations = Options.SupportedOrientation;
+                this.Orientation = Options.Orientation;
+            }
+
+            this.Control.Page = this;
         }
 
         #endregion
@@ -50,7 +61,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         public static System.Windows.Style ControlStyle { get; set; }
 
+        /// <summary>
+        /// Gets or sets the page options
+        /// </summary>
+        public static CaptionSettingsPageOptions Options { get; set; }
+
         #endregion
+
         #region Methods
         /// <summary>
         /// Navigate to the page and control

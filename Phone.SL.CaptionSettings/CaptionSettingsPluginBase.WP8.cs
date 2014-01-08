@@ -88,6 +88,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// Show the settings page if there is a CaptionsPlugin.
         /// </summary>
         /// <param name="service">the navigation service</param>
+        /// <param name="options">the phone page options</param>
         /// <example>
         /// This is the handler for an app bar menu button click event:
         /// <code>
@@ -97,7 +98,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// }
         /// </code>
         /// </example>
-        public void ShowSettingsPage(NavigationService service)
+        public void ShowSettingsPage(NavigationService service, CaptionSettingsPageOptions options = null)
         {
             bool isEnabled = false;
 
@@ -126,6 +127,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             var source = new Uri(uriString, UriKind.Relative);
 
+            CaptionSettingsPage2.Options = options;
             CaptionSettingsPage2.Settings = this.Settings;
             CaptionSettingsPage2.ApplyCaptionSettings = this.ApplyCaptionSettings;
             CaptionSettingsPage2.ControlStyle = this.CaptionSettingsControlStyle;
