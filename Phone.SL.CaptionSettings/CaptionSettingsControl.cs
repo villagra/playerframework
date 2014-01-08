@@ -519,6 +519,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             var listSelector = sender as LongListSelector;
 
+            listSelector.SelectionChanged -= this.OnFontFamilyChanged;
+
             var selectedItem = (Model.FontFamily)listSelector.SelectedItem;
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
             viewModel.Settings.FontFamily = selectedItem;
