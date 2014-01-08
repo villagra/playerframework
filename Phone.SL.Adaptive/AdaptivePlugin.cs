@@ -97,6 +97,9 @@ namespace Microsoft.PlayerFramework.Adaptive
             MediaPlayer.MediaClosed -= MediaPlayer_MediaClosed;
 #endif
             Manager.Uninitialize();
+
+            if (mediaElement is IDisposable) ((IDisposable)mediaElement).Dispose();
+            mediaElement = null;
         }
 
         void Manager_ManifestReady(object sender, EventArgs e)

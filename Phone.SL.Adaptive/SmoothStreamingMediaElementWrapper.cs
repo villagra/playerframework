@@ -11,10 +11,9 @@ namespace Microsoft.PlayerFramework.Adaptive
     /// <summary>
     /// Provides a wrapper around the SmoothStreamingMediaElement to adapt it to the IMediaElement interface.
     /// </summary>
-    public class SmoothStreamingMediaElementWrapper : SmoothStreamingMediaElement, IMediaElement
+    public class SmoothStreamingMediaElementWrapper : SmoothStreamingMediaElement, IMediaElement, IDisposable
     {
-        readonly TaskCompletionSource<object> templateAppliedTaskSource;
-
+        TaskCompletionSource<object> templateAppliedTaskSource;
         TimeSpan? pendingSeek;
         bool seekInProgress;
         TimelineMarkerCollection markers;
@@ -229,5 +228,15 @@ namespace Microsoft.PlayerFramework.Adaptive
             lastMarkerCheckTime = now;
         }
 #endif
+
+        void IDisposable.Dispose()
+        {
+            markers = null;
+            base.LogReady -= SmoothStreamingMediaElement_LogReady;
+            base.SeekCompleted -= SmoothStreamingMediaElement_SeekCompleted;
+            templateAppliedTaskSource = null;
+            base.MediaOpened -= SmoothStreamingMediaElementWrapper_MediaOpened;
+            base.Dispose();
+        }
     }
 }
