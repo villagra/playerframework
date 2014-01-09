@@ -1,0 +1,297 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.CaptionSettings"
+    xmlns:ValueConverters="using:Microsoft.PlayerFramework.CaptionSettings.ValueConverters"
+    xmlns:Controls="using:Microsoft.PlayerFramework.CaptionSettings.Controls">
+    <ValueConverters:FontFamilyConverter x:Key="FontFamilyConverter"/>
+    <ValueConverters:FontSizeConverter x:Key="FontSizeConverter" FontSize="30" />
+    <ValueConverters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    <ValueConverters:ColorTypeConverter x:Key="ColorTypeConverter"/>
+    <ValueConverters:ResourceConverter x:Key="ResourceConverter"/>
+    <ValueConverters:CapitalsConverter x:Key="CaptialsConverter"/>
+    <ControlTemplate x:Key="ColorButtonTemplate" TargetType="Button">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="PointerOver">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border"
+        							Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPointerOverBackgroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+        							Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPointerOverForegroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border"
+        							Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedBackgroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+        							Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedForegroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border"
+        							Storyboard.TargetProperty="Background">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBackgroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border"
+        							Storyboard.TargetProperty="BorderBrush">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBorderThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+        							Storyboard.TargetProperty="Foreground">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledForegroundThemeBrush}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ContentPresenter">
+                                <DiscreteObjectKeyFrame KeyTime="0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <Visibility>Collapsed</Visibility>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="FocusVisualWhite"
+        							Storyboard.TargetProperty="Opacity"
+        							To="1"
+        							Duration="0" />
+                            <DoubleAnimation Storyboard.TargetName="FocusVisualBlack"
+        							Storyboard.TargetProperty="Opacity"
+        							To="1"
+        							Duration="0" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unfocused" />
+                    <VisualState x:Name="PointerFocused" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border x:Name="Border"
+        			Background="{TemplateBinding Background}"
+        			BorderBrush="{TemplateBinding BorderBrush}"
+        			BorderThickness="{TemplateBinding BorderThickness}"
+        			Margin="3">
+                <ContentPresenter x:Name="ContentPresenter"
+        				Content="{TemplateBinding Content}"
+        				ContentTransitions="{TemplateBinding ContentTransitions}"
+        				ContentTemplate="{TemplateBinding ContentTemplate}"
+        				Margin="{TemplateBinding Padding}"
+        				HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+        				VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+        				AutomationProperties.AccessibilityView="Raw"/>
+            </Border>
+            <Rectangle x:Name="FocusVisualWhite"
+        			IsHitTestVisible="False"
+        			Stroke="{ThemeResource FocusVisualWhiteStrokeThemeBrush}"
+        			StrokeEndLineCap="Square"
+        			StrokeDashArray="1,1"
+        			Opacity="0"
+        			StrokeDashOffset="1.5" />
+            <Rectangle x:Name="FocusVisualBlack"
+        			IsHitTestVisible="False"
+        			Stroke="{ThemeResource FocusVisualBlackStrokeThemeBrush}"
+        			StrokeEndLineCap="Square"
+        			StrokeDashArray="1,1"
+        			Opacity="0"
+        			StrokeDashOffset="0.5" />
+        </Grid>
+    </ControlTemplate>
+    <Style x:Key="ColorButtonStyle" TargetType="Button">
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform Y="3" X="4"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Width" Value="38"/>
+        <Setter Property="Height" Value="38"/>
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Content" Value="{x:Null}"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template" Value="{StaticResource ColorButtonTemplate}"/>
+    </Style>
+    <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="SelectionHighlightColor" Value="{ThemeResource TextSelectionHighlightColorThemeBrush}"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Typography.StylisticSet20" Value="True"/>
+        <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
+        <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
+        <Setter Property="LineHeight" Value="20"/>
+        <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+        <Setter Property="TextLineBounds" Value="TrimToBaseline"/>
+        <Setter Property="OpticalMarginAlignment" Value="TrimSideBearings"/>
+    </Style>
+    <Style x:Key="GroupTitleTextStyle" BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+    </Style>
+    <Style x:Key="ColorGridStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0,0,0,22"/>
+    </Style>
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Margin" Value="0,0,0,22"/>
+    </Style>
+    <DataTemplate x:Key="ResourceTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="ColorTypeTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource ColorTypeConverter}}"/>
+    </DataTemplate>
+    <Style x:Key="ColorSwatchBorderStyle" TargetType="Border">
+        <Setter Property="Margin" Value="0,0,1,0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="DarkGray"/>
+    </Style>
+
+    <Style TargetType="local:CaptionSettingsControl">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CaptionSettingsControl">
+                    <Grid Background="{TemplateBinding Background}">
+                        <StackPanel Margin="{TemplateBinding Margin}">
+                            <ToggleSwitch x:Name="EnableCaptionSettings" x:Uid="EnableCaptionSettings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="-6,0,0,0" IsOn="{Binding IsEnabled, Mode=TwoWay}">
+                                <ToggleSwitch.Header>
+                                    <TextBlock TextWrapping="Wrap" Text="Ignore default caption fonts and colors" x:Uid="EnableCaptionSettingsHeader"/>
+                                </ToggleSwitch.Header>
+                            </ToggleSwitch>
+                            <StackPanel x:Name="PreviewPanel" Orientation="Vertical">
+                                <TextBlock x:Name="PreviewLabel" x:Uid="Preview" Text="Preview" Style="{StaticResource GroupTitleTextStyle}" Margin="0,0,0,10"/>
+                                <Controls:PreviewControl x:Name="Preview" 
+                        AutomationProperties.Name="Caption Preview"
+                                             AutomationProperties.LabeledBy="{Binding ElementName=PreviewLabel}"
+					    Foreground="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}}" 
+					    CaptionBackground="{Binding Settings.BackgroundColor, Converter={StaticResource ColorToBrushConverter}}" 
+					    WindowColor="{Binding Settings.WindowColor, Converter={StaticResource ColorToBrushConverter}}" 
+					    FontSize="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}}" OutlineWidth="1" 
+					    CaptionFontStyle="DropShadow" 
+					    FontFamily="{Binding Settings.FontFamily, Converter={StaticResource FontFamilyConverter}}"
+					    Typography.Capitals="{Binding Settings.FontFamily, Converter={StaticResource CaptialsConverter}}" 
+                        PreviewText="Aaa Bbb Ccc Ddd"
+                        MaxHeight="100"
+                        Margin="0,0,0,10"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>
+
+                            <ComboBox x:Name="Family" x:Uid="Family"
+				    Header="Family"
+				    ItemsSource="{Binding FontFamilies}"
+				    SelectedItem="{Binding Settings.FontFamily, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}" 
+				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" ItemTemplate="{StaticResource ResourceTemplate}"/>
+                            <ComboBox x:Name="CaptionFontSize" x:Uid="Size" ItemsSource="{Binding FontSizes}" Header="Size (%)" 
+				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
+				    Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}, Mode=TwoWay, TargetNullValue=Default}"/>
+                            <ComboBox x:Name="CaptionFontStyle" x:Uid="FontStyle" ItemsSource="{Binding FontStyles}" Header="Font Style" 
+				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
+				    Style="{StaticResource ComboBoxStyle}" 
+                    SelectedItem="{Binding Settings.FontStyle}"
+				    ItemTemplate="{StaticResource ResourceTemplate}" 
+                            />
+                            <TextBlock x:Name="Color" Text="Color" x:Uid="Character" Style="{StaticResource GroupTitleTextStyle}"/>
+                            <Grid x:Name="FontColor" Style="{StaticResource ColorGridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="FontColorType" x:Uid="FontColor" Header="Font" 
+					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
+                        ItemTemplate="{StaticResource ColorTypeTemplate}"
+                        ItemsSource="{Binding FontColorTypes}"
+					    SelectedItem="{Binding FontColorType, Mode=TwoWay}"/>
+                                <Button x:Name="FontColorButton" Style="{StaticResource ColorButtonStyle}" 
+					    IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}"
+					    Template="{StaticResource ColorButtonTemplate}" >
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <Controls:ColorPickerControl x:Name="FontColorPicker"   
+                                                             AutomationProperties.Name="Font Color Picker"
+                                                             ColorType="{Binding FontColorType}"
+                                                             SelectedColor="{Binding Settings.FontColor, Mode=TwoWay}"/>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                    <Border Style="{StaticResource ColorSwatchBorderStyle}">
+                                        <Grid Background="{Binding Settings.FontColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                                    </Border>
+                                </Button>
+                            </Grid>
+                            <Grid x:Name="BackgroundColor" Style="{StaticResource ColorGridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="BackgroundColorType" x:Uid="BackgroundColor" Header="Background"
+					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" 
+                                          ItemsSource="{Binding BackgroundColorTypes}"
+					    SelectedItem="{Binding BackgroundColorType, Mode=TwoWay}"                          
+                              ItemTemplate="{StaticResource ColorTypeTemplate}"/>
+                                <Button x:Name="BackgroundColorButton" Style="{StaticResource ColorButtonStyle}" 
+					    IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}">
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <Controls:ColorPickerControl x:Name="BackgroundColorPicker"  
+                                                             ColorType="{Binding BackgroundColorType}"
+                                                             AutomationProperties.Name="Background Color Picker"
+                                                             SelectedColor="{Binding Settings.BackgroundColor, Mode=TwoWay}"/>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                    <Border Style="{StaticResource ColorSwatchBorderStyle}">
+
+                                        <Grid Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                                    </Border>
+                                </Button>
+                            </Grid>
+                            <Grid x:Name="WindowColor" Style="{StaticResource ColorGridStyle}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="WindowColorType" x:Uid="WindowColor" Header="Window"  
+					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
+                                          ItemsSource="{Binding WindowColorTypes}"
+					    SelectedItem="{Binding WindowColorType, Mode=TwoWay}"
+                        ItemTemplate="{StaticResource ColorTypeTemplate}"/>
+
+                                <Button x:Name="WindowColorButton" Style="{StaticResource ColorButtonStyle}" 
+					    IsEnabled="{Binding IsWindowColorEnabled, Mode=OneWay}">
+                                    <Button.Flyout>
+                                        <Flyout>
+                                            <Controls:ColorPickerControl x:Name="WindowColorPicker" 
+                                                             AutomationProperties.Name="Window Color Picker"
+                                                             SelectedColor="{Binding Settings.WindowColor, Mode=TwoWay}"
+                                                             ColorType="{Binding WindowColorType}"/>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                    <Border Style="{StaticResource ColorSwatchBorderStyle}">
+
+                                        <Grid Background="{Binding Settings.WindowColor, Converter={StaticResource ColorToBrushConverter}}"/>
+                                    </Border>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

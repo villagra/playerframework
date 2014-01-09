@@ -39,7 +39,8 @@ namespace Microsoft.PlayerFramework.Samples
             player.Plugins.Add(new Microsoft.PlayerFramework.TimedText.CaptionsPlugin());
             player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
 
-            player.Plugins.Add(new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
+            // this plug-in is added in Xaml
+            ////player.Plugins.Add(new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

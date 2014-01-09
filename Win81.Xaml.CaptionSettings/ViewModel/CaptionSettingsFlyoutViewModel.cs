@@ -215,6 +215,47 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        public ColorType[] FontColorTypes
+        {
+            get
+            {
+                return new ColorType[] 
+                {
+                    ColorType.Default,
+                    ColorType.Solid,
+                    ColorType.Semitransparent,
+                };
+            }
+        }
+
+        public ColorType[] BackgroundColorTypes
+        {
+            get
+            {
+                return new ColorType[]
+                {
+                    ColorType.Default,
+                    ColorType.Solid,
+                    ColorType.Semitransparent,
+                    ColorType.Transparent
+                };
+            }
+        }
+
+        public ColorType[] WindowColorTypes
+        {
+            get
+            {
+                return new ColorType[]
+                {
+                    ColorType.Default,
+                    ColorType.Solid,
+                    ColorType.Semitransparent,
+                    ColorType.Transparent
+                };
+            }
+        }
+
         /// <summary>
         /// Gets or sets the background color type
         /// </summary>

@@ -47,7 +47,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
                 return DependencyProperty.UnsetValue;
             }
 
-            ///Setting font disables small caps
+            // Setting font disables small caps
             if (captionFontFamily == Model.FontFamily.Smallcaps)
             {
                 return DependencyProperty.UnsetValue;

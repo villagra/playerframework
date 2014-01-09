@@ -217,7 +217,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <param name="e">the routed event arguments</param>
         private void PreviewControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.CaptionFontStyle = Model.FontStyle.Default;
+            ////this.CaptionFontStyle = Model.FontStyle.Default;
         }
 
         #endregion

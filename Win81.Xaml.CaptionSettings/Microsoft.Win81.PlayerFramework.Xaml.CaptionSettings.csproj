@@ -115,11 +115,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaptionSettingFlyout.xaml.cs">
       <DependentUpon>CaptionSettingFlyout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CaptionSettingsControl.cs" />
     <Compile Include="CaptionSettingsPluginBase.cs" />
     <Compile Include="CaptionSettingsPluginBase.Win81.cs" />
     <Compile Include="ColorEventArgs.cs" />

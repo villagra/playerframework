@@ -15,10 +15,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using Windows.UI.ApplicationSettings;
     using Windows.UI.Popups;
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
 
     /// <summary>
     /// Windows 8.1 Caption Settings Plugin Base partial class
     /// </summary>
+    [StyleTypedProperty(Property = "SettingsFlyoutStyle", StyleTargetType = typeof(SettingsFlyout))]
+    [StyleTypedProperty(Property = "SettingsControlStyle", StyleTargetType = typeof(CaptionSettingsControl))]
     public partial class CaptionSettingsPluginBase
     {
         #region Fields
@@ -68,6 +71,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         public Style SettingsFlyoutStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the style for the <see cref="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsControl"/>
+        /// </summary>
+        public Style SettingsControlStyle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the icon source of the caption settings pane
+        /// </summary>
+        public Windows.UI.Xaml.Media.ImageSource IconSource { get; set; }
         #endregion
 
         #region Methods
@@ -214,7 +227,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             var flyout = new CaptionSettingFlyout
             {
                 CaptionSettings = this.Settings,
-                Style = this.SettingsFlyoutStyle
+                Style = this.SettingsFlyoutStyle,
+                ControlStyle = this.SettingsControlStyle,
+                Title = this.Label,
+                IconSource = this.IconSource
             };
 
             flyout.OnApplyCaptionSettings += this.OnApplyCaptionSettings;

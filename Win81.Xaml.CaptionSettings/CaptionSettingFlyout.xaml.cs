@@ -14,20 +14,15 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
     using Windows.ApplicationModel.Resources;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml;
 
     /// <summary>
     /// Caption Settings Flyout
     /// </summary>
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
+    [StyleTypedProperty(Property = "ControlStyle", StyleTargetType = typeof(CaptionSettingsControl))]
     public sealed partial class CaptionSettingFlyout : SettingsFlyout
     {
-        #region Fields
-        /// <summary>
-        /// the isolated storage settings key for the override default caption settings flag
-        /// </summary>
-        public const string OverrideDefaultKey = "Microsoft.PlayerFramework.OverrideDefaultCaptionSettings";
-
-        #endregion
         /// <summary>
         /// Initializes a new instance of the CaptionSettingFlyout class.
         /// </summary>
@@ -35,44 +30,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             this.InitializeComponent();
 
-            var loader = AssemblyResources.Get();
-
-            var viewModel = new CaptionSettingsFlyoutViewModel();
-
-            this.FontColorType.ItemsSource = new ColorType[] 
-            {
-                ColorType.Default,
-                ColorType.Solid,
-                ColorType.Semitransparent,
-            };
-
-            this.BackgroundColorType.ItemsSource = new ColorType[]
-            {
-                ColorType.Default,
-                ColorType.Solid,
-                ColorType.Semitransparent,
-                ColorType.Transparent
-            };
-
-            this.WindowColorType.ItemsSource = new ColorType[]
-            {
-                ColorType.Default,
-                ColorType.Solid,
-                ColorType.Semitransparent,
-                ColorType.Transparent
-            };
-
-            viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
-            this.DataContext = viewModel;
-
-            this.CaptionSettings = new CustomCaptionSettings();
-
-            object value;
-
-            if (Windows.Storage.ApplicationData.Current.LocalSettings.Values.TryGetValue(OverrideDefaultKey, out value))
-            {
-                viewModel.IsEnabled = (bool)value;
-            }
+            this.Control.OnApplyCaptionSettings += this.Control_OnApplyCaptionSettings;
         }
 
         /// <summary>
@@ -81,101 +39,48 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         public event EventHandler<CustomCaptionSettingsEventArgs> OnApplyCaptionSettings;
 
         /// <summary>
-        /// Gets or sets the caption settings
+        /// Gets or sets the custom caption settings
         /// </summary>
         public CustomCaptionSettings CaptionSettings
         {
             get
             {
-                var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-                if (dataContext.IsEnabled)
-                {
-                    return dataContext.Settings;
-                }
-
-                return null;
+                return this.Control.CaptionSettings;
             }
 
             set
             {
-                var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-                dataContext.Settings = value;
-
-                if (value != null)
-                {
-                    value.PropertyChanged += this.OnViewModelPropertyChanged;
-                }
+                this.Control.CaptionSettings = value;
             }
         }
 
         /// <summary>
-        /// Hide the color picker
+        /// Gets or sets the style for the <see cref="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsControl"/>
         /// </summary>
-        /// <param name="sender">the color picker</param>
-        /// <param name="e">the color event arguments</param>
-        private void OnFontColorSelected(object sender, ColorEventArgs e)
+        public Windows.UI.Xaml.Style ControlStyle
         {
-            this.FontColorButton.Flyout.Hide();
-        }
+            get
+            {
+                return this.Control.Style;
+            }
 
-        /// <summary>
-        /// Hide the color picker
-        /// </summary>
-        /// <param name="sender">the color picker</param>
-        /// <param name="e">the color event arguments</param>
-        private void OnBackgroundColorSelected(object sender, ColorEventArgs e)
-        {
-            this.BackgroundColorButton.Flyout.Hide();
+            set
+            {
+                this.Control.Style = value;
+            }
         }
-
+        
         /// <summary>
-        /// Hide the window color picker
+        /// Route the control's OnApplyCaptionSettings event
         /// </summary>
-        /// <param name="sender">the color picker</param>
-        /// <param name="e">the color event arguments</param>
-        private void OnWindowColorSelected(object sender, ColorEventArgs e)
-        {
-            this.WindowColorButton.Flyout.Hide();
-        }
-
-        /// <summary>
-        /// If the IsEnabled value changes on the viewModel, save that value to the local settings
-        /// </summary>
-        /// <param name="sender">the view model</param>
-        /// <param name="e">the property changed event arguments</param>
-        private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        /// <param name="sender">the CaptionSettingsControl</param>
+        /// <param name="e">the custom caption settings event arguments</param>
+        private void Control_OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
         {
             if (this.OnApplyCaptionSettings != null)
             {
-                var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-                if (e.PropertyName == "IsEnabled")
-                {
-                    Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
-                }
-
-                var settings = dataContext.IsEnabled ? this.CaptionSettings : null;
-
-                this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(settings));
+                this.OnApplyCaptionSettings(sender, e);
             }
-        }
-
-        /// <summary>
-        /// Update the font style when the user selects a different one
-        /// </summary>
-        /// <param name="sender">the font style combo box</param>
-        /// <param name="e">the selection changed event arguments</param>
-        private void OnFontStyleChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedFontStyle = (FontStyle)this.CaptionFontStyle.SelectedItem;
-
-            var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-            dataContext.Settings.FontStyle = selectedFontStyle;
-            
-            this.Preview.CaptionFontStyle = selectedFontStyle;
         }
     }
 }
