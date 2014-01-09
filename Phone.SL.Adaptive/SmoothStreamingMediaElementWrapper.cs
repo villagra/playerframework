@@ -231,7 +231,6 @@ namespace Microsoft.PlayerFramework.Adaptive
 
         void IDisposable.Dispose()
         {
-            markers = null;
             base.LogReady -= SmoothStreamingMediaElement_LogReady;
             base.SeekCompleted -= SmoothStreamingMediaElement_SeekCompleted;
             templateAppliedTaskSource = null;
