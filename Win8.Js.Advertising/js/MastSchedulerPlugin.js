@@ -225,26 +225,28 @@
                 this._isStarted = true;
                 this._mastAdapter.invokeItemStart();
 
-                var triggerPromises = [];
+                if (this.mediaPlayer.allowStartingDeferrals) {
+                    var triggerPromises = [];
 
-                for (var i = 0; i < this._activeTriggers.length; i++) {
-                    var trigger = this._activeTriggers[i];
-                    triggerPromises.push(trigger.promise);
+                    for (var i = 0; i < this._activeTriggers.length; i++) {
+                        var trigger = this._activeTriggers[i];
+                        triggerPromises.push(trigger.promise);
+                    }
+
+                    var promise = WinJS.Promise.join(triggerPromises);
+
+                    promise.done(
+                        function () {
+                            PlayerFramework.Utilities.remove(this._activePromises, promise);
+                        }.bind(this),
+                        function (e) {
+                            PlayerFramework.Utilities.remove(this._activePromises, promise);
+                        }.bind(this)
+                    );
+
+                    this._activePromises.push(promise);
+                    e.detail.setPromise(promise);
                 }
-
-                var promise = WinJS.Promise.join(triggerPromises);
-                
-                promise.done(
-                    function () {
-                        PlayerFramework.Utilities.remove(this._activePromises, promise);
-                    }.bind(this),
-                    function (e) {
-                        PlayerFramework.Utilities.remove(this._activePromises, promise);
-                    }.bind(this)
-                );
-
-                this._activePromises.push(promise);
-                e.detail.setPromise(promise);
             }
         },
 

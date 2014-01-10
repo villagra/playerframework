@@ -240,9 +240,11 @@
         },
 
         _onMediaPlayerStarting: function (e) {
-            var promise = this._playAdsOfType(PlayerFramework.Advertising.PrerollAdvertisement);
-            if (promise) {
-                e.detail.setPromise(promise);
+            if (this.mediaPlayer.allowStartingDeferrals) {
+                var promise = this._playAdsOfType(PlayerFramework.Advertising.PrerollAdvertisement);
+                if (promise) {
+                    e.detail.setPromise(promise);
+                }
             }
         },
 

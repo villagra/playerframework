@@ -255,6 +255,7 @@
             this._thumbnailImageSrc = null;
             this._mediaDescription = "";
             this._mediaMetadata = null;
+            this._allowStartingDeferrals = true;
 
             this._setElement(element);
             this._setOptions(options);
@@ -2529,6 +2530,20 @@
                 }
             },
 
+            /// <field name="allowStartingDeferrals" type="Boolean">Gets or sets whether the MediaStarting event supports deferrals before playback begins. Note: without this, pre-roll ads will not work. Interally, this causes autoplay to be set to false and play to be called automatically from the canplaythrough event (if autoplay is true).</field>
+            allowStartingDeferrals: {
+                get: function () {
+                    return this._allowStartingDeferrals;
+                },
+                set: function (value) {
+                    var oldValue = this._allowStartingDeferrals;
+                    if (oldValue !== value) {
+                        this._allowStartingDeferrals = value;
+                        this._observableMediaPlayer.notify("allowStartingDeferrals", value, oldValue);
+                    }
+                }
+            },
+
             /************************ Public Methods ************************/
             canPlayType: function (type) {
                 /// <summary>Returns a value that specifies whether the player can play a given media type.</summary>
@@ -2572,6 +2587,7 @@
                         function (result) {
                             var canceled = result.some(function (value) { return value === false; });
                             if (!canceled) {
+                                this._mediaElement.autoplay = (this.autoplay && !this.allowStartingDeferrals);
                                 this._mediaElement.setAttribute("src", deferrableOperation.src);
                             }
                             else {
@@ -2593,7 +2609,7 @@
                 }
             },
 
-            play: function () {
+            play: function (onAutoPlay) {
                 /// <summary>Loads and starts playback of the current media source.</summary>
 
                 if (this.playerState === PlayerFramework.PlayerState.started) {
@@ -2608,7 +2624,9 @@
                         function (result) {
                             var canceled = result.some(function (value) { return value === false; });
                             if (!canceled) {
-                                this._mediaElement.play();
+                                if (!onAutoPlay || this.allowStartingDeferrals) {
+                                    this._mediaElement.play();
+                                }
                                 this.playerState = PlayerFramework.PlayerState.started;
                                 this.dispatchEvent("started");
                             }
@@ -3226,7 +3244,7 @@
                 this.dispatchEvent("canplaythrough");
 
                 if (this.autoplay) {
-                    this.play();
+                    this.play(true);
                 }
             },
 
