@@ -5174,13 +5174,13 @@ namespace Microsoft.PlayerFramework
                     OnUpdate();   // simulate the timer tick ASAP so everyone can update things.
                 }
 
-                UpdateTimer.Start(); // start the update timer.
-
                 if (AutoPlay && AllowMediaStartingDeferrals)
                 {
                     _Play();
                 }
             }
+
+            UpdateTimer.Start(); // start the update timer.
         }
 
         private async Task<bool> OnMediaStartingAsync()
