@@ -115,13 +115,24 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
 
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
             object value;
 
-            if (Windows.Storage.ApplicationData.Current.LocalSettings.Values.TryGetValue(LocalSettingsKey, out value))
+            bool overrideDefaults = false;
+
+            if (localSettings.Values.TryGetValue(CaptionSettingsControl.OverrideDefaultKey, out value))
+            {
+                overrideDefaults = (bool)value;
+            }
+
+            if (overrideDefaults && localSettings.Values.TryGetValue(LocalSettingsKey, out value))
             {
                 var settingsString = value.ToString();
 
                 this.Settings = CustomCaptionSettings.FromString(settingsString);
+
+                this.IsDefault = false;
             }
             else
             {
@@ -248,6 +259,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         private void OnApplyCaptionSettings(object sender, CustomCaptionSettingsEventArgs e)
         {
             this.IsDefault = e.Settings == null;
+
+            if (!this.IsDefault)
+            {
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values.Remove(LocalSettingsKey);
+            }
 
             this.ApplyCaptionSettings(e.Settings);
         }

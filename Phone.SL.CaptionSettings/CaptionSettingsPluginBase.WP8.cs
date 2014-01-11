@@ -168,6 +168,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.Settings.PropertyChanged += this.Settings_PropertyChanged;
             }
 
+            if (!isEnabled)
+            {
+                this.Settings.BackgroundColor = null;
+                this.Settings.FontColor = null;
+                this.Settings.FontFamily = Model.FontFamily.Default;
+                this.Settings.FontSize = null;
+                this.Settings.FontStyle = Model.FontStyle.Default;
+                this.Settings.WindowColor = null;
+            }
+
             Border border = null;
 
             if (this.popup == null)
@@ -185,7 +195,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                             Page = page,
                             Width = page.ActualWidth,
                             Height = page.ActualHeight,
-                            Style = this.CaptionSettingsControlStyle
+                            Style = this.CaptionSettingsControlStyle,
+                            IsOverrideDefaults = isEnabled
                         }
                     }
                 };
@@ -237,6 +248,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
                 control.Page = page;
                 control.Style = this.CaptionSettingsControlStyle;
+                control.IsOverrideDefaults = isEnabled;
             }
 
             if (this.MediaPlayer == null)
@@ -270,10 +282,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 var xml = value.ToString();
 
                 this.Settings = CustomCaptionSettings.FromString(xml);
+
+                this.IsDefault = false;
             }
             else
             {
                 this.Settings = new CustomCaptionSettings();
+
+                this.IsDefault = true;
             }
         }
 

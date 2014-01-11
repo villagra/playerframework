@@ -91,7 +91,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             };
 
             this.DataContext = this.ViewModel;
+
+            this.ViewModel.PropertyChanged += this.OnViewModelPropertyChanged;
         }
+
         #endregion
 
         #region Properties
@@ -171,6 +174,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             get { return (Visibility)this.GetValue(PreviewVisibilityProperty); }
             set { this.SetValue(PreviewVisibilityProperty, value); }
         }        
+
+        /// <summary>
+        /// Gets or sets a value indicating whether default setting should be overridden
+        /// </summary>
+        public bool IsOverrideDefaults
+        {
+            get
+            {
+                return this.ViewModel.IsEnabled;
+            }
+
+            set
+            {
+                this.ViewModel.IsEnabled = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the view model
@@ -322,23 +341,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
             else
             {
-                IsolatedStorageSettings.ApplicationSettings[OverrideDefaultKey] = this.ViewModel.IsEnabled;
-                IsolatedStorageSettings.ApplicationSettings.Save();
+                this.NotifyApplyCaptionSettings();
 
-                if (this.ViewModel.IsEnabled)
-                {
-                    if (this.ApplyCaptionSettings != null)
-                    {
-                        this.ApplyCaptionSettings(this.ViewModel.Settings);
-                    }
-                }
-                else
-                {
-                    if (this.ApplyCaptionSettings != null)
-                    {
-                        this.ApplyCaptionSettings(null);
-                    }
-                }
+                IsolatedStorageSettings.ApplicationSettings.Save();
             }
         }
         #endregion
@@ -379,6 +384,29 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 else
                 {
                     Typography.SetCapitals(item, FontCapitals.Normal);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Notify to apply caption settings
+        /// </summary>
+        private void NotifyApplyCaptionSettings()
+        {
+            IsolatedStorageSettings.ApplicationSettings[OverrideDefaultKey] = this.ViewModel.IsEnabled;
+
+            if (this.ViewModel.IsEnabled)
+            {
+                if (this.ApplyCaptionSettings != null)
+                {
+                    this.ApplyCaptionSettings(this.ViewModel.Settings);
+                }
+            }
+            else
+            {
+                if (this.ApplyCaptionSettings != null)
+                {
+                    this.ApplyCaptionSettings(null);
                 }
             }
         }
@@ -982,6 +1010,32 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             if (!succeeded)
             {
                 System.Diagnostics.Debug.WriteLine("Failed to go to orientation state: {0}", stateName);
+            }
+        }
+
+        /// <summary>
+        /// When a ViewModel.IsEnabled property changes, set the Settings to default values 
+        /// </summary>
+        /// <param name="sender">the view model</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsEnabled")
+            {
+                this.NotifyApplyCaptionSettings();
+
+                if (!this.ViewModel.IsEnabled)
+                {
+                    this.ViewModel.Settings.BackgroundColor = null;
+                    this.ViewModel.Settings.FontColor = null;
+                    this.ViewModel.Settings.FontFamily = Model.FontFamily.Default;
+                    this.ViewModel.Settings.FontSize = null;
+                    this.ViewModel.Settings.FontStyle = Model.FontStyle.Default;
+                    this.ViewModel.Settings.WindowColor = null;
+                    this.ViewModel.WindowColorType = ColorType.Default;
+                    this.ViewModel.FontColorType = ColorType.Default;
+                    this.ViewModel.BackgroundColorType = ColorType.Default;
+                }
             }
         }
 

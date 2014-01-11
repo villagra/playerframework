@@ -45,11 +45,14 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         /// <param name="settings">the updated caption settings</param>
         public override void OnApplyCaptionSettings(CustomCaptionSettings settings)
         {
-            var selectedCaption = this.MediaPlayer.SelectedCaption;
+            if (settings == null)
+            {
+                var selectedCaptions = this.MediaPlayer.SelectedCaption;
 
-            this.MediaPlayer.SelectedCaption = null;
+                this.MediaPlayer.SelectedCaption = null;
 
-            this.MediaPlayer.SelectedCaption = selectedCaption;
+                this.MediaPlayer.SelectedCaption = selectedCaptions;
+            }
         }
 
         /// <summary>
@@ -69,7 +72,17 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
 
             captionsPlugin.CaptionParsed += this.OnCaptionParsed;
 
-            return base.OnActivate();
+            var succeeded = base.OnActivate();
+
+            if (succeeded)
+            {
+                if (this.Settings != null)
+                {
+                    this.Settings.PropertyChanged += this.Settings_PropertyChanged;
+                }
+            }
+
+            return succeeded;
         }
 
         /// <summary>
@@ -267,14 +280,26 @@ namespace Microsoft.PlayerFramework.TTML.CaptionSettings
         {
             if (this.Settings == null || this.IsDefault)
             {
-                ////Debug.WriteLine("Captions parsed without user settings.");
-
                 return;
             }
 
             var captionRegion = e.CaptionMarker as CaptionRegion;
 
             UpdateElement(captionRegion, this.Settings, 0);
+        }
+
+        /// <summary>
+        /// Update the media player captions when the settings change
+        /// </summary>
+        /// <param name="sender">the caption settings</param>
+        /// <param name="e">the property changed event arguments</param>
+        private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var selectedCaptions = this.MediaPlayer.SelectedCaption;
+
+            this.MediaPlayer.SelectedCaption = null;
+
+            this.MediaPlayer.SelectedCaption = selectedCaptions;
         }
         #endregion
     }
