@@ -11,10 +11,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System;
     using System.Diagnostics.CodeAnalysis;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
-    using Windows.ApplicationModel.Resources;
-    using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
 
     /// <summary>
     /// Caption Settings Flyout
