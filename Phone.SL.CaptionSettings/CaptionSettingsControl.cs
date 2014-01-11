@@ -152,6 +152,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     if (this.page != null)
                     {
                         this.page.OrientationChanged -= this.OnOrientationChanged;
+                        this.page.BackKeyPress -= this.OnBackKeyPress;
                     }
 
                     this.page = value;
@@ -159,6 +160,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     if (this.page != null)
                     {
                         this.page.OrientationChanged += this.OnOrientationChanged;
+                        this.page.BackKeyPress += this.OnBackKeyPress;
 
                         this.GoToOrientationState(this.page.Orientation);
                     }
@@ -188,6 +190,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             set
             {
                 this.ViewModel.IsEnabled = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the list selector is being shown.
+        /// </summary>
+        public bool IsListSelectorShown
+        {
+            get
+            {
+                return this.isListSelectorShown;
             }
         }
 
@@ -515,7 +528,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 viewModel.FontFamilies,
                 viewModel.Settings.FontFamily,
                 this.OnFontFamilyChanged,
-                "FontFamilyTemplate");
+                "FontFamilyTemplate", 
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -570,7 +584,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 viewModel.FontSizes,
                 viewModel.Settings.FontSize,
                 this.OnFontSizeChanged,
-                "FontSizeTemplate");
+                "FontSizeTemplate", 
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -613,7 +628,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 viewModel.FontStyles,
                 viewModel.Settings.FontStyle,
                 this.OnFontStyleChanged,
-                "FontStyleTemplate");
+                "FontStyleTemplate",
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -624,17 +640,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="selectedItem">the selected item</param>
         /// <param name="selectionChanged">the selection changed event handler</param>
         /// <param name="templateName">the template name</param>
+        /// <param name="listLayoutMode">the list layout mode</param>
         private void ShowListSelector(
             string title,
             IList itemsSource,
             object selectedItem,
             SelectionChangedEventHandler selectionChanged,
-            string templateName)
+            string templateName,
+            LongListSelectorLayoutMode listLayoutMode)
         {
             if (this.ListSelector == null)
             {
                 return;
             }
+
+            this.ListSelector.LayoutMode = listLayoutMode;
 
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
             
@@ -717,7 +737,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 itemsSource,
                 viewModel.FontColorType,
                 this.OnFontColorTypeChanged,
-                "ColorTypeTemplate");
+                "ColorTypeTemplate",
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -799,7 +820,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 colorTypes,
                 viewModel.BackgroundColorType,
                 this.OnBackgroundColorTypeChanged,
-                "ColorTypeTemplate");
+                "ColorTypeTemplate",
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -824,7 +846,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 colorTypes,
                 viewModel.WindowColorType,
                 this.OnWindowColorTypeChanged,
-                "ColorTypeTemplate");
+                "ColorTypeTemplate",
+                LongListSelectorLayoutMode.List);
         }
 
         /// <summary>
@@ -835,11 +858,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         private void FontColorButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-            if (this.ListSelector != null)
-            {
-                this.ListSelector.LayoutMode = LongListSelectorLayoutMode.Grid;
-            }
 
             var colors = new Microsoft.PlayerFramework.CaptionSettings.Model.Color[]
             { 
@@ -858,7 +876,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 colors,
                 viewModel.Settings.FontColor,
                 this.OnFontColorChanged,
-                "ColorTemplate");
+                "ColorTemplate",
+                LongListSelectorLayoutMode.Grid);
         }
 
         /// <summary>
@@ -925,14 +944,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the routed event arguments</param>
         private void BackgroundColorButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (this.ListSelector == null)
-            {
-                return;
-            }
-
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-            this.ListSelector.LayoutMode = LongListSelectorLayoutMode.Grid;
 
             var colors = new Microsoft.PlayerFramework.CaptionSettings.Model.Color[]
             { 
@@ -951,7 +963,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 colors,
                 viewModel.Settings.BackgroundColor,
                 this.OnBackgroundColorChanged,
-                "ColorTemplate");
+                "ColorTemplate",
+                LongListSelectorLayoutMode.Grid);
         }
 
         /// <summary>
@@ -961,14 +974,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the routed event arguments</param>
         private void WindowColorButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (this.ListSelector == null)
-            {
-                return;
-            }
-
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
-
-            this.ListSelector.LayoutMode = LongListSelectorLayoutMode.Grid;
 
             var colors = new Microsoft.PlayerFramework.CaptionSettings.Model.Color[]
             { 
@@ -987,7 +993,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 colors,
                 viewModel.Settings.WindowColor,
                 this.OnWindowColorChanged,
-                "ColorTemplate");
+                "ColorTemplate",
+                LongListSelectorLayoutMode.Grid);
         }
 
         /// <summary>
@@ -1036,6 +1043,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     this.ViewModel.FontColorType = ColorType.Default;
                     this.ViewModel.BackgroundColorType = ColorType.Default;
                 }
+            }
+        }
+
+        /// <summary>
+        /// When the Back key is pressed and a list selector is shown, cancel navigation, hide the list selector, and remove the selection changed events.
+        /// </summary>
+        /// <param name="sender">the page</param>
+        /// <param name="e">the cancel event arguments</param>
+        private void OnBackKeyPress(object sender, CancelEventArgs e)
+        {
+            if (this.isListSelectorShown)
+            {
+                this.HideListSelector();
+                this.RemoveSelectionChanged();
+                e.Cancel = true;
             }
         }
 

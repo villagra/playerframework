@@ -46,6 +46,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// should video be paused when showing the popup?
         /// </summary>
         private bool pauseVideo;
+
+        /// <summary>
+        /// the caption settings control
+        /// </summary>
+        private CaptionSettingsControl control;
         #endregion
 
         #region Properties
@@ -184,20 +189,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 page.BackKeyPress += this.OnBackKeyPress;
 
+                this.control = new CaptionSettingsControl
+                {
+                    ApplyCaptionSettings = this.ApplyCaptionSettings,
+                    Settings = this.Settings,
+                    Page = page,
+                    Width = page.ActualWidth,
+                    Height = page.ActualHeight,
+                    Style = this.CaptionSettingsControlStyle,
+                    IsOverrideDefaults = isEnabled
+                };
+
                 this.popup = new Popup
                 {
                     Child = new Border
                     {
-                        Child = new CaptionSettingsControl
-                        {
-                            ApplyCaptionSettings = this.ApplyCaptionSettings,
-                            Settings = this.Settings,
-                            Page = page,
-                            Width = page.ActualWidth,
-                            Height = page.ActualHeight,
-                            Style = this.CaptionSettingsControlStyle,
-                            IsOverrideDefaults = isEnabled
-                        }
+                        Child = this.control
                     }
                 };
 
@@ -354,7 +361,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 e.Cancel = true;
 
-                this.popup.IsOpen = false;
+                if (this.control != null && !this.control.IsListSelectorShown)
+                {
+                    this.popup.IsOpen = false;
+                }
             }
         }
         #endregion
