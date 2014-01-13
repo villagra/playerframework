@@ -199,6 +199,7 @@ copy ..\Win81.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.Caption
 copy ..\Win81.Xaml.CaptionSettings\bin\Release\CaptionSettingFlyout.xbf										Microsoft.PlayerFramework.Xaml.Win81.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
 copy ..\Win81.Xaml.CaptionSettings\bin\Release\ColorPickerControl.xbf										Microsoft.PlayerFramework.Xaml.Win81.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
 copy ..\Win81.Xaml.CaptionSettings\bin\Release\Controls\PreviewControl.xbf									Microsoft.PlayerFramework.Xaml.Win81.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Controls\
+copy ..\Win81.Xaml.CaptionSettings\bin\Release\Themes\Generic.xbf											Microsoft.PlayerFramework.Xaml.Win81.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Themes\
 
 @popd
 
