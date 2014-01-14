@@ -67,6 +67,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             DependencyProperty.Register("PreviewVisibility", typeof(Visibility), typeof(CaptionSettingsControl), new PropertyMetadata(Visibility.Visible));
 
         /// <summary>
+        /// Title dependency property
+        /// </summary>
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register(
+                "Title", 
+                typeof(string), 
+                typeof(CaptionSettingsControl), 
+                new PropertyMetadata(AppResources.CaptionSettings.ToUpper(CultureInfo.CurrentCulture), new PropertyChangedCallback(OnTitleChanged)));
+
+        /// <summary>
         /// Is the list selector being shown
         /// </summary>
         private bool isListSelectorShown = false;
@@ -98,6 +108,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Gets or sets the title of the page (default is CAPTION SETTINGS)
+        /// </summary>
+        public string Title
+        {
+            get { return (string)this.GetValue(TitleProperty); }
+            set { this.SetValue(TitleProperty, value); }
+        }
+
         /// <summary>
         /// Gets or sets the custom caption settings
         /// </summary>
@@ -402,6 +422,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         }
 
         /// <summary>
+        /// Update the page title when the Title dependency property changes
+        /// </summary>
+        /// <param name="sender">the CaptionSettingsControl</param>
+        /// <param name="args">the dependency property changed event arguments</param>
+        private static void OnTitleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            var control = sender as CaptionSettingsControl;
+
+            if (control.PageTitle != null)
+            {
+                control.PageTitle.Text = control.Title;
+            }
+        }
+
+        /// <summary>
         /// Notify to apply caption settings
         /// </summary>
         private void NotifyApplyCaptionSettings()
@@ -550,6 +585,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             this.ListSelector.SelectionChanged -= this.OnFontStyleChanged;
             this.ListSelector.SelectionChanged -= this.OnWindowColorChanged;
             this.ListSelector.SelectionChanged -= this.OnWindowColorTypeChanged;
+            this.ListSelector.SelectionChanged -= this.OnFontSizeChanged;
         }
 
         /// <summary>
@@ -660,7 +696,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             
             if (this.PageTitle != null)
             {
-                this.PageTitle.Text = title;
+                this.PageTitle.Text = title.ToUpper(CultureInfo.CurrentCulture);
             }
 
             this.ListSelector.ItemsSource = itemsSource;
@@ -702,7 +738,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         }
 
         /// <summary>
-        /// Hide the list selector
+        /// Hide the list selector and reset the page title
         /// </summary>
         private void HideListSelector()
         {
@@ -710,7 +746,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             if (this.PageTitle != null)
             {
-                this.PageTitle.Text = AppResources.CaptionSettings.ToUpper(CultureInfo.CurrentCulture);
+                this.PageTitle.Text = this.Title;
             }
 
             VisualStateManager.GoToState(this, "ListHidden", true);

@@ -37,7 +37,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
             {
                 System.Diagnostics.Debug.WriteLine("No resource string for {0}", value);
 
+                if (parameter != null && parameter.ToString() == "lower")
+                {
+                    return value.ToString().ToLower(culture);
+                }
+
                 return value;
+            }
+
+            if (parameter != null && parameter.ToString() == "lower")
+            {
+                return resourceString.ToLower(culture);
             }
 
             return resourceString;
