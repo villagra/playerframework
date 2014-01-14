@@ -133,7 +133,7 @@
     <value>Default</value>
   </data>
   <data name="DepressedEdge" xml:space="preserve">
-    <value>Depressed edge</value>
+    <value>Depressed Edge</value>
     <comment>Font Style</comment>
   </data>
   <data name="DropShadow" xml:space="preserve">
@@ -176,7 +176,7 @@
     <value>Proportional Serif</value>
   </data>
   <data name="RaisedEdge" xml:space="preserve">
-    <value>Raised edge</value>
+    <value>Raised Edge</value>
     <comment>Font Style</comment>
   </data>
   <data name="Semitransparent" xml:space="preserve">
