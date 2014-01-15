@@ -46,6 +46,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// should video be paused when showing the popup?
         /// </summary>
         private bool pauseVideo;
+
+        /// <summary>
+        /// the caption settings control
+        /// </summary>
+        private CaptionSettingsControl control;
         #endregion
 
         #region Properties
@@ -168,25 +173,38 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.Settings.PropertyChanged += this.Settings_PropertyChanged;
             }
 
+            if (!isEnabled)
+            {
+                this.Settings.BackgroundColor = null;
+                this.Settings.FontColor = null;
+                this.Settings.FontFamily = Model.FontFamily.Default;
+                this.Settings.FontSize = null;
+                this.Settings.FontStyle = Model.FontStyle.Default;
+                this.Settings.WindowColor = null;
+            }
+
             Border border = null;
 
             if (this.popup == null)
             {
                 page.BackKeyPress += this.OnBackKeyPress;
 
+                this.control = new CaptionSettingsControl
+                {
+                    ApplyCaptionSettings = this.ApplyCaptionSettings,
+                    Settings = this.Settings,
+                    Page = page,
+                    Width = page.ActualWidth,
+                    Height = page.ActualHeight,
+                    Style = this.CaptionSettingsControlStyle,
+                    IsOverrideDefaults = isEnabled
+                };
+
                 this.popup = new Popup
                 {
                     Child = new Border
                     {
-                        Child = new CaptionSettingsControl
-                        {
-                            ApplyCaptionSettings = this.ApplyCaptionSettings,
-                            Settings = this.Settings,
-                            Page = page,
-                            Width = page.ActualWidth,
-                            Height = page.ActualHeight,
-                            Style = this.CaptionSettingsControlStyle
-                        }
+                        Child = this.control
                     }
                 };
 
@@ -237,6 +255,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
                 control.Page = page;
                 control.Style = this.CaptionSettingsControlStyle;
+                control.IsOverrideDefaults = isEnabled;
             }
 
             if (this.MediaPlayer == null)
@@ -270,10 +289,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 var xml = value.ToString();
 
                 this.Settings = CustomCaptionSettings.FromString(xml);
+
+                this.IsDefault = false;
             }
             else
             {
                 this.Settings = new CustomCaptionSettings();
+
+                this.IsDefault = true;
             }
         }
 
@@ -338,7 +361,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 e.Cancel = true;
 
-                this.popup.IsOpen = false;
+                if (this.control != null && !this.control.IsListSelectorShown)
+                {
+                    this.popup.IsOpen = false;
+                }
             }
         }
         #endregion

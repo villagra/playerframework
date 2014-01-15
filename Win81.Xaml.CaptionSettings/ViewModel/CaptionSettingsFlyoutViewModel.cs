@@ -31,7 +31,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         /// <summary>
         /// are the settings enabled?
         /// </summary>
-        private bool isEnabled;
+        private bool isEnabled = false;
 
         /// <summary>
         /// the preview text
@@ -45,7 +45,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
         /// </summary>
         public CaptionSettingsFlyoutViewModel()
         {
-            this.IsEnabled = false;
 #if WINDOWS_PHONE
             this.PreviewText = Resources.AppResources.PreviewText;
 
@@ -199,15 +198,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             {
                 if (this.FontColorType != value)
                 {
-                    if (this.Settings == null)
+                    if (this.Settings != null)
                     {
-                        return;
+                        this.Settings.FontColor = SetColorType(
+                            value,
+                            this.Settings.FontColor,
+                            new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 });
                     }
-
-                    this.Settings.FontColor = SetColorType(
-                        value,
-                        this.Settings.FontColor,
-                        new Color { Alpha = 255, Blue = 255, Green = 255, Red = 255 });
 
                     this.OnPropertyChanged();
                     this.OnPropertyChanged("IsFontColorEnabled");
@@ -215,6 +212,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the font color types
+        /// </summary>
         public ColorType[] FontColorTypes
         {
             get
@@ -228,6 +228,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the background color types
+        /// </summary>
         public ColorType[] BackgroundColorTypes
         {
             get
@@ -242,6 +245,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the window color types
+        /// </summary>
         public ColorType[] WindowColorTypes
         {
             get
@@ -275,15 +281,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             {
                 if (this.BackgroundColorType != value)
                 {
-                    if (this.Settings == null)
+                    if (this.Settings != null)
                     {
-                        return;
+                        this.Settings.BackgroundColor = SetColorType(
+                            value,
+                            this.Settings.BackgroundColor,
+                            new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
                     }
-
-                    this.Settings.BackgroundColor = SetColorType(
-                        value,
-                        this.Settings.BackgroundColor,
-                        new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
 
                     this.OnPropertyChanged();
                     this.OnPropertyChanged("IsBackgroundColorEnabled");
@@ -310,15 +314,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             {
                 if (this.WindowColorType != value)
                 {
-                    if (this.Settings == null)
+                    if (this.Settings != null)
                     {
-                        return;
+                        this.Settings.WindowColor = SetColorType(
+                            value,
+                            this.Settings.WindowColor,
+                            new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
                     }
-
-                    this.Settings.WindowColor = SetColorType(
-                        value,
-                        this.Settings.WindowColor,
-                        new Color { Alpha = 0, Blue = 0, Green = 0, Red = 0 });
 
                     this.OnPropertyChanged();
                     this.OnPropertyChanged("IsWindowColorEnabled");
@@ -451,6 +453,21 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ViewModel
             if (e.PropertyName == "FontColorType" || e.PropertyName == "BackgroundColorType" || e.PropertyName == "WindowColorType")
             {
                 this.EnabledPropertyChanged();
+            }
+
+            if (e.PropertyName == "FontColor")
+            {
+                this.OnPropertyChanged("FontColorType");
+            }
+
+            if (e.PropertyName == "BackgroundColor")
+            {
+                this.OnPropertyChanged("BackgroundColorType");
+            }
+
+            if (e.PropertyName == "WindowColor")
+            {
+                this.OnPropertyChanged("WindowColorType");
             }
         }
         #endregion

@@ -156,21 +156,41 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <param name="e">the property changed event arguments</param>
         private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (this.OnApplyCaptionSettings != null)
+            if (e.PropertyName == "IsEnabled")
             {
-                if (e.PropertyName == "IsEnabled")
+                var dataContext = sender as CaptionSettingsFlyoutViewModel;
+
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
+
+                if (this.IsDefaultChanged != null)
                 {
-                    var dataContext = sender as CaptionSettingsFlyoutViewModel;
-
-                    Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
-
-                    if (this.IsDefaultChanged != null)
-                    {
-                        this.IsDefaultChanged(this, new EventArgs());
-                    }
+                    this.IsDefaultChanged(this, new EventArgs());
                 }
 
-                //// this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(this.CaptionSettings));
+                if (!dataContext.IsEnabled)
+                {
+                    // If IsEnabled is turned off, reset the caption settings to defaults.
+                    if (dataContext.Settings != null)
+                    {
+                        dataContext.Settings.BackgroundColor = null;
+                        dataContext.Settings.FontColor = null;
+                        dataContext.Settings.FontFamily = Model.FontFamily.Default;
+                        dataContext.Settings.FontSize = null;
+                        dataContext.Settings.FontStyle = Model.FontStyle.Default;
+                        dataContext.Settings.WindowColor = null;
+                    }
+
+                    dataContext.WindowColorType = ColorType.Default;
+                    dataContext.FontColorType = ColorType.Default;
+                    dataContext.BackgroundColorType = ColorType.Default;
+                }
+
+                if (this.OnApplyCaptionSettings != null)
+                {
+                    var settings = dataContext.IsEnabled ? this.CaptionSettings : null;
+
+                    this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(settings));
+                }
             }
         }
 

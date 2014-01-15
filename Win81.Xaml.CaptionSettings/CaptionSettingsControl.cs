@@ -256,15 +256,32 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the property changed event arguments</param>
         private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (this.OnApplyCaptionSettings != null)
-            {
-                var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
+            var dataContext = this.DataContext as CaptionSettingsFlyoutViewModel;
 
-                if (e.PropertyName == "IsEnabled")
+            if (e.PropertyName == "IsEnabled")
+            {
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
+            }
+
+            if (!dataContext.IsEnabled)
+            {
+                if (dataContext.Settings != null)
                 {
-                    Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
+                    dataContext.Settings.BackgroundColor = null;
+                    dataContext.Settings.FontColor = null;
+                    dataContext.Settings.FontFamily = Model.FontFamily.Default;
+                    dataContext.Settings.FontSize = null;
+                    dataContext.Settings.FontStyle = Model.FontStyle.Default;
+                    dataContext.Settings.WindowColor = null;
                 }
 
+                dataContext.WindowColorType = ColorType.Default;
+                dataContext.FontColorType = ColorType.Default;
+                dataContext.BackgroundColorType = ColorType.Default;
+            }
+
+            if (this.OnApplyCaptionSettings != null)
+            {
                 var settings = dataContext.IsEnabled ? this.CaptionSettings : null;
 
                 this.OnApplyCaptionSettings(this, new CustomCaptionSettingsEventArgs(settings));
