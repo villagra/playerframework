@@ -126,13 +126,20 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 overrideDefaults = (bool)value;
             }
 
-            if (overrideDefaults && localSettings.Values.TryGetValue(LocalSettingsKey, out value))
+            if (overrideDefaults)
             {
-                var settingsString = value.ToString();
-
-                this.Settings = CustomCaptionSettings.FromString(settingsString);
-
                 this.IsDefault = false;
+
+                if (localSettings.Values.TryGetValue(LocalSettingsKey, out value))
+                {
+                    var settingsString = value.ToString();
+
+                    this.Settings = CustomCaptionSettings.FromString(settingsString);
+                }
+                else
+                {
+                    this.Settings = new CustomCaptionSettings();
+                }
             }
             else
             {
