@@ -9,8 +9,8 @@
 namespace Microsoft.PlayerFramework.CaptionSettings.Controls
 {
     using System;
+    using System.ComponentModel;
     using Microsoft.PlayerFramework.CaptionSettings.Model;
-    using Microsoft.PlayerFramework.CaptionSettings.ViewModel;
     using Windows.UI.Core;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
@@ -26,7 +26,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
     [TemplateVisualState(GroupName = "FontStyleStates", Name = "DepressedEdge")]
     [TemplateVisualState(GroupName = "FontStyleStates", Name = "Outline")]
     [TemplateVisualState(GroupName = "FontStyleStates", Name = "DropShadow")]
-    [TemplatePart(Name = "LayoutRoot", Type = typeof(Grid))]
     #endregion
     public class PreviewControl : Control
     {
@@ -58,6 +57,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// </summary>
         public static readonly DependencyProperty PreviewTextProperty =
             DependencyProperty.Register("PreviewText", typeof(string), typeof(PreviewControl), new PropertyMetadata("Aaa Bbb Ccc", new PropertyChangedCallback(OnPreviewTextChanged)));
+
         #endregion
 
         #region Constructors
@@ -66,8 +66,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// </summary>
         public PreviewControl()
         {
-            this.ViewModel = new PreviewControlViewModel();
-
             this.DefaultStyleKey = typeof(PreviewControl);
         }
         #endregion
@@ -76,6 +74,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <summary>
         /// Gets or sets the caption background brush
         /// </summary>
+        [Category("Captions Settings")]
         public Brush CaptionBackground
         {
             get
@@ -92,6 +91,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <summary>
         /// Gets or sets the window color
         /// </summary>
+        [Category("Captions Settings")]
         public Brush WindowColor
         {
             get { return (Brush)this.GetValue(WindowColorProperty); }
@@ -101,6 +101,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <summary>
         /// Gets or sets the caption font style
         /// </summary>
+        [Category("Captions Settings")]
         public FontStyle CaptionFontStyle
         {
             get { return (FontStyle)this.GetValue(CaptionFontStyleProperty); }
@@ -110,54 +111,19 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         /// <summary>
         /// Gets or sets the outline width
         /// </summary>
-        public double OutlineWidth
-        {
-            get
-            {
-                return this.ViewModel.OutlineWidth;
-            }
-
-            set
-            {
-                this.ViewModel.OutlineWidth = value;
-            }
-        }
+        /// <remarks>This isn't working yet - modify the CompositeTransform elements in the control template to adjust the width of the outlines.</remarks>
+        [Category("Captions Settings")]
+        public double OutlineWidth { get; set; }
         
         /// <summary>
         /// Gets or sets the preview text
         /// </summary>
+        [Category("Captions Settings")]
         public string PreviewText
         {
             get { return (string)this.GetValue(PreviewTextProperty); }
             set { this.SetValue(PreviewTextProperty, value); }
         }        
-
-        /// <summary>
-        /// Gets or sets the preview control view model
-        /// </summary>
-        private PreviewControlViewModel ViewModel { get; set; }
-
-        /// <summary>
-        /// Gets or sets the layout root panel
-        /// </summary>
-        private Grid LayoutRoot { get; set; }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// Set the LayoutRoot.DataContext when the template is applied
-        /// </summary>
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            this.LayoutRoot = this.GetTemplateChild("LayoutRoot") as Grid;
-
-            if (this.LayoutRoot != null)
-            {
-                this.LayoutRoot.DataContext = this.ViewModel;
-            }
-        }
         #endregion
 
         #region Implementation
@@ -182,8 +148,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
         private static void OnPreviewTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
             var control = sender as PreviewControl;
-
-            control.ViewModel.PreviewText = control.PreviewText;
         }
 
         /// <summary>
@@ -199,17 +163,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
             else
             {
                 await this.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
+                    CoreDispatcherPriority.Low,
                     new DispatchedHandler(delegate
                     {
                         var stateName = this.CaptionFontStyle.ToString();
 
-                        ////System.Diagnostics.Debug.WriteLine("Changing Preview state to {0}", stateName);
-
+                        System.Diagnostics.Debug.WriteLine("Changing Preview state to {0}", stateName);
+                        
                         var stateChanged = VisualStateManager.GoToState(this, stateName, useTransitions);
 
                         System.Diagnostics.Debug.WriteLineIf(!stateChanged, "Could not change preview state to " + stateName);
-                    }));
+                 }));
             }
         }
         #endregion

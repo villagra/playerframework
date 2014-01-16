@@ -53,11 +53,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             var viewModel = new CaptionSettingsFlyoutViewModel();
 
-            viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
-
             this.DataContext = viewModel;
 
             this.CaptionSettings = new CustomCaptionSettings();
+
+            viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
 
             object value;
 
@@ -263,7 +263,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 Windows.Storage.ApplicationData.Current.LocalSettings.Values[OverrideDefaultKey] = dataContext.IsEnabled;
             }
 
-            if (!dataContext.IsEnabled)
+            if (!dataContext.IsEnabled && e.PropertyName == "IsEnabled")
             {
                 if (dataContext.Settings != null)
                 {
@@ -278,6 +278,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 dataContext.WindowColorType = ColorType.Default;
                 dataContext.FontColorType = ColorType.Default;
                 dataContext.BackgroundColorType = ColorType.Default;
+
+                if (this.CaptionFontStyle != null)
+                {
+                    this.CaptionFontStyle.SelectedItem = Model.FontStyle.Default;
+                }
             }
 
             if (this.OnApplyCaptionSettings != null)

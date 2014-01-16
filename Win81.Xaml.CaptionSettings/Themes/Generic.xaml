@@ -193,7 +193,6 @@
                         Margin="0,0,0,10"/>
                             </StackPanel>
                             <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>
-
                             <ComboBox x:Name="Family" x:Uid="Family"
 				    Header="Family"
 				    ItemsSource="{Binding FontFamilies}"
@@ -302,16 +301,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Controls:PreviewControl">
                     <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
-                        <Grid.Resources>
-                            <ValueConverters:NegateConverter x:Key="NegateConverter"/>
-                            <Style x:Key="PreviewTextStyle" TargetType="TextBlock" >
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="TextAlignment" Value="Center"/>
-                                <Setter Property="Text" Value="Aaa Bbb Ccc"/>
-                            </Style>
-                        </Grid.Resources>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="FontStyleStates">
                                 <VisualState x:Name="Default"/>
@@ -448,6 +437,15 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Grid.Resources>
+                            <Style x:Key="PreviewTextStyle" TargetType="TextBlock" >
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="Text" Value="Aaa Bbb Ccc"/>
+                            </Style>
+                        </Grid.Resources>
                         <Border x:Name="PreviewWindow" Margin="{TemplateBinding BorderThickness}" Background="{TemplateBinding WindowColor}">
                             <Grid x:Name="PreviewBackground" Background="{TemplateBinding CaptionBackground}" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                 <Grid.RenderTransform>
@@ -457,19 +455,21 @@
                                     <TextBlock x:Name="TopLeft" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+                                            <CompositeTransform TranslateX="-1" 
+                                                                TranslateY="-1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="Top" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+                                            <CompositeTransform TranslateY="-1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="TopRight" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform TranslateX="{Binding OutlineWidth}" TranslateY="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+                                            <CompositeTransform TranslateX="1" 
+                                                                TranslateY="-1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="Left" Text="{TemplateBinding PreviewText}" 
@@ -477,7 +477,7 @@
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
                                             <CompositeTransform 
-            					TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}"/>
+            					TranslateX="-1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="Right" 
@@ -485,7 +485,7 @@
             			Style="{StaticResource PreviewTextStyle}"  
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform TranslateX="{Binding OutlineWidth}"/>
+                                            <CompositeTransform TranslateX="1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="BottomLeft" 
@@ -494,8 +494,8 @@
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
                                         <TextBlock.RenderTransform>
                                             <CompositeTransform 
-            					TranslateX="{Binding OutlineWidth, Converter={StaticResource NegateConverter}}" 
-            					TranslateY="{Binding OutlineWidth}"/>
+            					TranslateX="-1" 
+            					TranslateY="1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="Bottom" 
@@ -504,8 +504,7 @@
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" 
             			Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform 
-            					TranslateY="{Binding OutlineWidth}"/>
+                                            <CompositeTransform TranslateY="1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <TextBlock x:Name="BottomRight" 
@@ -513,8 +512,8 @@
             			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" 
             			Foreground="Black" >
                                         <TextBlock.RenderTransform>
-                                            <CompositeTransform TranslateX="{Binding OutlineWidth}" 
-            					TranslateY="{Binding OutlineWidth}"/>
+                                            <CompositeTransform TranslateX="1" 
+            					TranslateY="1"/>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                 </Grid>
