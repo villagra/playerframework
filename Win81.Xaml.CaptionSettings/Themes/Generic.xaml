@@ -164,6 +164,7 @@
         <Setter Property="BorderBrush" Value="DarkGray"/>
     </Style>
 
+    <!-- Caption Settings Control -->
     <Style TargetType="local:CaptionSettingsControl">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Template">
@@ -293,6 +294,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!-- Preview Control -->
     <Style TargetType="Controls:PreviewControl">
         <Setter Property="Padding" Value="10"/>
         <Setter Property="BorderThickness" Value="10"/>
@@ -523,6 +526,52 @@
                             </Grid>
                         </Border>
 
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Color Picker Control -->
+    <Style TargetType="Controls:ColorPickerControl">
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Controls:ColorPickerControl">
+                    <Grid Background="{TemplateBinding Background}" >
+                        <Grid.Resources>
+                            <Style x:Key="ColorSwatch" TargetType="Rectangle">
+                                <Setter Property="Margin" Value="5"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle x:Name="White" Fill="White" AutomationProperties.Name="White" Style="{StaticResource ColorSwatch}"
+                                   Stroke="{TemplateBinding Foreground}"/>
+                        <Rectangle x:Name="Black" Fill="Black" AutomationProperties.Name="Black" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}" Grid.Column="1"/>
+                        <Rectangle x:Name="Red" Fill="Red" AutomationProperties.Name="Red" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Column="2"/>
+                        <Rectangle x:Name="Green" Fill="Green" AutomationProperties.Name="Green" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Column="3"/>
+                        <Rectangle x:Name="Blue" Fill="Blue" AutomationProperties.Name="Blue" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Row="1"/>
+                        <Rectangle x:Name="Yellow" Fill="Yellow" AutomationProperties.Name="Yellow" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Row="1" Grid.Column="1"/>
+                        <Rectangle x:Name="Magenta" Fill="Magenta" AutomationProperties.Name="Magenta" 
+                                   Stroke="{TemplateBinding Foreground}" Style="{StaticResource ColorSwatch}"  Grid.Row="1" Grid.Column="2" />
+                        <Rectangle x:Name="Cyan" Fill="Cyan" AutomationProperties.Name="Cyan" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}" Grid.Row="1" Grid.Column="3"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
