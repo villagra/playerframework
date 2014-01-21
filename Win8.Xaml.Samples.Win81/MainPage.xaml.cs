@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.PlayerFramework.Samples.Common;
 using Microsoft.PlayerFramework.Samples.Data;
+using Windows.UI.ApplicationSettings;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,12 @@ namespace Microsoft.PlayerFramework.Samples
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        /// <summary>
+        /// A CaptionSettingsPlugin to demonstrate calling the settings pane 
+        /// without a MediaPlayer.
+        /// </summary>
+        private TTML.CaptionSettings.TTMLCaptionSettingsPlugin captionSettingsPlugin;
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -90,14 +97,23 @@ namespace Microsoft.PlayerFramework.Samples
         /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.captionSettingsPlugin = new TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+            
+            SettingsPane.GetForCurrentView().CommandsRequested += this.captionSettingsPlugin.SettingsPaneCommandsRequested;
+
             navigationHelper.OnNavigatedTo(e);
         }
 
+        /// <summary>
+        /// Navigate from the page and remove the caption settings pane
+        /// </summary>
+        /// <param name="e">the navigation event arguments</param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            SettingsPane.GetForCurrentView().CommandsRequested -= this.captionSettingsPlugin.SettingsPaneCommandsRequested;
+
             navigationHelper.OnNavigatedFrom(e);
         }
 
