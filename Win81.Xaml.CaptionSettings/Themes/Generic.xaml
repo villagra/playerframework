@@ -164,6 +164,7 @@
         <Setter Property="BorderBrush" Value="DarkGray"/>
     </Style>
 
+    <!-- Caption Settings Control -->
     <Style TargetType="local:CaptionSettingsControl">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Template">
@@ -193,7 +194,6 @@
                         Margin="0,0,0,10"/>
                             </StackPanel>
                             <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>
-
                             <ComboBox x:Name="Family" x:Uid="Family"
 				    Header="Family"
 				    ItemsSource="{Binding FontFamilies}"
@@ -289,6 +289,289 @@
                                 </Button>
                             </Grid>
                         </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Preview Control -->
+    <Style TargetType="Controls:PreviewControl">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderThickness" Value="10"/>
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Controls:PreviewControl">
+                    <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FontStyleStates">
+                                <VisualState x:Name="Default"/>
+                                <VisualState x:Name="None">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edges">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="RaisedEdge">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopLeft">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Top">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopRight">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Left">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomLeft">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DepressedEdge">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopRight">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Right">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomLeft">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Bottom">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomRight">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Outline">
+                                </VisualState>
+                                <VisualState x:Name="DropShadow">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopLeft">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Top">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="TopRight">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Left">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BottomLeft">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0" To="0.5" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Edges"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid.Resources>
+                            <Style x:Key="PreviewTextStyle" TargetType="TextBlock" >
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="Text" Value="Aaa Bbb Ccc"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Border x:Name="PreviewWindow" Margin="{TemplateBinding BorderThickness}" Background="{TemplateBinding WindowColor}">
+                            <Grid x:Name="PreviewBackground" Background="{TemplateBinding CaptionBackground}" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <CompositeTransform/>
+                                </Grid.RenderTransform>
+                                <Grid x:Name="Edges" CacheMode="BitmapCache">
+                                    <TextBlock x:Name="TopLeft" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateX="-1" 
+                                                                TranslateY="-1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="Top" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateY="-1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="TopRight" Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateX="1" 
+                                                                TranslateY="-1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="Left" Text="{TemplateBinding PreviewText}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform 
+            					TranslateX="-1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="Right" 
+            			Text="{TemplateBinding PreviewText}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateX="1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="BottomLeft" 
+            			Text="{TemplateBinding PreviewText}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform 
+            					TranslateX="-1" 
+            					TranslateY="1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="Bottom" 
+            			Text="{TemplateBinding PreviewText}" 
+            			Style="{StaticResource PreviewTextStyle}"  
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" 
+            			Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateY="1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                    <TextBlock x:Name="BottomRight" 
+            			Text="{TemplateBinding PreviewText}" Style="{StaticResource PreviewTextStyle}" 
+            			FontSize="{TemplateBinding FontSize}" RenderTransformOrigin="0.5,0.5" 
+            			Foreground="Black" >
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform TranslateX="1" 
+            					TranslateY="1"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                </Grid>
+                                <TextBlock Text="{TemplateBinding PreviewText}" x:Name="Center" Style="{StaticResource PreviewTextStyle}" 
+                           Foreground="{TemplateBinding Foreground}" 
+                           FontSize="{TemplateBinding FontSize}" />
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Color Picker Control -->
+    <Style TargetType="Controls:ColorPickerControl">
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Controls:ColorPickerControl">
+                    <Grid Background="{TemplateBinding Background}" >
+                        <Grid.Resources>
+                            <Style x:Key="ColorSwatch" TargetType="Rectangle">
+                                <Setter Property="Margin" Value="5"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle x:Name="White" Fill="White" AutomationProperties.Name="White" Style="{StaticResource ColorSwatch}"
+                                   Stroke="{TemplateBinding Foreground}"/>
+                        <Rectangle x:Name="Black" Fill="Black" AutomationProperties.Name="Black" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}" Grid.Column="1"/>
+                        <Rectangle x:Name="Red" Fill="Red" AutomationProperties.Name="Red" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Column="2"/>
+                        <Rectangle x:Name="Green" Fill="Green" AutomationProperties.Name="Green" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Column="3"/>
+                        <Rectangle x:Name="Blue" Fill="Blue" AutomationProperties.Name="Blue" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Row="1"/>
+                        <Rectangle x:Name="Yellow" Fill="Yellow" AutomationProperties.Name="Yellow" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}"  Grid.Row="1" Grid.Column="1"/>
+                        <Rectangle x:Name="Magenta" Fill="Magenta" AutomationProperties.Name="Magenta" 
+                                   Stroke="{TemplateBinding Foreground}" Style="{StaticResource ColorSwatch}"  Grid.Row="1" Grid.Column="2" />
+                        <Rectangle x:Name="Cyan" Fill="Cyan" AutomationProperties.Name="Cyan" Stroke="{TemplateBinding Foreground}" 
+                                   Style="{StaticResource ColorSwatch}" Grid.Row="1" Grid.Column="3"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

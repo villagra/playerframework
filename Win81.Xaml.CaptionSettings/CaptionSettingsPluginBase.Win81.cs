@@ -96,16 +96,67 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 fontFamilyMap = new Dictionary<FontFamily, string>();
 
                 fontFamilyMap[FontFamily.Default] = null;
-                fontFamilyMap[FontFamily.MonospaceSerif]        = GetDefaultFontFamily(fontFamily, "Courier New");
-                fontFamilyMap[FontFamily.ProportionalSerif]     = GetDefaultFontFamily(fontFamily, "Times New Roman");
-                fontFamilyMap[FontFamily.MonospaceSansSerif]    = GetDefaultFontFamily(fontFamily, "Consolas");
+                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
+                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
+                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
                 fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
-                fontFamilyMap[FontFamily.Casual]                = GetDefaultFontFamily(fontFamily, "Segoe Print");
-                fontFamilyMap[FontFamily.Cursive]               = GetDefaultFontFamily(fontFamily, "Segoe Script");
-                fontFamilyMap[FontFamily.Smallcaps]             = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Segoe Print");
+                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Segoe Script");
+                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
             }
 
             return fontFamilyMap[fontFamily];
+        }
+
+        /// <summary>
+        /// The SettingsPane CommandsRequested event handler that can be used on a page that does not have a MediaPlayer on it.
+        /// </summary>
+        /// <param name="sender">the Settings Pane</param>
+        /// <param name="args">the settings pane commands requested event arguments</param>
+        /// <example>
+        /// When navigating to the page, instantiate and save a reference to 
+        /// the plug-in, then attach the CommandsRequested event handler for the 
+        /// SettingsPane.
+        /// <code>
+        /// this.plugin = new TTMLCaptionSettingsPlugin();
+        /// 
+        /// SettingsPane.GetForCurrentView().CommandsRequested += this.plugin.SettingsPaneCommandsRequested;
+        /// </code>
+        /// When navigating from the page, detach the event handler from the 
+        /// SettingsPane.
+        /// <code>
+        /// SettingsPane.GetForCurrentView().CommandsRequested -= this.plugin.SettingsPaneCommandsRequested;
+        /// </code>
+        /// </example>
+        public void SettingsPaneCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            if (this.Settings == null)
+            {
+                this.InitializeSettings();
+            }
+
+            var command = (from item in args.Request.ApplicationCommands
+                           where item.Id.ToString() == this.SettingsCommandId
+                           select item).FirstOrDefault();
+
+            // only add the command if it isn't already in the list.
+            if (command == null)
+            {
+                // the command isn't already in the list
+                command = new SettingsCommand(
+                    this.SettingsCommandId,
+                    this.Label,
+                    new Windows.UI.Popups.UICommandInvokedHandler(this.OnShowCaptionSettings));
+
+                if (this.SettingsCommandIndex.HasValue)
+                {
+                    args.Request.ApplicationCommands.Insert(this.SettingsCommandIndex.Value, command);
+                }
+                else
+                {
+                    args.Request.ApplicationCommands.Add(command);
+                }
+            }
         }
 
         /// <summary>
@@ -115,31 +166,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
 
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
-            object value;
-
-            bool overrideDefaults = false;
-
-            if (localSettings.Values.TryGetValue(CaptionSettingsControl.OverrideDefaultKey, out value))
-            {
-                overrideDefaults = (bool)value;
-            }
-
-            if (overrideDefaults && localSettings.Values.TryGetValue(LocalSettingsKey, out value))
-            {
-                var settingsString = value.ToString();
-
-                this.Settings = CustomCaptionSettings.FromString(settingsString);
-
-                this.IsDefault = false;
-            }
-            else
-            {
-                this.Settings = new CustomCaptionSettings();
-
-                this.IsDefault = true;
-            }
+            this.InitializeSettings();
         }
 
         /// <summary>
@@ -190,6 +217,45 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         }
 
         /// <summary>
+        /// Initialize the settings
+        /// </summary>
+        private void InitializeSettings()
+        {
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            object value;
+
+            bool overrideDefaults = false;
+
+            if (localSettings.Values.TryGetValue(CaptionSettingsControl.OverrideDefaultKey, out value))
+            {
+                overrideDefaults = (bool)value;
+            }
+
+            if (overrideDefaults)
+            {
+                this.IsDefault = false;
+
+                if (localSettings.Values.TryGetValue(LocalSettingsKey, out value))
+                {
+                    var settingsString = value.ToString();
+
+                    this.Settings = CustomCaptionSettings.FromString(settingsString);
+                }
+                else
+                {
+                    this.Settings = new CustomCaptionSettings();
+                }
+            }
+            else
+            {
+                this.Settings = new CustomCaptionSettings();
+
+                this.IsDefault = true;
+            }
+        }
+
+        /// <summary>
         /// Adds the caption settings command to the plug-in
         /// </summary>
         /// <param name="sender">the settings pane</param>
@@ -201,27 +267,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 return;
             }
 
-            var command = (from item in args.Request.ApplicationCommands
-                                where item.Id.ToString() == this.SettingsCommandId
-                                select item).FirstOrDefault();
-
-            if (command == null)
-            {
-                // the command isn't already in the list
-                command = new SettingsCommand(
-                    this.SettingsCommandId,
-                    this.Label,
-                    new Windows.UI.Popups.UICommandInvokedHandler(this.OnShowCaptionSettings));
-
-                if (this.SettingsCommandIndex.HasValue)
-                {
-                    args.Request.ApplicationCommands.Insert(this.SettingsCommandIndex.Value, command);
-                }
-                else
-                {
-                    args.Request.ApplicationCommands.Add(command);
-                }
-            }
+            this.SettingsPaneCommandsRequested(sender, args);
         }
 
         /// <summary>

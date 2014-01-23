@@ -284,11 +284,18 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 isCustomCaptionSettings = (bool)value;
             }
 
-            if (isCustomCaptionSettings && IsolatedStorageSettings.ApplicationSettings.TryGetValue(LocalSettingsKey, out value))
+            if (isCustomCaptionSettings)
             {
-                var xml = value.ToString();
+                if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(LocalSettingsKey, out value))
+                {
+                    var xml = value.ToString();
 
-                this.Settings = CustomCaptionSettings.FromString(xml);
+                    this.Settings = CustomCaptionSettings.FromString(xml);
+                }
+                else
+                {
+                    this.Settings = new CustomCaptionSettings();
+                }
 
                 this.IsDefault = false;
             }

@@ -50,25 +50,24 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             ////System.Diagnostics.Debug.WriteLineIf(settings != null, "Applying Caption Settings: " + settings.ToXmlString());
 
-            if (this.MediaPlayer == null)
-            {
-                return;
-            }
-
-            // 12/23/2013 - set to default if a null caption settings is applied
-            // but do not set to false if a settings value is applied
             this.IsDefault = settings == null;
-            ////{
-            ////    this.IsDefault = true;
-            ////}
 
-            if (this.IsDefault)
+            if (this.MediaPlayer != null)
             {
-                this.OnApplyCaptionSettings(null);
-            }
-            else
-            {
-                this.OnApplyCaptionSettings(settings);
+                // 12/23/2013 - set to default if a null caption settings is applied
+                // but do not set to false if a settings value is applied
+                ////{
+                ////    this.IsDefault = true;
+                ////}
+
+                if (this.IsDefault)
+                {
+                    this.OnApplyCaptionSettings(null);
+                }
+                else
+                {
+                    this.OnApplyCaptionSettings(settings);
+                }
             }
 
             if (this.OnSaveCaptionSettings != null)
