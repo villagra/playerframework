@@ -97,7 +97,12 @@
             this._bindEvent("fullscreenchange", this.mediaPlayer, this._onMediaPlayerFullScreenChange);
             this._bindEvent("error", this.mediaPlayer, this._onMediaPlayerError);
             this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
-            this._bindEvent("MSPointerOver", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            if (window.PointerEvent) {
+                this._bindEvent("pointerover", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            }
+            else {
+                this._bindEvent("MSPointerOver", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            }
             
             this._mastAdapter.setContentTitle("");
             this._mastAdapter.setContentUrl(this.mediaPlayer.src);
@@ -140,7 +145,12 @@
             this._unbindEvent("fullscreenchange", this.mediaPlayer, this._onMediaPlayerFullScreenChange);
             this._unbindEvent("error", this.mediaPlayer, this._onMediaPlayerError);
             this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
-            this._unbindEvent("MSPointerOver", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            if (window.PointerEvent) {
+                this._unbindEvent("pointerover", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            }
+            else {
+                this._unbindEvent("MSPointerOver", this.mediaPlayer.element, this._onMediaPlayerMSPointerOver);
+            }
         },
 
         _onUpdate: function () {

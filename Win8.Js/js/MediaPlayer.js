@@ -2904,10 +2904,18 @@
                 // events
                 this._bindEvent("focus", this._element, this._onElementFocus);
                 this._bindEvent("keydown", this._element, this._onElementKeyDown);
-                this._bindEvent("MSPointerDown", this._element, this._onElementMSPointerDown);
-                this._bindEvent("MSPointerMove", this._element, this._onElementMSPointerMove);
-                this._bindEvent("MSPointerOver", this._element, this._onElementMSPointerOver);
-                this._bindEvent("MSPointerOut", this._element, this._onElementMSPointerOut);
+                if (window.PointerEvent) {
+                    this._bindEvent("pointerdown", this._element, this._onElementMSPointerDown);
+                    this._bindEvent("pointermove", this._element, this._onElementMSPointerMove);
+                    this._bindEvent("pointerover", this._element, this._onElementMSPointerOver);
+                    this._bindEvent("pointerout", this._element, this._onElementMSPointerOut);
+                }
+                else {
+                    this._bindEvent("MSPointerDown", this._element, this._onElementMSPointerDown);
+                    this._bindEvent("MSPointerMove", this._element, this._onElementMSPointerMove);
+                    this._bindEvent("MSPointerOver", this._element, this._onElementMSPointerOver);
+                    this._bindEvent("MSPointerOut", this._element, this._onElementMSPointerOut);
+                }
 
                 // media element events
                 this._bindEvent("canplay", this._mediaElement, this._onMediaElementCanPlay);

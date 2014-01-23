@@ -391,8 +391,13 @@
             this._mediaQualityElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-media-quality-control", "data-win-control": "PlayerFramework.UI.Indicator", "data-win-bind": "winControl.value: mediaQuality; winControl.label: mediaQualityLabel; winControl.tooltip: mediaQualityTooltip; winControl.disabled: isMediaQualityDisabled;" }]);
 
             WinJS.UI.processAll(this._element);
-
-            this._bindEvent("MSPointerDown", this._element, this._onElementMSPointerDown);
+            
+            if (window.PointerEvent) {
+                this._bindEvent("pointerdown", this._element, this._onElementMSPointerDown);
+            }
+            else {
+                this._bindEvent("MSPointerDown", this._element, this._onElementMSPointerDown);
+            }
         },
 
         _setOptions: function (options) {
