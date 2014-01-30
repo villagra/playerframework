@@ -168,7 +168,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.Controls
                     {
                         var stateName = this.CaptionFontStyle.ToString();
 
-                        System.Diagnostics.Debug.WriteLine("Changing Preview state to {0}", stateName);
+                        ////System.Diagnostics.Debug.WriteLine("Changing Preview state to {0}", stateName);
                         
                         var stateChanged = VisualStateManager.GoToState(this, stateName, useTransitions);
 
