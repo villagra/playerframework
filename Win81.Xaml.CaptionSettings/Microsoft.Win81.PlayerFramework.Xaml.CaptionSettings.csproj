@@ -120,6 +120,7 @@
     <Compile Include="CaptionSettingsPluginBase.cs" />
     <Compile Include="CaptionSettingsPluginBase.Win81.cs" />
     <Compile Include="ColorEventArgs.cs" />
+    <Compile Include="Controls\CaptionComboBox.cs" />
     <Compile Include="Controls\ColorPickerControl.cs" />
     <Compile Include="Controls\PreviewControl.cs" />
     <Compile Include="CustomCaptionSettingsEventArgs.cs" />

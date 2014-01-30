@@ -348,15 +348,15 @@
                         Margin="0,0,0,10"/>
                             </StackPanel>
                             <TextBlock x:Name="Font" Text="Font" x:Uid="Font" Style="{StaticResource GroupTitleTextStyle}"/>
-                            <ComboBox x:Name="Family" x:Uid="Family"
+                            <Controls:CaptionComboBox x:Name="Family" x:Uid="Family"
 				    Header="Family"
 				    ItemsSource="{Binding FontFamilies}"
 				    SelectedItem="{Binding Settings.FontFamily, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}" 
 				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" ItemTemplate="{StaticResource ResourceTemplate}"/>
-                            <ComboBox x:Name="CaptionFontSize" x:Uid="Size" ItemsSource="{Binding FontSizes}" Header="Size (%)" 
+                            <Controls:CaptionComboBox x:Name="CaptionFontSize" x:Uid="Size" ItemsSource="{Binding FontSizes}" Header="Size (%)" 
 				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
 				    Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding Settings.FontSize, Converter={StaticResource FontSizeConverter}, Mode=TwoWay, TargetNullValue=Default}"/>
-                            <ComboBox x:Name="CaptionFontStyle" x:Uid="FontStyle" ItemsSource="{Binding FontStyles}" Header="Font Style" 
+                            <Controls:CaptionComboBox x:Name="CaptionFontStyle" x:Uid="FontStyle" ItemsSource="{Binding FontStyles}" Header="Font Style" 
 				    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
 				    Style="{StaticResource ComboBoxStyle}" 
                     SelectedItem="{Binding Settings.FontStyle}"
@@ -368,7 +368,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox x:Name="FontColorType" x:Uid="FontColor" Header="Font" 
+                                <Controls:CaptionComboBox x:Name="FontColorType" x:Uid="FontColor" Header="Font" 
 					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
                         ItemTemplate="{StaticResource ColorTypeTemplate}"
                         ItemsSource="{Binding FontColorTypes}"
@@ -394,7 +394,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox x:Name="BackgroundColorType" x:Uid="BackgroundColor" Header="Background"
+                                <Controls:CaptionComboBox x:Name="BackgroundColorType" x:Uid="BackgroundColor" Header="Background"
 					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}" 
                                           ItemsSource="{Binding BackgroundColorTypes}"
 					    SelectedItem="{Binding BackgroundColorType, Mode=TwoWay}"                          
@@ -420,7 +420,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <ComboBox x:Name="WindowColorType" x:Uid="WindowColor" Header="Window"  
+                                <Controls:CaptionComboBox x:Name="WindowColorType" x:Uid="WindowColor" Header="Window"  
 					    IsEnabled="{Binding IsOn, ElementName=EnableCaptionSettings}"
                                           ItemsSource="{Binding WindowColorTypes}"
 					    SelectedItem="{Binding WindowColorType, Mode=TwoWay}"
