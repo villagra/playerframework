@@ -71,7 +71,21 @@ namespace WP8.PlayerFramework.Test
         {
             var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
 
+            plugin.PopupClosed += this.OnPopupClosed;
+
             plugin.ShowSettingsPopup(this, this.LayoutRoot);
+        }
+
+        /// <summary>
+        /// Popup closed event handler
+        /// </summary>
+        /// <param name="sender">the Caption Settings Plugin</param>
+        /// <param name="e">the event arguments</param>
+        private void OnPopupClosed(object sender, System.EventArgs e)
+        {
+            var plugin = sender as Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin;
+
+            System.Diagnostics.Debug.WriteLine("Settings Popup closed. IsPopupOpen: {0}", plugin.IsPopupOpen);
         }
     }
 }
