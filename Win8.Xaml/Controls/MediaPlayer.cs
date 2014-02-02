@@ -5160,14 +5160,18 @@ namespace Microsoft.PlayerFramework
 
             if ((AutoPlay || StartupPosition.HasValue) && await OnMediaStartingAsync())
             {
+#if WINDOWS_PHONE
+                // HACK: WP cannot seek before starting playback
+                bool setStartupPositionBeforePlay = _AutoPlay;
+#endif
                 if (StartupPosition.HasValue)
                 {
-                    var startupPosition = StartupPosition.Value;
 #if WINDOWS_PHONE
-                    // HACK: sometimes this is ignored on the phone if we don't set the position on the dispatcher
-                    await Dispatcher.InvokeAsync(() => { });
+                    if (setStartupPositionBeforePlay)
 #endif
-                    await SeekAsync(startupPosition);
+                    {
+                        await SeekAsync(StartupPosition.Value);
+                    }
                 }
                 else
                 {
@@ -5178,6 +5182,13 @@ namespace Microsoft.PlayerFramework
                 {
                     _Play();
                 }
+                
+#if WINDOWS_PHONE
+                if (!setStartupPositionBeforePlay && StartupPosition.HasValue)
+                {
+                    await SeekAsync(StartupPosition.Value);
+                }
+#endif
             }
 
             UpdateTimer.Start(); // start the update timer.
