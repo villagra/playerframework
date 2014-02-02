@@ -53,11 +53,24 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         private CaptionSettingsControl control;
         #endregion
 
+        #region Events
+        /// <summary>
+        /// Popup closed event handler triggered when ShowSettingsPopup() is closed.
+        /// </summary>
+        public event EventHandler<EventArgs> PopupClosed;
+
+        #endregion
+
         #region Properties
         /// <summary>
         /// Gets or sets the Style of the <see cref="Microsoft.PlayerFramework.CaptionSettings.CaptionSettingsControl"/>
         /// </summary>
         public Style CaptionSettingsControlStyle { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the popup from ShowSettingsPopup() is being shown
+        /// </summary>
+        public bool IsPopupOpen { get; private set; }
         #endregion
 
         #region Methods
@@ -222,6 +235,8 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                             }
                         }
                     }
+
+                    this.IsPopupOpen = true;
                 };
 
                 this.popup.Closed += delegate(object sender, EventArgs e)
@@ -237,6 +252,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                                 this.MediaPlayer.Play();
                             }
                         }
+                    }
+
+                    this.IsPopupOpen = false;
+
+                    if (this.PopupClosed != null)
+                    {
+                        this.PopupClosed(this, e);
                     }
                 };
 
