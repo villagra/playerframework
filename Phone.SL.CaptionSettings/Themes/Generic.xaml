@@ -51,7 +51,7 @@
         <Setter Property="Width" Value="70"/>
     </Style>
     <Style TargetType="local:CaptionSettingsControl">
-        <Setter Property="Background" Value="#C0000000"/>
+        <Setter Property="Background" Value="{StaticResource PhoneSemitransparentBrush}"/>
         <Setter Property="PreviewVisibility" Value="Visible"/>
         <Setter Property="Template">
             <Setter.Value>
