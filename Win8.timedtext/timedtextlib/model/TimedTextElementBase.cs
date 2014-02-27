@@ -76,7 +76,6 @@ namespace TimedText
         protected static void Error(string message)
         {
             throw new TimedTextException(message);
-            //Console.WriteLine(message);
         }
 
         #endregion

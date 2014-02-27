@@ -29,6 +29,11 @@ namespace Microsoft.TimedText
         /// <summary>
         /// Occurs when a caption region is reached.
         /// </summary>
+        public event EventHandler<ParseFailedEventArgs> ParseFailed;
+
+        /// <summary>
+        /// Occurs when a caption region is reached.
+        /// </summary>
         public event EventHandler<CaptionParsedEventArgs> CaptionParsed;
 
         /// <summary>
@@ -101,21 +106,28 @@ namespace Microsoft.TimedText
 
         public async Task ParseTtml(string ttml, bool forceRefresh)
         {
-            // parse on a background thread
-#if SILVERLIGHT && !WINDOWS_PHONE || WINDOWS_PHONE7
-            var markers = await TaskEx.Run(() => factory.ParseTtml(ttml, TimeSpan.Zero, TimeSpan.MaxValue));       
-#else
-            var markers = await Task.Run(() => factory.ParseTtml(ttml, TimeSpan.Zero, TimeSpan.MaxValue));
-#endif
-            if (CaptionParsed != null)
+            try
             {
-                foreach (var marker in markers)
+                // parse on a background thread
+#if SILVERLIGHT && !WINDOWS_PHONE || WINDOWS_PHONE7
+                var markers = await TaskEx.Run(() => factory.ParseTtml(ttml, TimeSpan.Zero, TimeSpan.MaxValue));       
+#else
+                var markers = await Task.Run(() => factory.ParseTtml(ttml, TimeSpan.Zero, TimeSpan.MaxValue));
+#endif
+                if (CaptionParsed != null)
                 {
-                    CaptionParsed(this, new CaptionParsedEventArgs(marker));
+                    foreach (var marker in markers)
+                    {
+                        CaptionParsed(this, new CaptionParsedEventArgs(marker));
+                    }
                 }
-            }
             
-            factory.UpdateMarkers(markers, forceRefresh);
+                factory.UpdateMarkers(markers, forceRefresh);
+            }
+            catch (Exception ex)
+            {
+                if (ParseFailed != null) ParseFailed(this, new ParseFailedEventArgs(ex));
+            }
         }
 
         void captionManager_MarkerReached(IMarkerManager<CaptionRegion> markerManager, CaptionRegion region)
@@ -321,5 +333,15 @@ namespace Microsoft.TimedText
         }
 
         public MediaMarker CaptionMarker { get; private set; }
+    }
+
+    public sealed class ParseFailedEventArgs : EventArgs
+    {
+        public ParseFailedEventArgs(Exception error)
+        {
+            Error = error;
+        }
+
+        public Exception Error { get; private set; }
     }
 }

@@ -37,6 +37,11 @@ namespace Microsoft.PlayerFramework.TimedText
         public event EventHandler<CaptionParsedEventArgs> CaptionParsed;
 
         /// <summary>
+        /// Occurs when a caption track fails to parse.
+        /// </summary>
+        public event EventHandler<ParseFailedEventArgs> ParseFailed;
+
+        /// <summary>
         /// Creates a new instance of the CaptionsPlugin
         /// </summary>
         public CaptionsPlugin()
@@ -162,6 +167,7 @@ namespace Microsoft.PlayerFramework.TimedText
                 //captionsPanel = new TimedTextCaptions(new MarkerManager<CaptionRegion>(MediaPlayer), m => new MarkerManager<TimedTextElement>(MediaPlayer) { Markers = m });
                 captionsPanel = new TimedTextCaptions();
                 captionsPanel.CaptionParsed += captionsPanel_CaptionParsed;
+                captionsPanel.ParseFailed += captionsPanel_ParseFailed;
                 captionsPanel.NaturalVideoSize = new Size(MediaPlayer.NaturalVideoWidth, MediaPlayer.NaturalVideoHeight);
                 if (TimedTextCaptionsStyle != null) captionsPanel.Style = TimedTextCaptionsStyle;
                 if (CaptionRegionStyle != null) captionsPanel.CaptionBlockRegionStyle = CaptionRegionStyle;
@@ -193,6 +199,7 @@ namespace Microsoft.PlayerFramework.TimedText
             captionsContainer = null;
             captionsPanel.Clear();
             captionsPanel.CaptionParsed -= captionsPanel_CaptionParsed;
+            captionsPanel.ParseFailed -= captionsPanel_ParseFailed;
             captionsPanel = null;
             IsSourceLoaded = false;
         }
@@ -206,6 +213,11 @@ namespace Microsoft.PlayerFramework.TimedText
         {
             captionsPanel.Clear();
             RefreshCaption(caption, true);
+        }
+
+        void captionsPanel_ParseFailed(object sender, ParseFailedEventArgs e)
+        {
+            if (ParseFailed != null) ParseFailed(this, e);
         }
 
         void captionsPanel_CaptionParsed(object sender, CaptionParsedEventArgs e)
