@@ -188,7 +188,9 @@
 
         _unloadPlayer: function (adPlayer) {
             var vpaidAdapter = this._getVpaidAdapter(adPlayer);
-            this._adContainerElement.removeChild(vpaidAdapter.adPlayer.adElement);
+            if (this._adContainerElement.contains(vpaidAdapter.adPlayer.adElement)) {
+                this._adContainerElement.removeChild(vpaidAdapter.adPlayer.adElement);
+            }
             vpaidAdapter.dispose();
 
             var vpaidAdapterIndex = this._vpaidAdapters.indexOf(vpaidAdapter);
