@@ -18,7 +18,7 @@ namespace Microsoft.PlayerFramework.Adaptive
 
         public static string GetName(this StreamInfo stream)
         {
-            return stream.Attributes.GetEntryIgnoreCase(LanguageAttribute);
+            return stream.Attributes.GetEntryIgnoreCase(NameAttribute);
         }
 
         public static string GetLanguage(this StreamInfo stream)
