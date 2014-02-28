@@ -146,6 +146,15 @@ namespace Microsoft.VideoAdvertising
         {
             if (!(adSource.Payload is AdDocumentPayload)) throw new ArgumentException("adSource must contain a payload of type AdDocumentPayload", "adPayload");
             var adDoc = (AdDocumentPayload)adSource.Payload;
+            
+            // do an extra check to catch an empty payload before we get any further.
+            if (adDoc.AdPods.Count == 0)
+            {
+                VpaidController.TrackErrorUrl(adDoc.Error, Microsoft.VideoAdvertising.VpaidController.Error_NoAd);
+                var playExection = new PlayException(new LoadException(new Exception("No ads found.")));
+                LogError(adSource, playExection);
+                throw playExection;
+            }
 
             // create a new token that we can cancel independently
             var masterCancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
