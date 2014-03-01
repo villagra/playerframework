@@ -41,6 +41,8 @@ namespace Microsoft.PlayerFramework
 
             if (HighDefinition != null) HighDefinition.Text = MediaPlayer.GetResourceString("HighDefinitionText");
             if (StandardDefinition != null) StandardDefinition.Text = MediaPlayer.GetResourceString("StandardDefinitionText");
+
+            UpdateQuality(MediaQuality);
         }
 
         /// <summary>
@@ -55,7 +57,12 @@ namespace Microsoft.PlayerFramework
         /// <param name="newValue">The new media quality.</param>
         protected virtual void OnMediaQualityChanged(MediaQuality oldValue, MediaQuality newValue)
         {
-            switch (newValue)
+            UpdateQuality(newValue);
+        }
+
+        private void UpdateQuality(MediaQuality quality)
+        {
+            switch (quality)
             {
                 case MediaQuality.StandardDefinition:
                     this.GoToVisualState("SD");
