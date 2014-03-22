@@ -110,13 +110,13 @@
     <SDKReference Include="TestPlatform, Version=11.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Win8.Xaml.Advertising\ClipAdPayload.cs">
-      <Link>Mockups\ClipAdPayload.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Win8.Xaml.Advertising\Helpers\Extensions.cs">
+    <Compile Include="..\..\Universal.WinRT.Advertising\Helpers\Extensions.cs">
       <Link>Extensions\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\Win8.Xaml.Advertising\RemoteAdSource.cs">
+    <Compile Include="..\..\Universal.Xaml.Advertising\ClipAdPayload.cs">
+      <Link>Mockups\ClipAdPayload.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Universal.Xaml.Advertising\RemoteAdSource.cs">
       <Link>Mockups\RemoteAdSource.cs</Link>
     </Compile>
     <Compile Include="Extensions\UnitTestExtensions.cs" />
@@ -151,9 +151,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj">
+    <ProjectReference Include="..\..\Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
       <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.VideoAdvertising</Name>
+      <Name>Microsoft.Media.WinRT.Advertising</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">

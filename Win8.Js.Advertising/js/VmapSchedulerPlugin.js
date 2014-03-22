@@ -26,7 +26,7 @@
         loadAds: function (source) {
             this._adBreaks = [];
 
-            var promise = Microsoft.VideoAdvertising.VmapFactory.loadSource(new Windows.Foundation.Uri(source)).then(
+            var promise = Microsoft.Media.Advertising.VmapFactory.loadSource(new Windows.Foundation.Uri(source)).then(
                 function (result) {
                     for (var i = 0; i < result.adBreaks.length; i++) {
                         var adBreak = result.adBreaks[i];
@@ -42,7 +42,7 @@
                                 break;
 
                             default:
-                                var offset = Microsoft.VideoAdvertising.FlexibleOffset.parse(adBreak.timeOffset);
+                                var offset = Microsoft.Media.Advertising.FlexibleOffset.parse(adBreak.timeOffset);
 
                                 if (offset) {
                                     ad = new PlayerFramework.Advertising.MidrollAdvertisement();
@@ -97,7 +97,7 @@
 
             if (source.vastData) {
                 adSource = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
-                adSource.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
+                adSource.type = Microsoft.Media.Advertising.VastAdPayloadHandler.adType;
                 adSource.payload = source.vastData;
             } else if (source.customAdData) {
                 adSource = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
@@ -133,14 +133,14 @@
             var adBreak = this._getAdBreak(ad);
 
             if (adBreak) {
-                this._trackEvents(adBreak, Microsoft.VideoAdvertising.VmapTrackingEventType.breakStart);
+                this._trackEvents(adBreak, Microsoft.Media.Advertising.VmapTrackingEventType.breakStart);
 
                 return this.mediaPlayer.adHandlerPlugin.playAd(ad.source).then(
                     function () {
-                        this._trackEvents(adBreak, Microsoft.VideoAdvertising.VmapTrackingEventType.breakEnd);
+                        this._trackEvents(adBreak, Microsoft.Media.Advertising.VmapTrackingEventType.breakEnd);
                     }.bind(this),
                     function () {
-                        this._trackEvents(adBreak, Microsoft.VideoAdvertising.VmapTrackingEventType.error);
+                        this._trackEvents(adBreak, Microsoft.Media.Advertising.VmapTrackingEventType.error);
                     }.bind(this)
                 );
             }
@@ -152,7 +152,7 @@
             for (var i = 0; i < adBreak.trackingEvents.length; i++) {
                 var event = adBreak.trackingEvents[i];
                 if (event.eventType === eventType) {
-                    Microsoft.VideoAdvertising.AdTracking.current.fireTrackingUri(event.trackingUri);
+                    Microsoft.Media.Advertising.AdTracking.current.fireTrackingUri(event.trackingUri);
                 }
             }
         },

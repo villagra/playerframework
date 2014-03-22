@@ -5,7 +5,7 @@
 
     var midrollAd = new PlayerFramework.Advertising.MidrollAdvertisement();
     midrollAd.source = new Microsoft.PlayerFramework.Js.Advertising.RemoteAdSource();
-    midrollAd.source.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
+    midrollAd.source.type = Microsoft.Media.Advertising.VastAdPayloadHandler.adType;
     midrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear_nonlinear.xml");
     midrollAd.time = 5;
 

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioSelectionButtonLabel" xml:space="preserve">
+    <value>Audio tracks</value>
+  </data>
+  <data name="CaptionSelectionButtonLabel" xml:space="preserve">
+    <value>Closed captions</value>
+  </data>
+  <data name="DefaultAudioStreamName" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="DurationButtonLabel" xml:space="preserve">
+    <value>Duration/Skip ahead</value>
+  </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>The video failed to play.</value>
+  </data>
+  <data name="ExitFullScreenButtonLabel" xml:space="preserve">
+    <value>Exit full screen</value>
+  </data>
+  <data name="FastForwardButtonLabel" xml:space="preserve">
+    <value>Fast forward</value>
+  </data>
+  <data name="FullScreenButtonLabel" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="GoLiveButtonLabel" xml:space="preserve">
+    <value>Go live</value>
+  </data>
+  <data name="HighDefinitionLabel" xml:space="preserve">
+    <value>High definition</value>
+  </data>
+  <data name="HighDefinitionText" xml:space="preserve">
+    <value>HD</value>
+  </data>
+  <data name="MuteButtonLabel" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="PauseButtonLabel" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="PlayButtonLabel" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="ReplayButtonLabel" xml:space="preserve">
+    <value>Replay</value>
+  </data>
+  <data name="RewindButtonLabel" xml:space="preserve">
+    <value>Rewind</value>
+  </data>
+  <data name="SignalStrengthLabel" xml:space="preserve">
+    <value>Signal strength</value>
+  </data>
+  <data name="SkipAheadButtonLabel" xml:space="preserve">
+    <value>Skip ahead</value>
+  </data>
+  <data name="SkipAheadPointerOverStringFormat" xml:space="preserve">
+    <value>\+ss\s</value>
+  </data>
+  <data name="SkipBackButtonLabel" xml:space="preserve">
+    <value>Skip back</value>
+  </data>
+  <data name="SkipBackPointerOverStringFormat" xml:space="preserve">
+    <value>\-ss\s</value>
+  </data>
+  <data name="SkipNextButtonLabel" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="SkipPreviousButtonLabel" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="SlowMotionButtonLabel" xml:space="preserve">
+    <value>Slow motion</value>
+  </data>
+  <data name="StandardDefinitionLabel" xml:space="preserve">
+    <value>Standard definition</value>
+  </data>
+  <data name="StandardDefinitionText" xml:space="preserve">
+    <value>SD</value>
+  </data>
+  <data name="StopButtonLabel" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="TimeElapsedButtonLabel" xml:space="preserve">
+    <value>Time elapsed/Skip back</value>
+  </data>
+  <data name="TimelineLabel" xml:space="preserve">
+    <value>Seek</value>
+  </data>
+  <data name="TimeRemainingButtonLabel" xml:space="preserve">
+    <value>Time remaining/Skip ahead</value>
+  </data>
+  <data name="TimeSpanReadableFormat" xml:space="preserve">
+    <value>h\:mm\:ss</value>
+  </data>
+  <data name="UnmuteButtonLabel" xml:space="preserve">
+    <value>Unmute</value>
+  </data>
+  <data name="VolumeLabel" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="VolumeMuteButtonLabel" xml:space="preserve">
+    <value>Volume/Mute</value>
+  </data>
+  <data name="SelectedIdentifierText" xml:space="preserve">
+    <value> (On)</value>
+  </data>
+  <data name="DeselectedIdentifierText" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="LoadButtonLabel" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="RetryButtonLabel" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="RetryInstructionsText" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="MediaFeaturePackRequiredLabel" xml:space="preserve">
+    <value>Please install the Microsoft Windows 8 Media Feature Pack to continue.</value>
+  </data>
+  <data name="MediaFeaturePackRequiredText" xml:space="preserve">
+    <value>Media Feature Pack Required</value>
+  </data>
+  <data name="MediaFeaturePackCancelLabel" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MediaFeaturePackDownloadLabel" xml:space="preserve">
+    <value>Get it now</value>
+  </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
+    <value>More Info</value>
+  </data>
+  <data name="MoreButtonLabel" xml:space="preserve">
+    <value>More...</value>
+  </data>
+  <data name="PauseButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE103;"/&gt;</value>
+  </data>
+  <data name="PlayButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE102;"/&gt;</value>
+  </data>
+  <data name="AudioSelectionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE164;"/&gt;</value>
+  </data>
+  <data name="CaptionSelectionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE190;"/&gt;</value>
+  </data>
+  <data name="ExitFullScreenButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE1D8;"/&gt;</value>
+  </data>
+  <data name="FastForwardButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23E9;" Margin="4,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="FullScreenButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.56" Text="&amp;#xE1D9;"/&gt;</value>
+  </data>
+  <data name="GoLiveButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="LIVE" FontSize="13" Margin="0,4,0,0" FontWeight="SemiBold" FontFamily="Segoe UI"/&gt;</value>
+  </data>
+  <data name="InfoButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE171;"/&gt;</value>
+  </data>
+  <data name="MoreButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE10C;"/&gt;</value>
+  </data>
+  <data name="MuteButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE198;"/&gt;</value>
+  </data>
+  <data name="ReplayButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE14A;" RenderTransformOrigin=".5,.5"&gt;&lt;TextBlock.RenderTransform&gt;&lt;ScaleTransform ScaleX="-1"/&gt;&lt;/TextBlock.RenderTransform&gt;&lt;/TextBlock&gt;</value>
+  </data>
+  <data name="RewindButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23EA;" Margin="1,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipAheadButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23ED;" Margin="2,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipBackButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23EE;" Margin="2,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipNextButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE101;"/&gt;</value>
+  </data>
+  <data name="SkipPreviousButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE100;"/&gt;</value>
+  </data>
+  <data name="SlowMotionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23CF;" Margin="6,-6,0,0" FontSize="30" FontWeight="Normal" FontFamily="Segoe UI Symbol" RenderTransformOrigin=".5,.5"&gt;&lt;TextBlock.RenderTransform&gt;&lt;RotateTransform Angle="90"/&gt;&lt;/TextBlock.RenderTransform&gt;&lt;/TextBlock&gt;</value>
+  </data>
+  <data name="StopButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE15B;"/&gt;</value>
+  </data>
+  <data name="UnmuteButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE15D;"/&gt;</value>
+  </data>
+</root>

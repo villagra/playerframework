@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.Advertising", "Win8.Js.Advertising\Microsoft.PlayerFramework.Js.Advertising.csproj", "{1CA43F12-07FC-4A81-9AAC-47FF9B7B2A1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAdvertising", "Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Advertising", "Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming", "Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj", "{B252FC20-5150-43D0-BB77-802DF3231EF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Helper", "Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj", "{B252FC20-5150-43D0-BB77-802DF3231EF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FA4421CB-C729-456D-89AC-062AF17E22B3}"
 EndProject
@@ -22,21 +22,21 @@ Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "MediaPlayerSamples", "Win8.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{8FFCB28A-52C7-49E1-B6A0-60CF046C8A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics", "Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics", "Win8.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming.Analytics", "Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj", "{BFD7F8CB-C154-43E8-9647-D1F8005F71AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Analytics", "Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WinRT.AdaptiveStreaming.Analytics.csproj", "{BFD7F8CB-C154-43E8-9647-D1F8005F71AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.Analytics", "Win8.Js.Analytics\Microsoft.PlayerFramework.Js.Analytics.csproj", "{F1A93705-2ED4-4ADE-B936-995D4C6BE80A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming.Dash", "Win8.AdaptiveStreaming.Dash\Microsoft.AdaptiveStreaming.Dash.csproj", "{7DF397B9-FB55-42DB-A5B7-AD012D188953}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Dash", "Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WinRT.AdaptiveStreaming.Dash.csproj", "{7DF397B9-FB55-42DB-A5B7-AD012D188953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AudienceInsight", "Win8.AudienceInsight\Microsoft.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AudienceInsight", "Win8.WinRT.AudienceInsight\Microsoft.Media.WinRT.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.AudienceInsight", "Win8.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.AudienceInsight", "Win8.WinRT.Analytics.AudienceInsight\Microsoft.Media.WinRT.Analytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.VideoAdvertising", "Win8.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.Advertising", "Win8.WinRT.Analytics.Advertising\Microsoft.Media.WinRT.Analytics.Advertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -51,28 +51,28 @@
 
         // Public Methods
         getPlayer: function (creativeSource) {
-            if (creativeSource.type === Microsoft.VideoAdvertising.CreativeSourceType.linear){
+            if (creativeSource.type === Microsoft.Media.Advertising.CreativeSourceType.linear){
                 if (creativeSource.apiFramework == "VPAID") {
                     // TODO: support application/x-javascript
                 }
                 else{
                     if (this._supportsMimeType(creativeSource.mimeType, this.supportedVideoMimeTypes) || this._canPlayType(creativeSource.codec)) {
-                        var result = new PlayerFramework.Advertising.VpaidVideoAdPlayer(creativeSource.skippableOffset || Microsoft.VideoAdvertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruLinearText);
+                        var result = new PlayerFramework.Advertising.VpaidVideoAdPlayer(creativeSource.skippableOffset || Microsoft.Media.Advertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruLinearText);
                         result.msAudioCategory = this.mediaPlayer.msAudioCategory;
                         return result;
                     }
                 }
             }
-            else if (creativeSource.type === Microsoft.VideoAdvertising.CreativeSourceType.nonLinear) {
+            else if (creativeSource.type === Microsoft.Media.Advertising.CreativeSourceType.nonLinear) {
                 switch (creativeSource.mediaSourceType) {
-                    case Microsoft.VideoAdvertising.MediaSourceEnum.static:
+                    case Microsoft.Media.Advertising.MediaSourceEnum.static:
                         if (this._supportsMimeType(creativeSource.mimeType, PlayerFramework.Utilities.getImageMimeTypes())) {
-                            return new PlayerFramework.Advertising.VpaidImageAdPlayer(creativeSource.skippableOffset || Microsoft.VideoAdvertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
+                            return new PlayerFramework.Advertising.VpaidImageAdPlayer(creativeSource.skippableOffset || Microsoft.Media.Advertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
                         }
-                    case Microsoft.VideoAdvertising.MediaSourceEnum.iframe:
-                        return new PlayerFramework.Advertising.VpaidIFrameAdPlayer(creativeSource.skippableOffset || Microsoft.VideoAdvertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
-                    case Microsoft.VideoAdvertising.MediaSourceEnum.html:
-                        return new PlayerFramework.Advertising.VpaidHtmlAdPlayer(creativeSource.skippableOffset || Microsoft.VideoAdvertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
+                    case Microsoft.Media.Advertising.MediaSourceEnum.iframe:
+                        return new PlayerFramework.Advertising.VpaidIFrameAdPlayer(creativeSource.skippableOffset || Microsoft.Media.Advertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
+                    case Microsoft.Media.Advertising.MediaSourceEnum.html:
+                        return new PlayerFramework.Advertising.VpaidHtmlAdPlayer(creativeSource.skippableOffset || Microsoft.Media.Advertising.FlexibleOffset.parse(this.skippableOffset), creativeSource.duration, creativeSource.clickUrl, this.clickThruNonLinearText, creativeSource.dimensions);
                 }
 
             }

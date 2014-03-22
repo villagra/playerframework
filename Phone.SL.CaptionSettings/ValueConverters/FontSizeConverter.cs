@@ -32,7 +32,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <summary>
         /// Convert from a Font Size Percentage to a size in points
         /// </summary>
-        /// <param name="value">a font size as an <see cref="int?"/></param>
+        /// <param name="value">a font size as a nullable <see cref="int"/></param>
         /// <param name="targetType">a font size as a double</param>
         /// <param name="parameter">parameter not used</param>
         /// <param name="culture">culture not used</param>

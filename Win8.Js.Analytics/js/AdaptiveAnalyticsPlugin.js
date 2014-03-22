@@ -24,7 +24,7 @@
         _onActivate: function () {
             if (this.mediaPlayer.analyticsPlugin) {
                 if (this.mediaPlayer.adaptivePlugin) {
-                    this._adaptiveMonitorFactory = new Microsoft.AdaptiveStreaming.Analytics.AdaptiveMonitorFactory(this.mediaPlayer.adaptivePlugin.manager);
+                    this._adaptiveMonitorFactory = new Microsoft.Media.AdaptiveStreaming.Analytics.AdaptiveMonitorFactory(this.mediaPlayer.adaptivePlugin.manager);
                     this.mediaPlayer.analyticsPlugin.adaptiveMonitor = this._adaptiveMonitorFactory.adaptiveMonitor;
                     return true;
                 }

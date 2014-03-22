@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 using Windows.Foundation;
 
 namespace Microsoft.PlayerFramework.Units.Advertising.Mockups

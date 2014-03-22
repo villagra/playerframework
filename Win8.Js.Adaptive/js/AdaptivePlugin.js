@@ -13,7 +13,7 @@
             throw invalidConstruction;
         }
 
-        this._manager = new Microsoft.AdaptiveStreaming.AdaptiveStreamingManager();
+        this._manager = new Microsoft.Media.AdaptiveStreaming.Helper.AdaptiveStreamingManager();
         this._byteStreamHandlers = [{ fileExtension: ".ism", mimeType: "text/xml" }, { fileExtension: ".ism", mimeType: "application/vnd.ms-sstr+xml" }];
         this._schemeHandlers = [{ scheme: downloaderPluginHttpScheme }, { scheme: downloaderPluginHttpsScheme }];
         this._autoRestrictSize = true;
@@ -150,7 +150,7 @@
         // Private Methods
         _onLoad: function () {
             if (!this.manager) {
-                this._manager = new Microsoft.AdaptiveStreaming.AdaptiveStreamingManager();
+                this._manager = new Microsoft.Media.AdaptiveStreaming.Helper.AdaptiveStreamingManager();
             }
         },
 

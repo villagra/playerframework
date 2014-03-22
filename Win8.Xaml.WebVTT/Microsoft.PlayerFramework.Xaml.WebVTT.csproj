@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -100,19 +100,25 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Win8.WebVTT\Microsoft.WebVTT.csproj">
+    <ProjectReference Include="..\Win8.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj">
       <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
-      <Name>Microsoft.WebVTT</Name>
+      <Name>Microsoft.Media.WinRT.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj">
-      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml</Name>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="WebVTTPlugin.cs" />
-    <Compile Include="MediaPlayerExtensions.cs" />
+    <Compile Include="..\Universal.Xaml.WebVTT\Helpers\Extensions.cs">
+      <Link>Helpers\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.WebVTT\MediaPlayerExtensions.cs">
+      <Link>MediaPlayerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.WebVTT\WebVTTPlugin.cs">
+      <Link>WebVTTPlugin.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

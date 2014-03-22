@@ -15,7 +15,7 @@
             var mediaPlayerElement = element.querySelector("[data-win-control='PlayerFramework.MediaPlayer']");
             mediaPlayer = mediaPlayerElement.winControl;
 
-            mediaPlayer.adaptivePlugin.downloaderPlugin = new Microsoft.AdaptiveStreaming.Dash.DashDownloaderPlugin();
+            mediaPlayer.adaptivePlugin.downloaderPlugin = new Microsoft.Media.AdaptiveStreaming.Dash.DashDownloaderPlugin();
             mediaPlayer.src = "http://wams.edgesuite.net/media/SintelTrailer_MP4_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)";
 
             mediaPlayer.focus();

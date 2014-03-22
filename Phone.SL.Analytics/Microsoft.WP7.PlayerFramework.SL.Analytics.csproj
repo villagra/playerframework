@@ -49,16 +49,16 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win8.Xaml.Analytics\AnalyticsPlugin.Attached.cs">
+    <Compile Include="..\Universal.Xaml.Analytics\AnalyticsPlugin.Attached.cs">
       <Link>AnalyticsPlugin.Attached.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Analytics\AnalyticsPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Analytics\AnalyticsPlugin.cs">
       <Link>AnalyticsPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Analytics\ErrorLogger.cs">
+    <Compile Include="..\Universal.Xaml.Analytics\ErrorLogger.cs">
       <Link>ErrorLogger.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Analytics\MediaPlayerAdapter.cs">
+    <Compile Include="..\Universal.Xaml.Analytics\MediaPlayerAdapter.cs">
       <Link>MediaPlayerAdapter.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.PlayerFramework.Advertising;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -38,7 +38,7 @@ namespace Microsoft.PlayerFramework.Samples.Advertising
         }
         
         TimeSpan timeAfterAdRemaining;
-        void adHandler_ActivateAdUnit(object sender, VideoAdvertising.ActivateAdUnitEventArgs e)
+        void adHandler_ActivateAdUnit(object sender, ActivateAdUnitEventArgs e)
         {
             var pendingCreatives = GetSubsequentCreatives(e.CreativeSource as IDocumentCreativeSource, e.CreativeConcept as Ad, e.AdSource.Payload as AdDocumentPayload);
             var pendingLinearCreatives = pendingCreatives.TakeWhile(c => c is CreativeLinear).Cast<CreativeLinear>();

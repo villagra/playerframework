@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Test.Universal.Xaml.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Test.Universal.Xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shell="using:Windows.Phone.System"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/Classic.xaml"/>-->
+                <!--<ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/Phone.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <mmppf:MediaPlayer IsZoomVisible="True" IsSlowMotionVisible="True" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
+    </Grid>
+</Page>

@@ -69,13 +69,13 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win8.Xaml.WebVTT\Helpers\Extensions.cs">
+    <Compile Include="..\Universal.Xaml.WebVTT\Helpers\Extensions.cs">
       <Link>Helpers\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.WebVTT\MediaPlayerExtensions.cs">
+    <Compile Include="..\Universal.Xaml.WebVTT\MediaPlayerExtensions.cs">
       <Link>MediaPlayerExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.WebVTT\WebVTTPlugin.cs">
+    <Compile Include="..\Universal.Xaml.WebVTT\WebVTTPlugin.cs">
       <Link>WebVTTPlugin.cs</Link>
     </Compile>
     <Compile Include="Helpers\HttpClient.cs" />

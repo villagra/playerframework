@@ -5,22 +5,22 @@
 
     var prerollAd = new PlayerFramework.Advertising.PrerollAdvertisement();
     prerollAd.source = new Microsoft.PlayerFramework.Js.Advertising.RemoteAdSource();
-    prerollAd.source.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
+    prerollAd.source.type = Microsoft.Media.Advertising.VastAdPayloadHandler.adType;
     prerollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml");
-    prerollAd.source.headers.insert("User-Agent", Microsoft.VideoAdvertising.Extensions.defaultUserAgent);
+    prerollAd.source.headers.insert("User-Agent", Microsoft.Media.Advertising.Extensions.defaultUserAgent);
 
     var midrollAd = new PlayerFramework.Advertising.MidrollAdvertisement();
     midrollAd.source = new Microsoft.PlayerFramework.Js.Advertising.RemoteAdSource();
-    midrollAd.source.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
+    midrollAd.source.type = Microsoft.Media.Advertising.VastAdPayloadHandler.adType;
     midrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml");
-    midrollAd.source.headers.insert("User-Agent", Microsoft.VideoAdvertising.Extensions.defaultUserAgent);
+    midrollAd.source.headers.insert("User-Agent", Microsoft.Media.Advertising.Extensions.defaultUserAgent);
     midrollAd.time = 15;
 
     var postrollAd = new PlayerFramework.Advertising.PostrollAdvertisement();
     postrollAd.source = new Microsoft.PlayerFramework.Js.Advertising.RemoteAdSource();
-    postrollAd.source.type = Microsoft.VideoAdvertising.VastAdPayloadHandler.adType;
+    postrollAd.source.type = Microsoft.Media.Advertising.VastAdPayloadHandler.adType;
     postrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml");
-    postrollAd.source.headers.insert("User-Agent", Microsoft.VideoAdvertising.Extensions.defaultUserAgent);
+    postrollAd.source.headers.insert("User-Agent", Microsoft.Media.Advertising.Extensions.defaultUserAgent);
 
     WinJS.UI.Pages.define("/pages/itemdetail/advertising/vast/vast.html", {
         // This function is called whenever a user navigates to this page.

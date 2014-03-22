@@ -137,13 +137,13 @@
     <Content Include="js\VpaidVideoAdPlayer.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj">
-      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.VideoAdvertising</Name>
-    </ProjectReference>
+    <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
+    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
+      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
+      <Name>Microsoft.Media.WinRT.Advertising</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

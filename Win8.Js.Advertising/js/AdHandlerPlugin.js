@@ -156,9 +156,9 @@
             if (newState !== oldState) {
                 // pause the media player if we're loading an ad or playing a linear ad
                 if (this.mediaPlayer.playerState === PlayerFramework.PlayerState.started) {
-                    if ((newState === Microsoft.VideoAdvertising.AdState.loading || newState === Microsoft.VideoAdvertising.AdState.linear) && (oldState === Microsoft.VideoAdvertising.AdState.none || oldState === Microsoft.VideoAdvertising.AdState.nonLinear)) {
+                    if ((newState === Microsoft.Media.Advertising.AdState.loading || newState === Microsoft.Media.Advertising.AdState.linear) && (oldState === Microsoft.Media.Advertising.AdState.none || oldState === Microsoft.Media.Advertising.AdState.nonLinear)) {
                         this.mediaPlayer.pause();
-                    } else if ((oldState === Microsoft.VideoAdvertising.AdState.loading || oldState === Microsoft.VideoAdvertising.AdState.linear) && (newState === Microsoft.VideoAdvertising.AdState.none || newState === Microsoft.VideoAdvertising.AdState.nonLinear)) {
+                    } else if ((oldState === Microsoft.Media.Advertising.AdState.loading || oldState === Microsoft.Media.Advertising.AdState.linear) && (newState === Microsoft.Media.Advertising.AdState.none || newState === Microsoft.Media.Advertising.AdState.nonLinear)) {
                         this.mediaPlayer.play();
                     }
                 }
@@ -169,10 +169,10 @@
 
             // swap out the media player's view model depending on the ad state
             switch (newState) {
-                case Microsoft.VideoAdvertising.AdState.linear:
+                case Microsoft.Media.Advertising.AdState.linear:
                     this.mediaPlayer.interactiveViewModel = new PlayerFramework.Advertising.VpaidLinearAdViewModel(this.activeAdPlayer, this.mediaPlayer);
                     break;
-                case Microsoft.VideoAdvertising.AdState.nonLinear:
+                case Microsoft.Media.Advertising.AdState.nonLinear:
                     this.mediaPlayer.interactiveViewModel = new PlayerFramework.Advertising.VpaidNonLinearAdViewModel(this.activeAdPlayer, this.mediaPlayer);
                     break;
                 default:
@@ -211,7 +211,7 @@
                         var companion = companions[i];
                         var container = null;
 
-                        if (companion.type === Microsoft.VideoAdvertising.CompanionType["static"]) {
+                        if (companion.type === Microsoft.Media.Advertising.CompanionType["static"]) {
                             if (companion.adSlotId) {
                                 container = document.getElementById(companion.adSlotId);
                             }
@@ -247,11 +247,11 @@
                         totalCount++;
                     }
 
-                    if (suggestedCompanionRules === Microsoft.VideoAdvertising.CompanionAdsRequired.any && failureCount === totalCount && totalCount > 0) {
+                    if (suggestedCompanionRules === Microsoft.Media.Advertising.CompanionAdsRequired.any && failureCount === totalCount && totalCount > 0) {
                         throw allCompanionAdsFailed;
                     }
 
-                    if (suggestedCompanionRules === Microsoft.VideoAdvertising.CompanionAdsRequired.all && failureCount > 0) {
+                    if (suggestedCompanionRules === Microsoft.Media.Advertising.CompanionAdsRequired.all && failureCount > 0) {
                         throw companionAdFailed;
                     }
                 }
@@ -403,7 +403,7 @@
             this._mediaPlayerAdapter.currentBitrate = this.preferredBitrate;
 
             // initialize controller
-            this._controller = new Microsoft.VideoAdvertising.AdHandlerController();
+            this._controller = new Microsoft.Media.Advertising.AdHandlerController();
             this._controller.startTimeout = this.startTimeout * 1000;
             this._controller.player = this._mediaPlayerAdapter.nativeInstance;
 
@@ -545,7 +545,7 @@
             if (icon.viewTracking) {
                 for (var i = 0; i < icon.viewTracking.length; i++) {
                     var url = icon.viewTracking[i];
-                    Microsoft.VideoAdvertising.VastHelpers.fireTracking(url);
+                    Microsoft.Media.Advertising.VastHelpers.fireTracking(url);
                 }
             }
         },
@@ -558,7 +558,7 @@
             if (icon.clickTracking) {
                 for (var i = 0; i < icon.clickTracking.length; i++) {
                     var url = icon.clickTracking[i];
-                    Microsoft.VideoAdvertising.VastHelpers.fireTracking(url);
+                    Microsoft.Media.Advertising.VastHelpers.fireTracking(url);
                 }
             }
         },
@@ -567,7 +567,7 @@
             if (companion.viewTracking) {
                 for (var i = 0; i < companion.viewTracking.length; i++) {
                     var url = companion.viewTracking[i];
-                    Microsoft.VideoAdvertising.VastHelpers.fireTracking(url);
+                    Microsoft.Media.Advertising.VastHelpers.fireTracking(url);
                 }
             }
         },
@@ -580,7 +580,7 @@
             if (companion.clickTracking) {
                 for (var i = 0; i < companion.clickTracking.length; i++) {
                     var url = companion.clickTracking[i];
-                    Microsoft.VideoAdvertising.VastHelpers.fireTracking(url);
+                    Microsoft.Media.Advertising.VastHelpers.fireTracking(url);
                 }
             }
         }

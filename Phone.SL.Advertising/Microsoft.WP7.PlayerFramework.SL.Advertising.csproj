@@ -73,94 +73,94 @@
     <Compile Include="..\Phone.VideoAdvertising\Compatibility\HttpClient.cs">
       <Link>Compatibility\HttpClient.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdHandlerBase.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdHandlerBase.cs">
       <Link>AdHandlerBase.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdHandlerPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdHandlerPlugin.cs">
       <Link>AdHandlerPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdPlayerFactoryPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdPlayerFactoryPlugin.cs">
       <Link>AdPlayerFactoryPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdSchedulerPlugin.Attached.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdSchedulerPlugin.Attached.cs">
       <Link>AdSchedulerPlugin.Attached.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdSchedulerPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdSchedulerPlugin.cs">
       <Link>AdSchedulerPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\AdSource.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\AdSource.cs">
       <Link>AdSource.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\Advertisement.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\Advertisement.cs">
       <Link>Advertisement.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\ClipAdPayload.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\ClipAdPayload.cs">
       <Link>ClipAdPayload.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\CompanionHost.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\CompanionHost.cs">
       <Link>CompanionHost.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\FreeWheelPlugin.Attached.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\FreeWheelPlugin.Attached.cs">
       <Link>FreeWheelPlugin.Attached.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\FreewheelPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\FreewheelPlugin.cs">
       <Link>FreewheelPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\helpers\Extensions.cs">
+    <Compile Include="..\Universal.Xaml.advertising\helpers\Extensions.cs">
       <Link>Helpers\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\helpers\MarkerHelper.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\helpers\MarkerHelper.cs">
       <Link>Helpers\MarkerHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\helpers\MediaPlayerExtensions.cs">
+    <Compile Include="..\Universal.Xaml.advertising\helpers\MediaPlayerExtensions.cs">
       <Link>Helpers\MediaPlayerExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\Helpers\TaskHelpers.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\Helpers\TaskHelpers.cs">
       <Link>Helpers\TaskHelpers.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\Helpers\TimeSpanExtensions.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\Helpers\TimeSpanExtensions.cs">
       <Link>Helpers\TimeSpanExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\IAdPlayerFactoryPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\IAdPlayerFactoryPlugin.cs">
       <Link>IAdPlayerFactoryPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\MastAdapter.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\MastAdapter.cs">
       <Link>MastAdapter.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\MastScheduler.Attached.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\MastScheduler.Attached.cs">
       <Link>MastScheduler.Attached.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\MastSchedulerPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\MastSchedulerPlugin.cs">
       <Link>MastSchedulerPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\MediaPlayerAdapter.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\MediaPlayerAdapter.cs">
       <Link>MediaPlayerAdapter.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\RemoteAdSource.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\RemoteAdSource.cs">
       <Link>RemoteAdSource.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\VmapScheduler.Attached.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\VmapScheduler.Attached.cs">
       <Link>VmapScheduler.Attached.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\VmapSchedulerPlugin.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\VmapSchedulerPlugin.cs">
       <Link>VmapSchedulerPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\vpaid\AdHost.cs">
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\AdHost.cs">
       <Link>Vpaid\AdHost.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\vpaid\VpaidImageAdPlayer.cs">
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidImageAdPlayer.cs">
       <Link>Vpaid\VpaidImageAdPlayer.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\vpaid\VpaidLinearAdViewModel.cs">
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidLinearAdViewModel.cs">
       <Link>Vpaid\VpaidLinearAdViewModel.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\vpaid\VpaidNonLinearAdViewModel.cs">
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidNonLinearAdViewModel.cs">
       <Link>Vpaid\VpaidNonLinearAdViewModel.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.xaml.advertising\vpaid\VpaidVideoAdPlayer.cs">
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidVideoAdPlayer.cs">
       <Link>Vpaid\VpaidVideoAdPlayer.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.Advertising\Vpaid\VpaidWebAdPlayer.cs">
+    <Compile Include="..\Universal.Xaml.Advertising\Vpaid\VpaidWebAdPlayer.cs">
       <Link>Vpaid\VpaidWebAdPlayer.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

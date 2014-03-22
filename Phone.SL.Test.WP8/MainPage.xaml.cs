@@ -6,7 +6,7 @@ using Microsoft.PlayerFramework.Adaptive;
 using Microsoft.PlayerFramework.Adaptive.Analytics;
 using Microsoft.PlayerFramework.Analytics;
 using Microsoft.PlayerFramework.TTML.CaptionSettings;
-using Microsoft.VideoAnalytics;
+using Microsoft.Media.Analytics;
 using Microsoft.Web.Media.Diagnostics;
 using System;
 using System.Windows.Navigation;
@@ -26,6 +26,8 @@ namespace Microsoft.Phone.PlayerFramework.SL.Test
             // add adaptive plugin in order to play smooth streaming
             adaptivePlugin = new Microsoft.PlayerFramework.Adaptive.AdaptivePlugin();
             player.Plugins.Add(adaptivePlugin);
+            player.VisualMarkers.Add(new VisualMarker() { Time = TimeSpan.FromSeconds(10) });
+            player.VisualMarkers.Add(new VisualMarker() { Time = TimeSpan.FromSeconds(20) });
 
             PhoneApplicationService.Current.Deactivated += Current_Deactivated;
             PhoneApplicationService.Current.Activated += Current_Activated;

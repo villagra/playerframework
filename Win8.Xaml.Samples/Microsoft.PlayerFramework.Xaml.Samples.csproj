@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -156,9 +156,6 @@
     <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
       <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Captions\PlainTextPage.xaml.cs">
-      <DependentUpon>PlainTextPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
@@ -301,10 +298,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Captions\PlainTextPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -312,14 +305,6 @@
     <Page Include="ThumbnailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DarkEntertainmentTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DarkTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SuspendResumePage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -383,21 +368,21 @@
       <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
       <Name>Microsoft.Media.ISO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj">
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WinRT.AdaptiveStreaming.Analytics.csproj">
       <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
-      <Name>Microsoft.AdaptiveStreaming.Analytics</Name>
+      <Name>Microsoft.Media.WinRT.AdaptiveStreaming.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming.Dash\Microsoft.AdaptiveStreaming.Dash.csproj">
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WinRT.AdaptiveStreaming.Dash.csproj">
       <Project>{7df397b9-fb55-42db-a5b7-ad012d188953}</Project>
-      <Name>Microsoft.AdaptiveStreaming.Dash</Name>
+      <Name>Microsoft.Media.WinRT.AdaptiveStreaming.Dash</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Win8.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj">
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
-      <Name>Microsoft.VideoAnalytics</Name>
+      <Name>Microsoft.Media.WinRT.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.WebVTT\Microsoft.WebVTT.csproj">
+    <ProjectReference Include="..\Win8.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj">
       <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
-      <Name>Microsoft.WebVTT</Name>
+      <Name>Microsoft.Media.WinRT.WebVTT</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.Adaptive\Microsoft.PlayerFramework.Xaml.Adaptive.csproj">
       <Project>{66c646d5-855a-4ca9-91e2-190c6834f7c0}</Project>
@@ -411,14 +396,14 @@
       <Project>{da1f6f23-4c7f-4e0c-8884-f283ee0f3633}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml.CaptionMarkers\Microsoft.PlayerFramework.Xaml.CaptionMarkers.csproj">
-      <Project>{46262466-50e8-4acb-bb8d-6973ae6d00dd}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml.CaptionMarkers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.CaptionSettings\Microsoft.PlayerFramework.Xaml.CaptionSettings.csproj">
       <Project>{cd917ee6-c9d9-44f8-aa67-2bfd7cd27f21}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.CaptionSettings</Name>
       <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.TimedText\Microsoft.PlayerFramework.Xaml.TimedText.csproj">
       <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
@@ -436,21 +421,17 @@
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj">
-      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj">
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj">
       <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
-      <Name>Microsoft.AdaptiveStreaming</Name>
+      <Name>Microsoft.Media.WinRT.AdaptiveStreaming.Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.TimedText\Microsoft.TimedText.csproj">
+    <ProjectReference Include="..\Win8.WinRT.TimedText\Microsoft.Media.WinRT.TimedText.csproj">
       <Project>{d1f1ea17-4a91-4f3b-a243-f2b41d6cbce6}</Project>
-      <Name>Microsoft.TimedText</Name>
+      <Name>Microsoft.Media.WinRT.TimedText</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj">
+    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
       <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.VideoAdvertising</Name>
+      <Name>Microsoft.Media.WinRT.Advertising</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

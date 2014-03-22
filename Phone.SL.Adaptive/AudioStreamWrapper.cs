@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Web.Media.SmoothStreaming;
 using System.Globalization;
+using Microsoft.Media.AdaptiveStreaming.Helper;
 
 namespace Microsoft.PlayerFramework.Adaptive
 {

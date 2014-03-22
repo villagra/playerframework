@@ -295,7 +295,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Activate the caption settings UI
         /// </summary>
-        internal void Activate()
+        partial void Activate()
         {
             bool isCustomCaptionSettings = false;
 
@@ -332,7 +332,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Deactivate the Windows Phone UI
         /// </summary>
-        internal void Deactivate()
+        partial void Deactivate()
         {
         }
 

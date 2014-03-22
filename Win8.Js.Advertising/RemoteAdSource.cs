@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 using Windows.Foundation;
 using System.Collections.Generic;
 using System.Net.Http.Headers;

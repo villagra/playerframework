@@ -1,4 +1,4 @@
-﻿using Microsoft.VideoAnalytics;
+﻿using Microsoft.Media.Analytics;
 using System;
 using System.Collections.Generic;
 using Windows.Data.Json;

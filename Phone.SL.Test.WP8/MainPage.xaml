@@ -15,11 +15,20 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Landscape"  Orientation="Landscape"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Landscape"
     shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="/Microsoft.PlayerFramework;component/themes/Classic.xaml"/>-->
+                <!--<ResourceDictionary Source="/Microsoft.PlayerFramework;component/themes/Universal.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <mmppf:MediaPlayer x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
+        <mmppf:MediaPlayer AutoLoad="False" IsZoomVisible="True" x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">
+            <!--<mmppf:MediaPlayer IsZoomVisible="True" IsFullScreenVisible="True" IsVolumeVisible="True" IsSignalStrengthVisible="True" IsResolutionIndicatorVisible="True"  IsReplayVisible="True" IsStopVisible="True"  IsSlowMotionVisible="True" IsCaptionSelectionVisible="True" IsFastForwardVisible="True" IsRewindVisible="True" IsGoLiveVisible="True" IsAudioSelectionVisible="True" IsSkipPreviousVisible="True" IsSkipNextVisible="True" IsMoreVisible="True" IsInfoVisible="True" x:Name="player" Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest">-->
             <mmppf:MediaPlayer.Plugins>
                 <!--creating adaptive plugin in code instead-->
                 <!--<adaptive:AdaptivePlugin />-->

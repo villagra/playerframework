@@ -1,20 +1,18 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml", "Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj", "{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.CaptionMarkers", "Win8.Xaml.CaptionMarkers\Microsoft.PlayerFramework.Xaml.CaptionMarkers.csproj", "{46262466-50E8-4ACB-BB8D-6973AE6D00DD}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30312.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Adaptive", "Win8.Xaml.Adaptive\Microsoft.PlayerFramework.Xaml.Adaptive.csproj", "{66C646D5-855A-4CA9-91E2-190C6834F7C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.TimedText", "Win8.TimedText\Microsoft.TimedText.csproj", "{D1F1EA17-4A91-4F3B-A243-F2B41D6CBCE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.TimedText", "Win8.WinRT.TimedText\Microsoft.Media.WinRT.TimedText.csproj", "{D1F1EA17-4A91-4F3B-A243-F2B41D6CBCE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.TimedText", "Win8.Xaml.TimedText\Microsoft.PlayerFramework.Xaml.TimedText.csproj", "{54FB8BF9-02DF-490F-9837-0195AFD3F1AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Advertising", "Win8.Xaml.Advertising\Microsoft.PlayerFramework.Xaml.Advertising.csproj", "{2E19FE19-9B06-416D-8FFC-C432D6285CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming", "Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj", "{B252FC20-5150-43D0-BB77-802DF3231EF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Helper", "Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj", "{B252FC20-5150-43D0-BB77-802DF3231EF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAdvertising", "Win8.VideoAdvertising\Microsoft.VideoAdvertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Advertising", "Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AD2126A2-2949-439C-909C-AC42D1E82C3C}"
 EndProject
@@ -26,35 +24,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D3EFE0EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Localize", "Win8.Xaml.Localize\Microsoft.PlayerFramework.Xaml.Localize.csproj", "{861FF007-D70F-41F8-800C-DDE9E600DCC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics", "Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics", "Win8.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming.Analytics", "Win8.AdaptiveStreaming.Analytics\Microsoft.AdaptiveStreaming.Analytics.csproj", "{BFD7F8CB-C154-43E8-9647-D1F8005F71AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Analytics", "Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WinRT.AdaptiveStreaming.Analytics.csproj", "{BFD7F8CB-C154-43E8-9647-D1F8005F71AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Analytics", "Win8.Xaml.Analytics\Microsoft.PlayerFramework.Xaml.Analytics.csproj", "{DA1F6F23-4C7F-4E0C-8884-F283EE0F3633}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{68569401-D8C4-4AE5-A5AB-9301EBC6C061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WebVTT", "Win8.WebVTT\Microsoft.WebVTT.csproj", "{A3ABCCAA-B41B-4AB6-A1D9-A1E0D939B140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.WebVTT", "Win8.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj", "{A3ABCCAA-B41B-4AB6-A1D9-A1E0D939B140}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.WebVTT", "Win8.Xaml.WebVTT\Microsoft.PlayerFramework.Xaml.WebVTT.csproj", "{2BA82C57-A6FE-4B07-A2D9-FCEC84E8650D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AdaptiveStreaming.Dash", "Win8.AdaptiveStreaming.Dash\Microsoft.AdaptiveStreaming.Dash.csproj", "{7DF397B9-FB55-42DB-A5B7-AD012D188953}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AdaptiveStreaming.Dash", "Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WinRT.AdaptiveStreaming.Dash.csproj", "{7DF397B9-FB55-42DB-A5B7-AD012D188953}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.DashDemo", "Win8.Xaml.DashDemo\Microsoft.PlayerFramework.Xaml.DashDemo.csproj", "{D4F18C42-70E2-418D-B37A-1B70A43D8B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.AudienceInsight", "Win8.VideoAnalytics.AudienceInsight\Microsoft.VideoAnalytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.AudienceInsight", "Win8.WinRT.Analytics.AudienceInsight\Microsoft.Media.WinRT.Analytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AudienceInsight", "Win8.AudienceInsight\Microsoft.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AudienceInsight", "Win8.WinRT.AudienceInsight\Microsoft.Media.WinRT.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.VideoAnalytics.VideoAdvertising", "Win8.VideoAnalytics.VideoAdvertising\Microsoft.VideoAnalytics.VideoAdvertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.Advertising", "Win8.WinRT.Analytics.Advertising\Microsoft.Media.WinRT.Analytics.Advertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.CaptionSettings", "Win8.Xaml.CaptionSettings\Microsoft.PlayerFramework.Xaml.CaptionSettings.csproj", "{CD917EE6-C9D9-44F8-AA67-2BFD7CD27F21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.TTML.Settings", "Win8.Xaml.TTML.Settings\Microsoft.PlayerFramework.Xaml.TTML.Settings.csproj", "{04DEB5FC-DE16-40B7-9490-36AB3FEC0F10}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.WebVTT.Settings", "Win8.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Xaml.WebVTT.Settings.csproj", "{2406D3CF-7587-4CDF-8A1B-74877E45DDA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Core", "Win8.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj", "{A34A3614-4135-40E8-B4BD-CCDDDED081FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,46 +70,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|ARM.ActiveCfg = Debug|ARM
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|ARM.Build.0 = Debug|ARM
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|x64.ActiveCfg = Debug|x64
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|x64.Build.0 = Debug|x64
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|x86.ActiveCfg = Debug|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Debug|x86.Build.0 = Debug|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|ARM.ActiveCfg = Release|ARM
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|ARM.Build.0 = Release|ARM
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|Mixed Platforms.Build.0 = Release|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|x64.ActiveCfg = Release|x64
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|x64.Build.0 = Release|x64
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|x86.ActiveCfg = Release|x86
-		{81AE6F43-2BA7-4E89-8D7C-A78B152222BD}.Release|x86.Build.0 = Release|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|ARM.ActiveCfg = Debug|ARM
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|ARM.Build.0 = Debug|ARM
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|x64.ActiveCfg = Debug|x64
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|x64.Build.0 = Debug|x64
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|x86.ActiveCfg = Debug|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Debug|x86.Build.0 = Debug|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|ARM.ActiveCfg = Release|ARM
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|ARM.Build.0 = Release|ARM
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|Mixed Platforms.Build.0 = Release|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|x64.ActiveCfg = Release|x64
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|x64.Build.0 = Release|x64
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|x86.ActiveCfg = Release|x86
-		{46262466-50E8-4ACB-BB8D-6973AE6D00DD}.Release|x86.Build.0 = Release|x86
 		{66C646D5-855A-4CA9-91E2-190C6834F7C0}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{66C646D5-855A-4CA9-91E2-190C6834F7C0}.Debug|Any CPU.Build.0 = Debug|x64
 		{66C646D5-855A-4CA9-91E2-190C6834F7C0}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -605,15 +565,35 @@ Global
 		{2406D3CF-7587-4CDF-8A1B-74877E45DDA2}.Release|x64.Build.0 = Release|x64
 		{2406D3CF-7587-4CDF-8A1B-74877E45DDA2}.Release|x86.ActiveCfg = Release|x86
 		{2406D3CF-7587-4CDF-8A1B-74877E45DDA2}.Release|x86.Build.0 = Release|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|ARM.Build.0 = Debug|ARM
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|x64.ActiveCfg = Debug|x64
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|x64.Build.0 = Debug|x64
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|x86.ActiveCfg = Debug|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Debug|x86.Build.0 = Debug|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|ARM.ActiveCfg = Release|ARM
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|ARM.Build.0 = Release|ARM
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|x64.ActiveCfg = Release|x64
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|x64.Build.0 = Release|x64
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|x86.ActiveCfg = Release|x86
+		{A34A3614-4135-40E8-B4BD-CCDDDED081FA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{011C62D0-A7D0-406A-AC21-BB7827832F99} = {D3EFE0EF-816A-40EF-B156-4366234588F5}
 		{0BD03CD2-8D1D-4BAC-8656-D3CF66274186} = {AD2126A2-2949-439C-909C-AC42D1E82C3C}
 		{861FF007-D70F-41F8-800C-DDE9E600DCC4} = {AD2126A2-2949-439C-909C-AC42D1E82C3C}
-		{D4F18C42-70E2-418D-B37A-1B70A43D8B80} = {AD2126A2-2949-439C-909C-AC42D1E82C3C}
-		{011C62D0-A7D0-406A-AC21-BB7827832F99} = {D3EFE0EF-816A-40EF-B156-4366234588F5}
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA} = {68569401-D8C4-4AE5-A5AB-9301EBC6C061}
+		{D4F18C42-70E2-418D-B37A-1B70A43D8B80} = {AD2126A2-2949-439C-909C-AC42D1E82C3C}
 	EndGlobalSection
 EndGlobal

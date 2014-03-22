@@ -82,7 +82,7 @@
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.Win81.AdaptiveStreaming.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj" />
     <ProjectReference Include="..\Win8.Js.Adaptive\Microsoft.Win81.PlayerFramework.Js.Adaptive.csproj" />
     <ProjectReference Include="..\Win8.Js\Microsoft.Win81.PlayerFramework.Js.csproj" />
   </ItemGroup>

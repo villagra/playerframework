@@ -87,16 +87,16 @@
         _setOptions: function (options) {
             PlayerFramework.Utilities.setOptions(this, options, {
                 isEnabled: true,
-                analyticsConfig: new Microsoft.VideoAnalytics.AnalyticsConfig()
+                analyticsConfig: new Microsoft.Media.Analytics.AnalyticsConfig()
             });
         },
 
         _onActivate: function () {
             // by default, we always add the AnalyticsCollector as a logging source
-            this._collector = new Microsoft.VideoAnalytics.AnalyticsCollector();
+            this._collector = new Microsoft.Media.Analytics.AnalyticsCollector();
             // add session specific data
             this._addAdditionalData(this.sessionData);
-            Microsoft.VideoAnalytics.LoggingService.current.loggingSources.append(this._collector);
+            Microsoft.Media.Analytics.LoggingService.current.loggingSources.append(this._collector);
 
             // initialize the AnalyticsCollector. The analytics collector relies on other objects to pass it info.
             this._mediaPlayerAdapter = new PlayerFramework.Analytics.MediaPlayerAdapter(this.mediaPlayer);

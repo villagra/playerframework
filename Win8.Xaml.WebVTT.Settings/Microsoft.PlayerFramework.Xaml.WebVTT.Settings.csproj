@@ -101,25 +101,25 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Win8.WebVTT\Microsoft.WebVTT.csproj">
+    <ProjectReference Include="..\Win8.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj">
       <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
-      <Name>Microsoft.WebVTT</Name>
+      <Name>Microsoft.Media.WinRT.WebVTT</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.CaptionSettings\Microsoft.PlayerFramework.Xaml.CaptionSettings.csproj">
       <Project>{cd917ee6-c9d9-44f8-aa67-2bfd7cd27f21}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.CaptionSettings</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Win8.Xaml.WebVTT\Microsoft.PlayerFramework.Xaml.WebVTT.csproj">
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj">
-      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win81.Xaml.WebVTT.Settings\WebVTTCaptionSettingsPlugin.cs">
+    <Compile Include="..\Universal.Xaml.WebVTT.Settings\WebVTTCaptionSettingsPlugin.cs">
       <Link>WebVTTCaptionSettingsPlugin.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

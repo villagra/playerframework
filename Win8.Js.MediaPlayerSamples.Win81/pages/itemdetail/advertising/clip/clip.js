@@ -5,7 +5,7 @@
 
     var midrollAd = new PlayerFramework.Advertising.MidrollAdvertisement();
     midrollAd.source = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
-    midrollAd.source.type = Microsoft.VideoAdvertising.ClipAdPayloadHandler.adType;
+    midrollAd.source.type = Microsoft.Media.Advertising.ClipAdPayloadHandler.adType;
     midrollAd.source.payload = new Microsoft.PlayerFramework.Js.Advertising.ClipAdPayload();
     midrollAd.source.payload.mediaSource = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/ads/media/XBOX_HD_DEMO_700_2_000_700_4x3.wmv");
     midrollAd.source.payload.mimeType = "video/x-ms-wmv";

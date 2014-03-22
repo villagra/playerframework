@@ -69,7 +69,7 @@
         _onLoad: function () {
             this._isStarted = false;
             this._mastAdapter = new Microsoft.PlayerFramework.Js.Advertising.MastAdapter();
-            this._mainsail = new Microsoft.VideoAdvertising.Mainsail(this._mastAdapter);
+            this._mainsail = new Microsoft.Media.Advertising.Mainsail(this._mastAdapter);
         },
 
         _onUnload: function () {

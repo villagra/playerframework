@@ -69,13 +69,13 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win8.Xaml.TimedText\CaptionsPlugin.cs">
+    <Compile Include="..\Universal.Xaml.TimedText\CaptionsPlugin.cs">
       <Link>CaptionsPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.TimedText\Helpers\Extensions.cs">
+    <Compile Include="..\Universal.Xaml.TimedText\Helpers\Extensions.cs">
       <Link>Helpers\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.Xaml.TimedText\MediaPlayerExtensions.cs">
+    <Compile Include="..\Universal.Xaml.TimedText\MediaPlayerExtensions.cs">
       <Link>MediaPlayerExtensions.cs</Link>
     </Compile>
     <Compile Include="Helpers\HttpClient.cs" />

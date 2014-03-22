@@ -115,7 +115,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Activate the plug-in
         /// </summary>
-        internal void Activate()
+        partial void Activate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
 
@@ -137,6 +137,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             this.Settings.PropertyChanged += this.Settings_PropertyChanged;
+        }
+
+        /// <summary>
+        /// Deactivate the plug-in
+        /// </summary>
+        partial void Deactivate()
+        {
+            SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
+
+            this.Settings.PropertyChanged -= this.Settings_PropertyChanged;
         }
         #endregion
 
@@ -161,16 +171,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             return defaultName;
-        }
-
-        /// <summary>
-        /// Deactivate the plug-in
-        /// </summary>
-        private void Deactivate()
-        {
-            SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
-
-            this.Settings.PropertyChanged -= this.Settings_PropertyChanged;
         }
 
         /// <summary>

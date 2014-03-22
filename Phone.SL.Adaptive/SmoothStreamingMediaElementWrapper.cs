@@ -192,6 +192,11 @@ namespace Microsoft.PlayerFramework.Adaptive
             }
         }
 
+        /// <summary>
+        /// Returns whether the source Uri is thought to be a smooth streaming manifest (ends in '/manifest').
+        /// </summary>
+        /// <param name="source">The source Uri to evaluate.</param>
+        /// <returns>True means, the uri will be treated as a smooth streaming manifest.</returns>
         protected virtual bool IsSmoothStreaming(Uri source)
         {
             return (source.OriginalString.IndexOf("/manifest", StringComparison.OrdinalIgnoreCase) >= 0);

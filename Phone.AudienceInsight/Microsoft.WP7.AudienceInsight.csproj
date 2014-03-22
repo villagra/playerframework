@@ -67,55 +67,55 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win8.AudienceInsight\BatchAgentFactory.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\BatchAgentFactory.cs">
       <Link>BatchAgentFactory.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\BatchingConfigFactory.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\BatchingConfigFactory.cs">
       <Link>BatchingConfigFactory.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Config\BatchingConfig.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Config\BatchingConfig.cs">
       <Link>Config\BatchingConfig.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Config\MappingPolicy.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Config\MappingPolicy.cs">
       <Link>Config\MappingPolicy.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Extensions\LoggingExtensions.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Extensions\LoggingExtensions.cs">
       <Link>Extensions\LoggingExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Extensions\XmlReaderExtensions.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Extensions\XmlReaderExtensions.cs">
       <Link>Extensions\XmlReaderExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\Batch.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\Batch.cs">
       <Link>Logging\Batch.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\BatchingExceptionEventArgs.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\BatchingExceptionEventArgs.cs">
       <Link>Logging\BatchingExceptionEventArgs.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\BatchingLogAgent.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\BatchingLogAgent.cs">
       <Link>Logging\BatchingLogAgent.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\IBatchAgent.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\IBatchAgent.cs">
       <Link>Logging\IBatchAgent.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\ILogFilter.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\ILogFilter.cs">
       <Link>Logging\ILogFilter.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\InstanceDataClient.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\InstanceDataClient.cs">
       <Link>Logging\InstanceDataClient.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\Log.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\Log.cs">
       <Link>Logging\Log.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\LogConstants.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\LogConstants.cs">
       <Link>Logging\LogConstants.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\MappedLogs.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\MappedLogs.cs">
       <Link>Logging\MappedLogs.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\Logging\QueueManager.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\Logging\QueueManager.cs">
       <Link>Logging\QueueManager.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.AudienceInsight\RESTDataClient.cs">
+    <Compile Include="..\Universal.WinRT.AudienceInsight\RESTDataClient.cs">
       <Link>RESTDataClient.cs</Link>
     </Compile>
     <Compile Include="Compatibility\HttpClient.cs" />

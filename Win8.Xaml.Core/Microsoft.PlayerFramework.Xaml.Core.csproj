@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A34A3614-4135-40E8-B4BD-CCDDDED081FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS80</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS80</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Microsoft.PlayerFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS80</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS80</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\ARM\Release\Microsoft.PlayerFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS80</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS80</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x64\Release\Microsoft.PlayerFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS80</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS80</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x86\Release\Microsoft.PlayerFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.Xaml.Core\Commands\DelegateCommand.cs">
+      <Link>Commands\DelegateCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Commands\ViewModelCommand.cs">
+      <Link>Commands\ViewModelCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Commands\ViewModelCommandFactory.cs">
+      <Link>Commands\ViewModelCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\ControlPanel.cs">
+      <Link>Controls\ControlPanel\ControlPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs">
+      <Link>Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\DeselectableListBox.cs">
+      <Link>Controls\ControlPanel\DeselectableListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\MediaControlBehaviors.cs">
+      <Link>Controls\ControlPanel\MediaControlBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\PositionedItemsControl.cs">
+      <Link>Controls\ControlPanel\PositionedItemsControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\PositionedItemsPanel.cs">
+      <Link>Controls\ControlPanel\PositionedItemsPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\ResolutionIndicator.cs">
+      <Link>Controls\ControlPanel\ResolutionIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\SeekableSlider.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\SeekableSlider.TemplateDefinition.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\SeekableSliderTemplateParts.cs">
+      <Link>Controls\ControlPanel\SeekableSliderTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\SeekableSliderVisualStates.cs">
+      <Link>Controls\ControlPanel\SeekableSliderVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\SignalStrength.cs">
+      <Link>Controls\ControlPanel\SignalStrength.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\StandardControlBehaviors.cs">
+      <Link>Controls\ControlPanel\StandardControlBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\ThumbnailView.cs">
+      <Link>Controls\ControlPanel\ThumbnailView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\Timeline.cs">
+      <Link>Controls\ControlPanel\Timeline.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\VolumeButton.cs">
+      <Link>Controls\ControlPanel\VolumeButton.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\ControlPanel\VolumeSlider.cs">
+      <Link>Controls\ControlPanel\VolumeSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\InteractiveViewModel.cs">
+      <Link>Controls\InteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\InteractiveViewModelBase.cs">
+      <Link>Controls\InteractiveViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\MediaPackHelper.cs">
+      <Link>Controls\MediaPackHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\MediaPlayer.cs">
+      <Link>Controls\MediaPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Controls\MediaPlayer.TemplateDefinitions.cs">
+      <Link>Controls\MediaPlayer.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\BoolToVisibilityConverter.cs">
+      <Link>Converters\BoolToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\IsNullConverter.cs">
+      <Link>Converters\IsNullConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\MulticastConverter.cs">
+      <Link>Converters\MulticastConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\NotConverter.cs">
+      <Link>Converters\NotConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\StringFormatConverter.cs">
+      <Link>Converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\TargetNullValueConverter.cs">
+      <Link>Converters\TargetNullValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Extensions\ControlExtensions.cs">
+      <Link>Extensions\ControlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Extensions\TimeSpanExtensions.cs">
+      <Link>Extensions\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Extensions\ToggleButtonExtensions.cs">
+      <Link>Extensions\ToggleButtonExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Extensions\VisualTreeExtensions.cs">
+      <Link>Extensions\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Interfaces\IInteractiveViewModel.cs">
+      <Link>Interfaces\IInteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Interfaces\IMediaSource.cs">
+      <Link>Interfaces\IMediaSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Interfaces\IPlugin.cs">
+      <Link>Interfaces\IPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\AudioSelectionPlugin.cs">
+      <Link>Plugins\AudioSelectionPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\AudioSelectionView.cs">
+      <Link>Plugins\AudioSelectionView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\BufferingPlugin.cs">
+      <Link>Plugins\BufferingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\BufferingView.cs">
+      <Link>Plugins\BufferingView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\CaptionSelectorPlugin.cs">
+      <Link>Plugins\CaptionSelectorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\CaptionSelectorView.cs">
+      <Link>Plugins\CaptionSelectorView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\ChaptersPlugin.cs">
+      <Link>Plugins\ChaptersPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\DisplayRequestPlugin.cs">
+      <Link>Plugins\DisplayRequestPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\ErrorPlugin.cs">
+      <Link>Plugins\ErrorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\ErrorView.cs">
+      <Link>Plugins\ErrorView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\LoaderPlugin.cs">
+      <Link>Plugins\LoaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\LoaderView.cs">
+      <Link>Plugins\LoaderView.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\MediaControlPlugin.cs">
+      <Link>Plugins\MediaControlPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PlaylistPlugin.Commands.cs">
+      <Link>Plugins\PlaylistPlugin.Commands.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PlaylistPlugin.cs">
+      <Link>Plugins\PlaylistPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PlayTimeTrackingPlugin.cs">
+      <Link>Plugins\PlayTimeTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PluginBase.cs">
+      <Link>Plugins\PluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PositionTrackingPlugin.cs">
+      <Link>Plugins\PositionTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\TrackingPlugin.Attached.cs">
+      <Link>Plugins\TrackingPlugin.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\TrackingPluginBase.cs">
+      <Link>Plugins\TrackingPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\AdvertisingStateEnum.cs">
+      <Link>Primitives\AdvertisingStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\AudioStream.cs">
+      <Link>Primitives\AudioStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\AutoHideBehavior.cs">
+      <Link>Primitives\AutoHideBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\Caption.cs">
+      <Link>Primitives\Caption.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\CategoryAttribute.cs">
+      <Link>Primitives\CategoryAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\CategoryConstants.cs">
+      <Link>Primitives\CategoryConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\InteractionType.cs">
+      <Link>Primitives\InteractionType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaEndedBehaviorEnum.cs">
+      <Link>Primitives\MediaEndedBehaviorEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaPlayerActionEventArgs.cs">
+      <Link>Primitives\MediaPlayerActionEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaPlayerDeferrableOperation.cs">
+      <Link>Primitives\MediaPlayerDeferrableOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaPlayerTemplateParts.cs">
+      <Link>Primitives\MediaPlayerTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaPlayerVisualStates.cs">
+      <Link>Primitives\MediaPlayerVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaQualityEnum.cs">
+      <Link>Primitives\MediaQualityEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\MediaState.cs">
+      <Link>Primitives\MediaState.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\PlayerStateEnum.cs">
+      <Link>Primitives\PlayerStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\PlaylistItem.cs">
+      <Link>Primitives\PlaylistItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\PlaylistItem.Metadata.cs">
+      <Link>Primitives\PlaylistItem.Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\PositionRoutedEventArgs.cs">
+      <Link>Primitives\PositionRoutedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\RoutedPropertyChangedEventArgs.cs">
+      <Link>Primitives\RoutedPropertyChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\SelectedAudioStreamChangedEventArgs.cs">
+      <Link>Primitives\SelectedAudioStreamChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Primitives\VisualMarker.cs">
+      <Link>Primitives\VisualMarker.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="en-US\Resources.resw" />
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\EntertainmentTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Universal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

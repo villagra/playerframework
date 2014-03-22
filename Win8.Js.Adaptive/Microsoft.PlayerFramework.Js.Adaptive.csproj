@@ -118,13 +118,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.AdaptiveStreaming.csproj">
-      <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
-      <Name>Microsoft.AdaptiveStreaming</Name>
-    </ProjectReference>
+    <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj">
+      <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
+      <Name>Microsoft.Media.WinRT.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

@@ -32,12 +32,12 @@
         loadAds: function (source) {
             this._adSlots = [];
 
-            var promise = Microsoft.VideoAdvertising.FreeWheelFactory.loadSource(new Windows.Foundation.Uri(source)).then(
+            var promise = Microsoft.Media.Advertising.FreeWheelFactory.loadSource(new Windows.Foundation.Uri(source)).then(
                 function (result) {
                     var adResponse = result;
 
                     var videoTracking = PlayerFramework.Utilities.first(adResponse.siteSection.videoPlayer.videoAsset.eventCallbacks, function (eventCallback) {
-                        return eventCallback.name === Microsoft.VideoAdvertising.FWEventCallback.videoView;
+                        return eventCallback.name === Microsoft.Media.Advertising.FWEventCallback.videoView;
                     });
 
                     if (videoTracking) {
@@ -81,7 +81,7 @@
                         for (var i = 0; i < videoAsset.adSlots.length; i++) {
                             var adSlot = videoAsset.adSlots[i];
                             (function (adSlot) {
-                                promises.push(Microsoft.VideoAdvertising.FreeWheelFactory.getAdDocumentPayload(adSlot, adResponse).then(function (payload) {
+                                promises.push(Microsoft.Media.Advertising.FreeWheelFactory.getAdDocumentPayload(adSlot, adResponse).then(function (payload) {
                                     var ad = null;
                                     switch (adSlot.timePositionClass) {
                                         case "preroll":
@@ -99,7 +99,7 @@
                                     }
 
                                     ad.source = new Microsoft.PlayerFramework.Js.Advertising.AdSource();
-                                    ad.source.type = Microsoft.VideoAdvertising.DocumentAdPayloadHandler.adType;
+                                    ad.source.type = Microsoft.Media.Advertising.DocumentAdPayloadHandler.adType;
                                     ad.source.payload = payload;
 
                                     this.advertisements.push(ad);
@@ -159,14 +159,14 @@
 
             if (adSlot) {
                 var impression = PlayerFramework.Utilities.first(adSlot.eventCallbacks, function (eventCallback) {
-                    return eventCallback.type === Microsoft.VideoAdvertising.FWCallbackType.impression && eventCallback.name === Microsoft.VideoAdvertising.FWEventCallback.slotImpression;
+                    return eventCallback.type === Microsoft.Media.Advertising.FWCallbackType.impression && eventCallback.name === Microsoft.Media.Advertising.FWEventCallback.slotImpression;
                 });
 
                 if (impression) {
                     var urls = PlayerFramework.Utilities.getArray(impression.getUrls());
                     for (var i = 0; i < urls.length; i++) {
                         var url = urls[i];
-                        Microsoft.VideoAdvertising.AdTracking.current.fireTracking(url);
+                        Microsoft.Media.Advertising.AdTracking.current.fireTracking(url);
                     }
                 }
             }
@@ -176,9 +176,9 @@
 
         _loadCompanions: function () {
             if (this._adResponse) {
-                var enumerable = Microsoft.VideoAdvertising.FreeWheelFactory.getNonTemporalCompanions(this._adResponse);
+                var enumerable = Microsoft.Media.Advertising.FreeWheelFactory.getNonTemporalCompanions(this._adResponse);
                 this._companions = PlayerFramework.Utilities.getArray(enumerable);
-                this.mediaPlayer.adHandlerPlugin.loadCompanions(this._companions, Microsoft.VideoAdvertising.CompanionAdsRequired.all)
+                this.mediaPlayer.adHandlerPlugin.loadCompanions(this._companions, Microsoft.Media.Advertising.CompanionAdsRequired.all)
             }
         },
 
@@ -261,13 +261,13 @@
             if (!this._trackingEnded) {
                 var trackingEvent = e.detail.trackingEvent;
                 if (trackingEvent.area === freeWheelTrackingEventArea) {
-                    if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
+                    if (trackingEvent.data instanceof Microsoft.Media.Advertising.FWEventCallback) {
                         var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
                         var start = trackingEvent.playTime === 0;
                         for (var i = 0; i < urls.length; i++) {
                             var url = urls[i];
                             var trackingUrl = this._getTrackingUrl(url, trackingEvent.playTime, start, false);
-                            Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+                            Microsoft.Media.Advertising.AdTracking.current.fireTracking(trackingUrl);
                         }
                     }
                 }
@@ -278,13 +278,13 @@
             if (!this._trackingEnded) {
                 var trackingEvent = e.detail.trackingEvent;
                 if (trackingEvent.area === freeWheelTrackingEventArea) {
-                    if (trackingEvent.data instanceof Microsoft.VideoAdvertising.FWEventCallback) {
+                    if (trackingEvent.data instanceof Microsoft.Media.Advertising.FWEventCallback) {
                         var urls = PlayerFramework.Utilities.getArray(trackingEvent.data.getUrls());
                         var currentTime = this.mediaPlayer.playTimeTrackingPlugin.playTime;
                         for (var i = 0; i < urls.length; i++) {
                             var url = urls[i];
                             var trackingUrl = this._getTrackingUrl(url, currentTime, false, true);
-                            Microsoft.VideoAdvertising.AdTracking.current.fireTracking(trackingUrl);
+                            Microsoft.Media.Advertising.AdTracking.current.fireTracking(trackingUrl);
                         }
                         this._trackingEnded = true; // set this flag to prevent further tracking
                     }

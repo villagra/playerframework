@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Storage;

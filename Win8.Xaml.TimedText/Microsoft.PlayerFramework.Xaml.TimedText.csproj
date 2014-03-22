@@ -110,19 +110,25 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Win8.Xaml\Microsoft.PlayerFramework.Xaml.csproj">
-      <Project>{81ae6f43-2ba7-4e89-8d7c-a78b152222bd}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Win8.TimedText\Microsoft.TimedText.csproj">
+    <ProjectReference Include="..\Win8.WinRT.TimedText\Microsoft.Media.WinRT.TimedText.csproj">
       <Project>{d1f1ea17-4a91-4f3b-a243-f2b41d6cbce6}</Project>
-      <Name>Microsoft.TimedText</Name>
+      <Name>Microsoft.Media.WinRT.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CaptionsPlugin.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="MediaPlayerExtensions.cs" />
+    <Compile Include="..\Universal.Xaml.TimedText\CaptionsPlugin.cs">
+      <Link>CaptionsPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.TimedText\Helpers\Extensions.cs">
+      <Link>Helpers\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.TimedText\MediaPlayerExtensions.cs">
+      <Link>MediaPlayerExtensions.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

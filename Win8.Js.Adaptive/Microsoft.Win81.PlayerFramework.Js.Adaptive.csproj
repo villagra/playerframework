@@ -120,7 +120,7 @@
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.Win81.AdaptiveStreaming.csproj">
+    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj">
       <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
       <Name>Microsoft.Win81.AdaptiveStreaming</Name>
     </ProjectReference>

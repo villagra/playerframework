@@ -108,9 +108,9 @@
       <Project>{f8ab551f-efa0-4fc9-a753-340444a6df39}</Project>
       <Name>Microsoft.PlayerFramework.Js</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Win8.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj">
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
-      <Name>Microsoft.VideoAnalytics</Name>
+      <Name>Microsoft.Media.WinRT.Analytics</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

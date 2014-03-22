@@ -46,7 +46,7 @@ namespace Microsoft.PlayerFramework.Samples
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                adaptivePlugin.DownloaderPlugin = new Microsoft.AdaptiveStreaming.Dash.CffOfflineDownloaderPlugin(file);
+                adaptivePlugin.DownloaderPlugin = new Microsoft.Media.AdaptiveStreaming.Dash.CffOfflineDownloaderPlugin(file);
                 player.Source = new Uri(string.Format("ms-sstr://local/{0}", file.Name)); // create a dummy url, this can actually be anything.
             }
         }

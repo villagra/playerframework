@@ -144,16 +144,16 @@
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.AdaptiveStreaming.Analytics\Microsoft.Win81.AdaptiveStreaming.Analytics.csproj" />
-    <ProjectReference Include="..\Win8.AdaptiveStreaming.Dash\Microsoft.Win81.AdaptiveStreaming.Dash.csproj" />
-    <ProjectReference Include="..\Win8.AdaptiveStreaming\Microsoft.Win81.AdaptiveStreaming.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WinRT.AdaptiveStreaming.Analytics.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WinRT.AdaptiveStreaming.Dash.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj" />
+    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj" />
     <ProjectReference Include="..\Win8.Js.Adaptive\Microsoft.Win81.PlayerFramework.Js.Adaptive.csproj" />
     <ProjectReference Include="..\Win8.Js.Advertising\Microsoft.Win81.PlayerFramework.Js.Advertising.csproj" />
     <ProjectReference Include="..\Win8.Js.Analytics\Microsoft.Win81.PlayerFramework.Js.Analytics.csproj" />
     <ProjectReference Include="..\Win8.Js.TimedText\Microsoft.Win81.PlayerFramework.Js.TimedText.csproj" />
     <ProjectReference Include="..\Win8.Js\Microsoft.Win81.PlayerFramework.Js.csproj" />
-    <ProjectReference Include="..\Win8.VideoAdvertising\Microsoft.Win81.VideoAdvertising.csproj" />
-    <ProjectReference Include="..\Win8.VideoAnalytics\Microsoft.Win81.VideoAnalytics.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

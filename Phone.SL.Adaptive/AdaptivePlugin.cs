@@ -2,7 +2,7 @@
 using System.Windows;
 using Microsoft.Web.Media.SmoothStreaming;
 using System.Collections.Generic;
-using Microsoft.AdaptiveStreaming;
+using Microsoft.Media.AdaptiveStreaming.Helper;
 
 namespace Microsoft.PlayerFramework.Adaptive
 {

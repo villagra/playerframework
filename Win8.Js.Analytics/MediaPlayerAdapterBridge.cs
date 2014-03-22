@@ -1,4 +1,4 @@
-﻿using Microsoft.VideoAnalytics;
+﻿using Microsoft.Media.Analytics;
 using System;
 
 namespace Microsoft.PlayerFramework.Js.Analytics

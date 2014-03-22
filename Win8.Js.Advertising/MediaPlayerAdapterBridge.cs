@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 using Windows.Foundation;
 
 namespace Microsoft.PlayerFramework.Js.Advertising

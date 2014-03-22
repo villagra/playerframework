@@ -69,52 +69,52 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Win8.WebVTT\BlockDocumentReader.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\BlockDocumentReader.cs">
       <Link>BlockDocumentReader.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\BoxElement.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\BoxElement.cs">
       <Link>BoxElement.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\CaptionTextEventArgs.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\CaptionTextEventArgs.cs">
       <Link>CaptionTextEventArgs.cs</Link>
     </Compile>
-    <Compile Include="..\win8.webvtt\extensions\UnicodeExtensions.cs">
+    <Compile Include="..\Universal.WinRT.Webvtt\extensions\UnicodeExtensions.cs">
       <Link>Extensions\UnicodeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\IWebVTTModels.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\IWebVTTModels.cs">
       <Link>IWebVTTModels.cs</Link>
     </Compile>
-    <Compile Include="..\win8.webvtt\markers\MediaMarker.cs">
+    <Compile Include="..\Universal.WinRT.Webvtt\markers\MediaMarker.cs">
       <Link>Markers\MediaMarker.cs</Link>
     </Compile>
-    <Compile Include="..\win8.webvtt\markers\MediaMarkerCollection.cs">
+    <Compile Include="..\Universal.WinRT.Webvtt\markers\MediaMarkerCollection.cs">
       <Link>Markers\MediaMarkerCollection.cs</Link>
     </Compile>
-    <Compile Include="..\win8.webvtt\markers\MediaMarkerManager.cs">
+    <Compile Include="..\Universal.WinRT.Webvtt\markers\MediaMarkerManager.cs">
       <Link>Markers\MediaMarkerManager.cs</Link>
     </Compile>
-    <Compile Include="..\win8.webvtt\markers\utilities\OrderedObservableCollection.cs">
+    <Compile Include="..\Universal.WinRT.Webvtt\markers\utilities\OrderedObservableCollection.cs">
       <Link>Markers\Utilities\OrderedObservableCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\TextPosition.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\TextPosition.cs">
       <Link>TextPosition.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTContentReader.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTContentReader.cs">
       <Link>WebVTTContentReader.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTCueRenderer.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTCueRenderer.cs">
       <Link>WebVTTCueRenderer.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTLayoutPanel.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTLayoutPanel.cs">
       <Link>WebVTTLayoutPanel.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTModels.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTModels.cs">
       <Link>WebVTTModels.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTPanel.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTPanel.cs">
       <Link>WebVTTPanel.cs</Link>
     </Compile>
-    <Compile Include="..\Win8.WebVTT\WebVTTParser.cs">
+    <Compile Include="..\Universal.WinRT.WebVTT\WebVTTParser.cs">
       <Link>WebVTTParser.cs</Link>
     </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />

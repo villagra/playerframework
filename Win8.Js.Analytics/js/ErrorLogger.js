@@ -48,9 +48,9 @@
         // public methods
         
         logError: function (error, applicationArea) {
-            var errorLog = new Microsoft.VideoAnalytics.ErrorLog(error, applicationArea);
+            var errorLog = new Microsoft.Media.Analytics.ErrorLog(error, applicationArea);
             errorLog.maxErrorLength = this.maxErrorLength;
-            Microsoft.VideoAnalytics.LoggingService.current.log(errorLog);
+            Microsoft.Media.Analytics.LoggingService.current.log(errorLog);
         },
 
         dispose: function () {
