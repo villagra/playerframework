@@ -185,6 +185,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
         }
 
+        partial void Activate()
+        {
+            if (this.Settings == null)
+            {
+                this.InitializeSettings();
+            }
+        }
+
         /// <summary>
         /// Show the caption settings
         /// </summary>
