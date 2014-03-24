@@ -125,10 +125,6 @@
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Universal.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj">
-      <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
-      <Name>Microsoft.Media.WinRT.AdaptiveStreaming.Helper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Universal.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
       <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
       <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
