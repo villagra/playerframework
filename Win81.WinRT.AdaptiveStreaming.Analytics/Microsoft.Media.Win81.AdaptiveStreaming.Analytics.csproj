@@ -117,9 +117,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj">
+    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj">
       <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
-      <Name>Microsoft.Media.WinRT.Analytics</Name>
+      <Name>Microsoft.Media.Universal.Analytics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Win81.AdaptiveStreaming.Helper.csproj">
       <Project>{850994bc-8687-4461-aaac-ebd3ff9866fc}</Project>

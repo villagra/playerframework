@@ -11,35 +11,35 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Universal.Xaml.Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Universal.Xaml.WindowsPhone", "Universal.Xaml.Samples\Test.Universal.Xaml.WindowsPhone\Test.Universal.Xaml.WindowsPhone.csproj", "{E9361AD7-79BC-4050-A65B-DCEEDCEABDBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Core", "Universal.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj", "{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.Core", "Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj", "{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Advertising", "Universal.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.Advertising", "Universal.WinRT.Advertising\Microsoft.Media.Universal.Advertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Advertising", "Universal.Xaml.Advertising\Microsoft.PlayerFramework.Xaml.Advertising.csproj", "{2E19FE19-9B06-416D-8FFC-C432D6285CB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.Advertising", "Universal.Xaml.Advertising\Microsoft.PlayerFramework.Universal.Advertising.csproj", "{2E19FE19-9B06-416D-8FFC-C432D6285CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics", "Universal.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.Analytics", "Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj", "{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.AudienceInsight", "Universal.WinRT.AudienceInsight\Microsoft.Media.WinRT.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.AudienceInsight", "Universal.WinRT.AudienceInsight\Microsoft.Media.Universal.AudienceInsight.csproj", "{8A4F6324-1C42-46FB-915A-057C8DEAEA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.WebVTT", "Universal.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj", "{A3ABCCAA-B41B-4AB6-A1D9-A1E0D939B140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.WebVTT", "Universal.WinRT.WebVTT\Microsoft.Media.Universal.WebVTT.csproj", "{A3ABCCAA-B41B-4AB6-A1D9-A1E0D939B140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.TimedText", "Universal.WinRT.TimedText\Microsoft.Media.WinRT.TimedText.csproj", "{D1F1EA17-4A91-4F3B-A243-F2B41D6CBCE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.TimedText", "Universal.WinRT.TimedText\Microsoft.Media.Universal.TimedText.csproj", "{D1F1EA17-4A91-4F3B-A243-F2B41D6CBCE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.AudienceInsight", "Universal.WinRT.Analytics.AudienceInsight\Microsoft.Media.WinRT.Analytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.Analytics.AudienceInsight", "Universal.WinRT.Analytics.AudienceInsight\Microsoft.Media.Universal.Analytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WinRT.Analytics.Advertising", "Universal.WinRT.Analytics.Advertising\Microsoft.Media.WinRT.Analytics.Advertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Universal.Analytics.Advertising", "Universal.WinRT.Analytics.Advertising\Microsoft.Media.Universal.Analytics.Advertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Analytics", "Universal.Xaml.Analytics\Microsoft.PlayerFramework.Xaml.Analytics.csproj", "{DA1F6F23-4C7F-4E0C-8884-F283EE0F3633}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.Analytics", "Universal.Xaml.Analytics\Microsoft.PlayerFramework.Universal.Analytics.csproj", "{DA1F6F23-4C7F-4E0C-8884-F283EE0F3633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.CaptionSettings", "Universal.Xaml.CaptionSettings\Microsoft.PlayerFramework.Xaml.CaptionSettings.csproj", "{00C65BE5-8806-4AD5-A350-D48120E22028}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.CaptionSettings", "Universal.Xaml.CaptionSettings\Microsoft.PlayerFramework.Universal.CaptionSettings.csproj", "{00C65BE5-8806-4AD5-A350-D48120E22028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.TimedText", "Universal.Xaml.TimedText\Microsoft.PlayerFramework.Xaml.TimedText.csproj", "{54FB8BF9-02DF-490F-9837-0195AFD3F1AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.TimedText", "Universal.Xaml.TimedText\Microsoft.PlayerFramework.Universal.TimedText.csproj", "{54FB8BF9-02DF-490F-9837-0195AFD3F1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.WebVTT", "Universal.Xaml.WebVTT\Microsoft.PlayerFramework.Xaml.WebVTT.csproj", "{2BA82C57-A6FE-4B07-A2D9-FCEC84E8650D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.WebVTT", "Universal.Xaml.WebVTT\Microsoft.PlayerFramework.Universal.WebVTT.csproj", "{2BA82C57-A6FE-4B07-A2D9-FCEC84E8650D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.WebVTT.Settings", "Universal.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Xaml.WebVTT.Settings.csproj", "{673ADD5B-89F2-403E-A655-365CC925D65E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.WebVTT.Settings", "Universal.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Universal.WebVTT.Settings.csproj", "{673ADD5B-89F2-403E-A655-365CC925D65E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.TTML.Settings", "Universal.Xaml.TTML.Settings\Microsoft.PlayerFramework.Xaml.TTML.Settings.csproj", "{664D44A9-0A3A-4C37-A668-68240004BB55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.TTML.Settings", "Universal.Xaml.TTML.Settings\Microsoft.PlayerFramework.Universal.TTML.Settings.csproj", "{664D44A9-0A3A-4C37-A668-68240004BB55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{209E2A63-3133-45B7-8381-F52588C3B1CD}"
 EndProject
@@ -49,9 +49,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Win81.Adapt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WP81.AdaptiveStreaming.Helper", "WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WP81.AdaptiveStreaming.Helper.csproj", "{CC90CA7E-E976-4C9D-AA26-38E4787CB9A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.Win81.Adaptive", "Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Xaml.Win81.Adaptive.csproj", "{576887B5-A159-49F0-8DC8-CD64CCD9929E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Win81.Adaptive", "Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Win81.Adaptive.csproj", "{576887B5-A159-49F0-8DC8-CD64CCD9929E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Xaml.WP81.Adaptive", "WP81.Xaml.Adaptive\Microsoft.PlayerFramework.Xaml.WP81.Adaptive.csproj", "{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.Adaptive", "WP81.Xaml.Adaptive\Microsoft.PlayerFramework.WP81.Adaptive.csproj", "{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WP81.AdaptiveStreaming.Analytics", "WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WP81.AdaptiveStreaming.Analytics.csproj", "{FDDA472F-3579-4DF8-830D-5EA18848DE33}"
 EndProject

@@ -6,17 +6,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2BA82C57-A6FE-4B07-A2D9-FCEC84E8650D}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{95DFF5D9-BD94-494E-AD33-F20E45A339EB}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.WebVTT</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.WebVTT</AssemblyName>
+    <RootNamespace>Microsoft.Media.Analytics.Advertising</RootNamespace>
+    <AssemblyName>Microsoft.Media.Analytics.Advertising</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,9 +102,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="WebVTTPlugin.cs" />
-    <Compile Include="MediaPlayerExtensions.cs" />
+    <Compile Include="AdvertisingLoggingSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -115,13 +113,13 @@
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Universal.WinRT.WebVTT\Microsoft.Media.WinRT.WebVTT.csproj">
-      <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
-      <Name>Microsoft.Media.WinRT.WebVTT</Name>
+    <ProjectReference Include="..\Universal.WinRT.Advertising\Microsoft.Media.Universal.Advertising.csproj">
+      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
+      <Name>Microsoft.Media.Universal.Advertising</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Universal.Xaml.Core\Microsoft.PlayerFramework.Xaml.Core.csproj">
-      <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
-      <Name>Microsoft.PlayerFramework.Xaml.Core</Name>
+    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj">
+      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
+      <Name>Microsoft.Media.Universal.Analytics</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

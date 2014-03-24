@@ -6,17 +6,17 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{95DFF5D9-BD94-494E-AD33-F20E45A339EB}</ProjectGuid>
-    <OutputType>winmdobj</OutputType>
+    <ProjectGuid>{664D44A9-0A3A-4C37-A668-68240004BB55}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Media.Analytics.Advertising</RootNamespace>
-    <AssemblyName>Microsoft.Media.Analytics.Advertising</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.TTML.CaptionSettings</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.TTML.Settings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +34,7 @@
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Microsoft.PlayerFramework.TTML.Settings.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -102,34 +103,33 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdvertisingLoggingSource.cs" />
+    <Compile Include="TTMLCaptionSettingsPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
     <TargetPlatform Include="Windows, Version=8.1" />
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Universal.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
-      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.Media.WinRT.Advertising</Name>
+    <ProjectReference Include="..\Universal.WinRT.TimedText\Microsoft.Media.Universal.TimedText.csproj">
+      <Project>{d1f1ea17-4a91-4f3b-a243-f2b41d6cbce6}</Project>
+      <Name>Microsoft.Media.Universal.TimedText</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj">
-      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
-      <Name>Microsoft.Media.WinRT.Analytics</Name>
+    <ProjectReference Include="..\Universal.Xaml.CaptionSettings\Microsoft.PlayerFramework.Universal.CaptionSettings.csproj">
+      <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.CaptionSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj">
+      <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Universal.Xaml.TimedText\Microsoft.PlayerFramework.Universal.TimedText.csproj">
+      <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.TimedText</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
