@@ -55,19 +55,19 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Universal.WinRT.Analytics.VideoAdvertising\AdvertisingLoggingSource.cs">
+    <Compile Include="..\Universal.WinRT.Analytics.Advertising\AdvertisingLoggingSource.cs">
       <Link>AdvertisingLoggingSource.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.VideoAdvertising\Microsoft.WP7.VideoAdvertising.csproj">
+    <ProjectReference Include="..\Phone.Advertising\Microsoft.Media.Advertising.WP7.csproj">
       <Project>{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}</Project>
-      <Name>Microsoft.WP7.VideoAdvertising</Name>
+      <Name>Microsoft.Media.Advertising.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Phone.Analytics\Microsoft.Media.Analytics.WP7.csproj">
       <Project>{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}</Project>
-      <Name>Microsoft.WP7.VideoAnalytics</Name>
+      <Name>Microsoft.Media.Analytics.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

@@ -64,13 +64,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
-      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Phone.Analytics\Microsoft.Media.Analytics.WP7.csproj">
       <Project>{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}</Project>
-      <Name>Microsoft.WP7.VideoAnalytics</Name>
+      <Name>Microsoft.Media.Analytics.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP7.SL.Core\Microsoft.PlayerFramework.Core.WP7.csproj">
+      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
+      <Name>Microsoft.PlayerFramework.Core.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

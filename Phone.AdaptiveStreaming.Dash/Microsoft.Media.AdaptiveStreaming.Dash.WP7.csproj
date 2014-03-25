@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F34740E4-6D7C-4150-8751-D5B4D05CE860}</ProjectGuid>
+    <ProjectGuid>{143210B1-27EA-4942-8D76-210DEA8E059E}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.WebVTT</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.WebVTT</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.Adaptive.Dash</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.Adaptive.Dash</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -34,7 +34,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\Release</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -67,32 +67,80 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Net" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Universal.Xaml.WebVTT\Helpers\Extensions.cs">
-      <Link>Helpers\Extensions.cs</Link>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\CffDownloaderPlugin.cs">
+      <Link>CFF\CffDownloaderPlugin.cs</Link>
     </Compile>
-    <Compile Include="..\Universal.Xaml.WebVTT\MediaPlayerExtensions.cs">
-      <Link>MediaPlayerExtensions.cs</Link>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\CffFileParser.cs">
+      <Link>CFF\CffFileParser.cs</Link>
     </Compile>
-    <Compile Include="..\Universal.Xaml.WebVTT\WebVTTPlugin.cs">
-      <Link>WebVTTPlugin.cs</Link>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\Progressive\ProgressiveCffFileParser.cs">
+      <Link>CFF\Progressive\ProgressiveCffFileParser.cs</Link>
     </Compile>
-    <Compile Include="Helpers\HttpClient.cs" />
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\DashDownloaderPlugin.cs">
+      <Link>Dash\DashDownloaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\DashManifestConverter.cs">
+      <Link>Dash\DashManifestConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\MPD.cs">
+      <Link>Dash\MPD.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\MPDFactory.cs">
+      <Link>Dash\MPDFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Helpers\XLinqExtensions.cs">
+      <Link>Helpers\XLinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\Extensions.cs">
+      <Link>Smooth\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\ManifestTrack.cs">
+      <Link>Smooth\ManifestTrack.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\ManifestTrackType.cs">
+      <Link>Smooth\ManifestTrackType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\SmoothFactory.cs">
+      <Link>Smooth\SmoothFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\SmoothStreamingMedia.cs">
+      <Link>Smooth\SmoothStreamingMedia.cs</Link>
+    </Compile>
+    <Compile Include="CFF\CffDownloaderPlugin.SL.cs" />
+    <Compile Include="CFF\Progressive\CffProgressiveDownloaderPlugin.cs" />
+    <Compile Include="Dash\DashDownloaderPlugin.SL.cs" />
+    <Compile Include="Helpers\WebRequestExtensions.cs" />
+    <Compile Include="Helpers\WebRequestor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
-      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
+    <None Include="..\Universal.AdaptiveStreaming.Dash\Dash\DASH-MPD.xsd">
+      <Link>Dash\DASH-MPD.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\Universal.AdaptiveStreaming.Dash\Dash\xlink.xsd">
+      <Link>Dash\xlink.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.PCL88.csproj">
+      <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
+      <Name>Microsoft.Media.ISO.PCL88</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.WebVTT\Microsoft.WP7.WebVTT.csproj">
-      <Project>{1211DC2A-E5D4-4472-A113-99F67B50081B}</Project>
-      <Name>Microsoft.WP7.WebVTT</Name>
+    <ProjectReference Include="..\Phone.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.WP7.csproj">
+      <Project>{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />

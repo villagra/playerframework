@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.WebVTT
+namespace Microsoft.Media.WebVTT
 {
     internal static class StringExtensions
     {

@@ -1,41 +1,45 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL", "Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj", "{93CA50DC-F398-4DB6-9752-43FDD594C2C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Adaptive.WP7", "Phone.SL.Adaptive\Microsoft.PlayerFramework.Adaptive.WP7.csproj", "{A9D1AEAF-C71F-4AB4-9F96-47530144337B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive", "Phone.SL.Adaptive\Microsoft.WP7.PlayerFramework.SL.Adaptive.csproj", "{A9D1AEAF-C71F-4AB4-9F96-47530144337B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.TimedText.WP7", "Phone.TimedText\Microsoft.Media.TimedText.WP7.csproj", "{C395BA49-ABE0-4F4F-8C03-29B494AB88DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.TimedText", "Phone.TimedText\Microsoft.WP7.TimedText.csproj", "{C395BA49-ABE0-4F4F-8C03-29B494AB88DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Advertising.WP7", "Phone.Advertising\Microsoft.Media.Advertising.WP7.csproj", "{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAdvertising", "Phone.VideoAdvertising\Microsoft.WP7.VideoAdvertising.csproj", "{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText.WP7", "Phone.SL.TimedText\Microsoft.PlayerFramework.TimedText.WP7.csproj", "{94267FA0-4D4A-4727-9354-11EC7490921F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.TimedText", "Phone.SL.TimedText\Microsoft.WP7.PlayerFramework.SL.TimedText.csproj", "{94267FA0-4D4A-4727-9354-11EC7490921F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Advertising.WP7", "Phone.SL.Advertising\Microsoft.PlayerFramework.Advertising.WP7.csproj", "{5490B4AB-8D77-4CC9-9A52-A475217D05A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Advertising", "Phone.SL.Advertising\Microsoft.WP7.PlayerFramework.SL.Advertising.csproj", "{5490B4AB-8D77-4CC9-9A52-A475217D05A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Test.WP7", "Phone.SL.Test.WP7\Microsoft.PlayerFramework.Test.WP7.csproj", "{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Test", "Phone.SL.Test.WP7\Microsoft.WP7.PlayerFramework.SL.Test.csproj", "{CCFAF74F-E0DD-4C46-8603-248E032FC0AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WebVTT.WP7", "Phone.WebVTT\Microsoft.Media.WebVTT.WP7.csproj", "{1211DC2A-E5D4-4472-A113-99F67B50081B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.WebVTT", "Phone.WebVTT\Microsoft.WP7.WebVTT.csproj", "{1211DC2A-E5D4-4472-A113-99F67B50081B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WebVTT.WP7", "Phone.SL.WebVTT\Microsoft.PlayerFramework.WebVTT.WP7.csproj", "{F34740E4-6D7C-4150-8751-D5B4D05CE860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.WebVTT", "Phone.SL.WebVTT\Microsoft.WP7.PlayerFramework.SL.WebVTT.csproj", "{F34740E4-6D7C-4150-8751-D5B4D05CE860}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics", "Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj", "{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.WP7", "Phone.Analytics\Microsoft.Media.Analytics.WP7.csproj", "{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{18C29559-7EFF-4CDA-8BE6-5A32F89B7E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Analytics", "Phone.SL.Analytics\Microsoft.WP7.PlayerFramework.SL.Analytics.csproj", "{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics.WP7", "Phone.SL.Analytics\Microsoft.PlayerFramework.Analytics.WP7.csproj", "{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics", "Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj", "{884A1566-4580-4C68-A6AC-0F13D3293AAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Analytics.WP7", "Phone.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.WP7.csproj", "{884A1566-4580-4C68-A6AC-0F13D3293AAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash", "Phone.SL.Adaptive.Dash\Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash.csproj", "{143210B1-27EA-4942-8D76-210DEA8E059E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Dash.WP7", "Phone.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.WP7.csproj", "{143210B1-27EA-4942-8D76-210DEA8E059E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AudienceInsight.WP7", "Phone.AudienceInsight\Microsoft.Media.AudienceInsight.WP7.csproj", "{672FD853-FC56-4544-903B-BA02A48BB696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.AudienceInsight", "Phone.AudienceInsight\Microsoft.WP7.AudienceInsight.csproj", "{672FD853-FC56-4544-903B-BA02A48BB696}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.AudienceInsight.WP7", "Phone.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.WP7.csproj", "{D6C7FF1E-E128-490C-BB6D-7992259289A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics.AudienceInsight", "Phone.VideoAnalytics.AudienceInsight\Microsoft.WP7.VideoAnalytics.AudienceInsight.csproj", "{D6C7FF1E-E128-490C-BB6D-7992259289A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.Advertising.WP7", "Phone.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.WP7.csproj", "{FBECB5F7-00BD-463E-B494-67F69B3D2679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.WP7.VideoAnalytics.VideoAdvertising", "Phone.VideoAnalytics.VideoAdvertising\Microsoft.WP7.VideoAnalytics.VideoAdvertising.csproj", "{FBECB5F7-00BD-463E-B494-67F69B3D2679}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Helper.WP7", "Phone.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.WP7.csproj", "{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO.PCL88", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.PCL88.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Core.WP7", "WP7.SL.Core\Microsoft.PlayerFramework.Core.WP7.csproj", "{93CA50DC-F398-4DB6-9752-43FDD594C2C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{7663E97E-EBD3-43BB-8FDF-66968A3DFDFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +51,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|ARM.ActiveCfg = Release|Any CPU
-		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|x86.ActiveCfg = Release|Any CPU
 		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D1AEAF-C71F-4AB4-9F96-47530144337B}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -153,14 +149,6 @@ Global
 		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|ARM.ActiveCfg = Release|Any CPU
 		{143210B1-27EA-4942-8D76-210DEA8E059E}.Release|x86.ActiveCfg = Release|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.ActiveCfg = Release|Any CPU
-		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{672FD853-FC56-4544-903B-BA02A48BB696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{672FD853-FC56-4544-903B-BA02A48BB696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{672FD853-FC56-4544-903B-BA02A48BB696}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -185,11 +173,36 @@ Global
 		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Release|ARM.ActiveCfg = Release|Any CPU
 		{FBECB5F7-00BD-463E-B494-67F69B3D2679}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{93CA50DC-F398-4DB6-9752-43FDD594C2C0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA} = {18C29559-7EFF-4CDA-8BE6-5A32F89B7E54}
+		{CCFAF74F-E0DD-4C46-8603-248E032FC0AC} = {7663E97E-EBD3-43BB-8FDF-66968A3DFDFC}
 	EndGlobalSection
 EndGlobal

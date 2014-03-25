@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.WebVTT
+namespace Microsoft.Media.WebVTT
 {
     internal static class LinqExtensions
     {

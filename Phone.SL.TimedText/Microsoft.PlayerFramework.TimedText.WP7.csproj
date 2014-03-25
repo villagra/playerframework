@@ -82,13 +82,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
-      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Phone.TimedText\Microsoft.WP7.TimedText.csproj">
+    <ProjectReference Include="..\Phone.TimedText\Microsoft.Media.TimedText.WP7.csproj">
       <Project>{C395BA49-ABE0-4F4F-8C03-29B494AB88DF}</Project>
-      <Name>Microsoft.WP7.TimedText</Name>
+      <Name>Microsoft.Media.TimedText.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP7.SL.Core\Microsoft.PlayerFramework.Core.WP7.csproj">
+      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
+      <Name>Microsoft.PlayerFramework.Core.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

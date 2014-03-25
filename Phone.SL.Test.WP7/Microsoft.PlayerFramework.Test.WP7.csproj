@@ -115,57 +115,73 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.PCL88.csproj">
       <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
-      <Name>Microsoft.Media.ISO</Name>
+      <Name>Microsoft.Media.ISO.PCL88</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.Adaptive.Analytics\Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics.csproj">
+    <ProjectReference Include="..\Phone.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.WP7.csproj">
       <Project>{884A1566-4580-4C68-A6AC-0F13D3293AAB}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Analytics</Name>
+      <Name>Microsoft.Media.AdaptiveStreaming.Analytics.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.Adaptive.Dash\Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash.csproj">
+    <ProjectReference Include="..\Phone.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.WP7.csproj">
       <Project>{143210B1-27EA-4942-8D76-210DEA8E059E}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive.Dash</Name>
+      <Name>Microsoft.Media.AdaptiveStreaming.Dash.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.Adaptive\Microsoft.WP7.PlayerFramework.SL.Adaptive.csproj">
+    <ProjectReference Include="..\Phone.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.WP7.csproj">
+      <Project>{A2FB5DB1-2117-417D-BC7F-A81A31974EC1}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.WP7.csproj">
+      <Project>{FBECB5F7-00BD-463E-B494-67F69B3D2679}</Project>
+      <Name>Microsoft.Media.Analytics.Advertising.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.WP7.csproj">
+      <Project>{D6C7FF1E-E128-490C-BB6D-7992259289A5}</Project>
+      <Name>Microsoft.Media.Analytics.AudienceInsight.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.AudienceInsight\Microsoft.Media.AudienceInsight.WP7.csproj">
+      <Project>{672FD853-FC56-4544-903B-BA02A48BB696}</Project>
+      <Name>Microsoft.Media.AudienceInsight.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Phone.SL.Adaptive\Microsoft.PlayerFramework.Adaptive.WP7.csproj">
       <Project>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.Adaptive</Name>
+      <Name>Microsoft.PlayerFramework.Adaptive.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.Advertising\Microsoft.WP7.PlayerFramework.SL.Advertising.csproj">
+    <ProjectReference Include="..\Phone.SL.Advertising\Microsoft.PlayerFramework.Advertising.WP7.csproj">
       <Project>{5490B4AB-8D77-4CC9-9A52-A475217D05A0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.Advertising</Name>
+      <Name>Microsoft.PlayerFramework.Advertising.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.Analytics\Microsoft.WP7.PlayerFramework.SL.Analytics.csproj">
+    <ProjectReference Include="..\Phone.SL.Analytics\Microsoft.PlayerFramework.Analytics.WP7.csproj">
       <Project>{8129DB2B-AB5F-4F40-8125-9D61D396C0BA}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.Analytics</Name>
+      <Name>Microsoft.PlayerFramework.Analytics.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.TimedText\Microsoft.WP7.PlayerFramework.SL.TimedText.csproj">
+    <ProjectReference Include="..\Phone.SL.TimedText\Microsoft.PlayerFramework.TimedText.WP7.csproj">
       <Project>{94267FA0-4D4A-4727-9354-11EC7490921F}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.TimedText</Name>
+      <Name>Microsoft.PlayerFramework.TimedText.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL.WebVTT\Microsoft.WP7.PlayerFramework.SL.WebVTT.csproj">
+    <ProjectReference Include="..\Phone.SL.WebVTT\Microsoft.PlayerFramework.WebVTT.WP7.csproj">
       <Project>{F34740E4-6D7C-4150-8751-D5B4D05CE860}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL.WebVTT</Name>
+      <Name>Microsoft.PlayerFramework.WebVTT.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
-      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Phone.TimedText\Microsoft.WP7.TimedText.csproj">
+    <ProjectReference Include="..\Phone.TimedText\Microsoft.Media.TimedText.WP7.csproj">
       <Project>{C395BA49-ABE0-4F4F-8C03-29B494AB88DF}</Project>
-      <Name>Microsoft.WP7.TimedText</Name>
+      <Name>Microsoft.Media.TimedText.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.VideoAdvertising\Microsoft.WP7.VideoAdvertising.csproj">
+    <ProjectReference Include="..\Phone.Advertising\Microsoft.Media.Advertising.WP7.csproj">
       <Project>{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}</Project>
-      <Name>Microsoft.WP7.VideoAdvertising</Name>
+      <Name>Microsoft.Media.Advertising.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.VideoAnalytics\Microsoft.WP7.VideoAnalytics.csproj">
+    <ProjectReference Include="..\Phone.Analytics\Microsoft.Media.Analytics.WP7.csproj">
       <Project>{C24EBEF6-A7AE-4EEB-8D23-F06519E82B74}</Project>
-      <Name>Microsoft.WP7.VideoAnalytics</Name>
+      <Name>Microsoft.Media.Analytics.WP7</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Phone.WebVTT\Microsoft.WP7.WebVTT.csproj">
+    <ProjectReference Include="..\Phone.WebVTT\Microsoft.Media.WebVTT.WP7.csproj">
       <Project>{1211DC2A-E5D4-4472-A113-99F67B50081B}</Project>
-      <Name>Microsoft.WP7.WebVTT</Name>
+      <Name>Microsoft.Media.WebVTT.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP7.SL.Core\Microsoft.PlayerFramework.Core.WP7.csproj">
+      <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
+      <Name>Microsoft.PlayerFramework.Core.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

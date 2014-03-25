@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A9D1AEAF-C71F-4AB4-9F96-47530144337B}</ProjectGuid>
+    <ProjectGuid>{5490B4AB-8D77-4CC9-9A52-A475217D05A0}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.Adaptive</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.Adaptive</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.Advertising</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.Advertising</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -70,30 +70,115 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
-      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AdaptivePlugin.cs" />
-    <Compile Include="AdaptiveStreamingManager.cs" />
-    <Compile Include="AudioStreamWrapper.cs" />
-    <Compile Include="Data\OrderedObservableCollection.cs" />
-    <Compile Include="Data\QueuedRetryManager.cs" />
-    <Compile Include="Data\RateMonitor.cs" />
-    <Compile Include="Data\RetryManager.cs" />
-    <Compile Include="Data\StreamSelectionManager.cs" />
-    <Compile Include="DownloaderPluginAdapter.cs" />
-    <Compile Include="ILifetimeAwareDownloaderPlugin.cs" />
-    <Compile Include="SmoothStreamingExtensions.cs" />
-    <Compile Include="SmoothStreamingMediaElementWrapper.cs" />
-    <Compile Include="MarkerManager.cs" />
+    <Compile Include="..\Phone.Advertising\Compatibility\HttpClient.cs">
+      <Link>Compatibility\HttpClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdHandlerBase.cs">
+      <Link>AdHandlerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdHandlerPlugin.cs">
+      <Link>AdHandlerPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdPlayerFactoryPlugin.cs">
+      <Link>AdPlayerFactoryPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdSchedulerPlugin.Attached.cs">
+      <Link>AdSchedulerPlugin.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdSchedulerPlugin.cs">
+      <Link>AdSchedulerPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\AdSource.cs">
+      <Link>AdSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\Advertisement.cs">
+      <Link>Advertisement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\ClipAdPayload.cs">
+      <Link>ClipAdPayload.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\CompanionHost.cs">
+      <Link>CompanionHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\FreeWheelPlugin.Attached.cs">
+      <Link>FreeWheelPlugin.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\FreewheelPlugin.cs">
+      <Link>FreewheelPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\helpers\Extensions.cs">
+      <Link>Helpers\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\helpers\MarkerHelper.cs">
+      <Link>Helpers\MarkerHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\helpers\MediaPlayerExtensions.cs">
+      <Link>Helpers\MediaPlayerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\Helpers\TaskHelpers.cs">
+      <Link>Helpers\TaskHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\Helpers\TimeSpanExtensions.cs">
+      <Link>Helpers\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\IAdPlayerFactoryPlugin.cs">
+      <Link>IAdPlayerFactoryPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\MastAdapter.cs">
+      <Link>MastAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\MastScheduler.Attached.cs">
+      <Link>MastScheduler.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\MastSchedulerPlugin.cs">
+      <Link>MastSchedulerPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\MediaPlayerAdapter.cs">
+      <Link>MediaPlayerAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\RemoteAdSource.cs">
+      <Link>RemoteAdSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\VmapScheduler.Attached.cs">
+      <Link>VmapScheduler.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\VmapSchedulerPlugin.cs">
+      <Link>VmapSchedulerPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\AdHost.cs">
+      <Link>Vpaid\AdHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidImageAdPlayer.cs">
+      <Link>Vpaid\VpaidImageAdPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidLinearAdViewModel.cs">
+      <Link>Vpaid\VpaidLinearAdViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidNonLinearAdViewModel.cs">
+      <Link>Vpaid\VpaidNonLinearAdViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.advertising\vpaid\VpaidVideoAdPlayer.cs">
+      <Link>Vpaid\VpaidVideoAdPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Advertising\Vpaid\VpaidWebAdPlayer.cs">
+      <Link>Vpaid\VpaidWebAdPlayer.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Phone.SL\Microsoft.WP7.PlayerFramework.SL.csproj">
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Phone.Advertising\Microsoft.Media.Advertising.WP7.csproj">
+      <Project>{7C2B5F39-8E5D-4721-A271-9CD61AAFFEFF}</Project>
+      <Name>Microsoft.Media.Advertising.WP7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP7.SL.Core\Microsoft.PlayerFramework.Core.WP7.csproj">
       <Project>{93CA50DC-F398-4DB6-9752-43FDD594C2C0}</Project>
-      <Name>Microsoft.WP7.PlayerFramework.SL</Name>
+      <Name>Microsoft.PlayerFramework.Core.WP7</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
