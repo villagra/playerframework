@@ -156,21 +156,21 @@
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
       <Name>Microsoft.PlayerFramework.Universal.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Win81.AdaptiveStreaming.Analytics.csproj">
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Windows.AdaptiveStreaming.Analytics.csproj">
       <Project>{16e66944-a6ac-4777-b46c-551004e68d3b}</Project>
-      <Name>Microsoft.Media.Win81.AdaptiveStreaming.Analytics</Name>
+      <Name>Microsoft.Media.Windows.AdaptiveStreaming.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Win81.AdaptiveStreaming.Dash.csproj">
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Windows.AdaptiveStreaming.Dash.csproj">
       <Project>{2629bebc-8158-418b-aa7d-b0a2f47095a5}</Project>
-      <Name>Microsoft.Media.Win81.AdaptiveStreaming.Dash</Name>
+      <Name>Microsoft.Media.Windows.AdaptiveStreaming.Dash</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Win81.AdaptiveStreaming.Helper.csproj">
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Windows.AdaptiveStreaming.Helper.csproj">
       <Project>{850994bc-8687-4461-aaac-ebd3ff9866fc}</Project>
-      <Name>Microsoft.Media.Win81.AdaptiveStreaming.Helper</Name>
+      <Name>Microsoft.Media.Windows.AdaptiveStreaming.Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Win81.Adaptive.csproj">
+    <ProjectReference Include="..\..\Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Windows.Adaptive.csproj">
       <Project>{576887b5-a159-49f0-8dc8-cd64ccd9929e}</Project>
-      <Name>Microsoft.PlayerFramework.Win81.Adaptive</Name>
+      <Name>Microsoft.PlayerFramework.Windows.Adaptive</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

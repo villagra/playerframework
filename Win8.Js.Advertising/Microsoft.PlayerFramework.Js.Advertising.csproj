@@ -140,9 +140,9 @@
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
+    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.Advertising.csproj">
       <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.Media.WinRT.Advertising</Name>
+      <Name>Microsoft.Media.Advertising</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">

@@ -139,9 +139,9 @@
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Universal.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj">
+    <ProjectReference Include="..\Universal.WinRT.Advertising\Microsoft.Media.Universal.Advertising.csproj">
       <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
-      <Name>Microsoft.Win81.VideoAdvertising</Name>
+      <Name>Microsoft.Media.Universal.Advertising</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

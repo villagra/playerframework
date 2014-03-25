@@ -31,21 +31,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{209E2A63-313
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Win81.AdaptiveStreaming.Helper", "Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Win81.AdaptiveStreaming.Helper.csproj", "{850994BC-8687-4461-AAAC-EBD3FF9866FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Windows.AdaptiveStreaming.Helper", "Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Windows.AdaptiveStreaming.Helper.csproj", "{850994BC-8687-4461-AAAC-EBD3FF9866FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WP81.AdaptiveStreaming.Helper", "WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WP81.AdaptiveStreaming.Helper.csproj", "{CC90CA7E-E976-4C9D-AA26-38E4787CB9A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Phone.AdaptiveStreaming.Helper", "WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj", "{CC90CA7E-E976-4C9D-AA26-38E4787CB9A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Win81.Adaptive", "Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Win81.Adaptive.csproj", "{576887B5-A159-49F0-8DC8-CD64CCD9929E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Windows.Adaptive", "Win81.Xaml.Adaptive\Microsoft.PlayerFramework.Windows.Adaptive.csproj", "{576887B5-A159-49F0-8DC8-CD64CCD9929E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.Adaptive", "WP81.Xaml.Adaptive\Microsoft.PlayerFramework.WP81.Adaptive.csproj", "{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Phone.Adaptive", "WP81.Xaml.Adaptive\Microsoft.PlayerFramework.Phone.Adaptive.csproj", "{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WP81.AdaptiveStreaming.Analytics", "WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WP81.AdaptiveStreaming.Analytics.csproj", "{FDDA472F-3579-4DF8-830D-5EA18848DE33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Phone.AdaptiveStreaming.Analytics", "WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Phone.AdaptiveStreaming.Analytics.csproj", "{FDDA472F-3579-4DF8-830D-5EA18848DE33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Win81.AdaptiveStreaming.Analytics", "Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Win81.AdaptiveStreaming.Analytics.csproj", "{16E66944-A6AC-4777-B46C-551004E68D3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Windows.AdaptiveStreaming.Analytics", "Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Windows.AdaptiveStreaming.Analytics.csproj", "{16E66944-A6AC-4777-B46C-551004E68D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WP81.AdaptiveStreaming.Dash", "WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WP81.AdaptiveStreaming.Dash.csproj", "{6AC6FE63-157B-4B94-A178-663A576FD349}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Phone.AdaptiveStreaming.Dash", "WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Phone.AdaptiveStreaming.Dash.csproj", "{6AC6FE63-157B-4B94-A178-663A576FD349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Win81.AdaptiveStreaming.Dash", "Win81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Win81.AdaptiveStreaming.Dash.csproj", "{2629BEBC-8158-418B-AA7D-B0A2F47095A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Windows.AdaptiveStreaming.Dash", "Win81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Windows.AdaptiveStreaming.Dash.csproj", "{2629BEBC-8158-418B-AA7D-B0A2F47095A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FC50942B-A0B3-45AA-B0C9-69F0000D54C3}"
 EndProject
@@ -55,17 +55,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Samples.WindowsPhone", "Universal.Xaml.Samples\Universal.Xaml.Samples.WindowsPhone\Microsoft.PlayerFramework.Samples.WindowsPhone.csproj", "{C9B83844-6192-4645-9B2D-1F19A7B65DDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Win81.CaptionSettings", "Win81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Win81.CaptionSettings.csproj", "{806AEC1E-8775-4597-91C0-E2177BB0616F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Windows.CaptionSettings", "Win81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Windows.CaptionSettings.csproj", "{806AEC1E-8775-4597-91C0-E2177BB0616F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.CaptionSettings", "WP81.Xaml.CaptionSettings\Microsoft.PlayerFramework.WP81.CaptionSettings.csproj", "{3A4715D1-EFE0-4C7E-98C7-E3AFE945288F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Phone.CaptionSettings", "WP81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Phone.CaptionSettings.csproj", "{3A4715D1-EFE0-4C7E-98C7-E3AFE945288F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.WebVTT.Settings", "WP81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.WP81.WebVTT.Settings.csproj", "{6996061C-F935-4E27-B811-F61AA625283A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Phone.WebVTT.Settings", "WP81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Phone.WebVTT.Settings.csproj", "{6996061C-F935-4E27-B811-F61AA625283A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Win81.WebVTT.Settings", "Win81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Win81.WebVTT.Settings.csproj", "{CDCF5B4B-0B80-4BC8-B3CB-B04390B81F0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Windows.WebVTT.Settings", "Win81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Windows.WebVTT.Settings.csproj", "{CDCF5B4B-0B80-4BC8-B3CB-B04390B81F0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Win81.TTML.Settings", "Win81.Xaml.TTML.Settings\Microsoft.PlayerFramework.Win81.TTML.Settings.csproj", "{6AB0C295-8FC9-43BB-91B8-5AC9968BE593}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Windows.TTML.Settings", "Win81.Xaml.TTML.Settings\Microsoft.PlayerFramework.Windows.TTML.Settings.csproj", "{6AB0C295-8FC9-43BB-91B8-5AC9968BE593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.TTML.Settings", "WP81.Xaml.TTML.Settings\Microsoft.PlayerFramework.WP81.TTML.Settings.csproj", "{D1B3836F-157E-434A-ABBD-12B908EF1C1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Phone.TTML.Settings", "WP81.Xaml.TTML.Settings\Microsoft.PlayerFramework.Phone.TTML.Settings.csproj", "{D1B3836F-157E-434A-ABBD-12B908EF1C1F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

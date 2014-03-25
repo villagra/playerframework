@@ -83,7 +83,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Win8.Js.Adaptive\Microsoft.PlayerFramework.Js.Adaptive.csproj" />
     <ProjectReference Include="..\Win8.Js\Microsoft.PlayerFramework.Js.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

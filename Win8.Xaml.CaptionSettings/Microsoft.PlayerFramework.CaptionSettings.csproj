@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9DFC852E-EE46-460F-9681-05702EC76A19}</ProjectGuid>
-    <OutputType>winmdobj</OutputType>
+    <ProjectGuid>{CD917EE6-C9D9-44F8-AA67-2BFD7CD27F21}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.PlayerFramework.Js.Adaptive</RootNamespace>
-    <AssemblyName>Microsoft.PlayerFramework.Js.Adaptive</AssemblyName>
+    <RootNamespace>Microsoft.PlayerFramework.CaptionSettings</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Microsoft.PlayerFramework.Js.Adaptive.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Microsoft.PlayerFramework.CaptionSettings.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +42,6 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
@@ -54,36 +53,29 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
-    <NoWarn>
-    </NoWarn>
+    <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
     <Optimize>true</Optimize>
-    <NoWarn>
-    </NoWarn>
+    <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -94,8 +86,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x86\Debug\Microsoft.PlayerFramework.CaptionSettings.xml</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -106,37 +99,105 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Content Include="js\AdaptivePlugin.js" />
+    <Page Include="Controls\CaptionSettingsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\CaptionSettingsPluginBase.cs">
+      <Link>CaptionSettingsPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ColorEventArgs.cs">
+      <Link>ColorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ColorExtensions.cs">
+      <Link>ColorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Controls\ColorPickerControl.cs">
+      <Link>Controls\ColorPickerControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Controls\PreviewControl.cs">
+      <Link>Controls\PreviewControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\CustomCaptionSettingsEventArgs.cs">
+      <Link>CustomCaptionSettingsEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\BindableBase.cs">
+      <Link>Model\BindableBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\Color.cs">
+      <Link>Model\Color.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\ColorType.cs">
+      <Link>Model\ColorType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\CustomCaptionSettings.cs">
+      <Link>Model\CustomCaptionSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\FontFamily.cs">
+      <Link>Model\FontFamily.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\Model\FontStyle.cs">
+      <Link>Model\FontStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\CapitalsConverter.cs">
+      <Link>ValueConverters\CapitalsConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\ColorToBrushConverter.cs">
+      <Link>ValueConverters\ColorToBrushConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\ColorTypeConverter.cs">
+      <Link>ValueConverters\ColorTypeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\FontFamilyConverter.cs">
+      <Link>ValueConverters\FontFamilyConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\FontSizeConverter.cs">
+      <Link>ValueConverters\FontSizeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\NegateConverter.cs">
+      <Link>ValueConverters\NegateConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ValueConverters\ResourceConverter.cs">
+      <Link>ValueConverters\ResourceConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ViewModel\CaptionSettingsFlyoutViewModel.cs">
+      <Link>ViewModel\CaptionSettingsFlyoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ViewModel\PreviewControlViewModel.cs">
+      <Link>ViewModel\PreviewControlViewModel.cs</Link>
+    </Compile>
+    <Compile Include="AssemblyResources.cs" />
+    <Compile Include="CaptionSettingsPluginBase.Win8.cs" />
+    <Compile Include="Controls\CaptionSettingsControl.xaml.cs">
+      <DependentUpon>CaptionSettingsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControl.cs" />
+    <Compile Include="FrameworkElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
-      <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
-      <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
+  <ItemGroup>
+    <PRIResource Include="..\Universal.Xaml.CaptionSettings\Strings\en-US\Resources.resw">
+      <Link>Strings\en-US\Resources.resw</Link>
+    </PRIResource>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

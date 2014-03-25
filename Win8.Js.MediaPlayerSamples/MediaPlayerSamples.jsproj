@@ -142,11 +142,14 @@
     <ProjectReference Include="..\Win8.Js.Analytics\Microsoft.PlayerFramework.Js.Analytics.csproj" />
     <ProjectReference Include="..\Win8.Js.TimedText\Microsoft.PlayerFramework.Js.TimedText.csproj" />
     <ProjectReference Include="..\Win8.Js\Microsoft.PlayerFramework.Js.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.WinRT.AdaptiveStreaming.Analytics.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.WinRT.AdaptiveStreaming.Dash.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.WinRT.AdaptiveStreaming.Helper.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.WinRT.Advertising.csproj" />
-    <ProjectReference Include="..\Win8.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.Advertising.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.Analytics\Microsoft.Media.Analytics.csproj" />
+    <ProjectReference Include="..\Win8.WinRT.AudienceInsight\Microsoft.Media.AudienceInsight.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -102,17 +102,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\Win8.Js\Microsoft.Win81.PlayerFramework.Js.csproj">
-      <Project>{f8ab551f-efa0-4fc9-a753-340444a6df39}</Project>
-      <Name>Microsoft.Win81.PlayerFramework.Js</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.WinRT.Analytics.csproj">
-      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
-      <Name>Microsoft.Win81.VideoAnalytics</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Log.cs" />
     <Compile Include="MediaPlayerAdapterBridge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj">
+      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
+      <Name>Microsoft.Media.Universal.Analytics</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
