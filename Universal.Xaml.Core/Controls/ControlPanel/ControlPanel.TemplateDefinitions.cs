@@ -363,6 +363,9 @@ namespace Microsoft.PlayerFramework
         }
 
 #if !SILVERLIGHT && !WINDOWS80
+        /// <summary>
+        /// Gets or sets the minimum size (in inches) that the control can be resized to before going into "Compact" mode. When this happens, the Compact Visual State is triggered.
+        /// </summary>
         public double CompactThresholdInInches { get; set; }
 #endif
 

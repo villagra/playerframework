@@ -20,8 +20,17 @@ using Windows.UI.Xaml.Data;
 
 namespace Microsoft.PlayerFramework
 {
+    /// <summary>
+    /// Help extension class to help with media control behaviors.
+    /// </summary>
     public static class MediaControlBehaviors
     {
+        /// <summary>
+        /// Creates a strongly typed media control behavior (IMediaControlBehavior) that can be assigned to a button via MediaControls.SetBehavior(button, behavior)
+        /// </summary>
+        /// <typeparam name="T">The behavior type. There is one per transport bar button.</typeparam>
+        /// <param name="source">The instance of the media player to bind the behavior to.</param>
+        /// <returns>A behavior that can be passed to the MediaControls.Behavior attached property</returns>
         public static T CreateMediaControlBehavior<T>(this MediaPlayer source) where T : MediaControlBehaviorBase, new()
         {
             var behavior = new T();
@@ -30,6 +39,10 @@ namespace Microsoft.PlayerFramework
         }
     }
 
+    /// <summary>
+    /// A static class used that defines an attached property that can help associate a media control behavior (IMediaControlBehavior) with a control (usually a button).
+    /// This allows applications to create controls normally found in the transport bar that can live outside the player framework.
+    /// </summary>
     public static class MediaControls
     {
         /// <summary>
@@ -146,11 +159,21 @@ namespace Microsoft.PlayerFramework
             }
         }
 
+        /// <summary>
+        /// Gets the behavior associated with the object.
+        /// </summary>
+        /// <param name="obj">The object to retrieve the behavior for.</param>
+        /// <returns>The behavior associated with the object.</returns>
         public static IMediaControlBehavior GetBehavior(DependencyObject obj)
         {
             return obj.GetValue(BehaviorProperty) as IMediaControlBehavior;
         }
 
+        /// <summary>
+        /// Sets the behavior on an object.
+        /// </summary>
+        /// <param name="obj">The object to set the behavior on.</param>
+        /// <param name="value">The behavior to be associated with the object.</param>
         public static void SetBehavior(DependencyObject obj, IMediaControlBehavior value)
         {
             obj.SetValue(BehaviorProperty, value);
@@ -177,37 +200,68 @@ namespace Microsoft.PlayerFramework
             }
         }
 
+        /// <summary>
+        /// Gets a flag indicating if tooltips shoudl be enabled on the object.
+        /// </summary>
+        /// <param name="obj">The object to retrieve the flag for.</param>
+        /// <returns>The flag associated with the object.</returns>
         public static bool GetIsToolTipEnabled(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsToolTipEnabledProperty);
         }
 
+        /// <summary>
+        /// Sets a flag indicating if tooltips should be enabled on the object.
+        /// </summary>
+        /// <param name="obj">The object to set the flag on.</param>
+        /// <param name="value">The flag to be associated with the object.</param>
         public static void SetIsToolTipEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsToolTipEnabledProperty, value);
         }
     }
 
+    /// <summary>
+    /// Represents an object that help define the behavior and content of a control associated with the player framework.
+    /// </summary>
     public interface IMediaControlBehavior
     {
+        /// <summary>
+        /// Gets the command associated with the control.
+        /// </summary>
         ICommand Command { get; }
 
+        /// <summary>
+        /// Gets the content for the control.
+        /// </summary>
         object Content { get; }
 
+        /// <summary>
+        /// Gets the label associated with the control.
+        /// </summary>
         string Label { get; }
     }
 
+    /// <summary>
+    /// Represents a special kind of behavior that has knowlege of the control it is associated with. This can be useful if the behavior needs to react to events on the control.
+    /// </summary>
     public interface IElementAwareMediaBehavior : IMediaControlBehavior
     {
+        /// <summary>
+        /// The element the behavior has been associated with.
+        /// </summary>
         DependencyObject Element { get; set; }
     }
 
+    /// <summary>
+    /// A base class that can help keep a ViewModelCommand object associated with the current IInteractiveViewModel.
+    /// </summary>
     public abstract class MediaControlBehaviorBase : DependencyObject
     {
         ICommand command;
 
         /// <summary>
-        /// Gets or sets the ViewModelCommand associated with the button.
+        /// Gets or sets the Command object (usually a ViewModelCommand).
         /// </summary>
         public ICommand Command
         {
@@ -229,7 +283,7 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Identifies the MediaPlayer dependency property.
+        /// Identifies the ViewModel dependency property.
         /// </summary>
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register("ViewModel", typeof(IInteractiveViewModel), typeof(MediaControlBehaviorBase), new PropertyMetadata(null, (d, e) => ((MediaControlBehaviorBase)d).OnViewModelChanged(e.OldValue as IInteractiveViewModel, e.NewValue as IInteractiveViewModel)));
 
@@ -246,7 +300,7 @@ namespace Microsoft.PlayerFramework
 
         /// <summary>
         /// The InteractiveMediaPlayer object used to provide state updates and serve user interaction requests.
-        /// This is usually an instance of the MediaPlayer but could be a custom implementation to support unique interaction such as in the case of advertising.
+        /// This is usually an instance of the MediaPlayer's default InteractiveViewModel but could be a custom implementation to support unique interaction such as in the case of advertising.
         /// </summary>
         public IInteractiveViewModel ViewModel
         {
@@ -255,6 +309,9 @@ namespace Microsoft.PlayerFramework
         }
     }
 
+    /// <summary>
+    /// Represents a behavior that can be attached to a control to make it behave like the default instance of that control provided with the player framework.
+    /// </summary>
     public class MediaControlBehavior : MediaControlBehaviorBase, IMediaControlBehavior
     {
         /// <summary>
@@ -286,6 +343,10 @@ namespace Microsoft.PlayerFramework
         }
     }
 
+    /// <summary>
+    /// Represents a behavior that can be attached to a control to make it behave like the default instance of that control provided with the player framework.
+    /// This particular MediaControlBehavior allows the content and label to change when the IsSet property changes and is useful for toggle button scenarios.
+    /// </summary>
     public class MediaToggleControlBehavior : MediaControlBehavior
     {
         /// <summary>
