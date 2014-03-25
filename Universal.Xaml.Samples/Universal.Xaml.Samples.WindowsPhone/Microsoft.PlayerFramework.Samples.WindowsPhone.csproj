@@ -87,6 +87,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AutoLoadPage.xaml.cs">
+      <DependentUpon>AutoLoadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\EntertainmentAppPage.xaml.cs">
+      <DependentUpon>EntertainmentAppPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ErrorPage.xaml.cs">
+      <DependentUpon>ErrorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PlaylistPage.xaml.cs">
+      <DependentUpon>PlaylistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PlayReadyPage.xaml.cs">
+      <DependentUpon>PlayReadyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PosterPage.xaml.cs">
+      <DependentUpon>PosterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\ProgressivePage.xaml.cs">
       <DependentUpon>ProgressivePage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +132,34 @@
     <Content Include="Assets\HubBackground.theme-light.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Common\AutoLoadPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\EntertainmentAppPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ErrorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\PlaylistPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\PlayReadyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\PosterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Common\ProgressivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

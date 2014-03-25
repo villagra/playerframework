@@ -67,6 +67,8 @@ namespace Microsoft.PlayerFramework.Samples
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Landscape;
+            var noawait = Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
         }
 
         /// <summary>
