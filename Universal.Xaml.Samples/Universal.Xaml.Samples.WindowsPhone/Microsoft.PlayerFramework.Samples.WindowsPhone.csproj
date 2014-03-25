@@ -81,12 +81,153 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.Advertising\Microsoft.Media.Universal.Advertising.csproj">
+      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
+      <Name>Microsoft.Media.Universal.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.Analytics.Advertising\Microsoft.Media.Universal.Analytics.Advertising.csproj">
+      <Project>{95dff5d9-bd94-494e-ad33-f20e45a339eb}</Project>
+      <Name>Microsoft.Media.Universal.Analytics.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.Analytics.AudienceInsight\Microsoft.Media.Universal.Analytics.AudienceInsight.csproj">
+      <Project>{ad0f55fe-d523-4ba0-9198-5cba45ddcbcd}</Project>
+      <Name>Microsoft.Media.Universal.Analytics.AudienceInsight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj">
+      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
+      <Name>Microsoft.Media.Universal.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.AudienceInsight\Microsoft.Media.Universal.AudienceInsight.csproj">
+      <Project>{8a4f6324-1c42-46fb-915a-057c8deaea4e}</Project>
+      <Name>Microsoft.Media.Universal.AudienceInsight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.TimedText\Microsoft.Media.Universal.TimedText.csproj">
+      <Project>{d1f1ea17-4a91-4f3b-a243-f2b41d6cbce6}</Project>
+      <Name>Microsoft.Media.Universal.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.WinRT.WebVTT\Microsoft.Media.Universal.WebVTT.csproj">
+      <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
+      <Name>Microsoft.Media.Universal.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.Xaml.Advertising\Microsoft.PlayerFramework.Universal.Advertising.csproj">
+      <Project>{2e19fe19-9b06-416d-8ffc-c432d6285cb9}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.Xaml.Analytics\Microsoft.PlayerFramework.Universal.Analytics.csproj">
+      <Project>{da1f6f23-4c7f-4e0c-8884-f283ee0f3633}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.Analytics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj">
       <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
       <Name>Microsoft.PlayerFramework.Universal.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Universal.Xaml.TimedText\Microsoft.PlayerFramework.Universal.TimedText.csproj">
+      <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Universal.Xaml.WebVTT\Microsoft.PlayerFramework.Universal.WebVTT.csproj">
+      <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
+      <Name>Microsoft.PlayerFramework.Universal.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Phone.AdaptiveStreaming.Analytics.csproj">
+      <Project>{fdda472f-3579-4df8-830d-5ea18848de33}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Phone.AdaptiveStreaming.Dash.csproj">
+      <Project>{6ac6fe63-157b-4b94-a178-663a576fd349}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Dash</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj">
+      <Project>{cc90ca7e-e976-4c9d-aa26-38e4787cb9a8}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Phone.CaptionSettings.csproj">
+      <Project>{3a4715d1-efe0-4c7e-98c7-e3afe945288f}</Project>
+      <Name>Microsoft.PlayerFramework.Phone.CaptionSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.Xaml.TTML.Settings\Microsoft.PlayerFramework.Phone.TTML.Settings.csproj">
+      <Project>{d1b3836f-157e-434a-abbd-12b908ef1c1f}</Project>
+      <Name>Microsoft.PlayerFramework.Phone.TTML.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Phone.WebVTT.Settings.csproj">
+      <Project>{6996061c-f935-4e27-b811-f61aa625283a}</Project>
+      <Name>Microsoft.PlayerFramework.Phone.WebVTT.Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adaptive\CffOfflinePage.xaml.cs">
+      <DependentUpon>CffOfflinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
+      <DependentUpon>CffProgressivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\DashPage.xaml.cs">
+      <DependentUpon>DashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\LivePage.xaml.cs">
+      <DependentUpon>LivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\SmoothPage.xaml.cs">
+      <DependentUpon>SmoothPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\LocalPlaybackPage.xaml.cs">
+      <DependentUpon>LocalPlaybackPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\MarkersPage.xaml.cs">
+      <DependentUpon>MarkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\PlayToPage.xaml.cs">
+      <DependentUpon>PlayToPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\SuspendResumePage.xaml.cs">
+      <DependentUpon>SuspendResumePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\ThumbnailPage.xaml.cs">
+      <DependentUpon>ThumbnailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advanced\TrackingPage.xaml.cs">
+      <DependentUpon>TrackingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\AdPodPage.xaml.cs">
+      <DependentUpon>AdPodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\AdSchedulingPage.xaml.cs">
+      <DependentUpon>AdSchedulingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\FreeWheelPage.xaml.cs">
+      <DependentUpon>FreeWheelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\MastPage.xaml.cs">
+      <DependentUpon>MastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VmapPage.xaml.cs">
+      <DependentUpon>VmapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\ScheduleClipPage.xaml.cs">
+      <DependentUpon>ScheduleClipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VastLinearCompanionPage.xaml.cs">
+      <DependentUpon>VastLinearCompanionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VastLinearNonlinearPage.xaml.cs">
+      <DependentUpon>VastLinearNonlinearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\ProgrammaticAdPage.xaml.cs">
+      <DependentUpon>ProgrammaticAdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
+      <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\TtmlPage.xaml.cs">
+      <DependentUpon>TtmlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\WebVTTPage.xaml.cs">
+      <DependentUpon>WebVTTPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\AutoLoadPage.xaml.cs">
       <DependentUpon>AutoLoadPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +273,98 @@
     <Content Include="Assets\HubBackground.theme-light.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Adaptive\CffOfflinePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\CffProgressivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\DashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\LivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\SmoothPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\LocalPlaybackPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\MarkersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\PlayToPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\SuspendResumePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\ThumbnailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advanced\TrackingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\AdPodPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\AdSchedulingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\FreeWheelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\MastPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\VmapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\ScheduleClipPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\VastLinearCompanionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\VastLinearNonlinearPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\ProgrammaticAdPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Captions\InstreamTtmlPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Captions\TtmlPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Captions\WebVTTPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Common\AutoLoadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -169,6 +402,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

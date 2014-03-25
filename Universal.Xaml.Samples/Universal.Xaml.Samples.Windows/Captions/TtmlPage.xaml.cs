@@ -36,11 +36,12 @@ namespace Microsoft.PlayerFramework.Samples
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
-            player.Plugins.Add(new Microsoft.PlayerFramework.TimedText.CaptionsPlugin());
-            player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
 
-            // this plug-in is added in Xaml
-            ////player.Plugins.Add(new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
+            // these plug-ins are added in Xaml
+            //player.Plugins.Add(new Microsoft.PlayerFramework.TimedText.CaptionsPlugin());
+            //player.Plugins.Add(new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
+
+            player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -25,6 +25,8 @@ namespace Microsoft.PlayerFramework.Samples
     public sealed partial class PlayToPage : Page
     {
         private NavigationHelper navigationHelper;
+        private PlayToManager ptm;
+        private CoreDispatcher dispatcher = Window.Current.CoreWindow.Dispatcher;
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -34,23 +36,14 @@ namespace Microsoft.PlayerFramework.Samples
         {
             get { return this.navigationHelper; }
         }
-        private PlayToManager ptm;
-        private CoreDispatcher dispatcher = Window.Current.CoreWindow.Dispatcher;
 
         public PlayToPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             ptm = PlayToManager.GetForCurrentView();
-            ptm.SourceRequested += SourceRequested;
-
-            this.Loaded += PlayToPage_Loaded;
         }
 
-        void PlayToPage_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-        
         async private void SourceRequested(Windows.Media.PlayTo.PlayToManager sender, Windows.Media.PlayTo.PlayToSourceRequestedEventArgs e)
         {
             var deferral = e.SourceRequest.GetDeferral();
@@ -63,7 +56,6 @@ namespace Microsoft.PlayerFramework.Samples
         
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.Loaded -= PlayToPage_Loaded;
             ptm.SourceRequested -= SourceRequested;
             player.Dispose();
             base.OnNavigatedFrom(e);
@@ -71,6 +63,7 @@ namespace Microsoft.PlayerFramework.Samples
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            ptm.SourceRequested += SourceRequested;
             base.OnNavigatedTo(e);
             backButton.Command = this.navigationHelper.GoBackCommand;
         }

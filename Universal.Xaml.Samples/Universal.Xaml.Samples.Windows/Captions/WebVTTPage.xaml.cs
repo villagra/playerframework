@@ -36,6 +36,7 @@ namespace Microsoft.PlayerFramework.Samples
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
+
             player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
         }
 

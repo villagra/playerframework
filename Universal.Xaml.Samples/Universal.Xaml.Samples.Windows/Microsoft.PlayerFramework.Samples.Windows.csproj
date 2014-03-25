@@ -172,6 +172,18 @@
       <Project>{576887b5-a159-49f0-8dc8-cd64ccd9929e}</Project>
       <Name>Microsoft.PlayerFramework.Windows.Adaptive</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Win81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Windows.CaptionSettings.csproj">
+      <Project>{806aec1e-8775-4597-91c0-e2177bb0616f}</Project>
+      <Name>Microsoft.PlayerFramework.Windows.CaptionSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Win81.Xaml.TTML.Settings\Microsoft.PlayerFramework.Windows.TTML.Settings.csproj">
+      <Project>{6ab0c295-8fc9-43bb-91b8-5ac9968be593}</Project>
+      <Name>Microsoft.PlayerFramework.Windows.TTML.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Win81.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Windows.WebVTT.Settings.csproj">
+      <Project>{cdcf5b4b-0b80-4bc8-b3cb-b04390b81f0b}</Project>
+      <Name>Microsoft.PlayerFramework.Windows.WebVTT.Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adaptive\CffOfflinePage.xaml.cs">

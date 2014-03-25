@@ -24,6 +24,8 @@ namespace Microsoft.PlayerFramework.Samples
     public sealed partial class ThumbnailPage : Page
     {
         private NavigationHelper navigationHelper;
+        string currentThumbnailUrl;
+        const string thumbnailUriPattern = "http://smf.blob.core.windows.net/samples/thumbs/BBB/BigBuckBunny_{0:0000}.jpg";
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -33,13 +35,12 @@ namespace Microsoft.PlayerFramework.Samples
         {
             get { return this.navigationHelper; }
         }
-        string currentThumbnailUrl;
-        const string thumbnailUriPattern = "http://smf.blob.core.windows.net/samples/thumbs/BBB/BigBuckBunny_{0:0000}.jpg";
 
         public ThumbnailPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
+
             player.VirtualPositionChanged += player_VirtualPositionChanged;
             player.RateChanged += player_RateChanged;
             player.IsScrubbingChanged += player_IsScrubbingChanged;

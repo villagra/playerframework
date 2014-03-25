@@ -54,18 +54,6 @@ namespace Microsoft.PlayerFramework.Samples
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            player.Dispose();
-            base.OnNavigatedFrom(e);
-        }
-
         private async void OpenWebcam_Click(object sender, RoutedEventArgs e)
         {
             CameraCaptureUI dialog = new CameraCaptureUI();
@@ -77,6 +65,18 @@ namespace Microsoft.PlayerFramework.Samples
                 var fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 player.SetSource(fileStream, file.FileType);
             }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            backButton.Command = this.navigationHelper.GoBackCommand;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            player.Dispose();
+            base.OnNavigatedFrom(e);
         }
     }
 }
