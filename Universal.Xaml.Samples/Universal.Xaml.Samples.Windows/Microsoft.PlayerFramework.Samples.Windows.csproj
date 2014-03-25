@@ -144,10 +144,6 @@
       <Project>{da1f6f23-4c7f-4e0c-8884-f283ee0f3633}</Project>
       <Name>Microsoft.PlayerFramework.Universal.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Universal.Xaml.CaptionSettings\Microsoft.PlayerFramework.Universal.CaptionSettings.csproj">
-      <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
-      <Name>Microsoft.PlayerFramework.Universal.CaptionSettings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj">
       <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
       <Name>Microsoft.PlayerFramework.Universal.Core</Name>
@@ -155,14 +151,6 @@
     <ProjectReference Include="..\..\Universal.Xaml.TimedText\Microsoft.PlayerFramework.Universal.TimedText.csproj">
       <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
       <Name>Microsoft.PlayerFramework.Universal.TimedText</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Universal.Xaml.TTML.Settings\Microsoft.PlayerFramework.Universal.TTML.Settings.csproj">
-      <Project>{664d44a9-0a3a-4c37-a668-68240004bb55}</Project>
-      <Name>Microsoft.PlayerFramework.Universal.TTML.Settings</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Universal.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.Universal.WebVTT.Settings.csproj">
-      <Project>{673add5b-89f2-403e-a655-365cc925d65e}</Project>
-      <Name>Microsoft.PlayerFramework.Universal.WebVTT.Settings</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Universal.Xaml.WebVTT\Microsoft.PlayerFramework.Universal.WebVTT.csproj">
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>

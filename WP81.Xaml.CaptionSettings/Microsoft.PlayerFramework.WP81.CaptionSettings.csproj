@@ -6,24 +6,23 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{00C65BE5-8806-4AD5-A350-D48120E22028}</ProjectGuid>
+    <ProjectGuid>{3A4715D1-EFE0-4C7E-98C7-E3AFE945288F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.PlayerFramework.CaptionSettings</RootNamespace>
     <AssemblyName>Microsoft.PlayerFramework.CaptionSettings</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,15 +30,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Microsoft.PlayerFramework.CaptionSettings.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
@@ -49,7 +47,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -58,32 +56,10 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -93,7 +69,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -104,55 +80,75 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Page Include="CaptionSettingFlyout.xaml">
-      <SubType>Designer</SubType>
+    <PRIResource Include="..\universal.xaml.captionsettings\strings\en-us\Resources.resw">
+      <Link>Strings\en-US\Resources.resw</Link>
+    </PRIResource>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\AssemblyResources.cs">
+      <Link>AssemblyResources.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\CaptionSettingsPluginBase.cs">
+      <Link>CaptionSettingsPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\ColorExtensions.cs">
+      <Link>ColorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.CaptionSettings\CustomCaptionSettingsEventArgs.cs">
+      <Link>CustomCaptionSettingsEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\BindableBase.cs">
+      <Link>Model\BindableBase.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\Color.cs">
+      <Link>Model\Color.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\ColorType.cs">
+      <Link>Model\ColorType.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\CustomCaptionSettings.cs">
+      <Link>Model\CustomCaptionSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\FontFamily.cs">
+      <Link>Model\FontFamily.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\model\FontStyle.cs">
+      <Link>Model\FontStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\valueconverters\CapitalsConverter.cs">
+      <Link>ValueConverters\CapitalsConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\valueconverters\FontFamilyConverter.cs">
+      <Link>ValueConverters\FontFamilyConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\valueconverters\FontSizeConverter.cs">
+      <Link>ValueConverters\FontSizeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\valueconverters\ResourceConverter.cs">
+      <Link>ValueConverters\ResourceConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.captionsettings\viewmodel\CaptionSettingsFlyoutViewModel.cs">
+      <Link>ViewModel\CaptionSettingsFlyoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="CaptionSettingsControl.cs" />
+    <Compile Include="CaptionSettingsPage.xaml.cs">
+      <DependentUpon>CaptionSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CaptionSettingsPluginBase.WP8.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueConverters\ColorConverter.cs" />
+    <Compile Include="ValueConverters\FontStyleConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CaptionSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CaptionSettingFlyout.xaml.cs">
-      <DependentUpon>CaptionSettingFlyout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CaptionSettingsControl.cs" />
-    <Compile Include="CaptionSettingsPluginBase.cs" />
-    <Compile Include="CaptionSettingsPluginBase.Universal.cs" />
-    <Compile Include="ColorEventArgs.cs" />
-    <Compile Include="Controls\CaptionComboBox.cs" />
-    <Compile Include="Controls\ColorPickerControl.cs" />
-    <Compile Include="Controls\PreviewControl.cs" />
-    <Compile Include="CustomCaptionSettingsEventArgs.cs" />
-    <Compile Include="Model\BindableBase.cs" />
-    <Compile Include="Model\FontFamily.cs" />
-    <Compile Include="Model\Color.cs" />
-    <Compile Include="ColorExtensions.cs" />
-    <Compile Include="Model\ColorType.cs" />
-    <Compile Include="Model\CustomCaptionSettings.cs" />
-    <Compile Include="Model\FontStyle.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AssemblyResources.cs" />
-    <Compile Include="ValueConverters\CapitalsConverter.cs" />
-    <Compile Include="ValueConverters\ColorToBrushConverter.cs" />
-    <Compile Include="ValueConverters\ColorTypeConverter.cs" />
-    <Compile Include="ValueConverters\FontFamilyConverter.cs" />
-    <Compile Include="ValueConverters\FontSizeConverter.cs" />
-    <Compile Include="ValueConverters\NegateConverter.cs" />
-    <Compile Include="ValueConverters\ResourceConverter.cs" />
-    <Compile Include="ViewModel\CaptionSettingsFlyoutViewModel.cs" />
-    <Compile Include="ViewModel\PreviewControlViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PRIResource Include="Strings\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Microsoft.PlayerFramework.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <TargetPlatform Include="Windows, Version=8.1" />
-    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj">
@@ -163,17 +159,16 @@
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+  </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>echo copying $(TargetName).pri to CaptionSettings.pri
-copy /y "$(TargetDir)$(TargetName).pri" "$(TargetDir)CaptionSettings.pri"</PostBuildEvent>
-  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -40,7 +40,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <returns>a font size</returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (targetType.Name == "Double")
+            if (targetType == typeof(double))
             {
                 if (value == null)
                 {

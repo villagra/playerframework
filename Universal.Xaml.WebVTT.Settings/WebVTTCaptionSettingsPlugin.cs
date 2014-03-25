@@ -19,7 +19,7 @@ namespace Microsoft.PlayerFramework.WebVTT.CaptionSettings
     using Microsoft.PlayerFramework.WebVTT;
     using Microsoft.Media.WebVTT;
 
-#if WINDOWS_PHONE
+#if SILVERLIGHT
     using Media = System.Windows.Media;
     using UI = System.Windows.Media;
 #else

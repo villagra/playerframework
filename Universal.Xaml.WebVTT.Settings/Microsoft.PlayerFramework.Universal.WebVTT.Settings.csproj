@@ -115,10 +115,6 @@
       <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
       <Name>Microsoft.Media.Universal.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Universal.Xaml.CaptionSettings\Microsoft.PlayerFramework.Universal.CaptionSettings.csproj">
-      <Project>{00c65be5-8806-4ad5-a350-d48120e22028}</Project>
-      <Name>Microsoft.PlayerFramework.Universal.CaptionSettings</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj">
       <Project>{66fb4cac-c1d3-4756-978a-2ecf8a7aa1b4}</Project>
       <Name>Microsoft.PlayerFramework.Universal.Core</Name>
@@ -128,8 +124,17 @@
       <Name>Microsoft.PlayerFramework.Universal.WebVTT</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

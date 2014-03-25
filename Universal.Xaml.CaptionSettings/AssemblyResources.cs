@@ -23,5 +23,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             return ResourceLoader.GetForCurrentView("Microsoft.PlayerFramework.CaptionSettings/Resources");
         }
+
+        internal static string GetString(string resource)
+        {
+            return Get().GetString(resource);
+        }
     }
 }
