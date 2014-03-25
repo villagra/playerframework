@@ -1,0 +1,21 @@
+<Page
+    x:Name="pageRoot"
+    x:Class="Microsoft.PlayerFramework.Samples.ProgressivePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.Samples"
+    xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mmppf="using:Microsoft.PlayerFramework"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4"/>
+    </Grid>
+    <Page.TopAppBar>
+        <AppBar>
+            <AppBarButton x:Name="backButton" Icon="Back"/>
+        </AppBar>
+    </Page.TopAppBar>
+</Page>

@@ -1,0 +1,121 @@
+{"Groups":[
+  {
+    "UniqueId": "Group-1",
+    "Title": "Common",
+    "Subtitle": "Common Samples",
+    "ImagePath": "Assets/DarkGray.png",
+    "Description" : "Demonstrates common uses of the player framework",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-1-Item-1",
+        "Title": "Progressive video",
+        "Subtitle": "Demonstrates basic playback of progressive download video.",
+        "ImagePath": "Assets/LightGray.png",
+        "Description" : "",
+        "Content" : "ProgressivePage"
+      },
+      {
+        "UniqueId": "Group-1-Item-2",
+        "Title": "Playlists",
+        "Subtitle": "Demonstrates playlist support.",
+        "ImagePath": "Assets/DarkGray.png",
+        "Description" : "",
+        "Content" : "PlaylistPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-3",
+        "Title": "Player Framework settings",
+        "Subtitle": "Demonstrates a number of the settings that can be used to control the PlayerFramework.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "SettingsPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-4",
+        "Title": "Error handling UI",
+        "Subtitle": "Demonstrates the built-in error handler UI.",
+        "ImagePath": "Assets/DarkGray.png",
+        "Description" : "",
+        "Content" : "ErrorPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-5",
+        "Title": "Poster image",
+        "Subtitle": "Demonstrates showing a poster image.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PosterPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-6",
+        "Title": "Click to play",
+        "Subtitle": "Demonstrates the built-in click to play feature to allow users to only start download once the user clicks.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "AutoLoadPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-7",
+        "Title": "PlayReady DRM",
+        "Subtitle": "Demonstrates PlayReady DRM. Note: you must set the build configuration to x86 if you are running on 32-bit Windows.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PlayReadyPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-8",
+        "Title": "Player styling",
+        "Subtitle": "Demonstrates how to style the player.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "EntertainmentAppPage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-2",
+    "Title": "Adaptive Streaming",
+    "Subtitle": "Adaptive Streaming Samples",
+    "ImagePath": "Assets/LightGray.png",
+    "Description" : "Demonstrates the various ways to use the smooth streaming SDK to support adaptive streaming",
+    "Items":
+    [
+      
+    ]
+  },
+  {
+    "UniqueId": "Group-3",
+    "Title": "Captions",
+    "Subtitle": "Closed Caption Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates the various ways to use the player framework's closed captioning and subtitles feature",
+    "Items":
+    [
+      
+    ]
+  },
+  {
+    "UniqueId": "Group-4",
+    "Title": "Advertising",
+    "Subtitle": "Advertising Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates the various ways to use the player framework's advertising feature",
+    "Items":
+    [
+      
+    ]
+  },
+  {
+    "UniqueId": "Group-5",
+    "Title": "Advanced",
+    "Subtitle": "Advanced Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates advanced player framework features",
+    "Items":
+    [
+      
+    ]
+  }
+]
+}
