@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
-    xmlns:mmppf="using:Microsoft.PlayerFramework"
     xmlns:adaptive="using:Microsoft.PlayerFramework.Adaptive"
     xmlns:ttml="using:Microsoft.PlayerFramework.TimedText"
     mc:Ignorable="d"
