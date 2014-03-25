@@ -1492,8 +1492,8 @@
                     <Grid Background="{TemplateBinding Background}">
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{TemplateBinding ErrorText}" FontSize="24" HorizontalAlignment="Center"/>
-                            <Viewbox Width="240" Height="240" Stretch="Uniform">
-                                <AppBarButton IsCompact="True" Icon="Play" Margin="0,-6,0,-10" x:Name="RetryButton"/>
+                            <Viewbox Width="240" Height="240" Stretch="Uniform" Margin="0,-6,0,-10">
+                                <AppBarButton IsCompact="True" Icon="Play" x:Name="RetryButton"/>
                             </Viewbox>
                             <TextBlock x:Name="RetryInstructions" FontSize="24" HorizontalAlignment="Center"/>
                         </StackPanel>
