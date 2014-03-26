@@ -1,6 +1,5 @@
 ﻿using Microsoft.PlayerFramework.Samples.Common;
 using Microsoft.PlayerFramework.Samples.Data;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -106,7 +106,15 @@ namespace Microsoft.PlayerFramework.Samples
         {
             var content = ((SampleDataItem)e.ClickedItem).Content;
             Type t = Type.GetType(string.Format("Microsoft.PlayerFramework.Samples.{0}", content));
-            this.Frame.Navigate(t);
+            if (t != null)
+            {
+                this.Frame.Navigate(t);
+            }
+            else
+            {
+                var msgBox = new MessageDialog("Sample unavailable for Windows Phone");
+                var noawait = msgBox.ShowAsync();
+            }
         }
 
         #region NavigationHelper registration
