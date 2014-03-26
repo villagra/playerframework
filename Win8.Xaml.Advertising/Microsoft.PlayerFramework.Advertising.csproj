@@ -216,8 +216,7 @@
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\Universal.Xaml.Advertising\Themes\Generic.xaml">
-      <Link>Themes\Generic.xaml</Link>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

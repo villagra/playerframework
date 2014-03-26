@@ -18,6 +18,8 @@ namespace Microsoft.PlayerFramework.Advertising
     /// </summary>
     public class AdHost : ContentControl
     {
+        Uri navigateUri;
+
         protected Panel LayoutRoot { get; private set; }
         protected Size? InitialDimensions { get; set; }
 
@@ -71,9 +73,10 @@ namespace Microsoft.PlayerFramework.Advertising
                     hyperlink.TargetName = "_blank";
 #endif
                 }
-#if WINDOWS_PHONE
-                ClickThroughButton.Content = ClickThroughButton.Content ?? MediaPlayer.GetResourceString("AdLinkLabel");
-#endif
+                if (ClickThroughButton.Content != null)
+                {
+                    ClickThroughButton.Content = MediaPlayer.GetResourceString("AdLinkLabel");
+                }
             }
 
             var LayoutRoot = GetTemplateChild("LayoutRoot") as Panel;
@@ -92,7 +95,6 @@ namespace Microsoft.PlayerFramework.Advertising
             if (Navigated != null) Navigated(this, e);
         }
 
-        Uri navigateUri;
         /// <summary>
         /// Gets or sets the Uri to navigate to when the hyperlink button is clicked.
         /// </summary>
