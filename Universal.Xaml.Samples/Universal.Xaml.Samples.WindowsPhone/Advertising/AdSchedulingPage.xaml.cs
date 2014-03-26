@@ -31,7 +31,7 @@ namespace Microsoft.PlayerFramework.Samples
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public ProgressivePage()
+        public AdSchedulingPage()
         {
             this.InitializeComponent();
 

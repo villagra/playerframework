@@ -133,18 +133,6 @@
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
       <Name>Microsoft.PlayerFramework.Universal.WebVTT</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Phone.AdaptiveStreaming.Analytics.csproj">
-      <Project>{fdda472f-3579-4df8-830d-5ea18848de33}</Project>
-      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Analytics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Phone.AdaptiveStreaming.Dash.csproj">
-      <Project>{6ac6fe63-157b-4b94-a178-663a576fd349}</Project>
-      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Dash</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj">
-      <Project>{cc90ca7e-e976-4c9d-aa26-38e4787cb9a8}</Project>
-      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Helper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\WP81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Phone.CaptionSettings.csproj">
       <Project>{3a4715d1-efe0-4c7e-98c7-e3afe945288f}</Project>
       <Name>Microsoft.PlayerFramework.Phone.CaptionSettings</Name>
@@ -159,29 +147,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adaptive\CffOfflinePage.xaml.cs">
-      <DependentUpon>CffOfflinePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
-      <DependentUpon>CffProgressivePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Adaptive\DashPage.xaml.cs">
-      <DependentUpon>DashPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Adaptive\LivePage.xaml.cs">
-      <DependentUpon>LivePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Adaptive\SmoothPage.xaml.cs">
-      <DependentUpon>SmoothPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Advanced\LocalPlaybackPage.xaml.cs">
       <DependentUpon>LocalPlaybackPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Advanced\MarkersPage.xaml.cs">
       <DependentUpon>MarkersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Advanced\PlayToPage.xaml.cs">
-      <DependentUpon>PlayToPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Advanced\SuspendResumePage.xaml.cs">
       <DependentUpon>SuspendResumePage.xaml</DependentUpon>
@@ -218,9 +188,6 @@
     </Compile>
     <Compile Include="Advertising\ProgrammaticAdPage.xaml.cs">
       <DependentUpon>ProgrammaticAdPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
-      <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Captions\TtmlPage.xaml.cs">
       <DependentUpon>TtmlPage.xaml</DependentUpon>
@@ -273,35 +240,11 @@
     <Content Include="Assets\HubBackground.theme-light.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Adaptive\CffOfflinePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Adaptive\CffProgressivePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Adaptive\DashPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Adaptive\LivePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Adaptive\SmoothPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Advanced\LocalPlaybackPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Advanced\MarkersPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Advanced\PlayToPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -350,10 +293,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Advertising\ProgrammaticAdPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Captions\InstreamTtmlPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

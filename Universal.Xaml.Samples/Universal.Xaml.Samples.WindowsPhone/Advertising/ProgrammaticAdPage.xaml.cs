@@ -31,6 +31,7 @@ namespace Microsoft.PlayerFramework.Samples
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private AdHandlerPlugin adHandler;
 
         public ProgrammaticAdPage()
         {
