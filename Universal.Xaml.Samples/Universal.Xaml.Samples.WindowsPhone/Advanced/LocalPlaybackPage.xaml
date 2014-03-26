@@ -10,14 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="LayoutRoot">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
         <mmppf:MediaPlayer x:Name="player"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Open from webcam..." Margin="10" Click="OpenWebcam_Click"/>
-            <Button Content="Open from local file..." Margin="10" Click="OpenFile_Click"/>
-        </StackPanel>
     </Grid>
 </Page>

@@ -38,26 +38,16 @@ namespace Microsoft.PlayerFramework.Samples
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        private async void OpenFile_Click(object sender, RoutedEventArgs e)
+        private void OpenFile()
         {
             FileOpenPicker openPicker = new FileOpenPicker();
             openPicker.SuggestedStartLocation = PickerLocationId.VideosLibrary;
             openPicker.FileTypeFilter.Add(".mp4");
             openPicker.FileTypeFilter.Add(".wmv");
-            var file = await openPicker.PickSingleFileAsync();
-            if (file != null)
-            {
-                var fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
-                player.SetSource(fileStream, file.FileType);
-            }
-        }
+            openPicker.PickSingleFileAndContinue();
 
-        private async void OpenWebcam_Click(object sender, RoutedEventArgs e)
-        {
-            //CameraCaptureUI dialog = new CameraCaptureUI();
-            //dialog.VideoSettings.Format = CameraCaptureUIVideoFormat.Mp4;
-
-            //var file = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
+            // TODO: receive choice on app reactivation.
+            //var file = await openPicker.PickSingleFileAsync();
             //if (file != null)
             //{
             //    var fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
