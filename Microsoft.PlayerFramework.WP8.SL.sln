@@ -4,51 +4,51 @@ VisualStudioVersion = 12.0.30312.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{FBC68F48-BE99-4867-986A-BB603F67FD96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Advertising", "Phone.Advertising\Microsoft.Media.Advertising.csproj", "{E9964EA2-4C37-4C00-9B59-278D5F4608BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Advertising", "WP8.Advertising\Microsoft.Media.Advertising.csproj", "{E9964EA2-4C37-4C00-9B59-278D5F4608BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Advertising", "Phone.SL.Advertising\Microsoft.PlayerFramework.Advertising.csproj", "{05A03645-D1C1-4FB1-9DE9-BCD50DB01CC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Advertising", "WP8.SL.Advertising\Microsoft.PlayerFramework.Advertising.csproj", "{05A03645-D1C1-4FB1-9DE9-BCD50DB01CC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.TimedText", "Phone.TimedText\Microsoft.Media.TimedText.csproj", "{17BA9E60-E99F-43B5-A07E-2FC0E2642BBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.TimedText", "WP8.TimedText\Microsoft.Media.TimedText.csproj", "{17BA9E60-E99F-43B5-A07E-2FC0E2642BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText", "Phone.SL.TimedText\Microsoft.PlayerFramework.TimedText.csproj", "{A3416419-9FAB-4539-8E64-79266669899F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText", "WP8.SL.TimedText\Microsoft.PlayerFramework.TimedText.csproj", "{A3416419-9FAB-4539-8E64-79266669899F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Adaptive", "Phone.SL.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj", "{70867DB8-A98B-4A2F-BA47-E44F2B4AD5A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Adaptive", "WP8.SL.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj", "{70867DB8-A98B-4A2F-BA47-E44F2B4AD5A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Test", "Phone.SL.Test.WP8\Microsoft.PlayerFramework.Test.csproj", "{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Test", "WP8.SL.Test\Microsoft.PlayerFramework.Test.csproj", "{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics", "Phone.Analytics\Microsoft.Media.Analytics.csproj", "{C9E36E2B-62F5-41AD-883A-597B6795D702}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics", "WP8.Analytics\Microsoft.Media.Analytics.csproj", "{C9E36E2B-62F5-41AD-883A-597B6795D702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics", "Phone.SL.Analytics\Microsoft.PlayerFramework.Analytics.csproj", "{F03BC1C2-BC5C-476D-A715-09DA916F9943}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics", "WP8.SL.Analytics\Microsoft.PlayerFramework.Analytics.csproj", "{F03BC1C2-BC5C-476D-A715-09DA916F9943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Analytics", "Phone.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj", "{16E729D7-0253-4C89-A0DA-1493865827E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Analytics", "WP8.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj", "{16E729D7-0253-4C89-A0DA-1493865827E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WebVTT", "Phone.WebVTT\Microsoft.Media.WebVTT.csproj", "{77EBBFE3-CDE5-45AD-9F83-9353151DF271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.WebVTT", "WP8.WebVTT\Microsoft.Media.WebVTT.csproj", "{77EBBFE3-CDE5-45AD-9F83-9353151DF271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WebVTT", "Phone.SL.WebVTT\Microsoft.PlayerFramework.WebVTT.csproj", "{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WebVTT", "WP8.SL.WebVTT\Microsoft.PlayerFramework.WebVTT.csproj", "{EF5E25BA-9FE6-4A8D-9241-D2E2B1934089}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Dash", "Phone.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj", "{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Dash", "WP8.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj", "{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AudienceInsight", "Phone.AudienceInsight\Microsoft.Media.AudienceInsight.csproj", "{551B3879-D971-45FB-B0CF-246533FF3084}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AudienceInsight", "WP8.AudienceInsight\Microsoft.Media.AudienceInsight.csproj", "{551B3879-D971-45FB-B0CF-246533FF3084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.AudienceInsight", "Phone.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj", "{ECA38FD7-D3A9-4682-BD26-D7C96D98524D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.AudienceInsight", "WP8.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj", "{ECA38FD7-D3A9-4682-BD26-D7C96D98524D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.Advertising", "Phone.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj", "{4BA5FC44-B99F-4977-A355-D158B9396B04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.Advertising", "WP8.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj", "{4BA5FC44-B99F-4977-A355-D158B9396B04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.CaptionSettings", "Phone.SL.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.csproj", "{3A2A6D48-C42A-4A65-8F25-34F7931AC54F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.CaptionSettings", "WP8.SL.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.csproj", "{3A2A6D48-C42A-4A65-8F25-34F7931AC54F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TTML.Settings", "Phone.SL.TTML.Settings\Microsoft.PlayerFramework.TTML.Settings.csproj", "{C6E13339-51E8-4158-9E1A-B12D24841ECD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TTML.Settings", "WP8.SL.TTML.Settings\Microsoft.PlayerFramework.TTML.Settings.csproj", "{C6E13339-51E8-4158-9E1A-B12D24841ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WebVTT.Settings", "Phone.SL.WebVTT.Settings\Microsoft.PlayerFramework.WebVTT.Settings.csproj", "{DDF64C55-6D24-4F23-8740-1DCD346A388A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WebVTT.Settings", "WP8.SL.WebVTT.Settings\Microsoft.PlayerFramework.WebVTT.Settings.csproj", "{DDF64C55-6D24-4F23-8740-1DCD346A388A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.CaptionSettings.Test", "Phone.SL.Test.WP8.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.Test.csproj", "{1BBDEFE9-B5A2-49CB-9441-5CFFF59A2597}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.CaptionSettings.Test", "WP8.SL.Test.WP8.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.Test.csproj", "{1BBDEFE9-B5A2-49CB-9441-5CFFF59A2597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Core", "Phone.SL.Core\Microsoft.PlayerFramework.Core.csproj", "{E0BBA78D-6A47-4E1D-A6F0-88BEF727F8C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Core", "WP8.SL.Core\Microsoft.PlayerFramework.Core.csproj", "{E0BBA78D-6A47-4E1D-A6F0-88BEF727F8C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{92BA2F3F-BFE8-452A-84CA-A46D2AD0FC99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Helper", "Phone.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj", "{351957B0-BA27-4524-95B8-23A3A2A4FF07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Helper", "WP8.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj", "{351957B0-BA27-4524-95B8-23A3A2A4FF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
