@@ -40,6 +40,11 @@ namespace Microsoft.PlayerFramework.Samples
             this.Suspending += this.OnSuspending;
         }
 
+        static App()
+        {
+            SuspensionManager.KnownTypes.Add(typeof(MediaPlayerState));
+        }
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used when the application is launched to open a specific file, to display
