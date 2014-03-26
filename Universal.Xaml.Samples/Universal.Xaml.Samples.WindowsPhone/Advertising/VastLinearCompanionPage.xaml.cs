@@ -40,7 +40,6 @@ namespace Microsoft.PlayerFramework.Samples
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
             player.Containers.Add(banner_top);
-            player.Containers.Add(banner_side);
         }
 
         /// <summary>
