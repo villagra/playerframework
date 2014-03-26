@@ -62,14 +62,40 @@
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "PlayReadyPage"
-      },
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-Styling",
+    "Title": "Styling",
+    "Subtitle": "Common Samples",
+    "ImagePath": "Assets/DarkGray.png",
+    "Description" : "Demonstrates styling the player framework",
+    "Items":
+    [
       {
-        "UniqueId": "Group-1-Item-8",
-        "Title": "Player styling",
-        "Subtitle": "Demonstrates how to style the player.",
+        "UniqueId": "Group-Styling-Item-1",
+        "Title": "Classic theme",
+        "Subtitle": "Uses the IE default browser look and feel.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
-        "Content" : "EntertainmentAppPage"
+        "Content" : "ClassicThemePage"
+      },
+      {
+        "UniqueId": "Group-Styling-Item-2",
+        "Title": "Phone theme",
+        "Subtitle": "Uses the Windows Phone 8 video theme.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PhoneThemePage"
+      },
+      {
+        "UniqueId": "Group-Styling-Item-3",
+        "Title": "Entertainment theme",
+        "Subtitle": "Uses the Windows Entertainment app theme.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "EntertainmentThemePage"
       }
     ]
   },

@@ -20,7 +20,7 @@ namespace Microsoft.PlayerFramework.Samples
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class EntertainmentAppPage : Page
+    public sealed partial class PhoneThemePage : Page
     {
         private NavigationHelper navigationHelper;
 
@@ -32,30 +32,12 @@ namespace Microsoft.PlayerFramework.Samples
         {
             get { return this.navigationHelper; }
         }
-        public EntertainmentAppPage()
+        public PhoneThemePage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
-
-            MediaControls.SetBehavior(ReplayButton, player.CreateMediaControlBehavior<ReplayButtonBehavior>());
-            MediaControls.SetBehavior(CaptionSelectionButton, player.CreateMediaControlBehavior<CaptionSelectionButtonBehavior>());
-            MediaControls.SetBehavior(AudioSelectionButton, player.CreateMediaControlBehavior<AudioSelectionButtonBehavior>());
-            
-            // register the control panel so it participates in view state changes
-            player.Initialized += player_Initialized;
         }
 
-        void player_Initialized(object sender, RoutedEventArgs e)
-        {
-            var audioSelectionPlugin = player.Plugins.OfType<AudioSelectionPlugin>().FirstOrDefault();
-            audioSelectionPlugin.AudioSelectionViewStyle = new Style(typeof(AudioSelectionView));
-            audioSelectionPlugin.AudioSelectionViewStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(0, 0, 0, 90)));
-
-            var captionSelectorPlugin = player.Plugins.OfType<CaptionSelectorPlugin>().FirstOrDefault();
-            captionSelectorPlugin.CaptionSelectorViewStyle = new Style(typeof(CaptionSelectorView));
-            captionSelectorPlugin.CaptionSelectorViewStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(0, 0, 0, 90)));
-        }
-        
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -64,7 +46,6 @@ namespace Microsoft.PlayerFramework.Samples
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            player.Initialized -= player_Initialized;
             player.Dispose();
             base.OnNavigatedFrom(e);
         }

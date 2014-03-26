@@ -258,8 +258,14 @@
     <Compile Include="Common\AutoLoadPage.xaml.cs">
       <DependentUpon>AutoLoadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\EntertainmentAppPage.xaml.cs">
-      <DependentUpon>EntertainmentAppPage.xaml</DependentUpon>
+    <Compile Include="Styling\ClassicThemePage.xaml.cs">
+      <DependentUpon>ClassicThemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styling\PhoneThemePage.xaml.cs">
+      <DependentUpon>PhoneThemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styling\EntertainmentThemePage.xaml.cs">
+      <DependentUpon>EntertainmentThemePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\ErrorPage.xaml.cs">
       <DependentUpon>ErrorPage.xaml</DependentUpon>
@@ -399,7 +405,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Common\EntertainmentAppPage.xaml">
+    <Page Include="Styling\ClassicThemePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styling\PhoneThemePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styling\EntertainmentThemePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -67,7 +67,7 @@ namespace Microsoft.PlayerFramework
                     var appbarButton = buttonBase as AppBarButton;
                     if (appbarButton != null)
                     {
-                        appbarButton.Label = null;
+                        appbarButton.Label = "";
                         appbarButton.Icon = null;
                     }
                     else
@@ -75,7 +75,7 @@ namespace Microsoft.PlayerFramework
                         var appbarToggleButton = buttonBase as AppBarToggleButton;
                         if (appbarToggleButton != null)
                         {
-                            appbarToggleButton.Label = null;
+                            appbarToggleButton.Label = "";
                             appbarToggleButton.Icon = null;
                         }
                         else
@@ -95,7 +95,7 @@ namespace Microsoft.PlayerFramework
                         textBlock.Text = null;
                     }
                 }
-                AutomationProperties.SetName(obj, null);
+                AutomationProperties.SetName(obj, "");
                 ToolTipService.SetToolTip(obj, null);
             }
 

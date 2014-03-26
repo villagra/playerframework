@@ -198,17 +198,20 @@
     <Compile Include="Common\AutoLoadPage.xaml.cs">
       <DependentUpon>AutoLoadPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\EntertainmentAppPage.xaml.cs">
-      <DependentUpon>EntertainmentAppPage.xaml</DependentUpon>
+    <Compile Include="Styling\PhoneThemePage.xaml.cs">
+      <DependentUpon>PhoneThemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styling\ClassicThemePage.xaml.cs">
+      <DependentUpon>ClassicThemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styling\EntertainmentThemePage.xaml.cs">
+      <DependentUpon>EntertainmentThemePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\ErrorPage.xaml.cs">
       <DependentUpon>ErrorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\PlaylistPage.xaml.cs">
       <DependentUpon>PlaylistPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Common\PlayReadyPage.xaml.cs">
-      <DependentUpon>PlayReadyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\PosterPage.xaml.cs">
       <DependentUpon>PosterPage.xaml</DependentUpon>
@@ -308,7 +311,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Common\EntertainmentAppPage.xaml">
+    <Page Include="Styling\PhoneThemePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styling\ClassicThemePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styling\EntertainmentThemePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -317,10 +328,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Common\PlaylistPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Common\PlayReadyPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
