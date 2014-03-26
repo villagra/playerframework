@@ -14,8 +14,8 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Units.Advertising_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>5AD102956EC8F37741F2442F4E2DB0D7A689A6D5</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Units.Advertising_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>92FF5B50B942E27D436BA4D8A9BD92C3A3E08FEE</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -133,7 +133,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Microsoft.PlayerFramework.Xaml.Units.Advertising_TemporaryKey.pfx" />
+    <None Include="Microsoft.PlayerFramework.Units.Advertising_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ads\vast_linear.xml" />

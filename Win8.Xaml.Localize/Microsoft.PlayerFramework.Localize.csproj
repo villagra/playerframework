@@ -12,7 +12,8 @@
     <DefaultLanguage>es</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Localize_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Localize_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>4A5E0538377A79C833E878525CB907C20A2DAE40</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,7 +114,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <PRIResource Include="en-US\PlayerFramework.resw" />
-    <None Include="Microsoft.PlayerFramework.Xaml.Localize_TemporaryKey.pfx" />
+    <None Include="Microsoft.PlayerFramework.Localize_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />

@@ -13,8 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <PackageCertificateThumbprint>CC273DC82302A7BE69FDDBFA2F011BE3AA8E1B0F</PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Xaml.Test_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>9B053CDD8CC94E8108727B37154598AF5F0B5C07</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Samples_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -227,7 +227,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
-    <None Include="Microsoft.PlayerFramework.Xaml.Test_TemporaryKey.pfx" />
+    <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
