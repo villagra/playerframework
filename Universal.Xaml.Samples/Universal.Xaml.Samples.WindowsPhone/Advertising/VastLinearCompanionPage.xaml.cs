@@ -110,6 +110,7 @@ namespace Microsoft.PlayerFramework.Samples
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            player.Dispose();
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
