@@ -340,8 +340,12 @@
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="themes\" />
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
