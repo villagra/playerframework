@@ -27,18 +27,20 @@ namespace Microsoft.PlayerFramework
         /// Determines if the Media Feature Pack is required.
         /// </summary>
         /// <returns>A boolean indicating if it is required.</returns>
-        public static bool IsMediaPackRequired()
+        public static bool IsMediaPackRequired(MediaPlayer player)
         {
             // TODO
-            //try
-            //{
-            //    var junk = Windows.Media.VideoEffects.VideoStabilization;
-            //}
-            //catch (TypeLoadException)
-            //{
-            //    return true;
-            //}
-            //catch (Exception) { /* ignore, WP81 */ }
+            try
+            {
+                var junk = player.MediaExtensionManager;
+                // this throws on WP81 so we can't use it in a universal class library. Polling the MediaExtensionManager property will work instead.
+                //var junk = Windows.Media.VideoEffects.VideoStabilization;
+            }
+            catch (TypeLoadException)
+            {
+                return true;
+            }
+            catch (Exception) { /* failsafe */ }
             return false;
         }
 
@@ -46,9 +48,9 @@ namespace Microsoft.PlayerFramework
         /// Performs a test and prompts the user about installing the Media Feature Pack if it is required.
         /// </summary>
         /// <returns>An awaitable task that returns true if the media feature pack is installed, false if not.</returns>
-        public static async Task<bool> TestForMediaPack()
+        public static async Task<bool> TestForMediaPack(MediaPlayer player)
         {
-            if (IsMediaPackRequired())
+            if (IsMediaPackRequired(player))
             {
                 await PromptForMediaPack();
                 return false;

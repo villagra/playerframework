@@ -4733,7 +4733,7 @@ namespace Microsoft.PlayerFramework
 #if !SILVERLIGHT
             if (TestForMediaPack)
             {
-                if (!await MediaPackHelper.TestForMediaPack())
+                if (!await MediaPackHelper.TestForMediaPack(this))
                 {
                     return null;
                 }
