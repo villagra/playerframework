@@ -504,11 +504,11 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Identifies the AutoHideInterval dependency property.
         /// </summary>
-        public static readonly DependencyProperty AutoHideIntervalProperty = RegisterDependencyProperty<TimeSpan>("AutoHideInterval", TimeSpan.FromSeconds(3));
+        public static readonly DependencyProperty AutoHideIntervalProperty = RegisterDependencyProperty<TimeSpan>("AutoHideInterval", TimeSpan.FromSeconds(2));
 
         /// <summary>
         /// Gets or sets the time before the control will automatically collapse all interactive elements.
-        /// This is only used if AutoHide = true. The default is 3 seconds.
+        /// This is only used if AutoHide = true. The default is 2 seconds.
         /// </summary>
         [Category(Categories.Advanced)]
         public TimeSpan AutoHideInterval
