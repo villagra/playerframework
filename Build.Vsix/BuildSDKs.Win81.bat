@@ -16,7 +16,7 @@ call Package.WP81.bat
 copy Win81.extension.vsixmanifest Microsoft.PlayerFramework\extension.vsixmanifest
 
 call Package.Final.bat
-rem call Cleanup.bat
+call Cleanup.bat
 
 @popd
 
