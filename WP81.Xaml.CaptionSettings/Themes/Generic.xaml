@@ -14,22 +14,22 @@
     <vc:ColorConverter x:Key="ColorConverter"/>
     <DataTemplate x:Key="FontFamilyTemplate">
         <Grid Margin="0,10">
-            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="FontSizeTemplate">
         <Grid Margin="0,10">
-            <TextBlock Text="{Binding Mode=OneWay, TargetNullValue=Default}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Mode=OneWay, TargetNullValue=Default}"/>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="FontStyleTemplate">
         <Grid Margin="0,10">
-            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="ColorTypeTemplate">
         <Grid Margin="0,10">
-            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Key="ColorTemplate">
@@ -37,7 +37,7 @@
                     Fill="{Binding Converter={StaticResource ColorConverter}}"
                     StrokeThickness="2"/>
     </DataTemplate>
-    <Style x:Key="CaptionSettingsPageTitleStyle" BasedOn="{StaticResource PhoneTextBlockBase}" TargetType="TextBlock"/>
+    <Style x:Key="CaptionSettingsPageTitleStyle" TargetType="TextBlock"/>
     <Style x:Key="PreviewTextStyle" TargetType="TextBlock">
         <Setter Property="Text" Value="Aaa Bbb Ccc Ddd"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -58,22 +58,22 @@
                         <Grid.Resources>
                             <DataTemplate x:Key="FontFamilyTemplate">
                                 <Grid Margin="0,10">
-                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="FontSizeTemplate">
                                 <Grid Margin="0,10">
-                                    <TextBlock Text="{Binding Mode=OneWay, TargetNullValue=Default}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding Mode=OneWay, TargetNullValue=Default}"/>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="FontStyleTemplate">
                                 <Grid Margin="0,10">
-                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="ColorTypeTemplate">
                                 <Grid Margin="0,10">
-                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding Converter={StaticResource ResourceConverter}, Mode=OneWay}"/>
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="ColorTemplate">
@@ -294,18 +294,18 @@
                             <ScrollViewer x:Name="scrollViewer" Background="{TemplateBinding Background}" VerticalAlignment="Top" Grid.Row="1" Padding="0,0,10,0" Grid.RowSpan="2">
 
                                 <StackPanel>
-                                    <TextBlock Text="Font" Style="{StaticResource PhoneTextGroupHeaderStyle}"/>
+                                    <TextBlock Text="Font" Style="{ThemeResource GroupHeaderTextBlockStyle}"/>
                                     <StackPanel Margin="10,0,0,0">
-                                        <TextBlock Text="Family" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                        <TextBlock Text="Family"/>
                                         <Button x:Name="FontFamilyButton" Content="{Binding Settings.FontFamily, Converter={StaticResource ResourceConverter}, TargetNullValue=Default, ConverterParameter=lower}" IsEnabled="{Binding IsEnabled}"/>
-                                        <TextBlock Text="Size (%)" Style="{StaticResource PhoneTextNormalStyle}" />
+                                        <TextBlock Text="Size (%)" />
                                         <Button x:Name="FontSizeButton" Content="{Binding Settings.FontSize, TargetNullValue=Default}" IsEnabled="{Binding IsEnabled}"/>
-                                        <TextBlock Text="Font Style" Style="{StaticResource PhoneTextNormalStyle}" />
+                                        <TextBlock Text="Font Style" />
                                             <Button x:Name="FontStyleButton" Content="{Binding Settings.FontStyle, Converter={StaticResource ResourceConverter}, TargetNullValue=Default, ConverterParameter=lower}" IsEnabled="{Binding IsEnabled}" />
                                     </StackPanel>
-                                    <TextBlock Text="Color" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="12,0,0,0" />
+                                    <TextBlock Text="Color" Style="{ThemeResource GroupHeaderTextBlockStyle}" Margin="12,0,0,0" />
                                     <StackPanel Margin="10,0,0,0">
-                                        <TextBlock Text="Font" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,0,0"/>
+                                        <TextBlock Text="Font" Margin="12,0,0,0"/>
                                         <Grid Margin="0">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition/>
@@ -314,7 +314,7 @@
                                                 <Button x:Name="FontColorTypeButton" Content="{Binding FontColorType, Converter={StaticResource ResourceConverter}, ConverterParameter=lower}" IsEnabled="{Binding IsEnabled}"/>
                                             <Button x:Name="FontColorButton" Grid.Column="1" IsEnabled="{Binding IsFontColorEnabled, Mode=OneWay}" Background="{Binding Settings.FontColor, Converter={StaticResource ColorConverter}, ConverterParameter=White}" Style="{StaticResource ColorButtonStyle}"/>
                                         </Grid>
-                                        <TextBlock Text="Background" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,0,0"/>
+                                        <TextBlock Text="Background" Margin="12,0,0,0"/>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition/>
@@ -323,7 +323,7 @@
                                                 <Button x:Name="BackgroundColorType" Content="{Binding BackgroundColorType, Converter={StaticResource ResourceConverter}, ConverterParameter=lower}" IsEnabled="{Binding IsEnabled}" />
                                             <Button x:Name="BackgroundColorButton" Grid.Column="1" IsEnabled="{Binding IsBackgroundColorEnabled, Mode=OneWay}" Background="{Binding Settings.BackgroundColor, Converter={StaticResource ColorConverter}}" Style="{StaticResource ColorButtonStyle}"/>
                                         </Grid>
-                                        <TextBlock Text="Window" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0,-118,0"/>
+                                        <TextBlock Text="Window" Margin="12,0,-118,0"/>
                                         <Grid >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition/>
