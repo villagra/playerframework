@@ -112,5 +112,43 @@ namespace Microsoft.PlayerFramework.Samples
         }
 
         #endregion
+
+        /// <summary>
+        /// Show the settings page
+        /// </summary>
+        /// <param name="sender">the caption settings button</param>
+        /// <param name="e">the event arguments</param>
+        private void OnClickCaptionSettings(object sender, RoutedEventArgs e)
+        {
+            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+
+            plugin.ShowSettingsPage(Frame);
+        }
+
+        /// <summary>
+        /// Show caption settings as a popup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickCaptionSettingsPopup(object sender, RoutedEventArgs e)
+        {
+            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+
+            plugin.PopupClosed += OnPopupClosed;
+
+            plugin.ShowSettingsPopup(this, this.LayoutRoot);
+        }
+
+        /// <summary>
+        /// Popup closed event handler
+        /// </summary>
+        /// <param name="sender">the Caption Settings Plugin</param>
+        /// <param name="e">the event arguments</param>
+        private void OnPopupClosed(object sender, object e)
+        {
+            var plugin = sender as Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin;
+
+            System.Diagnostics.Debug.WriteLine("Settings Popup closed. IsPopupOpen: {0}", plugin.IsPopupOpen);
+        }
     }
 }

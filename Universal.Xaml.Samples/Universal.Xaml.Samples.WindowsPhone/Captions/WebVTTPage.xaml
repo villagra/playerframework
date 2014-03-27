@@ -10,7 +10,11 @@
     xmlns:captionSettings="using:Microsoft.PlayerFramework.WebVTT.CaptionSettings"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="ClosedCaption" Label="Caption Settings" Click="OnClickCaptionSettingsPopup"/>
+        </CommandBar>
+    </Page.BottomAppBar>
     <Grid x:Name="LayoutRoot">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/win8/captions/movie.mp4" IsCaptionSelectionVisible="True">
             <mmppf:MediaPlayer.Plugins>
