@@ -7,7 +7,7 @@
 @pushd %~dp0%
 cd..
 
-rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.WP8.SL.sln
+"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.WP8.SL.sln
 
 @popd
 

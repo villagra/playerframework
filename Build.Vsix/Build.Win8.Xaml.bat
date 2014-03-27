@@ -7,10 +7,10 @@
 @pushd %~dp0%
 cd..
 
-rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Xaml.sln
-rem "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win8.Xaml.sln
-rem "%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win8.Xaml.sln
-rem "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win8.Xaml.sln
 
 "%SN%" -R Win8.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
