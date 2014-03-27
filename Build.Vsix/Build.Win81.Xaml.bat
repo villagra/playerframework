@@ -1,14 +1,14 @@
-@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
+﻿@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
 @set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
 @IF NOT EXIST "%DEVENV%" SET DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\VSWinExpress.exe
 
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
 
 "%SN%" -R Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
@@ -107,13 +107,13 @@ mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration
 mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration\neutral"
 
-copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.dll	Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutral\
-copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.xml	Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutral\
-copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.pri	Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\
-copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Generic.xbf				Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
-copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Entertainment.xbf			Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
-copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Phone.xbf					Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
-copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Classic.xbf				Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.dll								Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutral\
+copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.xml								Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutral\
+copy ..\..\Universal.Xaml.Core\bin\Release\Microsoft.PlayerFramework.pri								Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\
+copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Generic.xbf											Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Entertainment.xbf										Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Phone.xbf												Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Classic.xbf											Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
 
 copy ..\..\Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.pri					Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive\
 copy ..\..\Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri				Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\

@@ -1,25 +1,25 @@
-@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
+﻿@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
 @set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
 @IF NOT EXIST "%DEVENV%" SET DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\VSWinExpress.exe
 
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win81.Js.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win81.Js.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win81.Js.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win81.Js.sln
+rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win81.Js.sln
+rem "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win81.Js.sln
+rem "%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win81.Js.sln
+rem "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win81.Js.sln
 
-"%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win81.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Helper\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd				Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win81.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Helper\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd				Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win81.Js.Adaptive\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Helper\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd				Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Advertising\bin\Release\Microsoft.Media.Advertising.winmd											Universal.WinRT.Advertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Advertising\bin\Release\Microsoft.PlayerFramework.Js.Advertising.winmd									Win81.Js.Advertising\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Advertising\bin\Release\Microsoft.PlayerFramework.Js.Advertising.winmd									Win8.Js.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.winmd												Universal.WinRT.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R Win8.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.winmd										Win81.Js.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R Win8.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.winmd										Win8.Js.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd			Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd			Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd			Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
@@ -156,19 +156,19 @@ mkdir "Microsoft.Media.AudienceInsight\Redist\CommonConfiguration\neutral\Micros
 mkdir "Microsoft.Media.AudienceInsight\References\CommonConfiguration"
 mkdir "Microsoft.Media.AudienceInsight\References\CommonConfiguration\neutral"
 
-..\copyencoded ..\..\Win81.Js\css\Default-base.css+..\..\Win81.Js\css\Default-dark.css																							Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-dark.css
-..\copyencoded ..\..\Win81.Js\css\Default-base.css+..\..\Win81.Js\css\Default-light.css																							Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-light.css
-..\copyencoded ..\..\Win81.Js\css\Default-base.css+..\..\Win81.Js\css\Default-dark.css+..\..\Win81.Js\css\Entertainment-base.css+..\..\Win81.Js\css\Entertainment-dark.css		Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-dark.css
-..\copyencoded ..\..\Win81.Js\css\Default-base.css+..\..\Win81.Js\css\Default-light.css+..\..\Win81.Js\css\Entertainment-base.css+..\..\Win81.Js\css\Entertainment-light.css	Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-light.css
-..\copyencoded ..\..\Win81.Js\js\PlayerFramework.js+..\..\Win81.Js\js\InteractiveViewModel.js+..\..\Win81.Js\js\MediaPlayer.js+..\..\Win81.Js\js\DynamicTextTrack.js+..\..\Win81.Js\js\ui\Button.js+..\..\Win81.Js\js\ui\ControlPanel.js+..\..\Win81.Js\js\ui\Indicator.js+..\..\Win81.Js\js\ui\Meter.js+..\..\Win81.Js\js\ui\Slider.js+..\..\Win81.Js\js\plugins\PluginBase.js+..\..\Win81.Js\js\plugins\TrackingPluginBase.js+..\..\Win81.Js\js\plugins\BufferingPlugin.js+..\..\Win81.Js\js\plugins\ControlPlugin.js+..\..\Win81.Js\js\plugins\ErrorPlugin.js+..\..\Win81.Js\js\plugins\LoaderPlugin.js+..\..\Win81.Js\js\plugins\PlaylistPlugin.js+..\..\Win81.Js\js\plugins\PlayTimeTrackingPlugin.js+..\..\Win81.Js\js\plugins\PositionTrackingPlugin.js+..\..\Win81.Js\js\plugins\MediaControlPlugin.js+..\..\Win81.Js\js\plugins\ChaptersPlugin.js+..\..\Win81.Js\js\plugins\DisplayRequestPlugin.js+..\..\Win81.Js\js\plugins\CaptionSelectorPlugin.js+..\..\Win81.Js\js\plugins\AudioSelectorPlugin.js Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\js\PlayerFramework.js
-copy ..\..\Win81.Js\images\thumb-dark.png																																Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\images\
-copy ..\..\Win81.Js\images\thumb-light.png																																Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\images\
+..\copyencoded ..\..\Win8.Js\css\Default-base.css+..\..\Win8.Js\css\Default-dark.css																							Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-dark.css
+..\copyencoded ..\..\Win8.Js\css\Default-base.css+..\..\Win8.Js\css\Default-light.css																							Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-light.css
+..\copyencoded ..\..\Win8.Js\css\Default-base.css+..\..\Win8.Js\css\Default-dark.css+..\..\Win8.Js\css\Entertainment-base.css+..\..\Win8.Js\css\Entertainment-dark.css		Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-dark.css
+..\copyencoded ..\..\Win8.Js\css\Default-base.css+..\..\Win8.Js\css\Default-light.css+..\..\Win8.Js\css\Entertainment-base.css+..\..\Win8.Js\css\Entertainment-light.css	Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-light.css
+..\copyencoded ..\..\Win8.Js\js\PlayerFramework.js+..\..\Win8.Js\js\InteractiveViewModel.js+..\..\Win8.Js\js\MediaPlayer.js+..\..\Win8.Js\js\DynamicTextTrack.js+..\..\Win8.Js\js\ui\Button.js+..\..\Win8.Js\js\ui\ControlPanel.js+..\..\Win8.Js\js\ui\Indicator.js+..\..\Win8.Js\js\ui\Meter.js+..\..\Win8.Js\js\ui\Slider.js+..\..\Win8.Js\js\plugins\PluginBase.js+..\..\Win8.Js\js\plugins\TrackingPluginBase.js+..\..\Win8.Js\js\plugins\BufferingPlugin.js+..\..\Win8.Js\js\plugins\ControlPlugin.js+..\..\Win8.Js\js\plugins\ErrorPlugin.js+..\..\Win8.Js\js\plugins\LoaderPlugin.js+..\..\Win8.Js\js\plugins\PlaylistPlugin.js+..\..\Win8.Js\js\plugins\PlayTimeTrackingPlugin.js+..\..\Win8.Js\js\plugins\PositionTrackingPlugin.js+..\..\Win8.Js\js\plugins\MediaControlPlugin.js+..\..\Win8.Js\js\plugins\ChaptersPlugin.js+..\..\Win8.Js\js\plugins\DisplayRequestPlugin.js+..\..\Win8.Js\js\plugins\CaptionSelectorPlugin.js+..\..\Win8.Js\js\plugins\AudioSelectorPlugin.js Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\js\PlayerFramework.js
+copy ..\..\Win8.Js\images\thumb-dark.png																																Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\images\
+copy ..\..\Win8.Js\images\thumb-light.png																																Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\images\
 copy Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-dark.css										Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\
 copy Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-light.css										Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\
 copy Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-dark.css						Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\
 copy Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-light.css						Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\css\
 copy Microsoft.PlayerFramework.Js\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\js\PlayerFramework.js												Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\js\
-copy ..\..\Win81.Js\bin\Release\Microsoft.PlayerFramework.Js.pri																										Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\
+copy ..\..\Win8.Js\bin\Release\Microsoft.PlayerFramework.Js.pri																										Microsoft.PlayerFramework.Js\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js\
 
 ..\copyencoded ..\..\Win8.Js.Adaptive\js\AdaptivePlugin.js																												Microsoft.PlayerFramework.Js.Adaptive\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js.Adaptive\js\PlayerFramework.Adaptive.js
 copy Microsoft.PlayerFramework.Js.Adaptive\DesignTime\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js.Adaptive\js\PlayerFramework.Adaptive.js					Microsoft.PlayerFramework.Js.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js.Adaptive\js\

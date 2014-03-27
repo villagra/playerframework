@@ -1,14 +1,14 @@
-@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
+﻿@set SN=%ProgramFiles(x86)%\Microsoft SDKs\Windows\v8.0A\Bin\NETFX 4.0 Tools\x64\sn.exe
 @set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
 @IF NOT EXIST "%DEVENV%" SET DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\VSWinExpress.exe
 
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
+rem "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
 
 "%SN%" -R WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk

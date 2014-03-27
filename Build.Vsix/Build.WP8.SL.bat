@@ -1,4 +1,4 @@
-@set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
+﻿@set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
 @set DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe
 @IF NOT EXIST "%DEVENV%" SET DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\VSWinExpress.exe
 @IF NOT EXIST "%DEVENV%" SET DEVENV=%ProgramFiles(x86)%\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe
@@ -7,7 +7,7 @@
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.WP8.SL.sln
+rem "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.WP8.SL.sln
 
 @popd
 
@@ -15,9 +15,9 @@ cd..
 
 cd WP80
 
-mkdir "Microsoft.PlayerFramework\References"
-mkdir "Microsoft.PlayerFramework\References\CommonConfiguration"
-mkdir "Microsoft.PlayerFramework\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Core\References"
+mkdir "Microsoft.PlayerFramework.Core\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Core\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Adaptive\References"
 mkdir "Microsoft.PlayerFramework.Adaptive\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Adaptive\References\CommonConfiguration\neutral"
@@ -55,8 +55,8 @@ mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\neutral"
 
-copy ..\..\WP8.SL.Core\bin\Release\Microsoft.PlayerFramework.dll											Microsoft.PlayerFramework\References\CommonConfiguration\neutral\
-copy ..\..\WP8.SL.Core\bin\Release\Microsoft.PlayerFramework.xml											Microsoft.PlayerFramework\References\CommonConfiguration\neutral\
+copy ..\..\WP8.SL.Core\bin\Release\Microsoft.PlayerFramework.dll											Microsoft.PlayerFramework.Core\References\CommonConfiguration\neutral\
+copy ..\..\WP8.SL.Core\bin\Release\Microsoft.PlayerFramework.xml											Microsoft.PlayerFramework.Core\References\CommonConfiguration\neutral\
 
 copy ..\..\WP8.SL.Adaptive\bin\Release\Microsoft.PlayerFramework.Adaptive.dll								Microsoft.PlayerFramework.Adaptive\References\CommonConfiguration\neutral\
 copy ..\..\WP8.SL.Adaptive\bin\Release\Microsoft.PlayerFramework.Adaptive.xml								Microsoft.PlayerFramework.Adaptive\References\CommonConfiguration\neutral\

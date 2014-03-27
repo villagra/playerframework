@@ -29,7 +29,7 @@
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Xaml.CaptionSettings.Win80.vsix" DisplayName="Microsoft Player Caption Settings Plugin for XAML" Id="MMP.PF.Metro.CaptionSettings.XAML.SDK.VSIX.ad25c61c-f211-4f8c-eeee-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Xaml.Advertising.Win80.vsix" DisplayName="Microsoft Player Advertising Plugin for XAML" Id="MMP.PF.Metro.Advertising.XAML.SDK.VSIX.ad25c61c-e27c-4f8c-acbe-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Xaml.Analytics.Win80.vsix" DisplayName="Microsoft Player Analytics Plugin for XAML" Id="MMP.PF.Metro.Analytics.XAML.SDK.VSIX.dd25c41c-f222-4f8c-acbe-b349c8a6873c" />
-    <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Xaml.Win80.vsix" DisplayName="Microsoft Player Framework for XAML" Id="MMP.PF.Metro.XAML.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" />
+    <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Xaml.Core.Win80.vsix" DisplayName="Microsoft Player Framework for XAML" Id="MMP.PF.Metro.XAML.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" />
 
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Adaptive.WP80.vsix" DisplayName="Microsoft Player Framework Adaptive Streaming Plugin for WP8" Id="MMP.PF.WP8.Adaptive.SDK.VSIX.dd25c41c-f27d-4f8c-acbe-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.TimedText.WP80.vsix" DisplayName="Microsoft Player Timed Text Plugin for WP8" Id="MMP.PF.WP8.TimedText.SDK.VSIX.ad25c61c-f27d-4f8c-acbe-b349c8a6873c" />
@@ -41,6 +41,6 @@
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Analytics.WP80.vsix" DisplayName="Microsoft Player Analytics Plugin for WP8" Id="MMP.PF.WP8.Analytics.SDK.VSIX.ad25c61c-e222-4f8c-acbe-b349c8a6873c" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Dash.WP80.vsix" DisplayName="Microsoft Player Dash Plugin for WP8" Id="MMP.PF.WP8.Dash.SDK.VSIX.ad25c61c-e222-4f8c-acbe-b349c8a68ccc" />
     <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Analytics.Advertising.WP80.vsix" DisplayName="Microsoft Player Framework Advertising Analytics Adapter for WP8" Id="MMP.PF.WP8.Analytics.Advertising.VSIX.58E18F20-7364-4D1C-8C7D-60AE7984D927" />
-    <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.WP80.vsix" DisplayName="Microsoft Player Framework for WP8" Id="MMP.PF.WP8.Core.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" />
+    <Dependency Version="[1.0,2.0.0.0)" Location="Microsoft.PlayerFramework.Core.WP80.vsix" DisplayName="Microsoft Player Framework for WP8" Id="MMP.PF.WP8.Core.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" />
   </Dependencies>
 </PackageManifest>

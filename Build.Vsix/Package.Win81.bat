@@ -31,8 +31,8 @@ cd ..\Microsoft.Media.AudienceInsight
 cd ..\Microsoft.PlayerFramework.Analytics.AudienceInsight
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Analytics.AudienceInsight.zip "*"
 
-cd ..\Microsoft.PlayerFramework.Xaml
-"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.zip "*"
+cd ..\Microsoft.PlayerFramework.Xaml.Core
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Core.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.Adaptive
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Adaptive.zip "*"
@@ -70,7 +70,7 @@ move Microsoft.PlayerFramework.Analytics.Advertising.zip Microsoft.PlayerFramewo
 move Microsoft.PlayerFramework.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.Analytics.AudienceInsight.Win81.vsix
 move Microsoft.Media.AudienceInsight.zip Microsoft.Media.AudienceInsight.Win81.vsix
 
-move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.Win81.vsix
+move Microsoft.PlayerFramework.Xaml.Core.zip Microsoft.PlayerFramework.Xaml.Core.Win81.vsix
 move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.Win81.vsix
 move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml.TimedText.Win81.vsix
 move Microsoft.PlayerFramework.Xaml.TTML.Settings.zip Microsoft.PlayerFramework.Xaml.TTML.Settings.Win81.vsix

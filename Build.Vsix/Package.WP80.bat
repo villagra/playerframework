@@ -4,8 +4,8 @@
 
 cd WP80
 
-cd Microsoft.PlayerFramework
-"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.zip "*"
+cd Microsoft.PlayerFramework.Core
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Core.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Adaptive
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Adaptive.zip "*"
@@ -46,7 +46,7 @@ cd ..\Microsoft.PlayerFramework.Analytics.AudienceInsight
 
 cd ..\..\Microsoft.PlayerFramework
 
-move Microsoft.PlayerFramework.zip Microsoft.PlayerFramework.WP80.vsix
+move Microsoft.PlayerFramework.Core.zip Microsoft.PlayerFramework.Core.WP80.vsix
 move Microsoft.PlayerFramework.Adaptive.zip Microsoft.PlayerFramework.Adaptive.WP80.vsix
 move Microsoft.PlayerFramework.TimedText.zip Microsoft.PlayerFramework.TimedText.WP80.vsix
 move Microsoft.PlayerFramework.TTML.Settings.zip Microsoft.PlayerFramework.TTML.Settings.WP80.vsix
