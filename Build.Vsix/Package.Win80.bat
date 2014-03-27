@@ -2,84 +2,83 @@
 
 @set ZIP=%ProgramFiles%\7-Zip\7z.exe
 
+cd Win80
+
 cd Microsoft.PlayerFramework.Js
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.Adaptive
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.TimedText
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.TimedText.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.TimedText.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.Advertising
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Advertising.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Advertising.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.Analytics
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Analytics.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Analytics.zip "*"
 
-cd ..\Microsoft.PlayerFramework.Win8.Dash
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Dash.zip "*"
+cd ..\Microsoft.PlayerFramework.Dash
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Dash.zip "*"
 
-cd ..\Microsoft.PlayerFramework.Win8.Analytics.Advertising
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Analytics.Advertising.zip "*"
+cd ..\Microsoft.PlayerFramework.Analytics.Advertising
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Analytics.Advertising.zip "*"
 
-@rem cd ..\Microsoft.AudienceInsight.Win8
-@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.AudienceInsight.Win8.zip "*"
+cd ..\Microsoft.Media.AudienceInsight
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.Media.AudienceInsight.zip "*"
 
-@rem cd ..\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight
-@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.zip "*"
+cd ..\Microsoft.PlayerFramework.Analytics.AudienceInsight
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Analytics.AudienceInsight.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.Adaptive
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Adaptive.zip "*"
-
-@rem cd ..\Microsoft.PlayerFramework.Xaml.CaptionMarkers
-@rem "%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.CaptionMarkers.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Adaptive.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.TimedText
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TimedText.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TimedText.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.TTML.Settings
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TTML.Settings.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TTML.Settings.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.WebVTT
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.WebVTT.Settings
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.Settings.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.WebVTT.Settings.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.CaptionSettings
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.CaptionSettings.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.CaptionSettings.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.Advertising
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Advertising.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Advertising.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.Analytics
-"%ZIP%" a ..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Analytics.zip "*"
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Analytics.zip "*"
 
-cd ..\Microsoft.PlayerFramework
-move Microsoft.PlayerFramework.Js.zip Microsoft.PlayerFramework.Js.vsix
-move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.vsix
-move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.vsix
-move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.vsix
-move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.vsix
-move Microsoft.PlayerFramework.Win8.Dash.zip Microsoft.PlayerFramework.Win8.Dash.vsix
-move Microsoft.PlayerFramework.Win8.Analytics.Advertising.zip Microsoft.PlayerFramework.Win8.Analytics.Advertising.vsix
-@rem move Microsoft.AudienceInsight.Win8.zip Microsoft.AudienceInsight.Win8.vsix
-@rem move Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.Win8.Analytics.AudienceInsight.vsix
+cd ..\..\Microsoft.PlayerFramework
 
-move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.vsix
-move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.vsix
-move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml.TimedText.vsix
-move Microsoft.PlayerFramework.Xaml.TTML.Settings.zip Microsoft.PlayerFramework.Xaml.TTML.Settings.vsix
-move Microsoft.PlayerFramework.Xaml.WebVTT.zip Microsoft.PlayerFramework.Xaml.WebVTT.vsix
-move Microsoft.PlayerFramework.Xaml.WebVTT.Settings.zip Microsoft.PlayerFramework.Xaml.WebVTT.Settings.vsix
-move Microsoft.PlayerFramework.Xaml.CaptionSettings.zip Microsoft.PlayerFramework.Xaml.CaptionSettings.vsix
-move Microsoft.PlayerFramework.Xaml.Advertising.zip Microsoft.PlayerFramework.Xaml.Advertising.vsix
-move Microsoft.PlayerFramework.Xaml.Analytics.zip Microsoft.PlayerFramework.Xaml.Analytics.vsix
-@rem move Microsoft.PlayerFramework.Xaml.CaptionMarkers.zip Microsoft.PlayerFramework.Xaml.CaptionMarkers.vsix
+move Microsoft.PlayerFramework.Js.zip Microsoft.PlayerFramework.Js.Win80.vsix
+move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.Win80.vsix
+move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.Win80.vsix
+move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.Win80.vsix
+move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.Win80.vsix
+move Microsoft.PlayerFramework.Dash.zip Microsoft.PlayerFramework.Dash.Win80.vsix
+move Microsoft.PlayerFramework.Analytics.Advertising.zip Microsoft.PlayerFramework.Analytics.Advertising.Win80.vsix
+move Microsoft.PlayerFramework.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.Analytics.AudienceInsight.Win80.vsix
+move Microsoft.Media.AudienceInsight.zip Microsoft.Media.AudienceInsight.Win80.vsix
+
+move Microsoft.PlayerFramework.Xaml.zip Microsoft.PlayerFramework.Xaml.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml.TimedText.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.TTML.Settings.zip Microsoft.PlayerFramework.Xaml.TTML.Settings.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.WebVTT.zip Microsoft.PlayerFramework.Xaml.WebVTT.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.WebVTT.Settings.zip Microsoft.PlayerFramework.Xaml.WebVTT.Settings.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.CaptionSettings.zip Microsoft.PlayerFramework.Xaml.CaptionSettings.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.Advertising.zip Microsoft.PlayerFramework.Xaml.Advertising.Win80.vsix
+move Microsoft.PlayerFramework.Xaml.Analytics.zip Microsoft.PlayerFramework.Xaml.Analytics.Win80.vsix
 
 @popd
 
