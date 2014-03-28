@@ -216,4 +216,10 @@
   <data name="MoreButtonLabel" xml:space="preserve">
     <value>MORE...</value>
   </data>
+  <data name="ExitFullScreenButtonLabel" xml:space="preserve">
+    <value>Exit full screen</value>
+  </data>
+  <data name="FullScreenButtonLabel" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
 </root>
