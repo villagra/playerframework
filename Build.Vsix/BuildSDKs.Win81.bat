@@ -7,6 +7,7 @@ call Build.Win81.Xaml.bat
 call Build.Win81.JS.bat
 call Build.WP8.SL.bat
 call Build.WP81.Xaml.bat
+call Build.WP81.JS.bat
 
 call Package.Win80.bat
 call Package.Win81.bat
