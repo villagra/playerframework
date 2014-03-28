@@ -6,8 +6,8 @@ del *.vsix
 cd ..
 cd Win80
 
-rmdir /s /q "Microsoft.PlayerFramework.Js\DesignTime\"
-rmdir /s /q "Microsoft.PlayerFramework.Js\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Js.Core\DesignTime\"
+rmdir /s /q "Microsoft.PlayerFramework.Js.Core\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\DesignTime\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\References\"
@@ -51,8 +51,8 @@ rmdir /s /q "Microsoft.PlayerFramework.Xaml.CaptionSettings\References"
 cd ..
 cd Win81
 
-rmdir /s /q "Microsoft.PlayerFramework.Js\DesignTime\"
-rmdir /s /q "Microsoft.PlayerFramework.Js\Redist\"
+rmdir /s /q "Microsoft.PlayerFramework.Js.Core\DesignTime\"
+rmdir /s /q "Microsoft.PlayerFramework.Js.Core\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\DesignTime\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\Redist\"
 rmdir /s /q "Microsoft.PlayerFramework.Js.Adaptive\References\"

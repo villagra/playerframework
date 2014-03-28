@@ -4,8 +4,8 @@
 
 cd Win81
 
-cd Microsoft.PlayerFramework.Js
-"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.zip "*"
+cd Microsoft.PlayerFramework.Js.Core
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Core.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.Adaptive
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
@@ -60,7 +60,7 @@ cd ..\Microsoft.PlayerFramework.Xaml.Analytics
 
 cd ..\..\Microsoft.PlayerFramework
 
-move Microsoft.PlayerFramework.Js.zip Microsoft.PlayerFramework.Js.Win81.vsix
+move Microsoft.PlayerFramework.Js.Core.zip Microsoft.PlayerFramework.Js.Core.Win81.vsix
 move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.Win81.vsix
 move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.Win81.vsix
 move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.Win81.vsix
