@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>progressive</title>
+
+    <link href="progressive.css" rel="stylesheet" />
+    <script src="progressive.js"></script>
+</head>
+<body>
+    <div class="progressive fragment">
+        <header class="page-header" aria-label="Header content" role="banner">
+            <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Welcome to progressive</span>
+            </h1>
+        </header>
+        <section class="page-section" aria-label="Main content" role="main">
+            <div style="width:100%; height:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                autoplay: true,
+                src: 'http://smf.blob.core.windows.net/samples/videos/wildlife.mp4'
+            }"></div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,12 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js", "Win8.Js\Microsoft.PlayerFramework.Js.csproj", "{F8AB551F-EFA0-4FC9-A753-340444A6DF39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Core", "Win8.Js.Core\Microsoft.PlayerFramework.Core.csproj", "{F8AB551F-EFA0-4FC9-A753-340444A6DF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.Adaptive", "Win8.Js.Adaptive\Microsoft.PlayerFramework.Js.Adaptive.csproj", "{9DFC852E-EE46-460F-9681-05702EC76A19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Adaptive", "Win8.Js.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj", "{9DFC852E-EE46-460F-9681-05702EC76A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.TimedText", "Win8.Js.TimedText\Microsoft.PlayerFramework.Js.TimedText.csproj", "{8A4C789C-9237-4E65-B632-7D98A2C52D1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText", "Win8.Js.TimedText\Microsoft.PlayerFramework.TimedText.csproj", "{8A4C789C-9237-4E65-B632-7D98A2C52D1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.Advertising", "Win8.Js.Advertising\Microsoft.PlayerFramework.Js.Advertising.csproj", "{1CA43F12-07FC-4A81-9AAC-47FF9B7B2A1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Advertising", "Win8.Js.Advertising\Microsoft.PlayerFramework.Advertising.csproj", "{1CA43F12-07FC-4A81-9AAC-47FF9B7B2A1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Advertising", "Win8.WinRT.Advertising\Microsoft.Media.Advertising.csproj", "{F863EDC6-2886-4D39-A578-89F4FF729D82}"
 EndProject
@@ -14,11 +14,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FA4421CB-C729-456D-89AC-062AF17E22B3}"
 EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Channel9Sample", "Win8.Js.Channel9Sample\Channel9Sample.jsproj", "{206C16D2-8380-4DF5-AEC1-11F715DEFA59}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Microsoft.PlayerFramework.Channel9Sample", "Win8.Js.Channel9Sample\Microsoft.PlayerFramework.Channel9Sample.jsproj", "{206C16D2-8380-4DF5-AEC1-11F715DEFA59}"
 EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "LocalizationSample", "Win8.Js.LocalizationSample\LocalizationSample.jsproj", "{142206CF-738E-46FC-A510-631BC4ABE92C}"
-EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "MediaPlayerSamples", "Win8.Js.MediaPlayerSamples\MediaPlayerSamples.jsproj", "{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Microsoft.PlayerFramework.LocalizationSample", "Win8.Js.LocalizationSample\Microsoft.PlayerFramework.LocalizationSample.jsproj", "{142206CF-738E-46FC-A510-631BC4ABE92C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{8FFCB28A-52C7-49E1-B6A0-60CF046C8A8A}"
 EndProject
@@ -26,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Analytics", "Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj", "{BFD7F8CB-C154-43E8-9647-D1F8005F71AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Js.Analytics", "Win8.Js.Analytics\Microsoft.PlayerFramework.Js.Analytics.csproj", "{F1A93705-2ED4-4ADE-B936-995D4C6BE80A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics", "Win8.Js.Analytics\Microsoft.PlayerFramework.Analytics.csproj", "{F1A93705-2ED4-4ADE-B936-995D4C6BE80A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.ISO", "Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj", "{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}"
 EndProject
@@ -37,6 +35,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.AudienceInsight", "Win8.WinRT.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj", "{AD0F55FE-D523-4BA0-9198-5CBA45DDCBCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.Advertising", "Win8.WinRT.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj", "{95DFF5D9-BD94-494E-AD33-F20E45A339EB}"
+EndProject
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Microsoft.PlayerFramework.Samples", "Win8.Js.Samples\Microsoft.PlayerFramework.Samples.jsproj", "{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -232,36 +232,6 @@ Global
 		{142206CF-738E-46FC-A510-631BC4ABE92C}.Release|x86.ActiveCfg = Release|x86
 		{142206CF-738E-46FC-A510-631BC4ABE92C}.Release|x86.Build.0 = Release|x86
 		{142206CF-738E-46FC-A510-631BC4ABE92C}.Release|x86.Deploy.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.Build.0 = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.Deploy.0 = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.ActiveCfg = Debug|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.Build.0 = Debug|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.Deploy.0 = Debug|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.ActiveCfg = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.Build.0 = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.Deploy.0 = Debug|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.ActiveCfg = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.Build.0 = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.Deploy.0 = Debug|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.ActiveCfg = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.Build.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.Deploy.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.ActiveCfg = Release|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.Build.0 = Release|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.Deploy.0 = Release|ARM
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.Build.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.Deploy.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.ActiveCfg = Release|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.Build.0 = Release|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.Deploy.0 = Release|x64
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.ActiveCfg = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.Build.0 = Release|x86
-		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.Deploy.0 = Release|x86
 		{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{961CE8EE-F4BE-403F-AC06-A53CE1C7CE4C}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -416,6 +386,36 @@ Global
 		{95DFF5D9-BD94-494E-AD33-F20E45A339EB}.Release|x64.Build.0 = Release|x64
 		{95DFF5D9-BD94-494E-AD33-F20E45A339EB}.Release|x86.ActiveCfg = Release|x86
 		{95DFF5D9-BD94-494E-AD33-F20E45A339EB}.Release|x86.Build.0 = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.Build.0 = Debug|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.ActiveCfg = Debug|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.Build.0 = Debug|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x64.Deploy.0 = Debug|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.ActiveCfg = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.Build.0 = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Debug|x86.Deploy.0 = Debug|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.ActiveCfg = Release|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.Build.0 = Release|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|ARM.Deploy.0 = Release|ARM
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.Build.0 = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|Mixed Platforms.Deploy.0 = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.ActiveCfg = Release|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.Build.0 = Release|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x64.Deploy.0 = Release|x64
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.ActiveCfg = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.Build.0 = Release|x86
+		{D522AD8C-6BA6-4C76-BC10-D26E5E2FD230}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
