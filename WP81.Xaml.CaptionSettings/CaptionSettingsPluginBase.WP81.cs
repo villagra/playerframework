@@ -84,17 +84,17 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 fontFamilyMap = new Dictionary<Model.FontFamily, string>();
 
                 fontFamilyMap[Model.FontFamily.Default] = null;
-                fontFamilyMap[Model.FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
-                fontFamilyMap[Model.FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
+                fontFamilyMap[Model.FontFamily.MonospaceSerif] = GetDefaultFontFamily(Model.FontFamily.MonospaceSerif, "Courier New");
+                fontFamilyMap[Model.FontFamily.ProportionalSerif] = GetDefaultFontFamily(Model.FontFamily.ProportionalSerif, "Times New Roman");
 
                 // Windows Phone does not have a real monospace sans serif like Consolas.
-                fontFamilyMap[Model.FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Calibri");
-                fontFamilyMap[Model.FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
-                fontFamilyMap[Model.FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Comic Sans MS");
-                
+                fontFamilyMap[Model.FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(Model.FontFamily.MonospaceSansSerif, "Calibri");
+                fontFamilyMap[Model.FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(Model.FontFamily.ProportionalSansSerif, "Tahoma");
+                fontFamilyMap[Model.FontFamily.Casual] = GetDefaultFontFamily(Model.FontFamily.Casual, "Comic Sans MS");
+
                 // Windows Phone does not have a real cursive font like Segoe Script.
-                fontFamilyMap[Model.FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Calibri Light");
-                fontFamilyMap[Model.FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[Model.FontFamily.Cursive] = GetDefaultFontFamily(Model.FontFamily.Cursive, "Calibri Light");
+                fontFamilyMap[Model.FontFamily.Smallcaps] = GetDefaultFontFamily(Model.FontFamily.Smallcaps, "Tahoma");
             }
 
             return fontFamilyMap[fontFamily];

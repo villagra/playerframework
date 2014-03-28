@@ -136,7 +136,7 @@
     <Compile Include="CaptionSettingsPage.xaml.cs">
       <DependentUpon>CaptionSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CaptionSettingsPluginBase.WP8.cs" />
+    <Compile Include="CaptionSettingsPluginBase.WP81.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\ColorConverter.cs" />
     <Compile Include="ValueConverters\FontStyleConverter.cs" />
