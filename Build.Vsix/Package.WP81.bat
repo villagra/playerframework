@@ -4,6 +4,21 @@
 
 cd WP81
 
+cd Microsoft.PlayerFramework.Js.Core
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Core.zip "*"
+
+cd ..\Microsoft.PlayerFramework.Js.Adaptive
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
+
+cd ..\Microsoft.PlayerFramework.Js.TimedText
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.TimedText.zip "*"
+
+cd ..\Microsoft.PlayerFramework.Js.Advertising
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Advertising.zip "*"
+
+cd ..\Microsoft.PlayerFramework.Js.Analytics
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Analytics.zip "*"
+
 cd Microsoft.PlayerFramework.Dash
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Dash.zip "*"
 
@@ -45,6 +60,11 @@ cd ..\Microsoft.PlayerFramework.Xaml.Analytics
 
 cd ..\..\Microsoft.PlayerFramework
 
+move Microsoft.PlayerFramework.Js.Core.zip Microsoft.PlayerFramework.Js.Core.WP81.vsix
+move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.WP81.vsix
+move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.WP81.vsix
+move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.WP81.vsix
+move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.WP81.vsix
 move Microsoft.PlayerFramework.Dash.zip Microsoft.PlayerFramework.Dash.WP81.vsix
 move Microsoft.PlayerFramework.Analytics.Advertising.zip Microsoft.PlayerFramework.Analytics.Advertising.WP81.vsix
 move Microsoft.PlayerFramework.Analytics.AudienceInsight.zip Microsoft.PlayerFramework.Analytics.AudienceInsight.WP81.vsix
