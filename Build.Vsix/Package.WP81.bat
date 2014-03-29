@@ -19,7 +19,7 @@ cd ..\Microsoft.PlayerFramework.Js.Advertising
 cd ..\Microsoft.PlayerFramework.Js.Analytics
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Analytics.zip "*"
 
-cd Microsoft.PlayerFramework.Dash
+cd ..\Microsoft.PlayerFramework.Dash
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Dash.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Analytics.Advertising
