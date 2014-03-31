@@ -3087,7 +3087,9 @@ namespace Microsoft.PlayerFramework
         public static readonly DependencyProperty IsStartTimeOffsetProperty = RegisterDependencyProperty<bool>("IsStartTimeOffset", false);
 
         /// <summary>
-        /// Gets or sets the IsStartTimeOffset of the current video or audio. For VOD, this is automatically set from the NaturalIsStartTimeOffset property.
+        /// Gets or sets whether the positions used in the timeline should be offset by the StartTime or absolute. 
+        /// Default is false which indicates all times are absolute and displayed as is.
+        /// When true, all positions displayed in the timeline are subtracted by the StartTime property.
         /// </summary>
         [Category(Categories.Info)]
         public bool IsStartTimeOffset
@@ -3110,7 +3112,7 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Gets or sets the StartTime of the current video or audio. For VOD, this is automatically set from the NaturalStartTime property.
+        /// Gets or sets the StartTime of the current video or audio. For VOD, this is set to TimeSpan.Zero, for live this should be set to the earliest position available in the DVR window.
         /// </summary>
         [Category(Categories.Info)]
         public TimeSpan StartTime
