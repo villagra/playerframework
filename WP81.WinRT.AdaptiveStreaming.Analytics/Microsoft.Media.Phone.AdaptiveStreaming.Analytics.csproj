@@ -94,6 +94,21 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj">
+      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
+      <Name>Microsoft.Media.Universal.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj">
+      <Project>{cc90ca7e-e976-4c9d-aa26-38e4787cb9a8}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
+      <Name>Microsoft Smooth Streaming Client SDK for Windows Phone 8.1</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -288,11 +288,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlayReady\HttpHelper.cs" />
-    <Compile Include="PlayReady\Indiv.cs" />
-    <Compile Include="PlayReady\LicenseAcquisition.cs" />
-    <Compile Include="PlayReady\RequestChain.cs" />
-    <Compile Include="PlayReady\ServiceRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

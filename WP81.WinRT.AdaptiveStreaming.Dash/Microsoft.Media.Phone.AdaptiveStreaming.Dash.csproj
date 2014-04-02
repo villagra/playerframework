@@ -153,6 +153,21 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj">
+      <Project>{cc90ca7e-e976-4c9d-aa26-38e4787cb9a8}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
+      <Name>Microsoft Smooth Streaming Client SDK for Windows Phone 8.1</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

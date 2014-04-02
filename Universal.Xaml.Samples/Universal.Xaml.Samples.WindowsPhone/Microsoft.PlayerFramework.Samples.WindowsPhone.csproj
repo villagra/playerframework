@@ -133,6 +133,22 @@
       <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
       <Name>Microsoft.PlayerFramework.Universal.WebVTT</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Phone.AdaptiveStreaming.Analytics.csproj">
+      <Project>{fdda472f-3579-4df8-830d-5ea18848de33}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Phone.AdaptiveStreaming.Dash.csproj">
+      <Project>{6ac6fe63-157b-4b94-a178-663a576fd349}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Dash</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Phone.AdaptiveStreaming.Helper.csproj">
+      <Project>{cc90ca7e-e976-4c9d-aa26-38e4787cb9a8}</Project>
+      <Name>Microsoft.Media.Phone.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WP81.Xaml.Adaptive\Microsoft.PlayerFramework.Phone.Adaptive.csproj">
+      <Project>{5cb6145c-87a6-4aa0-adc6-1be1d2344986}</Project>
+      <Name>Microsoft.PlayerFramework.Phone.Adaptive</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WP81.Xaml.CaptionSettings\Microsoft.PlayerFramework.Phone.CaptionSettings.csproj">
       <Project>{3a4715d1-efe0-4c7e-98c7-e3afe945288f}</Project>
       <Name>Microsoft.PlayerFramework.Phone.CaptionSettings</Name>
@@ -147,6 +163,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
+      <DependentUpon>CffProgressivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\DashPage.xaml.cs">
+      <DependentUpon>DashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\LivePage.xaml.cs">
+      <DependentUpon>LivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\SmoothPage.xaml.cs">
+      <DependentUpon>SmoothPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Advanced\MarkersPage.xaml.cs">
       <DependentUpon>MarkersPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +214,9 @@
     <Compile Include="Advertising\ProgrammaticAdPage.xaml.cs">
       <DependentUpon>ProgrammaticAdPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
+      <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Captions\TtmlPage.xaml.cs">
       <DependentUpon>TtmlPage.xaml</DependentUpon>
     </Compile>
@@ -194,6 +225,9 @@
     </Compile>
     <Compile Include="Common\AutoLoadPage.xaml.cs">
       <DependentUpon>AutoLoadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\PlayReadyPage.xaml.cs">
+      <DependentUpon>PlayReadyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Styling\PhoneThemePage.xaml.cs">
       <DependentUpon>PhoneThemePage.xaml</DependentUpon>
@@ -240,6 +274,22 @@
     <Content Include="Assets\HubBackground.theme-light.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Adaptive\CffProgressivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\DashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\LivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\SmoothPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Advanced\MarkersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -292,6 +342,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Captions\InstreamTtmlPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Captions\TtmlPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -301,6 +355,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Common\AutoLoadPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\PlayReadyPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -341,7 +399,14 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
+      <Name>Microsoft Smooth Streaming Client SDK for Windows Phone 8.1</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Media.PlayReadyClient.Phone, Version=2.10.2077.1">
+      <Name>Microsoft PlayReady Client SDK</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

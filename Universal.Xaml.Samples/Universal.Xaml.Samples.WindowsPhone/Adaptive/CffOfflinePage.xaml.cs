@@ -1,4 +1,5 @@
-﻿using Microsoft.PlayerFramework.Samples.Common;
+﻿using Microsoft.PlayerFramework.Adaptive;
+using Microsoft.PlayerFramework.Samples.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
