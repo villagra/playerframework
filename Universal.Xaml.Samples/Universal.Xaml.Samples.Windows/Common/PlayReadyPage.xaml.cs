@@ -42,11 +42,6 @@ namespace Microsoft.PlayerFramework.Samples
         RequestChain _requestChain = null;
         ServiceRequestConfigData _requestConfigData = null;
 
-        public ServiceRequestConfigData RequestConfigData
-        {
-            set { this._requestConfigData = value; }
-            get { return this._requestConfigData; }
-        }
 
         public PlayReadyPage()
         {
@@ -69,6 +64,11 @@ namespace Microsoft.PlayerFramework.Samples
             extensions.RegisterByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".pya", "PRaudio");
             extensions.RegisterByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".wma", "PRaudio");
             extensions.RegisterByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".wmv", "PRvideo");
+        }
+        public ServiceRequestConfigData RequestConfigData
+        {
+            set { this._requestConfigData = value; }
+            get { return this._requestConfigData; }
         }
 
         void ProtectionManager_ComponentLoadFailed(MediaProtectionManager sender, ComponentLoadFailedEventArgs e)
