@@ -11,7 +11,7 @@
     midrollAd.source.payload.mimeType = "video/x-ms-wmv";
     midrollAd.time = 5;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/advertising/clip/clip.html", {
+    WinJS.UI.Pages.define("/pages/advertising/clip/clip.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

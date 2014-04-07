@@ -3,7 +3,7 @@
 
     var mediaPlayer = null;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/advertising/freewheel/freewheel.html", {
+    WinJS.UI.Pages.define("/pages/advertising/freewheel/freewheel.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

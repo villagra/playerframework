@@ -3,7 +3,7 @@
 
     var mediaPlayer = null;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/adaptive/dash/dash.html", {
+    WinJS.UI.Pages.define("/pages/adaptive/dash/dash.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

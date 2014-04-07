@@ -3,7 +3,7 @@
 
     var mediaPlayer = null;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/common/light/light.html", {
+    WinJS.UI.Pages.define("/pages/common/light/light.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

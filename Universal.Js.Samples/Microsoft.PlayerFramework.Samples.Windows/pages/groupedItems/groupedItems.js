@@ -29,7 +29,7 @@
         _itemInvoked: function (args) {
             var item = Data.items.getAt(args.detail.itemIndex);
 
-            //nav.navigate("/pages/itemDetail/itemDetail.html", { item: Data.getItemReference(item) });
+            //nav.navigate("/pages/itemDetail.html", { item: Data.getItemReference(item) });
 
             var name = item.subtitle.substring(item.subtitle.lastIndexOf("/") + 1);
             var page = "/pages/" + item.subtitle + "/" + name + ".html";

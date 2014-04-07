@@ -22,7 +22,7 @@
     postrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear.xml");
     postrollAd.source.headers.insert("User-Agent", Microsoft.Media.Advertising.Extensions.defaultUserAgent);
 
-    WinJS.UI.Pages.define("/pages/itemdetail/advertising/vast/vast.html", {
+    WinJS.UI.Pages.define("/pages/advertising/vast/vast.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

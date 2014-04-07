@@ -9,7 +9,7 @@
     midrollAd.source.uri = new Windows.Foundation.Uri("http://smf.blob.core.windows.net/samples/win8/ads/vast_linear_nonlinear.xml");
     midrollAd.time = 5;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/advertising/linearnonlinear/linearnonlinear.html", {
+    WinJS.UI.Pages.define("/pages/advertising/linearnonlinear/linearnonlinear.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {

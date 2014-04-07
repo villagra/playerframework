@@ -7,7 +7,7 @@
     var playReadyLicenseAcquirerServiceUrl = "http://playready.directtaps.net/win/rightsmanager.asmx";
     var playReadyPromise = null;
 
-    WinJS.UI.Pages.define("/pages/itemdetail/common/playready/playready.html", {
+    WinJS.UI.Pages.define("/pages/common/playready/playready.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {
