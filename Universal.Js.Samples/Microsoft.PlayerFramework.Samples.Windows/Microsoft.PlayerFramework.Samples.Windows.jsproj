@@ -61,6 +61,69 @@
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
     <Content Include="css\default.css" />
+    <Content Include="pages\adaptive\dash\dash.css" />
+    <Content Include="pages\adaptive\dash\dash.html" />
+    <Content Include="pages\adaptive\dash\dash.js" />
+    <Content Include="pages\adaptive\live\live.css" />
+    <Content Include="pages\adaptive\live\live.html" />
+    <Content Include="pages\adaptive\live\live.js" />
+    <Content Include="pages\adaptive\vod\vod.css" />
+    <Content Include="pages\adaptive\vod\vod.html" />
+    <Content Include="pages\adaptive\vod\vod.js" />
+    <Content Include="pages\advanced\local\local.css" />
+    <Content Include="pages\advanced\local\local.html" />
+    <Content Include="pages\advanced\local\local.js" />
+    <Content Include="pages\advanced\playto\playto.css" />
+    <Content Include="pages\advanced\playto\playto.html" />
+    <Content Include="pages\advanced\playto\playto.js" />
+    <Content Include="pages\advanced\suspendresume\suspendresume.css" />
+    <Content Include="pages\advanced\suspendresume\suspendresume.html" />
+    <Content Include="pages\advanced\suspendresume\suspendresume.js" />
+    <Content Include="pages\advanced\thumbnails\thumbnails.css" />
+    <Content Include="pages\advanced\thumbnails\thumbnails.html" />
+    <Content Include="pages\advanced\thumbnails\thumbnails.js" />
+    <Content Include="pages\advanced\tracking\tracking.css" />
+    <Content Include="pages\advanced\tracking\tracking.html" />
+    <Content Include="pages\advanced\tracking\tracking.js" />
+    <Content Include="pages\advertising\adpod\adpod.html" />
+    <Content Include="pages\advertising\adpod\adpod.js" />
+    <Content Include="pages\advertising\adpod\adpod.css" />
+    <Content Include="pages\advertising\clip\clip.html" />
+    <Content Include="pages\advertising\clip\clip.js" />
+    <Content Include="pages\advertising\clip\clip.css" />
+    <Content Include="pages\advertising\companion\companion.css" />
+    <Content Include="pages\advertising\companion\companion.html" />
+    <Content Include="pages\advertising\companion\companion.js" />
+    <Content Include="pages\advertising\freewheel\freewheel.css" />
+    <Content Include="pages\advertising\freewheel\freewheel.html" />
+    <Content Include="pages\advertising\freewheel\freewheel.js" />
+    <Content Include="pages\advertising\linearnonlinear\linearnonlinear.css" />
+    <Content Include="pages\advertising\linearnonlinear\linearnonlinear.html" />
+    <Content Include="pages\advertising\linearnonlinear\linearnonlinear.js" />
+    <Content Include="pages\advertising\mast\mast.css" />
+    <Content Include="pages\advertising\mast\mast.html" />
+    <Content Include="pages\advertising\mast\mast.js" />
+    <Content Include="pages\advertising\programmatic\programmatic.css" />
+    <Content Include="pages\advertising\programmatic\programmatic.html" />
+    <Content Include="pages\advertising\programmatic\programmatic.js" />
+    <Content Include="pages\advertising\vast\vast.css" />
+    <Content Include="pages\advertising\vast\vast.html" />
+    <Content Include="pages\advertising\vast\vast.js" />
+    <Content Include="pages\advertising\vmap\vmap.css" />
+    <Content Include="pages\advertising\vmap\vmap.html" />
+    <Content Include="pages\advertising\vmap\vmap.js" />
+    <Content Include="pages\captions\instreamttml\instreamttml.html" />
+    <Content Include="pages\captions\instreamttml\instreamttml.js" />
+    <Content Include="pages\captions\instreamttml\instreamttml.css" />
+    <Content Include="pages\captions\ttml\ttml.html" />
+    <Content Include="pages\captions\ttml\ttml.js" />
+    <Content Include="pages\captions\ttml\ttml.css" />
+    <Content Include="pages\captions\timedtext\timedtext.css" />
+    <Content Include="pages\captions\timedtext\timedtext.html" />
+    <Content Include="pages\captions\timedtext\timedtext.js" />
+    <Content Include="pages\captions\webvtt\webvtt.css" />
+    <Content Include="pages\captions\webvtt\webvtt.html" />
+    <Content Include="pages\captions\webvtt\webvtt.js" />
     <Content Include="pages\common\clicktoplay\clicktoplay.html" />
     <Content Include="pages\common\clicktoplay\clicktoplay.js" />
     <Content Include="pages\common\clicktoplay\clicktoplay.css" />
@@ -91,10 +154,22 @@
     <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0" />
+    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.8.1947.0" />
+    <SDKReference Include="Microsoft.VCLibs, Version=12.0" />
     <SDKReference Include="Microsoft.WinJS.2.0, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Universal.Js.Advertising\Microsoft.PlayerFramework.Universal.Advertising.csproj" />
+    <ProjectReference Include="..\..\Universal.Js.Analytics\Microsoft.PlayerFramework.Universal.Analytics.csproj" />
     <ProjectReference Include="..\..\Universal.Js.Core\Microsoft.PlayerFramework.Universal.Core.csproj" />
+    <ProjectReference Include="..\..\Universal.Js.TimedText\Microsoft.PlayerFramework.Universal.TimedText.csproj" />
+    <ProjectReference Include="..\..\Universal.WinRT.Advertising\Microsoft.Media.Universal.Advertising.csproj" />
+    <ProjectReference Include="..\..\Universal.WinRT.Analytics\Microsoft.Media.Universal.Analytics.csproj" />
+    <ProjectReference Include="..\..\Win81.Js.Adaptive\Microsoft.PlayerFramework.Windows.Adaptive.csproj" />
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Windows.AdaptiveStreaming.Analytics.csproj" />
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.Windows.AdaptiveStreaming.Dash.csproj" />
+    <ProjectReference Include="..\..\Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.Windows.AdaptiveStreaming.Helper.csproj" />
   </ItemGroup>
   <Import Project="..\Microsoft.PlayerFramework.Samples.Shared\Microsoft.PlayerFramework.Samples.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />

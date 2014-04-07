@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples - Plain Text Captions</title>
+
+        <link href="ttml.css" rel="stylesheet" />
+        <script src="/js/data.js"></script>
+        <script src="ttml.js"></script>
+    </head>
+    <body>
+        <div class="fragment ttml">
+            <header class="page-header" aria-label="Header content" role="banner">
+                <button data-win-control="WinJS.UI.BackButton"></button>
+                <h1 class="titlearea win-type-ellipsis">
+                    <span class="pagetitle"></span>
+                </h1>
+            </header>
+            <section class="content" aria-label="Main content" role="main">
+                <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                    width: 640,
+                    height: 360,
+                    autoplay: true,
+                    isCaptionsVisible: true,
+                    src: 'http://smf.blob.core.windows.net/samples/videos/RealPCPride.mp4',
+                    tracks: [
+                        {
+                            kind: 'captions',
+                            label: 'English captions',
+                            src: 'http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride_native_en.xml',
+                            srclang: 'en',
+                            default: true
+                        },
+                        {
+                            kind: 'captions',
+                            label: 'Spanish captions',
+                            src: 'http://smf.blob.core.windows.net/samples/win8/captions/RealPCPride_native_es.xml',
+                            srclang: 'es'
+                        }
+                    ],
+                    captionsPlugin: {
+                        isEnabled: false
+                    }
+                }"></div>
+            </section>
+        </div>
+    </body>
+</html>

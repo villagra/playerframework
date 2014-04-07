@@ -84,7 +84,7 @@
             { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/dash", title: "DASH streaming video", description: "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH." },
 
             // closed captioning
-            { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/plaintext", title: "Plain Text Captions", description: "Demonstrates plain text captions using the native closed captioning features of the video element" },
+            { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/ttml", title: "Plain Text Captions", description: "Demonstrates plain text captions using the native closed captioning features of the video element" },
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/timedtext", title: "Timed Text Captions", description: "Demonstrates caption styling and layout using TTML (Timed Text Markup Language) and the captions plugin" },
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/instreamttml", title: "In-stream Captions", description: "Demonstrates playing in-stream TTML captions from smooth streaming text tracks" },
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/webvtt", title: "WebVTT Captions", description: "Demonstrates playing WebVTT captions using the native closed captioning feature of the video element" },
