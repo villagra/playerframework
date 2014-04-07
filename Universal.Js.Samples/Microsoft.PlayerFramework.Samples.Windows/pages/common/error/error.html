@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Microsoft Player Framework Samples - Progressive Video</title>
+    <meta charset="utf-8">
+    <title>Microsoft Player Framework Samples - Error Handling UI</title>
 
-    <link href="progressive.css" rel="stylesheet" />
+    <link href="error.css" rel="stylesheet" />
     <script src="/js/data.js"></script>
-    <script src="progressive.js"></script>
+    <script src="error.js"></script>
 </head>
 <body>
-    <div class="progressive fragment">
+    <div class="fragment error">
         <header class="page-header" aria-label="Header content" role="banner">
             <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
             <h1 class="titlearea win-type-ellipsis">
@@ -17,9 +17,10 @@
             </h1>
         </header>
         <section class="content" aria-label="Main content" role="main">
-            <div style="width:100%; height:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
-                autoplay: true,
-                src: 'http://smf.blob.core.windows.net/samples/videos/wildlife.mp4'
+            <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                width: 640,
+                height: 360,
+                src: 'http://smf.blob.core.windows.net/samples/videos/wildlife_reallybroken.wmv'
             }"></div>
         </section>
     </div>
