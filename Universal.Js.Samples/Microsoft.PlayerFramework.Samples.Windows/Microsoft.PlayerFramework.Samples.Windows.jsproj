@@ -64,12 +64,9 @@
     <Content Include="pages\common\progressive\progressive.css" />
     <Content Include="pages\common\progressive\progressive.html" />
     <Content Include="pages\common\progressive\progressive.js" />
-    <Content Include="pages\hub\hub.html" />
-    <Content Include="pages\hub\hub.css" />
-    <Content Include="pages\hub\section3Page.html" />
-    <Content Include="pages\section\section.html" />
-    <Content Include="pages\section\section.js" />
-    <Content Include="pages\section\section.css" />
+    <Content Include="pages\groupedItems\groupedItems.css" />
+    <Content Include="pages\groupedItems\groupedItems.html" />
+    <Content Include="pages\groupedItems\groupedItems.js" />
     <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
