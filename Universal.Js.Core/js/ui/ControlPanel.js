@@ -334,8 +334,6 @@
             },
             set: function (value) {
                 if (this._flyoutContainerElement) {
-                    this._captionsElement.winControl.flyout = null;
-                    this._audioElement.winControl.flyout = null;
                     this._volumeElement.winControl.flyout = null;
 
                     PlayerFramework.Utilities.removeElement(this._volumeFlyoutElement);
