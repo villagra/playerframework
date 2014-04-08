@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples - Player Options</title>
+
+        <link href="options.css" rel="stylesheet" />
+        <script src="/js/data.js"></script>
+        <script src="options.js"></script>
+    </head>
+    <body>
+        <div class="fragment options">
+        <header id="header" class="page-header" aria-label="Header content" role="banner">
+            <button id="backButton" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle"></span>
+            </h1>
+        </header>
+            <section class="content" aria-label="Main content" role="main">
+                <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                    width: 800,
+                    height: 450,
+                    msZoom: false,
+                    loop: false,
+                    autoplay: true,
+                    autohide: true,
+                    autohideTime: 3,
+                    autohideBehavior: PlayerFramework.AutohideBehavior.preventDuringInteractiveHover,
+                    interactiveActivationMode: PlayerFramework.InteractionType.all,
+                    interactiveDeactivationMode: PlayerFramework.InteractionType.soft,
+                    seekWhileScrubbing: true,
+
+                    isPlayPauseVisible: true,
+                    isPlayResumeVisible: false,
+                    isPauseVisible: false,
+                    isReplayVisible: true,
+                    isRewindVisible: true,
+                    isFastForwardVisible: true,
+                    isSlowMotionVisible: true,
+                    isSkipPreviousVisible: true,
+                    isSkipNextVisible: true,
+                    isSkipBackVisible: true,
+                    isSkipAheadVisible: true,
+                    isGoLiveVisible: false,
+                    isCaptionsVisible: false,
+                    isAudioVisible: false,
+                    isVolumeMuteVisible: true,
+                    isVolumeVisible: false,
+                    isMuteVisible: false,
+                    isFullScreenVisible: true,
+                    isSignalStrengthVisible: false,
+                    isMediaQualityVisible: false,
+                    isTimelineVisible: true,
+
+                    isPlayPauseEnabled: true,
+                    isPlayResumeEnabled: true,
+                    isPauseEnabled: true,
+                    isReplayEnabled: true,
+                    isRewindEnabled: true,
+                    isFastForwardEnabled: true,
+                    isSlowMotionEnabled: true,
+                    isSkipPreviousEnabled: false,
+                    isSkipNextEnabled: false,
+                    isSkipBackEnabled: true,
+                    isSkipAheadEnabled: true,
+                    isGoLiveEnabled: true,
+                    isCaptionsEnabled: true,
+                    isAudioEnabled: true,
+                    isVolumeMuteEnabled: true,
+                    isVolumeEnabled: true,
+                    isMuteEnabled: true,
+                    isFullScreenEnabled: true,
+                    isSignalStrengthEnabled: true,
+                    isMediaQualityEnabled: true,
+                    isTimelineEnabled: true,
+
+                    src: 'http://smf.blob.core.windows.net/samples/videos/RealPCPride.mp4'
+                }"></div>
+            </section>
+        </div>
+    </body>
+</html>

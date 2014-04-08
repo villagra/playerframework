@@ -1,23 +1,30 @@
-﻿// For an introduction to the Page Control template, see the following documentation:
-// http://go.microsoft.com/fwlink/?LinkId=232511
-(function () {
+﻿(function () {
     "use strict";
+
+    var mediaPlayer = null;
 
     WinJS.UI.Pages.define("/pages/common/progressive/progressive.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            // TODO: Initialize the page here.
+            var item = Data.resolveItemReference(options.item);
+            element.querySelector(".titlearea .pagetitle").textContent = item.title;
+            if (WinJS.Utilities.isPhone) {
+                document.getElementById("header").style.display = "none";
+            }
+
+            var mediaPlayerElement = element.querySelector("[data-win-control='PlayerFramework.MediaPlayer']");
+            mediaPlayer = mediaPlayerElement.winControl;
+            mediaPlayer.focus();
         },
 
+        // This function is called whenever a user navigates away from this page.
+        // It resets the page and disposes of the media player control.
         unload: function () {
-            // TODO: Respond to navigations away from this page.
-        },
-
-        updateLayout: function (element) {
-            /// <param name="element" domElement="true" />
-
-            // TODO: Respond to changes in layout.
+            if (mediaPlayer) {
+                mediaPlayer.dispose();
+                mediaPlayer = null;
+            }
         }
     });
 })();

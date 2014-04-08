@@ -59,11 +59,11 @@
 
         // sample groups
         var sampleGroups = [
-            { key: "sampleGroup1", backgroundImage: sampleImage1, subtitle: "common", title: "Common", description: "These samples demonstrate basic usage and features of the Microsoft Player Framework." },
-            { key: "sampleGroup2", backgroundImage: sampleImage2, subtitle: "adaptive", title: "Adaptive Streaming", description: "These samples demonstrate the adaptive streaming features of the Microsoft Player Framework." },
-            { key: "sampleGroup3", backgroundImage: sampleImage3, subtitle: "captions", title: "Closed Captioning", description: "These samples demonstrate the closed captioning features of the Microsoft Player Framework." },
-            { key: "sampleGroup4", backgroundImage: sampleImage1, subtitle: "advertising", title: "Advertising", description: "These samples demonstrate the advertising features of the Microsoft Player Framework." },
-            { key: "sampleGroup5", backgroundImage: sampleImage2, subtitle: "advanced", title: "Advanced", description: "These samples demonstrate advanced usage and features of the Microsoft Player Framework." }
+            { key: "common", backgroundImage: sampleImage1, subtitle: "common", title: "Common", description: "These samples demonstrate basic usage and features of the Microsoft Player Framework." },
+            { key: "adaptive", backgroundImage: sampleImage2, subtitle: "adaptive", title: "Adaptive Streaming", description: "These samples demonstrate the adaptive streaming features of the Microsoft Player Framework." },
+            { key: "captions", backgroundImage: sampleImage3, subtitle: "captions", title: "Closed Captioning", description: "These samples demonstrate the closed captioning features of the Microsoft Player Framework." },
+            { key: "advertising", backgroundImage: sampleImage1, subtitle: "advertising", title: "Advertising", description: "These samples demonstrate the advertising features of the Microsoft Player Framework." },
+            { key: "advanced", backgroundImage: sampleImage2, subtitle: "advanced", title: "Advanced", description: "These samples demonstrate advanced usage and features of the Microsoft Player Framework." }
         ];
 
         // sample items
