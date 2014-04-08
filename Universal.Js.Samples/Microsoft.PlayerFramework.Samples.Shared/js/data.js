@@ -7,8 +7,6 @@
         function groupDataSelector(item) { return item.group; }
     );
 
-    // TODO: Replace the data with your real data.
-    // You can add data from asynchronous sources whenever it becomes available.
     generateSampleData().forEach(function (item) {
         list.push(item);
     });
