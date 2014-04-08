@@ -34,10 +34,12 @@
 
             WinJS.UI.processAll(this._controlContainerElement);
             PlayerFramework.Binding.processAll(this._controlContainerElement, this.mediaPlayer.interactiveViewModel);
-
-            this._flyoutContainerElement = PlayerFramework.Utilities.createElement(document.body, ["div", { "class": "pf-flyout-container" }]);
-            this._controlPanelElement.winControl.flyoutContainerElement = this._flyoutContainerElement;
-            PlayerFramework.Binding.processAll(this._flyoutContainerElement, this.mediaPlayer.interactiveViewModel);
+            
+            if (!WinJS.Utilities.isPhone) {
+                this._flyoutContainerElement = PlayerFramework.Utilities.createElement(document.body, ["div", { "class": "pf-flyout-container" }]);
+                this._controlPanelElement.winControl.flyoutContainerElement = this._flyoutContainerElement;
+                PlayerFramework.Binding.processAll(this._flyoutContainerElement, this.mediaPlayer.interactiveViewModel);
+            }
         },
 
         _onActivate: function () {
@@ -65,7 +67,9 @@
             this._unbindEvent("transitionend", this._controlPanelElement, this._onControlPanelTransitionEnd);
 
             PlayerFramework.Utilities.removeElement(this._controlContainerElement);
-            PlayerFramework.Utilities.removeElement(this._flyoutContainerElement);
+            if (this._flyoutContainerElement) {
+                PlayerFramework.Utilities.removeElement(this._flyoutContainerElement);
+            }
 
             this._controlContainerElement = null;
             this._controlPanelElement = null;
