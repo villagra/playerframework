@@ -59,7 +59,7 @@
 
         // Public Methods
         show: function () {
-            if (this._menuElement.winControl.hidden) {
+            if (this._menuElement.winControl && this._menuElement.winControl.hidden) {
                 if (!this._anchor) {
                     this._anchor = this.mediaPlayer.element.querySelector(".pf-captionselection-anchor");
                 }
@@ -68,7 +68,7 @@
         },
 
         hide: function () {
-            if (!this._menuElement.winControl.hidden) {
+            if (this._menuElement.winControl && !this._menuElement.winControl.hidden) {
                 this._menuElement.winControl.hide();
             }
         },
@@ -103,10 +103,12 @@
         },
 
         _onMediaPlayerCaptionsInvoked: function (e) {
-            if (this._menuElement.winControl.hidden) {
-                this.show();
-            } else {
-                this.hide();
+            if (this._menuElement.winControl) {
+                if (this._menuElement.winControl.hidden) {
+                    this.show();
+                } else {
+                    this.hide();
+                }
             }
         },
 
