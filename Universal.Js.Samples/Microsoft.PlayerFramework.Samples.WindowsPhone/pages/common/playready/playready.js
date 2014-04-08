@@ -21,17 +21,17 @@
             mediaPlayer = mediaPlayerElement.winControl;
             mediaPlayer.focus();
 
-            Utilities.log("Setting up media player");
+            console.log("Setting up media player");
             mediaPlayer.addEventListener("canplay", onMediaPlayerCanPlay, false);
             mediaPlayer.addEventListener("ended", onMediaPlayerEnded, false);
             mediaPlayer.addEventListener("error", onMediaPlayerError, false);
 
-            Utilities.log("Setting up media extension manager");
+            console.log("Setting up media extension manager");
             mediaPlayer.mediaExtensionManager.registerByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".pyv", null);
             mediaPlayer.mediaExtensionManager.registerByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".pya", null);
             mediaPlayer.mediaExtensionManager.registerByteStreamHandler("Microsoft.Media.PlayReadyClient.PlayReadyByteStreamHandler", ".wmv", null);
 
-            Utilities.log("Setting up media protection manager");
+            console.log("Setting up media protection manager");
             mediaProtectionManager = new Windows.Media.Protection.MediaProtectionManager();
             mediaProtectionManager.properties["Windows.Media.Protection.MediaProtectionSystemId"] = "{F4637010-03C3-42CD-B932-B48ADF3A6A54}";
             mediaProtectionManager.properties["Windows.Media.Protection.MediaProtectionSystemIdMapping"] = new Windows.Foundation.Collections.PropertySet();
@@ -40,7 +40,7 @@
             mediaProtectionManager.addEventListener("componentloadfailed", onMediaProtectionManagerComponentLoadFailed, false);
             mediaPlayer.msSetMediaProtectionManager(mediaProtectionManager);
 
-            Utilities.log("Attempting media playback...");
+            console.log("Attempting media playback...");
             mediaPlayer.src = playReadyMediaSource;
         },
 
@@ -69,37 +69,37 @@
     });
 
     function onMediaPlayerCanPlay(e) {
-        Utilities.log("Media playback started");
+        console.log("Media playback started");
         mediaPlayer.play();
     }
 
     function onMediaPlayerEnded(e) {
-        Utilities.log("Media playback ended");
+        console.log("Media playback ended");
     }
 
     function onMediaPlayerError(e) {
-        Utilities.log("Media error occurred");
-        Utilities.log("--- Message: " + PlayerFramework.Utilities.getMediaErrorMessage(e.detail.error));
+        console.log("Media error occurred");
+        console.log("--- Message: " + PlayerFramework.Utilities.getMediaErrorMessage(e.detail.error));
     }
 
     function onMediaProtectionManagerServiceRequested(e) {
-        Utilities.log("Media protection manager service requested");
+        console.log("Media protection manager service requested");
         handleServiceRequest(e.request, e.completion);
     }
 
     function onMediaProtectionManagerComponentLoadFailed(e) {
-        Utilities.log("Media protection manager component load failed");
+        console.log("Media protection manager component load failed");
 
         for (var i = 0; i < e.information.items.size; i++) {
             var component = e.information.items[i];
-            Utilities.log("--- Component: " + component.name + " (0x" + component.reasons + ")");
+            console.log("--- Component: " + component.name + " (0x" + component.reasons + ")");
         }
 
         e.completion.complete(false);
     }
 
     function handleServiceRequest(serviceRequest, serviceCompletion) {
-        Utilities.log("--- Handling service request");
+        console.log("--- Handling service request");
 
         if (serviceRequest.type === Microsoft.Media.PlayReadyClient.PlayReadyStatics.licenseAcquirerServiceRequestType) {
             serviceRequest.uri = new Windows.Foundation.Uri(playReadyLicenseAcquirerServiceUrl);
@@ -109,28 +109,28 @@
         var serviceRequestType = getServiceRequestType(serviceRequest);
 
         if (serviceRequestType) {
-            Utilities.log("------ Type: " + serviceRequestType);
+            console.log("------ Type: " + serviceRequestType);
         }
 
         if (serviceRequest.uri) {
-            Utilities.log("------ URI: " + serviceRequest.uri.absoluteUri);
+            console.log("------ URI: " + serviceRequest.uri.absoluteUri);
         }
 
         if (serviceRequest.challengeCustomData) {
-            Utilities.log("------ Challenge Custom Data: " + serviceRequest.challengeCustomData);
+            console.log("------ Challenge Custom Data: " + serviceRequest.challengeCustomData);
         }
 
         if (serviceRequest.protectionSystem) {
-            Utilities.log("------ Protection System: " + serviceRequest.protectionSystem);
+            console.log("------ Protection System: " + serviceRequest.protectionSystem);
         }
 
         playReadyPromise = serviceRequest.beginServiceRequest().then(
             function () {
-                Utilities.log("Media protection manager service request completed");
+                console.log("Media protection manager service request completed");
                 serviceCompletion.complete(true);
             },
             function () {
-                Utilities.log("Media protection manager service request failed");
+                console.log("Media protection manager service request failed");
                 var nextServiceRequest = serviceRequest.nextServiceRequest();
                 if (nextServiceRequest) {
                     handleServiceRequest(nextServiceRequest, serviceCompletion);

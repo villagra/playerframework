@@ -42,7 +42,7 @@
     });
 
     function onApplicationReactivated(e) {
-        Utilities.log("Application reactivated after suspension");
+        console.log("Application reactivated after suspension");
         
         var mediaPlayerState = WinJS.Application.sessionState[mediaPlayerStateKey];
 
@@ -53,13 +53,13 @@
                 mediaPlayerState = PlayerFramework.Utilities.clone(currentPlaylistItem, mediaPlayerState);
             }
 
-            Utilities.log("--- Media player state restored");
+            console.log("--- Media player state restored");
             mediaPlayer.update(mediaPlayerState);
         }
     }
 
     function onApplicationCheckpoint(e) {
-        Utilities.log("Application checkpoint occurred");
+        console.log("Application checkpoint occurred");
         
         if (mediaPlayer.playerState !== PlayerFramework.PlayerState.failed) {
             var mediaPlayerState = {
@@ -72,25 +72,25 @@
                 }
             };
 
-            Utilities.log("--- Media player state saved");
+            console.log("--- Media player state saved");
             WinJS.Application.sessionState[mediaPlayerStateKey] = mediaPlayerState;
         }
     }
 
     function onApplicationSuspending(e) {
-        Utilities.log("Application suspending");
+        console.log("Application suspending");
         
         if (mediaPlayer.playerState === PlayerFramework.PlayerState.started) {
-            Utilities.log("--- Media playback paused");
+            console.log("--- Media playback paused");
             mediaPlayer.interactiveViewModel.pause();
         }
     }
 
     function onApplicationResuming(e) {
-        Utilities.log("Application resuming");
+        console.log("Application resuming");
         
         if (mediaPlayer.playerState === PlayerFramework.PlayerState.started) {
-            Utilities.log("--- Media playback resumed");
+            console.log("--- Media playback resumed");
             mediaPlayer.interactiveViewModel.playResume();
         }
     }

@@ -34,17 +34,17 @@
 
     function onPlayTimeEventTracked(e) {
         if (!isNaN(e.detail.trackingEvent.playTimePercentage)) {
-            Utilities.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Play Time Percentage: " + e.detail.trackingEvent.playTimePercentage);
+            console.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Play Time Percentage: " + e.detail.trackingEvent.playTimePercentage);
         } else {
-            Utilities.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Play Time: " + e.detail.trackingEvent.playTime);
+            console.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Play Time: " + e.detail.trackingEvent.playTime);
         }
     }
 
     function onPositionEventTracked(e) {
         if (!isNaN(e.detail.trackingEvent.positionPercentage)) {
-            Utilities.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Position Percentage: " + e.detail.trackingEvent.positionPercentage + ", Skipped Past: " + e.detail.skippedPast);
+            console.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Position Percentage: " + e.detail.trackingEvent.positionPercentage + ", Skipped Past: " + e.detail.skippedPast);
         } else {
-            Utilities.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Position: " + e.detail.trackingEvent.position + ", Skipped Past: " + e.detail.skippedPast);
+            console.log("Type: " + e.type + ", Timestamp: " + e.detail.timestamp + ", Position: " + e.detail.trackingEvent.position + ", Skipped Past: " + e.detail.skippedPast);
         }
     }
 })();

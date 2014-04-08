@@ -44,7 +44,7 @@
     });
 
     function onPlayToSourceRequested(e) {
-        Utilities.log("Type: " + e.type + ", Deadline: " + e.sourceRequest.deadline);
+        console.log("Type: " + e.type + ", Deadline: " + e.sourceRequest.deadline);
 
         try {
             e.sourceRequest.setSource(mediaPlayer.msPlayToSource);
@@ -54,10 +54,10 @@
     }
 
     function onPlayToSourceSelected(e) {
-        Utilities.log("Type: " + e.type + ", Friendly Name: " + e.friendlyName);
+        console.log("Type: " + e.type + ", Friendly Name: " + e.friendlyName);
     }
 
     function onPlayToConnectionStateChanged(e) {
-        Utilities.log("Type: " + e.type + ", Previous State: " + e.previousState + ", Current State: " + e.currentState);
+        console.log("Type: " + e.type + ", Previous State: " + e.previousState + ", Current State: " + e.currentState);
     }
 })();
