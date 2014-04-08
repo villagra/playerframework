@@ -4,7 +4,8 @@
     var list = new WinJS.Binding.List();
     var groupedItems = list.createGrouped(
         function groupKeySelector(item) { return item.group.key; },
-        function groupDataSelector(item) { return item.group; }
+        function groupDataSelector(item) { return item.group; },
+        function groupDataSorter(item1, item2) { return 0; }
     );
 
     generateSampleData().forEach(function (item) {
