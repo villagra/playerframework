@@ -1,2 +1,13 @@
 ﻿.live .content {
 }
+
+.fragment {
+     width:100%;
+     height:100%;
+}
+
+.fragment .content {
+     width:100%;
+     height:100%;
+}
+
