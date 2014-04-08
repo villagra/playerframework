@@ -92,9 +92,6 @@
             mediaPlayer = mediaPlayerElement.winControl;
             mediaPlayer.addEventListener("timeupdate", onMediaPlayerTimeUpdate, false);
             mediaPlayer.focus();
-
-            var cancelButtonElement = element.querySelector(".item-content button");
-            cancelButtonElement.onclick = onCancelButtonClick;
         },
 
         // This function is called whenever a user navigates away from this page.
@@ -128,13 +125,6 @@
                     }
                 }
             );
-        }
-    }
-
-    function onCancelButtonClick(e) {
-        if (adPromise) {
-            adPromise.cancel();
-            adPromise = null;
         }
     }
 })();
