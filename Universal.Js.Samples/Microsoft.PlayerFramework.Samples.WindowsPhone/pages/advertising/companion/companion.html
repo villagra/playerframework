@@ -17,14 +17,18 @@
             </h1>
         </header>
         <section class="content" aria-label="Main content" role="main">
-            <div style="width:100%; height:100%; position:absolute">
-                <div style="width:100%; height:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
-                    autoplay: true,
-                    isDisplayModeVisible: true,
-                    src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
-                }"></div>
-                <div id="companionAd1" class="pf-companion-ad" style="z-index:100000"></div>
+            <div style="width:100%; height:100%;display:table">
+                <div style="display:table-row">
+                    <div id="companionAd1" class="pf-companion-ad"></div>
+                </div>
                 <!--<div id="companionAd2" class="pf-companion-ad"></div>-->
+                <div style="display:table-row;height:100%;width:100%">
+                    <div style="height:100%;width:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                        autoplay: true,
+                        isDisplayModeVisible: true,
+                        src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
+                    }"></div>
+                </div>
             </div>
         </section>
     </div>
