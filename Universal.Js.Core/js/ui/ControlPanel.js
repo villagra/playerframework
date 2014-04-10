@@ -43,7 +43,7 @@
         this._stopElement = null;
         this._infoElement = null;
         this._moreElement = null;
-        this._displayModeElement = null;
+        this._zoomElement = null;
         this._signalStrengthElement = null;
         this._mediaQualityElement = null;
 
@@ -301,12 +301,12 @@
             }
         },
 
-        isDisplayModeHidden: {
+        isZoomHidden: {
             get: function () {
-                return this._displayModeElement.winControl.hidden;
+                return this._zoomElement.winControl.hidden;
             },
             set: function (value) {
-                this._displayModeElement.winControl.hidden = value;
+                this._zoomElement.winControl.hidden = value;
             }
         },
 
@@ -375,7 +375,7 @@
             this._totalTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-total-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: totalTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: totalTimeText; winControl.label: totalTimeLabel; winControl.tooltip: totalTimeTooltip; winControl.disabled: isTotalTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
             this._goLiveElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-go-live-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: goLiveText; winControl.label: goLiveLabel; winControl.tooltip: goLiveTooltip; winControl.disabled: isGoLiveDisabled; winControl.onclick: goLive PlayerFramework.Binding.setEventHandler;" }]);
             this._captionsElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-captions-control pf-captionselection-anchor", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: captionsIcon; winControl.label: captionsLabel; winControl.tooltip: captionsTooltip; winControl.disabled: isCaptionsDisabled; winControl.onclick: captions PlayerFramework.Binding.setEventHandler;" }]);
-            this._displayModeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-displaymode-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: displayModeIcon; winControl.label: displayModeLabel; winControl.tooltip: displayModeTooltip; winControl.disabled: isDisplayModeDisabled; winControl.onclick: toggleDisplayMode PlayerFramework.Binding.setEventHandler;" }]);
+            this._zoomElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-zoom-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: zoomIcon; winControl.label: zoomLabel; winControl.tooltip: zoomTooltip; winControl.disabled: isZoomDisabled; winControl.onclick: toggleZoom PlayerFramework.Binding.setEventHandler;" }]);
             this._infoElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-info-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: infoIcon; winControl.label: infoLabel; winControl.tooltip: infoTooltip; winControl.disabled: isInfoDisabled; winControl.onclick: info PlayerFramework.Binding.setEventHandler;" }]);
             this._audioElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-audio-control pf-audioselection-anchor", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: audioIcon; winControl.label: audioLabel; winControl.tooltip: audioTooltip; winControl.disabled: isAudioDisabled; winControl.onclick: audio PlayerFramework.Binding.setEventHandler;" }]);
             this._volumeMuteContainerElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-volume-mute-container" }]);
@@ -426,7 +426,7 @@
                 isStopHidden: false,
                 isInfoHidden: false,
                 isMoreHidden: false,
-                isDisplayModeHidden: false,
+                isZoomHidden: false,
                 isSignalStrengthHidden: false,
                 isMediaQualityHidden: false
             });

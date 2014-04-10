@@ -838,33 +838,33 @@
             }
         },
 
-        displayModeIcon: {
+        zoomIcon: {
             get: function () {
-                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxIcon") : PlayerFramework.Utilities.getResourceString("DisplayModeFillIcon");
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("ZoomLetterboxIcon") : PlayerFramework.Utilities.getResourceString("ZoomFillIcon");
             }
         },
 
-        displayModeLabel: {
+        zoomLabel: {
             get: function () {
-                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxLabel") : PlayerFramework.Utilities.getResourceString("DisplayModeFillLabel");
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("ZoomLetterboxLabel") : PlayerFramework.Utilities.getResourceString("ZoomFillLabel");
             }
         },
 
-        displayModeTooltip: {
+        zoomTooltip: {
             get: function () {
-                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("DisplayModeLetterboxTooltip") : PlayerFramework.Utilities.getResourceString("DisplayModeFillTooltip");
+                return this._mediaPlayer.msZoom ? PlayerFramework.Utilities.getResourceString("ZoomLetterboxTooltip") : PlayerFramework.Utilities.getResourceString("ZoomFillTooltip");
             }
         },
 
-        isDisplayModeDisabled: {
+        isZoomDisabled: {
             get: function () {
-                return !this._mediaPlayer.isDisplayModeEnabled || !this._mediaPlayer.isDisplayModeAllowed;
+                return !this._mediaPlayer.isZoomEnabled || !this._mediaPlayer.isZoomAllowed;
             }
         },
 
-        isDisplayModeHidden: {
+        isZoomHidden: {
             get: function () {
-                return !this._mediaPlayer.isDisplayModeVisible;
+                return !this._mediaPlayer.isZoomVisible;
             }
         },
 
@@ -1056,10 +1056,10 @@
             this._bindProperty("isMoreAllowed", this._observableMediaPlayer, this._notifyProperties, ["isMoreDisabled"]);
             this._bindProperty("isMoreEnabled", this._observableMediaPlayer, this._notifyProperties, ["isMoreDisabled"]);
             this._bindProperty("isMoreVisible", this._observableMediaPlayer, this._notifyProperties, ["isMoreHidden"]);
-            this._bindProperty("isDisplayModeAllowed", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
-            this._bindProperty("isDisplayModeEnabled", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeDisabled"]);
-            this._bindProperty("isDisplayModeVisible", this._observableMediaPlayer, this._notifyProperties, ["isDisplayModeHidden"]);
-            this._bindProperty("msZoom", this._observableMediaPlayer, this._notifyProperties, ["displayModeLabel", "displayModeTooltip", "displayModeIcon"]);
+            this._bindProperty("isZoomAllowed", this._observableMediaPlayer, this._notifyProperties, ["isZoomDisabled"]);
+            this._bindProperty("isZoomEnabled", this._observableMediaPlayer, this._notifyProperties, ["isZoomDisabled"]);
+            this._bindProperty("isZoomVisible", this._observableMediaPlayer, this._notifyProperties, ["isZoomHidden"]);
+            this._bindProperty("msZoom", this._observableMediaPlayer, this._notifyProperties, ["zoomLabel", "zoomTooltip", "zoomIcon"]);
             this._bindProperty("isSignalStrengthAllowed", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthEnabled", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthDisabled"]);
             this._bindProperty("isSignalStrengthVisible", this._observableMediaPlayer, this._notifyProperties, ["isSignalStrengthHidden"]);
@@ -1199,7 +1199,7 @@
             this._mediaPlayer.more();
         },
 
-        toggleDisplayMode: function () {
+        toggleZoom: function () {
             this._mediaPlayer.msZoom = !this._mediaPlayer.msZoom;
         },
 

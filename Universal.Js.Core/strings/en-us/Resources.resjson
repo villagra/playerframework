@@ -121,12 +121,12 @@
     "MoreLabel":                            "More...",
     "MoreTooltip":                          "More...",
 
-    "DisplayModeLetterboxIcon":             "\uE1D8",
-    "DisplayModeFillIcon":                  "\uE1D9",
-    "DisplayModeLetterboxLabel":            "Letterbox",
-    "DisplayModeFillLabel":                 "Fill",
-    "DisplayModeLetterboxTooltip":          "Letterbox",
-    "DisplayModeFillTooltip":               "Fill",
+    "ZoomLetterboxIcon":             "\uE1D8",
+    "ZoomFillIcon":                  "\uE1D9",
+    "ZoomLetterboxLabel":            "Letterbox",
+    "ZoomFillLabel":                 "Fill",
+    "ZoomLetterboxTooltip":          "Letterbox",
+    "ZoomFillTooltip":               "Fill",
 
     "SignalStrengthLabel":                  "Signal strength",
     "SignalStrengthTooltip1":               "Signal strength",

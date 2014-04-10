@@ -226,8 +226,8 @@
             this._isInfoVisible = false;
             this._isMoreEnabled = true;
             this._isMoreVisible = false;
-            this._isDisplayModeEnabled = true;
-            this._isDisplayModeVisible = false;
+            this._isZoomEnabled = true;
+            this._isZoomVisible = false;
             this._signalStrength = 0;
             this._isSignalStrengthEnabled = true;
             this._isSignalStrengthVisible = false;
@@ -2078,37 +2078,37 @@
                 }
             },
 
-            /// <field name="isDisplayModeAllowed" type="Boolean">Gets a value that specifies whether interaction with the displayMode control is allowed based on the current state of the player.</field>
-            isDisplayModeAllowed: {
+            /// <field name="isZoomAllowed" type="Boolean">Gets a value that specifies whether interaction with the zoom control is allowed based on the current state of the player.</field>
+            isZoomAllowed: {
                 get: function () {
                     return true;
                 }
             },
 
-            /// <field name="isDisplayModeEnabled" type="Boolean">Gets or sets a value that specifies whether the displayMode control is enabled.</field>
-            isDisplayModeEnabled: {
+            /// <field name="isZoomEnabled" type="Boolean">Gets or sets a value that specifies whether the zoom control is enabled.</field>
+            isZoomEnabled: {
                 get: function () {
-                    return this._isDisplayModeEnabled;
+                    return this._isZoomEnabled;
                 },
                 set: function (value) {
-                    var oldValue = this._isDisplayModeEnabled;
+                    var oldValue = this._isZoomEnabled;
                     if (oldValue !== value) {
-                        this._isDisplayModeEnabled = value;
-                        this._observableMediaPlayer.notify("isDisplayModeEnabled", value, oldValue);
+                        this._isZoomEnabled = value;
+                        this._observableMediaPlayer.notify("isZoomEnabled", value, oldValue);
                     }
                 }
             },
 
-            /// <field name="isDisplayModeVisible" type="Boolean">Gets or sets a value that specifies whether the displayMode control is visible.</field>
-            isDisplayModeVisible: {
+            /// <field name="isZoomVisible" type="Boolean">Gets or sets a value that specifies whether the zoom control is visible.</field>
+            isZoomVisible: {
                 get: function () {
-                    return this._isDisplayModeVisible;
+                    return this._isZoomVisible;
                 },
                 set: function (value) {
-                    var oldValue = this._isDisplayModeVisible;
+                    var oldValue = this._isZoomVisible;
                     if (oldValue !== value) {
-                        this._isDisplayModeVisible = value;
-                        this._observableMediaPlayer.notify("isDisplayModeVisible", value, oldValue);
+                        this._isZoomVisible = value;
+                        this._observableMediaPlayer.notify("isZoomVisible", value, oldValue);
                     }
                 }
             },

@@ -121,12 +121,12 @@
     "MoreLabel":                            "Spanish: More...",
     "MoreTooltip":                          "Spanish: More...",
 
-    "DisplayModeLetterboxIcon":             "\uE1D8",
-    "DisplayModeFillIcon":                  "\uE1D9",
-    "DisplayModeLetterboxLabel":            "Spanish: Letterbox",
-    "DisplayModeFillLabel":                 "Spanish: Fill",
-    "DisplayModeLetterboxTooltip":          "Spanish: Letterbox",
-    "DisplayModeFillTooltip":               "Spanish: Fill",
+    "ZoomLetterboxIcon":             "\uE1D8",
+    "ZoomFillIcon":                  "\uE1D9",
+    "ZoomLetterboxLabel":            "Spanish: Letterbox",
+    "ZoomFillLabel":                 "Spanish: Fill",
+    "ZoomLetterboxTooltip":          "Spanish: Letterbox",
+    "ZoomFillTooltip":               "Spanish: Fill",
 
     "SignalStrengthLabel":                  "Spanish: Signal strength",
     "SignalStrengthTooltip1":               "Spanish: Signal strength",
