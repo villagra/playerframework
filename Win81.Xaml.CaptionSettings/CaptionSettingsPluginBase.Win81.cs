@@ -93,6 +93,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             {
                 fontFamilyMap = new Dictionary<FontFamily, string>();
 
+                fontFamilyMap[FontFamily.Default] = null;
                 fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(FontFamily.MonospaceSerif, "Courier New");
                 fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(FontFamily.ProportionalSerif, "Times New Roman");
                 fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(FontFamily.MonospaceSansSerif, "Consolas");
