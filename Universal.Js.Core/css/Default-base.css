@@ -458,6 +458,10 @@
     transition: opacity 250ms linear;
 }
 
+.phone .pf-volume-mute-container .pf-volume-slider-control {
+    bottom: calc(100% - 4px);
+}
+
 .pf-volume-mute-container .pf-volume-slider-control.pf-hidden {
     display: inline-block;
     opacity: 0;
