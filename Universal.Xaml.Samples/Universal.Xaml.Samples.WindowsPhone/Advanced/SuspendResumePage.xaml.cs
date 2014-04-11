@@ -137,9 +137,14 @@ namespace Microsoft.PlayerFramework.Samples
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
             teardown = true; // delay teardown until after we've saved the state
             Application.Current.Suspending -= App_Suspending;
             Application.Current.Resuming -= App_Resuming;
+            base.OnNavigatingFrom(e);
         }
 
         #endregion
