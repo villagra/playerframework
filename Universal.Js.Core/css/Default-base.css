@@ -57,6 +57,7 @@
 
 .pf-control-container {
     z-index: 300;
+    pointer-events: none;
 }
 
 .pf-loader-container {
@@ -334,6 +335,7 @@
 .pf-control-container .pf-control-panel {
     opacity: 1;
     transition: opacity 250ms linear;
+    pointer-events: all;
 }
 
 .pf-control-container .pf-control-panel.pf-hidden {
