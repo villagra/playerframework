@@ -2,7 +2,6 @@
     "use strict";
 
     var mediaPlayer = null;
-    var mediaPlayerStateKey = "mediaPlayerState";
 
     WinJS.UI.Pages.define("/pages/advanced/suspendresume/suspendresume.html", {
         // This function is called whenever a user navigates to this page.
@@ -19,11 +18,9 @@
             mediaPlayer.focus();
 
             WinJS.Application.addEventListener("checkpoint", onApplicationCheckpoint, false);
-            Windows.UI.WebUI.WebUIApplication.addEventListener("suspending", onApplicationSuspending, false);
-            Windows.UI.WebUI.WebUIApplication.addEventListener("resuming", onApplicationResuming, false);
 
-            if (options && options.activatedArgs && options.activatedArgs.detail.previousExecutionState === Windows.ApplicationModel.Activation.ApplicationExecutionState.terminated) {
-                onApplicationReactivated(options.activatedArgs);
+            if (WinJS.Application.sessionState.mediaPlayerState) {
+                onApplicationReactivated(WinJS.Application.sessionState.mediaPlayerState);
             }
         },
 
@@ -31,8 +28,6 @@
         // It resets the page and disposes of the media player control.
         unload: function () {
             WinJS.Application.removeEventListener("checkpoint", onApplicationCheckpoint, false);
-            Windows.UI.WebUI.WebUIApplication.removeEventListener("suspending", onApplicationSuspending, false);
-            Windows.UI.WebUI.WebUIApplication.removeEventListener("resuming", onApplicationResuming, false);
 
             if (mediaPlayer) {
                 mediaPlayer.dispose();
@@ -41,31 +36,27 @@
         }
     });
 
-    function onApplicationReactivated(e) {
+    function onApplicationReactivated(mediaPlayerState) {
         Utilities.log("Application reactivated after suspension");
-        
-        var mediaPlayerState = WinJS.Application.sessionState[mediaPlayerStateKey];
 
-        if (mediaPlayerState) {
-            var currentPlaylistItem = mediaPlayer.playlistPlugin.playlist[mediaPlayerState.playlistPlugin.currentPlaylistItemIndex];
+        var currentPlaylistItem = mediaPlayer.playlistPlugin.playlist[mediaPlayerState.playlistPlugin.currentPlaylistItemIndex];
 
-            if (currentPlaylistItem) {
-                mediaPlayerState = PlayerFramework.Utilities.clone(currentPlaylistItem, mediaPlayerState);
-            }
-
-            Utilities.log("--- Media player state restored");
-            mediaPlayer.update(mediaPlayerState);
+        if (currentPlaylistItem) {
+            mediaPlayerState = PlayerFramework.Utilities.clone(currentPlaylistItem, mediaPlayerState);
         }
+
+        Utilities.log("--- Media player state restored");
+        mediaPlayer.update(mediaPlayerState);
     }
 
     function onApplicationCheckpoint(e) {
         Utilities.log("Application checkpoint occurred");
-        
+
         if (mediaPlayer.playerState !== PlayerFramework.PlayerState.failed) {
             var mediaPlayerState = {
                 src: mediaPlayer.src,
                 autoload: mediaPlayer.playerState > PlayerFramework.PlayerState.pending ? true : mediaPlayer.autoload,
-                autoplay: mediaPlayer.playerState > PlayerFramework.PlayerState.starting ?  !mediaPlayer.paused : mediaPlayer.autoplay,
+                autoplay: mediaPlayer.playerState > PlayerFramework.PlayerState.starting ? !mediaPlayer.paused : mediaPlayer.autoplay,
                 startupTime: mediaPlayer.playerState > PlayerFramework.PlayerState.starting ? mediaPlayer.currentTime : mediaPlayer.startupTime,
                 playlistPlugin: {
                     currentPlaylistItemIndex: mediaPlayer.playlistPlugin.currentPlaylistItemIndex
@@ -73,25 +64,7 @@
             };
 
             Utilities.log("--- Media player state saved");
-            WinJS.Application.sessionState[mediaPlayerStateKey] = mediaPlayerState;
-        }
-    }
-
-    function onApplicationSuspending(e) {
-        Utilities.log("Application suspending");
-        
-        if (mediaPlayer.playerState === PlayerFramework.PlayerState.started) {
-            Utilities.log("--- Media playback paused");
-            mediaPlayer.interactiveViewModel.pause();
-        }
-    }
-
-    function onApplicationResuming(e) {
-        Utilities.log("Application resuming");
-        
-        if (mediaPlayer.playerState === PlayerFramework.PlayerState.started) {
-            Utilities.log("--- Media playback resumed");
-            mediaPlayer.interactiveViewModel.playResume();
+            WinJS.Application.sessionState.mediaPlayerState = mediaPlayerState;
         }
     }
 })();
