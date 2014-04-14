@@ -111,6 +111,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Universal-base.css" />
+    <Content Include="css\Universal-dark.css" />
+    <Content Include="css\Universal-light.css" />
     <Content Include="css\Entertainment-light.css" />
     <Content Include="css\Entertainment-dark.css" />
     <Content Include="css\Entertainment-base.css" />
