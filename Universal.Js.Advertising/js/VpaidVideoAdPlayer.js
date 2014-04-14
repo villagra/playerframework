@@ -330,7 +330,12 @@
             this._bindEvent("pause", this._videoElement, this._onVideoPause);
             this._bindEvent("ended", this._videoElement, this._onVideoEnded);
             this._bindEvent("emptied", this._videoElement, this._onVideoEmptied);
-            this._bindEvent("resize", this._videoElement, this._onVideoResize);
+            if (PlayerFramework.Utilities.isWinJS1) {
+                this._bindEvent("resize", this._videoElement, this._onVideoResize);
+            }
+            else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
+                this._bindEvent("resize", window, this._onVideoResize);
+            }
 
             this.dispatchEvent("adstarted");
             this.dispatchEvent("adimpression");

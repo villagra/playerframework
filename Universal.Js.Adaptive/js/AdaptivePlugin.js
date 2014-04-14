@@ -164,7 +164,6 @@
             this._bindEvent("loading", this.mediaPlayer, this._onMediaPlayerLoading);
             this._bindEvent("currentaudiotrackchanging", this.mediaPlayer, this._onMediaPlayerCurrentAudioTrackChanging);
             this._bindEvent("currentcaptiontrackchanging", this.mediaPlayer, this._onMediaPlayerCurrentCaptionTrackChanging);
-            this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             this._bindEvent("canplaythrough", this.mediaPlayer, this._onMediaPlayerCanplaythrough);
             this._bindEvent("manifestready", this.manager, this._onManagerManifestReady);
             this._bindEvent("statechanged", this.manager, this._onManagerStateChanged);
@@ -173,6 +172,12 @@
             this._bindEvent("outsidewindowedge", this.manager, this._onManagerOutsideWindowEdge);
             this._bindEvent("datareceived", this.manager, this._onManagerDataReceived);
             this._bindEvent("closed", this.manager, this._onManagerClosed);
+            if (PlayerFramework.Utilities.isWinJS1) {
+                this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
+            }
+            else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
+                this._bindEvent("resize", window, this._onMediaPlayerResize);
+            }
 
             this._updateMaxSize();
 
@@ -184,7 +189,6 @@
             this._unbindEvent("loading", this.mediaPlayer, this._onMediaPlayerLoading);
             this._unbindEvent("currentaudiotrackchanging", this.mediaPlayer, this._onMediaPlayerCurrentAudioTrackChanging);
             this._unbindEvent("currentcaptiontrackchanging", this.mediaPlayer, this._onMediaPlayerCurrentCaptionTrackChanging);
-            this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             this._unbindEvent("canplaythrough", this.mediaPlayer, this._onMediaPlayerCanplaythrough);
             this._unbindEvent("manifestready", this.manager, this._onManagerManifestReady);
             this._unbindEvent("statechanged", this.manager, this._onManagerStateChanged);
@@ -193,6 +197,12 @@
             this._unbindEvent("outsidewindowedge", this.manager, this._onManagerOutsideWindowEdge);
             this._unbindEvent("datareceived", this.manager, this._onManagerDataReceived);
             this._unbindEvent("closed", this.manager, this._onManagerClosed);
+            if (PlayerFramework.Utilities.isWinJS1) {
+                this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
+            }
+            else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
+                this._unbindEvent("resize", window, this._onMediaPlayerResize);
+            }
         },
 
         _onMediaPlayerCanplaythrough: function (e) {
