@@ -39,10 +39,6 @@
     background-color: transparent !important;
 }
 
-    .pf-container .pf-control-panel > * {
-        margin: 0 15px;
-    }
-
     .pf-container .pf-control-panel .pf-controlcontainer-primary {
     }
 
@@ -58,22 +54,6 @@
 
     .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
         border: 0px;
-        background-color: rgba(0,0,0,.5);
-    }
-
-    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:hover .pf-button-container {
-        background-color: rgba(255,255,255,0.1294);
-        color: rgba(255,255,255,1);
-    }
-
-    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:active .pf-button-container {
-        background-color: rgba(255,255,255,0.5);
-        color: rgba(0,0,0,1);
-    }
-
-    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:disabled .pf-button-container {
-        background-color: rgba(0,0,0,.5) !important;
-        color: rgba(255,255,255,.4);
     }
 
     .pf-container .pf-control-panel .pf-button {
@@ -94,7 +74,7 @@
         font-size: 42px;
     }
 
-    .pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control {
+    .pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-time-separator, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control {
         position: absolute;
         bottom: 15px;
         height: 22px;
@@ -106,12 +86,18 @@
         left: 5px;
     }
 
+    .pf-container .pf-control-panel .pf-time-separator {
+        left: 85px;
+        width: 10px;
+        bottom: 20px;
+    }
+
     .pf-container .pf-control-panel .pf-remaining-time-control {
-        left: 90px;
+        left: 100px;
     }
 
     .pf-container .pf-control-panel .pf-total-time-control {
-        left: 90px;
+        left: 100px;
     }
 
     .pf-container .pf-control-panel .pf-timeline-control {
@@ -133,6 +119,17 @@
         .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
             height: 22px;
         }
+
+.pf-transportbar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: auto;
+    height: 80px;
+    margin: 0px;
+    background-color: red;
+}
 
 .pf-container .pf-captions-container {
     padding: 65px 15px;

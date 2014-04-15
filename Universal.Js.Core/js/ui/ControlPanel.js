@@ -28,6 +28,7 @@
         this._skipBackElement = null;
         this._skipAheadElement = null;
         this._elapsedTimeElement = null;
+        this._timeSeparatorElement = null;
         this._remainingTimeElement = null;
         this._totalTimeElement = null;
         this._timelineElement = null;
@@ -359,6 +360,8 @@
 
             var isHierarchical = PlayerFramework.Utilities.styleSheetSelectorExists('.pf-controlpanel-hierarchy');
             if (isHierarchical) {
+                var transportBar = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-transportbar" }]);
+
                 var primaryContainer = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-controlcontainer-primary" }]);
                 this._skipPreviousElement = PlayerFramework.Utilities.createElement(primaryContainer, ["button", { "type": "button", "class": "pf-skip-previous-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: skipPreviousIcon; winControl.label: skipPreviousLabel; winControl.tooltip: skipPreviousTooltip; winControl.disabled: isSkipPreviousDisabled; winControl.onclick: skipPrevious PlayerFramework.Binding.setEventHandler;" }]);
                 this._rewindElement = PlayerFramework.Utilities.createElement(primaryContainer, ["button", { "type": "button", "class": "pf-rewind-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: rewindIcon; winControl.label: rewindLabel; winControl.tooltip: rewindTooltip; winControl.disabled: isRewindDisabled; winControl.onclick: rewind PlayerFramework.Binding.setEventHandler;" }]);
@@ -369,6 +372,7 @@
                 this._skipNextElement = PlayerFramework.Utilities.createElement(primaryContainer, ["button", { "type": "button", "class": "pf-skip-next-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: skipNextIcon; winControl.label: skipNextLabel; winControl.tooltip: skipNextTooltip; winControl.disabled: isSkipNextDisabled; winControl.onclick: skipNext PlayerFramework.Binding.setEventHandler;" }]);
 
                 this._elapsedTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-elapsed-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: elapsedTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: elapsedTimeText; winControl.label: elapsedTimeLabel; winControl.tooltip: elapsedTimeTooltip; winControl.disabled: isElapsedTimeDisabled; winControl.onclick: skipBack PlayerFramework.Binding.setEventHandler;" }]);
+                this._timeSeparatorElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-time-separator" }, "/"]);
                 this._timelineElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-timeline-control", "data-win-control": "PlayerFramework.UI.Slider", "data-win-bind": "winControl.value: currentTime; winControl.min: startTime; winControl.max: endTime; winControl.progress: bufferedPercentage; winControl.label: timelineLabel; winControl.tooltip: timelineTooltip; winControl.disabled: isTimelineDisabled; winControl.thumbnailImageSrc: thumbnailImageSrc; winControl.isThumbnailVisible: isThumbnailVisible; winControl.markers: visualMarkers; winControl.onstart: onTimelineSliderStart PlayerFramework.Binding.setEventHandler; winControl.onupdate: onTimelineSliderUpdate PlayerFramework.Binding.setEventHandler; winControl.oncomplete: onTimelineSliderComplete PlayerFramework.Binding.setEventHandler; winControl.onskiptomarker: onTimelineSliderSkipToMarker PlayerFramework.Binding.setEventHandler;", "data-win-options": "{ altStep1: 100000000, altStep2: 300000000, altStep3: Infinity }" }]);
                 this._remainingTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-remaining-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: remainingTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: remainingTimeText; winControl.label: remainingTimeLabel; winControl.tooltip: remainingTimeTooltip; winControl.disabled: isRemainingTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
                 this._totalTimeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-total-time-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: totalTime PlayerFramework.Binding.timeConverter; winControl.hoverContent: totalTimeText; winControl.label: totalTimeLabel; winControl.tooltip: totalTimeTooltip; winControl.disabled: isTotalTimeDisabled; winControl.onclick: skipAhead PlayerFramework.Binding.setEventHandler;" }]);
