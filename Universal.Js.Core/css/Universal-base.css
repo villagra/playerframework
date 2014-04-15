@@ -158,8 +158,8 @@
 }
 
 .pf-slider-marker {
-    height: 3px;
-    top: 35px;
+    height:12px;
+    margin-top: 5px;
 }
 
 .pf-slider-thumbnailView {
