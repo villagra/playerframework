@@ -45,7 +45,7 @@
     .pf-container .pf-control-panel .pf-controlcontainer-secondary {
         position: absolute;
         bottom: 5px;
-        right: 5px;
+        right: 0px;
     }
 
         .pf-container .pf-control-panel .pf-controlcontainer-secondary * {
@@ -60,6 +60,7 @@
         width: 40px;
         height: 40px;
         font-size: 22px;
+        margin: 0 5px;
     }
 
     .pf-container .pf-control-panel .pf-play-pause-control {
@@ -83,7 +84,7 @@
     }
 
     .pf-container .pf-control-panel .pf-elapsed-time-control {
-        left: 5px;
+        left: 10px;
     }
 
     .pf-container .pf-control-panel .pf-time-separator {
@@ -93,11 +94,11 @@
     }
 
     .pf-container .pf-control-panel .pf-remaining-time-control {
-        left: 100px;
+        left: 105px;
     }
 
     .pf-container .pf-control-panel .pf-total-time-control {
-        left: 100px;
+        left: 105px;
     }
 
     .pf-container .pf-control-panel .pf-timeline-control {
