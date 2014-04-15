@@ -949,6 +949,16 @@
         return messageDialog.showAsync();
     }
 
+    function styleSheetSelectorExists(selector) {
+        for (var i = 0; i < document.styleSheets.length; i++) {
+            var styleSheet = document.styleSheets[i];
+            for (var j = 0; j < styleSheet.rules.length; j++) {
+                if (styleSheet.rules[j].selectorText == selector) return true;
+            }
+        }
+        return false;
+    }
+
     // Mixins
     var eventBindingMixin = {
         _eventBindings: null,
@@ -1136,7 +1146,8 @@
         eventBindingMixin: eventBindingMixin,
         propertyBindingMixin: propertyBindingMixin,
         DeferrableOperation: DeferrableOperation,
-        isWinJS1: isWinJS1
+        isWinJS1: isWinJS1,
+        styleSheetSelectorExists: styleSheetSelectorExists
     });
 
     WinJS.Namespace.define("PlayerFramework.Binding", {

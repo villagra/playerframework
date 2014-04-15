@@ -1,4 +1,8 @@
-﻿/* Containers */
+﻿/* Indicator to help JS create elements differently (with primary and secondary containers) */
+.pf-controlpanel-hierarchy {
+}
+
+/* Containers */
 .pf-container.pf-show-buffering-container .pf-control-container {
     display: none;
 }
@@ -35,62 +39,100 @@
     background-color: transparent !important;
 }
 
-.pf-container .pf-control-panel > * {
-    margin: 0 15px;
-}
+    .pf-container .pf-control-panel > * {
+        margin: 0 15px;
+    }
 
-.pf-container .pf-control-panel > *:not(.pf-play-pause-control):not(.pf-rewind-control):not(.pf-fast-forward-control):not(.pf-skip-previous-control):not(.pf-skip-next-control):not(.pf-elapsed-time-control):not(.pf-remaining-time-control):not(.pf-timeline-control) {
-    display: none;
-}
+    .pf-container .pf-control-panel .pf-controlcontainer-primary {
+    }
 
-.pf-container .pf-control-panel > *:not(.pf-play-pause-control) {
-    width: 70px;
-    height: 70px;
-    font-size: 42px;
-}
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
 
-.pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control  {
-    position: absolute;
-    bottom: 15px;
-    height: 15px;
-    font-size: 15px;
-}
+        .pf-container .pf-control-panel .pf-controlcontainer-secondary * {
+            display: inline-block;
+        }
 
-.pf-container .pf-control-panel .pf-elapsed-time-control  {
-    left: 15px;
-}
+    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
+        border: 0px;
+        background-color: rgba(0,0,0,.5);
+    }
 
-.pf-container .pf-control-panel .pf-remaining-time-control {
-    right: 15px;
-}
+    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:hover .pf-button-container {
+        background-color: rgba(255,255,255,0.1294);
+        color: rgba(255,255,255,1);
+    }
 
-.pf-container .pf-control-panel .pf-total-time-control {
-    right: 15px;
-}
+    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:active .pf-button-container {
+        background-color: rgba(255,255,255,0.5);
+        color: rgba(0,0,0,1);
+    }
 
+    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:disabled .pf-button-container {
+        background-color: rgba(0,0,0,.5) !important;
+        color: rgba(255,255,255,.4);
+    }
 
-.pf-container .pf-control-panel .pf-timeline-control {
-    position: absolute;
-    left: 80px;
-    right: 80px;
-    bottom: 20px;
-    width: auto;
-    height: 38px; /* thumb height + timeline height */
-    z-index: 1;
-}
+    .pf-container .pf-control-panel .pf-button {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
 
-.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
-    height: 3px; /* timeline height */
-    margin-top: 35px; /* thumb height */
-    padding-left: 15px; /* thumb width / 2 */
-    padding-right: 15px; /* thumb width / 2 */
-}
+    .pf-container .pf-control-panel .pf-play-pause-control {
+        width: 100px;
+        height: 100px;
+        font-size: 60px;
+    }
 
-.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
-    width: 30px; /* thumb width */
-    height: 35px; /* thumb height */
-    margin-bottom: 38px; /* thumb height + timeline height */
-}
+    .pf-container .pf-control-panel .pf-skip-back-control, .pf-container .pf-control-panel .pf-skip-ahead-control, .pf-container .pf-control-panel .pf-rewind-control, .pf-container .pf-control-panel .pf-fast-forward-control, .pf-container .pf-control-panel .pf-skip-previous-control, .pf-container .pf-control-panel .pf-skip-next-control {
+        width: 70px;
+        height: 70px;
+        font-size: 42px;
+    }
+
+    .pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control {
+        position: absolute;
+        bottom: 15px;
+        height: 22px;
+        width: 70px;
+        font-size: 22px;
+    }
+
+    .pf-container .pf-control-panel .pf-elapsed-time-control {
+        left: 5px;
+    }
+
+    .pf-container .pf-control-panel .pf-remaining-time-control {
+        left: 90px;
+    }
+
+    .pf-container .pf-control-panel .pf-total-time-control {
+        left: 90px;
+    }
+
+    .pf-container .pf-control-panel .pf-timeline-control {
+        position: absolute;
+        left: 5px;
+        right: 5px;
+        bottom: 50px;
+        width: auto;
+        height: 22px;
+        z-index: 1;
+    }
+
+        .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
+            height: 12px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+            height: 22px;
+        }
 
 .pf-container .pf-captions-container {
     padding: 65px 15px;
@@ -115,7 +157,7 @@
     top: 35px;
 }
 
-.pf-slider-container .pf-slider-marker-container {
+/*.pf-slider-container .pf-slider-marker-container {
     left:0;
     right:0;
     margin-left: 15px;
@@ -135,4 +177,4 @@
     border: solid;
     border-width: 2px;
     top: -66px;
-}
+}*/
