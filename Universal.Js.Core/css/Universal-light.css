@@ -32,6 +32,10 @@
     background-color: rgba(255,255,255,.5);
 }
 
+.pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 /*.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
     background: transparent url("../images/thumb-light.png");
 }
@@ -69,6 +73,10 @@
 
 .win-ui-dark .pf-transportbar {
     background-color: rgba(0,0,0,.5);
+}
+
+.win-ui-dark .pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /*.win-ui-dark .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {

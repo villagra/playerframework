@@ -97,7 +97,7 @@
 
 /* Controls */
 .pf-control.pf-hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Button Control */
