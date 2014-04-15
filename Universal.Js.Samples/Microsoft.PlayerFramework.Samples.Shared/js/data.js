@@ -104,7 +104,8 @@
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/tracking", title: "Event Tracking", description: "Demonstrates event tracking for analytic purposes" },
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/playto", title: "Play To", description: "Demonstrates streaming media from the player to a target device using Play To" },
             { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/local", title: "Local Playback", description: "Demonstrates playing a local video file and capturing input from a webcam" },
-            { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/suspendresume", title: "Suspend and Resume", description: "Demonstrates managing the state of the player throughout the application lifecycle" }
+            { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/suspendresume", title: "Suspend and Resume", description: "Demonstrates managing the state of the player throughout the application lifecycle" },
+            { group: sampleGroups[4], backgroundImage: sampleImage2, subtitle: "advanced/visualmarkers", title: "Visual Markers", description: "Allow the user to see markers (ticks) in the timeline" }
         ];
 
         return sampleItems;

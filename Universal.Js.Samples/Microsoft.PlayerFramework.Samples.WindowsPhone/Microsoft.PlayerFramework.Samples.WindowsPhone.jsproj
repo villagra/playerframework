@@ -79,6 +79,9 @@
     <Content Include="pages\advanced\tracking\tracking.css" />
     <Content Include="pages\advanced\tracking\tracking.html" />
     <Content Include="pages\advanced\tracking\tracking.js" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.css" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.html" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.js" />
     <Content Include="pages\advertising\adpod\adpod.css" />
     <Content Include="pages\advertising\adpod\adpod.html" />
     <Content Include="pages\advertising\adpod\adpod.js" />

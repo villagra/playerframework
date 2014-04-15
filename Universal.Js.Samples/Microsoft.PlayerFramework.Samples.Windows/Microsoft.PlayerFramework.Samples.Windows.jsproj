@@ -77,6 +77,9 @@
     <Content Include="pages\advanced\playto\playto.css" />
     <Content Include="pages\advanced\playto\playto.html" />
     <Content Include="pages\advanced\playto\playto.js" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.css" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.html" />
+    <Content Include="pages\advanced\visualmarkers\visualmarkers.js" />
     <Content Include="pages\advanced\suspendresume\suspendresume.css" />
     <Content Include="pages\advanced\suspendresume\suspendresume.html" />
     <Content Include="pages\advanced\suspendresume\suspendresume.js" />
