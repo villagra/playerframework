@@ -139,6 +139,10 @@
     padding: 15px 25px 0 25px;
 }
 
+.phone .pf-volume-mute-container .pf-volume-slider-control {
+    bottom: calc(100% + 35px);
+}
+
 .pf-container .pf-captions-container {
     padding: 65px 15px;
 }
