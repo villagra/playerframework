@@ -126,6 +126,15 @@
     <Content Include="..\Universal.Js.Core\css\Entertainment-light.css">
       <Link>css\Entertainment-light.css</Link>
     </Content>
+    <Content Include="..\Universal.Js.Core\css\Universal-base.css">
+      <Link>css\Universal-base.css</Link>
+    </Content>
+    <Content Include="..\Universal.Js.Core\css\Universal-dark.css">
+      <Link>css\Universal-dark.css</Link>
+    </Content>
+    <Content Include="..\Universal.Js.Core\css\Universal-light.css">
+      <Link>css\Universal-light.css</Link>
+    </Content>
     <Content Include="..\Universal.Js.Core\images\thumb-dark.png">
       <Link>images\thumb-dark.png</Link>
     </Content>
