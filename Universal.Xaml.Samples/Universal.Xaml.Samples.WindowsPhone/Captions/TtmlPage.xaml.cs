@@ -73,7 +73,7 @@ namespace Microsoft.PlayerFramework.Samples
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Landscape;
+            //Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Landscape;
             var noawait = Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.PlayerFramework.Samples
         /// <param name="e">the event arguments</param>
         private void OnClickCaptionSettings(object sender, RoutedEventArgs e)
         {
-            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+            var plugin = player.Plugins.OfType<Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin>().First();
 
             plugin.ShowSettingsPage(Frame);
         }
@@ -136,11 +136,11 @@ namespace Microsoft.PlayerFramework.Samples
         /// <param name="e"></param>
         private void OnClickCaptionSettingsPopup(object sender, RoutedEventArgs e)
         {
-            var plugin = new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin();
+            var plugin = player.Plugins.OfType<Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin>().First();
 
             plugin.PopupClosed += OnPopupClosed;
 
-            plugin.ShowSettingsPopup(this, this.LayoutRoot);
+            plugin.ShowSettingsPopup(this, this.LayoutRoot, true);
         }
 
         /// <summary>

@@ -11,8 +11,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="ClosedCaption" Label="Caption Settings" Click="OnClickCaptionSettingsPopup"/>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Caption Settings" Click="OnClickCaptionSettingsPopup"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid x:Name="LayoutRoot">

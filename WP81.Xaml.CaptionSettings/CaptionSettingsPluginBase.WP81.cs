@@ -17,6 +17,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using System.Globalization;
     using Windows.UI.Xaml.Media;
     using Windows.UI;
+    using Windows.Phone.UI.Input;
 
     /// <summary>
     /// Windows Phone Caption Settings UI
@@ -44,6 +45,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// should video be paused when showing the popup?
         /// </summary>
         private bool pauseVideo;
+
+        /// <summary>
+        /// should video be resumed when done showing the popup?
+        /// </summary>
+        private bool resumeVideo;
 
         /// <summary>
         /// the caption settings control
@@ -185,8 +191,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
             if (this.popup == null)
             {
-                // TODO: page.BackKeyPress += this.OnBackKeyPress;
-
                 this.control = new CaptionSettingsControl
                 {
                     ApplyCaptionSettings = this.ApplyCaptionSettings,
@@ -216,11 +220,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                         {
                             if (this.MediaPlayer.CurrentState == MediaElementState.Playing)
                             {
-                                this.MediaPlayer.Pause();
+                                this.resumeVideo = true;
+                                this.MediaPlayer.InteractiveViewModel.Pause();
                             }
                         }
                     }
 
+                    HardwareButtons.BackPressed += HardwareButtons_BackPressed;
                     this.IsPopupOpen = true;
                 };
 
@@ -230,15 +236,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     {
                         this.MediaPlayer.IsEnabled = true;
 
-                        if (this.pauseVideo)
+                        if (this.resumeVideo)
                         {
                             if (this.MediaPlayer.CurrentState == MediaElementState.Paused)
                             {
-                                this.MediaPlayer.Play();
+                                this.MediaPlayer.InteractiveViewModel.PlayResume();
                             }
                         }
                     }
 
+                    HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
                     this.IsPopupOpen = false;
 
                     if (this.PopupClosed != null)
@@ -366,17 +373,22 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         /// <param name="sender">the page</param>
         /// <param name="e">the cancel event arguments</param>
-        private void OnBackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            var page = sender as Page;
-
             if (this.popup != null && this.popup.IsOpen)
             {
-                e.Cancel = true;
+                e.Handled = true;
 
-                if (this.control != null && !this.control.IsListSelectorShown)
+                if (this.control != null)
                 {
-                    this.popup.IsOpen = false;
+                    if (!this.control.IsListSelectorShown)
+                    {
+                        this.popup.IsOpen = false;
+                    }
+                    else
+                    {
+                        this.control.HideListSelector();
+                    }
                 }
             }
         }

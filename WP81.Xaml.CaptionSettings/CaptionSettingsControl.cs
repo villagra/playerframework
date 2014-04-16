@@ -40,8 +40,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     [TemplatePartAttribute(Name = "OutlineEdges", Type = typeof(Grid))]
     [TemplatePartAttribute(Name = "PageTitle", Type = typeof(TextBlock))]
     [TemplatePartAttribute(Name = "PreviewTextElements", Type = typeof(Grid))]
-    [TemplateVisualState(Name = "ListShown", GroupName = "ListGroup")]
-    [TemplateVisualState(Name = "ListHidden", GroupName = "ListGroup")]
     [TemplateVisualState(Name = "Default", GroupName = "PreviewStates")]
     [TemplateVisualState(Name = "RaisedEdge", GroupName = "PreviewStates")]
     [TemplateVisualState(Name = "DepressedEdge", GroupName = "PreviewStates")]
@@ -69,11 +67,11 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register(
-                "Title", 
-                typeof(string), 
+                "Title",
+                typeof(string),
                 typeof(CaptionSettingsControl),
                 new PropertyMetadata(AssemblyResources.GetString("CaptionSettings"), new PropertyChangedCallback(OnTitleChanged)));
-        
+
         /// <summary>
         /// Is the list selector being shown
         /// </summary>
@@ -188,7 +186,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         {
             get { return (Visibility)this.GetValue(PreviewVisibilityProperty); }
             set { this.SetValue(PreviewVisibilityProperty, value); }
-        }        
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether default setting should be overridden
@@ -231,37 +229,37 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// Gets or sets the font size button
         /// </summary>
         private Button FontSizeButton { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the font style button
         /// </summary>
         private Button FontStyleButton { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the list selector
         /// </summary>
         private ListBox ListSelector { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the font color type button
         /// </summary>
         private Button FontColorTypeButton { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the font color button
         /// </summary>
         private Button FontColorButton { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the background color type
         /// </summary>
         private Button BackgroundColorType { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the background color button
         /// </summary>
         private Button BackgroundColorButton { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the window color type
         /// </summary>
@@ -655,16 +653,12 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             var viewModel = this.DataContext as CaptionSettingsFlyoutViewModel;
-            
+
             if (this.PageTitle != null)
             {
                 this.PageTitle.Text = title.ToUpper();
             }
-
-            this.ListSelector.ItemsSource = itemsSource;
-            this.ListSelector.SelectedItem = selectedItem;
-            this.ListSelector.SelectionChanged += selectionChanged;
-
+            
             if (this.LayoutRoot != null)
             {
                 this.ListSelector.ItemTemplate = this.LayoutRoot.Resources[templateName] as DataTemplate;
@@ -675,8 +669,10 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 }
             }
 
-            VisualStateManager.GoToState(this, "ListShown", true);
-
+            this.ListSelector.ItemsSource = itemsSource;
+            //this.ListSelector.SelectedItem = selectedItem;
+            this.ListSelector.Visibility = Visibility.Visible;
+            this.ListSelector.SelectionChanged += selectionChanged;
             this.isListSelectorShown = true;
         }
 
@@ -702,7 +698,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Hide the list selector and reset the page title
         /// </summary>
-        private void HideListSelector()
+        public void HideListSelector()
         {
             this.isListSelectorShown = false;
 
@@ -711,7 +707,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 this.PageTitle.Text = this.Title;
             }
 
-            VisualStateManager.GoToState(this, "ListHidden", true);
+            this.ListSelector.ItemsSource = null;
+            this.ListSelector.SelectedItem = null;
+            this.ListSelector.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>

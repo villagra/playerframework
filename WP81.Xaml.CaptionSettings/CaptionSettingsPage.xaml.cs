@@ -40,6 +40,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             this.Control.ApplyCaptionSettings = ApplyCaptionSettings;
             this.Control.Style = ControlStyle;
             this.Control.Page = this;
+
+            this.Loaded += (sender, e) =>
+            {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            };
+
+            this.Unloaded += (sender, e) =>
+            {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
+            };
         }
 
         #endregion
@@ -64,6 +74,15 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         #endregion
 
         #region Methods
+        private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
+        {
+            if (this.Frame != null && this.Frame.CanGoBack)
+            {
+                e.Handled = true;
+                if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
+            }
+        }
+
         /// <summary>
         /// Navigate to the page and control
         /// </summary>
