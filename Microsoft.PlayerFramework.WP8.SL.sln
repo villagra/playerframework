@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30312.1
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{FBC68F48-BE99-4867-986A-BB603F67FD96}"
 EndProject
@@ -49,6 +49,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{92BA2F3F-BFE8-452A-84CA-A46D2AD0FC99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Helper", "WP8.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj", "{351957B0-BA27-4524-95B8-23A3A2A4FF07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.WP81.Test", "WP81.SL.Test\Microsoft.PlayerFramework.WP81.Test.csproj", "{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -378,6 +380,26 @@ Global
 		{351957B0-BA27-4524-95B8-23A3A2A4FF07}.Release|x64.ActiveCfg = Release|Any CPU
 		{351957B0-BA27-4524-95B8-23A3A2A4FF07}.Release|x86.ActiveCfg = Release|x86
 		{351957B0-BA27-4524-95B8-23A3A2A4FF07}.Release|x86.Build.0 = Release|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|ARM.Build.0 = Debug|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|x86.ActiveCfg = Debug|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|x86.Build.0 = Debug|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Debug|x86.Deploy.0 = Debug|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|ARM.ActiveCfg = Release|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|ARM.Build.0 = Release|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|ARM.Deploy.0 = Release|ARM
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|x64.ActiveCfg = Release|Any CPU
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|x86.ActiveCfg = Release|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|x86.Build.0 = Release|x86
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -386,5 +408,6 @@ Global
 		{469E16CC-8ED4-4A12-AC8F-C9D31937AFEA} = {92BA2F3F-BFE8-452A-84CA-A46D2AD0FC99}
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA} = {FBC68F48-BE99-4867-986A-BB603F67FD96}
 		{1BBDEFE9-B5A2-49CB-9441-5CFFF59A2597} = {92BA2F3F-BFE8-452A-84CA-A46D2AD0FC99}
+		{B9EEFF06-8E38-48FC-8259-57EB04DE58BE} = {92BA2F3F-BFE8-452A-84CA-A46D2AD0FC99}
 	EndGlobalSection
 EndGlobal

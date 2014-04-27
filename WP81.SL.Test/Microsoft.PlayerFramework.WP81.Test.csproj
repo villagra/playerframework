@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9EEFF06-8E38-48FC-8259-57EB04DE58BE}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework.WP81.Test</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.WP81.Test</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Microsoft.PlayerFramework.WP81.Test_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Microsoft.PlayerFramework.WP81.Test.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <DefaultLanguage>en-US</DefaultLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\SquareTile150x150.png" />
+    <Content Include="Assets\SquareTile71x71.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\WideLogo.png" />
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj">
+      <Project>{16e729d7-0253-4c89-a0da-1493865827e8}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj">
+      <Project>{e9aa8cac-c0ae-419c-93ef-c2f3dab1076c}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Dash</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
+      <Project>{351957b0-ba27-4524-95b8-23a3a2a4ff07}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.Advertising\Microsoft.Media.Advertising.csproj">
+      <Project>{e9964ea2-4c37-4c00-9b59-278d5f4608bb}</Project>
+      <Name>Microsoft.Media.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj">
+      <Project>{4ba5fc44-b99f-4977-a355-d158b9396b04}</Project>
+      <Name>Microsoft.Media.Analytics.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj">
+      <Project>{eca38fd7-d3a9-4682-bd26-d7c96d98524d}</Project>
+      <Name>Microsoft.Media.Analytics.AudienceInsight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.Analytics\Microsoft.Media.Analytics.csproj">
+      <Project>{c9e36e2b-62f5-41ad-883a-597b6795d702}</Project>
+      <Name>Microsoft.Media.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.AudienceInsight\Microsoft.Media.AudienceInsight.csproj">
+      <Project>{551b3879-d971-45fb-b0cf-246533ff3084}</Project>
+      <Name>Microsoft.Media.AudienceInsight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj">
+      <Project>{70867db8-a98b-4a2f-ba47-e44f2b4ad5a5}</Project>
+      <Name>Microsoft.PlayerFramework.Adaptive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.Advertising\Microsoft.PlayerFramework.Advertising.csproj">
+      <Project>{05a03645-d1c1-4fb1-9de9-bcd50db01cc3}</Project>
+      <Name>Microsoft.PlayerFramework.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.Analytics\Microsoft.PlayerFramework.Analytics.csproj">
+      <Project>{f03bc1c2-bc5c-476d-a715-09da916f9943}</Project>
+      <Name>Microsoft.PlayerFramework.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.csproj">
+      <Project>{3a2a6d48-c42a-4a65-8f25-34f7931ac54f}</Project>
+      <Name>Microsoft.PlayerFramework.CaptionSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.Core\Microsoft.PlayerFramework.Core.csproj">
+      <Project>{e0bba78d-6a47-4e1d-a6f0-88bef727f8c9}</Project>
+      <Name>Microsoft.PlayerFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.TimedText\Microsoft.PlayerFramework.TimedText.csproj">
+      <Project>{a3416419-9fab-4539-8e64-79266669899f}</Project>
+      <Name>Microsoft.PlayerFramework.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.TTML.Settings\Microsoft.PlayerFramework.TTML.Settings.csproj">
+      <Project>{c6e13339-51e8-4158-9e1a-b12d24841ecd}</Project>
+      <Name>Microsoft.PlayerFramework.TTML.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.WebVTT.Settings\Microsoft.PlayerFramework.WebVTT.Settings.csproj">
+      <Project>{ddf64c55-6d24-4f23-8740-1dcd346a388a}</Project>
+      <Name>Microsoft.PlayerFramework.WebVTT.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.SL.WebVTT\Microsoft.PlayerFramework.WebVTT.csproj">
+      <Project>{ef5e25ba-9fe6-4a8d-9241-d2e2b1934089}</Project>
+      <Name>Microsoft.PlayerFramework.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.TimedText\Microsoft.Media.TimedText.csproj">
+      <Project>{17ba9e60-e99f-43b5-a07e-2fc0e2642bbe}</Project>
+      <Name>Microsoft.Media.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.WebVTT\Microsoft.Media.WebVTT.csproj">
+      <Project>{77ebbfe3-cde5-45ad-9f83-9353151df271}</Project>
+      <Name>Microsoft.Media.WebVTT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>
