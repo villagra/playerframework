@@ -2093,6 +2093,12 @@ namespace Microsoft.PlayerFramework
         void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
         {
             FailedMediaState = null;
+#if WINDOWS_PHONE // HACK: MediaElement will stay in "Opening" state until playback has began. Force Paused visual state to prevent buffering view from displaying.
+            if (!AutoPlay)
+            {
+                VisualStateManager.GoToState(this, "Paused", true);
+            }
+#endif
             OnMediaOpened(e);
         }
         #endregion
