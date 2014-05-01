@@ -1093,7 +1093,13 @@
                                 </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="MediaStates">
-                                <VisualState x:Name="Opening"/>
+                                <VisualState x:Name="Opening">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="BufferingContainer">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Paused"/>
                                 <VisualState x:Name="Playing"/>
                                 <VisualState x:Name="Closed"/>
@@ -1222,7 +1228,20 @@
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="MediaStates">
-                                <VisualState x:Name="Opening"/>
+                                <VisualState x:Name="Opening">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsIndeterminate" Storyboard.TargetName="ProgressIndicator">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ProgressIndicator">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.01" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Paused"/>
                                 <VisualState x:Name="Playing"/>
                                 <VisualState x:Name="Closed"/>
