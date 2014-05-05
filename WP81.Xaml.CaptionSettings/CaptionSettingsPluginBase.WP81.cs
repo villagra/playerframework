@@ -375,7 +375,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="e">the cancel event arguments</param>
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
-            if (this.popup != null && this.popup.IsOpen)
+            if (this.popup != null && this.popup.IsOpen && !e.Handled)
             {
                 e.Handled = true;
 

@@ -25,14 +25,14 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class WebVTTPage : Page
     {
-        private NavigationHelper navigationHelper;
+        private ControllableNavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public WebVTTPage()
         {
             this.InitializeComponent();
 
-            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper = new ControllableNavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
 
@@ -136,6 +136,7 @@ namespace Microsoft.PlayerFramework.Samples
 
             plugin.PopupClosed += OnPopupClosed;
 
+            navigationHelper.PreventBackNavigation = true;
             plugin.ShowSettingsPopup(this, this.LayoutRoot, true);
         }
 
@@ -146,6 +147,7 @@ namespace Microsoft.PlayerFramework.Samples
         /// <param name="e">the event arguments</param>
         private void OnPopupClosed(object sender, object e)
         {
+            navigationHelper.PreventBackNavigation = false;
             var plugin = sender as Microsoft.PlayerFramework.WebVTT.CaptionSettings.WebVTTCaptionSettingsPlugin;
 
             System.Diagnostics.Debug.WriteLine("Settings Popup closed. IsPopupOpen: {0}", plugin.IsPopupOpen);

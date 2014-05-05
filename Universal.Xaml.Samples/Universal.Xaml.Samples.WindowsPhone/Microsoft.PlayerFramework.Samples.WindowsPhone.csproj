@@ -214,6 +214,7 @@
     <Compile Include="Advertising\ProgrammaticAdPage.xaml.cs">
       <DependentUpon>ProgrammaticAdPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Captions\ControllableNavigationHelper.cs" />
     <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
       <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
     </Compile>

@@ -167,7 +167,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 {
                     if (this.page != null)
                     {
-                        //TODO: this.page.BackKeyPress -= this.OnBackKeyPress;
+                        Windows.Phone.UI.Input.HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
                         this.page.SizeChanged -= page_SizeChanged;
                     }
 
@@ -175,10 +175,20 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
                     if (this.page != null)
                     {
-                        //TODO: this.page.BackKeyPress += this.OnBackKeyPress;
+                        Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
                         this.page.SizeChanged += page_SizeChanged;
                     }
                 }
+            }
+        }
+
+        void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
+        {
+            if (this.isListSelectorShown)
+            {
+                this.HideListSelector();
+                this.RemoveSelectionChanged();
+                e.Handled = true;
             }
         }
 
@@ -1038,21 +1048,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     this.ViewModel.FontColorType = ColorType.Default;
                     this.ViewModel.BackgroundColorType = ColorType.Default;
                 }
-            }
-        }
-
-        /// <summary>
-        /// When the Back key is pressed and a list selector is shown, cancel navigation, hide the list selector, and remove the selection changed events.
-        /// </summary>
-        /// <param name="sender">the page</param>
-        /// <param name="e">the cancel event arguments</param>
-        private void OnBackKeyPress(object sender, CancelEventArgs e)
-        {
-            if (this.isListSelectorShown)
-            {
-                this.HideListSelector();
-                this.RemoveSelectionChanged();
-                e.Cancel = true;
             }
         }
 
