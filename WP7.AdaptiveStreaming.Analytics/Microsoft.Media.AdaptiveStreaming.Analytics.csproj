@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Web.Media.SmoothStreaming">
-      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.0\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.5\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
