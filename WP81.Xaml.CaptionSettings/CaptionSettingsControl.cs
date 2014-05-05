@@ -21,6 +21,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
     using Windows.UI.Xaml.Documents;
+    using Windows.Foundation;
 
     /// <summary>
     /// Template Caption Settings Control
@@ -167,6 +168,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     if (this.page != null)
                     {
                         //TODO: this.page.BackKeyPress -= this.OnBackKeyPress;
+                        this.page.SizeChanged -= page_SizeChanged;
                     }
 
                     this.page = value;
@@ -174,9 +176,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                     if (this.page != null)
                     {
                         //TODO: this.page.BackKeyPress += this.OnBackKeyPress;
+                        this.page.SizeChanged += page_SizeChanged;
                     }
                 }
             }
+        }
+
+        void page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.Width = e.NewSize.Width;
+            this.Height = e.NewSize.Height;
         }
 
         /// <summary>
@@ -986,9 +995,14 @@ namespace Microsoft.PlayerFramework.CaptionSettings
 
         void CaptionSettingsControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            UpdateOrientation(e.NewSize);
+        }
+
+        private void UpdateOrientation(Size size)
+        {
             var stateName = "Landscape";
 
-            if (e.NewSize.Height > e.NewSize.Width)
+            if (size.Height > size.Width)
             {
                 stateName = "Portrait";
             }

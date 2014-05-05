@@ -212,10 +212,17 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.RowSpan)" Storyboard.TargetName="scrollViewer">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="1"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Preview">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ContentPanel">
                                             <DiscreteObjectKeyFrame KeyTime="0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <Thickness>10,0,0,20</Thickness>
+                                                    <Thickness>12,12,12,12</Thickness>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="scrollViewer">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Thickness>0,0,0,20</Thickness>
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
@@ -233,7 +240,7 @@
                         <TextBlock x:Name="PageTitle" Text="CAPTION SETTINGS" Style="{ThemeResource TitleTextBlockStyle}" Margin="12,17,0,5"/>
 
                         <!--ContentPanel - place additional content here-->
-                        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,12,72,12">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -247,7 +254,7 @@
                             <Border Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
                                 <CheckBox Content="Ignore default caption fonts and colors" IsChecked="{Binding IsEnabled, Mode=TwoWay}"/>
                             </Border>
-                            <ScrollViewer x:Name="scrollViewer" VerticalAlignment="Top" Grid.Row="1" Padding="0,0,10,55" Grid.RowSpan="2">
+                            <ScrollViewer x:Name="scrollViewer" VerticalAlignment="Top" Grid.Row="1" Padding="0,0,0,0" Grid.RowSpan="2">
                                 <StackPanel>
                                     <TextBlock Text="Font" Style="{ThemeResource GroupHeaderTextBlockStyle}"/>
                                     <StackPanel Margin="10,0,0,0">
@@ -291,7 +298,7 @@
                                 </StackPanel>
                             </ScrollViewer>
                             <Border x:Name="Preview" Visibility="{TemplateBinding PreviewVisibility}" 
-                                    Padding="0,0,10,10"
+                                    Padding="0,0,0,0"
                                     Grid.Column="1" Grid.Row="1"
                                     VerticalAlignment="Top" IsHitTestVisible="False" Grid.RowSpan="2">
                                 <Grid Background="Gray">
@@ -388,7 +395,7 @@
                                 </Grid>
                             </Border>
                         </Grid>
-                        <ListBox x:Name="ListSelector" Visibility="Collapsed" Grid.Row="1" Padding="12,0,0,0" d:IsHidden="True">
+                        <ListBox x:Name="ListSelector" Visibility="Collapsed" Grid.Row="1" Padding="0,0,0,0" d:IsHidden="True">
                             <ListBox.Background>
                                 <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"/>
                             </ListBox.Background>
