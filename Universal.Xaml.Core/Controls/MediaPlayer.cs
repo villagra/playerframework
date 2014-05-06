@@ -5508,11 +5508,7 @@ namespace Microsoft.PlayerFramework
             }
             if (string.IsNullOrEmpty(result))
             {
-                if (!IsInDesignMode)
-                {
-                    result = DefaultResourceLoader.GetString(string.Format("Resources/{0}", resourceId));
-                }
-                else result = resourceId;
+                result = DefaultResourceLoader.GetString(string.Format("Resources/{0}", resourceId));
             }
             return result;
         }
