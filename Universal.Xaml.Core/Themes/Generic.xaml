@@ -298,14 +298,14 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
         <Setter Property="Padding" Value="0,0,0,0"/>
         <Setter Property="Margin" Value="0,0,0,0"/>
-        <Setter Property="MinWidth" Value="70"/>
+        <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="local:MediaControls.IsToolTipEnabled" Value="True"/>
         <Setter Property="Template">
@@ -348,7 +348,8 @@
                                 <VisualState x:Name="PointerFocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" />
+                        <TextBlock Opacity="0" IsHitTestVisible="False" Text="4:44:44" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}"/>
+                        <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeEndLineCap="Square" StrokeDashArray="1,1" Opacity="0" StrokeDashOffset="1.5"/>
                         <Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeEndLineCap="Square" StrokeDashArray="1,1" Opacity="0" StrokeDashOffset="0.5"/>
                     </Grid>
@@ -1145,7 +1146,7 @@
                                 </local:Timeline.ThumbnailContent>
                             </local:Timeline>
                             <StackPanel x:Name="TimeElapsedContainer" Grid.Row="0" Orientation="Horizontal" Margin="10,5,0,5" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                <Button x:Name="TimeElapsedButton" Style="{TemplateBinding TransportBarTextButtonStyle}">
+                                <Button x:Name="TimeElapsedButton" Style="{TemplateBinding TransportBarTextButtonStyle}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}">
                                     <local:MediaControls.Behavior>
                                         <local:TimeElapsedButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
@@ -1155,15 +1156,15 @@
                                         <local:TimeElapsedBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </TextBlock>-->
-                                <TextBlock x:Name="TimeSeparator" Text="/" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="22" Visibility="Collapsed"/>
+                                <TextBlock x:Name="TimeSeparator" Text="/" VerticalAlignment="Center" Margin="10,0,0,0" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Visibility="Collapsed"/>
                             </StackPanel>
                             <StackPanel x:Name="TimeRemainingContainer" Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Margin="10,5,10,5">
-                                <Button x:Name="TimeRemainingButton" Style="{TemplateBinding TransportBarTextButtonStyle}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <Button x:Name="TimeRemainingButton" Style="{TemplateBinding TransportBarTextButtonStyle}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                     <local:MediaControls.Behavior>
                                         <local:TimeRemainingButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
-                                <Button x:Name="DurationButton" Style="{TemplateBinding TransportBarTextButtonStyle}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <Button x:Name="DurationButton" Style="{TemplateBinding TransportBarTextButtonStyle}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                     <local:MediaControls.Behavior>
                                         <local:DurationButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
@@ -1252,6 +1253,9 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
         <Setter Property="Height" Value="NaN"/>
         <Setter Property="TransportBarButtonStyle" Value="{StaticResource TransportBarButtonStyle}"/>
         <Setter Property="TransportBarToggleButtonStyle" Value="{StaticResource TransportBarToggleButtonStyle}"/>
