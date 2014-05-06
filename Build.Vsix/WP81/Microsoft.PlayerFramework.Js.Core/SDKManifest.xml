@@ -6,8 +6,8 @@
   MinToolsVersion = "4.0"
   AppliesTo = "WindowsAppContainer + (JavaScript)"
   MaxPlatformVersion="8.1"
-  MinOSVersion="6.3.0"
-  MaxOSVersionTested="6.3.0"
+  MinOSVersion="6.3.1"
+  MaxOSVersionTested="6.3.1"
   ReferenceManagerEnumeration = "Files">
     <File Content="js\PlayerFramework.js" />
     <File Content="css\PlayerFramework-dark.css" />

@@ -6,8 +6,8 @@
   MinToolsVersion = "4.0"
   AppliesTo = "WindowsAppContainer + (CSharp | VB | VisualC)"
   MaxPlatformVersion="8.1"
-  MinOSVersion="6.3.0"
-  MaxOSVersionTested="6.3.0"
+  MinOSVersion="6.3.1"
+  MaxOSVersionTested="6.3.1"
   ReferenceManagerEnumeration = "Files">
   <File Reference="Microsoft.PlayerFramework.dll">
     <ToolboxItems VSCategory = "Toolbox.Common" BlendCategory="Media">
