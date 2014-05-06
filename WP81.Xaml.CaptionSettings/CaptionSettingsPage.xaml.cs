@@ -76,7 +76,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         #region Methods
         private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
         {
-            if (this.Frame != null && this.Frame.CanGoBack)
+            if (this.Frame != null && this.Frame.CanGoBack && !e.Handled)
             {
                 e.Handled = true;
                 if (this.Frame != null && this.Frame.CanGoBack) this.Frame.GoBack();
