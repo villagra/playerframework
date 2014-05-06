@@ -990,7 +990,13 @@
                                 <DiscreteObjectKeyFrame KeyTime="0" Value="4"/>
                             </ObjectAnimationUsingKeyFrames>
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Timeline" Storyboard.TargetProperty="Margin">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="10,10,10,0"/>
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="15,10,15,0"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TimeElapsedContainer" Storyboard.TargetProperty="Margin">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="15,5,0,5"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TransportButtonBar" Storyboard.TargetProperty="Margin">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="5,5,10,5"/>
                             </ObjectAnimationUsingKeyFrames>
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TimeSeparator" Storyboard.TargetProperty="Visibility">
                                 <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
