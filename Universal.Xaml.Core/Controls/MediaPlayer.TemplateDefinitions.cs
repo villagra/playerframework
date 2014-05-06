@@ -373,7 +373,12 @@ namespace Microsoft.PlayerFramework
             mediaElement.SeekCompleted += MediaElement_SeekCompleted;
 #endif
 
-            if (IsInDesignMode) { mediaElement.AutoPlay = false; }
+            if (IsInDesignMode)
+            {
+                mediaElement.AutoPlay = false;
+                IsInteractive = true;
+                AutoHide = false;
+            }
         }
 
         private void UninitializeMediaElement()
