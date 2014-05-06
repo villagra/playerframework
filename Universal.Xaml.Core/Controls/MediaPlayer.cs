@@ -4731,6 +4731,12 @@ namespace Microsoft.PlayerFramework
 
         private async Task<MediaLoadingInstruction> OnMediaLoadingAsync(MediaLoadingEventArgs args)
         {
+            if (IsMediaLoaded) // close the current source if it is already open
+            {
+                OnMediaClosed(new RoutedEventArgs());
+                _Source = null;
+            }
+
             SetValue(PlayerStateProperty, PlayerState.Loading);
 #if !SILVERLIGHT
             if (TestForMediaPack)
