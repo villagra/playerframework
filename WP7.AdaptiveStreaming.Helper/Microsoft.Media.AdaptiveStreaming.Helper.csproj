@@ -73,6 +73,9 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Helper\ILifetimeAwareDownloaderPlugin.cs">
+      <Link>ILifetimeAwareDownloaderPlugin.cs</Link>
+    </Compile>
     <Compile Include="AdaptiveStreamingManager.cs" />
     <Compile Include="Data\OrderedObservableCollection.cs" />
     <Compile Include="Data\QueuedRetryManager.cs" />
@@ -80,7 +83,6 @@
     <Compile Include="Data\RetryManager.cs" />
     <Compile Include="Data\StreamSelectionManager.cs" />
     <Compile Include="DownloaderPluginAdapter.cs" />
-    <Compile Include="ILifetimeAwareDownloaderPlugin.cs" />
     <Compile Include="MarkerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmoothStreamingExtensions.cs" />
