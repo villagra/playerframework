@@ -47,6 +47,9 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarItemForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundEllipse">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource TransportReversedBackgroundBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
@@ -57,6 +60,9 @@
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarItemDisabledForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource AppBarItemDisabledForegroundThemeBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
@@ -77,6 +83,7 @@
                         <Viewbox Margin="{TemplateBinding Padding}">
                             <Grid Height="40" Width="40">
                                 <Ellipse x:Name="BackgroundEllipse" Fill="{StaticResource TransportBackgroundBrush}" UseLayoutRounding="False"/>
+                                <Ellipse x:Name="OutlineEllipse" Stroke="{ThemeResource AppBarItemForegroundThemeBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
                                 <ContentPresenter x:Name="Content" AutomationProperties.AccessibilityView="Raw" Content="{TemplateBinding Icon}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Grid>
                         </Viewbox>
@@ -87,7 +94,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style x:Key="TransportBarButtonStyle" TargetType="AppBarButton">
         <Setter Property="Foreground" Value="{ThemeResource AppBarItemForegroundThemeBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
