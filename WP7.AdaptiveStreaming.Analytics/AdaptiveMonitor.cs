@@ -113,7 +113,7 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
                                     string[] s = entry.Text.Split(' ');
                                     if (s.Length == 17 && (s[5] == "V" || s[5] == "A"))
                                     {
-                                        ChunkDownloadedEventArgs result = new ChunkDownloadedEventArgs();
+                                        var result = new Microsoft.Media.Analytics.ChunkDownloadedEventArgs();
 
                                         TimeSpan downloadTime;
                                         if (TimeSpan.TryParse(s[2], CultureInfo.CurrentCulture, out downloadTime))
@@ -253,7 +253,7 @@ namespace Microsoft.PlayerFramework.Adaptive.Analytics
 
         public event EventHandler<CurrentBitrateChangedEventArgs> CurrentBitrateChanged;
 
-        public event EventHandler<ChunkDownloadedEventArgs> ChunkDownloaded;
+        public event EventHandler<Microsoft.Media.Analytics.ChunkDownloadedEventArgs> ChunkDownloaded;
 
         public event EventHandler<ChunkFailureEventArgs> ChunkFailure;
 
