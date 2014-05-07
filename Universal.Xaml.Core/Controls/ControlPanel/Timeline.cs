@@ -6,12 +6,14 @@ using System.Windows.Controls;
 using System.Windows.Automation;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
+using System.Windows.Media;
 #else
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 #endif
 
 namespace Microsoft.PlayerFramework
@@ -100,6 +102,7 @@ namespace Microsoft.PlayerFramework
             ProgressSliderElement.ScrubbingStarted -= ProgressSliderElement_ScrubbingStarted;
             ProgressSliderElement.Scrubbing -= ProgressSliderElement_Scrubbing;
             ProgressSliderElement.ScrubbingCompleted -= ProgressSliderElement_ScrubbingCompleted;
+            ProgressSliderElement.ValueChanged -= ProgressSliderElement_ValueChanged;
         }
 
         private void WireProgressSliderEvents()
@@ -108,6 +111,43 @@ namespace Microsoft.PlayerFramework
             ProgressSliderElement.ScrubbingStarted += ProgressSliderElement_ScrubbingStarted;
             ProgressSliderElement.Scrubbing += ProgressSliderElement_Scrubbing;
             ProgressSliderElement.ScrubbingCompleted += ProgressSliderElement_ScrubbingCompleted;
+            ProgressSliderElement.ValueChanged += ProgressSliderElement_ValueChanged;
+        }
+
+#if SILVERLIGHT
+        void ProgressSliderElement_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+#else
+        void ProgressSliderElement_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+#endif
+        {
+            var thumbnailView = ThumbnailContent as FrameworkElement;
+            if (thumbnailView != null && thumbnailView.RenderTransform is TranslateTransform)
+            {
+                var percent = e.NewValue / (ProgressSliderElement.Maximum - ProgressSliderElement.Minimum);
+                var position = percent * (ProgressSliderElement.ActualWidth - ProgressSliderElement.ThumbElement.ActualWidth);
+                var left = position + thumbnailView.Margin.Left;
+                if (left < 0)
+                {
+                    OffsetThumbnail(-left);
+                }
+                else
+                {
+                    var right = left + thumbnailView.ActualWidth + thumbnailView.Margin.Right;
+                    if (right > ProgressSliderElement.ActualWidth)
+                    {
+                        OffsetThumbnail(ProgressSliderElement.ActualWidth - right);
+                    }
+                    else
+                    {
+                        OffsetThumbnail(0);
+                    }
+                }
+            }
+        }
+
+        void OffsetThumbnail(double offset)
+        {
+            ((TranslateTransform)ThumbnailContent.RenderTransform).X = offset;
         }
 
         void PositionedItemsControl_ItemUnloaded(object sender, FrameworkElementEventArgs args)
@@ -236,7 +276,7 @@ namespace Microsoft.PlayerFramework
         /// Identifies the SliderTemplate dependency property.
         /// </summary>
         public static readonly DependencyProperty SliderTemplateProperty = DependencyProperty.Register("SliderTemplate", typeof(ControlTemplate), typeof(Timeline), null);
-        
+
         /// <summary>
         /// Gets or sets the ControlTemplate to use for the Seekable Slider control used internally by the Timeline.
         /// </summary>

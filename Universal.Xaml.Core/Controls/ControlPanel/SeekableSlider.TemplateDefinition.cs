@@ -48,7 +48,7 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// The thumb as an element instead of a Thumb. Needed for WP or custom templates that don't use a thumb control
         /// </summary>
-        protected FrameworkElement ThumbElement { get; private set; }
+        public FrameworkElement ThumbElement { get; private set; }
 
         #region Template Children
 

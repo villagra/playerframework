@@ -1142,7 +1142,11 @@
                             </Grid.ColumnDefinitions>
                             <local:Timeline x:Name="Timeline" Height="22" VerticalAlignment="Center" Grid.RowSpan="1" Grid.Column="1" Margin="10,10,10,10" Padding="0,5,0,5" ViewModel="{TemplateBinding ViewModel}" Visibility="{Binding IsTimelineVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" ThumbnailVisibility="{Binding IsThumbnailVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                 <local:Timeline.ThumbnailContent>
-                                    <local:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" Margin="-74,-129,0,0" Width="160" Height="90"/>
+                                    <local:ThumbnailView ThumbnailImageSource="{Binding ThumbnailImageSource}" Margin="-74,-129,0,0" Width="160" Height="90">
+                                        <local:ThumbnailView.RenderTransform>
+                                            <TranslateTransform/>
+                                        </local:ThumbnailView.RenderTransform>
+                                    </local:ThumbnailView>
                                 </local:Timeline.ThumbnailContent>
                             </local:Timeline>
                             <StackPanel x:Name="TimeElapsedContainer" Grid.Row="0" Orientation="Horizontal" Margin="10,5,0,5" Visibility="{Binding IsTimeElapsedButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
@@ -1151,11 +1155,6 @@
                                         <local:TimeElapsedButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
-                                <!--<TextBlock VerticalAlignment="Center" FontSize="22" IsHitTestVisible="False" HorizontalAlignment="Left">
-                                    <local:MediaControls.Behavior>
-                                        <local:TimeElapsedBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </TextBlock>-->
                                 <TextBlock x:Name="TimeSeparator" Text="/" VerticalAlignment="Center" Margin="10,0,0,0" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" Visibility="Collapsed"/>
                             </StackPanel>
                             <StackPanel x:Name="TimeRemainingContainer" Grid.Row="0" Grid.Column="2" Orientation="Horizontal" Margin="10,5,10,5">
@@ -1169,16 +1168,6 @@
                                         <local:DurationButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
-                                <!--<TextBlock VerticalAlignment="Center" FontSize="22" IsHitTestVisible="False" HorizontalAlignment="Left" Visibility="{Binding IsTimeRemainingButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:TimeRemainingBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </TextBlock>
-                                <TextBlock VerticalAlignment="Center" FontSize="22" IsHitTestVisible="False" HorizontalAlignment="Left" Visibility="{Binding IsDurationButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:TotalDurationBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </TextBlock>-->
                             </StackPanel>
                             <StackPanel x:Name="TransportButtonBar" Grid.Row="0" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
                                 <AppBarButton x:Name="ReplayButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsReplayButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
