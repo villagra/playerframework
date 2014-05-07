@@ -187,8 +187,7 @@ namespace Microsoft.PlayerFramework.Adaptive
                 }
             }
         }
-
-
+        
         void MediaPlayer_SelectedCaptionChanged(object sender, RoutedPropertyChangedEventArgs<Caption> e)
         {
             if (InstreamCaptionsEnabled)
