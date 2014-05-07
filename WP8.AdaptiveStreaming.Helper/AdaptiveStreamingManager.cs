@@ -13,6 +13,10 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
         public SmoothStreamingMediaElement SSME { get; private set; }
         private IDownloaderPlugin downloaderPlugin;
         private bool isStartupBitrateActive;
+#if !WINDOWS_PHONE
+        public event EventHandler<DataReceivedEventArgs> DataReceived;
+        public event EventHandler<DataErrorEventArgs> DataError;
+#endif
 
         public AdaptiveStreamingManager()
         {
@@ -674,4 +678,38 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
 #endif
         #endregion
     }
+    
+#if !WINDOWS_PHONE
+    public sealed class DataReceivedEventArgs
+    {
+        internal DataReceivedEventArgs(byte[] data, long startTime, long endTime, StreamInfo stream, TrackInfo track)
+        {
+            StartTime = startTime;
+            EndTime = endTime;
+            Data = data;
+            Stream = stream;
+            Track = track;
+        }
+
+        public StreamInfo Stream { get; private set; }
+        public TrackInfo Track { get; private set; }
+        public long StartTime { get; private set; }
+        public long EndTime { get; private set; }
+        public byte[] Data { get; private set; }
+    }
+
+    public sealed class DataErrorEventArgs
+    {
+        internal DataErrorEventArgs(Exception error, StreamInfo stream, TrackInfo track)
+        {
+            Error = error;
+            Stream = stream;
+            Track = track;
+        }
+
+        public StreamInfo Stream { get; private set; }
+        public TrackInfo Track { get; private set; }
+        public Exception Error { get; private set; }
+    }
+#endif
 }

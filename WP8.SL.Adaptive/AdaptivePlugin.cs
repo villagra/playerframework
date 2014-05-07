@@ -37,6 +37,13 @@ namespace Microsoft.PlayerFramework.Adaptive
             set { Manager.AutoRestrictTracks = value; }
         }
 #endif
+        
+#if !WINDOWS_PHONE
+        /// <summary>
+        /// Gets or sets whether in-stream text tracks should be used as captions. Default = false.
+        /// </summary>
+        public bool InstreamCaptionsEnabled { get; set; }
+#endif
 
         /// <summary>
         /// Gets or sets the startup bitrate to be used. This is useful for starting at a higher quality when you know the user has a good connection.
@@ -69,6 +76,10 @@ namespace Microsoft.PlayerFramework.Adaptive
             Manager.StateChanged += Manager_StateChanged;
             Manager.EndOfLive += Manager_EndOfLive;
             Manager.OutsideWindowEdge += Manager_OutsideWindowEdge;
+#if !WINDOWS_PHONE
+            Manager.DataReceived += Manager_DataReceived;
+            MediaPlayer.SelectedCaptionChanged += MediaPlayer_SelectedCaptionChanged;
+#endif
             MediaPlayer.SelectedAudioStreamChanged += MediaPlayer_SelectedAudioStreamChanged;
             MediaPlayer.UpdateCompleted += MediaPlayer_UpdateCompleted;
 #if WINDOWS_PHONE
@@ -90,6 +101,10 @@ namespace Microsoft.PlayerFramework.Adaptive
             Manager.StateChanged -= Manager_StateChanged;
             Manager.EndOfLive -= Manager_EndOfLive;
             Manager.OutsideWindowEdge -= Manager_OutsideWindowEdge;
+#if !WINDOWS_PHONE
+            Manager.DataReceived -= Manager_DataReceived;
+            MediaPlayer.SelectedCaptionChanged -= MediaPlayer_SelectedCaptionChanged;
+#endif
             MediaPlayer.SelectedAudioStreamChanged -= MediaPlayer_SelectedAudioStreamChanged;
             MediaPlayer.UpdateCompleted -= MediaPlayer_UpdateCompleted;
 #if WINDOWS_PHONE
@@ -119,6 +134,22 @@ namespace Microsoft.PlayerFramework.Adaptive
                         MediaPlayer.SelectedAudioStream = wrapper;
                     }
                 }
+                
+#if !WINDOWS_PHONE
+                if (InstreamCaptionsEnabled)
+                {
+                    MediaPlayer.AvailableCaptions.Clear();
+                    foreach (var captionStream in Manager.AvailableCaptionStreams)
+                    {
+                        var wrapper = new CaptionStreamWrapper(captionStream);
+                        MediaPlayer.AvailableCaptions.Add(wrapper);
+                        if (captionStream == Manager.SelectedCaptionStream)
+                        {
+                            MediaPlayer.SelectedCaption = wrapper;
+                        }
+                    }
+                }
+#endif
             }
             finally
             {
@@ -154,12 +185,26 @@ namespace Microsoft.PlayerFramework.Adaptive
             MediaPlayer.SignalStrength = (double)Manager.CurrentBitrate / Manager.MaxBitrate;
             MediaPlayer.MediaQuality = Manager.CurrentHeight >= 720 ? MediaQuality.HighDefinition : MediaQuality.StandardDefinition;
         }
+        
+#if !WINDOWS_PHONE
+        void Manager_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (InstreamCaptionsEnabled)
+            {
+                var captionWrapper = MediaPlayer.SelectedCaption as CaptionStreamWrapper;
+                if (captionWrapper != null && captionWrapper.AdaptiveCaptionStream.UniqueId == e.Stream.UniqueId)
+                {
+                    MediaPlayer.SelectedCaption.AugmentPayload(e.Data, new TimeSpan(e.StartTime), new TimeSpan(e.EndTime));
+                }
+            }
+        }
+#endif
 
 #if WINDOWS_PHONE
         void MediaPlayer_MediaLoading(object sender, MediaPlayerDeferrableEventArgs e)
         {
             if (Manager.DownloaderPlugin is ILifetimeAwareDownloaderPlugin)
-            { 
+            {
                 var args = e as MediaLoadingEventArgs;
                 ((ILifetimeAwareDownloaderPlugin)Manager.DownloaderPlugin).OnOpenMedia(args.Source);
             }
@@ -186,6 +231,30 @@ namespace Microsoft.PlayerFramework.Adaptive
             mediaElement.EvaluateMarkers();
 #endif
         }
+        
+#if !WINDOWS_PHONE
+        void MediaPlayer_SelectedCaptionChanged(object sender, RoutedPropertyChangedEventArgs<Caption> e)
+        {
+            if (InstreamCaptionsEnabled)
+            {
+                if (SSME.SmoothStreamingSource != null)
+                {
+                    if (!InManifestReady)
+                    {
+                        var CaptionStreamWrapper = e.NewValue as CaptionStreamWrapper;
+                        if (e.NewValue == null || CaptionStreamWrapper != null)
+                        {
+                            var newCaptionStream = CaptionStreamWrapper != null ? CaptionStreamWrapper.AdaptiveCaptionStream : null;
+                            if (Manager.SelectedCaptionStream != newCaptionStream)
+                            {
+                                Manager.SelectedCaptionStream = newCaptionStream;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+#endif
 
         void MediaPlayer_SelectedAudioStreamChanged(object sender, SelectedAudioStreamChangedEventArgs e)
         {
