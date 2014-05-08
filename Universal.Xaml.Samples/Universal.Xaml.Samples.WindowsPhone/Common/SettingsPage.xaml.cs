@@ -32,6 +32,8 @@ namespace Microsoft.PlayerFramework.Samples
         {
             this.InitializeComponent();
 
+            scrollViewer.DataContext = player;
+
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
@@ -110,5 +112,6 @@ namespace Microsoft.PlayerFramework.Samples
         }
 
         #endregion
+
     }
 }

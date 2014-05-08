@@ -10,63 +10,58 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Grid Width="240">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
-                    <GradientStop Color="White" Offset="-4"/>
-                    <GradientStop Color="Black" Offset=".8"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                        <Style x:Key="CheckStyle" TargetType="CheckBox">
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Margin" Value="5,0,5,0"/>
-                            <Setter Property="FontSize" Value="13"/>
-                        </Style>
-                        <Style x:Key="TextStyle" TargetType="TextBlock">
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Margin" Value="5,0,5,0"/>
-                            <Setter Property="FontSize" Value="13"/>
-                        </Style>
-                    </StackPanel.Resources>
-                    <CheckBox IsChecked="{Binding AutoHide, ElementName=player, Mode=TwoWay}" Content="AutoHide" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsInteractive, ElementName=player, Mode=TwoWay}" Content="IsInteractive" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsAudioSelectionVisible, ElementName=player, Mode=TwoWay}" Content="IsAudioSelectionVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsPlayPauseVisible, ElementName=player, Mode=TwoWay}" Content="IsPlayPauseVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsStopVisible, ElementName=player, Mode=TwoWay}" Content="IsStopVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsRewindVisible, ElementName=player, Mode=TwoWay}" Content="IsRewindVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsFastForwardVisible, ElementName=player, Mode=TwoWay}" Content="IsFastForwardVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSlowMotionVisible, ElementName=player, Mode=TwoWay}" Content="IsSlowMotionVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsReplayVisible, ElementName=player, Mode=TwoWay}" Content="IsReplayVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsFullScreenVisible, ElementName=player, Mode=TwoWay}" Content="IsFullScreenVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsTimeElapsedVisible, ElementName=player, Mode=TwoWay}" Content="IsTimeElapsedVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsDurationVisible, ElementName=player, Mode=TwoWay}" Content="IsDurationVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsTimeRemainingVisible, ElementName=player, Mode=TwoWay}" Content="IsTimeRemainingVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsVolumeVisible, ElementName=player, Mode=TwoWay}" Content="IsVolumeVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsCaptionSelectionVisible, ElementName=player, Mode=TwoWay}" Content="IsCaptionSelectionVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsGoLiveVisible, ElementName=player, Mode=TwoWay}" Content="IsGoLiveVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSkipPreviousVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipPreviousVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSkipNextVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipNextVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSkipBackVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipBackVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSkipAheadVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipAheadVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsTimelineVisible, ElementName=player, Mode=TwoWay}" Content="IsTimelineVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsResolutionIndicatorVisible, ElementName=player, Mode=TwoWay}" Content="IsResolutionIndicatorVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsSignalStrengthVisible, ElementName=player, Mode=TwoWay}" Content="IsSignalStrengthVisible" Style="{StaticResource CheckStyle}" />
-                    <Slider StepFrequency=".1" Maximum="1" Value="{Binding SignalStrength, ElementName=player, Mode=TwoWay}" Margin="8,0,8,4" />
-
-                    <CheckBox IsChecked="{Binding IsLooping, ElementName=player, Mode=TwoWay}" Content="IsLooping" Style="{StaticResource CheckStyle}" />
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
-
         <mmppf:MediaPlayer x:Name="player" Grid.Column="1" Margin="3" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4" AutoHide="False" IsInteractive="True"/>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Setting" Label="Settings">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel.Resources>
+                                    <Style x:Key="CheckStyle" TargetType="CheckBox">
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Margin" Value="5,0,5,0"/>
+                                        <Setter Property="FontSize" Value="13"/>
+                                    </Style>
+                                    <Style x:Key="TextStyle" TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Margin" Value="5,0,5,0"/>
+                                        <Setter Property="FontSize" Value="13"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <CheckBox IsChecked="{Binding AutoHide, Mode=TwoWay}" Content="AutoHide" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsInteractive, Mode=TwoWay}" Content="IsInteractive" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsPlayPauseVisible, Mode=TwoWay}" Content="IsPlayPauseVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsStopVisible, Mode=TwoWay}" Content="IsStopVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsMoreVisible, Mode=TwoWay}" Content="IsMoreVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsRewindVisible, Mode=TwoWay}" Content="IsRewindVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsFastForwardVisible, Mode=TwoWay}" Content="IsFastForwardVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSlowMotionVisible, Mode=TwoWay}" Content="IsSlowMotionVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsReplayVisible, Mode=TwoWay}" Content="IsReplayVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsFullScreenVisible, Mode=TwoWay}" Content="IsFullScreenVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsZoomVisible, Mode=TwoWay}" Content="IsZoomVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsTimeElapsedVisible, Mode=TwoWay}" Content="IsTimeElapsedVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsDurationVisible, Mode=TwoWay}" Content="IsDurationVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsTimeRemainingVisible, Mode=TwoWay}" Content="IsTimeRemainingVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsVolumeVisible, Mode=TwoWay}" Content="IsVolumeVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsAudioSelectionVisible, Mode=TwoWay}" Content="IsAudioSelectionVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsCaptionSelectionVisible, Mode=TwoWay}" Content="IsCaptionSelectionVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsGoLiveVisible, Mode=TwoWay}" Content="IsGoLiveVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSkipPreviousVisible, Mode=TwoWay}" Content="IsSkipPreviousVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSkipNextVisible, Mode=TwoWay}" Content="IsSkipNextVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSkipBackVisible, Mode=TwoWay}" Content="IsSkipBackVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSkipAheadVisible, Mode=TwoWay}" Content="IsSkipAheadVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsTimelineVisible, Mode=TwoWay}" Content="IsTimelineVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsResolutionIndicatorVisible, Mode=TwoWay}" Content="IsResolutionIndicatorVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsSignalStrengthVisible, Mode=TwoWay}" Content="IsSignalStrengthVisible" Style="{StaticResource CheckStyle}" />
+                                <CheckBox IsChecked="{Binding IsLooping, Mode=TwoWay}" Content="IsLooping" Style="{StaticResource CheckStyle}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
