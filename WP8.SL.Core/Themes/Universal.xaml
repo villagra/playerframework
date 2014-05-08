@@ -213,11 +213,10 @@
         <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="MinWidth" Value="0"/>
         <Setter Property="MinHeight" Value="0"/>
-        <Setter Property="local:MediaControls.IsToolTipEnabled" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}" Background="#00000000" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <Grid Background="#00000000" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal"/>
@@ -325,7 +324,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:VolumeSlider">
-                    <local:SeekableSlider x:Name="Slider" Padding="{TemplateBinding Padding}" Template="{StaticResource SeekableSliderTemplate}" SmallChange=".05" Orientation="{TemplateBinding Orientation}" Maximum="1" ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    <local:SeekableSlider x:Name="Slider" Padding="{TemplateBinding Padding}" Template="{StaticResource SeekableSliderTemplate}" SmallChange=".05" Orientation="{TemplateBinding Orientation}" Maximum="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -613,7 +612,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:Timeline">
-                    <Grid ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                         <local:SeekableSlider x:Name="ProgressSlider"
                                 Template="{TemplateBinding SliderTemplate}"
                                 SmallChange="10"
