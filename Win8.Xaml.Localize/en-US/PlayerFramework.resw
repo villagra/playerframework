@@ -282,4 +282,7 @@
   <data name="UnmuteButtonContent" xml:space="preserve">
     <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE15D;"/&gt;</value>
   </data>
+  <data name="AdLinkLabel" xml:space="preserve">
+    <value>LEARN MORE...</value>
+  </data>
 </root>
