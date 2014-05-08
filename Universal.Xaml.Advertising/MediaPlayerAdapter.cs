@@ -106,43 +106,19 @@ namespace Microsoft.PlayerFramework.Advertising
         {
             get
             {
-#if NETFX_CORE
-                double scale = 1.0;
-#if !WINDOWS80
-                switch (DisplayInformation.GetForCurrentView().ResolutionScale)
-                {
-                    case ResolutionScale.Scale120Percent:
-                        scale = 1.2;
-                        break;
-                    case ResolutionScale.Scale150Percent:
-                        scale = 1.5;
-                        break;
-                    case ResolutionScale.Scale160Percent:
-                        scale = 1.6;
-                        break;
-                    case ResolutionScale.Scale225Percent:
-                        scale = 2.25;
-                        break;
+
+#if WINDOWS_PHONE_APP
+                var scale = DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
+#elif WINDOWS80
+                var scale = (double)(int)DisplayProperties.ResolutionScale / 100;
+#elif NETFX_CORE
+                var scale = (double)(int)DisplayInformation.GetForCurrentView().ResolutionScale / 100;
+#elif WINDOWS_PHONE7
+                var scale = 1d;
 #else
-                switch (DisplayProperties.ResolutionScale)
-                {
+                var scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
 #endif
-                    case ResolutionScale.Scale180Percent:
-                        scale = 1.8;
-                        break;
-                    case ResolutionScale.Scale140Percent:
-                        scale = 1.4;
-                        break;
-                }
                 return new Size(Math.Round(MediaPlayer.ActualWidth * scale), Math.Round(MediaPlayer.ActualHeight * scale));
-#elif WINDOWS_PHONE && !WINDOWS_PHONE7
-                double scale = (double)Application.Current.Host.Content.ScaleFactor / 100;
-                int w = (int)Math.Ceiling(MediaPlayer.ActualWidth * scale);
-                int h = (int)Math.Ceiling(MediaPlayer.ActualHeight * scale);
-                return new Size(w, h);
-#else
-                return new Size(MediaPlayer.ActualWidth, MediaPlayer.ActualHeight);
-#endif
             }
             set
             {

@@ -496,52 +496,22 @@ namespace Microsoft.PlayerFramework
 
         #region Helpers
 
-#if SILVERLIGHT
-#elif WINDOWS80
-        static double GetScale()
-        {
-            switch (Windows.Graphics.Display.DisplayProperties.ResolutionScale)
-            {
-                case Windows.Graphics.Display.ResolutionScale.Scale140Percent:
-                    return 1.4;
-                case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
-                    return 1.8;
-                default:
-                    return 1.0;
-            }
-        }
-#else
+#if NETFX_CORE && !WINDOWS80
         static Size GetPhysicalSize(Size size)
         {
             var displayInfo = Windows.Graphics.Display.DisplayInformation.GetForCurrentView();
-            var scale = GetScale(displayInfo);
+
+#if WINDOWS_PHONE_APP
+            var scale = displayInfo.RawPixelsPerViewPixel;
+#else
+            var scale = (double)(int)displayInfo.ResolutionScale / 100;
+#endif
+
             var w = size.Width * scale / displayInfo.RawDpiX;
             var h = size.Height * scale / displayInfo.RawDpiY;
             return new Size(w, h);
         }
-
-        static double GetScale(Windows.Graphics.Display.DisplayInformation displayInfo)
-        {
-            switch (displayInfo.ResolutionScale)
-            {
-                case Windows.Graphics.Display.ResolutionScale.Scale120Percent:
-                    return 1.2;
-                case Windows.Graphics.Display.ResolutionScale.Scale140Percent:
-                    return 1.4;
-                case Windows.Graphics.Display.ResolutionScale.Scale150Percent:
-                    return 1.5;
-                case Windows.Graphics.Display.ResolutionScale.Scale160Percent:
-                    return 1.6;
-                case Windows.Graphics.Display.ResolutionScale.Scale180Percent:
-                    return 1.8;
-                case Windows.Graphics.Display.ResolutionScale.Scale225Percent:
-                    return 2.25;
-                default:
-                    return 1.0;
-            }
-        }
 #endif
-
         #endregion
     }
 

@@ -24,7 +24,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <param name="value">a <see cref="Model.Color"/></param>
         /// <param name="targetType">a <see cref="Brush"/></param>
         /// <param name="parameter">parameter not used</param>
-        /// <param name="culture">culture not used</param>
+        /// <param name="language">language not used</param>
         /// <returns>a <see cref="SolidColorBrush"/></returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -49,7 +49,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <param name="value">value not implemented</param>
         /// <param name="targetType">target type not implemented</param>
         /// <param name="parameter">parameter not implemented</param>
-        /// <param name="culture">culture not implemented</param>
+        /// <param name="language">language not implemented</param>
         /// <returns>exception thrown</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

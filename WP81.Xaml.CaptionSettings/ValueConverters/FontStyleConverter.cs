@@ -23,7 +23,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <param name="value">a <see cref="Model.FontFamily"/></param>
         /// <param name="targetType">a <see cref="FontStyle"/></param>
         /// <param name="parameter">The parameter is not used.</param>
-        /// <param name="culture">The parameter is not used.</param>
+        /// <param name="language">The parameter is not used.</param>
         /// <returns>FontStyles.Italic if value is FontFamily.Cursive, FontStyles.Normal otherwise.</returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -48,7 +48,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings.ValueConverters
         /// <param name="value">The parameter is not used.</param>
         /// <param name="targetType">The parameter is not used.</param>
         /// <param name="parameter">The parameter is not used.</param>
-        /// <param name="culture">The parameter is not used.</param>
+        /// <param name="language">The parameter is not used.</param>
         /// <returns>nothing returned</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
