@@ -20,7 +20,14 @@ namespace Microsoft.PlayerFramework.Advertising
     {
         Uri navigateUri;
 
+        /// <summary>
+        /// Gets the LayoutRoot container for the ad.
+        /// </summary>
         protected Panel LayoutRoot { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the initial dimensions for the ad.
+        /// </summary>
         protected Size? InitialDimensions { get; set; }
 
         /// <summary>

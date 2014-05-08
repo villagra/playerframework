@@ -29,8 +29,7 @@ namespace Microsoft.PlayerFramework.Advertising
     {
         private DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(250) };
         private bool adCompleted;
-
-        protected MediaElement mediaElement;
+        private MediaElement mediaElement;
 #if WINDOWS_PHONE
         private static bool IsActive;
         private Uri pendingMediaUri;
@@ -119,6 +118,10 @@ namespace Microsoft.PlayerFramework.Advertising
             OnInitAd(creativeData);
         }
 
+        /// <summary>
+        /// Invoked when the ad is to be initialized.
+        /// </summary>
+        /// <param name="creativeData">The ad itself. Typically a Url for a video.</param>
         protected virtual void OnInitAd(string creativeData)
         {
 #if WINDOWS_PHONE
@@ -194,6 +197,9 @@ namespace Microsoft.PlayerFramework.Advertising
 #endif
         }
 
+        /// <summary>
+        /// Invoked when the ad has finished loading.
+        /// </summary>
         protected void OnLoaded()
         {
             if (State == AdState.Loading)
@@ -279,6 +285,9 @@ namespace Microsoft.PlayerFramework.Advertising
             OnStartAd();
         }
 
+        /// <summary>
+        /// Invoked when the ad should start. Needs to call OnAdStarted when complete.
+        /// </summary>
         protected virtual async void OnStartAd()
         {
             var startTask = GetStateChangedTask(MediaElementState.Playing);
@@ -436,6 +445,9 @@ namespace Microsoft.PlayerFramework.Advertising
             Opacity = 0;
         }
 
+        /// <summary>
+        /// Invoked when the ad is being torn down.
+        /// </summary>
         protected virtual void OnTeardown()
         {
             mediaElement.Source = null;

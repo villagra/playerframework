@@ -110,7 +110,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// Show the settings page if there is a CaptionsPlugin.
         /// </summary>
         /// <param name="service">the navigation service</param>
-        /// <param name="options">the phone page options</param>
         /// <example>
         /// This is the handler for an app bar menu button click event:
         /// <code>

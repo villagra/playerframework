@@ -11,7 +11,7 @@ using Windows.UI.Xaml;
 
 namespace Microsoft.PlayerFramework.Advertising
 {
-    public sealed class MarkerHelper
+    internal sealed class MarkerHelper
     {
         readonly List<TimelineMarker> reachedMarkers = new List<TimelineMarker>();
         readonly DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(250) };
@@ -86,7 +86,7 @@ namespace Microsoft.PlayerFramework.Advertising
         }
     }
 
-    public sealed class MarkerReachedEventArgs
+    internal sealed class MarkerReachedEventArgs
 #if SILVERLIGHT
         : EventArgs
 #endif

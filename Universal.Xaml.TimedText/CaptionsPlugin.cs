@@ -29,7 +29,7 @@ namespace Microsoft.PlayerFramework.TimedText
         DispatcherTimer timer;
         Style timedTextCaptionsStyle;
         Style captionRegionStyle;
-        protected TimedTextCaptions captionsPanel;
+        TimedTextCaptions captionsPanel;
 
         /// <summary>
         /// Occurs when a caption region is reached.

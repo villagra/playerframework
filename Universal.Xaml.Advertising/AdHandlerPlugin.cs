@@ -28,6 +28,9 @@ namespace Microsoft.PlayerFramework.Advertising
     /// </summary>
     public class AdHandlerPlugin : AdHandlerBase, IPlugin
     {
+        /// <summary>
+        /// Creates a new instance of AdHandlerPlugin.
+        /// </summary>
         public AdHandlerPlugin()
         {
             AutoLoadAdPlayerFactoryPlugin = true;

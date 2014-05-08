@@ -658,7 +658,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <param name="selectedItem">the selected item</param>
         /// <param name="selectionChanged">the selection changed event handler</param>
         /// <param name="templateName">the template name</param>
-        /// <param name="listLayoutMode">the list layout mode</param>
         private void ShowListSelector(
             string title,
             IList itemsSource,

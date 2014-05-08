@@ -24,10 +24,18 @@ namespace Microsoft.PlayerFramework.Advertising
     /// </summary>
     public class VpaidHtmlAdPlayer : VpaidWebAdPlayer
     {
+        /// <summary>
+        /// Creates a new instance of VpaidIFrameAdPlayer.
+        /// </summary>
+        /// <param name="skippableOffset">The position in the ad at which the ad can be skipped. If null, the ad cannot be skipped.</param>
+        /// <param name="suggestedDuration">The suggested duration of the ad.</param>
+        /// <param name="clickThru">The Uri to navigate to when the ad is clicked or tapped. Can be null of no action should take place.</param>
+        /// <param name="dimensions">The dimensions of the ad.</param>
         public VpaidHtmlAdPlayer(FlexibleOffset skippableOffset, TimeSpan? suggestedDuration, Uri clickThru, Size dimensions)
             : base(skippableOffset, suggestedDuration, clickThru, dimensions)
         { }
 
+        /// <inheritdoc />
         public override void InitAd(double width, double height, string viewMode, int desiredBitrate, string creativeData, string environmentVariables)
         {
             base.InitAd(width, height, viewMode, desiredBitrate, creativeData, environmentVariables);
@@ -40,10 +48,18 @@ namespace Microsoft.PlayerFramework.Advertising
     /// </summary>
     public class VpaidIFrameAdPlayer : VpaidWebAdPlayer
     {
+        /// <summary>
+        /// Creates a new instance of VpaidIFrameAdPlayer.
+        /// </summary>
+        /// <param name="skippableOffset">The position in the ad at which the ad can be skipped. If null, the ad cannot be skipped.</param>
+        /// <param name="suggestedDuration">The suggested duration of the ad.</param>
+        /// <param name="clickThru">The Uri to navigate to when the ad is clicked or tapped. Can be null of no action should take place.</param>
+        /// <param name="dimensions">The dimensions of the ad.</param>
         public VpaidIFrameAdPlayer(FlexibleOffset skippableOffset, TimeSpan? suggestedDuration, Uri clickThru, Size dimensions)
             : base(skippableOffset, suggestedDuration, clickThru, dimensions)
         { }
 
+        /// <inheritdoc />
         public override void InitAd(double width, double height, string viewMode, int desiredBitrate, string creativeData, string environmentVariables)
         {
             base.InitAd(width, height, viewMode, desiredBitrate, creativeData, environmentVariables);
@@ -59,6 +75,9 @@ namespace Microsoft.PlayerFramework.Advertising
         readonly DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(250) };
         readonly MarkerHelper markerHelper = new MarkerHelper();
 
+        /// <summary>
+        /// Gets the web browser control responsible for displaying the ad.
+        /// </summary>
 #if WINDOWS_PHONE
         protected Microsoft.Phone.Controls.WebBrowser WebView { get; private set; }
 #elif SILVERLIGHT
