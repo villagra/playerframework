@@ -1077,7 +1077,7 @@
                             <Viewbox Width="200" Height="200" Margin="20">
                                 <Button x:Name="RetryButton" Style="{StaticResource TransportBarButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="26" Content="&#xE102;"/>
                             </Viewbox>
-                            <TextBlock x:Name="RetryInstructions" Margin="0,12,0,12" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="RetryInstructions" Text="{TemplateBinding RetryText}" Margin="0,12,0,12" FontSize="24" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

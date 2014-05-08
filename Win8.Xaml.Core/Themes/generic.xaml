@@ -1388,7 +1388,7 @@
                                     <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
                                 </Button>
                             </Viewbox>
-                            <TextBlock x:Name="RetryInstructions" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="RetryInstructions" Text="{TemplateBinding RetryText}" FontSize="24" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>

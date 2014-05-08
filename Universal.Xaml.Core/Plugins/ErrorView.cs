@@ -30,6 +30,9 @@ namespace Microsoft.PlayerFramework
         public ErrorView()
         {
             this.DefaultStyleKey = typeof(ErrorView);
+            
+            RetryText = MediaPlayer.GetResourceString("RetryButtonLabel");
+            ErrorText = MediaPlayer.GetResourceString("RetryInstructionsText");
         }
 
         /// <inheritdoc /> 
@@ -45,16 +48,7 @@ namespace Microsoft.PlayerFramework
             var RetryButton = GetTemplateChild("RetryButton") as Button;
             if (RetryButton != null)
             {
-                var label = MediaPlayer.GetResourceString("RetryButtonLabel");
-                AutomationProperties.SetName(RetryButton, label);
                 RetryButton.Click += RetryButton_Click;
-            }
-
-            var RetryInstructions = GetTemplateChild("RetryInstructions") as TextBlock;
-            if (RetryInstructions != null)
-            {
-                var label = MediaPlayer.GetResourceString("RetryInstructionsText");
-                RetryInstructions.Text = label;
             }
         }
 
@@ -75,6 +69,20 @@ namespace Microsoft.PlayerFramework
         {
             get { return GetValue(ErrorTextProperty) as string; }
             set { SetValue(ErrorTextProperty, value); }
+        }
+
+        /// <summary>
+        /// RetryText DependencyProperty definition.
+        /// </summary>
+        public static readonly DependencyProperty RetryTextProperty = DependencyProperty.Register("RetryText", typeof(string), typeof(ErrorView), null);
+
+        /// <summary>
+        /// Gets or sets the error text to be displayed to the user.
+        /// </summary>
+        public string RetryText
+        {
+            get { return GetValue(RetryTextProperty) as string; }
+            set { SetValue(RetryTextProperty, value); }
         }
     }
 }
