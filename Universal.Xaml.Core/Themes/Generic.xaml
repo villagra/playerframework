@@ -1342,7 +1342,7 @@
                                 <VisualState x:Name="StartInteracting">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InteractivityContainer">
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
@@ -1352,10 +1352,10 @@
                                 <VisualState x:Name="StopInteracting">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="InteractivityContainer">
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="InteractivityContainer">
-                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="Collapsed"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.25" Value="Collapsed"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
