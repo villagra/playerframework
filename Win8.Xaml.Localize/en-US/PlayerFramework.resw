@@ -222,4 +222,64 @@
   <data name="FullScreenButtonLabel" xml:space="preserve">
     <value>Full screen</value>
   </data>
+  <data name="AudioSelectionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE164;"/&gt;</value>
+  </data>
+  <data name="CaptionSelectionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE190;"/&gt;</value>
+  </data>
+  <data name="ExitFullScreenButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE1D8;"/&gt;</value>
+  </data>
+  <data name="FastForwardButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23E9;" Margin="4,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="FullScreenButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.56" Text="&amp;#xE1D9;"/&gt;</value>
+  </data>
+  <data name="GoLiveButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="LIVE" FontSize="13" Margin="0,4,0,0" FontWeight="SemiBold" FontFamily="Segoe UI"/&gt;</value>
+  </data>
+  <data name="InfoButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE171;"/&gt;</value>
+  </data>
+  <data name="MoreButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE10C;"/&gt;</value>
+  </data>
+  <data name="MuteButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE198;"/&gt;</value>
+  </data>
+  <data name="PauseButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE103;"/&gt;</value>
+  </data>
+  <data name="PlayButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE102;"/&gt;</value>
+  </data>
+  <data name="ReplayButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE14A;" RenderTransformOrigin=".5,.5"&gt;&lt;TextBlock.RenderTransform&gt;&lt;ScaleTransform ScaleX="-1"/&gt;&lt;/TextBlock.RenderTransform&gt;&lt;/TextBlock&gt;</value>
+  </data>
+  <data name="RewindButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23EA;" Margin="1,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipAheadButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23ED;" Margin="2,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipBackButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23EE;" Margin="2,-7,0,0" FontSize="26" FontWeight="Normal" FontFamily="Segoe UI Symbol"/&gt;</value>
+  </data>
+  <data name="SkipNextButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE101;"/&gt;</value>
+  </data>
+  <data name="SkipPreviousButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE100;"/&gt;</value>
+  </data>
+  <data name="SlowMotionButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="&amp;#x23CF;" Margin="6,-6,0,0" FontSize="30" FontWeight="Normal" FontFamily="Segoe UI Symbol" RenderTransformOrigin=".5,.5"&gt;&lt;TextBlock.RenderTransform&gt;&lt;RotateTransform Angle="90"/&gt;&lt;/TextBlock.RenderTransform&gt;&lt;/TextBlock&gt;</value>
+  </data>
+  <data name="StopButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE15B;"/&gt;</value>
+  </data>
+  <data name="UnmuteButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI Symbol" FontSize="19.5" Text="&amp;#xE15D;"/&gt;</value>
+  </data>
 </root>
