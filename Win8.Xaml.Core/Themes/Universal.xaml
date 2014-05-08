@@ -1455,11 +1455,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform">
-                            <Button x:Name="LoadButton">
-                                <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
-                            </Button>
-                        </Viewbox>
+                        <Button Grid.Column="1" Grid.Row="1" MaxHeight="150" MaxWidth="150" Style="{StaticResource PrimaryButtonStyle}" x:Name="LoadButton">
+                            <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
+                        </Button>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -1473,13 +1471,11 @@
                 <ControlTemplate TargetType="local:ErrorView">
                     <Grid Background="{TemplateBinding Background}">
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{TemplateBinding ErrorText}" FontSize="24" HorizontalAlignment="Center"/>
-                            <Viewbox Width="240" Height="240" Stretch="Uniform">
-                                <Button Margin="0,-6,0,-10" x:Name="RetryButton">
-                                    <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
-                                </Button>
-                            </Viewbox>
-                            <TextBlock x:Name="RetryInstructions" Text="{TemplateBinding RetryText}" FontSize="24" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{TemplateBinding ErrorText}" FontSize="30" HorizontalAlignment="Center"/>
+                            <Button Style="{StaticResource PrimaryButtonStyle}" Width="100" Height="100" Margin="0,20,0,12" x:Name="RetryButton">
+                                <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
+                            </Button>
+                            <TextBlock x:Name="RetryInstructions" Text="{TemplateBinding RetryText}" FontSize="30" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>
