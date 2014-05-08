@@ -574,7 +574,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:VolumeSlider">
-                    <local:SeekableSlider x:Name="Slider" Template="{StaticResource SeekableSliderTemplate}" SmallChange=".05" Orientation="{TemplateBinding Orientation}" Maximum="1" ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    <local:SeekableSlider x:Name="Slider" Padding="{TemplateBinding Padding}" Template="{StaticResource SeekableSliderTemplate}" SmallChange=".05" Orientation="{TemplateBinding Orientation}" Maximum="1" ToolTipService.ToolTip="{TemplateBinding AutomationProperties.Name}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -646,7 +646,7 @@
                         </AppBarButton>
                         <Grid x:Name="VolumeSliderContainer" VerticalAlignment="Top">
                             <Border Margin="{TemplateBinding PanelPosition}" Background="{TemplateBinding PanelBackground}">
-                                <local:VolumeSlider x:Name="VolumeSlider" ViewModel="{TemplateBinding ViewModel}" Width="{StaticResource SliderTrackThemeHeight}" Padding="0" Orientation="Vertical" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+                                <local:VolumeSlider x:Name="VolumeSlider" ViewModel="{TemplateBinding ViewModel}" Width="22" Padding="5,0,5,0" Orientation="Vertical" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
                             </Border>
                         </Grid>
                     </Grid>
