@@ -101,7 +101,7 @@
   },
   {
     "UniqueId": "Group-2",
-    "Title": "Adaptive Streaming",
+    "Title": "Adaptive",
     "Subtitle": "Adaptive Streaming Samples",
     "ImagePath": "Assets/LightGray.png",
     "Description" : "Demonstrates the various ways to use the smooth streaming SDK to support adaptive streaming",
@@ -125,7 +125,7 @@
       },
       {
         "UniqueId": "Group-2-Item-3",
-        "Title": "DASH streaming video",
+        "Title": "MPEG-DASH streaming video",
         "Subtitle": "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
@@ -158,8 +158,16 @@
     "Items":
     [
       {
+        "UniqueId": "Group-3-Item-3",
+        "Title": "WebVTT captions (side car)",
+        "Subtitle": "Demonstrates playing WebVTT captions.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "WebVTTPage"
+      },
+      {
         "UniqueId": "Group-3-Item-1",
-        "Title": "TTML captions",
+        "Title": "TTML captions (side car)",
         "Subtitle": "Demonstrates TTML closed captions/subtitles.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
@@ -167,19 +175,11 @@
       },
       {
         "UniqueId": "Group-3-Item-2",
-        "Title": "In-stream captions",
+        "Title": "TTML captions (in-stream)",
         "Subtitle": "Demonstrates playing in-stream TTML captions from smooth streaming text tracks.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "InstreamTtmlPage"
-      },
-      {
-        "UniqueId": "Group-3-Item-3",
-        "Title": "WebVTT captions",
-        "Subtitle": "Demonstrates playing WebVTT captions.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "WebVTTPage"
       }
     ]
   },
@@ -192,60 +192,12 @@
     "Items":
     [
       {
-        "UniqueId": "Group-4-Item-1",
-        "Title": "MAST ad scheduling",
-        "Subtitle": "Demonstrates scheduling ads using MAST (Media Abstract Sequencing Template)",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "MastPage"
-      },
-      {
-        "UniqueId": "Group-4-Item-2",
-        "Title": "Nonlinear ad",
-        "Subtitle": "Demonstrates playing a VAST file that contains a linear and nonlinear ad",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "VastLinearNonlinearPage"
-      },
-      {
         "UniqueId": "Group-4-Item-3",
         "Title": "Schedule VAST ads",
         "Subtitle": "Demonstrates playing a VAST preroll, midroll, and postroll",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "AdSchedulingPage"
-      },
-      {
-        "UniqueId": "Group-4-Item-4",
-        "Title": "Schedule simple clip",
-        "Subtitle": "Demonstrates how to schedule a simple clip (not VAST)",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "ScheduleClipPage"
-      },
-      {
-        "UniqueId": "Group-4-Item-5",
-        "Title": "Ad pod",
-        "Subtitle": "Demonstrates a VAST ad pod using VAST",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "AdPodPage"
-      },
-      {
-        "UniqueId": "Group-4-Item-6",
-        "Title": "Programmatic ad",
-        "Subtitle": "Demonstrates how to programmatically schedule and play an ad",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "ProgrammaticAdPage"
-      },
-      {
-        "UniqueId": "Group-4-Item-7",
-        "Title": "Companion ads",
-        "Subtitle": "Demonstrates how to play an ad with companions",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "VastLinearCompanionPage"
       },
       {
         "UniqueId": "Group-4-Item-8",
@@ -257,11 +209,59 @@
       },
       {
         "UniqueId": "Group-4-Item-9",
-        "Title": "FreeWheel advertising",
+        "Title": "FreeWheel SmartXML",
         "Subtitle": "Demonstrates using FreeWheel's Smart XML to schedule and play ads",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "FreeWheelPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-1",
+        "Title": "MAST ad scheduling",
+        "Subtitle": "Demonstrates scheduling ads using MAST (Media Abstract Sequencing Template)",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "MastPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-4",
+        "Title": "Schedule simple clip",
+        "Subtitle": "Demonstrates how to schedule a simple clip (not VAST)",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ScheduleClipPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-6",
+        "Title": "Programmatic ad",
+        "Subtitle": "Demonstrates how to programmatically schedule and play an ad",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ProgrammaticAdPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-2",
+        "Title": "Nonlinear ad",
+        "Subtitle": "Demonstrates playing a VAST file that contains a linear and nonlinear ad",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "VastLinearNonlinearPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-5",
+        "Title": "Ad pod",
+        "Subtitle": "Demonstrates a VAST ad pod using VAST",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "AdPodPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-7",
+        "Title": "Companion ads",
+        "Subtitle": "Demonstrates how to play an ad with companions",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "VastLinearCompanionPage"
       }
     ]
   },
@@ -299,7 +299,7 @@
       },
       {
         "UniqueId": "Group-5-Item-4",
-        "Title": "Local playback demo",
+        "Title": "Local playback",
         "Subtitle": "Demonstrates playing a local video and capturing input from the webcam.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
@@ -307,7 +307,7 @@
       },
       {
         "UniqueId": "Group-5-Item-5",
-        "Title": "Play To demo",
+        "Title": "Play To",
         "Subtitle": "Demonstrates how to use Play To, to enable users to stream media to a target device.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
@@ -315,7 +315,7 @@
       },
       {
         "UniqueId": "Group-5-Item-6",
-        "Title": "Suspend & resume demo",
+        "Title": "Suspend & resume",
         "Subtitle": "Demonstrates how to suspend and resume the player.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
