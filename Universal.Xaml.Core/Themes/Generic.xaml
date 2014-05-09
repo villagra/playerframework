@@ -898,7 +898,7 @@
                                                             <ColumnDefinition Width="*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}"/>
-                                                        <TextBlock x:Name="CheckIdentifier" Text="{Binding ParentListBox.Tag, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="1"/>
+                                                        <TextBlock x:Name="CheckIdentifier" Text="{Binding ParentListBox.Tag, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="1" FontSize="22"/>
                                                     </Grid>
 
                                                     <Rectangle x:Name="FocusVisualWhite" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeEndLineCap="Square" StrokeDashArray="1,1" Opacity="0" StrokeDashOffset=".5" />
@@ -1550,7 +1550,7 @@
     </Style>
 
     <Style TargetType="local:CaptionSelectorView">
-        <Setter Property="Padding" Value="0,0,0,40"/>
+        <Setter Property="Padding" Value="0,0,0,60"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:CaptionSelectorView">
@@ -1559,7 +1559,7 @@
                             <local:DeselectableListBox x:Name="CaptionsList" MaxWidth="200" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <local:DeselectableListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}"/>
+                                        <TextBlock Text="{Binding}" FontSize="22"/>
                                     </DataTemplate>
                                 </local:DeselectableListBox.ItemTemplate>
                             </local:DeselectableListBox>
@@ -1571,7 +1571,10 @@
     </Style>
 
     <Style TargetType="local:AudioSelectionView">
-        <Setter Property="Padding" Value="0,0,0,40"/>
+        <Setter Property="Padding" Value="0,0,0,60"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AudioSelectionView">
@@ -1580,7 +1583,7 @@
                             <ListBox x:Name="AudioList" MaxWidth="200" ItemsSource="{Binding AvailableAudioStreams}" SelectedItem="{Binding SelectedAudioStream, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}"/>
+                                        <TextBlock Text="{Binding}" FontSize="22"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
