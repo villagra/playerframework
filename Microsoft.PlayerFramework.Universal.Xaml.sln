@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30312.1
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.Core", "Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj", "{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}"
 EndProject
@@ -86,12 +86,14 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|ARM.Build.0 = Debug|ARM
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|ARM.ActiveCfg = Release|ARM
+		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|ARM.Build.0 = Release|ARM
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|x64.ActiveCfg = Release|Any CPU
 		{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{F863EDC6-2886-4D39-A578-89F4FF729D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -273,11 +275,13 @@ Global
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|ARM.Build.0 = Debug|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|ARM.Build.0 = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x64.ActiveCfg = Release|Any CPU
 		{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{850994BC-8687-4461-AAAC-EBD3FF9866FC}.Debug|Any CPU.ActiveCfg = Debug|x86
