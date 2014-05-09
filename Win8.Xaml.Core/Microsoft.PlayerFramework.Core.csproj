@@ -202,6 +202,9 @@
     <Compile Include="..\Universal.Xaml.Core\Converters\TargetNullValueConverter.cs">
       <Link>Converters\TargetNullValueConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\XamlConverter.cs">
+      <Link>Converters\XamlConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Universal.Xaml.Core\Extensions\ControlExtensions.cs">
       <Link>Extensions\ControlExtensions.cs</Link>
     </Compile>

@@ -381,8 +381,9 @@ namespace Microsoft.PlayerFramework
             Command = ViewModelCommandFactory.CreatePlayPauseCommand();
             SetLabel = MediaPlayer.GetResourceString("PlayButtonLabel");
             UnsetLabel = MediaPlayer.GetResourceString("PauseButtonLabel");
-            SetContent = XamlReader.Load(MediaPlayer.GetResourceString("PlayButtonContent"));
-            UnsetContent = XamlReader.Load(MediaPlayer.GetResourceString("PauseButtonContent"));
+            SetContent = MediaPlayer.GetResourceString("PlayButtonContent");
+            UnsetContent = MediaPlayer.GetResourceString("PauseButtonContent");
+            ContentConverter = new XamlConverter(); // instead of creating Xaml here, we will use a converter to convert the string each time it is re-assigned. This fixes a problem with old visual state changes being applied to the content when it switches.
         }
 
         /// <inheritdoc /> 

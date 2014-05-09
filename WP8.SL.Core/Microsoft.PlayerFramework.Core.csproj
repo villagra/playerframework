@@ -185,6 +185,9 @@
     <Compile Include="..\universal.xaml.core\converters\TargetNullValueConverter.cs">
       <Link>converters\TargetNullValueConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\XamlConverter.cs">
+      <Link>converters\XamlConverter.cs</Link>
+    </Compile>
     <Compile Include="..\universal.xaml.core\extensions\ControlExtensions.cs">
       <Link>Extensions\ControlExtensions.cs</Link>
     </Compile>

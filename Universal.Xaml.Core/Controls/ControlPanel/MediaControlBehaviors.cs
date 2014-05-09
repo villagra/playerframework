@@ -122,24 +122,24 @@ namespace Microsoft.PlayerFramework
                     var appbarButton = buttonBase as AppBarButton;
                     if (appbarButton != null)
                     {
-                        appbarButton.SetBinding(AppBarButton.LabelProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue });
-                        appbarButton.SetBinding(AppBarButton.IconProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue });
+                        appbarButton.SetBinding(AppBarButton.LabelProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue, Converter = newValue.LabelConverter });
+                        appbarButton.SetBinding(AppBarButton.IconProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue, Converter = newValue.ContentConverter });
                     }
                     else
                     {
                         var appbarToggleButton = buttonBase as AppBarToggleButton;
                         if (appbarToggleButton != null)
                         {
-                            appbarToggleButton.SetBinding(AppBarToggleButton.LabelProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue });
-                            appbarToggleButton.SetBinding(AppBarToggleButton.IconProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue });
+                            appbarToggleButton.SetBinding(AppBarToggleButton.LabelProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue, Converter = newValue.LabelConverter });
+                            appbarToggleButton.SetBinding(AppBarToggleButton.IconProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue, Converter = newValue.ContentConverter });
                         }
                         else
                         {
-                            contentControl.SetBinding(ContentControl.ContentProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue });
+                            contentControl.SetBinding(ContentControl.ContentProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue, Converter = newValue.ContentConverter });
                         }
                     }
 #else
-                    contentControl.SetBinding(ContentControl.ContentProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue });
+                    contentControl.SetBinding(ContentControl.ContentProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue, Converter = newValue.ContentConverter });
 #endif
                 }
                 else
@@ -147,14 +147,14 @@ namespace Microsoft.PlayerFramework
                     var textBlock = obj as TextBlock;
                     if (textBlock != null)
                     {
-                        textBlock.SetBinding(TextBlock.TextProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue });
+                        textBlock.SetBinding(TextBlock.TextProperty, new Binding() { Path = new PropertyPath("Content"), Source = newValue, Converter = newValue.ContentConverter });
                     }
                 }
 
-                BindingOperations.SetBinding(obj, AutomationProperties.NameProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue });
+                BindingOperations.SetBinding(obj, AutomationProperties.NameProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue, Converter = newValue.LabelConverter });
                 if (GetIsToolTipEnabled(obj))
                 {
-                    BindingOperations.SetBinding(obj, ToolTipService.ToolTipProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue });
+                    BindingOperations.SetBinding(obj, ToolTipService.ToolTipProperty, new Binding() { Path = new PropertyPath("Label"), Source = newValue, Converter = newValue.LabelConverter });
                 }
             }
         }
@@ -240,6 +240,16 @@ namespace Microsoft.PlayerFramework
         /// Gets the label associated with the control.
         /// </summary>
         string Label { get; }
+
+        /// <summary>
+        /// Gets a converter to be used when assigning the content property
+        /// </summary>
+        IValueConverter ContentConverter { get; }
+
+        /// <summary>
+        /// Gets a converter to be used when assigning the content property
+        /// </summary>
+        IValueConverter LabelConverter { get; }
     }
 
     /// <summary>
@@ -340,6 +350,34 @@ namespace Microsoft.PlayerFramework
         {
             get { return GetValue(LabelProperty) as string; }
             set { SetValue(LabelProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifies the ContentConverter dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ContentConverterProperty = DependencyProperty.Register("ContentConverter", typeof(IValueConverter), typeof(MediaControlBehavior), null);
+
+        /// <summary>
+        /// Gets or sets the ContentConverter of the element.
+        /// </summary>
+        public IValueConverter ContentConverter
+        {
+            get { return GetValue(ContentConverterProperty) as IValueConverter; }
+            set { SetValue(ContentConverterProperty, value); }
+        }
+
+        /// <summary>
+        /// Identifies the LabelConverter dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelConverterProperty = DependencyProperty.Register("LabelConverter", typeof(IValueConverter), typeof(MediaControlBehavior), null);
+
+        /// <summary>
+        /// Gets or sets the LabelConverter of the element.
+        /// </summary>
+        public IValueConverter LabelConverter
+        {
+            get { return GetValue(LabelConverterProperty) as IValueConverter; }
+            set { SetValue(LabelConverterProperty, value); }
         }
     }
 

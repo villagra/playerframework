@@ -73,6 +73,9 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Universal.Xaml.Core\Converters\XamlConverter.cs">
+      <Link>Converters\XamlConverter.cs</Link>
+    </Compile>
     <Compile Include="..\WP8.SL.Core\Controls\MediaElementWrapper.cs">
       <Link>Controls\MediaElementWrapper.cs</Link>
     </Compile>
