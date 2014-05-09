@@ -51,11 +51,11 @@
                                             <local:StopButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </local:MediaControls.Behavior>
                                     </AppBarButton>
-                                    <AppBarToggleButton x:Name="SlowMotionButton" Style="{TemplateBinding TransportBarToggleButtonStyle}" Visibility="{Binding IsSlowMotionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
+                                    <AppBarButton x:Name="SlowMotionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsSlowMotionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
                                         <local:MediaControls.Behavior>
                                             <local:SlowMotionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </local:MediaControls.Behavior>
-                                    </AppBarToggleButton>
+                                    </AppBarButton>
                                     <AppBarButton x:Name="CaptionSelectionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
                                         <local:MediaControls.Behavior>
                                             <local:CaptionSelectionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>

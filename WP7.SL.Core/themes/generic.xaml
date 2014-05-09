@@ -117,96 +117,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TransportBarToggleButtonStyle" TargetType="ToggleButton">
-        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ToggleButton">
-                    <Grid x:Name="RootGrid" Background="Transparent">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver"/>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Checked">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="CheckedPressed">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneForegroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="CheckedDisabled">
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="OutlineEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundEllipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledColor}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Content">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneBackgroundBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Viewbox Margin="{TemplateBinding Padding}">
-                            <Grid Height="40" Width="40">
-                                <Ellipse x:Name="BackgroundEllipse" Fill="{TemplateBinding Background}" UseLayoutRounding="False"/>
-                                <Ellipse x:Name="OutlineEllipse" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
-                                <ContentControl x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Grid>
-                        </Viewbox>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="TransportBarTextButtonStyle" TargetType="Button">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -746,11 +656,11 @@
                                 <local:StopButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </local:MediaControls.Behavior>
                         </Button>
-                        <ToggleButton x:Name="SlowMotionButton" Style="{TemplateBinding TransportBarToggleButtonStyle}" Visibility="{Binding IsSlowMotionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
+                        <Button x:Name="SlowMotionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsSlowMotionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
                             <local:MediaControls.Behavior>
                                 <local:SlowMotionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </local:MediaControls.Behavior>
-                        </ToggleButton>
+                        </Button>
                         <Button x:Name="CaptionSelectionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="10,0,10,0">
                             <local:MediaControls.Behavior>
                                 <local:CaptionSelectionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -876,7 +786,6 @@
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="TransportBarButtonStyle" Value="{StaticResource TransportBarButtonStyle}"/>
-        <Setter Property="TransportBarToggleButtonStyle" Value="{StaticResource TransportBarToggleButtonStyle}"/>
         <Setter Property="TransportBarTextButtonStyle" Value="{StaticResource TransportBarTextButtonStyle}"/>
         <Setter Property="PrimaryButtonStyle" Value="{StaticResource PrimaryButtonStyle}"/>
         <Setter Property="Template" Value="{StaticResource ControlPanelTemplate}"/>

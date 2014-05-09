@@ -225,7 +225,7 @@ namespace Microsoft.PlayerFramework
     /// <summary>
     /// Represents a slow motion toggle button behavior that can be bound to MediaPlayer.InteractiveViewModel
     /// </summary>
-    public class SlowMotionButtonBehavior : MediaToggleControlBehavior
+    public class SlowMotionButtonBehavior : MediaControlBehavior
     {
         /// <summary>
         /// Creates a new instance of SlowMotionButtonBehavior.
@@ -235,14 +235,6 @@ namespace Microsoft.PlayerFramework
             Command = ViewModelCommandFactory.CreateSlowMotionCommand();
             Content = XamlReader.Load(MediaPlayer.GetResourceString("SlowMotionButtonContent"));
             Label = MediaPlayer.GetResourceString("SlowMotionButtonLabel");
-        }
-
-        /// <inheritdoc /> 
-        protected override void OnViewModelChanged(IInteractiveViewModel oldValue, IInteractiveViewModel newValue)
-        {
-            base.OnViewModelChanged(oldValue, newValue);
-
-            BindingOperations.SetBinding(this, MediaToggleControlBehavior.IsSetProperty, new Binding() { Path = new PropertyPath("IsSlowMotion"), Source = newValue });
         }
     }
 

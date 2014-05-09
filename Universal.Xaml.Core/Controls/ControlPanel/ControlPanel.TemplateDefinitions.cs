@@ -112,7 +112,7 @@ namespace Microsoft.PlayerFramework
     [TemplatePart(Name = ControlPanelTemplateParts.StopButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.SkipAheadButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.FastForwardButtonElement, Type = typeof(ButtonBase))]
-    [TemplatePart(Name = ControlPanelTemplateParts.SlowMotionButtonElement, Type = typeof(ToggleButton))]
+    [TemplatePart(Name = ControlPanelTemplateParts.SlowMotionButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.SkipNextButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.TimeElapsedButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.TimelineElement, Type = typeof(Timeline))]
@@ -124,7 +124,7 @@ namespace Microsoft.PlayerFramework
     [TemplatePart(Name = ControlPanelTemplateParts.VolumeButtonElement, Type = typeof(VolumeButton))]
     [TemplatePart(Name = ControlPanelTemplateParts.MuteButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.VolumeSliderElement, Type = typeof(Slider))]
-    [TemplatePart(Name = ControlPanelTemplateParts.FullScreenButtonElement, Type = typeof(ToggleButton))]
+    [TemplatePart(Name = ControlPanelTemplateParts.FullScreenButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.GoLiveButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.InfoButtonElement, Type = typeof(ButtonBase))]
     [TemplatePart(Name = ControlPanelTemplateParts.MoreButtonElement, Type = typeof(ButtonBase))]
@@ -192,7 +192,7 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// The slow motion button.
         /// </summary>
-        protected ToggleButton SlowMotionButtonElement { get; private set; }
+        protected ButtonBase SlowMotionButtonElement { get; private set; }
         /// <summary>
         /// The skip next button. Sends the user to the next marker.
         /// </summary>
@@ -283,7 +283,7 @@ namespace Microsoft.PlayerFramework
             StopButtonElement = GetTemplateChild(ControlPanelTemplateParts.StopButtonElement) as ButtonBase;
             SkipAheadButtonElement = GetTemplateChild(ControlPanelTemplateParts.SkipAheadButtonElement) as ButtonBase;
             FastForwardButtonElement = GetTemplateChild(ControlPanelTemplateParts.FastForwardButtonElement) as ButtonBase;
-            SlowMotionButtonElement = GetTemplateChild(ControlPanelTemplateParts.SlowMotionButtonElement) as ToggleButton;
+            SlowMotionButtonElement = GetTemplateChild(ControlPanelTemplateParts.SlowMotionButtonElement) as ButtonBase;
             SkipNextButtonElement = GetTemplateChild(ControlPanelTemplateParts.SkipNextButtonElement) as ButtonBase;
             TimeElapsedButtonElement = GetTemplateChild(ControlPanelTemplateParts.TimeElapsedButtonElement) as ButtonBase;
 

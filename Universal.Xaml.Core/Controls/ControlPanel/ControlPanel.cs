@@ -477,20 +477,6 @@ namespace Microsoft.PlayerFramework
         }
 
         /// <summary>
-        /// Identifies the TransportBarToggleButtonStyle dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TransportBarToggleButtonStyleProperty = DependencyProperty.Register("TransportBarToggleButtonStyle", typeof(Style), typeof(ControlPanel), null);
-
-        /// <summary>
-        /// Gets or sets the style to be used for displaying toggle buttons in the transport bar.
-        /// </summary>
-        public Style TransportBarToggleButtonStyle
-        {
-            get { return GetValue(TransportBarToggleButtonStyleProperty) as Style; }
-            set { SetValue(TransportBarToggleButtonStyleProperty, value); }
-        }
-
-        /// <summary>
         /// Identifies the TransportBarTextButtonStyle dependency property.
         /// </summary>
         public static readonly DependencyProperty TransportBarTextButtonStyleProperty = DependencyProperty.Register("TransportBarTextButtonStyle", typeof(Style), typeof(ControlPanel), null);
