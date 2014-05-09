@@ -383,7 +383,6 @@ namespace Microsoft.PlayerFramework
             UnsetLabel = MediaPlayer.GetResourceString("PauseButtonLabel");
             SetContent = XamlReader.Load(MediaPlayer.GetResourceString("PlayButtonContent"));
             UnsetContent = XamlReader.Load(MediaPlayer.GetResourceString("PauseButtonContent"));
-
         }
 
         /// <inheritdoc /> 
