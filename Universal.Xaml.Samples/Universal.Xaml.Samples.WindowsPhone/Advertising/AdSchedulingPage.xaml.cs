@@ -28,6 +28,9 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class AdSchedulingPage : Page
     {
+        const string playerStateKey = "mediaPlayerState";
+        bool teardown;
+
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -72,6 +75,15 @@ namespace Microsoft.PlayerFramework.Samples
         {
             Windows.Graphics.Display.DisplayInformation.AutoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.Landscape;
             var noawait = Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
+
+            if (e.PageState != null)
+            {
+                var playerState = e.PageState[playerStateKey] as MediaPlayerState;
+                if (playerState != null)
+                {
+                    player.RestorePlayerState(playerState);
+                }
+            }
         }
 
         /// <summary>
@@ -84,8 +96,15 @@ namespace Microsoft.PlayerFramework.Samples
         /// serializable state.</param>
         private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-        }
+            var playerState = player.GetPlayerState();
+            e.PageState.Add(playerStateKey, playerState);
 
+            if (teardown)
+            {
+                player.Dispose();
+            }
+        }
+        
         #region NavigationHelper registration
 
         /// <summary>
@@ -104,14 +123,35 @@ namespace Microsoft.PlayerFramework.Samples
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            Application.Current.Suspending += App_Suspending;
+            Application.Current.Resuming += App_Resuming;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            player.Dispose();
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            teardown = true; // delay teardown until after we've saved the state
+            Application.Current.Suspending -= App_Suspending;
+            Application.Current.Resuming -= App_Resuming;
+            base.OnNavigatingFrom(e);
+        }
+
         #endregion
+
+        void App_Resuming(object sender, object e)
+        {
+            // resume playback on resume. Simulate the user clicking the button to makes sure ads are handled (vs. player.PlayResume()).
+            player.InteractiveViewModel.PlayResume();
+        }
+
+        void App_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)
+        {
+            // pause playback on suspend. Simulate the user clicking the button to makes sure ads are handled (vs. player.Pause()).
+            player.InteractiveViewModel.Pause();
+        }
     }
 }
