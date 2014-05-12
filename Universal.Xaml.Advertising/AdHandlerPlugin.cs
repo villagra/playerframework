@@ -73,7 +73,7 @@ namespace Microsoft.PlayerFramework.Advertising
             AdContainer.Visibility = Visibility.Visible;
             base.LoadPlayer(adPlayer);
             var uiElement = adPlayer as UIElement;
-            MediaPlayer.AddInteractiveElement(uiElement);
+            MediaPlayer.AddInteractiveElement(uiElement, false, false);
         }
 
         /// <inheritdoc /> 

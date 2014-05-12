@@ -76,7 +76,7 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// The collection of interactive elements being tracked
         /// </summary>
-        readonly List<UIElement> interactiveElements = new List<UIElement>();
+        readonly List<InteractiveElement> interactiveElements = new List<InteractiveElement>();
 
         /// <summary>
         /// The timer userd to help trigger auto hide.
@@ -265,7 +265,7 @@ namespace Microsoft.PlayerFramework
 
             if (ControlPanel != null)
             {
-                AddInteractiveElement(ControlPanel, true);
+                AddInteractiveElement(ControlPanel, true, true);
             }
         }
 
@@ -1707,7 +1707,7 @@ namespace Microsoft.PlayerFramework
             try
             {
                 var elementsUnderPointer = VisualTreeHelper.FindElementsInHostCoordinates(Window.Current.CoreWindow.PointerPosition, this, false);
-                return elementsUnderPointer.Intersect(interactiveElements).Any();
+                return elementsUnderPointer.Intersect(interactiveElements.Where(ie => ie.HoverParticipation).Select(ie => ie.Element)).Any();
             }
             catch (UnauthorizedAccessException) // this exception is raised when Windows is locked.
             {
@@ -1748,7 +1748,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         /// <param name="uiElement">The UIElement to participate in the interactivity state of the control</param>
         /// <param name="hoverParticipation">Prevent autohide if pointer is hovering over UIElement. Requires AutoHideBehavior to be set to PreventDuringInteractiveHover to have any affect.</param>
-        public void AddInteractiveElement(UIElement uiElement, bool hoverParticipation = false)
+        public void AddInteractiveElement(UIElement uiElement, bool hoverParticipation = false, bool isFunctional = true)
         {
 #if SILVERLIGHT
             uiElement.MouseMove += uiElement_MouseMove;
@@ -1757,10 +1757,7 @@ namespace Microsoft.PlayerFramework
             uiElement.PointerMoved += uiElement_PointerMoved;
             uiElement.PointerPressed += uiElement_PointerPressed;
 #endif
-            if (hoverParticipation)
-            {
-                interactiveElements.Add(uiElement);
-            }
+            interactiveElements.Add(new InteractiveElement(uiElement, hoverParticipation, isFunctional));
         }
 
         /// <summary>
@@ -1776,10 +1773,25 @@ namespace Microsoft.PlayerFramework
             uiElement.PointerMoved -= uiElement_PointerMoved;
             uiElement.PointerPressed -= uiElement_PointerPressed;
 #endif
-            if (interactiveElements.Contains(uiElement))
+            var interactiveElement = interactiveElements.FirstOrDefault(ie => ie.Element == uiElement);
+            if (interactiveElement != null)
             {
-                interactiveElements.Remove(uiElement);
+                interactiveElements.Remove(interactiveElement);
             }
+        }
+
+        class InteractiveElement
+        {
+            internal InteractiveElement(UIElement element, bool hoverParticipation, bool isFunctional)
+            {
+                Element = element;
+                HoverParticipation = hoverParticipation;
+                IsFunctional = isFunctional;
+            }
+
+            public UIElement Element { get; private set; }
+            public bool HoverParticipation { get; private set; }
+            public bool IsFunctional { get; private set; }
         }
 
         /// <summary>
@@ -2127,7 +2139,7 @@ namespace Microsoft.PlayerFramework
                 ((AutoHideBehavior & AutoHideBehavior.AllowDuringPlaybackOnly) == AutoHideBehavior.AllowDuringPlaybackOnly && InteractiveViewModel.CurrentState != MediaElementState.Playing) ||
                 ((AutoHideBehavior & AutoHideBehavior.PreventDuringInteractiveHover) == AutoHideBehavior.PreventDuringInteractiveHover && IsPointerOverInteractiveElement())
 #if !SILVERLIGHT
- || interactiveElements.Any(ie => ie.HasKeyboardFocus())
+                || interactiveElements.Select(ie => ie.Element).Any(el => el.HasKeyboardFocus())
                 || IsPlayToConnected()
 #endif
 );
@@ -2145,7 +2157,11 @@ namespace Microsoft.PlayerFramework
         void uiElement_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
 #endif
         {
-            OnUserInteraction(InteractionType.Soft, true);
+            var interactiveElement = interactiveElements.FirstOrDefault(ie => ie.Element == sender);
+            if (interactiveElement != null)
+            {
+                OnUserInteraction(InteractionType.Soft, interactiveElement.IsFunctional);
+            }
         }
 
 #if SILVERLIGHT
@@ -2154,7 +2170,11 @@ namespace Microsoft.PlayerFramework
         void uiElement_PointerPressed(object sender, PointerRoutedEventArgs e)
 #endif
         {
-            OnUserInteraction(InteractionType.Hard, true);
+            var interactiveElement = interactiveElements.FirstOrDefault(ie => ie.Element == sender);
+            if (interactiveElement != null)
+            {
+                OnUserInteraction(InteractionType.Hard, interactiveElement.IsFunctional);
+            }
         }
 
         #endregion
