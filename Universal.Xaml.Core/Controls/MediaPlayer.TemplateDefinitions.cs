@@ -1748,6 +1748,7 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         /// <param name="uiElement">The UIElement to participate in the interactivity state of the control</param>
         /// <param name="hoverParticipation">Prevent autohide if pointer is hovering over UIElement. Requires AutoHideBehavior to be set to PreventDuringInteractiveHover to have any affect.</param>
+        /// <param name="isFunctional">Indicates that clicking on the UIElement may cause the an action to occur. Functional elements do not cause the control panel to disappear when clicked if tap to dismiss is enabled.</param>
         public void AddInteractiveElement(UIElement uiElement, bool hoverParticipation = false, bool isFunctional = true)
         {
 #if SILVERLIGHT
