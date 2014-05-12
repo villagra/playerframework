@@ -18,7 +18,7 @@ namespace Microsoft.PlayerFramework
         {
             var result = new MediaPlayerState();
             result.Position = player.Position;
-            result.IsPaused = player.CurrentState == MediaElementState.Paused;
+            result.IsPaused = player.InteractiveViewModel.CurrentState == MediaElementState.Paused;
 
             var playlistPlugin = player.Plugins.OfType<PlaylistPlugin>().FirstOrDefault();
             if (playlistPlugin != null)
