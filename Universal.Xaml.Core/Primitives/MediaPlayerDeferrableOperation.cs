@@ -182,7 +182,8 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public void Complete()
         {
-            tcs.TrySetResult(true);
+            if (CancellationToken.IsCancellationRequested) tcs.SetCanceled();
+            else tcs.TrySetResult(true);
         }
 
         /// <summary>
@@ -190,7 +191,8 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public void Cancel()
         {
-            tcs.TrySetResult(false);
+            if (CancellationToken.IsCancellationRequested) tcs.SetCanceled();
+            else tcs.TrySetResult(false);
         }
     }
 }

@@ -1238,7 +1238,7 @@ namespace Microsoft.PlayerFramework
             set { SetValue(IsFullScreenEnabledProperty, value); }
         }
         #endregion
-        
+
         #region IsZoomEnabled
 
         /// <summary>
@@ -2089,7 +2089,7 @@ namespace Microsoft.PlayerFramework
         #endregion
 
         #region Visibility
-        
+
         #region IsAudioSelectionVisible
         /// <summary>
         /// Identifies the IsAudioSelectionVisible dependency property.
@@ -5177,7 +5177,7 @@ namespace Microsoft.PlayerFramework
                 {
                     _Play();
                 }
-                
+
 #if WINDOWS_PHONE
                 if (!setStartupPositionBeforePlay && StartupPosition.HasValue)
                 {
@@ -5186,7 +5186,10 @@ namespace Microsoft.PlayerFramework
 #endif
             }
 
-            UpdateTimer.Start(); // start the update timer.
+            if (!this.cts.IsCancellationRequested)
+            {
+                UpdateTimer.Start(); // start the update timer.
+            }
         }
 
         private async Task<bool> OnMediaStartingAsync()
