@@ -335,6 +335,9 @@
 .pf-control-container .pf-control-panel {
     opacity: 1;
     transition: opacity 250ms linear;
+}
+
+.pf-interactive {
     pointer-events: all;
 }
 
