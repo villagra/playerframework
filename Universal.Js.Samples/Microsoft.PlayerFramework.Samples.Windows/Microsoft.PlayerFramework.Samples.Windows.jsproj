@@ -57,11 +57,12 @@
     </AppxManifest>
     <Content Include="css\Utilities.css" />
     <Content Include="default.html" />
-    <Content Include="images\logo.png" />
-    <Content Include="images\smalllogo.png" />
-    <Content Include="images\splashscreen.png" />
-    <Content Include="images\storelogo.png" />
+    <Content Include="images\logo.scale-100.png" />
+    <Content Include="images\smalllogo.scale-100.png" />
     <Content Include="css\default.css" />
+    <Content Include="images\splashscreen.scale-100.png" />
+    <Content Include="images\storelogo.scale-100.png" />
+    <Content Include="images\Wide310x150Logo.scale-100.png" />
     <Content Include="pages\adaptive\dash\dash.css" />
     <Content Include="pages\adaptive\dash\dash.html" />
     <Content Include="pages\adaptive\dash\dash.js" />
