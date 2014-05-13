@@ -53,7 +53,7 @@
         }
 
     .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
-        border: 0px;
+        border-width: 3px;
     }
 
     .pf-container .pf-control-panel .pf-button {
