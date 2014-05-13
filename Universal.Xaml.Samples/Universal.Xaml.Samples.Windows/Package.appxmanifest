@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="a79eed0e-f652-4b52-981b-61ad1afe4d99" Publisher="CN=Tim" Version="1.0.0.0" />
+  <Identity Name="a79eed0e-f652-4b52-981b-61ad1afe4d99" Publisher="CN=Tim" Version="1.0.0.1" />
   <Properties>
     <DisplayName>Microsoft.PlayerFramework.Samples.Windows</DisplayName>
     <PublisherDisplayName>Tim</PublisherDisplayName>
