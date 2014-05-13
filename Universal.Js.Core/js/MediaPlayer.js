@@ -158,7 +158,7 @@
             this._autohide = true;
             this._autohideTime = 3;
             this._autohideTimeoutId = null;
-            this._autohideBehavior = PlayerFramework.AutohideBehavior.preventDuringInteractiveHover;
+            this._autohideBehavior = PlayerFramework.AutohideBehavior.all;
             this._startupTime = null;
             this._startTime = 0;
             this._endTime = null;
@@ -238,7 +238,7 @@
             this._isInteractiveHover = false;
             this._interactivePointerArgs = null;
             this._interactiveActivationMode = PlayerFramework.InteractionType.all;
-            this._interactiveDeactivationMode = PlayerFramework.InteractionType.soft;
+            this._interactiveDeactivationMode = PlayerFramework.InteractionType.all;
             this._defaultInteractiveViewModel = new PlayerFramework.InteractiveViewModel(this);
             this._interactiveViewModel = this._defaultInteractiveViewModel;
             this._observableMediaPlayer = WinJS.Binding.as(this);
