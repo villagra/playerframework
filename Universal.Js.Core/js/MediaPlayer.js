@@ -3149,10 +3149,13 @@
             },
 
             _isInteractiveElement: function (element) {
-                var interactiveElements = this.element.querySelectorAll(".pf-interactive");
-                return !!PlayerFramework.Utilities.first(interactiveElements, function (interactiveElement) {
-                    return interactiveElement === element || interactiveElement.contains(element);
-                });
+                var interactiveElements = this.element.querySelectorAll(".pf-interactive, .pf-interactive *");
+                for (var i = 0; i < interactiveElements.length; i++) {
+                    if (interactiveElements[i] === element) {
+                        return true;
+                    }
+                }
+                return false;
             },
 
             _clearAutohideTimeout: function () {
