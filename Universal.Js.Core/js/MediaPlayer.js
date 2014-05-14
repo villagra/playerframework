@@ -156,7 +156,7 @@
             this._autoload = true;
             this._autoplay = false;
             this._autohide = true;
-            this._autohideTime = 3;
+            this._autohideTime = 2;
             this._autohideTimeoutId = null;
             this._autohideBehavior = PlayerFramework.AutohideBehavior.all;
             this._startupTime = null;
