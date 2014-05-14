@@ -32,24 +32,35 @@
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 15px;
-}
-
-.pf-container .pf-control-panel {
+    padding: 0px;
     background-color: transparent !important;
 }
 
     .pf-container .pf-control-panel .pf-controlcontainer-primary {
     }
 
-    .pf-container .pf-control-panel .pf-controlcontainer-secondary {
+    .pf-container .pf-control-panel.pf-compact .pf-controlcontainer-secondary {
         position: absolute;
-        bottom: 5px;
-        right: 0px;
+        bottom: 0px;
+        right: 10px;
     }
 
-        .pf-container .pf-control-panel .pf-controlcontainer-secondary * {
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary * {
+        display: inline-block;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar > * {
+        display: inline-block;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar .pf-controlcontainer-timeline {
+        -ms-flex: 1;
+        margin: 0 5px 0 5px;
+    }
+
+        .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar .pf-controlcontainer-timeline > * {
             display: inline-block;
+            margin: 5px;
         }
 
     .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
@@ -60,7 +71,7 @@
         width: 40px;
         height: 40px;
         font-size: 22px;
-        margin: 0 5px;
+        margin: 5px;
     }
 
     .pf-container .pf-control-panel .pf-play-pause-control {
@@ -76,72 +87,94 @@
     }
 
     .pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-time-separator, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control {
-        position: absolute;
-        bottom: 15px;
-        height: 22px;
         width: 70px;
         font-size: 22px;
     }
 
-    .pf-container .pf-control-panel .pf-elapsed-time-control {
+    .pf-container .pf-control-panel.pf-compact .pf-elapsed-time-control, .pf-container .pf-control-panel.pf-compact .pf-time-separator, .pf-container .pf-control-panel.pf-compact .pf-remaining-time-control, .pf-container .pf-control-panel.pf-compact .pf-total-time-control {
+        height: 22px;
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-elapsed-time-control {
         left: 10px;
     }
 
-    .pf-container .pf-control-panel .pf-time-separator {
-        left: 85px;
+    .pf-container .pf-control-panel.pf-compact .pf-time-separator {
+        left: 95px;
         width: 10px;
         bottom: 20px;
     }
 
-    .pf-container .pf-control-panel .pf-remaining-time-control {
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-time-separator {
+        display: none !important;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-remaining-time-control {
         left: 105px;
     }
 
-    .pf-container .pf-control-panel .pf-total-time-control {
+    .pf-container .pf-control-panel.pf-compact .pf-total-time-control {
         left: 105px;
     }
 
-    .pf-container .pf-control-panel .pf-timeline-control {
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-timeline-control {
+        display: inline-block;
+        bottom: 14px;
+        width: calc(100% - 175px);
+        height: 22px;
+        z-index: 1;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-timeline-control {
         position: absolute;
-        left: 5px;
-        right: 5px;
+        left: 15px;
+        right: 15px;
         bottom: 50px;
         width: auto;
         height: 22px;
         z-index: 1;
     }
 
-        .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
-            height: 12px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
+    .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
+        height: 12px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 
-        .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
-            height: 22px;
-        }
+    .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+        height: 22px;
+    }
 
-.pf-transportbar {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: auto;
-    height: 80px;
-    margin: 0px;
-    background-color: red;
-}
+    .pf-container .pf-control-panel .pf-transportbar {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: 0px;
+    }
 
-.pf-volume-mute-container .pf-volume-slider-control {
-    bottom: calc(100% + 35px);
-    height: 190px;
-    left: calc(50% - 28px);
-    padding: 15px 25px 0 25px;
-}
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar {
+        height: 50px;
+        display: -ms-flexbox;
+    }
 
-.phone .pf-volume-mute-container .pf-volume-slider-control {
-    bottom: calc(100% + 35px);
-}
+    .pf-container .pf-control-panel.pf-compact .pf-transportbar {
+        width: auto;
+        height: 80px;
+    }
+
+    .pf-container .pf-control-panel .pf-volume-mute-container .pf-volume-slider-control {
+        bottom: calc(100%);
+        height: 190px;
+        left: calc(50% - 28px);
+        padding: 15px 25px 0 25px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-volume-mute-container .pf-volume-slider-control {
+        bottom: calc(100% + 30px);
+    }
 
 .pf-container .pf-captions-container {
     padding: 65px 15px;
@@ -155,14 +188,8 @@
     font-size: 30px;
 }
 
-@media screen and (-ms-view-state: snapped) {
-    .pf-container .pf-control-panel .pf-control:not(.pf-play-pause-control) {
-        display: none !important;
-    }
-}
-
 .pf-slider-marker {
-    height:12px;
+    height: 12px;
     margin-top: 5px;
 }
 
