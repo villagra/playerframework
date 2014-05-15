@@ -651,7 +651,7 @@
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="VolumeButton" Storyboard.TargetProperty="PanelPosition">
                                 <DiscreteObjectKeyFrame KeyTime="0">
                                     <DiscreteObjectKeyFrame.Value>
-                                        <Thickness>-8,-200,-8,42</Thickness>
+                                        <Thickness>-15,-200,-15,42</Thickness>
                                     </DiscreteObjectKeyFrame.Value>
                                 </DiscreteObjectKeyFrame>
                             </ObjectAnimationUsingKeyFrames>
@@ -827,14 +827,29 @@
                                         <local:SlowMotionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
-                                <Button x:Name="CaptionSelectionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
+                                <Button x:Name="GoLiveButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
                                     <local:MediaControls.Behavior>
-                                        <local:CaptionSelectionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        <local:GoLiveButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
                                 <Button x:Name="AudioSelectionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsAudioSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
                                     <local:MediaControls.Behavior>
                                         <local:AudioSelectionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </local:MediaControls.Behavior>
+                                </Button>
+                                <Button x:Name="CaptionSelectionButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsCaptionSelectionButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
+                                    <local:MediaControls.Behavior>
+                                        <local:CaptionSelectionButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </local:MediaControls.Behavior>
+                                </Button>
+                                <Button x:Name="InfoButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
+                                    <local:MediaControls.Behavior>
+                                        <local:InfoButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </local:MediaControls.Behavior>
+                                </Button>
+                                <Button x:Name="ZoomButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsZoomButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
+                                    <local:MediaControls.Behavior>
+                                        <local:ZoomButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
                                 <local:VolumeButton x:Name="VolumeButton" PanelPosition="-8,-200,-8,10" ViewModel="{TemplateBinding ViewModel}" MuteButtonStyle="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsVolumeButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5" PanelBackground="{TemplateBinding Background}"/>
@@ -847,21 +862,6 @@
                                 <Button x:Name="FullScreenButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsFullScreenButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
                                     <local:MediaControls.Behavior>
                                         <local:FullScreenButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="ZoomButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsZoomButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
-                                    <local:MediaControls.Behavior>
-                                        <local:ZoomButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="GoLiveButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsGoLiveButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
-                                    <local:MediaControls.Behavior>
-                                        <local:GoLiveButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="InfoButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsInfoButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
-                                    <local:MediaControls.Behavior>
-                                        <local:InfoButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
                                 <Button x:Name="MoreButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsMoreButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
