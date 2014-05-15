@@ -852,7 +852,7 @@
                                         <local:ZoomButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </Button>
-                                <local:VolumeButton x:Name="VolumeButton" PanelPosition="-8,-200,-8,10" ViewModel="{TemplateBinding ViewModel}" MuteButtonStyle="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsVolumeButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5" PanelBackground="{TemplateBinding Background}"/>
+                                <local:VolumeButton x:Name="VolumeButton" PanelPosition="-9,-200,-9,10" ViewModel="{TemplateBinding ViewModel}" MuteButtonStyle="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsVolumeButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5" PanelBackground="{TemplateBinding Background}"/>
                                 <Button x:Name="MuteButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsMuteButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
                                     <local:MediaControls.Behavior>
                                         <local:MuteButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>

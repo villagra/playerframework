@@ -170,7 +170,7 @@
         bottom: calc(100% + 5px);
         height: 180px;
         left: calc(50% - 28px);
-        padding: 15px 22px 0 22px;
+        padding: 15px 23px 0 23px;
     }
 
     .pf-container .pf-control-panel.pf-compact .pf-volume-mute-container .pf-volume-slider-control {
