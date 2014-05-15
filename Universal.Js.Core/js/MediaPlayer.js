@@ -3172,7 +3172,7 @@
                 var preventAutohide = false;
                 var activeElement = document.activeElement;
 
-                if ((this.autohideBehavior & PlayerFramework.AutohideBehavior.allowDuringPlaybackOnly) === PlayerFramework.AutohideBehavior.allowDuringPlaybackOnly && this.interactiveViewModel.paused) {
+                if ((this.autohideBehavior & PlayerFramework.AutohideBehavior.allowDuringPlaybackOnly) === PlayerFramework.AutohideBehavior.allowDuringPlaybackOnly && this.interactiveViewModel.state !== PlayerFramework.ViewModelState.playing) {
                     preventAutohide = true;
                 } else if ((this.autohideBehavior & PlayerFramework.AutohideBehavior.preventDuringInteractiveHover) === PlayerFramework.AutohideBehavior.preventDuringInteractiveHover && this._isInteractiveHover) {
                     preventAutohide = true;
