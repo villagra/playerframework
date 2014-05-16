@@ -77,7 +77,7 @@
                             <Grid Width="40" Height="40">
                                 <Ellipse x:Name="BackgroundEllipse" Fill="{StaticResource TransportBackgroundBrush}" UseLayoutRounding="False"/>
                                 <Ellipse x:Name="OutlineEllipse" Stroke="{StaticResource AppBarItemForegroundThemeBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
-                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </Viewbox>
                         <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
@@ -149,7 +149,7 @@
                             <Grid Width="40" Height="40">
                                 <Ellipse x:Name="BackgroundEllipse" Fill="{StaticResource AppBarItemBackgroundThemeBrush}" UseLayoutRounding="False"/>
                                 <Ellipse x:Name="OutlineEllipse" Stroke="{StaticResource AppBarItemForegroundThemeBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
-                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </Viewbox>
                         <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
@@ -886,16 +886,7 @@
                 </VisualStateGroup>
                 <VisualStateGroup x:Name="OrientationStates">
                     <VisualState x:Name="Landscape"/>
-                    <VisualState x:Name="Portrait">
-                        <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayButtonColumn" Storyboard.TargetProperty="Width">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value=".7*"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlayPauseButton" Storyboard.TargetProperty="Margin">
-                                <DiscreteObjectKeyFrame KeyTime="0" Value="5,0,5,0"/>
-                            </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
+                    <VisualState x:Name="Portrait"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
 
@@ -911,85 +902,58 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition x:Name="PlayButtonColumn" Width=".5*"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid x:Name="NonEssentialsNearLeft" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <Button x:Name="SkipPreviousButton" MinHeight="35" MinWidth="35" Grid.Column="0" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="5,0,0,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipPreviousButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:SkipPreviousButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="RewindButton" MinHeight="35" MinWidth="35" Grid.Column="1" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="5,0,0,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:RewindButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="SkipBackButton" MinHeight="35" MinWidth="35" Grid.Column="2" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="5,0,0,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipBackButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:SkipBackButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                            </Grid>
-
-                            <Button x:Name="PlayPauseButton" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" MaxWidth="200" MaxHeight="200" Margin="20,0,20,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsPlayPauseButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                        <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearLeft" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">
+                            <Button x:Name="SkipPreviousButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipPreviousButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
                                 <local:MediaControls.Behavior>
-                                    <local:PlayPauseButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <local:SkipPreviousButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </local:MediaControls.Behavior>
                             </Button>
+                            <Button x:Name="RewindButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsRewindButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <local:MediaControls.Behavior>
+                                    <local:RewindButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </local:MediaControls.Behavior>
+                            </Button>
+                            <Button x:Name="SkipBackButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipBackButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <local:MediaControls.Behavior>
+                                    <local:SkipBackButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </local:MediaControls.Behavior>
+                            </Button>
+                        </StackPanel>
 
-                            <Grid x:Name="NonEssentialsNearRight" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <Button x:Name="SkipAheadButton" MinHeight="35" MinWidth="35" Grid.Column="0" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="0,0,5,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipAheadButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:SkipAheadButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="FastForwardButton" MinHeight="35" MinWidth="35" Grid.Column="1" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="0,0,5,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:FastForwardButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                                <Button x:Name="SkipNextButton" MinHeight="35" MinWidth="35" Grid.Column="2" Grid.Row="1" MaxWidth="150" MaxHeight="150" Margin="0,0,5,0" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipNextButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
-                                    <local:MediaControls.Behavior>
-                                        <local:SkipNextButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                    </local:MediaControls.Behavior>
-                                </Button>
-                            </Grid>
-                        </Grid>
+                        <Button x:Name="PlayPauseButton" Grid.Row="1" Grid.Column="1" Width="100" Height="100" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsPlayPauseButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                            <local:MediaControls.Behavior>
+                                <local:PlayPauseButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </local:MediaControls.Behavior>
+                        </Button>
+
+                        <StackPanel Orientation="Horizontal" x:Name="NonEssentialsNearRight" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Button x:Name="SkipAheadButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipAheadButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <local:MediaControls.Behavior>
+                                    <local:SkipAheadButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </local:MediaControls.Behavior>
+                            </Button>
+                            <Button x:Name="FastForwardButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsFastForwardButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <local:MediaControls.Behavior>
+                                    <local:FastForwardButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </local:MediaControls.Behavior>
+                            </Button>
+                            <Button x:Name="SkipNextButton" Height="70" Width="70" Margin="5" Style="{TemplateBinding PrimaryButtonStyle}" Visibility="{Binding IsSkipNextButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}">
+                                <local:MediaControls.Behavior>
+                                    <local:SkipNextButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </local:MediaControls.Behavior>
+                            </Button>
+                        </StackPanel>
                     </Grid>
 
                     <Border Background="{TemplateBinding Background}" Grid.Row="1">

@@ -77,7 +77,7 @@
                             <Grid Width="40" Height="40">
                                 <Ellipse x:Name="BackgroundEllipse" Fill="{StaticResource TransportBackgroundBrush}" UseLayoutRounding="False"/>
                                 <Ellipse x:Name="OutlineEllipse" Stroke="{StaticResource AppBarItemForegroundThemeBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
-                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </Viewbox>
                         <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
@@ -92,6 +92,7 @@
         <Setter Property="Foreground" Value="{StaticResource AppBarItemForegroundThemeBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -149,7 +150,7 @@
                             <Grid Width="40" Height="40">
                                 <Ellipse x:Name="BackgroundEllipse" Fill="{StaticResource AppBarItemBackgroundThemeBrush}" UseLayoutRounding="False"/>
                                 <Ellipse x:Name="OutlineEllipse" Stroke="{StaticResource AppBarItemForegroundThemeBrush}" StrokeThickness="2" UseLayoutRounding="False"/>
-                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <ContentPresenter x:Name="Content" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             </Grid>
                         </Viewbox>
                         <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
@@ -166,10 +167,10 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
-        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
-        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Padding" Value="0,-3,0,0"/>
         <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="MinWidth" Value="70"/>
         <Setter Property="MinHeight" Value="0"/>
@@ -903,6 +904,11 @@
                         <Button x:Name="PlayPauseButton" Style="{TemplateBinding TransportBarButtonStyle}" Width="30" Height="30" Visibility="{Binding IsPlayPauseButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="8,0,8,0">
                             <local:MediaControls.Behavior>
                                 <local:PlayPauseButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </local:MediaControls.Behavior>
+                        </Button>
+                        <Button x:Name="PauseButton" Style="{TemplateBinding TransportBarButtonStyle}" Width="30" Height="30" Margin="8,0,8,0">
+                            <local:MediaControls.Behavior>
+                                <local:PauseButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </local:MediaControls.Behavior>
                         </Button>
 
