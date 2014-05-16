@@ -19,6 +19,7 @@
         <m2:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png">
         </m2:DefaultTile>
         <m2:SplashScreen Image="images\splashscreen.png" BackgroundColor="#ffffff" />
+        <m2:ApplicationView MinWidth="width320" />
       </m2:VisualElements>
     </Application>
   </Applications>
