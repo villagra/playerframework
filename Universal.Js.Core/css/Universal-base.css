@@ -152,6 +152,16 @@
         height: 22px;
     }
 
+    .pf-container .pf-control-panel .pf-volume-slider-control input[type=range]::-ms-track {
+        width: 12px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .pf-container .pf-control-panel .pf-volume-slider-control input[type=range]::-ms-thumb {
+        width: 22px;
+    }
+
     .pf-container .pf-control-panel .pf-transportbar {
         position: absolute;
         left: 0px;
@@ -174,14 +184,16 @@
         bottom: calc(100% + 5px);
         height: 180px;
         left: calc(50% - 28px);
-        padding: 15px 23px 0 23px;
+        padding: 15px 18px 0 18px;
+        width: 22px;
     }
 
     .pf-container .pf-control-panel.pf-compact .pf-volume-mute-container .pf-volume-slider-control {
         bottom: calc(100% + 37px);
         height: 145px;
         left: calc(50% - 31px);
-        padding: 15px 27px 0 27px;
+        padding: 15px 22px 0 22px;
+        width: 22px;
     }
 
 .pf-container .pf-captions-container {
