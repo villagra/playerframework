@@ -46,8 +46,12 @@
         right: 10px;
     }
 
-    .pf-container .pf-control-panel .pf-controlcontainer-secondary * {
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary > *:not(.pf-meter) {
         display: inline-block;
+    }
+    
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary > .pf-control:not(.pf-button) {
+        margin: 0 5px 0 5px;
     }
 
     .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar > * {
