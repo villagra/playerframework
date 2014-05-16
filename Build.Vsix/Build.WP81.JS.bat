@@ -7,11 +7,9 @@ cd..
 
 "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Js.sln
 "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Js.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Js.sln
 "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Js.sln
 
 "%SN%" -R Universal.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Universal.Js.Adaptive\Microsoft.PlayerFramework.snk
-"%SN%" -R Universal.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Universal.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Universal.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Js.Advertising\bin\Release\Microsoft.PlayerFramework.Js.Advertising.winmd									Universal.Js.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.winmd										Universal.Js.Analytics\Microsoft.PlayerFramework.snk
@@ -49,7 +47,6 @@ mkdir "Microsoft.PlayerFramework.Js.Adaptive\Redist\CommonConfiguration\neutral\
 mkdir "Microsoft.PlayerFramework.Js.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Js.Adaptive\js"
 mkdir "Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\ARM"
-mkdir "Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Js.Advertising\DesignTime"
 mkdir "Microsoft.PlayerFramework.Js.Advertising\Redist"
@@ -83,7 +80,6 @@ mkdir "Microsoft.PlayerFramework.Js.Analytics\Redist\CommonConfiguration\neutral
 mkdir "Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Js.TimedText\DesignTime"
 mkdir "Microsoft.PlayerFramework.Js.TimedText\Redist"
@@ -125,8 +121,6 @@ copy ..\..\Universal.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Ad
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Helper\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri															Microsoft.PlayerFramework.Js.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\
 copy ..\..\Universal.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd																			Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x86\
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Helper\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd															Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x86\
-copy ..\..\Universal.Js.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd																			Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x64\
-copy ..\..\Win81.WinRT.AdaptiveStreaming.Helper\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd															Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\x64\
 copy ..\..\Universal.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd																			Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\ARM\
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Helper\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd															Microsoft.PlayerFramework.Js.Adaptive\References\CommonConfiguration\ARM\
 
@@ -155,7 +149,6 @@ copy ..\..\Universal.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analy
 copy ..\..\Universal.Js.Analytics\bin\Release\Microsoft.PlayerFramework.Js.Analytics.xml 																				Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\neutral\
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.pri														Microsoft.PlayerFramework.Js.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics\
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd													Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x86\
-copy ..\..\Win81.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd													Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\x64\
 copy ..\..\Win81.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd													Microsoft.PlayerFramework.Js.Analytics\References\CommonConfiguration\ARM\
 
 @popd

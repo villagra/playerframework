@@ -7,26 +7,20 @@ cd..
 
 "%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
 "%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
 "%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
 
 "%SN%" -R WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
-"%SN%" -R WP81.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							WP81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Xaml.Advertising\bin\Release\Microsoft.Media.Advertising.winmd 										Universal.WinRT.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.winmd 										Universal.WinRT.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-"%SN%" -R WP81.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Xaml.WebVTT\bin\Release\Microsoft.Media.WebVTT.winmd												Universal.WinRT.WebVTT\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.WinRT.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd				WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
-"%SN%" -R WP81.WinRT.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd				WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
 "%SN%" -R WP81.WinRT.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd				WP81.WinRT.AdaptiveStreaming.Dash\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics.Advertising\bin\x86\Release\Microsoft.Media.Analytics.Advertising.winmd				Universal.WinRT.Analytics.Advertising\Microsoft.PlayerFramework.snk
-"%SN%" -R Universal.WinRT.Analytics.Advertising\bin\x64\Release\Microsoft.Media.Analytics.Advertising.winmd				Universal.WinRT.Analytics.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics.Advertising\bin\ARM\Release\Microsoft.Media.Analytics.Advertising.winmd				Universal.WinRT.Analytics.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics.AudienceInsight\bin\x86\Release\Microsoft.Media.Analytics.AudienceInsight.winmd		Universal.WinRT.Analytics.AudienceInsight\Microsoft.PlayerFramework.snk
-"%SN%" -R Universal.WinRT.Analytics.AudienceInsight\bin\x64\Release\Microsoft.Media.Analytics.AudienceInsight.winmd		Universal.WinRT.Analytics.AudienceInsight\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.Analytics.AudienceInsight\bin\ARM\Release\Microsoft.Media.Analytics.AudienceInsight.winmd		Universal.WinRT.Analytics.AudienceInsight\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.WinRT.AudienceInsight\bin\Release\Microsoft.Media.AudienceInsight.winmd								Universal.WinRT.AudienceInsight\Microsoft.PlayerFramework.snk
 
@@ -52,7 +46,6 @@ mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutra
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM"
-mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Xaml.Advertising\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.Advertising\References"
@@ -73,7 +66,6 @@ mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutr
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.TimedText\References"
@@ -124,7 +116,6 @@ mkdir "Microsoft.PlayerFramework.Dash\Redist\CommonConfiguration\neutral\Microso
 mkdir "Microsoft.PlayerFramework.Dash\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Dash\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Dash\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Dash\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Dash\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\Redist"
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References"
@@ -134,7 +125,6 @@ mkdir "Microsoft.PlayerFramework.Analytics.Advertising\Redist\CommonConfiguratio
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\Redist"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References"
@@ -144,7 +134,6 @@ mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\Redist\CommonConfigur
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\neutral"
-mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\x86"
 mkdir "Microsoft.Media.AudienceInsight\Redist"
 mkdir "Microsoft.Media.AudienceInsight\References"
@@ -167,9 +156,6 @@ copy ..\..\WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.
 copy ..\..\WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.dll											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
 copy ..\..\WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.xml											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
 copy ..\..\WP81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 									Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
-copy ..\..\WP81.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.dll											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
-copy ..\..\WP81.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.xml											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
-copy ..\..\WP81.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 									Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
 copy ..\..\WP81.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.dll											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
 copy ..\..\WP81.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.xml											Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
 copy ..\..\WP81.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 									Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
@@ -200,7 +186,6 @@ copy ..\..\Universal.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.pri		
 
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.pri				Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics\
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86\
-copy ..\..\WP81.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x64\
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM\
 
 copy ..\..\Universal.Xaml.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll												Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral\
@@ -221,18 +206,15 @@ copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\Themes\Generic.xbf													
 
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Dash.pri							Microsoft.PlayerFramework.Dash\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Dash\
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd						Microsoft.PlayerFramework.Dash\References\CommonConfiguration\x86\
-copy ..\..\WP81.WinRT.AdaptiveStreaming.Dash\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd						Microsoft.PlayerFramework.Dash\References\CommonConfiguration\x64\
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Dash\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Dash.winmd						Microsoft.PlayerFramework.Dash\References\CommonConfiguration\ARM\
 copy ..\..\Lib\Portable\Microsoft.Media.ISO\bin\Release\Microsoft.Media.ISO.dll													Microsoft.PlayerFramework.Dash\References\CommonConfiguration\neutral\
 
 copy ..\..\Universal.WinRT.Analytics.Advertising\bin\x86\Release\Microsoft.Media.Analytics.Advertising.pri						Microsoft.PlayerFramework.Analytics.Advertising\Redist\CommonConfiguration\neutral\Microsoft.Media.Analytics.Advertising\
 copy ..\..\Universal.WinRT.Analytics.Advertising\bin\x86\Release\Microsoft.Media.Analytics.Advertising.winmd					Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\x86\
-copy ..\..\Universal.WinRT.Analytics.Advertising\bin\x64\Release\Microsoft.Media.Analytics.Advertising.winmd					Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\x64\
 copy ..\..\Universal.WinRT.Analytics.Advertising\bin\ARM\Release\Microsoft.Media.Analytics.Advertising.winmd					Microsoft.PlayerFramework.Analytics.Advertising\References\CommonConfiguration\ARM\
 
 copy ..\..\Universal.WinRT.Analytics.AudienceInsight\bin\x86\Release\Microsoft.Media.Analytics.AudienceInsight.pri				Microsoft.PlayerFramework.Analytics.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.Media.Analytics.AudienceInsight\
 copy ..\..\Universal.WinRT.Analytics.AudienceInsight\bin\x86\Release\Microsoft.Media.Analytics.AudienceInsight.winmd			Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\x86\
-copy ..\..\Universal.WinRT.Analytics.AudienceInsight\bin\x64\Release\Microsoft.Media.Analytics.AudienceInsight.winmd			Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\x64\
 copy ..\..\Universal.WinRT.Analytics.AudienceInsight\bin\ARM\Release\Microsoft.Media.Analytics.AudienceInsight.winmd			Microsoft.PlayerFramework.Analytics.AudienceInsight\References\CommonConfiguration\ARM\
 
 copy ..\..\Universal.WinRT.AudienceInsight\bin\Release\Microsoft.Media.AudienceInsight.pri										Microsoft.Media.AudienceInsight\Redist\CommonConfiguration\neutral\Microsoft.Media.AudienceInsight\
