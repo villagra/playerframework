@@ -213,6 +213,10 @@
     margin-top: 5px;
 }
 
-.pf-slider-thumbnailView {
+.pf-container .pf-control-panel:not(.pf-compact) .pf-slider-thumbnailView {
+    top: -108px;
+}
+
+.pf-container .pf-control-panel.pf-compact .pf-slider-thumbnailView {
     top: -98px;
 }
