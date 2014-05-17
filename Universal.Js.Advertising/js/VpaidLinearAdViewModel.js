@@ -105,6 +105,7 @@
             this._bindEvent("adplaying", this._adPlayer, this._onAdPlayerPlaying);
             this._bindEvent("adstopped", this._adPlayer, this._onAdPlayerStopped);
             this._bindEvent("adloaded", this._adPlayer, this._onAdPlayerLoaded);
+            this._bindEvent("adstarted", this._adPlayer, this._onAdPlayerStarted);
 
             // media player value properties
             this._bindProperty("volume", this._observableMediaPlayer, this._notifyProperties, ["volume"]);
@@ -157,6 +158,10 @@
             if (!this.dispatchEvent("skipnext")) {
                 this._adPlayer.skipAd();
             }
+        },
+
+        _onAdPlayerStarted: function (e) {
+            this.state = PlayerFramework.ViewModelState.playing;
         },
 
         _onAdPlayerPaused: function (e) {
