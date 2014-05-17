@@ -93,7 +93,7 @@
             PlayerFramework.Utilities.setOptions(this, options, {
                 isEnabled: true,
                 skippableOffset: null,
-                clickThruLinearText: "",
+                clickThruLinearText: PlayerFramework.Utilities.getResourceString("AdLinkLabel"),
                 clickThruNonLinearText: "",
                 supportedVideoMimeTypes: [
                     "video/mp4",

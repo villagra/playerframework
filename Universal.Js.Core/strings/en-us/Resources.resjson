@@ -1,6 +1,8 @@
 ﻿// For details on localizing a Windows app, see: http://go.microsoft.com/fwlink/?LinkId=212836
 
 {
+    "AdLinkLabel":                          "Learn more...",
+
     "ErrorText":                            "The video failed to play.",
     "ErrorIcon":                            "\uE102",
     "ErrorLabel":                           "Try again",
