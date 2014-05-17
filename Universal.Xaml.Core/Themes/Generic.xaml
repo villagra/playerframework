@@ -1353,7 +1353,7 @@
                             <VisualStateGroup x:Name="MediaStates">
                                 <VisualState x:Name="Opening">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsIndeterminate" Storyboard.TargetName="ProgressIndicator">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsActive" Storyboard.TargetName="ProgressIndicator">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0.01" Value="True"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ProgressIndicator">
@@ -1366,7 +1366,7 @@
                                 <VisualState x:Name="Closed"/>
                                 <VisualState x:Name="Buffering">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsIndeterminate" Storyboard.TargetName="ProgressIndicator">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsActive" Storyboard.TargetName="ProgressIndicator">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0.01" Value="True"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ProgressIndicator">
@@ -1376,7 +1376,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <ProgressBar x:Name="ProgressIndicator" IsIndeterminate="False" Visibility="Collapsed" IsHitTestVisible="False"/>
+                        <ProgressRing x:Name="ProgressIndicator" IsActive="False" Width="60" Height="60" Visibility="Collapsed" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" IsHitTestVisible="False"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
