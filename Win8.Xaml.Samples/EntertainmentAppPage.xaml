@@ -13,8 +13,8 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/EntertainmentTheme.xaml"/>-->
-                <ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/Universal.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/EntertainmentTheme.xaml"/>
+                <!--<ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/Classic.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
 
             <mmppf:PlaylistPlugin x:Key="PlaylistPlugin">
