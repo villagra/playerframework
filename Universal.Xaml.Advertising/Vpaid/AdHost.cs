@@ -72,14 +72,14 @@ namespace Microsoft.PlayerFramework.Advertising
             {
                 ClickThroughButton.Visibility = navigateUri != null ? Visibility.Visible : Visibility.Collapsed;
                 ClickThroughButton.Click += ClickThroughButton_Click;
+#if SILVERLIGHT && !WINDOWS_PHONE // Silverlight for the web needs to launch external urls via a hyperlink button as to not prompt the user
                 var hyperlink = ClickThroughButton as HyperlinkButton;
                 if (hyperlink != null)
                 {
                     hyperlink.NavigateUri = navigateUri;
-#if SILVERLIGHT
                     hyperlink.TargetName = "_blank";
-#endif
                 }
+#endif
                 if (ClickThroughButton.Content != null)
                 {
                     ClickThroughButton.Content = MediaPlayer.GetResourceString("AdLinkLabel");

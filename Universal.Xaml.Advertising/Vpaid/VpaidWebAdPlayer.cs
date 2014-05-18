@@ -330,7 +330,7 @@ namespace Microsoft.PlayerFramework.Advertising
         void AdPlayer_Navigated(object sender, RoutedEventArgs e)
         {
             var clickEventArgs = new ClickThroughEventArgs() { Url = ClickThru.OriginalString };
-            clickEventArgs.PlayerHandles = !(e.OriginalSource is HyperlinkButton);
+            clickEventArgs.PlayerHandles = !(e.OriginalSource is HyperlinkButton && ((HyperlinkButton)e.OriginalSource).NavigateUri != null);
             if (AdClickThru != null) AdClickThru(this, clickEventArgs);
         }
 
