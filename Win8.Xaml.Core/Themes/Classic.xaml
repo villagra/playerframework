@@ -1246,7 +1246,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="1" Grid.Row="1" MaxHeight="150" MaxWidth="150" Style="{StaticResource PrimaryButtonStyle}" x:Name="LoadButton">
-                            <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
+                            <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button>
                     </Grid>
                 </ControlTemplate>
@@ -1263,7 +1263,7 @@
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{TemplateBinding ErrorText}" FontSize="30" HorizontalAlignment="Center"/>
                             <Button Style="{StaticResource PrimaryButtonStyle}" Width="100" Height="100" Margin="0,20,0,12" x:Name="RetryButton">
-                                <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;"/>
+                                <TextBlock FontFamily="Segoe UI Symbol" FontSize="26" Text="&#xE102;" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                             <TextBlock x:Name="RetryInstructions" Text="{TemplateBinding RetryText}" FontSize="30" HorizontalAlignment="Center"/>
                         </StackPanel>
