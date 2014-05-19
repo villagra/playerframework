@@ -1111,7 +1111,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Visibility)" Storyboard.TargetName="LoadingAdvertisment">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsIndeterminate" Storyboard.TargetName="AdvertisementLoadingProgressBar">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsActive" Storyboard.TargetName="AdvertisementLoadingProgressBar">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="True"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -1237,7 +1237,7 @@
                         </Grid>
                         <Grid x:Name="AdvertisingContainer" Visibility="Collapsed">
                             <Grid x:Name="LoadingAdvertisment" Background="#00000000" Visibility="Collapsed">
-                                <ProgressBar x:Name="AdvertisementLoadingProgressBar" IsIndeterminate="False" VerticalAlignment="Center"  HorizontalAlignment="Stretch"/>
+                                <ProgressRing x:Name="AdvertisementLoadingProgressBar" IsActive="False" Width="60" Height="60" Foreground="{StaticResource AppBarItemForegroundThemeBrush}" VerticalAlignment="Center"  HorizontalAlignment="Stretch"/>
                             </Grid>
                         </Grid>
                         <Grid x:Name="ErrorsContainer" Visibility="Collapsed"/>
