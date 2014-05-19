@@ -50,7 +50,7 @@
                     <CheckBox IsChecked="{Binding IsSlowMotionVisible, ElementName=player, Mode=TwoWay}" Content="IsSlowMotionVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsReplayVisible, ElementName=player, Mode=TwoWay}" Content="IsReplayVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsFullScreenVisible, ElementName=player, Mode=TwoWay}" Content="IsFullScreenVisible" Style="{StaticResource CheckStyle}" />
-                    <CheckBox IsChecked="{Binding IsZoomVisible, Mode=TwoWay}" Content="IsZoomVisible" Style="{StaticResource CheckStyle}" />
+                    <CheckBox IsChecked="{Binding IsZoomVisible, ElementName=player, Mode=TwoWay}" Content="IsZoomVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsTimeElapsedVisible, ElementName=player, Mode=TwoWay}" Content="IsTimeElapsedVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsDurationVisible, ElementName=player, Mode=TwoWay}" Content="IsDurationVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsTimeRemainingVisible, ElementName=player, Mode=TwoWay}" Content="IsTimeRemainingVisible" Style="{StaticResource CheckStyle}" />
