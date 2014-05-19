@@ -5,9 +5,9 @@
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Js.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Js.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Js.sln
+"%DEVENV%" /build "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Js.sln
+"%DEVENV%" /build "Release|x86"    Microsoft.PlayerFramework.Universal.Js.sln
+"%DEVENV%" /build "Release|ARM"    Microsoft.PlayerFramework.Universal.Js.sln
 
 "%SN%" -R Universal.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Universal.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Universal.Js.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Universal.Js.Adaptive\Microsoft.PlayerFramework.snk

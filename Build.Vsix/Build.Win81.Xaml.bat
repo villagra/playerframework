@@ -5,10 +5,10 @@
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
+"%DEVENV%" /build "Release|AnyCPU" Microsoft.PlayerFramework.Universal.Xaml.sln
+"%DEVENV%" /build "Release|x86"    Microsoft.PlayerFramework.Universal.Xaml.sln
+"%DEVENV%" /build "Release|x64"    Microsoft.PlayerFramework.Universal.Xaml.sln
+"%DEVENV%" /build "Release|ARM"    Microsoft.PlayerFramework.Universal.Xaml.sln
 
 "%SN%" -R Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Win81.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win81.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk

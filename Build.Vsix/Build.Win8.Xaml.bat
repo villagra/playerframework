@@ -7,10 +7,10 @@
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Xaml.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win8.Xaml.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win8.Xaml.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /build "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /build "Release|x86"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /build "Release|x64"    Microsoft.PlayerFramework.Win8.Xaml.sln
+"%DEVENV%" /build "Release|ARM"    Microsoft.PlayerFramework.Win8.Xaml.sln
 
 "%SN%" -R Win8.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
@@ -114,6 +114,7 @@ copy ..\..\Win8.Xaml.Core\bin\Release\Microsoft.PlayerFramework.xml										Mic
 copy ..\..\Win8.Xaml.Core\bin\Release\Microsoft.PlayerFramework.pri										Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\
 copy ..\..\Win8.Xaml.Core\bin\Release\Themes\generic.xaml												Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
 copy ..\..\Win8.Xaml.Core\bin\Release\Themes\EntertainmentTheme.xaml									Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Win8.Xaml.Core\bin\Release\Themes\Classic.xaml												Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
 
 copy ..\..\Win8.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.pri					Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive\
 copy ..\..\Win8.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri				Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\

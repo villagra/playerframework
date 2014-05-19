@@ -7,10 +7,10 @@
 @pushd %~dp0%
 cd..
 
-"%DEVENV%" /rebuild "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Js.sln
-"%DEVENV%" /rebuild "Release|x86"    Microsoft.PlayerFramework.Win8.Js.sln
-"%DEVENV%" /rebuild "Release|x64"    Microsoft.PlayerFramework.Win8.Js.sln
-"%DEVENV%" /rebuild "Release|ARM"    Microsoft.PlayerFramework.Win8.Js.sln
+"%DEVENV%" /build "Release|AnyCPU" Microsoft.PlayerFramework.Win8.Js.sln
+"%DEVENV%" /build "Release|x86"    Microsoft.PlayerFramework.Win8.Js.sln
+"%DEVENV%" /build "Release|x64"    Microsoft.PlayerFramework.Win8.Js.sln
+"%DEVENV%" /build "Release|ARM"    Microsoft.PlayerFramework.Win8.Js.sln
 
 "%SN%" -R Win8.Js.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Js.Adaptive.winmd										Win8.Js.Adaptive\Microsoft.PlayerFramework.snk
 "%SN%" -R Win8.WinRT.AdaptiveStreaming.Helper\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd				Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
