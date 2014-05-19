@@ -1260,7 +1260,7 @@
                         </Grid>
                         <Grid x:Name="AdvertisingContainer" Visibility="Collapsed">
                             <Grid x:Name="LoadingAdvertisment" Background="#00000000" Visibility="Collapsed">
-                                <ProgressRing x:Name="AdvertisementLoadingProgressBar" IsActive="False" Width="60" Height="60" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" VerticalAlignment="Center"  HorizontalAlignment="Stretch"/>
+                                <ProgressRing x:Name="AdvertisementLoadingProgressBar" IsActive="False" Width="60" Height="60" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" Background="Transparent" VerticalAlignment="Center"  HorizontalAlignment="Stretch"/>
                             </Grid>
                         </Grid>
                         <Grid x:Name="ErrorsContainer" Visibility="Collapsed"/>
@@ -1376,7 +1376,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <ProgressRing x:Name="ProgressIndicator" IsActive="False" Width="60" Height="60" Visibility="Collapsed" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" IsHitTestVisible="False"/>
+                        <ProgressRing x:Name="ProgressIndicator" IsActive="False" Width="60" Height="60" Visibility="Collapsed" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}" Background="Transparent" IsHitTestVisible="False"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
