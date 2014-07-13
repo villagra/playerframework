@@ -185,6 +185,8 @@ namespace Microsoft.Media.WebVTT
         private static WebVTTCueSettings ParseCueSettings(IDictionary<string, string> values)
         {
             var result = new WebVTTCueSettings();
+
+            bool autoTextPosition = true;
             foreach (var item in values)
             {
                 switch (item.Key)
@@ -215,7 +217,11 @@ namespace Microsoft.Media.WebVTT
                         }
                         break;
                     case cueSettingTextPosition:
-                        result.TextPosition = int.Parse(item.Value.TrimEnd('%'));
+                        if (item.Value != "auto")
+                        {
+                            autoTextPosition = false;
+                            result.TextPosition = int.Parse(item.Value.TrimEnd('%'));
+                        }
                         break;
                     case cueSettingSize:
                         result.Size = int.Parse(item.Value.TrimEnd('%'));
@@ -244,6 +250,23 @@ namespace Microsoft.Media.WebVTT
                         break;
                 }
             }
+
+            if (autoTextPosition)
+            {
+                if (result.Alignment == WebVTTAlignment.Start || result.Alignment == WebVTTAlignment.Left)
+                {
+                    result.TextPosition = 0;
+                }
+                else if (result.Alignment == WebVTTAlignment.End || result.Alignment == WebVTTAlignment.Right)
+                {
+                    result.TextPosition = 100;
+                }
+                else if (result.Alignment == WebVTTAlignment.Middle)
+                {
+                    result.TextPosition = 50;
+                }
+            }
+
             return result;
         }
 
