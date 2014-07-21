@@ -50,6 +50,16 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
             return attrib == null || string.IsNullOrEmpty(attrib.Value) ? new uint?() : uint.Parse(attrib.Value);
         }
 
+        public static ulong GetULong(this XAttribute attrib)
+        {
+            return ulong.Parse(attrib.Value);
+        }
+
+        public static ulong? GetNullableULong(this XAttribute attrib)
+        {
+            return attrib == null || string.IsNullOrEmpty(attrib.Value) ? new ulong?() : ulong.Parse(attrib.Value);
+        }
+
         public static DateTimeOffset? GetNullableDateTime(this XAttribute attrib)
         {
             return attrib == null || string.IsNullOrEmpty(attrib.Value) ? new DateTimeOffset?() : DateTimeOffset.Parse(attrib.Value);

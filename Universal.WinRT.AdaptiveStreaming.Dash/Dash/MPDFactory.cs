@@ -141,7 +141,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
         {
             var ns = element.GetDefaultNamespace().NamespaceName;
             result.Timescale = element.Attribute("timescale").GetNullableUInt();
-            result.PresentationTimeOffset = element.Attribute("presentationTimeOffset").GetNullableUInt();
+            result.PresentationTimeOffset = element.Attribute("presentationTimeOffset").GetNullableULong();
             result.IndexRange = (string)element.Attribute("indexRange");
             result.IndexRangeExact = element.Attribute("indexRangeExact").GetNullableBool();
             result.AnyAttr.AddRange(element.Attributes());
@@ -195,8 +195,8 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
             var ns = element.GetDefaultNamespace().NamespaceName;
             var result = new SegmentTimelineS();
 
-            result.T = element.Attribute("t").GetNullableUInt();
-            result.D = element.Attribute("d").GetUInt();
+            result.T = element.Attribute("t").GetNullableULong();
+            result.D = element.Attribute("d").GetULong();
             result.R = element.Attribute("r").GetNullableUInt().GetValueOrDefault(result.R);
             result.AnyAttr.AddRange(element.Attributes());
 

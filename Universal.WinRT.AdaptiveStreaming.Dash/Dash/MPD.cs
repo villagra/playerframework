@@ -311,7 +311,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         public uint? Timescale { get; set; }
 
-        public uint? PresentationTimeOffset { get; set; }
+        public ulong? PresentationTimeOffset { get; set; }
 
         public string IndexRange { get; set; }
 
@@ -379,9 +379,9 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
             this.R = ((uint)(0));
         }
 
-        public uint? T { get; set; }
+        public ulong? T { get; set; }
 
-        public uint D { get; set; }
+        public ulong D { get; set; }
 
         public uint R { get; set; }
 
