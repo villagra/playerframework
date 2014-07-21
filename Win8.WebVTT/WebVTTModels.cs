@@ -36,7 +36,7 @@ namespace Microsoft.WebVTT
         {
             WritingMode = WebVTTWritingMode.Horizontal;
             Alignment = WebVTTAlignment.Middle;
-            TextPosition = 50;
+            TextPosition = -1;
             Size = 100;
             SnapToLines = true;
         }

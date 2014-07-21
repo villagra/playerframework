@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="WebVTTParser.cs" company="Microsoft Corporation">
+// Copyright (c) 2014 Microsoft Corporation All Rights Reserved
+// </copyright>
+// <author>Michael S. Scherotter and others</author>
+// <email>mischero@microsoft.com</email>
+// <date>2014-06-28</date>
+// <summary>WebVTT Parser</summary>
 
 namespace Microsoft.WebVTT
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     // http://dev.w3.org/html5/webvtt/
     public static class WebVTTParser
     {
@@ -182,9 +190,15 @@ namespace Microsoft.WebVTT
             return result;
         }
 
+        /// <summary>
+        /// Parse the cue settings
+        /// </summary>
+        /// <param name="values">the values</param>
+        /// <returns>the WebVTT Cue Settings</returns>
         private static WebVTTCueSettings ParseCueSettings(IDictionary<string, string> values)
         {
             var result = new WebVTTCueSettings();
+
             foreach (var item in values)
             {
                 switch (item.Key)
@@ -244,6 +258,23 @@ namespace Microsoft.WebVTT
                         break;
                 }
             }
+
+            if (result.TextPosition == -1)
+            {
+                if (result.Alignment == WebVTTAlignment.Start || result.Alignment == WebVTTAlignment.Left)
+                {
+                    result.TextPosition = 0;
+                }
+                else if (result.Alignment == WebVTTAlignment.End || result.Alignment == WebVTTAlignment.Right)
+                {
+                    result.TextPosition = 100;
+                }
+                else if (result.Alignment == WebVTTAlignment.Middle)
+                {
+                    result.TextPosition = 50;
+                }
+            }
+
             return result;
         }
 
