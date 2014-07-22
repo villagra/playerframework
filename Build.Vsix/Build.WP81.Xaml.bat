@@ -201,7 +201,7 @@ copy ..\..\WP81.Xaml.WebVTT.Settings\bin\Release\Microsoft.PlayerFramework.WebVT
 copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.dll									Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration\neutral\
 copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.xml									Microsoft.PlayerFramework.Xaml.CaptionSettings\References\CommonConfiguration\neutral\
 copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\Microsoft.PlayerFramework.CaptionSettings.pri									Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
-copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\CaptionSettingFlyout.xbf														Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
+copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\CaptionSettingPage.xbf															Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\
 copy ..\..\WP81.Xaml.CaptionSettings\bin\Release\Themes\Generic.xbf																Microsoft.PlayerFramework.Xaml.CaptionSettings\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.CaptionSettings\Themes\
 
 copy ..\..\WP81.WinRT.AdaptiveStreaming.Dash\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Dash.pri							Microsoft.PlayerFramework.Dash\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Dash\
