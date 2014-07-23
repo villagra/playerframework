@@ -13,7 +13,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash.Smooth
             var memStream = new MemoryStream();
             var settings = new XmlWriterSettings()
             {
-                Indent = true, 
+                Indent = true,
                 Encoding = System.Text.Encoding.Unicode
             };
 
@@ -30,14 +30,14 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash.Smooth
         {
             // The SmoothStreamingMedia element
             writer.WriteStartElement("SmoothStreamingMedia");
-            writer.WriteAttributeString("MajorVersion", "2");
-            writer.WriteAttributeString("MinorVersion", "1");
+            writer.WriteAttributeString("MajorVersion", media.MajorVersion.ToString());
+            writer.WriteAttributeString("MinorVersion", media.MinorVersion.ToString());
             writer.WriteAttributeString("Duration", media.Duration.ToString());
             if (media.TimeScale.HasValue) writer.WriteAttributeString("TimeScale", media.TimeScale.ToString());
-            if (media.IsLive) writer.WriteAttributeString("IsLive", "true");
-            if (media.LookaheadCount.HasValue) writer.WriteAttributeString("LookaheadCount", media.LookaheadCount.ToString());
+            if (media.IsLive) writer.WriteAttributeString("IsLive", "TRUE");
+            if (media.LookaheadCount.HasValue) writer.WriteAttributeString("LookAheadFragmentCount", media.LookaheadCount.ToString());
             if (media.DVRWindowLength.HasValue) writer.WriteAttributeString("DVRWindowLength", media.DVRWindowLength.ToString());
-            
+
             // The StreamIndex elements
             foreach (var streamIndex in media.StreamIndex)
             {
@@ -105,16 +105,36 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash.Smooth
                     writer.WriteEndElement();
                 }
 
-                foreach (var chunk in streamIndex.c)
+                int i = 0;
+                while (i < streamIndex.c.Count)
                 {
+                    SmoothStreamingMediaStreamIndexC chunk = streamIndex.c[i];
+                    int r = 1;
+                    while (i + r < streamIndex.c.Count)
+                    {
+                        var chunkNext = streamIndex.c[i + r];
+                        if (chunk.d == chunkNext.d)
+                        {
+                            r++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+
                     // The c element
                     writer.WriteStartElement("c");
 
                     if (chunk.t.HasValue) writer.WriteAttributeString("t", chunk.t.ToString());
                     writer.WriteAttributeString("d", chunk.d.ToString());
+                    if (r > 1) writer.WriteAttributeString("r", r.ToString());
 
                     // Close the c element
                     writer.WriteEndElement();
+
+                    i += r;
                 }
 
                 // Close the StreamIndex element

@@ -14,7 +14,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash.Smooth
         public SmoothStreamingMedia()
         {
             this.MajorVersion = 2;
-            this.MinorVersion = 1;
+            this.MinorVersion = 2;
             this.StreamIndex = new List<SmoothStreamingMediaStreamIndex>();
         }
 
