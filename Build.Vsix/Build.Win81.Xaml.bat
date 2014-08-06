@@ -34,6 +34,9 @@ mkdir "Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Mi
 mkdir "Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes"
 mkdir "Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\themes"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References"
 mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration"
@@ -114,6 +117,11 @@ copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Generic.xbf											Microsof
 copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Entertainment.xbf										Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
 copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Phone.xbf												Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
 copy ..\..\Universal.Xaml.Core\bin\Release\Themes\Classic.xbf											Microsoft.PlayerFramework.Xaml.Core\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework\Themes
+copy ..\..\Design\Universal.Xaml.Core.Design\bin\Release\Microsoft.PlayerFramework.Design.dll			Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\
+copy ..\..\Universal.Xaml.Core\Themes\Generic.xaml														Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
+copy ..\..\Universal.Xaml.Core\Themes\Entertainment.xaml												Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
+copy ..\..\Universal.Xaml.Core\Themes\Phone.xaml														Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
+copy ..\..\Universal.Xaml.Core\Themes\Classic.xaml														Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
 
 copy ..\..\Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.pri					Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive\
 copy ..\..\Win81.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri				Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\
