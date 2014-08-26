@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Universal.Core", "Universal.Xaml.Core\Microsoft.PlayerFramework.Universal.Core.csproj", "{66FB4CAC-C1D3-4756-978A-2ECF8A7AA1B4}"
 EndProject
@@ -66,6 +66,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Phone.AdaptiveStreaming.Analytics", "WP81.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.Phone.AdaptiveStreaming.Analytics.csproj", "{FDDA472F-3579-4DF8-830D-5EA18848DE33}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Phone.Adaptive", "WP81.Xaml.Adaptive\Microsoft.PlayerFramework.Phone.Adaptive.csproj", "{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{3840950D-E2F3-415A-B114-0D5715AB1790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Design", "Design\Universal.Xaml.Core.Design\Microsoft.PlayerFramework.Design.csproj", "{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -538,6 +542,16 @@ Global
 		{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}.Release|x64.ActiveCfg = Release|Any CPU
 		{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}.Release|x86.ActiveCfg = Release|x86
 		{5CB6145C-87A6-4AA0-ADC6-1BE1D2344986}.Release|x86.Build.0 = Release|x86
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Release|x64.ActiveCfg = Release|Any CPU
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -547,5 +561,6 @@ Global
 		{DB3111A5-6D33-4127-A797-88263B062B8F} = {FC50942B-A0B3-45AA-B0C9-69F0000D54C3}
 		{3DAFBF4C-7798-4020-8812-49DEB30911D4} = {FC50942B-A0B3-45AA-B0C9-69F0000D54C3}
 		{C9B83844-6192-4645-9B2D-1F19A7B65DDF} = {FC50942B-A0B3-45AA-B0C9-69F0000D54C3}
+		{7AEFC459-ED7C-4D96-9E92-72609B40FBE0} = {3840950D-E2F3-415A-B114-0D5715AB1790}
 	EndGlobalSection
 EndGlobal
