@@ -47,11 +47,16 @@ namespace Microsoft.PlayerFramework.WebVTT
         /// Gets whether the captions panel is visible. Returns true if any captions were found.
         /// </summary>
         public bool IsSourceLoaded { get; private set; }
-         
+
         /// <summary>
         /// Gets the Panel control used to display captions. This can be used to modify the default styles use on captions.
         /// </summary>
         public WebVTTPanel CaptionsPanel { get { return captionsPanel; } }
+
+        /// <summary>
+        /// Raised when a parsing error occurs.
+        /// </summary>
+        public event EventHandler<ParseFailedEventArgs> ParseFailed;
 
         /// <summary>
         /// Gets or sets the style to be used for the TimedTextCaptions
@@ -244,32 +249,46 @@ namespace Microsoft.PlayerFramework.WebVTT
 
         private async Task AugmentWebVTT(string webvtt, TimeSpan startTime, TimeSpan endTime)
         {
-            var doc = await LoadWebVTTDocument(webvtt, startTime, endTime);
-            // merge
-            foreach (var cue in doc.Cues)
+            try
             {
-                bool found = false;
-                foreach (var marker in markerManager.MediaMarkers)
+                var doc = await LoadWebVTTDocument(webvtt, startTime, endTime);
+                // merge
+                foreach (var cue in doc.Cues)
                 {
-                    if (marker.Begin == cue.Begin && marker.End == cue.End) // assume its the same one if begin and end match.
+                    bool found = false;
+                    foreach (var marker in markerManager.MediaMarkers)
                     {
-                        found = true;
-                        break;
+                        if (marker.Begin == cue.Begin && marker.End == cue.End) // assume its the same one if begin and end match.
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        markerManager.MediaMarkers.Add(new MediaMarker() { Begin = cue.Begin, End = cue.End, Content = cue });
                     }
                 }
-                if (!found)
-                {
-                    markerManager.MediaMarkers.Add(new MediaMarker() { Begin = cue.Begin, End = cue.End, Content = cue });
-                }
+            }
+            catch (Exception ex)
+            {
+                if (ParseFailed != null) ParseFailed(this, new ParseFailedEventArgs(ex));
             }
         }
 
         private async Task LoadWebVTT(string webvtt)
         {
-            var doc = await LoadWebVTTDocument(webvtt, TimeSpan.Zero, TimeSpan.MaxValue);
-            foreach (var cue in doc.Cues)
+            try
             {
-                markerManager.MediaMarkers.Add(new MediaMarker() { Begin = cue.Begin, End = cue.End, Content = cue });
+                var doc = await LoadWebVTTDocument(webvtt, TimeSpan.Zero, TimeSpan.MaxValue);
+                foreach (var cue in doc.Cues)
+                {
+                    markerManager.MediaMarkers.Add(new MediaMarker() { Begin = cue.Begin, End = cue.End, Content = cue });
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ParseFailed != null) ParseFailed(this, new ParseFailedEventArgs(ex));
             }
         }
 
@@ -326,5 +345,15 @@ namespace Microsoft.PlayerFramework.WebVTT
             if (taskQueue != null) await taskQueue;
             await newTask();
         }
+    }
+
+    public sealed class ParseFailedEventArgs : EventArgs
+    {
+        internal ParseFailedEventArgs(Exception error)
+        {
+            Error = error;
+        }
+
+        public Exception Error { get; private set; }
     }
 }
