@@ -16,7 +16,7 @@ namespace Microsoft.PlayerFramework.Adaptive
         /// </summary>
         public AdaptiveStreamingManager Manager { get; private set; }
 
-        SmoothStreamingMediaElementWrapper mediaElement;
+        IMediaElement mediaElement;
         bool InManifestReady;
 
         /// <summary>
@@ -228,7 +228,11 @@ namespace Microsoft.PlayerFramework.Adaptive
                 MediaPlayer.EndTime = Manager.EndTime;
             }
 #if WINDOWS_PHONE
-            mediaElement.EvaluateMarkers();
+            var smoothMediaElement = mediaElement as SmoothStreamingMediaElementWrapper;
+            if (smoothMediaElement != null)
+            {
+                smoothMediaElement.EvaluateMarkers();
+            }
 #endif
         }
         
@@ -283,6 +287,10 @@ namespace Microsoft.PlayerFramework.Adaptive
             get
             {
                 return mediaElement = mediaElement ?? new SmoothStreamingMediaElementWrapper();
+            }
+            protected set
+            {
+                mediaElement = value;
             }
         }
 

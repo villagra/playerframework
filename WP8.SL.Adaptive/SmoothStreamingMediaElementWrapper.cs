@@ -25,6 +25,7 @@ namespace Microsoft.PlayerFramework.Adaptive
         /// </summary>
         public SmoothStreamingMediaElementWrapper()
         {
+            SmoothStreamingDetectionPredicate = IsSmoothStreaming;
             markers = new TimelineMarkerCollection();
             base.EnableGPUAcceleration = true;
             base.LogReady += SmoothStreamingMediaElement_LogReady;
@@ -38,6 +39,11 @@ namespace Microsoft.PlayerFramework.Adaptive
             lastMarkerCheckTime = null;
             markers.Clear();
         }
+
+        /// <summary>
+        /// Allows a custom predicate to be used in order to determine when a given URL is smooth streaming or progressive.
+        /// </summary>
+        public Predicate<Uri> SmoothStreamingDetectionPredicate { get; set; }
 
         /// <inheritdoc /> 
         public Task TemplateAppliedTask { get { return templateAppliedTaskSource.Task; } }
@@ -133,7 +139,7 @@ namespace Microsoft.PlayerFramework.Adaptive
             {
                 if (value != null)
                 {
-                    if (IsSmoothStreaming(value))
+                    if (SmoothStreamingDetectionPredicate(value))
                     {
                         base.SmoothStreamingSource = value;
                     }
