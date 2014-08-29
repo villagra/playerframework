@@ -1,6 +1,6 @@
 ﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="MMP.PF.Win81.Dash.SDK.VSIX.bb25c41c-f222-4f8c-acbe-b349c8a68ccc" Version="2.0.0.0" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="MMP.PF.Win81.Dash.SDK.VSIX.bb25c41c-f222-4f8c-acbe-b349c8a68ccc" Version="2.0.0.2" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework Dash Plugin</DisplayName>
     <Description>Microsoft Media Platform: Player Framework Dash Plugin for Windows 8 Store Apps</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
