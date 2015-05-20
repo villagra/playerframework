@@ -1,0 +1,51 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.Advertising"
+    >
+
+    <local:VpaidLinearAdViewModel x:Key="xamltypeinfo_VpaidLinearAdViewModel"/>
+    <local:VpaidNonLinearAdViewModel x:Key="xamltypeinfo_VpaidNonLinearAdViewModel"/>
+
+    <Style TargetType="local:AdHost">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid x:Name="LayoutRoot" Background="#00000000">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="AdvertisingStates">
+                                <VisualState x:Name="Linear"/>
+                                <VisualState x:Name="Nonlinear">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="VerticalAlignment" Storyboard.TargetName="LayoutRoot">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <VerticalAlignment>Bottom</VerticalAlignment>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="HorizontalAlignment" Storyboard.TargetName="LayoutRoot">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <HorizontalAlignment>Center</HorizontalAlignment>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter IsHitTestVisible="False" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <!--<HyperlinkButton x:Name="ClickThroughButton" Opacity="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>-->
+                        <HyperlinkButton x:Name="ClickThroughButton" Content="Learn more..." HorizontalAlignment="Center" FontSize="22" Margin="10" VerticalAlignment="Top" Visibility="Collapsed"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="local:CompanionHost"/>
+</ResourceDictionary>

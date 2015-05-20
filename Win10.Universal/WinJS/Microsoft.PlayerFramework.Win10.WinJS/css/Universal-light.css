@@ -1,0 +1,72 @@
+﻿/* Buffering Control */
+.pf-buffering-control:indeterminate {
+    color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-buffering-control:indeterminate {
+    color: rgb(255, 255, 255);
+}
+
+/* Control Panel */
+
+.pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
+    background-color: rgba(255,255,255,.5);
+}
+
+.pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:hover .pf-button-container {
+    background-color: rgba(0,0,0,0.1294);
+    color: rgba(0,0,0,1);
+}
+
+.pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:active .pf-button-container {
+    background-color: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,1);
+}
+
+.pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:disabled .pf-button-container {
+    background-color: rgba(255,255,255,.5) !important;
+    color: rgba(0,0,0,.4);
+}
+
+.pf-transportbar {
+    background-color: rgba(255,255,255,.5);
+}
+
+.pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.pf-slider-thumbnailView {
+    border-color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
+    background-color: rgba(0,0,0,.5);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:hover .pf-button-container {
+    background-color: rgba(255,255,255,0.1294);
+    color: rgba(255,255,255,1);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:active .pf-button-container {
+    background-color: rgba(255,255,255,0.5);
+    color: rgba(0,0,0,1);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button:disabled .pf-button-container {
+    background-color: rgba(0,0,0,.5) !important;
+    color: rgba(255,255,255,.4);
+}
+
+.win-ui-dark .pf-transportbar {
+    background-color: rgba(0,0,0,.5);
+}
+
+.win-ui-dark .pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.win-ui-dark .pf-slider-thumbnailView {
+    border-color: rgb(255, 255, 255);
+}
