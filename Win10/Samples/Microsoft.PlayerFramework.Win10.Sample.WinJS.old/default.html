@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Microsoft.PlayerFramework.Win10.Sample.WinJS</title>
+
+    <!-- WinJS references -->
+    <!-- To get the latest version of WinJS, go to: http://go.microsoft.com/fwlink/?LinkId=533245 -->
+    <link href="WinJS/css/ui-light.css" rel="stylesheet" />
+    <script src="WinJS/js/WinJS.js"></script>
+
+    <!-- Microsoft.PlayerFramework.Win10.Sample.WinJS references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>	
+	<!-- PlayerFramework references -->
+	<link href="/Microsoft.PlayerFramework.Js/css/Default-base.css" rel="stylesheet">
+	<link href="/Microsoft.PlayerFramework.Js/css/Default-light.css" rel="stylesheet">
+	<script src="/Microsoft.PlayerFramework.Js/js/core/PlayerFramework.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/core/InteractiveViewModel.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/core/MediaPlayer.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/core/DynamicTextTrack.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/ui/Button.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/ui/ControlPanel.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/ui/Indicator.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/ui/Meter.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/ui/Slider.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/PluginBase.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/TrackingPluginBase.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/BufferingPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/ControlPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/ErrorPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/LoaderPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/PlaylistPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/PlayTimeTrackingPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/PositionTrackingPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/SystemTransportControlsPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/ChaptersPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/DisplayRequestPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/CaptionSelectorPlugin.js"></script>
+	<script src="/Microsoft.PlayerFramework.Js/js/plugins/AudioSelectorPlugin.js"></script>
+</head>
+<body>
+    <p>
+		<div id="mediaPlayer" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+			width: 640,
+			height:480,
+			autoplay: true,
+            isSkipPreviousVisible: false,
+            isSkipNextVisible: false,
+            isFullScreenVisible: false,
+            src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
+        }"></div>
+	</p>
+</body>
+</html>

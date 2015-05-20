@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation> Copyright 2007-2011 FreeWheel Media, Inc. Proprietary and Confidential </xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="adResponseType">
+    <xs:all>
+      <xs:element minOccurs="0" maxOccurs="1" name="diagnostic" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> Diagnostic information that should be ignored by the client.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="errors" type="errorsType"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="visitor" type="visitorType">
+        <xs:annotation>
+          <xs:documentation> Information regarding the visitor.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="customState" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Echo back.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="parameters" type="parameterSetType">
+        <xs:annotation>
+          <xs:documentation> List of user defined parameters at response level </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="ads" type="adSetType"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="siteSection" type="siteSectionType">
+        <xs:annotation>
+          <xs:documentation> The site section structure (including video player, video asset) echoed back from the request with references to selected ads in the ads element.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="rendererManifest">
+        <xs:annotation>
+          <xs:documentation> The renderer manfest delivered along with response, when request enables "requiresRendererManifest" capability.  See smartAdRendererManifest.xsd for more information.  </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="version" type="xs:string" use="required">
+                <xs:annotation>
+                  <xs:documentation> The version of renderer manifest.  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="eventCallbacks" type="eventCallbackSetType">
+        <xs:annotation>
+          <xs:documentation>Request level event callbacks, e.g., GENERIC url.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="version" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Must be equal to "1".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="customId" type="xs:string">
+      <xs:annotation>
+        <xs:documentation> The customId value that the client passed in the request. This optional feature is provided to help clients match responses with requests.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="networkId" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric network ID of the caller. If the caller does not have a FreeWheel network ID (e.g., the caller is distributing on behalf of a FreeWheel network), the caller should pass the network ID of the FreeWheel network for which it is distributing video assets.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="visitorType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="httpHeaders" type="httpHeadersSetType">
+        <xs:annotation>
+          <xs:documentation> A set of HTTP headers. The client should behave as if the HTTP headers were present at the HTTP layer. The primary purpose of this element is to allow the Set-Cookie header to be passed "in-band" when a request is proxied or not coming from a traditional web browser.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="state" type="stateType"/>
+    </xs:sequence>
+    <xs:attribute name="customId" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The publisher's ID for this user. This is in addition to the FreeWheel user ID and may be used for custom reporting.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="stateType">
+    <xs:sequence>
+      <xs:element name="entry" type="stateEntryType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stateEntryType">
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="value" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="adSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ad" type="adType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="siteSectionType">
+    <xs:all>
+      <xs:element minOccurs="1" maxOccurs="1" name="videoPlayer" type="videoPlayerType"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="adSlots" type="nonTemporalAdSlotSet">
+        <xs:annotation>
+          <xs:documentation> A set of non-temporal ad slots on the site/page surrounding the video. These slots are considered property of the site owner.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="id" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric ID for the site section.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="customId" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The caller's custom name for the site section.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+	<xs:attribute name="pageViewRandom" type="xs:string" use="optional"> <!-- fixme -->
+      <xs:annotation>
+        <xs:documentation> The page view random number echoed back from the request.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="adType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="creatives" type="creativeSetType">
+        <xs:annotation>
+          <xs:documentation> A list of creatives available for the ad.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="adId" type="xs:int" use="required">
+      <xs:annotation>
+        <xs:documentation> The numeric FreeWheel-assigned ID for the ad.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="noPreload" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation> Indicates whether the ad could be preloaded. Incorrect preloading may cause impression incorrect counting. Assumed false if not presented.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="noLoad" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation> Indicates whether the ad could be rendered. Assumed false if not present.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="adUnit" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The ad unit of the ad.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bundleId" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The bundle id of the ad, currently will user network id of this ad.  Used to mark ad from different network, enabling "all or none" feature for admanger </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="creativeSetType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="creative" type="creativeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="creativeType">
+    <xs:all>
+      <xs:element minOccurs="0" maxOccurs="1" name="creativeRenditions" type="creativeRenditionSetType">
+        <xs:annotation>
+          <xs:documentation> A set of creative renditions that implement the creative. A creative rendition is a version of a creative in a particular format. For example a single creative could be represented in high- and low- bandwidth WMV and FLV format, for a total of four creative renditions.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="parameters" type="parameterSetType">
+        <xs:annotation>
+          <xs:documentation> List of user defined parameters (configured via the FreeWheel UI) for the creative.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="creativeId" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> The numeric FreeWheel-assigned ID for the creative.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="duration" type="xs:float" use="optional">
+      <xs:annotation>
+        <xs:documentation> The duration of the creative (if applicable) </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="adUnit" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>DEPRECATED </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="baseUnit" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> The base ad unit of the creative.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="redirectUrl" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> Used only when the creative is a "redirect" creative. This is the URL to redirect to (e.g., call another adserving system).  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="creativeRenditionType">
+    <xs:all>
+      <xs:element minOccurs="0" maxOccurs="1" name="parameters" type="parameterSetType">
+        <xs:annotation>
+          <xs:documentation> A set of parameters that apply to the creative rendition. Any parameter has the same name as a parameter set at the creative level takes precedence.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="asset" type="creativeRenditionAssetType">
+        <xs:annotation>
+          <xs:documentation> The primary (or root) creative rendition asset of the this creative rendition.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="otherAssets" type="creativeRenditionAssetSetType">
+        <xs:annotation>
+          <xs:documentation> The remaining (non-primary) creative rendition assets.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="creativeRenditionId" type="xs:int" use="required">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned creative rendition ID.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="contentType" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The content type (file type, similar to MIME type) of the creative rendition. This attribute is present only if the rendition has zero assets. If the creative has at least one asset, the content type of the creative rendition is the content type of the primary asset (represented by the asset child element).  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="wrapperType" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The wrapper type of the creative rendition. This attribute is present only if the rendition has a wrapper type.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="wrapperUrl" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The wrapper url of the creative rendition. This attribute is present only if the rendition has a wrapper type.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="creativeApi" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The creative api of the creative rendition. This attribute is present only if the rendition has a creative api.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="preference" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> Preference of the rendition.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="height" type="xs:int" use="optional"/>
+    <xs:attribute name="width" type="xs:int" use="optional"/>
+    <xs:attribute name="adReplicaId" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The replica id of the ad (for situations when an ad is filled into multiple slots with the same creative rendition).  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="creativeRenditionSetType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="creativeRendition" type="creativeRenditionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contentTypeSetType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="contentType" type="contentTypeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="contentTypeType">
+    <xs:attribute name="contentTypeId" type="xs:string" use="required"/>
+    <xs:attribute name="mimeType" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="trackingURLSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="url" type="urlType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="urlType">
+    <xs:attribute name="name" type="xs:string" use="optional">
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required">
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="eventCallbackSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventCallback" type="eventCallbackType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eventCallbackType">
+    <xs:all>
+      <xs:element minOccurs="0" maxOccurs="1" name="trackingURLs" type="trackingURLSetType">
+        <xs:annotation>
+          <xs:documentation> The primary (or root) creative rendition asset of the this creative rendition.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="use">
+      <xs:annotation>
+        <xs:documentation> INTERNAL </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="BASE"/>
+          <xs:enumeration value="OVERRIDE"/>
+          <xs:enumeration value="APPEND"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="type" use="required">
+      <xs:annotation>
+        <xs:documentation> The type of the callback. See enumeration list.  </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="IMPRESSION"/>
+          <xs:enumeration value="CLICK"/>
+          <xs:enumeration value="ACTION"/>
+          <xs:enumeration value="STANDARD"/>
+          <xs:enumeration value="GENERIC"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="name" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The name of the callback as defined by the user in the FreeWheel UI.  Certain events are automatically included for all creatives and use reserved names. The following names are reserved:
+    				defaultImpression -- the default impression.
+    				defaultClick -- the default clickthrough
+					slotImpression -- the default impression for a slot
+					videoView -- video view event
+    			</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="url" type="xs:string">
+      <xs:annotation>
+        <xs:documentation> The postback URL for this type. Interpretation depends on the use parameter. For version 1, the only valid value for use is "OVERRIDE".  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="showBrowser" type="xs:boolean" use="optional">
+      <xs:annotation>
+        <xs:documentation> May present when type="CLICK", assumed false if not present. Not applicable when type!="CLICK".  Indicates whether or not the url is intended to take the user to a web page, or only for the purpose of tracking. If true, iindicates that the resulting content should be shown to the user (e.g., in a web browser). If false, on the click the event should be posted back to the given URL, but the result should not be shown to the user (i.e., it will probably be a clear pixel).  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="videoPlayerType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="videoAsset" type="videoAssetType">
+        <xs:annotation>
+          <xs:documentation> The videoAsset element describes the video asset and the temporal ad slots within.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="adSlots" type="nonTemporalAdSlotSet">
+        <xs:annotation>
+          <xs:documentation> A set of non-temporal ad slots within the video player itself (but not on the surrounding page).  These slots are considered property of the video's content rights owner, not the site's.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="videoAssetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="adSlots" type="temporalAdSlotSetType">
+        <xs:annotation>
+          <xs:documentation> The set of temporal ad slots within the video asset. These are echoed back from the request.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="eventCallbacks" type="eventCallbackSetType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric ID of the video asset.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="customId" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The customer assigned ID of the video asset.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="videoPlayRandom" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The videoPlayRandom number echoed back from the request.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="temporalAdSlotSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="temporalAdSlot" type="temporalAdSlotType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="temporalAdSlotType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="adSlotBaseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="eventCallbacks" type="eventCallbackSetType"/>
+          <xs:element minOccurs="0" maxOccurs="1" name="parameters" type="parameterSetType">
+    	    <xs:annotation>
+        	  <xs:documentation> A set of parameters that apply to the slot, e.g, x, y in the screen, available orientation, etc.  </xs:documentation>
+	        </xs:annotation>
+    	  </xs:element>
+        </xs:sequence>
+        <xs:attribute name="source" type="xs:string" use="optional">
+          <xs:annotation>
+            <xs:documentation>INTERNAL </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timePosition" type="xs:float">
+          <xs:annotation>
+            <xs:documentation> The time position of the slot, represented as seconds from the beginning of the video asset, excluding any ad interruptions.  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timePositionClass" use="required">
+          <xs:annotation>
+            <xs:documentation> The time position class echoed back from the request.  </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="preroll"/>
+              <xs:enumeration value="midroll"/>
+              <xs:enumeration value="pause_midroll"/>
+              <xs:enumeration value="postroll"/>
+              <xs:enumeration value="overlay"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="timePositionSequence" type="xs:int"/>
+        <xs:attribute name="maxSlotDuration" type="xs:int" use="optional">
+          <xs:annotation>
+            <xs:documentation> The maximum duration of the slot in seconds.  The	sum of the durations of the ads chosen will not exceed the minimum of these values.  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="adReferenceSetType">
+    <xs:annotation>
+      <xs:documentation> A set of selected ads in the order they should be shown (if more than one).  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="adReference" type="adReferenceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="adReferenceBaseType">
+    <xs:annotation>
+      <xs:documentation> A companion ad reference is the same as an ad reference except it has no companion ad references.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="eventCallbacks" type="eventCallbackSetType">
+        <xs:annotation>
+          <xs:documentation> A set of event callbacks that provide the URL(s) that the client should call when certain actions occurr (e.g., impression, click, etc.) </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="adId" type="xs:int" use="required">
+      <xs:annotation>
+        <xs:documentation> The numeric FreeWheel-assigned ID of the ad. This ID can be used to look up the ad in the ads element found </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="creativeId" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric creative ID. This identifies the creative within the ad in the ads table.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="creativeRenditionId" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric creative rendition ID. This identifies the creative rendition within the creative in the ads table.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="replicaId" type="xs:int">
+      <xs:annotation>
+        <xs:documentation>INTERNAL</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="companionAdReferenceSetType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="adReference" type="companionAdReferenceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="companionAdReferenceType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="adReferenceBaseType">
+        <xs:attribute name="adSlotCustomId" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation> The slot id that was passed in the request from the client. This is the non-termporal ad slot into which the companion should be placed.  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="adSlotEnv" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation> The slot env that was passed in the request from the client. Possible values: "page", "player".  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="nonTemporalAdSlotSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="adSlot" type="nonTemporalAdSlotType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nonTemporalAdSlotType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="adSlotBaseType">
+	  <xs:sequence>
+      	<xs:element minOccurs="0" maxOccurs="1" name="parameters" type="parameterSetType">
+    	    <xs:annotation>
+        	  <xs:documentation> A set of parameters that apply to the slot, e.g, x, y in the screen, available orientation, etc.  </xs:documentation>
+	        </xs:annotation>
+    	  </xs:element>
+	  </xs:sequence>
+	  </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="adSlotBaseType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="selectedAds" type="adReferenceSetType">
+        <xs:annotation>
+          <xs:documentation> A set of ad(s) selected for this ad slot. The ads are represented as references to ads in the ads table.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="customId" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> The custom ID that the caller used to refer to this slot.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="height" type="xs:int" use="optional"/>
+    <xs:attribute name="width" type="xs:int" use="optional"/>
+    <xs:attribute name="compatibleDimensions" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+			The global compatible dimensions of the temporal slots, format: w1,h1|w2,h2|...
+		</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="adUnit" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="adReferenceType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="adReferenceBaseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="companionAds" type="companionAdReferenceSetType">
+            <xs:annotation>
+              <xs:documentation> A set of companion ads that should show in non-temporal ad slots in synchronization with this temporal ad slot.  </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="fallbackAds" type="adReferenceSetType">
+            <xs:annotation>
+              <xs:documentation> A set of fallback ads that could be used when the ad is unavailable.  </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="parameterSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="parameter" type="parameterType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parameterType">
+    <xs:annotation>
+      <xs:documentation> A parameter. The name is an attribute. The data is within the element (to support characters not supported in attribute values).  </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation> The name of the parameter.  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="category" type="xs:string" use="optional">
+          <xs:annotation>
+            <xs:documentation> The category of the parameter.  </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="creativeRenditionAssetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="content" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> The content of a text asset that requires macro substitution by the FreeWheel adserver .The content may be wrapped in a CDATA section.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:int" use="required">
+      <xs:annotation>
+        <xs:documentation> The FreeWheel-assigned numeric creative rendition asset ID.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="contentType" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> The content type of the creative rendition asset.  Content type is similar to MIME type, but provides more detail (for example, differentiation between differing versions of a video format that use the same MIME type) </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="mimeType" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> The official MIME type of the asset.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The user-assigned name for the creative rendition asset.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="url" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation> The location (URL) of the creative rendition asset.  This field is only present if the content child element is absent.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="bytes" type="xs:int" use="optional">
+      <xs:annotation>
+        <xs:documentation> The size of the creative rendition asset in bytes.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="creativeRenditionAssetSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="asset" type="creativeRenditionAssetType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="httpHeadersSetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="httpHeader" type="httpHeaderType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="httpHeaderType">
+    <xs:attribute name="name" type="xs:string">
+      <xs:annotation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string">
+      <xs:annotation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="errorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="context" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> Information about the context of the error. The interpretation of the value depends on the type of error. May be wrapped wtih CDATA section.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="message" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> An optional human-readable message describing the error. May be wrapped in CDATA section.  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="severity" use="required">
+      <xs:annotation>
+        <xs:documentation> The severity of the error.  </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="INFO"/>
+          <xs:enumeration value="WARN"/>
+          <xs:enumeration value="ERROR"/>
+          <xs:enumeration value="CRITICAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="id" type="xs:int" use="required">
+      <xs:annotation>
+        <xs:documentation> A numeric ID for the error code.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation> A string identifier for the error code.  </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="errorsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="0" name="error" type="errorType">
+        <xs:annotation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="adResponse" type="adResponseType"/>
+</xs:schema>

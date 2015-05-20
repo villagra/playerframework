@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Microsoft.PlayerFramework.Win10.Sample.XAML.Pages.AdPod"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.PlayerFramework.Win10.Sample.XAML.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pf="using:Microsoft.PlayerFramework"
+    xmlns:pfads="using:Microsoft.PlayerFramework.Advertising"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <pf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
+            <pf:MediaPlayer.Plugins>
+                <pfads:AdSchedulerPlugin>
+                    <pfads:AdSchedulerPlugin.Advertisements>
+                        <pfads:MidrollAdvertisement Time="00:00:05">
+                            <pfads:MidrollAdvertisement.Source>
+                                <pfads:RemoteAdSource Uri="http://smf.blob.core.windows.net/samples/win8/ads/vast_adpod.xml" Type="vast"/>
+                            </pfads:MidrollAdvertisement.Source>
+                        </pfads:MidrollAdvertisement>
+                    </pfads:AdSchedulerPlugin.Advertisements>
+                </pfads:AdSchedulerPlugin>
+                <pfads:AdHandlerPlugin/>
+            </pf:MediaPlayer.Plugins>
+        </pf:MediaPlayer>
+    </Grid>
+    <Page.TopAppBar>
+        <AppBar>
+            <AppBarButton x:Name="BackButton" Icon="Back" Click="BackButton_Click"/>
+        </AppBar>
+    </Page.TopAppBar>
+</Page>
