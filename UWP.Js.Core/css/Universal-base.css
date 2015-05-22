@@ -1,0 +1,230 @@
+﻿/* Indicator to help JS create elements differently (with primary and secondary containers) */
+.pf-controlpanel-hierarchy {
+}
+
+/* Containers */
+.pf-container.pf-show-buffering-container .pf-control-container {
+    display: none;
+}
+
+.pf-loader-container .pf-button, .pf-error-container .pf-button, .pf-control-container .pf-button {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+}
+
+.pf-loader-container .pf-button-container, .pf-error-container .pf-button-container, .pf-control-container .pf-button-container {
+    border-width: 2.5px;
+}
+
+/* Buffering Control */
+.pf-buffering-control:indeterminate {
+    width: 60px;
+    height: 60px;
+}
+
+.pf-buffering-control::-ms-fill {
+    animation-name: -ms-ring;
+}
+
+/* Control Panel */
+.pf-container .pf-control-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: transparent !important;
+}
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-controlcontainer-secondary {
+        margin: 5px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-controlcontainer-secondary {
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+    }
+
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary > *:not(.pf-meter) {
+        display: inline-block;
+    }
+    
+    .pf-container .pf-control-panel .pf-controlcontainer-secondary > .pf-control:not(.pf-button) {
+        margin: 0 5px 0 5px;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar > * {
+        display: inline-block;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-controlcontainer-timeline {
+        flex: 1;
+        margin: 5px;
+    }
+
+        .pf-container .pf-control-panel:not(.pf-compact) .pf-controlcontainer-timeline > * {
+            display: inline-block;
+            margin: 5px;
+        }
+
+    .pf-container .pf-control-panel .pf-controlcontainer-primary .pf-button .pf-button-container {
+        border-width: 4px;
+    }
+
+    .pf-container .pf-control-panel .pf-button {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        margin: 5px;
+    }
+
+    .pf-container .pf-control-panel .pf-play-pause-control {
+        width: 100px;
+        height: 100px;
+        font-size: 60px;
+    }
+
+    .pf-container .pf-control-panel .pf-skip-back-control, .pf-container .pf-control-panel .pf-skip-ahead-control, .pf-container .pf-control-panel .pf-rewind-control, .pf-container .pf-control-panel .pf-fast-forward-control, .pf-container .pf-control-panel .pf-skip-previous-control, .pf-container .pf-control-panel .pf-skip-next-control {
+        width: 70px;
+        height: 70px;
+        font-size: 42px;
+    }
+
+    .pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-time-separator, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control {
+        width: 70px;
+        font-size: 22px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-elapsed-time-control, .pf-container .pf-control-panel.pf-compact .pf-time-separator, .pf-container .pf-control-panel.pf-compact .pf-remaining-time-control, .pf-container .pf-control-panel.pf-compact .pf-total-time-control {
+        height: 22px;
+        position: absolute;
+        bottom: 14px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-elapsed-time-control {
+        left: 10px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-time-separator {
+        left: 95px;
+        width: 10px;
+        bottom: 24px;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-time-separator {
+        display: none !important;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-remaining-time-control {
+        left: 105px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-total-time-control {
+        left: 105px;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-timeline-control {
+        display: inline-block;
+        bottom: 14px;
+        width: calc(100% - 175px);
+        height: 22px;
+        z-index: 1;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-timeline-control {
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: 60px;
+        width: auto;
+        height: 22px;
+        z-index: 1;
+    }
+
+    .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
+        height: 12px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+        height: 22px;
+    }
+
+    .pf-container .pf-control-panel .pf-volume-slider-control input[type=range]::-ms-track {
+        width: 12px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .pf-container .pf-control-panel .pf-volume-slider-control input[type=range]::-ms-thumb {
+        width: 22px;
+    }
+
+    .pf-container .pf-control-panel .pf-transportbar {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: 0px;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-transportbar {
+        height: 60px;
+        display: flex;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-transportbar {
+        width: auto;
+        height: 92px;
+    }
+
+    .pf-container .pf-control-panel:not(.pf-compact) .pf-volume-mute-container .pf-volume-slider-control {
+        bottom: calc(100% + 5px);
+        height: 180px;
+        left: calc(50% - 28px);
+        padding: 15px 18px 0 18px;
+        width: 22px;
+    }
+
+    .pf-container .pf-control-panel.pf-compact .pf-volume-mute-container .pf-volume-slider-control {
+        bottom: calc(100% + 37px);
+        height: 145px;
+        left: calc(50% - 31px);
+        padding: 15px 22px 0 22px;
+        width: 22px;
+    }
+
+.pf-container .pf-captions-container {
+    padding: 65px 15px;
+}
+
+.pf-container.pf-full-screen .pf-captions-container {
+    padding: 100px 15px;
+}
+
+.pf-container.pf-full-screen .pf-cue {
+    font-size: 30px;
+}
+
+.pf-slider:not(.pf-vertical) input[type=range], .pf-slider:not(.pf-vertical) input[type=range]::-ms-track, .pf-slider:not(.pf-vertical) input[type=range]::-ms-fill-lower, .pf-slider:not(.pf-vertical) input[type=range]::-ms-fill-upper, .pf-slider:not(.pf-vertical) progress, .pf-slider:not(.pf-vertical) progress::-ms-fill {
+    height: 100%;
+}
+
+.pf-slider.pf-vertical input[type=range], .pf-slider.pf-vertical input[type=range]::-ms-track, .pf-slider.pf-vertical input[type=range]::-ms-fill-lower, .pf-slider.pf-vertical input[type=range]::-ms-fill-upper, .pf-slider.pf-vertical progress, .pf-slider.pf-vertical progress::-ms-fill {
+    width: 100%;
+}
+
+.pf-slider-marker {
+    height: 12px;
+    margin-top: 5px;
+}
+
+.pf-container .pf-control-panel:not(.pf-compact) .pf-slider-thumbnailView {
+    top: -108px;
+}
+
+.pf-container .pf-control-panel.pf-compact .pf-slider-thumbnailView {
+    top: -98px;
+}

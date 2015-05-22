@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{812F8D33-715D-4ACB-83BA-5D379E68B08D}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Media.Analytics</RootNamespace>
+    <AssemblyName>Microsoft.Media.Analytics</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10069.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10069.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Microsoft.Media.Analytics.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.WinRT.Analytics\AnalyticsCollector.cs">
+      <Link>AnalyticsCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\config\AnalyticsConfig.cs">
+      <Link>Config\AnalyticsConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\config\EdgeServerConfig.cs">
+      <Link>Config\EdgeServerConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\config\LoggingConfig.cs">
+      <Link>Config\LoggingConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\config\QualityConfig.cs">
+      <Link>Config\QualityConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\EdgeServerMonitor.cs">
+      <Link>DataClients\EdgeServerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\EdgeServerResult.cs">
+      <Link>DataClients\EdgeServerResult.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\IAdaptiveMonitor.cs">
+      <Link>DataClients\IAdaptiveMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\IEdgeServerMonitor.cs">
+      <Link>DataClients\IEdgeServerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\IEnvironmentMonitor.cs">
+      <Link>DataClients\IEnvironmentMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\dataclients\IPlayerMonitor.cs">
+      <Link>DataClients\IPlayerMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\extensions\LinqExtensions.cs">
+      <Link>Extensions\LinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\extensions\LoggingExtensions.cs">
+      <Link>Extensions\LoggingExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\extensions\XmlReaderExtensions.cs">
+      <Link>Extensions\XmlReaderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logging\ILoggingSource.cs">
+      <Link>Logging\ILoggingSource.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logging\ILoggingTarget.cs">
+      <Link>Logging\ILoggingTarget.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logging\Log.cs">
+      <Link>Logging\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logging\LogConstants.cs">
+      <Link>Logging\LogConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logging\LoggingService.cs">
+      <Link>Logging\LoggingService.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\AppStartLog.cs">
+      <Link>Logs\AppStartLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\AudioTrackChangedLog.cs">
+      <Link>Logs\AudioTrackChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\BitrateChangedLog.cs">
+      <Link>Logs\BitrateChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\BufferingChangedLog.cs">
+      <Link>Logs\BufferingChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\BufferSizeLog.cs">
+      <Link>Logs\BufferSizeLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\CaptionTrackChangedLog.cs">
+      <Link>Logs\CaptionTrackChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\ChunkDownloadLog.cs">
+      <Link>Logs\ChunkDownloadLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\ClipEventLog.cs">
+      <Link>Logs\ClipEventLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\CpuLog.cs">
+      <Link>Logs\CpuLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\DownloadErrorLog.cs">
+      <Link>Logs\DownloadErrorLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\DvrOperationLog.cs">
+      <Link>Logs\DvrOperationLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\ErrorLog.cs">
+      <Link>Logs\ErrorLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\EventTypes.cs">
+      <Link>Logs\EventTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\FpsLog.cs">
+      <Link>Logs\FpsLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\FullscreenChangedLog.cs">
+      <Link>Logs\FullscreenChangedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\LatencyAlertLog.cs">
+      <Link>Logs\LatencyAlertLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\PerceivedBandwidthLog.cs">
+      <Link>Logs\PerceivedBandwidthLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\PlayTimePercentageReachedLog.cs">
+      <Link>Logs\PlayTimePercentageReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\PlayTimeReachedLog.cs">
+      <Link>Logs\PlayTimeReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\PositionPercentageReachedLog.cs">
+      <Link>Logs\PositionPercentageReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\PositionReachedLog.cs">
+      <Link>Logs\PositionReachedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\StreamEventLog.cs">
+      <Link>Logs\StreamEventLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\StreamFailedLog.cs">
+      <Link>Logs\StreamFailedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\logs\StreamLoadedLog.cs">
+      <Link>Logs\StreamLoadedLog.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\DownloadErrorReport.cs">
+      <Link>Reports\DownloadErrorReport.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\DownloadErrorReportAggregator.cs">
+      <Link>Reports\DownloadErrorReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\IMarkerEntry.cs">
+      <Link>Reports\IMarkerEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\QualityReport.cs">
+      <Link>Reports\QualityReport.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\QualityReportAggregator.cs">
+      <Link>Reports\QualityReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\ReportAggregator.cs">
+      <Link>Reports\ReportAggregator.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.winrt.analytics\reports\ReportTypes.cs">
+      <Link>Reports\ReportTypes.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
