@@ -119,6 +119,7 @@
       <Link>WebVTTPlugin.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebVTTCaptionSettingsPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />

@@ -120,6 +120,7 @@
       <Link>MediaPlayerExtensions.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TTMLCaptionSettingsPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
