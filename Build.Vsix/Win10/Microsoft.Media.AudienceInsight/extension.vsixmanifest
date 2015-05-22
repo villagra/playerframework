@@ -1,0 +1,19 @@
+﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Identity Id="Microsoft.AudienceInsight.Win10.ED154DAD-5882-4644-8E6B-0CE300665F26" Version="1.0.0.0" Language="en-US" Publisher="Microsoft" />
+    <DisplayName>Microsoft Audience Insight Client SDK</DisplayName>
+    <Description>Microsoft Audience Insight Client SDK for Windows 10 Apps</Description>
+    <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
+    <License>License.rtf</License>
+    <Icon>MMPPF.ico</Icon>
+    <PreviewImage>MMPPF.ico</PreviewImage>
+    <Tags>Audience Insight, Microsoft Media Platform Player Framework, Xaml, JS, MMPPF</Tags>
+  </Metadata>
+  <Installation Scope="Global" AllUsers="true">
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.AudienceInsight.Win10" SdkVersion="1.0.0.0" />
+  </Installation>
+  <Dependencies/>
+  <Assets>
+    <Asset Type="Microsoft.ExtensionSDK" Path="SDKManifest.xml" />
+  </Assets>
+</PackageManifest>

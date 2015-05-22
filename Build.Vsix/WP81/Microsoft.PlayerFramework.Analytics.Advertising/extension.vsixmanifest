@@ -1,6 +1,6 @@
 ﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="MMP.PF.WP81.Analytics.Advertising.VSIX.1EB025D0-0E11-4AD7-BAA7-D3CB207255E4" Version="2.0.0.2" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="MMP.PF.WP81.Analytics.Advertising.VSIX.1EB025D0-0E11-4AD7-BAA7-D3CB207255E4" Version="2.0.0.3" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework Advertising Analytics Adapter</DisplayName>
     <Description>Microsoft Media Platform: Player Framework Advertising Analytics Adapter for Windows 8 Store Apps</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
