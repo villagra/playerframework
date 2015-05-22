@@ -353,9 +353,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="..\Universal.Xaml.Core\en-US\Resources.resw">
-      <Link>en-US\Resources.resw</Link>
-    </PRIResource>
+    <PRIResource Include="en-US\Resources.resw" />
     <None Include="Microsoft.PlayerFramework.snk" />
     <None Include="packages.config" />
   </ItemGroup>
