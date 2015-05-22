@@ -14,6 +14,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/EntertainmentTheme.xaml"/>
+                <!--<ResourceDictionary Source="ms-appx:///Microsoft.PlayerFramework/themes/Classic.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
 
             <mmppf:PlaylistPlugin x:Key="PlaylistPlugin">
@@ -46,11 +47,16 @@
             <mmppf:PlaylistCommands x:Key="PlaylistCommands" PlaylistPlugin="{StaticResource PlaylistPlugin}"/>
 
         </ResourceDictionary>
-        
+
     </Page.Resources>
 
     <Grid Style="{StaticResource LayoutRootStyle}">
-        <mmppf:MediaPlayer x:Name="player" Grid.Row="1" IsSkipPreviousVisible="True" IsSkipNextVisible="True">
+        <mmppf:MediaPlayer x:Name="player" Grid.Row="1" IsSkipPreviousVisible="True" IsSkipNextVisible="True"
+                           IsSkipAheadVisible="True"
+                           IsSkipBackVisible="True"
+                           IsRewindVisible="True"
+                           IsFastForwardVisible="True"
+                           >
             <mmppf:MediaPlayer.Plugins>
                 <StaticResource ResourceKey="PlaylistPlugin"/>
             </mmppf:MediaPlayer.Plugins>
@@ -60,9 +66,9 @@
     <Page.BottomAppBar>
         <AppBar x:Name="lowerAppBar" Background="{StaticResource AppBarBackgroundThemeBrush}">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <mmppf:ReplayButton x:Name="ReplayButton" ViewModel="{Binding InteractiveViewModel, ElementName=player}" Style="{StaticResource AppBarButtonStyle}"/>
-                <mmppf:CaptionSelectionButton x:Name="CaptionSelectionButton" ViewModel="{Binding InteractiveViewModel, ElementName=player}" Style="{StaticResource AppBarButtonStyle}"/>
-                <mmppf:AudioSelectionButton x:Name="AudioSelectionButton" ViewModel="{Binding InteractiveViewModel, ElementName=player}" Style="{StaticResource AppBarButtonStyle}"/>
+                <Button x:Name="ReplayButton" Style="{StaticResource AppBarButtonStyle}"/>
+                <Button x:Name="CaptionSelectionButton" Style="{StaticResource AppBarButtonStyle}"/>
+                <Button x:Name="AudioSelectionButton" Style="{StaticResource AppBarButtonStyle}"/>
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>

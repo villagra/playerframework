@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mmppf="using:Microsoft.PlayerFramework"
     mc:Ignorable="d">
-
     <Grid Style="{StaticResource LayoutRootStyle}">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4"/>
     </Grid>

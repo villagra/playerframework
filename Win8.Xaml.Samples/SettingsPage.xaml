@@ -59,6 +59,8 @@
                     <CheckBox IsChecked="{Binding IsSkipBackVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipBackVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsSkipAheadVisible, ElementName=player, Mode=TwoWay}" Content="IsSkipAheadVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsTimelineVisible, ElementName=player, Mode=TwoWay}" Content="IsTimelineVisible" Style="{StaticResource CheckStyle}" />
+                    <CheckBox IsChecked="{Binding IsMoreVisible, ElementName=player, Mode=TwoWay}" Content="IsMoreVisible" Style="{StaticResource CheckStyle}" />
+                    <CheckBox IsChecked="{Binding IsInfoVisible, ElementName=player, Mode=TwoWay}" Content="IsInfoVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsResolutionIndicatorVisible, ElementName=player, Mode=TwoWay}" Content="IsResolutionIndicatorVisible" Style="{StaticResource CheckStyle}" />
                     <CheckBox IsChecked="{Binding IsSignalStrengthVisible, ElementName=player, Mode=TwoWay}" Content="IsSignalStrengthVisible" Style="{StaticResource CheckStyle}" />
                     <TextBlock Style="{StaticResource TextStyle}" Text="Signal Strength:"/>

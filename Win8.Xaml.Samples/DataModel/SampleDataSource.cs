@@ -324,11 +324,6 @@ namespace Microsoft.PlayerFramework.Samples.Data
         static IEnumerable<SampleDataItem> GetCaptionSamples()
         {
             yield return new SampleDataItem(
-                    "Plain text captions",
-                    typeof(PlainTextPage),
-                    "Demonstrates displaying plain-text closed captions/subtitles.");
-
-            yield return new SampleDataItem(
                     "TTML captions",
                     typeof(TtmlPage),
                     "Demonstrates TTML closed captions/subtitles.");

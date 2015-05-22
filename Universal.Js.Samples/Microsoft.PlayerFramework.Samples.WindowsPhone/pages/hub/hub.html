@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Microsoft Player Framework Samples</title>
+
+    <link href="/css/phone.css" rel="stylesheet" />
+    <link href="/pages/hub/hubphone.css" rel="stylesheet" />
+    <script src="/js/data.js"></script>
+    <script src="/pages/hub/hub.js"></script>
+</head>
+<body>
+    <div class="itemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="templatecontainer">
+            <img src="#" data-win-bind="src: backgroundImage; alt: title" />
+            <div class="itemcontainer">
+                <div class="itemtitle label-extralarge" data-win-bind="textContent: title"></div>
+                <div class="label-mediummid" data-win-bind="textContent: description" style="height: 82px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hubpage fragment">
+        <header aria-label="Header content" role="banner">
+            <button class="titlearea backbutton" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Microsoft Player Framework Samples</span>
+            </h1>
+        </header>
+
+        <section aria-label="Main content" role="main">
+
+            <div class="hub" data-win-control="WinJS.UI.Pivot">
+                <div class="section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ header: 'Common' }">
+                    <div class="itemslist win-selectionstylefilled" data-win-control="WinJS.UI.ListView" data-win-options="{
+                        selectionMode: 'none',
+                        itemTemplate: select('.itemTemplate'),
+                        itemDataSource: select('.pagecontrol').winControl.commonDataSource,
+                        layout: {type: WinJS.UI.ListLayout},
+                        oniteminvoked: select('.pagecontrol').winControl.commonItemNavigate
+                        }">
+                    </div>
+                </div>
+
+                <div class="section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ header: 'Adaptive' }">
+                    <div class="itemslist win-selectionstylefilled" data-win-control="WinJS.UI.ListView" data-win-options="{
+                        selectionMode: 'none',
+                        itemTemplate: select('.itemTemplate'),
+                        itemDataSource: select('.pagecontrol').winControl.adaptiveDataSource,
+                        layout: {type: WinJS.UI.ListLayout},
+                        oniteminvoked: select('.pagecontrol').winControl.adaptiveItemNavigate
+                        }">
+                    </div>
+                </div>
+
+                <div class="section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ header: 'Captions' }">
+                    <div class="itemslist win-selectionstylefilled" data-win-control="WinJS.UI.ListView" data-win-options="{
+                        selectionMode: 'none',
+                        itemTemplate: select('.itemTemplate'),
+                        itemDataSource: select('.pagecontrol').winControl.captionsDataSource,
+                        layout: {type: WinJS.UI.ListLayout},
+                        oniteminvoked: select('.pagecontrol').winControl.captionsItemNavigate
+                        }">
+                    </div>
+                </div>
+
+                <div class="section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ header: 'Advertising' }">
+                    <div class="itemslist win-selectionstylefilled" data-win-control="WinJS.UI.ListView" data-win-options="{
+                        selectionMode: 'none',
+                        itemTemplate: select('.itemTemplate'),
+                        itemDataSource: select('.pagecontrol').winControl.advertisingDataSource,
+                        layout: {type: WinJS.UI.ListLayout},
+                        oniteminvoked: select('.pagecontrol').winControl.advertisingItemNavigate
+                        }">
+                    </div>
+                </div>
+
+                <div class="section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ header: 'Advanced' }">
+                    <div class="itemslist win-selectionstylefilled" data-win-control="WinJS.UI.ListView" data-win-options="{
+                        selectionMode: 'none',
+                        itemTemplate: select('.itemTemplate'),
+                        itemDataSource: select('.pagecontrol').winControl.advancedDataSource,
+                        layout: {type: WinJS.UI.ListLayout},
+                        oniteminvoked: select('.pagecontrol').winControl.advancedItemNavigate
+                        }">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

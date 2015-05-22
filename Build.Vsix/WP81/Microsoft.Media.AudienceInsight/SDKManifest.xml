@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<FileList
+  Identity = "Microsoft.AudienceInsight.WP81.SDK, Version=1.0"
+  DisplayName = "Microsoft Audience Insight Client SDK"
+  MinVSVersion = "12.0"
+  MinToolsVersion = "4.0"
+  AppliesTo = "WindowsAppContainer"
+  MaxPlatformVersion="8.1"
+  MinOSVersion="6.3.1"
+  MaxOSVersionTested="6.3.1"
+  ReferenceManagerEnumeration = "Files">
+</FileList>

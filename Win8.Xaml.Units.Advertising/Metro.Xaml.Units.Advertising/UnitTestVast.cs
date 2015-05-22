@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.PlayerFramework.Advertising;
-using Microsoft.VideoAdvertising;
+using Microsoft.Media.Advertising;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace Microsoft.PlayerFramework.Units.Advertising

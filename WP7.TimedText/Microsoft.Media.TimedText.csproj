@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C395BA49-ABE0-4F4F-8C03-29B494AB88DF}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.TimedText</RootNamespace>
+    <AssemblyName>Microsoft.TimedText</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE7</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\sl4-windowsphone71\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\PositionLength.cs">
+      <Link>Captions\PositionLength.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TextStyle.cs">
+      <Link>Captions\TextStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TunneledData.cs">
+      <Link>Captions\TunneledData.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Parsing\TimedTextSmpte.cs">
+      <Link>TimedTextLib\Parsing\TimedTextSmpte.cs</Link>
+    </Compile>
+    <Compile Include="Compatibility\HttpClient.cs" />
+    <Compile Include="Resources\Resources.Designer.cs" />
+    <Compile Include="..\Universal.WinRT.TimedText\CaptionMarkerFactory.cs">
+      <Link>CaptionMarkerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\CaptionElement.cs">
+      <Link>Captions\CaptionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\CaptionRegion.cs">
+      <Link>Captions\CaptionRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\DisplayAlign.cs">
+      <Link>Captions\DisplayAlign.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\Extent.cs">
+      <Link>Captions\Extent.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\Length.cs">
+      <Link>Captions\Length.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\LengthUnit.cs">
+      <Link>Captions\LengthUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\Origin.cs">
+      <Link>Captions\Origin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\Overflow.cs">
+      <Link>Captions\Overflow.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\Padding.cs">
+      <Link>Captions\Padding.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\ShowBackground.cs">
+      <Link>Captions\ShowBackground.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\TimedTextAnimation.cs">
+      <Link>Captions\TimedTextAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\TimedTextElement.cs">
+      <Link>Captions\TimedTextElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\TimedTextElementType.cs">
+      <Link>Captions\TimedTextElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\captions\TimedTextStyle.cs">
+      <Link>Captions\TimedTextStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Weight.cs">
+      <Link>Captions\Weight.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\controls\CaptionBlockRegion.cs">
+      <Link>Controls\CaptionBlockRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\extensions\Extensions.cs">
+      <Link>Extensions\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\markers\IMarkerManager.cs">
+      <Link>Markers\IMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\markers\MediaMarker.cs">
+      <Link>Markers\MediaMarker.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\markers\MediaMarkerCollection.cs">
+      <Link>Markers\MediaMarkerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\markers\MediaMarkerManager.cs">
+      <Link>Markers\MediaMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\parser\IMarkerParser.cs">
+      <Link>Parser\IMarkerParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\parser\TimedTextMarkerParser.cs">
+      <Link>Parser\TimedTextMarkerParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\parser\TimedTextStyleParser.cs">
+      <Link>Parser\TimedTextStyleParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\parser\TimedTextVocabulary.cs">
+      <Link>Parser\TimedTextVocabulary.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextCaptions.cs">
+      <Link>TimedTextCaptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\metadata\Metadata.cs">
+      <Link>TimedTextLib\Metadata\Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\AnonymousSpanElement.cs">
+      <Link>TimedTextLib\Model\AnonymousSpanElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\BodyElement.cs">
+      <Link>TimedTextLib\Model\BodyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\BrElement.cs">
+      <Link>TimedTextLib\Model\BrElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\DivElement.cs">
+      <Link>TimedTextLib\Model\DivElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\HeadElement.cs">
+      <Link>TimedTextLib\Model\HeadElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\LayoutElement.cs">
+      <Link>TimedTextLib\Model\LayoutElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\MetadataElement.cs">
+      <Link>TimedTextLib\Model\MetadataElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\PElement.cs">
+      <Link>TimedTextLib\Model\PElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\RegionElement.cs">
+      <Link>TimedTextLib\Model\RegionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\SetElement.cs">
+      <Link>TimedTextLib\Model\SetElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\SpanElement.cs">
+      <Link>TimedTextLib\Model\SpanElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\StyleElement.cs">
+      <Link>TimedTextLib\Model\StyleElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\StylingElement.cs">
+      <Link>TimedTextLib\Model\StylingElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\TimedTextAttributeBase.cs">
+      <Link>TimedTextLib\Model\TimedTextAttributeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\TimedTextElementBase.cs">
+      <Link>TimedTextLib\Model\TimedTextElementBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\model\TtElement.cs">
+      <Link>TimedTextLib\Model\TtElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\parsing\TimedTextException.cs">
+      <Link>TimedTextLib\Parsing\TimedTextException.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\parsing\TimedTextMetadata.cs">
+      <Link>TimedTextLib\Parsing\TimedTextMetadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\parsing\TimedTextProfile.cs">
+      <Link>TimedTextLib\Parsing\TimedTextProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\rendering\FormattingObjectNew.cs">
+      <Link>TimedTextLib\Rendering\FormattingObjectNew.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\rendering\Renderer.cs">
+      <Link>TimedTextLib\Rendering\Renderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\rendering\Unicode.cs">
+      <Link>TimedTextLib\Rendering\Unicode.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\SmpteFrameRate.cs">
+      <Link>TimedTextLib\SmpteFrameRate.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\styling\ColourExpression.cs">
+      <Link>TimedTextLib\Styling\ColourExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\styling\Extent.cs">
+      <Link>TimedTextLib\Styling\Extent.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\styling\Font.cs">
+      <Link>TimedTextLib\Styling\Font.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\styling\NumberPair.cs">
+      <Link>TimedTextLib\Styling\NumberPair.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\styling\Styling.cs">
+      <Link>TimedTextLib\Styling\Styling.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\timing\TimeCode.cs">
+      <Link>TimedTextLib\Timing\TimeCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\timing\TimeExpression.cs">
+      <Link>TimedTextLib\Timing\TimeExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\timedtextlib\timing\TimeTree.cs">
+      <Link>TimedTextLib\Timing\TimeTree.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\utilities\ObservableObject.cs">
+      <Link>Utilities\ObservableObject.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.Timedtext\utilities\OrderedObservableCollection.cs">
+      <Link>Utilities\OrderedObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

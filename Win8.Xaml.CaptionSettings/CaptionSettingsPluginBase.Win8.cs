@@ -100,13 +100,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 fontFamilyMap = new Dictionary<FontFamily, string>();
 
                 fontFamilyMap[FontFamily.Default] = null;
-                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
-                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
-                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
-                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
-                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Segoe Print");
-                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Segoe Script");
-                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(FontFamily.MonospaceSerif, "Courier New");
+                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(FontFamily.ProportionalSerif, "Times New Roman");
+                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(FontFamily.MonospaceSansSerif, "Consolas");
+                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(FontFamily.ProportionalSansSerif, "Tahoma");
+                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(FontFamily.Casual, "Segoe Print");
+                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(FontFamily.Cursive, "Segoe Script");
+                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(FontFamily.Smallcaps, "Tahoma");
             }
 
             return fontFamilyMap[fontFamily];
@@ -115,7 +115,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Activate the plug-in
         /// </summary>
-        internal void Activate()
+        partial void Activate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
 
@@ -137,6 +137,16 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             this.Settings.PropertyChanged += this.Settings_PropertyChanged;
+        }
+
+        /// <summary>
+        /// Deactivate the plug-in
+        /// </summary>
+        partial void Deactivate()
+        {
+            SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
+
+            this.Settings.PropertyChanged -= this.Settings_PropertyChanged;
         }
         #endregion
 
@@ -161,16 +171,6 @@ namespace Microsoft.PlayerFramework.CaptionSettings
             }
 
             return defaultName;
-        }
-
-        /// <summary>
-        /// Deactivate the plug-in
-        /// </summary>
-        private void Deactivate()
-        {
-            SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
-
-            this.Settings.PropertyChanged -= this.Settings_PropertyChanged;
         }
 
         /// <summary>

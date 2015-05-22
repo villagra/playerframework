@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BD03CD2-8D1D-4BAC-8656-D3CF66274186}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework.Samples</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework.Xaml.Samples</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>9B053CDD8CC94E8108727B37154598AF5F0B5C07</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Microsoft.PlayerFramework.Samples_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Adaptive\CffOfflinePage.xaml.cs">
+      <DependentUpon>CffOfflinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
+      <DependentUpon>CffProgressivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\DashPage.xaml.cs">
+      <DependentUpon>DashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\LivePage.xaml.cs">
+      <DependentUpon>LivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\AdPodPage.xaml.cs">
+      <DependentUpon>AdPodPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\AdSchedulingPage.xaml.cs">
+      <DependentUpon>AdSchedulingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\FreeWheelPage.xaml.cs">
+      <DependentUpon>FreeWheelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VmapPage.xaml.cs">
+      <DependentUpon>VmapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\MastPage.xaml.cs">
+      <DependentUpon>MastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\ProgrammaticAdPage.xaml.cs">
+      <DependentUpon>ProgrammaticAdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\ScheduleClipPage.xaml.cs">
+      <DependentUpon>ScheduleClipPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VastLinearCompanionPage.xaml.cs">
+      <DependentUpon>VastLinearCompanionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Advertising\VastLinearNonlinearPage.xaml.cs">
+      <DependentUpon>VastLinearNonlinearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AutoLoadPage.xaml.cs">
+      <DependentUpon>AutoLoadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\WebVTTPage.xaml.cs">
+      <DependentUpon>WebVTTPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\InstreamTtmlPage.xaml.cs">
+      <DependentUpon>InstreamTtmlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="ThumbnailPage.xaml.cs">
+      <DependentUpon>ThumbnailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\MediaPlayerExtensions.cs" />
+    <Compile Include="SuspendResumePage.xaml.cs">
+      <DependentUpon>SuspendResumePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayToPage.xaml.cs">
+      <DependentUpon>PlayToPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TrackingPage.xaml.cs">
+      <DependentUpon>TrackingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="EntertainmentAppPage.xaml.cs">
+      <DependentUpon>EntertainmentAppPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.xaml.cs">
+      <DependentUpon>ErrorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MarkersPage.xaml.cs">
+      <DependentUpon>MarkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlaylistPage.xaml.cs">
+      <DependentUpon>PlaylistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayReadyPage.xaml.cs">
+      <DependentUpon>PlayReadyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayReady\HttpHelper.cs" />
+    <Compile Include="PlayReady\Indiv.cs" />
+    <Compile Include="PlayReady\LicenseAcquisition.cs" />
+    <Compile Include="PlayReady\RequestChain.cs" />
+    <Compile Include="PlayReady\ServiceRequest.cs" />
+    <Compile Include="PosterPage.xaml.cs">
+      <DependentUpon>PosterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressivePage.xaml.cs">
+      <DependentUpon>ProgressivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adaptive\SmoothPage.xaml.cs">
+      <DependentUpon>SmoothPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Captions\TtmlPage.xaml.cs">
+      <DependentUpon>TtmlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalPlaybackPage.xaml.cs">
+      <DependentUpon>LocalPlaybackPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Common\ReadMe.txt" />
+    <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Adaptive\CffOfflinePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\CffProgressivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\DashPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\LivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\AdPodPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\AdSchedulingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\FreeWheelPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\VmapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Advertising\MastPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\ProgrammaticAdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\ScheduleClipPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\VastLinearCompanionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Advertising\VastLinearNonlinearPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutoLoadPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Captions\WebVTTPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Captions\InstreamTtmlPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ThumbnailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SuspendResumePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PlayToPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TrackingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ErrorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MarkersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlaylistPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayReadyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PosterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adaptive\SmoothPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Captions\TtmlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocalPlaybackPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{f5b18650-60cd-409f-9d64-63de7b8bf0da}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj">
+      <Project>{bfd7f8cb-c154-43e8-9647-d1f8005f71ab}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj">
+      <Project>{7df397b9-fb55-42db-a5b7-ad012d188953}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Dash</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.Analytics\Microsoft.Media.Analytics.csproj">
+      <Project>{961ce8ee-f4be-403f-ac06-a53ce1c7ce4c}</Project>
+      <Name>Microsoft.Media.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.WebVTT\Microsoft.Media.WebVTT.csproj">
+      <Project>{a3abccaa-b41b-4ab6-a1d9-a1e0d939b140}</Project>
+      <Name>Microsoft.Media.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj">
+      <Project>{66c646d5-855a-4ca9-91e2-190c6834f7c0}</Project>
+      <Name>Microsoft.PlayerFramework.Adaptive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Advertising\Microsoft.PlayerFramework.Advertising.csproj">
+      <Project>{2e19fe19-9b06-416d-8ffc-c432d6285cb9}</Project>
+      <Name>Microsoft.PlayerFramework.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Analytics\Microsoft.PlayerFramework.Analytics.csproj">
+      <Project>{da1f6f23-4c7f-4e0c-8884-f283ee0f3633}</Project>
+      <Name>Microsoft.PlayerFramework.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.CaptionSettings\Microsoft.PlayerFramework.CaptionSettings.csproj">
+      <Project>{cd917ee6-c9d9-44f8-aa67-2bfd7cd27f21}</Project>
+      <Name>Microsoft.PlayerFramework.CaptionSettings</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.Core\Microsoft.PlayerFramework.Core.csproj">
+      <Project>{a34a3614-4135-40e8-b4bd-ccddded081fa}</Project>
+      <Name>Microsoft.PlayerFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.TimedText\Microsoft.PlayerFramework.TimedText.csproj">
+      <Project>{54fb8bf9-02df-490f-9837-0195afd3f1aa}</Project>
+      <Name>Microsoft.PlayerFramework.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.TTML.Settings\Microsoft.PlayerFramework.TTML.Settings.csproj">
+      <Project>{04deb5fc-de16-40b7-9490-36ab3fec0f10}</Project>
+      <Name>Microsoft.PlayerFramework.TTML.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.WebVTT.Settings\Microsoft.PlayerFramework.WebVTT.Settings.csproj">
+      <Project>{2406d3cf-7587-4cdf-8a1b-74877e45dda2}</Project>
+      <Name>Microsoft.PlayerFramework.WebVTT.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.Xaml.WebVTT\Microsoft.PlayerFramework.WebVTT.csproj">
+      <Project>{2ba82c57-a6fe-4b07-a2d9-fcec84e8650d}</Project>
+      <Name>Microsoft.PlayerFramework.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
+      <Project>{b252fc20-5150-43d0-bb77-802df3231ef1}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.TimedText\Microsoft.Media.TimedText.csproj">
+      <Project>{d1f1ea17-4a91-4f3b-a243-f2b41d6cbce6}</Project>
+      <Name>Microsoft.Media.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win8.WinRT.Advertising\Microsoft.Media.Advertising.csproj">
+      <Project>{f863edc6-2886-4d39-a578-89f4ff729d82}</Project>
+      <Name>Microsoft.Media.Advertising</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo150x150.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Logo30x30.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Logo50x50.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SplashScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Include="EntertainmentAppPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Media.AdaptiveStreamingClient, Version=1.0">
+      <Name>Microsoft Smooth Streaming Client SDK for Windows 8</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Media.PlayReadyClient, Version=2.3.1678.0">
+      <Name>Microsoft PlayReady Client SDK</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=11.0">
+      <Name>Microsoft Visual C++ Runtime Package</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

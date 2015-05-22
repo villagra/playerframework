@@ -42,11 +42,9 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// </summary>
         protected CaptionSettingsPluginBase()
         {
-            var loader = AssemblyResources.Get();
-
             this.SettingsCommandId = "CaptionSettings";
 
-            this.Label = loader.GetString("CaptionSettings");
+            this.Label = AssemblyResources.GetString("CaptionSettings");
         }
         #endregion
 
@@ -96,13 +94,13 @@ namespace Microsoft.PlayerFramework.CaptionSettings
                 fontFamilyMap = new Dictionary<FontFamily, string>();
 
                 fontFamilyMap[FontFamily.Default] = null;
-                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(fontFamily, "Courier New");
-                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(fontFamily, "Times New Roman");
-                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(fontFamily, "Consolas");
-                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(fontFamily, "Tahoma");
-                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(fontFamily, "Segoe Print");
-                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(fontFamily, "Segoe Script");
-                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(fontFamily, "Tahoma");
+                fontFamilyMap[FontFamily.MonospaceSerif] = GetDefaultFontFamily(FontFamily.MonospaceSerif, "Courier New");
+                fontFamilyMap[FontFamily.ProportionalSerif] = GetDefaultFontFamily(FontFamily.ProportionalSerif, "Times New Roman");
+                fontFamilyMap[FontFamily.MonospaceSansSerif] = GetDefaultFontFamily(FontFamily.MonospaceSansSerif, "Consolas");
+                fontFamilyMap[FontFamily.ProportionalSansSerif] = GetDefaultFontFamily(FontFamily.ProportionalSansSerif, "Tahoma");
+                fontFamilyMap[FontFamily.Casual] = GetDefaultFontFamily(FontFamily.Casual, "Segoe Print");
+                fontFamilyMap[FontFamily.Cursive] = GetDefaultFontFamily(FontFamily.Cursive, "Segoe Script");
+                fontFamilyMap[FontFamily.Smallcaps] = GetDefaultFontFamily(FontFamily.Smallcaps, "Tahoma");
             }
 
             return fontFamilyMap[fontFamily];
@@ -162,7 +160,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Add the settings pane and load the settings from local storage
         /// </summary>
-        internal void Activate()
+        partial void Activate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested += this.CaptionsSettingsPlugin_CommandsRequested;
 
@@ -172,7 +170,7 @@ namespace Microsoft.PlayerFramework.CaptionSettings
         /// <summary>
         /// Detach the settings pane
         /// </summary>
-        internal void Deactivate()
+        partial void Deactivate()
         {
             SettingsPane.GetForCurrentView().CommandsRequested -= this.CaptionsSettingsPlugin_CommandsRequested;
         }

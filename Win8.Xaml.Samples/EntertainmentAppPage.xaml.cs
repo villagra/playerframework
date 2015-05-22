@@ -24,8 +24,10 @@ namespace Microsoft.PlayerFramework.Samples
         public EntertainmentAppPage()
         {
             this.InitializeComponent();
-            UpdateViewModel(player.InteractiveViewModel);
-            player.InteractiveViewModelChanged += player_InteractiveViewModelChanged;
+
+            MediaControls.SetBehavior(ReplayButton, player.CreateMediaControlBehavior<ReplayButtonBehavior>());
+            MediaControls.SetBehavior(CaptionSelectionButton, player.CreateMediaControlBehavior<CaptionSelectionButtonBehavior>());
+            MediaControls.SetBehavior(AudioSelectionButton, player.CreateMediaControlBehavior<AudioSelectionButtonBehavior>());
 
             ReplayButton.Loaded += StartLayoutUpdates;
             ReplayButton.Unloaded += StopLayoutUpdates;
@@ -51,19 +53,7 @@ namespace Microsoft.PlayerFramework.Samples
             captionSelectorPlugin.CaptionSelectorViewStyle = new Style(typeof(CaptionSelectorView));
             captionSelectorPlugin.CaptionSelectorViewStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(0, 0, 0, 90)));
         }
-
-        void player_InteractiveViewModelChanged(object sender, RoutedPropertyChangedEventArgs<IInteractiveViewModel> e)
-        {
-            UpdateViewModel(e.NewValue);
-        }
-
-        private void UpdateViewModel(IInteractiveViewModel vm)
-        {
-            ReplayButton.ViewModel = vm;
-            CaptionSelectionButton.ViewModel = vm;
-            AudioSelectionButton.ViewModel = vm;
-        }
-
+        
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             player.Initialized -= player_Initialized;

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="77d140be-ff00-43d2-8f91-6c7cc667d06d" Publisher="CN=timg" Version="1.0.0.0" />
+  <Identity Name="77d140be-ff00-43d2-8f91-6c7cc667d06d" Publisher="CN=Tim" Version="1.0.0.0" />
   <Properties>
     <DisplayName>Microsoft.PlayerFramework.Xaml.DashDemo</DisplayName>
     <PublisherDisplayName>timg</PublisherDisplayName>

@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0BBA78D-6A47-4E1D-A6F0-88BEF727F8C9}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.PlayerFramework</RootNamespace>
+    <AssemblyName>Microsoft.PlayerFramework</AssemblyName>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>Bin\Release\Microsoft.PlayerFramework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\universal.xaml.core\commands\DelegateCommand.cs">
+      <Link>commands\DelegateCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\commands\ViewModelCommand.cs">
+      <Link>commands\ViewModelCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\commands\ViewModelCommandFactory.cs">
+      <Link>commands\ViewModelCommandFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\ControlPanel.cs">
+      <Link>Controls\ControlPanel\ControlPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\ControlPanel.TemplateDefinitions.cs">
+      <Link>Controls\ControlPanel\ControlPanel.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\DeselectableListBox.cs">
+      <Link>Controls\ControlPanel\DeselectableListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\MediaControlBehaviors.cs">
+      <Link>Controls\ControlPanel\MediaControlBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\PositionedItemsControl.cs">
+      <Link>Controls\ControlPanel\PositionedItemsControl.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\PositionedItemsPanel.cs">
+      <Link>Controls\ControlPanel\PositionedItemsPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\ResolutionIndicator.cs">
+      <Link>Controls\ControlPanel\ResolutionIndicator.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\SeekableSlider.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\SeekableSlider.TemplateDefinition.cs">
+      <Link>Controls\ControlPanel\SeekableSlider.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\SeekableSliderTemplateParts.cs">
+      <Link>Controls\ControlPanel\SeekableSliderTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\SeekableSliderVisualStates.cs">
+      <Link>Controls\ControlPanel\SeekableSliderVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\SignalStrength.cs">
+      <Link>Controls\ControlPanel\SignalStrength.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\StandardControlBehaviors.cs">
+      <Link>Controls\ControlPanel\StandardControlBehaviors.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\ThumbnailView.cs">
+      <Link>Controls\ControlPanel\ThumbnailView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\Timeline.cs">
+      <Link>Controls\ControlPanel\Timeline.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\VolumeButton.cs">
+      <Link>Controls\ControlPanel\VolumeButton.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\controlpanel\VolumeSlider.cs">
+      <Link>Controls\ControlPanel\VolumeSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\InteractiveViewModel.cs">
+      <Link>Controls\InteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\InteractiveViewModelBase.cs">
+      <Link>Controls\InteractiveViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\MediaPlayer.cs">
+      <Link>Controls\MediaPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\controls\MediaPlayer.TemplateDefinitions.cs">
+      <Link>Controls\MediaPlayer.TemplateDefinitions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\BoolToVisibilityConverter.cs">
+      <Link>converters\BoolToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\IsNullConverter.cs">
+      <Link>converters\IsNullConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\MulticastConverter.cs">
+      <Link>converters\MulticastConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\NotConverter.cs">
+      <Link>converters\NotConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\StringFormatConverter.cs">
+      <Link>converters\StringFormatConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\converters\TargetNullValueConverter.cs">
+      <Link>converters\TargetNullValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Converters\XamlConverter.cs">
+      <Link>converters\XamlConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\extensions\ControlExtensions.cs">
+      <Link>Extensions\ControlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\extensions\TimeSpanExtensions.cs">
+      <Link>Extensions\TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\extensions\ToggleButtonExtensions.cs">
+      <Link>Extensions\ToggleButtonExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\extensions\VisualTreeExtensions.cs">
+      <Link>Extensions\VisualTreeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\interfaces\IInteractiveViewModel.cs">
+      <Link>interfaces\IInteractiveViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\interfaces\IMediaSource.cs">
+      <Link>interfaces\IMediaSource.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\interfaces\IPlugin.cs">
+      <Link>interfaces\IPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\AudioSelectionPlugin.cs">
+      <Link>Plugins\AudioSelectionPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\AudioSelectionView.cs">
+      <Link>Plugins\AudioSelectionView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\BufferingPlugin.cs">
+      <Link>Plugins\BufferingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\BufferingView.cs">
+      <Link>Plugins\BufferingView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\CaptionSelectorPlugin.cs">
+      <Link>Plugins\CaptionSelectorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\CaptionSelectorView.cs">
+      <Link>Plugins\CaptionSelectorView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\ChaptersPlugin.cs">
+      <Link>Plugins\ChaptersPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\DisplayRequestPlugin.cs">
+      <Link>Plugins\DisplayRequestPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\ErrorPlugin.cs">
+      <Link>Plugins\ErrorPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\ErrorView.cs">
+      <Link>Plugins\ErrorView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\LoaderPlugin.cs">
+      <Link>Plugins\LoaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\LoaderView.cs">
+      <Link>Plugins\LoaderView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\PlaylistPlugin.Commands.cs">
+      <Link>Plugins\PlaylistPlugin.Commands.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\PlaylistPlugin.cs">
+      <Link>Plugins\PlaylistPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\PlayTimeTrackingPlugin.cs">
+      <Link>Plugins\PlayTimeTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\PluginBase.cs">
+      <Link>Plugins\PluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\PositionTrackingPlugin.cs">
+      <Link>Plugins\PositionTrackingPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PosterPlugin.cs">
+      <Link>Plugins\PosterPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.Xaml.Core\Plugins\PosterView.cs">
+      <Link>Plugins\PosterView.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\TrackingPlugin.Attached.cs">
+      <Link>Plugins\TrackingPlugin.Attached.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\plugins\TrackingPluginBase.cs">
+      <Link>Plugins\TrackingPluginBase.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\AdvertisingStateEnum.cs">
+      <Link>Primitives\AdvertisingStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\AudioStream.cs">
+      <Link>Primitives\AudioStream.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\AutoHideBehavior.cs">
+      <Link>Primitives\AutoHideBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\Caption.cs">
+      <Link>Primitives\Caption.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\CategoryConstants.cs">
+      <Link>Primitives\CategoryConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\InteractionType.cs">
+      <Link>Primitives\InteractionType.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaEndedBehaviorEnum.cs">
+      <Link>Primitives\MediaEndedBehaviorEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaPlayerActionEventArgs.cs">
+      <Link>Primitives\MediaPlayerActionEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaPlayerDeferrableOperation.cs">
+      <Link>Primitives\MediaPlayerDeferrableOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaPlayerTemplateParts.cs">
+      <Link>Primitives\MediaPlayerTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaPlayerVisualStates.cs">
+      <Link>Primitives\MediaPlayerVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaQualityEnum.cs">
+      <Link>Primitives\MediaQualityEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\MediaState.cs">
+      <Link>Primitives\MediaState.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\PlayerStateEnum.cs">
+      <Link>Primitives\PlayerStateEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\PlaylistItem.cs">
+      <Link>Primitives\PlaylistItem.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\PlaylistItem.Metadata.cs">
+      <Link>Primitives\PlaylistItem.Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\PositionRoutedEventArgs.cs">
+      <Link>Primitives\PositionRoutedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\RoutedPropertyChangedEventArgs.cs">
+      <Link>Primitives\RoutedPropertyChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\SelectedAudioStreamChangedEventArgs.cs">
+      <Link>Primitives\SelectedAudioStreamChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\universal.xaml.core\primitives\VisualMarker.cs">
+      <Link>Primitives\VisualMarker.cs</Link>
+    </Compile>
+    <Compile Include="Controls\MediaElementWrapper.cs" />
+    <Compile Include="Extensions\DispatcherExtensions.cs" />
+    <Compile Include="Interfaces\IMediaElement.cs" />
+    <Compile Include="Interfaces\IMediaPlugin.cs" />
+    <Compile Include="Primitives\LogReadyRoutedEventArgs.cs" />
+    <Compile Include="Primitives\RateChangedRoutedEventArgs.cs" />
+    <Compile Include="Primitives\TimelineMarkerEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Classic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Universal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

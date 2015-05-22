@@ -1,5 +1,5 @@
-﻿using Microsoft.AdaptiveStreaming;
-using Microsoft.AdaptiveStreaming.Dash;
+﻿using Microsoft.Media.AdaptiveStreaming.Helper;
+using Microsoft.Media.AdaptiveStreaming.Dash;
 using Microsoft.Media.AdaptiveStreaming;
 using Microsoft.Media.PlayReadyClient;
 using Microsoft.PlayerFramework.Adaptive;

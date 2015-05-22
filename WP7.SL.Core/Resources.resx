@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioSelectionButtonLabel" xml:space="preserve">
+    <value>Audio tracks</value>
+  </data>
+  <data name="CaptionSelectionButtonLabel" xml:space="preserve">
+    <value>Closed captions</value>
+  </data>
+  <data name="DefaultAudioStreamName" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="DeselectedIdentifierText" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="DurationButtonLabel" xml:space="preserve">
+    <value>Duration/Skip ahead</value>
+  </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>The video failed to play.</value>
+  </data>
+  <data name="ExitFullScreenButtonLabel" xml:space="preserve">
+    <value>Exit full-screen</value>
+  </data>
+  <data name="FastForwardButtonLabel" xml:space="preserve">
+    <value>Fast forward</value>
+  </data>
+  <data name="FullScreenButtonLabel" xml:space="preserve">
+    <value>Full-screen</value>
+  </data>
+  <data name="GoLiveButtonLabel" xml:space="preserve">
+    <value>Go live</value>
+  </data>
+  <data name="HighDefinitionLabel" xml:space="preserve">
+    <value>High definition</value>
+  </data>
+  <data name="HighDefinitionText" xml:space="preserve">
+    <value>HD</value>
+  </data>
+  <data name="LoadButtonLabel" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="MuteButtonLabel" xml:space="preserve">
+    <value>Mute</value>
+  </data>
+  <data name="PauseButtonLabel" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="PlayButtonLabel" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="ReplayButtonLabel" xml:space="preserve">
+    <value>Replay</value>
+  </data>
+  <data name="RetryButtonLabel" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="RetryInstructionsText" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="RewindButtonLabel" xml:space="preserve">
+    <value>Rewind</value>
+  </data>
+  <data name="SelectedIdentifierText" xml:space="preserve">
+    <value> (On)</value>
+  </data>
+  <data name="SignalStrengthLabel" xml:space="preserve">
+    <value>Signal strength</value>
+  </data>
+  <data name="SkipAheadButtonLabel" xml:space="preserve">
+    <value>Skip ahead</value>
+  </data>
+  <data name="SkipAheadPointerOverStringFormat" xml:space="preserve">
+    <value>\+ss\s</value>
+  </data>
+  <data name="SkipBackButtonLabel" xml:space="preserve">
+    <value>Skip back</value>
+  </data>
+  <data name="SkipBackPointerOverStringFormat" xml:space="preserve">
+    <value>\-ss\s</value>
+  </data>
+  <data name="SkipNextButtonLabel" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="SkipPreviousButtonLabel" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="SlowMotionButtonLabel" xml:space="preserve">
+    <value>Slow motion</value>
+  </data>
+  <data name="StandardDefinitionLabel" xml:space="preserve">
+    <value>Standard definition</value>
+  </data>
+  <data name="StandardDefinitionText" xml:space="preserve">
+    <value>SD</value>
+  </data>
+  <data name="StopButtonLabel" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="TimeElapsedButtonLabel" xml:space="preserve">
+    <value>Time elapsed/Skip back</value>
+  </data>
+  <data name="TimelineLabel" xml:space="preserve">
+    <value>Seek</value>
+  </data>
+  <data name="TimeRemainingButtonLabel" xml:space="preserve">
+    <value>Time remaining/Skip ahead</value>
+  </data>
+  <data name="TimeSpanReadableFormat" xml:space="preserve">
+    <value>h\:mm\:ss</value>
+  </data>
+  <data name="UnmuteButtonLabel" xml:space="preserve">
+    <value>Unmute</value>
+  </data>
+  <data name="VolumeLabel" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="VolumeMuteButtonLabel" xml:space="preserve">
+    <value>Volume/Mute</value>
+  </data>
+  <data name="AdLinkLabel" xml:space="preserve">
+    <value>more info...</value>
+  </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
+    <value>More Info</value>
+  </data>
+  <data name="MoreButtonLabel" xml:space="preserve">
+    <value>More...</value>
+  </data>
+  <data name="AudioSelectionButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M33.4688,65.7652 C33.3438,66.4215 33.2266,67.0074 33.1172,67.523 C33.0078,68.0386 32.875,68.484 32.7188,68.859 L25.875,87.7027 L41.25,87.7027 L34.3125,68.859 C34.0625,68.2027 33.8281,67.1715 33.6094,65.7652 z M30.8438,60.234 L36.375,60.234 L54.2344,105.984 L48.0469,105.984 L42.9375,92.2496 L24.2344,92.2496 L19.2656,105.984 L13.0781,105.984 z M63.375,41.9527 L95.4375,41.9527 L98.6719,44.3902 L81.6562,55.6402 L81.6562,60.234 L109.125,60.234 L109.125,64.8277 L81.6562,64.8277 L81.6562,78.5152 C81.6562,79.5152 81.4141,80.3121 80.9297,80.9058 C80.4453,81.4996 79.9219,81.9683 79.3594,82.3121 C78.7031,82.6871 77.9531,82.9527 77.1094,83.109 L67.9688,83.109 L65.6719,78.5152 L77.1094,78.5152 L77.1094,64.8277 L54.2344,64.8277 L54.2344,60.234 L77.1094,60.234 L77.1094,53.3433 L88.5469,46.4996 L63.375,46.4996 z M77.1094,19.0308 L83.9531,19.0308 C83.9531,19.1558 83.875,19.3433 83.7188,19.5933 C83.5625,19.8433 83.3672,20.109 83.1328,20.3902 C82.8984,20.6715 82.6484,20.9136 82.3828,21.1168 C82.1172,21.3199 81.875,21.4371 81.6562,21.4683 L81.6562,28.1715 L109.125,28.1715 L109.125,44.2027 L104.578,44.2027 L104.578,32.7652 L58.7812,32.7652 L58.7812,44.2027 L54.2344,44.2027 L54.2344,28.1715 L77.1094,28.1715 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="CaptionSelectionButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M81.9375,50.6246 C80.6562,50.6246 79.3672,50.7574 78.0703,51.023 C76.7734,51.2886 75.5234,51.6715 74.3203,52.1715 C73.1172,52.6715 71.9766,53.2652 70.8984,53.9527 C69.8203,54.6402 68.8594,55.4215 68.0156,56.2965 C66.3281,57.984 65.0469,59.9761 64.1719,62.273 C63.2969,64.5699 62.8594,66.984 62.8594,69.5152 C62.8594,70.8277 62.9687,72.1324 63.1875,73.4293 C63.4062,74.7261 63.7266,75.9605 64.1484,77.1324 C64.5703,78.3043 65.0781,79.398 65.6719,80.4136 C66.2656,81.4293 66.9375,82.3121 67.6875,83.0621 C68.4688,83.8746 69.3984,84.6011 70.4766,85.2418 C71.5547,85.8824 72.6797,86.4371 73.8516,86.9058 C75.0234,87.3746 76.1875,87.734 77.3438,87.984 C78.5,88.234 79.5312,88.359 80.4375,88.359 C82.25,88.359 84.1016,88.1168 85.9922,87.6324 C87.8828,87.148 89.5781,86.4683 91.0781,85.5933 L91.4062,85.4058 L91.4062,77.109 L90.4219,77.859 C89.3281,78.7652 88.0625,79.4683 86.625,79.9683 C85.1875,80.4683 83.7344,80.7183 82.2656,80.7183 C79.1094,80.7183 76.5938,79.7496 74.7188,77.8121 C73.8125,76.8746 73.1172,75.6949 72.6328,74.273 C72.1484,72.8511 71.9062,71.2652 71.9062,69.5152 C71.9062,67.8277 72.1484,66.3355 72.6328,65.0386 C73.1172,63.7418 73.875,62.5465 74.9062,61.4527 C76.875,59.359 79.4219,58.3121 82.5469,58.3121 C83.9531,58.3121 85.3594,58.5386 86.7656,58.9918 C88.1719,59.4449 89.4219,60.0777 90.5156,60.8902 L91.4062,61.5465 L91.4062,52.7808 L91.0781,52.6402 C89.6719,52.0152 88.1641,51.523 86.5547,51.1636 C84.9453,50.8043 83.4062,50.6246 81.9375,50.6246 z M45.3281,50.6246 C44.0469,50.6246 42.7656,50.7574 41.4844,51.023 C40.2031,51.2886 38.9609,51.6715 37.7578,52.1715 C36.5547,52.6715 35.4141,53.2652 34.3359,53.9527 C33.2578,54.6402 32.2969,55.4215 31.4531,56.2965 C29.7656,57.984 28.4687,59.9761 27.5625,62.273 C26.6562,64.5699 26.2031,66.984 26.2031,69.5152 C26.2031,70.8277 26.3203,72.1324 26.5547,73.4293 C26.7891,74.7261 27.1172,75.9605 27.5391,77.1324 C27.9609,78.3043 28.4687,79.398 29.0625,80.4136 C29.6562,81.4293 30.3281,82.3121 31.0781,83.0621 C31.8594,83.8746 32.7891,84.6011 33.8672,85.2418 C34.9453,85.8824 36.0703,86.4371 37.2422,86.9058 C38.4141,87.3746 39.5781,87.734 40.7344,87.984 C41.8906,88.234 42.9219,88.359 43.8281,88.359 C45.6719,88.359 47.5312,88.1168 49.4062,87.6324 C51.2812,87.148 52.9844,86.4683 54.5156,85.5933 L54.75,85.4058 L54.75,77.109 L53.8594,77.859 C52.7344,78.7652 51.4531,79.4683 50.0156,79.9683 C48.5781,80.4683 47.125,80.7183 45.6562,80.7183 C42.5,80.7183 39.9844,79.7496 38.1094,77.8121 C37.2031,76.8746 36.5078,75.6949 36.0234,74.273 C35.5391,72.8511 35.2969,71.2652 35.2969,69.5152 C35.2969,67.8277 35.5391,66.3355 36.0234,65.0386 C36.5078,63.7418 37.2656,62.5465 38.2969,61.4527 C40.2969,59.359 42.8594,58.3121 45.9844,58.3121 C47.3594,58.3121 48.7578,58.5386 50.1797,58.9918 C51.6016,59.4449 52.8437,60.0777 53.9062,60.8902 L54.8438,61.5465 L54.8438,52.7808 L54.4688,52.6402 C53.0937,52.0152 51.5937,51.523 49.9688,51.1636 C48.3438,50.8043 46.7969,50.6246 45.3281,50.6246 z M22.2188,37.4527 L95.4375,37.4527 C97.3125,37.4527 99.0859,37.8121 100.758,38.5308 C102.43,39.2496 103.883,40.234 105.117,41.484 C106.352,42.734 107.328,44.1949 108.047,45.8668 C108.766,47.5386 109.125,49.3121 109.125,51.1871 L109.125,87.7965 C109.125,89.6715 108.766,91.4449 108.047,93.1168 C107.328,94.7886 106.352,96.2496 105.117,97.4996 C103.883,98.7496 102.43,99.734 100.758,100.453 C99.0859,101.171 97.3125,101.531 95.4375,101.531 L22.2188,101.531 C20.3438,101.531 18.5703,101.171 16.8984,100.453 C15.2266,99.734 13.7656,98.7496 12.5156,97.4996 C11.2656,96.2496 10.2812,94.7886 9.5625,93.1168 C8.84375,91.4449 8.48438,89.6715 8.48438,87.7965 L8.48438,51.1871 C8.48438,49.3121 8.84375,47.5386 9.5625,45.8668 C10.2812,44.1949 11.2656,42.734 12.5156,41.484 C13.7656,40.234 15.2266,39.2496 16.8984,38.5308 C18.5703,37.8121 20.3438,37.4527 22.2188,37.4527 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="FullScreenButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M77.25,76.2183 L103.875,102.843 L103.875,79.7808 L113.953,89.859 L113.953,120 L83.7656,120 L73.6875,109.968 L96.75,109.968 L70.125,83.2965 z M39.9844,76.2183 L47.0625,83.2965 L20.4375,109.968 L43.5,109.968 L33.4219,120 L3.23438,120 L3.23438,89.859 L13.3125,79.7808 L13.3125,102.843 z M83.7656,9.32771 L113.953,9.32771 L113.953,39.5152 L103.875,49.5465 L103.875,26.484 L77.25,53.1558 L70.125,46.0308 L96.75,19.4058 L73.6875,19.4058 z M3.23438,9.32771 L33.4219,9.32771 L43.5,19.4058 L20.4375,19.4058 L47.0625,46.0308 L39.9844,53.1558 L13.3125,26.484 L13.3125,49.5465 L3.23438,39.5152 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="FastForwardButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M-3.2813,43.5929 L-3.2813,43.5929 M37.0781,43.5929 L67.0312,73.6867 L37.0781,103.593 z M4.6875,43.5929 L34.7344,73.6867 L4.6875,103.593 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Uniform" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="ExitFullScreenButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M68.6719,74.7183 L98.8594,74.7183 L108.938,84.7965 L85.8281,84.7965 L112.453,111.421 L105.375,118.546 L78.7031,91.9215 L78.7031,114.984 L68.6719,104.953 z M18.3281,74.7183 L48.5625,74.7183 L48.5625,104.953 L38.4844,114.984 L38.4844,91.9215 L11.8594,118.546 L4.73437,111.421 L31.3594,84.7965 L8.25,84.7965 z M105.375,10.7808 L112.453,17.9058 L85.8281,44.5308 L108.938,44.5308 L98.8594,54.609 L68.6719,54.609 L68.6719,24.4215 L78.7031,14.3433 L78.7031,37.4527 z M11.8594,10.7808 L38.4844,37.4527 L38.4844,14.3433 L48.5625,24.4215 L48.5625,54.609 L18.3281,54.609 L8.25,44.5308 L31.3594,44.5308 L4.73437,17.9058 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="GoLiveButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Text="LIVE" FontSize="13" Margin="-1,2,0,0" FontWeight="SemiBold" FontFamily="Segoe UI"/&gt;</value>
+  </data>
+  <data name="InfoButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI" FontWeight="SemiBold" FontSize="30" Text="i" Margin="0,-2,0,0"/&gt;</value>
+  </data>
+  <data name="MoreButtonContent" xml:space="preserve">
+    <value>&lt;TextBlock xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI" FontWeight="SemiBold" FontSize="20" Text="..." Margin="-4,-12,-4,0"/&gt;</value>
+  </data>
+  <data name="MuteButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M21.6094,46.4996 L27.375,46.4996 C27.9375,46.4996 28.4609,46.6011 28.9453,46.8043 C29.4297,47.0074 29.8516,47.2886 30.2109,47.648 C30.5703,48.0074 30.8516,48.4293 31.0547,48.9136 C31.2578,49.398 31.3594,49.9058 31.3594,50.4371 L31.3594,79.1715 C31.3594,79.7027 31.2578,80.2105 31.0547,80.6949 C30.8516,81.1793 30.5703,81.6011 30.2109,81.9605 C29.8516,82.3199 29.4297,82.6011 28.9453,82.8043 C28.4609,83.0074 27.9375,83.109 27.375,83.109 L21.6094,83.109 C21.0469,83.109 20.5312,83.0074 20.0625,82.8043 C19.5938,82.6011 19.1797,82.3199 18.8203,81.9605 C18.4609,81.6011 18.1797,81.1793 17.9766,80.6949 C17.7734,80.2105 17.6719,79.7027 17.6719,79.1715 L17.6719,50.4371 C17.6719,49.9058 17.7734,49.398 17.9766,48.9136 C18.1797,48.4293 18.4609,48.0074 18.8203,47.648 C19.1797,47.2886 19.5938,47.0074 20.0625,46.8043 C20.5312,46.6011 21.0469,46.4996 21.6094,46.4996 z M76.6406,43.359 L92.1094,58.7808 L107.531,43.359 L112.688,48.5152 L97.2188,63.9371 L112.688,79.359 L107.297,84.3746 L92.1094,69.0933 L76.6406,84.5152 L71.4844,79.359 L86.9531,63.9371 L71.4844,48.5152 z M66.5625,21.1871 C67,21.1871 67.3438,21.3902 67.5938,21.7965 C67.8438,22.2027 67.9688,22.7965 67.9688,23.5777 L67.9688,106.078 C67.9688,106.828 67.8359,107.406 67.5703,107.812 C67.3047,108.218 66.9531,108.421 66.5156,108.421 C65.9531,108.421 65.3438,108.093 64.6875,107.437 L39.2344,83.1558 C38.7656,82.6871 38.3281,82.1402 37.9219,81.5152 C37.5156,80.8902 37.1641,80.2418 36.8672,79.5699 C36.5703,78.898 36.3438,78.2183 36.1875,77.5308 C36.0312,76.8433 35.9531,76.1871 35.9531,75.5621 L35.9531,54.0465 C35.9531,53.4527 36.0391,52.7965 36.2109,52.0777 C36.3828,51.359 36.6172,50.6558 36.9141,49.9683 C37.2109,49.2808 37.5547,48.6324 37.9453,48.023 C38.3359,47.4136 38.7656,46.8902 39.2344,46.4527 L64.6875,22.1715 C65.375,21.5152 66,21.1871 66.5625,21.1871 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="PauseButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M72.6094,28.1246 L81.7969,28.1246 C82.4219,28.1246 83.0156,28.2496 83.5781,28.4996 C84.1406,28.7496 84.6328,29.0855 85.0547,29.5074 C85.4766,29.9293 85.8047,30.4215 86.0391,30.984 C86.2734,31.5465 86.3906,32.1402 86.3906,32.7652 L86.3906,97.0777 C86.3906,97.7027 86.2734,98.2965 86.0391,98.859 C85.8047,99.4215 85.4766,99.9136 85.0547,100.336 C84.6328,100.757 84.1406,101.093 83.5781,101.343 C83.0156,101.593 82.4219,101.718 81.7969,101.718 L72.6094,101.718 C71.9844,101.718 71.3906,101.593 70.8281,101.343 C70.2656,101.093 69.7734,100.757 69.3516,100.336 C68.9297,99.9136 68.6016,99.4215 68.3672,98.859 C68.1328,98.2965 68.0156,97.7027 68.0156,97.0777 L68.0156,32.7652 C68.0156,32.1402 68.1328,31.5465 68.3672,30.984 C68.6016,30.4215 68.9297,29.9293 69.3516,29.5074 C69.7734,29.0855 70.2656,28.7496 70.8281,28.4996 C71.3906,28.2496 71.9844,28.1246 72.6094,28.1246 z M35.7656,28.1246 L45,28.1246 C45.625,28.1246 46.2188,28.2496 46.7812,28.4996 C47.3438,28.7496 47.8359,29.0855 48.2578,29.5074 C48.6797,29.9293 49.0078,30.4215 49.2422,30.984 C49.4766,31.5465 49.5937,32.1402 49.5938,32.7652 L49.5938,97.0777 C49.5937,97.7027 49.4766,98.2965 49.2422,98.859 C49.0078,99.4215 48.6797,99.9136 48.2578,100.336 C47.8359,100.757 47.3438,101.093 46.7812,101.343 C46.2188,101.593 45.625,101.718 45,101.718 L35.7656,101.718 C35.1406,101.718 34.5547,101.593 34.0078,101.343 C33.4609,101.093 32.9766,100.757 32.5547,100.336 C32.1328,99.9136 31.8047,99.4215 31.5703,98.859 C31.3359,98.2965 31.2187,97.7027 31.2188,97.0777 L31.2188,32.7652 C31.2187,32.1402 31.3359,31.5465 31.5703,30.984 C31.8047,30.4215 32.1328,29.9293 32.5547,29.5074 C32.9766,29.0855 33.4609,28.7496 34.0078,28.4996 C34.5547,28.2496 35.1406,28.1246 35.7656,28.1246 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Uniform" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="PlayButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M20,28.1246 L20,28.1246 M35.9531,28.1246 L100.359,64.9215 L35.9531,101.718 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Uniform" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="ReplayButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M58.6875,19.0308 C62.8125,19.0308 66.8125,19.5933 70.6875,20.7183 C74.5625,21.8433 78.2031,23.4215 81.6094,25.4527 C85.0156,27.484 88.125,29.9215 90.9375,32.7652 C93.75,35.609 96.1641,38.7574 98.1797,42.2105 C100.195,45.6636 101.766,49.3511 102.891,53.273 C104.016,57.1949 104.578,61.2652 104.578,65.484 C104.578,68.609 104.266,71.6402 103.641,74.5777 C103.016,77.5152 102.133,80.3277 100.992,83.0152 C99.8516,85.7027 98.4609,88.2496 96.8203,90.6558 C95.1797,93.0621 93.3281,95.2652 91.2656,97.2652 L104.578,110.578 L67.9688,110.578 L67.9688,73.9215 L81.5625,87.5152 C84.4375,84.6715 86.7031,81.3511 88.3594,77.5543 C90.0156,73.7574 90.8438,69.6558 90.8438,65.2496 C90.8438,62.3121 90.4531,59.4683 89.6719,56.7183 C88.8906,53.9683 87.7969,51.3902 86.3906,48.984 C84.9844,46.5777 83.2969,44.3746 81.3281,42.3746 C79.3594,40.3746 77.1797,38.6636 74.7891,37.2418 C72.3984,35.8199 69.8516,34.7183 67.1484,33.9371 C64.4453,33.1558 61.6406,32.7652 58.7344,32.7652 C54.2344,32.7652 50.0391,33.5777 46.1484,35.2027 C42.2578,36.8277 38.875,39.0543 36,41.8824 C33.125,44.7105 30.8672,48.0308 29.2266,51.8433 C27.5859,55.6558 26.7656,59.7496 26.7656,64.1246 C26.7656,66.9371 27.1172,69.648 27.8203,72.2574 C28.5234,74.8668 29.5156,77.3277 30.7969,79.6402 C32.0781,81.9527 33.6172,84.0855 35.4141,86.0386 C37.2109,87.9918 39.2031,89.7027 41.3906,91.1715 L31.6875,100.921 C28.875,98.7965 26.3203,96.3746 24.0234,93.6558 C21.7266,90.9371 19.7656,87.9996 18.1406,84.8433 C16.5156,81.6871 15.2656,78.3433 14.3906,74.8121 C13.5156,71.2808 13.0781,67.6246 13.0781,63.8433 C13.0781,59.6871 13.6094,55.6949 14.6719,51.8668 C15.7344,48.0386 17.2422,44.4605 19.1953,41.1324 C21.1484,37.8043 23.5078,34.7886 26.2734,32.0855 C29.0391,29.3824 32.1094,27.0621 35.4844,25.1246 C38.8594,23.1871 42.5,21.6871 46.4062,20.6246 C50.3125,19.5621 54.4062,19.0308 58.6875,19.0308 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" Margin="11"&gt;&lt;Path.RenderTransform&gt;&lt;ScaleTransform ScaleX="-1"/&gt;&lt;/Path.RenderTransform&gt;&lt;/Path&gt;</value>
+  </data>
+  <data name="RewindButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M75,43.5929 L75,43.5929 M67.0312,43.5929 L67.0312,103.593 L37.0781,73.6867 z M34.6406,43.5929 L34.6406,103.593 L4.6875,73.6867 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Uniform" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="SkipAheadButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M68.25,46.5929 L74.25,46.5929 L74.25,106.593 L68.25,106.593 z M37.0312,46.5929 L67.0312,76.5929 L37.0312,106.593 z M4.6875,46.5929 L34.6875,76.5929 L4.6875,106.593 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="SkipBackButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M74.25,46.5929 L74.25,106.593 L44.25,76.5929 z M41.9062,46.5929 L41.9062,106.593 L11.9062,76.5929 z M4.6875,46.5929 L10.6875,46.5929 L10.6875,106.593 L4.6875,106.593 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="SkipNextButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M24.2812,37.3121 L70.2656,64.9215 L24.2812,92.484 z M84.0938,28.1246 L88.6406,28.1246 C89.2656,28.1246 89.8594,28.2496 90.4219,28.4996 C90.9844,28.7496 91.4766,29.0855 91.8984,29.5074 C92.3203,29.9293 92.6562,30.4215 92.9062,30.984 C93.1562,31.5465 93.2812,32.1402 93.2812,32.7652 L93.2812,97.0777 C93.2812,97.7027 93.1562,98.2965 92.9062,98.859 C92.6562,99.4215 92.3203,99.9136 91.8984,100.336 C91.4766,100.757 90.9844,101.093 90.4219,101.343 C89.8594,101.593 89.2656,101.718 88.6406,101.718 L84.0938,101.718 C83.4688,101.718 82.875,101.593 82.3125,101.343 C81.75,101.093 81.2578,100.757 80.8359,100.336 C80.4141,99.9136 80.0859,99.4215 79.8516,98.859 C79.6172,98.2965 79.5,97.7027 79.5,97.0777 L79.5,32.7652 C79.5,32.1402 79.6172,31.5465 79.8516,30.984 C80.0859,30.4215 80.4141,29.9293 80.8359,29.5074 C81.2578,29.0855 81.75,28.7496 82.3125,28.4996 C82.875,28.2496 83.4688,28.1246 84.0938,28.1246 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="SkipPreviousButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M93.2812,37.3121 L93.2812,92.484 L47.2969,64.9215 z M28.9219,28.1246 L33.4688,28.1246 C34.0938,28.1246 34.6875,28.2496 35.25,28.4996 C35.8125,28.7496 36.3047,29.0855 36.7266,29.5074 C37.1484,29.9293 37.4766,30.4215 37.7109,30.984 C37.9453,31.5465 38.0625,32.1402 38.0625,32.7652 L38.0625,97.0777 C38.0625,97.7027 37.9453,98.2965 37.7109,98.859 C37.4766,99.4215 37.1484,99.9136 36.7266,100.336 C36.3047,100.757 35.8125,101.093 35.25,101.343 C34.6875,101.593 34.0938,101.718 33.4688,101.718 L28.9219,101.718 C28.2969,101.718 27.7031,101.593 27.1406,101.343 C26.5781,101.093 26.0859,100.757 25.6641,100.336 C25.2422,99.9136 24.9062,99.4215 24.6562,98.859 C24.4062,98.2965 24.2812,97.7027 24.2812,97.0777 L24.2812,32.7652 C24.2812,32.1402 24.4062,31.5465 24.6562,30.984 C24.9062,30.4215 25.2422,29.9293 25.6641,29.5074 C26.0859,29.0855 26.5781,28.7496 27.1406,28.4996 C27.7031,28.2496 28.2969,28.1246 28.9219,28.1246 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="SlowMotionButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M10.7812,101 L10.7812,101 M10.7812,77.0148 L54.8438,77.0148 L54.8438,96.4679 L10.7812,96.4679 z M32.8125,41.8117 L54.8438,69.9835 L10.7812,69.9835 z" Fill="{StaticResource PhoneForegroundBrush}" RenderTransformOrigin="0.5,0.5" Stretch="Uniform" UseLayoutRounding="False" Margin="11"&gt;&lt;Path.RenderTransform&gt;&lt;RotateTransform Angle="90"/&gt;&lt;/Path.RenderTransform&gt;&lt;/Path&gt;</value>
+  </data>
+  <data name="StopButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M35.9531,37.359 L81.6562,37.359 C82.9688,37.359 84.0625,37.7965 84.9375,38.6715 C85.8125,39.5465 86.25,40.6402 86.25,41.9527 L86.25,87.7027 C86.25,88.3277 86.1328,88.9136 85.8984,89.4605 C85.6641,90.0074 85.3359,90.4918 84.9141,90.9136 C84.4922,91.3355 84.0078,91.6636 83.4609,91.898 C82.9141,92.1324 82.3125,92.2496 81.6562,92.2496 L35.9531,92.2496 C35.3281,92.2496 34.7344,92.1324 34.1719,91.898 C33.6094,91.6636 33.1172,91.3355 32.6953,90.9136 C32.2734,90.4918 31.9453,90.0074 31.7109,89.4605 C31.4766,88.9136 31.3594,88.3277 31.3594,87.7027 L31.3594,41.9527 C31.3594,40.6402 31.8047,39.5465 32.6953,38.6715 C33.5859,37.7965 34.6719,37.359 35.9531,37.359 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="UnmuteButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M21.6094,46.4996 L27.375,46.4996 C27.9375,46.4996 28.4609,46.6011 28.9453,46.8043 C29.4297,47.0074 29.8516,47.2886 30.2109,47.648 C30.5703,48.0074 30.8516,48.4293 31.0547,48.9136 C31.2578,49.398 31.3594,49.9058 31.3594,50.4371 L31.3594,79.1715 C31.3594,79.7027 31.2578,80.2105 31.0547,80.6949 C30.8516,81.1793 30.5703,81.6011 30.2109,81.9605 C29.8516,82.3199 29.4297,82.6011 28.9453,82.8043 C28.4609,83.0074 27.9375,83.109 27.375,83.109 L21.6094,83.109 C21.0469,83.109 20.5312,83.0074 20.0625,82.8043 C19.5938,82.6011 19.1797,82.3199 18.8203,81.9605 C18.4609,81.6011 18.1797,81.1793 17.9766,80.6949 C17.7734,80.2105 17.6719,79.7027 17.6719,79.1715 L17.6719,50.4371 C17.6719,49.9058 17.7734,49.398 17.9766,48.9136 C18.1797,48.4293 18.4609,48.0074 18.8203,47.648 C19.1797,47.2886 19.5938,47.0074 20.0625,46.8043 C20.5312,46.6011 21.0469,46.4996 21.6094,46.4996 z M80.1094,46.4527 C81.7031,47.359 83.1641,48.4527 84.4922,49.734 C85.8203,51.0152 86.9531,52.4449 87.8906,54.023 C88.8281,55.6011 89.5547,57.3043 90.0703,59.1324 C90.5859,60.9605 90.8438,62.859 90.8438,64.8277 C90.8438,66.7965 90.5859,68.6871 90.0703,70.4996 C89.5547,72.3121 88.8281,73.9996 87.8906,75.5621 C86.9531,77.1246 85.8203,78.5543 84.4922,79.8511 C83.1641,81.148 81.7031,82.2496 80.1094,83.1558 L77.7656,78.4215 C80.1094,77.0152 81.9844,75.1246 83.3906,72.7496 C84.7969,70.3746 85.5,67.734 85.5,64.8277 C85.5,61.8902 84.7969,59.234 83.3906,56.859 C81.9844,54.484 80.1094,52.5933 77.7656,51.1871 z M89.6719,32.1558 C92.5781,33.7183 95.2188,35.6402 97.5938,37.9215 C99.9687,40.2027 102.016,42.7496 103.734,45.5621 C105.453,48.3746 106.781,51.4058 107.719,54.6558 C108.656,57.9058 109.125,61.2965 109.125,64.8277 C109.125,68.359 108.656,71.7418 107.719,74.9761 C106.781,78.2105 105.453,81.234 103.734,84.0465 C102.016,86.859 99.9687,89.398 97.5938,91.6636 C95.2188,93.9293 92.5781,95.8433 89.6719,97.4058 L87.2812,92.6715 C89.75,91.3277 92,89.6793 94.0312,87.7261 C96.0625,85.773 97.8047,83.6011 99.2578,81.2105 C100.711,78.8199 101.836,76.2418 102.633,73.4761 C103.43,70.7105 103.828,67.8277 103.828,64.8277 C103.828,61.8277 103.43,58.9371 102.633,56.1558 C101.836,53.3746 100.711,50.7886 99.2578,48.398 C97.8047,46.0074 96.0625,43.8355 94.0312,41.8824 C92,39.9293 89.75,38.2808 87.2812,36.9371 z M66.5625,21.1871 C67,21.1871 67.3438,21.3902 67.5938,21.7965 C67.8438,22.2027 67.9688,22.7965 67.9688,23.5777 L67.9688,106.078 C67.9688,106.828 67.8359,107.406 67.5703,107.812 C67.3047,108.218 66.9531,108.421 66.5156,108.421 C65.9531,108.421 65.3438,108.093 64.6875,107.437 L39.2344,83.1558 C38.7656,82.6871 38.3281,82.1402 37.9219,81.5152 C37.5156,80.8902 37.1641,80.2418 36.8672,79.5699 C36.5703,78.898 36.3438,78.2183 36.1875,77.5308 C36.0312,76.8433 35.9531,76.1871 35.9531,75.5621 L35.9531,54.0465 C35.9531,53.4527 36.0391,52.7965 36.2109,52.0777 C36.3828,51.359 36.6172,50.6558 36.9141,49.9683 C37.2109,49.2808 37.5547,48.6324 37.9453,48.023 C38.3359,47.4136 38.7656,46.8902 39.2344,46.4527 L64.6875,22.1715 C65.375,21.5152 66,21.1871 66.5625,21.1871 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="ZoomOutScreenButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M68.6719,74.7183 L98.8594,74.7183 L108.938,84.7965 L85.8281,84.7965 L112.453,111.421 L105.375,118.546 L78.7031,91.9215 L78.7031,114.984 L68.6719,104.953 z M18.3281,74.7183 L48.5625,74.7183 L48.5625,104.953 L38.4844,114.984 L38.4844,91.9215 L11.8594,118.546 L4.73437,111.421 L31.3594,84.7965 L8.25,84.7965 z M105.375,10.7808 L112.453,17.9058 L85.8281,44.5308 L108.938,44.5308 L98.8594,54.609 L68.6719,54.609 L68.6719,24.4215 L78.7031,14.3433 L78.7031,37.4527 z M11.8594,10.7808 L38.4844,37.4527 L38.4844,14.3433 L48.5625,24.4215 L48.5625,54.609 L18.3281,54.609 L8.25,44.5308 L31.3594,44.5308 L4.73437,17.9058 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="ZoomInScreenButtonLabel" xml:space="preserve">
+    <value>Fill screen</value>
+  </data>
+  <data name="ZoomInScreenButtonContent" xml:space="preserve">
+    <value>&lt;Path xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Data="M77.25,76.2183 L103.875,102.843 L103.875,79.7808 L113.953,89.859 L113.953,120 L83.7656,120 L73.6875,109.968 L96.75,109.968 L70.125,83.2965 z M39.9844,76.2183 L47.0625,83.2965 L20.4375,109.968 L43.5,109.968 L33.4219,120 L3.23438,120 L3.23438,89.859 L13.3125,79.7808 L13.3125,102.843 z M83.7656,9.32771 L113.953,9.32771 L113.953,39.5152 L103.875,49.5465 L103.875,26.484 L77.25,53.1558 L70.125,46.0308 L96.75,19.4058 L73.6875,19.4058 z M3.23438,9.32771 L33.4219,9.32771 L43.5,19.4058 L20.4375,19.4058 L47.0625,46.0308 L39.9844,53.1558 L13.3125,26.484 L13.3125,49.5465 L3.23438,39.5152 z" Fill="{StaticResource PhoneForegroundBrush}" Stretch="Fill" UseLayoutRounding="False" Margin="11"/&gt;</value>
+  </data>
+  <data name="ZoomOutScreenButtonLabel" xml:space="preserve">
+    <value>Fit to screen</value>
+  </data>
+</root>

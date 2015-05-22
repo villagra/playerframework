@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D1F1EA17-4A91-4F3B-A243-F2B41D6CBCE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Media.TimedText</RootNamespace>
+    <AssemblyName>Microsoft.Media.TimedText</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;HACK_XAMLTYPEINFO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;HACK_XAMLTYPEINFO</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.WinRT.TimedText\CaptionMarkerFactory.cs">
+      <Link>CaptionMarkerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\CaptionElement.cs">
+      <Link>Captions\CaptionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\CaptionRegion.cs">
+      <Link>Captions\CaptionRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\DisplayAlign.cs">
+      <Link>Captions\DisplayAlign.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Extent.cs">
+      <Link>Captions\Extent.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\FontFamily.cs">
+      <Link>Captions\FontFamily.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Length.cs">
+      <Link>Captions\Length.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\LengthUnit.cs">
+      <Link>Captions\LengthUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Origin.cs">
+      <Link>Captions\Origin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Overflow.cs">
+      <Link>Captions\Overflow.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Padding.cs">
+      <Link>Captions\Padding.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\PositionLength.cs">
+      <Link>Captions\PositionLength.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\ShowBackground.cs">
+      <Link>Captions\ShowBackground.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TextStyle.cs">
+      <Link>Captions\TextStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TimedTextAnimation.cs">
+      <Link>Captions\TimedTextAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TimedTextElement.cs">
+      <Link>Captions\TimedTextElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TimedTextElementType.cs">
+      <Link>Captions\TimedTextElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TimedTextStyle.cs">
+      <Link>Captions\TimedTextStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\TunneledData.cs">
+      <Link>Captions\TunneledData.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Captions\Weight.cs">
+      <Link>Captions\Weight.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Controls\CaptionBlockRegion.cs">
+      <Link>Controls\CaptionBlockRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Extensions\Compatibility.cs">
+      <Link>Extensions\Compatibility.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Extensions\Extensions.cs">
+      <Link>Extensions\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Markers\IMarkerManager.cs">
+      <Link>Markers\IMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Markers\MediaMarker.cs">
+      <Link>Markers\MediaMarker.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Markers\MediaMarkerCollection.cs">
+      <Link>Markers\MediaMarkerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Markers\MediaMarkerManager.cs">
+      <Link>Markers\MediaMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Parser\IMarkerParser.cs">
+      <Link>Parser\IMarkerParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Parser\TimedTextMarkerParser.cs">
+      <Link>Parser\TimedTextMarkerParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Parser\TimedTextStyleParser.cs">
+      <Link>Parser\TimedTextStyleParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Parser\TimedTextVocabulary.cs">
+      <Link>Parser\TimedTextVocabulary.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Resources.cs">
+      <Link>Resources.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextCaptions.cs">
+      <Link>TimedTextCaptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Metadata\Metadata.cs">
+      <Link>TimedTextLib\Metadata\Metadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\AnonymousSpanElement.cs">
+      <Link>TimedTextLib\Model\AnonymousSpanElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\BodyElement.cs">
+      <Link>TimedTextLib\Model\BodyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\BrElement.cs">
+      <Link>TimedTextLib\Model\BrElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\DivElement.cs">
+      <Link>TimedTextLib\Model\DivElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\HeadElement.cs">
+      <Link>TimedTextLib\Model\HeadElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\LayoutElement.cs">
+      <Link>TimedTextLib\Model\LayoutElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\MetadataElement.cs">
+      <Link>TimedTextLib\Model\MetadataElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\PElement.cs">
+      <Link>TimedTextLib\Model\PElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\RegionElement.cs">
+      <Link>TimedTextLib\Model\RegionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\SetElement.cs">
+      <Link>TimedTextLib\Model\SetElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\SpanElement.cs">
+      <Link>TimedTextLib\Model\SpanElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\StyleElement.cs">
+      <Link>TimedTextLib\Model\StyleElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\StylingElement.cs">
+      <Link>TimedTextLib\Model\StylingElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\TimedTextAttributeBase.cs">
+      <Link>TimedTextLib\Model\TimedTextAttributeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\TimedTextElementBase.cs">
+      <Link>TimedTextLib\Model\TimedTextElementBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Model\TtElement.cs">
+      <Link>TimedTextLib\Model\TtElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Parsing\TimedTextException.cs">
+      <Link>TimedTextLib\Parsing\TimedTextException.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Parsing\TimedTextMetadata.cs">
+      <Link>TimedTextLib\Parsing\TimedTextMetadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Parsing\TimedTextProfile.cs">
+      <Link>TimedTextLib\Parsing\TimedTextProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Parsing\TimedTextSmpte.cs">
+      <Link>TimedTextLib\Parsing\TimedTextSmpte.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Rendering\FormattingObjectNew.cs">
+      <Link>TimedTextLib\Rendering\FormattingObjectNew.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Rendering\Renderer.cs">
+      <Link>TimedTextLib\Rendering\Renderer.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Rendering\Unicode.cs">
+      <Link>TimedTextLib\Rendering\Unicode.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\SmpteFrameRate.cs">
+      <Link>TimedTextLib\SmpteFrameRate.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Styling\ColourExpression.cs">
+      <Link>TimedTextLib\Styling\ColourExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Styling\Extent.cs">
+      <Link>TimedTextLib\Styling\Extent.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Styling\Font.cs">
+      <Link>TimedTextLib\Styling\Font.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Styling\NumberPair.cs">
+      <Link>TimedTextLib\Styling\NumberPair.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Styling\Styling.cs">
+      <Link>TimedTextLib\Styling\Styling.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Timing\TimeCode.cs">
+      <Link>TimedTextLib\Timing\TimeCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Timing\TimeExpression.cs">
+      <Link>TimedTextLib\Timing\TimeExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\TimedTextLib\Timing\TimeTree.cs">
+      <Link>TimedTextLib\Timing\TimeTree.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Utilities\ObservableObject.cs">
+      <Link>Utilities\ObservableObject.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.TimedText\Utilities\OrderedObservableCollection.cs">
+      <Link>Utilities\OrderedObservableCollection.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Universal.WinRT.TimedText\Themes\Generic.xaml">
+      <Link>Themes\Generic.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

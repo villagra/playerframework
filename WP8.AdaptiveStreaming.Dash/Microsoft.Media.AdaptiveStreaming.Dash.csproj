@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E9AA8CAC-C0AE-419C-93EF-C2F3DAB1076C}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Media.AdaptiveStreaming.Dash</RootNamespace>
+    <AssemblyName>Microsoft.Media.AdaptiveStreaming.Dash</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\CffDownloaderPlugin.cs">
+      <Link>CFF\CffDownloaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\CffFileParser.cs">
+      <Link>CFF\CffFileParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\Offline\OfflineCffFileParser.cs">
+      <Link>CFF\Offline\OfflineCffFileParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\CFF\Progressive\ProgressiveCffFileParser.cs">
+      <Link>CFF\Progressive\ProgressiveCffFileParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\DashDownloaderPlugin.cs">
+      <Link>Dash\DashDownloaderPlugin.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\DashManifestConverter.cs">
+      <Link>Dash\DashManifestConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\MPD.cs">
+      <Link>Dash\MPD.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Dash\MPDFactory.cs">
+      <Link>Dash\MPDFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Helpers\XLinqExtensions.cs">
+      <Link>Helpers\XLinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\Extensions.cs">
+      <Link>Smooth\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\ManifestTrack.cs">
+      <Link>Smooth\ManifestTrack.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\ManifestTrackType.cs">
+      <Link>Smooth\ManifestTrackType.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\SmoothFactory.cs">
+      <Link>Smooth\SmoothFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Universal.WinRT.AdaptiveStreaming.Dash\Smooth\SmoothStreamingMedia.cs">
+      <Link>Smooth\SmoothStreamingMedia.cs</Link>
+    </Compile>
+    <Compile Include="CFF\CffDownloaderPlugin.SL.cs" />
+    <Compile Include="CFF\Offline\CffOfflineDownloaderPlugin.cs" />
+    <Compile Include="CFF\Progressive\CffProgressiveDownloaderPlugin.cs" />
+    <Compile Include="Dash\DashDownloaderPlugin.SL.cs" />
+    <Compile Include="Helpers\WebRequestExtensions.cs" />
+    <Compile Include="Helpers\WebRequestor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Universal.AdaptiveStreaming.Dash\Dash\DASH-MPD.xsd">
+      <Link>Dash\DASH-MPD.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\Universal.AdaptiveStreaming.Dash\Dash\xlink.xsd">
+      <Link>Dash\xlink.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Portable\Microsoft.Media.ISO\Microsoft.Media.ISO.csproj">
+      <Project>{F5B18650-60CD-409F-9D64-63DE7B8BF0DA}</Project>
+      <Name>Microsoft.Media.ISO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WP8.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
+      <Project>{351957b0-ba27-4524-95b8-23a3a2a4ff07}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>$(ProgramFiles)\Microsoft SDKs\IIS Smooth Streaming Client\v2.5\Windows Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.PlayerFramework.snk" />
+  </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.PlayerFramework.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

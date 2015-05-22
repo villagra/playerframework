@@ -27,7 +27,7 @@ namespace Microsoft.PlayerFramework.Samples
             this.InitializeComponent();
             var adaptivePlugin = new Microsoft.PlayerFramework.Adaptive.AdaptivePlugin();
             player.Plugins.Add(adaptivePlugin);
-            adaptivePlugin.DownloaderPlugin = new Microsoft.AdaptiveStreaming.Dash.DashDownloaderPlugin();
+            adaptivePlugin.DownloaderPlugin = new Microsoft.Media.AdaptiveStreaming.Dash.DashDownloaderPlugin();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
