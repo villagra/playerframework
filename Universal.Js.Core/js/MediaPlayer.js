@@ -783,7 +783,8 @@
             /// <field name="initialTime" type="Number">Gets the earliest possible position (in seconds) that playback can begin.</field>
             initialTime: {
                 get: function () {
-                    return this._mediaElement.initialTime;
+                    // This property was initially listed in the W3C spec, but has been dropped. Newer versions of IE do not support it.
+                    return this._mediaElement.initialTime ? this._mediaElement.initialTime : 0;
                 }
             },
 
@@ -3229,7 +3230,8 @@
 
             _onElementMSPointerMove: function (e) {
                 // prevent conflict with MSPointerDown event
-                if (e.pointerType === e.MSPOINTER_TYPE_MOUSE || !this._interactivePointerArgs || e.clientX !== this._interactivePointerArgs.clientX || e.clientY !== this._interactivePointerArgs.clientY) {
+                var isMouse = (PlayerFramework.Utilities.isWinJS1 || PlayerFramework.Utilities.isWinJS2) ? e.pointerType === e.MSPOINTER_TYPE_MOUSE : e.pointerType === "mouse";
+                if (isMouse || !this._interactivePointerArgs || e.clientX !== this._interactivePointerArgs.clientX || e.clientY !== this._interactivePointerArgs.clientY) {
                     this._onUserInteraction(PlayerFramework.InteractionType.soft, false);
                 }
 

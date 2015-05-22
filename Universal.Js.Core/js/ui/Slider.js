@@ -172,7 +172,7 @@
                 this._element.setAttribute("aria-disabled", value);
 
                 if (this._inputElement.disabled) {
-                    this._inputElement.releaseCapture();
+                    if (this._inputElement.releaseCapture) this._inputElement.releaseCapture();
                     this._onInputElementMSLostPointerCapture();
                 }
             }
@@ -253,9 +253,20 @@
             this._bindEvent("load", this._thumbnail1Element, this._onThumbnailElementLoad);
             this._bindEvent("load", this._thumbnail2Element, this._onThumbnailElementLoad);
 
-            this._bindEvent("MSGotPointerCapture", this._inputElement, this._onInputElementMSGotPointerCapture);
-            this._bindEvent("MSLostPointerCapture", this._inputElement, this._onInputElementMSLostPointerCapture);
-            this._bindEvent("change", this._inputElement, this._onInputElementChange);
+            if (window.PointerEvent) {
+                this._bindEvent("gotpointercapture", this._inputElement, this._onInputElementMSGotPointerCapture);
+                this._bindEvent("lostpointercapture", this._inputElement, this._onInputElementMSLostPointerCapture);
+            }
+            else {
+                this._bindEvent("MSGotPointerCapture", this._inputElement, this._onInputElementMSGotPointerCapture);
+                this._bindEvent("MSLostPointerCapture", this._inputElement, this._onInputElementMSLostPointerCapture);
+            }
+            if (PlayerFramework.Utilities.isWinJS1 || PlayerFramework.Utilities.isWinJS2) {
+                this._bindEvent("change", this._inputElement, this._onInputElementChange);
+            }
+            else {
+                this._bindEvent("input", this._inputElement, this._onInputElementChange);
+            }
             this._bindEvent("keydown", this._inputElement, this._onInputElementKeydown);
         },
 
@@ -409,7 +420,7 @@
                 }
             }
         },
-        
+
         _onMarkerClick: function (e) {
             var markerTime = e.srcElement.getAttribute("data-marker");
             var marker = null;
@@ -420,12 +431,11 @@
                     break;
                 }
             }
-            
+
             if (marker) this.dispatchEvent("skiptomarker", marker);
         },
 
-        _updateThumbnailPosition: function ()
-        {
+        _updateThumbnailPosition: function () {
             var percentageComplete = this._inputElement.value / (this.max - this.min);
             this._thumbnailViewElement.style.marginLeft = (percentageComplete * 100) + "%";
         }

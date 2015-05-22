@@ -79,7 +79,7 @@
             this._controlContainerElement.winControl = this;
 
             WinJS.UI.processAll(this._controlContainerElement);
-            PlayerFramework.Binding.processAll(this._controlContainerElement, this.mediaPlayer.interactiveViewModel);
+            PlayerFramework.Binding.processAll(this._controlPanelElement, this.mediaPlayer.interactiveViewModel);
 
             if (!WinJS.Utilities.isPhone) {
                 this._flyoutContainerElement = PlayerFramework.Utilities.createElement(document.body, ["div", { "class": "pf-flyout-container" }]);
@@ -136,7 +136,7 @@
         },
 
         _onMediaPlayerInteractiveViewModelChange: function (e) {
-            PlayerFramework.Binding.processAll(this._controlContainerElement, this.mediaPlayer.interactiveViewModel);
+            PlayerFramework.Binding.processAll(this._controlPanelElement, this.mediaPlayer.interactiveViewModel);
         },
 
         _onMediaPlayerInteractiveStateChange: function (e) {

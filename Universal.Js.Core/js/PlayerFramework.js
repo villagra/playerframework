@@ -6,6 +6,7 @@
     var invalidResourceId = "Invalid resource identifier: {0}";
     var zeroDate = new Date(0, 0, 0, 0, 0, 0, 0);
     var isWinJS1 = (WinJS.Utilities.Scheduler === undefined);
+    var isWinJS2 = !isWinJS1 && (WinJS.Utilities._version === undefined);
 
     // Globalization
     var languages = Windows.System.UserProfile.GlobalizationPreferences.languages;
@@ -1147,6 +1148,7 @@
         propertyBindingMixin: propertyBindingMixin,
         DeferrableOperation: DeferrableOperation,
         isWinJS1: isWinJS1,
+        isWinJS2: isWinJS2,
         styleSheetSelectorExists: styleSheetSelectorExists
     });
 
