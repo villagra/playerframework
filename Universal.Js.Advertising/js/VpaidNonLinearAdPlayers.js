@@ -306,7 +306,7 @@
             this._adState = PlayerFramework.Advertising.VpaidAdPlayerBase.AD_STATE_PLAYING;
             this._adElement.style.visibility = "visible";
 
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this._itemElement.onresize !== undefined) {
                 this._bindEvent("resize", this._itemElement, this._onItemResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.

@@ -5,8 +5,8 @@
     var invalidArgument = "Invalid argument.";
     var invalidResourceId = "Invalid resource identifier: {0}";
     var zeroDate = new Date(0, 0, 0, 0, 0, 0, 0);
-    var isWinJS1 = (WinJS.Utilities.Scheduler === undefined);
-    var isWinJS2 = !isWinJS1 && (WinJS.Utilities._version === undefined);
+    var isWin80 = (window.execScript !== undefined);
+    var isWin81 = !isWin80 && window.crypto === undefined;
 
     // Globalization
     var languages = Windows.System.UserProfile.GlobalizationPreferences.languages;
@@ -130,7 +130,7 @@
     };
 
     var TextTrackMode;
-    if (isWinJS1) {
+    if (isWin80) {
         TextTrackMode = {
             /// <field>The track is disabled.</field>
             off: 0,
@@ -734,11 +734,11 @@
         /// <param name="element" type="HTMLElement" domElement="true">The element to measure.</param>
         /// <returns type="Object">The element size.</returns>
         var scale = 1.0;
-        if (isWinJS1) {
-            var scale = Windows.Graphics.Display.DisplayProperties.resolutionScale / 100;
+        if (Windows.Graphics.Display.DisplayInformation !== undefined) {
+            scale = Windows.Graphics.Display.DisplayInformation.getForCurrentView().resolutionScale / 100;
         }
         else {
-            var scale = Windows.Graphics.Display.DisplayInformation.getForCurrentView().resolutionScale / 100;
+            scale = Windows.Graphics.Display.DisplayProperties.resolutionScale / 100;
         }
         var w = Math.ceil(WinJS.Utilities.getTotalWidth(element) * scale); // use ceil instead of round because WinJS reports whole numbers only
         var h = Math.ceil(WinJS.Utilities.getTotalHeight(element) * scale);
@@ -1147,8 +1147,8 @@
         eventBindingMixin: eventBindingMixin,
         propertyBindingMixin: propertyBindingMixin,
         DeferrableOperation: DeferrableOperation,
-        isWinJS1: isWinJS1,
-        isWinJS2: isWinJS2,
+        isWin80: isWin80,
+        isWin81: isWin81,
         styleSheetSelectorExists: styleSheetSelectorExists
     });
 

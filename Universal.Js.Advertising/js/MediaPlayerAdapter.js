@@ -30,7 +30,7 @@
         this._bindEvent("fullscreenchange", this._mediaPlayer, this._onMediaPlayerFullScreenChange);
         this._bindEvent("currentbitraterequested", this._nativeInstance, this._onCurrentBitrateRequested);
         this._bindEvent("currentpositionrequested", this._nativeInstance, this._onCurrentPositionRequested);
-        if (PlayerFramework.Utilities.isWinJS1) {
+        if (this._mediaPlayer.element.onresize !== undefined) {
             this._bindEvent("resize", this._mediaPlayer.element, this._onMediaPlayerResize);
         }
         else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.

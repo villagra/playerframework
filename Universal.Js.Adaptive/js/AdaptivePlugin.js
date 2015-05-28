@@ -172,7 +172,7 @@
             this._bindEvent("outsidewindowedge", this.manager, this._onManagerOutsideWindowEdge);
             this._bindEvent("datareceived", this.manager, this._onManagerDataReceived);
             this._bindEvent("closed", this.manager, this._onManagerClosed);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
@@ -197,7 +197,7 @@
             this._unbindEvent("outsidewindowedge", this.manager, this._onManagerOutsideWindowEdge);
             this._unbindEvent("datareceived", this.manager, this._onManagerDataReceived);
             this._unbindEvent("closed", this.manager, this._onManagerClosed);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.

@@ -1926,12 +1926,6 @@
                             this._shimElement.style.display = "none";
                         }
 
-                        if (PlayerFramework.Utilities.isWinJS1) {
-                            if (value && Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped) {
-                                Windows.UI.ViewManagement.ApplicationView.tryUnsnap();
-                            }
-                        }
-
                         this._isFullScreen = value;
                         this._observableMediaPlayer.notify("isFullScreen", value, oldValue);
                         this.dispatchEvent("fullscreenchange");
@@ -3230,7 +3224,7 @@
 
             _onElementMSPointerMove: function (e) {
                 // prevent conflict with MSPointerDown event
-                var isMouse = (PlayerFramework.Utilities.isWinJS1 || PlayerFramework.Utilities.isWinJS2) ? e.pointerType === e.MSPOINTER_TYPE_MOUSE : e.pointerType === "mouse";
+                var isMouse = (e.MSPOINTER_TYPE_MOUSE !== undefined) ? e.pointerType === e.MSPOINTER_TYPE_MOUSE : e.pointerType === "mouse";
                 if (isMouse || !this._interactivePointerArgs || e.clientX !== this._interactivePointerArgs.clientX || e.clientY !== this._interactivePointerArgs.clientY) {
                     this._onUserInteraction(PlayerFramework.InteractionType.soft, false);
                 }

@@ -96,7 +96,7 @@
             this._bindEvent("mutedchange", this.mediaPlayer, this._onMediaPlayerMutedChange);
             this._bindEvent("fullscreenchange", this.mediaPlayer, this._onMediaPlayerFullScreenChange);
             this._bindEvent("error", this.mediaPlayer, this._onMediaPlayerError);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
@@ -149,7 +149,7 @@
             this._unbindEvent("mutedchange", this.mediaPlayer, this._onMediaPlayerMutedChange);
             this._unbindEvent("fullscreenchange", this.mediaPlayer, this._onMediaPlayerFullScreenChange);
             this._unbindEvent("error", this.mediaPlayer, this._onMediaPlayerError);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.

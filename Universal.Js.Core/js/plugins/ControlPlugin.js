@@ -94,7 +94,7 @@
             this._bindEvent("interactiveviewmodelchange", this.mediaPlayer, this._onMediaPlayerInteractiveViewModelChange);
             this._bindEvent("interactivestatechange", this.mediaPlayer, this._onMediaPlayerInteractiveStateChange);
             this._bindEvent("transitionend", this._controlPanelElement, this._onControlPanelTransitionEnd);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._bindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else { // IE11 no longer supports resize event for arbitrary elements. The best we can do is listen to the window resize event.
@@ -118,7 +118,7 @@
             this._unbindEvent("interactiveviewmodelchange", this.mediaPlayer, this._onMediaPlayerInteractiveViewModelChange);
             this._unbindEvent("interactivestatechange", this.mediaPlayer, this._onMediaPlayerInteractiveStateChange);
             this._unbindEvent("transitionend", this._controlPanelElement, this._onControlPanelTransitionEnd);
-            if (PlayerFramework.Utilities.isWinJS1) {
+            if (this.mediaPlayer.element.onresize !== undefined) {
                 this._unbindEvent("resize", this.mediaPlayer.element, this._onMediaPlayerResize);
             }
             else {
@@ -159,13 +159,8 @@
             var h = this.mediaPlayer.element.scrollHeight;
 
             this.orientation = (h > w) ? "portrait" : "landscape";
-            if (PlayerFramework.Utilities.isWinJS1) {
-                this.isCompact = Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.snapped;
-            }
-            else {
-                var physicalSize = this._getPhysicalSize({ width: w, height: h });
-                this.isCompact = (physicalSize.width <= this.compactThresholdInInches);
-            }
+            var physicalSize = this._getPhysicalSize({ width: w, height: h });
+            this.isCompact = (physicalSize.width <= this.compactThresholdInInches);
         },
 
         _getPhysicalSize: function (size) {

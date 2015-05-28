@@ -261,7 +261,7 @@
                 this._bindEvent("MSGotPointerCapture", this._inputElement, this._onInputElementMSGotPointerCapture);
                 this._bindEvent("MSLostPointerCapture", this._inputElement, this._onInputElementMSLostPointerCapture);
             }
-            if (PlayerFramework.Utilities.isWinJS1 || PlayerFramework.Utilities.isWinJS2) {
+            if (PlayerFramework.Utilities.isWin80 || PlayerFramework.Utilities.isWin81) {
                 this._bindEvent("change", this._inputElement, this._onInputElementChange);
             }
             else {
