@@ -5,8 +5,8 @@
   MinVSVersion = "14.0"
   AppliesTo = "WindowsAppContainer + (JavaScript)"
   TargetPlatform="UAP"           
-  TargetPlatformMinVersion="10.0.10069.0" 
-  TargetPlatformVersion="10.0.10069.0" 
+  TargetPlatformMinVersion="10.0.0.0" 
+  TargetPlatformVersion="10.0.0.0" 
   ReferenceManagerEnumeration = "Files">
     <File Content="js\PlayerFramework.TimedText.js" />
     <File Content="css\PlayerFramework.TimedText.css" />

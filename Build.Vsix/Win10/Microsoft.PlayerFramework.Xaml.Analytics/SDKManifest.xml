@@ -5,8 +5,8 @@
   MinVSVersion = "14.0"
   AppliesTo = "WindowsAppContainer + (CSharp | VB | VisualC)"
   TargetPlatform="UAP"           
-  TargetPlatformMinVersion="10.0.10069.0" 
-  TargetPlatformVersion="10.0.10069.0" 
+  TargetPlatformMinVersion="10.0.0.0" 
+  TargetPlatformVersion="10.0.0.0" 
   ReferenceManagerEnumeration = "Files">
 	 <DependsOn Identity = "MMP.PF.Win10.XAML.SDK, Version=1.0"/>
 	 <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
