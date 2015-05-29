@@ -32,13 +32,13 @@
       StartPage="default.html">
 
       <uap:VisualElements
-        DisplayName="Microsoft.PlayerFramework.Samples"
-        Description="Microsoft.PlayerFramework.Samples"
-        BackgroundColor="#464646"
+        DisplayName="Microsoft Player Framework Samples (JavaScript)"
+        Description="Samples application using the JavaScript version of the Microsoft Player Framework"
+        BackgroundColor="#ffffff"
         Square150x150Logo="images\Logo.png"
         Square44x44Logo="images\SmallLogo.png">
 
-        <uap:SplashScreen Image="images\splashscreen.png" />
+        <uap:SplashScreen Image="images\splashscreen.png" BackgroundColor="#ffffff" />
 
       </uap:VisualElements>
     </Application>
@@ -46,6 +46,8 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
   </Capabilities>
 
 </Package>

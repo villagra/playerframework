@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>c5bb4344-dc39-4e97-8aa1-57d4e71cc40c</ProjectGuid>
+    <ProjectGuid>39546751-ac69-4bc7-a5f0-b97b74711c34</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0'">
@@ -71,9 +71,6 @@
     <Content Include="css\default.css" />
     <Content Include="js\navigator.js" />
     <Content Include="js\Utilities.js" />
-    <Content Include="pages\adaptive\hls\hls.css" />
-    <Content Include="pages\adaptive\hls\hls.html" />
-    <Content Include="pages\adaptive\hls\hls.js" />
     <Content Include="pages\adaptive\dash\dash.css" />
     <Content Include="pages\adaptive\dash\dash.html" />
     <Content Include="pages\adaptive\dash\dash.js" />
@@ -177,15 +174,11 @@
     <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UWP.Js.Advertising\Microsoft.PlayerFramework.Advertising.csproj" />
-    <ProjectReference Include="..\UWP.Js.Analytics\Microsoft.PlayerFramework.Analytics.csproj" />
-    <ProjectReference Include="..\UWP.Js.Core\Microsoft.PlayerFramework.Core.csproj" />
-    <ProjectReference Include="..\UWP.Js.TimedText\Microsoft.PlayerFramework.TimedText.csproj" />
-    <ProjectReference Include="..\UWP.WinRT.Advertising\Microsoft.Media.Advertising.csproj" />
-    <ProjectReference Include="..\UWP.WinRT.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj" />
-    <ProjectReference Include="..\UWP.WinRT.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj" />
-    <ProjectReference Include="..\UWP.WinRT.Analytics\Microsoft.Media.Analytics.csproj" />
-    <ProjectReference Include="..\UWP.WinRT.AudienceInsight\Microsoft.Media.AudienceInsight.csproj" />
+    <SDKReference Include="Microsoft.PlayerFramework.Advertising.Analytics, Version=2.0.0.0" />
+    <SDKReference Include="Microsoft.PlayerFramework.Js, Version=2.0.0.0" />
+    <SDKReference Include="Microsoft.PlayerFramework.Js.Advertising, Version=2.0.0.0" />
+    <SDKReference Include="Microsoft.PlayerFramework.Js.Analytics, Version=2.0.0.0" />
+    <SDKReference Include="Microsoft.PlayerFramework.Js.TimedText, Version=2.0.0.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

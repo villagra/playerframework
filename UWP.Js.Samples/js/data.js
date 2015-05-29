@@ -75,18 +75,19 @@
             { group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/clicktoplay", title: "Click to Play", description: "Demonstrates delaying media download until the user clicks a button" },
             { group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/light", title: "Light Theme", description: "Demonstrates a player using the light theme" },
             { group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/error", title: "Error Handling", description: "Demonstrates the UI displayed by default when media errors occur and handling non-critical errors" },
-            { group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/playready", title: "PlayReady", description: "Demonstrates secure content protection using PlayReady" },
+            //{ group: sampleGroups[0], backgroundImage: sampleImage1, subtitle: "common/playready", title: "PlayReady", description: "Demonstrates secure content protection using PlayReady" },
 
             // adaptive streaming
-            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/vod", title: "Smooth streaming (VOD)", description: "Demonstrates basic playback of smooth streaming video using the Microsoft Smooth Streaming SDK." },
-            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/live", title: "Smooth streaming (Live)", description: "Demonstrates basic playback of live smooth streaming video using the Microsoft Smooth Streaming SDK." },
+            //{ group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/vod", title: "Smooth streaming (VOD)", description: "Demonstrates basic playback of smooth streaming video using the Microsoft Smooth Streaming SDK." },
+            //{ group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/live", title: "Smooth streaming (Live)", description: "Demonstrates basic playback of live smooth streaming video using the Microsoft Smooth Streaming SDK." },
             { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/dash", title: "DASH streaming video", description: "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH." },
-
+            { group: sampleGroups[1], backgroundImage: sampleImage2, subtitle: "adaptive/hls", title: "HLS streaming video", description: "Demonstrates basic playback of the Apple HLS (Http Live Streaming) format." },
+            
             // closed captioning
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/ttml", title: "TTML Captions", description: "Demonstrates TTML captions using the native closed captioning features of the video element" },
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/webvtt", title: "WebVTT Captions", description: "Demonstrates playing WebVTT captions using the native closed captioning feature of the video element" },
             { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/timedtext", title: "Timed Text Captions", description: "Demonstrates caption styling and layout using TTML (Timed Text Markup Language) using the captions plugin" },
-            { group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/instreamttml", title: "In-stream Captions", description: "Demonstrates playing in-stream TTML captions from smooth streaming text tracks" },
+            //{ group: sampleGroups[2], backgroundImage: sampleImage3, subtitle: "captions/instreamttml", title: "In-stream Captions", description: "Demonstrates playing in-stream TTML captions from smooth streaming text tracks" },
 
             // advertising
             { group: sampleGroups[3], backgroundImage: sampleImage1, subtitle: "advertising/mast", title: "MAST Ad Scheduling", description: "Demonstrates scheduling ads using MAST (Media Abstract Sequencing Template)" },

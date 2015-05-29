@@ -3,7 +3,7 @@
 
     var mediaPlayer = null;
 
-    WinJS.UI.Pages.define("/pages/adaptive/dash/dash.html", {
+    WinJS.UI.Pages.define("/pages/adaptive/hls/hls.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {
@@ -16,7 +16,7 @@
             var mediaPlayerElement = element.querySelector("[data-win-control='PlayerFramework.MediaPlayer']");
             mediaPlayer = mediaPlayerElement.winControl;
 
-            mediaPlayer.src = "http://wams.edgesuite.net/media/SintelTrailer_MP4_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)";
+            mediaPlayer.src = "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8";
 
             mediaPlayer.focus();
         },
