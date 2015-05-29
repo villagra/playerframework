@@ -97,6 +97,9 @@
     <Compile Include="Adaptive\CffProgressivePage.xaml.cs">
       <DependentUpon>CffProgressivePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Adaptive\HlsPage.xaml.cs">
+      <DependentUpon>HlsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Adaptive\DashPage.xaml.cs">
       <DependentUpon>DashPage.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Adaptive\CffProgressivePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Adaptive\HlsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

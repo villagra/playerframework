@@ -54,14 +54,6 @@
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "AutoLoadPage"
-      },
-      {
-        "UniqueId": "Group-1-Item-7",
-        "Title": "PlayReady DRM",
-        "Subtitle": "Demonstrates PlayReady DRM. Note: you must set the build configuration to x86 if you are running on 32-bit Windows.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "PlayReadyPage"
       }
     ]
   },
@@ -108,22 +100,6 @@
     "Items":
     [
       {
-        "UniqueId": "Group-2-Item-1",
-        "Title": "Smooth streaming (VOD)",
-        "Subtitle": "Demonstrates basic playback of smooth streaming video using the Microsoft Smooth Streaming SDK.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "SmoothPage"
-      },
-      {
-        "UniqueId": "Group-2-Item-2",
-        "Title": "Smooth streaming (Live)",
-        "Subtitle": "Demonstrates basic playback of live smooth streaming video using the Microsoft Smooth Streaming SDK.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "LivePage"
-      },
-      {
         "UniqueId": "Group-2-Item-3",
         "Title": "MPEG-DASH streaming video",
         "Subtitle": "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH.",
@@ -132,20 +108,12 @@
         "Content" : "DashPage"
       },
       {
-        "UniqueId": "Group-2-Item-4",
-        "Title": "CFF progressive download video",
-        "Subtitle": "Demonstrates basic playback of the CFF encoding technology.",
+        "UniqueId": "Group-2-Item-6",
+        "Title": "HLS streaming video",
+        "Subtitle": "Demonstrates basic playback of the Apple HLS (Http Live Streaming) format.",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
-        "Content" : "CffProgressivePage"
-      },
-      {
-        "UniqueId": "Group-2-Item-5",
-        "Title": "CFF offline video",
-        "Subtitle": "Demonstrates basic playback of an offline CFF file.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "CffOfflinePage"
+        "Content" : "HlsPage"
       }
     ]
   },
@@ -172,14 +140,6 @@
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
         "Content" : "TtmlPage"
-      },
-      {
-        "UniqueId": "Group-3-Item-2",
-        "Title": "TTML captions (in-stream)",
-        "Subtitle": "Demonstrates playing in-stream TTML captions from smooth streaming text tracks.",
-        "ImagePath": "Assets/MediumGray.png",
-        "Description" : "",
-        "Content" : "InstreamTtmlPage"
       }
     ]
   },
