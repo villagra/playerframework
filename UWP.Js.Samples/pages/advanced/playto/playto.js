@@ -8,12 +8,6 @@
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
         ready: function (element, options) {
-            var item = options && options.item ? Data.resolveItemReference(options.item) : Data.items.getAt(0);
-            element.querySelector(".titlearea .pagetitle").textContent = item.title;
-            if (WinJS.Utilities.isPhone) {
-                document.getElementById("backButton").style.display = "none";
-            }
-
             playToManager = Windows.Media.PlayTo.PlayToManager.getForCurrentView();
             playToManager.addEventListener("sourcerequested", onPlayToSourceRequested, false);
             playToManager.addEventListener("sourceselected", onPlayToSourceSelected, false);

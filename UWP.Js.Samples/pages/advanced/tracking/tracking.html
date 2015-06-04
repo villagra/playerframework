@@ -4,24 +4,13 @@
         <meta charset="utf-8">
         <title>Microsoft Player Framework Samples - Event Tracking</title>
 
-        <link href="tracking.css" rel="stylesheet" />
         <link href="/css/Utilities.css" rel="stylesheet" />
-        <script src="/js/data.js"></script>
         <script src="tracking.js"></script>
         <script src="/js/Utilities.js"></script>
     </head>
     <body>
-        <div class="fragment tracking">
-            <header class="page-header" aria-label="Header content" role="banner">
-                <button id="backButton" data-win-control="WinJS.UI.BackButton"></button>
-                <h1 class="titlearea win-type-ellipsis">
-                    <span class="pagetitle"></span>
-                </h1>
-            </header>
-            <section class="content" aria-label="Main content" role="main">
-                <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
-                    width: 640,
-                    height: 360,
+        <div style="width:100%;height:100%;display:flex;flex-direction:column">
+            <div style="flex-grow:1" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
                     autoplay: true,
                     src: 'http://smf.blob.core.windows.net/samples/videos/wildlife.mp4',
                     playTimeTrackingPlugin: {
@@ -46,13 +35,12 @@
                         ]
                     }
                 }"></div>
-                <div class="item-content">
-                    <fieldset class="log">
-                        <legend>Events</legend>
-                        <div></div>
-                    </fieldset>
-                </div>
-            </section>
+            <div class="item-content">
+                <fieldset class="log">
+                    <legend>Events</legend>
+                    <div></div>
+                </fieldset>
+            </div>
         </div>
     </body>
 </html>

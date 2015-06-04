@@ -4,28 +4,14 @@
     <meta charset="utf-8">
     <title>Microsoft Player Framework Samples - Poster Image</title>
 
-    <link href="poster.css" rel="stylesheet" />
-    <script src="/js/data.js"></script>
     <script src="poster.js"></script>
 </head>
 <body>
-    <div class="fragment poster">
-        <header class="page-header" aria-label="Header content" role="banner">
-            <button id="backButton" data-win-control="WinJS.UI.BackButton"></button>
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle"></span>
-            </h1>
-        </header>
-        <section class="content" aria-label="Main content" role="main">
-            <div data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
-                width: 600,
-                height: 400,
-                autoload: false,
-                autoplay: true,
-                poster: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.jpg',
-                src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
-            }"></div>
-        </section>
-    </div>
+    <div style="width:100%; height:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+            autoload: false,
+            autoplay: true,
+            poster: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.jpg',
+            src: 'http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4'
+        }"></div>
 </body>
 </html>

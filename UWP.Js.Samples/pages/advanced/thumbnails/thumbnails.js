@@ -8,13 +8,7 @@
     WinJS.UI.Pages.define("/pages/advanced/thumbnails/thumbnails.html", {
         // This function is called whenever a user navigates to this page.
         // It populates the page with data and initializes the media player control.
-        ready: function (element, options) {
-            var item = options && options.item ? Data.resolveItemReference(options.item) : Data.items.getAt(0);
-            element.querySelector(".titlearea .pagetitle").textContent = item.title;
-            if (WinJS.Utilities.isPhone) {
-                document.getElementById("backButton").style.display = "none";
-            }
-            
+        ready: function (element, options) {            
             var mediaPlayerElement = element.querySelector("[data-win-control='PlayerFramework.MediaPlayer']");
             this.mediaPlayer = mediaPlayerElement.winControl;
             this.mediaPlayer.focus();

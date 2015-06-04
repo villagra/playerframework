@@ -1,19 +1,14 @@
-﻿.companion .content {
-	margin-left: 120px;
-	margin-right: 120px;
-}
-
-.companion .pf-companion-ad {
+﻿.pf-companion-ad {
     background-color: #333;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
-.companion .pf-companion-ad#companionAd1 {
+.pf-companion-ad#companionAd1 {
     width: 300px;
     height: 60px;
 }
 
-.companion .pf-companion-ad#companionAd2 {
+.pf-companion-ad#companionAd2 {
     display: none;
     width: 300px;
     height: 250px;
