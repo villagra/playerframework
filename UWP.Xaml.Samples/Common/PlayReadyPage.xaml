@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.PlayReadyPage"
@@ -13,9 +13,4 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://playready.directtaps.net/win/media/TallShip_with_Credits_folk_rock_soundtrack_encrypted.wmv"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

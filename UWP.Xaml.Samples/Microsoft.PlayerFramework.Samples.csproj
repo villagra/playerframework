@@ -194,6 +194,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sampleconfiguration.cs" />
     <Compile Include="Styling\ClassicThemePage.xaml.cs">
       <DependentUpon>ClassicThemePage.xaml</DependentUpon>
     </Compile>
@@ -348,6 +349,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="styles\styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

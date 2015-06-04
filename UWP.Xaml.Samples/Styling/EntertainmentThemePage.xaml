@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.EntertainmentThemePage"
@@ -45,9 +45,4 @@
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

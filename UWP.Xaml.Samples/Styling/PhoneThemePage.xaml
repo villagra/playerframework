@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.PhoneThemePage"
@@ -24,9 +24,4 @@
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4"/>
     </Grid>
 
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

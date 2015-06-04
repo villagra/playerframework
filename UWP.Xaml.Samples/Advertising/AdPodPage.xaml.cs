@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,20 +24,9 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class AdPodPage : Page
     {
-        private NavigationHelper navigationHelper;
-
-        /// <summary>
-        /// NavigationHelper is used on each page to aid in navigation and 
-        /// process lifetime management
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
         public AdPodPage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
 
             //TrackAdPodTimeRemaining();
         }
@@ -83,12 +72,6 @@ namespace Microsoft.PlayerFramework.Samples
             return null;
         }
         #endregion
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
-        }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {

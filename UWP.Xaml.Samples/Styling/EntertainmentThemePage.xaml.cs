@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,21 +22,10 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class EntertainmentThemePage : Page
     {
-        private NavigationHelper navigationHelper;
-
-        /// <summary>
-        /// NavigationHelper is used on each page to aid in navigation and 
-        /// process lifetime management
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
 
         public EntertainmentThemePage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
 
             MediaControls.SetBehavior(ReplayButton, player.CreateMediaControlBehavior<ReplayButtonBehavior>());
             MediaControls.SetBehavior(CaptionSelectionButton, player.CreateMediaControlBehavior<CaptionSelectionButtonBehavior>());
@@ -55,12 +44,6 @@ namespace Microsoft.PlayerFramework.Samples
             var captionSelectorPlugin = player.Plugins.OfType<CaptionSelectorPlugin>().FirstOrDefault();
             captionSelectorPlugin.CaptionSelectorViewStyle = new Style(typeof(CaptionSelectorView));
             captionSelectorPlugin.CaptionSelectorViewStyle.Setters.Add(new Setter(Control.PaddingProperty, new Thickness(0, 0, 0, 90)));
-        }
-        
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.LivePage"
@@ -18,9 +18,4 @@
             IsGoLiveVisible="True"
             Source="http://stream8.france24hd.yacast.net/f24/f24enwp7.isml/manifest"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.HlsPage"
@@ -17,9 +17,4 @@
             IsSignalStrengthVisible="True"
             Source="http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

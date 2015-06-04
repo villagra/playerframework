@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.AdPodPage"
@@ -30,9 +30,4 @@
         </mmppf:MediaPlayer>
         <!--<TextBlock x:Name="TextTimeRemaining" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="40" Margin="20"/>-->
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

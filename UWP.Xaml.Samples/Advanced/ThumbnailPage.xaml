@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     x:Class="Microsoft.PlayerFramework.Samples.ThumbnailPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -22,9 +22,4 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" IsTrickPlayEnabled="False" IsFastForwardVisible="True" IsRewindVisible="True" SeekWhileScrubbing="False" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck_long.mp4"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

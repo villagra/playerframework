@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,32 +22,15 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class TtmlPage : Page
     {
-        private NavigationHelper navigationHelper;
-
-        /// <summary>
-        /// NavigationHelper is used on each page to aid in navigation and 
-        /// process lifetime management
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
         public TtmlPage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
 
             // these plug-ins are added in Xaml
             //player.Plugins.Add(new Microsoft.PlayerFramework.TimedText.CaptionsPlugin());
             //player.Plugins.Add(new Microsoft.PlayerFramework.TTML.CaptionSettings.TTMLCaptionSettingsPlugin());
 
             player.SelectedCaption = player.AvailableCaptions.FirstOrDefault();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

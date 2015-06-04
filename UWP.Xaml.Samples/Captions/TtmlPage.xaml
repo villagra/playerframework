@@ -11,11 +11,6 @@
     xmlns:ttml="using:Microsoft.PlayerFramework.TimedText"
     xmlns:captionSettings="using:Microsoft.PlayerFramework.TTML.CaptionSettings"
     mc:Ignorable="d">
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/RealPCPride.mp4" IsCaptionSelectionVisible="True">

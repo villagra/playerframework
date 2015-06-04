@@ -20,87 +20,69 @@ using Microsoft.PlayerFramework.Samples.Common;
 namespace Microsoft.PlayerFramework.Samples
 {
     /// <summary>
-    /// A page that displays a grouped collection of items.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private NavigationHelper navigationHelper;
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
-        /// <summary>
-        /// Gets the NavigationHelper used to aid in navigation and process lifetime management.
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
-
-        /// <summary>
-        /// Gets the DefaultViewModel. This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
-        {
-            get { return this.defaultViewModel; }
-        }
+        public static MainPage Current;
 
         public MainPage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
-            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+
+            // This is a static public property that allows downstream pages to get a handle to the MainPage instance
+            // in order to call methods that are in this class.
+            Current = this;
+            SampleTitle.Text = FEATURE_NAME;
         }
 
-        /// <summary>
-        /// Populates the page with content passed during navigation.  Any saved state is also
-        /// provided when recreating a page from a prior session.
-        /// </summary>
-        /// <param name="sender">
-        /// The source of the event; typically <see cref="NavigationHelper"/>
-        /// </param>
-        /// <param name="e">Event data that provides both the navigation parameter passed to
-        /// <see cref="Frame.Navigate(Type, object)"/> when this page was initially requested and
-        /// a dictionary of state preserved by this page during an earlier
-        /// session.  The state will be null the first time a page is visited.</param>
-        private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
-        {
-            var sampleDataGroups = await SampleDataSource.GetGroupsAsync();
-            this.DefaultViewModel["Groups"] = sampleDataGroups;
-        }
-
-        /// <summary>
-        /// Invoked when an item within a section is clicked.
-        /// </summary>
-        /// <param name="sender">The GridView or ListView
-        /// displaying the item clicked.</param>
-        /// <param name="e">Event data that describes the item clicked.</param>
-        void ItemView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var content = ((SampleDataItem)e.ClickedItem).Content;
-            Type t = Type.GetType(string.Format("Microsoft.PlayerFramework.Samples.{0}", content));
-            this.Frame.Navigate(t);
-        }
-
-        #region NavigationHelper registration
-
-        /// <summary>
-        /// The methods provided in this section are simply used to allow
-        /// NavigationHelper to respond to the page's navigation methods.
-        /// Page specific logic should be placed in event handlers for the  
-        /// <see cref="Common.NavigationHelper.LoadState"/>
-        /// and <see cref="Common.NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
-        /// in addition to page state preserved during an earlier session.
-        /// </summary>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            // Populate the scenario list from the SampleConfiguration.cs file
+            ScenarioControl.ItemsSource = scenarios;
+            if (Window.Current.Bounds.Width < 640)
+            {
+                ScenarioControl.SelectedIndex = -1;
+            }
+            else
+            {
+                ScenarioControl.SelectedIndex = 0;
+            }
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        /// <summary>
+        /// Called whenever the user changes selection in the scenarios list.  This method will navigate to the respective
+        /// sample scenario page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ScenarioControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.navigationHelper.OnNavigatedFrom(e);
+            ListBox scenarioListBox = sender as ListBox;
+            Scenario s = scenarioListBox.SelectedItem as Scenario;
+            if (s != null)
+            {
+                ScenarioFrame.Navigate(s.ClassType);
+                if (Window.Current.Bounds.Width < 640)
+                {
+                    Splitter.IsPaneOpen = false;
+                }
+            }
         }
 
-        #endregion
+        public List<Scenario> Scenarios
+        {
+            get { return this.scenarios; }
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Splitter.IsPaneOpen = (Splitter.IsPaneOpen == true) ? false : true;
+        }
     }
+    public enum NotifyType
+    {
+        StatusMessage,
+        ErrorMessage
+    };
 }

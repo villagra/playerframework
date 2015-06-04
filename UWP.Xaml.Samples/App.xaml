@@ -4,9 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Microsoft.PlayerFramework.Samples"
     RequestedTheme="Dark">
+
     <Application.Resources>
+        <!-- Application-specific resources -->
         <ResourceDictionary>
-            <x:String x:Key="AppName">Microsoft Media Platform Player Framework Xaml Samples</x:String>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- 
+                    Styles that define common aspects of the platform look and feel
+                    Required by Visual Studio project and item templates
+                 -->
+                <ResourceDictionary Source="/Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

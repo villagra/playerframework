@@ -1,4 +1,4 @@
-<Page
+﻿<Page
     x:Name="pageRoot"
     xmlns:common="using:Microsoft.PlayerFramework.Samples.Common"
     x:Class="Microsoft.PlayerFramework.Samples.AutoLoadPage"
@@ -13,9 +13,4 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" AutoLoad="False" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

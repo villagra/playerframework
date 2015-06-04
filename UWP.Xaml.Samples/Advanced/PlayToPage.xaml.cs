@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,23 +24,12 @@ namespace Microsoft.PlayerFramework.Samples
     /// </summary>
     public sealed partial class PlayToPage : Page
     {
-        private NavigationHelper navigationHelper;
         private PlayToManager ptm;
         private CoreDispatcher dispatcher = Window.Current.CoreWindow.Dispatcher;
-
-        /// <summary>
-        /// NavigationHelper is used on each page to aid in navigation and 
-        /// process lifetime management
-        /// </summary>
-        public NavigationHelper NavigationHelper
-        {
-            get { return this.navigationHelper; }
-        }
 
         public PlayToPage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
             ptm = PlayToManager.GetForCurrentView();
         }
 
@@ -65,7 +54,6 @@ namespace Microsoft.PlayerFramework.Samples
         {
             ptm.SourceRequested += SourceRequested;
             base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         private void PlayTo_Click(object sender, RoutedEventArgs e)

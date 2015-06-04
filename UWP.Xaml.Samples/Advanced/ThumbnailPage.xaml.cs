@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,7 +39,6 @@ namespace Microsoft.PlayerFramework.Samples
         public ThumbnailPage()
         {
             this.InitializeComponent();
-            this.navigationHelper = new NavigationHelper(this);
 
             player.VirtualPositionChanged += player_VirtualPositionChanged;
             player.RateChanged += player_RateChanged;
@@ -69,12 +68,6 @@ namespace Microsoft.PlayerFramework.Samples
                     player.ThumbnailImageSource = new BitmapImage(thumbnailUri);
                 }
             }
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            backButton.Command = this.navigationHelper.GoBackCommand;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

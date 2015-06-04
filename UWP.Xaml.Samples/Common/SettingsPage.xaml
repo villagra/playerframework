@@ -14,7 +14,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <Grid Width="240">
@@ -73,56 +72,6 @@
             </ScrollViewer>
         </Grid>
 
-
-        <Grid Grid.Column="2" Width="300">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="White" Offset="-4"/>
-                    <GradientStop Color="Black" Offset=".8"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style x:Key="TextStyle" TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="Margin" Value="3"/>
-                    <Setter Property="FontSize" Value="13"/>
-                </Style>
-            </Grid.Resources>
-            <TextBlock Grid.Row="3" Text="AudioStreamCount: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding AudioStreamCount, ElementName=player}" Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="4" Text="CanPause: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CanPause, ElementName=player}" Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="5" Text="CanSeek: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding CanSeek, ElementName=player}" Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="6" Text="NaturalDuration: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding NaturalDuration, ElementName=player}" Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="7" Text="NaturalVideoHeight: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding NaturalVideoHeight, ElementName=player}" Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="8" Text="NaturalVideoWidth: " Style="{StaticResource TextStyle}"/>
-            <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding NaturalVideoWidth, ElementName=player}" Style="{StaticResource TextStyle}"/>
-        </Grid>
-
         <mmppf:MediaPlayer x:Name="player" Grid.Column="1" Margin="3" Source="http://smf.blob.core.windows.net/samples/videos/wildlife.mp4" AutoHide="False" IsInteractive="True"/>
     </Grid>
-    <Page.TopAppBar>
-        <AppBar>
-            <AppBarButton x:Name="backButton" Icon="Back"/>
-        </AppBar>
-    </Page.TopAppBar>
 </Page>

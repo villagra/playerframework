@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -93,7 +93,6 @@ namespace Microsoft.PlayerFramework.Samples
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            backButton.Command = this.navigationHelper.GoBackCommand;
             navigationHelper.OnNavigatedTo(e);
             Application.Current.Suspending += App_Suspending;
             Application.Current.Resuming += App_Resuming;
