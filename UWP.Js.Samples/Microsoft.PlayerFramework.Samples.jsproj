@@ -131,7 +131,6 @@
     <Content Include="pages\common\poster\poster.js" />
     <Content Include="pages\common\progressive\progressive.html" />
     <Content Include="pages\common\progressive\progressive.js" />
-    <Content Include="sample-utils\footer.html" />
     <Content Include="sample-utils\header.html" />
     <Content Include="sample-utils\sample-utils.js" />
     <Content Include="sample-utils\scenario-select.css" />
