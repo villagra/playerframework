@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.Media.Capture;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.PlayerFramework.Samples.Common;
 
@@ -41,19 +42,6 @@ namespace Microsoft.PlayerFramework.Samples
                 var fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 player.SetSource(fileStream, file.FileType);
             }
-        }
-
-        private void OpenWebcam_Click(object sender, RoutedEventArgs e)
-        {
-            //CameraCaptureUI dialog = new CameraCaptureUI();
-            //dialog.VideoSettings.Format = CameraCaptureUIVideoFormat.Mp4;
-
-            //var file = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
-            //if (file != null)
-            //{
-            //    var fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            //    player.SetSource(fileStream, file.FileType);
-            //}
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

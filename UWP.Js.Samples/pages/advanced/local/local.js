@@ -14,10 +14,7 @@
             var openFileButtonElement = element.querySelector(".item-content button:nth-child(1)");
             openFileButtonElement.onclick = onOpenFileButtonClick;
 
-            var openWebcamButtonElement = element.querySelector(".item-content button:nth-child(2)");
-            openWebcamButtonElement.onclick = onOpenWebcamButtonClick;
-
-            var resetButtonElement = element.querySelector(".item-content button:nth-child(3)");
+            var resetButtonElement = element.querySelector(".item-content button:nth-child(2)");
             resetButtonElement.onclick = onResetButtonClick;
         },
 
@@ -36,12 +33,6 @@
         dialog.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.videosLibrary;
         dialog.fileTypeFilter.replaceAll([".avi", ".mp4", ".mpeg", ".wmv"]);
         dialog.pickSingleFileAsync().done(onFileSelected);
-    }
-
-    function onOpenWebcamButtonClick(e) {
-        var dialog = new Windows.Media.Capture.CameraCaptureUI();
-        dialog.videoSettings.format = Windows.Media.Capture.CameraCaptureUIVideoFormat.mp4;
-        dialog.captureFileAsync(Windows.Media.Capture.CameraCaptureUIMode.video).done(onFileSelected);
     }
 
     function onResetButtonClick(e) {
