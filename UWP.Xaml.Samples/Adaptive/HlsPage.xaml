@@ -12,9 +12,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer 
-            x:Name="player" 
-            IsResolutionIndicatorVisible="True"
-            IsSignalStrengthVisible="True"
+            x:Name="player"
+            AllowMediaStartingDeferrals="False"
             Source="http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8"/>
     </Grid>
 </Page>

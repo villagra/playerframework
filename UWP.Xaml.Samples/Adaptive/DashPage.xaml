@@ -12,9 +12,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer 
-            x:Name="player" 
-            IsResolutionIndicatorVisible="True"
-            IsSignalStrengthVisible="True"
+            x:Name="player"
+            AllowMediaStartingDeferrals="False"
             Source="http://wams.edgesuite.net/media/SintelTrailer_MP4_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)"/>
     </Grid>
 </Page>
