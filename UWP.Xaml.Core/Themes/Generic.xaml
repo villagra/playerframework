@@ -1309,19 +1309,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:LoaderView">
                     <Grid Background="{TemplateBinding Background}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform">
-                            <AppBarButton IsCompact="True" Icon="Play" x:Name="LoadButton"/>
-                        </Viewbox>
+                        <AppBarButton Width="100" Height="100" IsCompact="True" x:Name="LoadButton" Style="{StaticResource PrimaryButtonStyle}">
+                            <FontIcon Glyph="&#xE102;" FontFamily="Segoe UI Symbol"/>
+                        </AppBarButton>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -1336,9 +1326,10 @@
                     <Grid Background="{TemplateBinding Background}">
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{TemplateBinding ErrorText}" FontSize="30" HorizontalAlignment="Center"/>
-                            <Viewbox Width="240" Height="240" Stretch="Uniform" Margin="0,-20,0,0">
-                                <AppBarButton Label="{TemplateBinding RetryText}" Icon="Play" x:Name="RetryButton"/>
-                            </Viewbox>
+                            <AppBarButton Width="100" Height="100" Margin="10" x:Name="RetryButton" Style="{StaticResource PrimaryButtonStyle}">
+                                <FontIcon Glyph="&#xE102;" FontFamily="Segoe UI Symbol"/>
+                            </AppBarButton>
+                            <TextBlock Text="{TemplateBinding RetryText}" FontSize="30" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>
