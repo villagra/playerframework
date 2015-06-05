@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <FileList
   Identity = "MMP.PF.Win81.Dash.SDK, Version=1.0"
   DisplayName = "Microsoft Player Framework Dash Plugin"
@@ -9,5 +9,5 @@
   MinOSVersion="6.3.0"
   MaxOSVersionTested="6.3.0"
   ReferenceManagerEnumeration = "Files">
-    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
+    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.141016"/>
 </FileList>

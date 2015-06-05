@@ -9,5 +9,5 @@
   MinOSVersion="6.3.1"
   MaxOSVersionTested="6.3.1"
   ReferenceManagerEnumeration = "Files">
-    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
+    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.141016"/>
 </FileList>

@@ -10,5 +10,5 @@
   ReferenceManagerEnumeration = "Files">
     <File Content="js\PlayerFramework.Analytics.js" />
     <DependsOn Identity = "MMP.PF.Win10.JS.SDK, Version=1.0"/>
-    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
+    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.141016"/>
 </FileList>

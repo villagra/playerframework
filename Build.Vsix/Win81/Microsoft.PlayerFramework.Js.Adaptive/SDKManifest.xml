@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <FileList
   Identity = "MMP.PF.Win81.Adaptive.JS.SDK, Version=1.0"
   DisplayName = "Microsoft Player Framework Adaptive Streaming Plugin"
@@ -12,5 +12,5 @@
     <File Content="js\PlayerFramework.Adaptive.js" />
     <DependsOn Identity = "Microsoft.WinJS.2.0, Version=1.0.9600.16384"/>
     <DependsOn Identity = "MMP.PF.Win81.JS.SDK, Version=1.0"/>
-    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
+    <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.141016"/>
 </FileList>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <FileList
   Identity = "MMP.PF.Metro.Analytics.JS.SDK, Version=1.0"
   DisplayName = "Microsoft Player Framework Analytics Plugin"
@@ -9,5 +9,5 @@
     <File Content="js\PlayerFramework.Analytics.js" />
     <DependsOn Identity = "Microsoft.WinJS.1.0, Version=1.0"/>
     <DependsOn Identity = "MMP.PF.Metro.JS.SDK, Version=1.0"/>
-    <DependsOn Identity = "Microsoft.Media.SmoothStreaming, Version=1.0.309.12"/>
+    <DependsOn Identity = "Microsoft.Media.SmoothStreaming, Version=1.0.130417"/>
 </FileList>

@@ -9,5 +9,5 @@
   TargetPlatformVersion="10.0.0.0" 
   ReferenceManagerEnumeration = "Files">
 	 <DependsOn Identity = "MMP.PF.Win10.XAML.SDK, Version=1.0"/>
-	 <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.130516"/>
+	 <DependsOn Identity = "Microsoft.Media.AdaptiveStreaming, Version=1.0.141016"/>
 </FileList>
