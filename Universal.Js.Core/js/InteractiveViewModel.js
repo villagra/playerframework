@@ -1239,7 +1239,7 @@
         },
 
         onVolumeMuteClick: function (e) {
-            var slider = e.target.nextSibling;
+            var slider = e.currentTarget.nextSibling;
 
             if (slider.winControl.hidden) {
                 this._mediaPlayer.muted = false;
