@@ -1,0 +1,25 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Microsoft Player Framework Samples - Play To</title>
+
+    <link href="/css/Utilities.css" rel="stylesheet" />
+    <script src="playto.js"></script>
+    <script src="/js/Utilities.js"></script>
+</head>
+<body>
+    <div style="width:100%;height:100%;display:flex;flex-direction:column">
+        <div style="flex-grow:1" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                autoplay: true,
+                src: 'http://smf.blob.core.windows.net/samples/videos/RealPCPride.mp4'
+            }"></div>
+        <div class="item-content">
+            <fieldset class="log">
+                <legend>Events</legend>
+                <div></div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+</html>

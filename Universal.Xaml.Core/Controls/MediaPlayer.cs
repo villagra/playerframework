@@ -3281,6 +3281,9 @@ namespace Microsoft.PlayerFramework
             }
             _IsFullScreen = newValue;
             OnIsFullScreenChanged(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue));
+#if WINDOWS_UWP
+            //mediaElement.IsFullWindow = newValue;
+#endif
         }
 
         /// <summary>

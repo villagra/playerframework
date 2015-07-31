@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Microsoft Player Framework Samples - Error Handling UI</title>
+
+    <link href="error.css" rel="stylesheet" />
+    <script src="/js/data.js"></script>
+    <script src="error.js"></script>
+</head>
+<body>
+    <div class="fragment error">
+        <header id="header" class="page-header" aria-label="Header content" role="banner">
+            <button id="backButton" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle"></span>
+            </h1>
+        </header>
+        <section class="content" aria-label="Main content" role="main">
+            <div style="width:100%; height:100%" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                src: 'http://smf.blob.core.windows.net/samples/videos/wildlife_reallybroken.wmv'
+            }"></div>
+        </section>
+    </div>
+</body>
+</html>

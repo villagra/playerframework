@@ -10,14 +10,14 @@ cd..
 "%DEVENV%" /build "Release|x64"    Microsoft.PlayerFramework.UWP.Xaml.sln
 "%DEVENV%" /build "Release|ARM"    Microsoft.PlayerFramework.UWP.Xaml.sln
 
-@rem "%SN%" -R UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
-@rem "%SN%" -R UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
-@rem "%SN%" -R UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 							UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.PlayerFramework.snk
 "%SN%" -R UWP.Xaml.Advertising\bin\Release\Microsoft.Media.Advertising.winmd 										UWP.WinRT.Advertising\Microsoft.PlayerFramework.snk
 "%SN%" -R UWP.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.winmd 										UWP.WinRT.Analytics\Microsoft.PlayerFramework.snk
-@rem "%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-@rem "%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
-@rem "%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
+"%SN%" -R UWP.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 	UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.PlayerFramework.snk
 "%SN%" -R UWP.Xaml.WebVTT\bin\Release\Microsoft.Media.WebVTT.winmd												UWP.WinRT.WebVTT\Microsoft.PlayerFramework.snk
 
 @popd
@@ -37,16 +37,16 @@ mkdir "Microsoft.PlayerFramework.Xaml.Core\References\CommonConfiguration\neutra
 mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\themes"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64"
+mkdir "Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86"
 mkdir "Microsoft.PlayerFramework.Xaml.Advertising\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.Advertising\References"
 mkdir "Microsoft.PlayerFramework.Xaml.Advertising\Redist\CommonConfiguration"
@@ -60,11 +60,11 @@ mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics"
+mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Analytics"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.Analytics"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration"
-@rem mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM"
+mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x64"
 mkdir "Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86"
@@ -100,17 +100,17 @@ copy ..\..\UWP.Xaml.Core\Themes\Entertainment.xaml												Microsoft.PlayerFr
 copy ..\..\UWP.Xaml.Core\Themes\Phone.xaml														Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
 copy ..\..\UWP.Xaml.Core\Themes\Classic.xaml													Microsoft.PlayerFramework.Xaml.Core\DesignTime\CommonConfiguration\neutral\Themes
 
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.pri					Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri			Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
-@rem copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
+copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.pri					Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.Adaptive\
+copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.pri			Microsoft.PlayerFramework.Xaml.Adaptive\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Helper\
+copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
+copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
+copy ..\..\UWP.Xaml.Adaptive\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x86\
+copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
+copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
+copy ..\..\UWP.Xaml.Adaptive\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\x64\
+copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.dll					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
+copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.PlayerFramework.Adaptive.xml					Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
+copy ..\..\UWP.Xaml.Adaptive\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Helper.winmd 		Microsoft.PlayerFramework.Xaml.Adaptive\References\CommonConfiguration\ARM\
 
 copy ..\..\UWP.Xaml.TimedText\bin\Release\Microsoft.PlayerFramework.TimedText.dll					Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration\neutral\
 copy ..\..\UWP.Xaml.TimedText\bin\Release\Microsoft.PlayerFramework.TimedText.xml					Microsoft.PlayerFramework.Xaml.TimedText\References\CommonConfiguration\neutral\
@@ -132,10 +132,10 @@ copy ..\..\UWP.Xaml.Analytics\bin\Release\Microsoft.PlayerFramework.Analytics.pr
 copy ..\..\UWP.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.winmd 							Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\neutral\
 copy ..\..\UWP.WinRT.Analytics\bin\Release\Microsoft.Media.Analytics.pri							Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.Analytics\
 
-@rem copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.pri			Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics\
-@rem copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86\
-@rem copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x64\
-@rem copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM\
+copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.pri			Microsoft.PlayerFramework.Xaml.Analytics\Redist\CommonConfiguration\neutral\Microsoft.Media.AdaptiveStreaming.Analytics\
+copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x86\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x86\
+copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\x64\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\x64\
+copy ..\..\UWP.WinRT.AdaptiveStreaming.Analytics\bin\ARM\Release\Microsoft.Media.AdaptiveStreaming.Analytics.winmd 			Microsoft.PlayerFramework.Xaml.Analytics\References\CommonConfiguration\ARM\
 
 copy ..\..\UWP.Xaml.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.dll						Microsoft.PlayerFramework.Xaml.WebVTT\References\CommonConfiguration\neutral\
 copy ..\..\UWP.Xaml.WebVTT\bin\Release\Microsoft.PlayerFramework.WebVTT.pri						Microsoft.PlayerFramework.Xaml.WebVTT\Redist\CommonConfiguration\neutral\Microsoft.PlayerFramework.WebVTT\

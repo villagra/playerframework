@@ -35,7 +35,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         private async Task<WebRequestorResponse> GetChunkAsync(Uri source, CancellationToken c)
         {
-            if (ChunkLookup.Any())
+            if (ChunkLookup != null && ChunkLookup.Any())
             {
                 var key = source.AbsolutePath;
 

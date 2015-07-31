@@ -7,8 +7,8 @@ cd Win10
 cd Microsoft.PlayerFramework.Js.Core
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Core.zip "*"
 
-@rem cd ..\Microsoft.PlayerFramework.Js.Adaptive
-@rem "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
+cd ..\Microsoft.PlayerFramework.Js.Adaptive
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.Adaptive.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Js.TimedText
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Js.TimedText.zip "*"
@@ -31,8 +31,8 @@ cd ..\Microsoft.PlayerFramework.Analytics.AudienceInsight
 cd ..\Microsoft.PlayerFramework.Xaml.Core
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Core.zip "*"
 
-@rem cd ..\Microsoft.PlayerFramework.Xaml.Adaptive
-@rem "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Adaptive.zip "*"
+cd ..\Microsoft.PlayerFramework.Xaml.Adaptive
+"%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.Adaptive.zip "*"
 
 cd ..\Microsoft.PlayerFramework.Xaml.TimedText
 "%ZIP%" a ..\..\Microsoft.PlayerFramework\Microsoft.PlayerFramework.Xaml.TimedText.zip "*"
@@ -49,7 +49,7 @@ cd ..\Microsoft.PlayerFramework.Xaml.Analytics
 cd ..\..\Microsoft.PlayerFramework
 
 move Microsoft.PlayerFramework.Js.Core.zip Microsoft.PlayerFramework.Js.Core.Win10.vsix
-@rem move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.Win10.vsix
+move Microsoft.PlayerFramework.Js.Adaptive.zip Microsoft.PlayerFramework.Js.Adaptive.Win10.vsix
 move Microsoft.PlayerFramework.Js.TimedText.zip Microsoft.PlayerFramework.Js.TimedText.Win10.vsix
 move Microsoft.PlayerFramework.Js.Advertising.zip Microsoft.PlayerFramework.Js.Advertising.Win10.vsix
 move Microsoft.PlayerFramework.Js.Analytics.zip Microsoft.PlayerFramework.Js.Analytics.Win10.vsix
@@ -58,7 +58,7 @@ move Microsoft.PlayerFramework.Analytics.AudienceInsight.zip Microsoft.PlayerFra
 move Microsoft.Media.AudienceInsight.zip Microsoft.Media.AudienceInsight.Win10.vsix
 
 move Microsoft.PlayerFramework.Xaml.Core.zip Microsoft.PlayerFramework.Xaml.Core.Win10.vsix
-@rem move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.Win10.vsix
+move Microsoft.PlayerFramework.Xaml.Adaptive.zip Microsoft.PlayerFramework.Xaml.Adaptive.Win10.vsix
 move Microsoft.PlayerFramework.Xaml.TimedText.zip Microsoft.PlayerFramework.Xaml.TimedText.Win10.vsix
 move Microsoft.PlayerFramework.Xaml.WebVTT.zip Microsoft.PlayerFramework.Xaml.WebVTT.Win10.vsix
 move Microsoft.PlayerFramework.Xaml.Advertising.zip Microsoft.PlayerFramework.Xaml.Advertising.Win10.vsix

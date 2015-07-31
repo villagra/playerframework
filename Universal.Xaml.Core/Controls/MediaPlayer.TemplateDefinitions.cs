@@ -276,9 +276,13 @@ namespace Microsoft.PlayerFramework
 #else
         protected override void OnKeyDown(KeyRoutedEventArgs e)
         {
-            if (e.Key == Windows.System.VirtualKey.Escape && IsFullScreen)
+            if (e.Key == Windows.System.VirtualKey.Escape)
             {
+#if WINDOWS_UWP
+                mediaElement.IsFullWindow = false;
+#else                
                 IsFullScreen = false;
+#endif
             }
 #endif
             base.OnKeyDown(e);
@@ -379,7 +383,35 @@ namespace Microsoft.PlayerFramework
                 IsInteractive = true;
                 AutoHide = false;
             }
+
+#if WINDOWS_UWP
+            mediaElement.RegisterPropertyChangedCallback(MediaElement.IsFullWindowProperty, new DependencyPropertyChangedCallback(IsFullWindowChanged));
+#endif
         }
+
+
+#if WINDOWS_UWP
+        bool _FullWindowTransportControlsEnabled, _AreTransportControlsEnabledFlag;
+        private void IsFullWindowChanged(DependencyObject obj, DependencyProperty prop)
+        {
+            if (mediaElement.IsFullWindow)
+            {
+                if (!_AreTransportControlsEnabledFlag)
+                {
+                    _FullWindowTransportControlsEnabled = AreTransportControlsEnabled;
+                    _AreTransportControlsEnabledFlag = true;
+                }
+
+                mediaElement.AreTransportControlsEnabled = true;
+            }
+            else
+            {
+                IsFullScreen = false;
+                mediaElement.AreTransportControlsEnabled = _FullWindowTransportControlsEnabled;
+            }
+
+        }
+#endif
 
         private void UninitializeMediaElement()
         {

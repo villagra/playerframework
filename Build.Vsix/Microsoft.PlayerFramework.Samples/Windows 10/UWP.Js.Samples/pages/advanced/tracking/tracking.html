@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Microsoft Player Framework Samples - Event Tracking</title>
+
+        <link href="/css/Utilities.css" rel="stylesheet" />
+        <script src="tracking.js"></script>
+        <script src="/js/Utilities.js"></script>
+    </head>
+    <body>
+        <div style="width:100%;height:100%;display:flex;flex-direction:column">
+            <div style="flex-grow:1" data-win-control="PlayerFramework.MediaPlayer" data-win-options="{
+                    autoplay: true,
+                    src: 'http://smf.blob.core.windows.net/samples/videos/wildlife.mp4',
+                    playTimeTrackingPlugin: {
+                        trackingEvents: [
+                            { playTime: 5 },
+                            { playTime: 15 },
+                            { playTime: 45 },
+                            { playTimePercentage: 0 },
+                            { playTimePercentage: 0.50 }
+                        ]
+                    },
+                    positionTrackingPlugin: {
+                        trackingEvents: [
+                            { position: 5 },
+                            { position: 15 },
+                            { position: 25 },
+                            { positionPercentage: 0 },
+                            { positionPercentage: 0.25 },
+                            { positionPercentage: 0.50 },
+                            { positionPercentage: 0.75 },
+                            { positionPercentage: 1 }
+                        ]
+                    }
+                }"></div>
+            <div class="item-content">
+                <fieldset class="log">
+                    <legend>Events</legend>
+                    <div></div>
+                </fieldset>
+            </div>
+        </div>
+    </body>
+</html>
