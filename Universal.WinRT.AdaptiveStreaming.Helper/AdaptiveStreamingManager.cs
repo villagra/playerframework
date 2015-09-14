@@ -553,7 +553,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
                     }
                     if (preferredBitrate.HasValue)
                     {
-                        selectedTracks = selectedTracks.GroupBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).First().ToList();
+                        selectedTracks = selectedTracks.OrderBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).Take(1).ToList();
                     }
 
                     // offer the consumer a chance to override our choices
