@@ -1,6 +1,6 @@
 ﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="MMP.PF.WP81.XAML.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" Version="2.0.0.3" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="MMP.PF.WP81.XAML.SDK.VSIX.abc5c41c-f27d-4f8c-acbe-b349c8a6873c" Version="3.0.0.1" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework</DisplayName>
     <Description>Microsoft Media Platform: Player Framework for Windows 8 Xaml Windows Store Apps</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>

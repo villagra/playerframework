@@ -307,6 +307,21 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected abstract void OnIncreasePlaybackRate();
 
+#if WINDOWS_UWP
+
+        /// <summary>
+        /// Notifies the subclass that the user is attempting to invoke the cast feature
+        /// </summary>
+        protected abstract void OnInvokeCast();
+
+        /// <inheritdoc /> 
+        public void InvokeCast()
+        {
+            OnInteracting();
+            OnInvokeCast();
+        }
+#endif
+
         #endregion
 
         /// <inheritdoc /> 
@@ -440,6 +455,21 @@ namespace Microsoft.PlayerFramework
             OnPropertyChanged(() => IsMoreEnabled);
             if (IsMoreEnabledChanged != null) IsMoreEnabledChanged(this, new RoutedEventArgs());
         }
+#if WINDOWS_UWP
+        /// <inheritdoc /> 
+        public event RoutedEventHandler IsCastingEnabledChanged;
+        /// <inheritdoc /> 
+        public abstract bool IsCastingEnabled { get; }
+
+        /// <summary>
+        /// Indicates that the casting enabled state may have changed.
+        /// </summary>
+        protected void NotifyIsCastingEnabledChanged()
+        {
+            OnPropertyChanged(() => IsMoreEnabled);
+            if (IsCastingEnabledChanged != null) IsCastingEnabledChanged(this, new RoutedEventArgs());
+        }
+#endif
 
 #if !WINDOWS80
         /// <inheritdoc /> 

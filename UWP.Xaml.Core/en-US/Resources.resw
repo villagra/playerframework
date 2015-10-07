@@ -327,4 +327,10 @@
   <data name="AdLinkLabel" xml:space="preserve">
     <value>Learn more...</value>
   </data>
+  <data name="CastButtonContent" xml:space="preserve">
+    <value>&lt;FontIcon xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Glyph="&amp;#xEC16;" FontFamily="Segoe MDL2 Assets"/&gt;</value>
+  </data>
+  <data name="CastButtonLabel" xml:space="preserve">
+    <value>Cast</value>
+  </data>
 </root>

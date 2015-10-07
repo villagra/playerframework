@@ -1,11 +1,11 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <FileList
   Identity = "Microsoft.AudienceInsight.Win10.SDK, Version=1.0"
   DisplayName = "Microsoft Audience Insight Client SDK"
   MinVSVersion = "14.0"
   AppliesTo = "WindowsAppContainer"
   TargetPlatform="UAP"           
-  TargetPlatformMinVersion="10.0.0.0" 
-  TargetPlatformVersion="10.0.0.0" 
+  TargetPlatformMinVersion="10.0.10240.0"
+  TargetPlatformVersion="10.0.10240.0"
   ReferenceManagerEnumeration = "Files">
 </FileList>

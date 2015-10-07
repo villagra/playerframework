@@ -984,6 +984,7 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+#if !WINDOWS_UWP
         #region PlayToSource
 
         PlayToSource _PlayToSource
@@ -1047,6 +1048,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
+#endif
 
         #region ProtectionManager
 
@@ -1244,6 +1246,7 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+#if !WINDOWS_UWP
         #region PlayToPreferredSourceUri
 
         Uri _PlayToPreferredSourceUri
@@ -1264,6 +1267,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
+#endif
 #endif
 #endif
 
@@ -1307,6 +1311,14 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
+
+#if WINDOWS_UWP
+        #region IsCasting
+
+        bool _IsCasting { get; set; }
+
+        #endregion
+#endif
 
         #region IsFullScreen
 
@@ -1715,7 +1727,7 @@ namespace Microsoft.PlayerFramework
 
         #region Methods
 
-#if !SILVERLIGHT
+#if !WINDOWS_UWP && !SILVERLIGHT
         bool IsPlayToConnected()
         {
             try
@@ -2173,7 +2185,9 @@ namespace Microsoft.PlayerFramework
                 ((AutoHideBehavior & AutoHideBehavior.PreventDuringInteractiveHover) == AutoHideBehavior.PreventDuringInteractiveHover && IsPointerOverInteractiveElement())
 #if !SILVERLIGHT
                 || interactiveElements.Select(ie => ie.Element).Any(el => el.HasKeyboardFocus())
+#if !WINDOWS_UWP
                 || IsPlayToConnected()
+#endif
 #endif
 );
 

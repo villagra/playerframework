@@ -1,12 +1,12 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <FileList
   Identity = "MMP.PF.Win10.Adaptive.JS.SDK, Version=1.0"
   DisplayName = "Microsoft Player Framework Adaptive Streaming Plugin"
   MinVSVersion = "14.0"
   AppliesTo = "WindowsAppContainer + (JavaScript)"
   TargetPlatform="UAP"           
-  TargetPlatformMinVersion="10.0.0.0" 
-  TargetPlatformVersion="10.0.0.0" 
+  TargetPlatformMinVersion="10.0.10240.0"
+  TargetPlatformVersion="10.0.10240.0"
   ReferenceManagerEnumeration = "Files">
     <File Content="js\PlayerFramework.Adaptive.js" />
     <DependsOn Identity = "MMP.PF.Win10.JS.SDK, Version=1.0"/>

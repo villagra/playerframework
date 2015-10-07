@@ -748,6 +748,36 @@
             }
         },
 
+        castIcon: {
+            get: function () {
+                return this._mediaPlayer.isCasting ? PlayerFramework.Utilities.getResourceString("ExitCastIcon") : PlayerFramework.Utilities.getResourceString("CastIcon");
+            }
+        },
+
+        castLabel: {
+            get: function () {
+                return this._mediaPlayer.isCasting ? PlayerFramework.Utilities.getResourceString("ExitCastLabel") : PlayerFramework.Utilities.getResourceString("CastLabel");
+            }
+        },
+
+        castTooltip: {
+            get: function () {
+                return this._mediaPlayer.isCasting ? PlayerFramework.Utilities.getResourceString("ExitCastTooltip") : PlayerFramework.Utilities.getResourceString("CastTooltip");
+            }
+        },
+
+        isCastingDisabled: {
+            get: function () {
+                return !this._mediaPlayer.isCastingEnabled;
+            }
+        },
+
+        isCastHidden: {
+            get: function () {
+                return !this._mediaPlayer.isCastVisible;
+            }
+        },
+
         stopIcon: {
             get: function () {
                 return PlayerFramework.Utilities.getResourceString("StopIcon");
@@ -973,6 +1003,7 @@
             this._bindProperty("volume", this._observableMediaPlayer, this._notifyProperties, ["volume"]);
             this._bindProperty("muted", this._observableMediaPlayer, this._notifyProperties, ["volumeMuteIcon", "volumeMuteLabel", "volumeMuteTooltip", "volumeIcon", "muteIcon", "muteLabel", "muteTooltip"]);
             this._bindProperty("isFullScreen", this._observableMediaPlayer, this._notifyProperties, ["fullScreenIcon", "fullScreenLabel", "fullScreenTooltip"]);
+            this._bindProperty("isCasting", this._observableMediaPlayer, this._notifyProperties, ["castIcon", "castLabel", "castTooltip"]);
             this._bindProperty("signalStrength", this._observableMediaPlayer, this._notifyProperties, ["signalStrength", "signalStrengthTooltip"]);
             this._bindProperty("mediaQuality", this._observableMediaPlayer, this._notifyProperties, ["mediaQuality", "mediaQualityTooltip"]);
             this._bindProperty("visualMarkers", this._observableMediaPlayer, this._notifyProperties, ["visualMarkers"]);
@@ -1047,6 +1078,8 @@
             this._bindProperty("isFullScreenAllowed", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenDisabled"]);
             this._bindProperty("isFullScreenEnabled", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenDisabled"]);
             this._bindProperty("isFullScreenVisible", this._observableMediaPlayer, this._notifyProperties, ["isFullScreenHidden"]);
+            this._bindProperty("isCastingEnabled", this._observableMediaPlayer, this._notifyProperties, ["isCastingDisabled"]);
+            this._bindProperty("isCastisible", this._observableMediaPlayer, this._notifyProperties, ["isCastHidden"]);
             this._bindProperty("isStopAllowed", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
             this._bindProperty("isStopEnabled", this._observableMediaPlayer, this._notifyProperties, ["isStopDisabled"]);
             this._bindProperty("isStopVisible", this._observableMediaPlayer, this._notifyProperties, ["isStopHidden"]);
@@ -1185,6 +1218,10 @@
 
         toggleFullScreen: function () {
             this._mediaPlayer.isFullScreen = !this._mediaPlayer.isFullScreen;
+        },
+
+        toggleCast: function () {
+            this._mediaPlayer.isCasting = !this._mediaPlayer.isCasting;
         },
 
         stop: function () {

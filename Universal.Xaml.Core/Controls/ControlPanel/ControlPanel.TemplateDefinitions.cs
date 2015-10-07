@@ -63,6 +63,10 @@ namespace Microsoft.PlayerFramework
 #endif
         public const string SignalStrengthElement = "SignalStrength";
         public const string ResolutionIndicatorElement = "ResolutionIndicator";
+
+#if WINDOWS_UWP
+        public const string CastButtonElement = "CastButton";
+#endif
     }
 
     internal static class ControlPanelVisualStates
@@ -132,6 +136,10 @@ namespace Microsoft.PlayerFramework
     [TemplatePart(Name = ControlPanelTemplateParts.ResolutionIndicatorElement, Type = typeof(ResolutionIndicator))]
 #if !WINDOWS80
     [TemplatePart(Name = ControlPanelTemplateParts.ZoomButtonElement, Type = typeof(ButtonBase))]
+#endif
+
+#if WINDOWS_UWP
+    [TemplatePart(Name = ControlPanelTemplateParts.CastButtonElement, Type = typeof(ButtonBase))]
 #endif
     [TemplateVisualState(Name = ControlPanelVisualStates.LayoutStates.Normal, GroupName = ControlPanelVisualStates.GroupNames.LayoutStates)]
     [TemplateVisualState(Name = ControlPanelVisualStates.LayoutStates.Compact, GroupName = ControlPanelVisualStates.GroupNames.LayoutStates)]
@@ -268,6 +276,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         protected ResolutionIndicator ResolutionIndicatorElement { get; private set; }
 
+#if WINDOWS_UWP
+        /// <summary>
+        /// The cast button.
+        /// </summary>
+        internal ButtonBase CastButtonElement { get; private set; }
+#endif
+
         /// <inheritdoc /> 
         protected virtual void GetTemplateChildren()
         {
@@ -307,6 +322,10 @@ namespace Microsoft.PlayerFramework
 #endif
             SignalStrengthElement = GetTemplateChild(ControlPanelTemplateParts.SignalStrengthElement) as SignalStrength;
             ResolutionIndicatorElement = GetTemplateChild(ControlPanelTemplateParts.ResolutionIndicatorElement) as ResolutionIndicator;
+
+#if WINDOWS_UWP
+            CastButtonElement = GetTemplateChild(ControlPanelTemplateParts.CastButtonElement) as ButtonBase;
+#endif
         }
 
         partial void Init()

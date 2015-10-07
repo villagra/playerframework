@@ -121,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
-    <None Include="packages.config" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Universal.Js.Analytics\js\AdaptiveAnalyticsPlugin.js">

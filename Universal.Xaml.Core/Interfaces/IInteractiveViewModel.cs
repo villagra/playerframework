@@ -269,6 +269,14 @@ namespace Microsoft.PlayerFramework
         bool IsZoomEnabled { get; }
 #endif
 
+
+#if WINDOWS_UWP
+        /// <summary>
+        /// Gets the enabled state of the casting feature.
+        /// </summary>
+        bool IsCastingEnabled { get; }
+#endif
+
         /// <summary>
         /// Gets the thumbnail image to display
         /// </summary>
@@ -374,6 +382,19 @@ namespace Microsoft.PlayerFramework
         /// Raised when the IsZoomEnabled property changes.
         /// </summary>
         event RoutedEventHandler IsZoomEnabledChanged;
+#endif
+
+
+#if WINDOWS_UWP
+        /// <summary>
+        /// Raised when the IsCastingEnabled property changes.
+        /// </summary>
+        event RoutedEventHandler IsCastingEnabledChanged;
+
+        /// <summary>
+        /// Invokes the cast feature
+        /// </summary>
+        void InvokeCast();
 #endif
 
         /// <summary>

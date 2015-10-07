@@ -1,0 +1,295 @@
+{"Groups":[
+  {
+    "UniqueId": "Group-1",
+    "Title": "Common",
+    "Subtitle": "Common Samples",
+    "ImagePath": "Assets/DarkGray.png",
+    "Description" : "Demonstrates common uses of the player framework",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-1-Item-1",
+        "Title": "Progressive video",
+        "Subtitle": "Demonstrates basic playback of progressive download video.",
+        "ImagePath": "Assets/LightGray.png",
+        "Description" : "",
+        "Content" : "ProgressivePage"
+      },
+      {
+        "UniqueId": "Group-1-Item-2",
+        "Title": "Playlists",
+        "Subtitle": "Demonstrates playlist support.",
+        "ImagePath": "Assets/DarkGray.png",
+        "Description" : "",
+        "Content" : "PlaylistPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-3",
+        "Title": "Player Framework settings",
+        "Subtitle": "Demonstrates a number of the settings that can be used to control the PlayerFramework.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "SettingsPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-4",
+        "Title": "Error handling UI",
+        "Subtitle": "Demonstrates the built-in error handler UI.",
+        "ImagePath": "Assets/DarkGray.png",
+        "Description" : "",
+        "Content" : "ErrorPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-5",
+        "Title": "Poster image",
+        "Subtitle": "Demonstrates showing a poster image.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PosterPage"
+      },
+      {
+        "UniqueId": "Group-1-Item-6",
+        "Title": "Click to play",
+        "Subtitle": "Demonstrates the built-in click to play feature to allow users to only start download once the user clicks.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "AutoLoadPage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-Styling",
+    "Title": "Styling",
+    "Subtitle": "Common Samples",
+    "ImagePath": "Assets/DarkGray.png",
+    "Description" : "Demonstrates styling the player framework",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-Styling-Item-1",
+        "Title": "Classic theme",
+        "Subtitle": "Uses the IE default browser look and feel.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ClassicThemePage"
+      },
+      {
+        "UniqueId": "Group-Styling-Item-2",
+        "Title": "Phone theme",
+        "Subtitle": "Uses the Windows Phone 8 video theme.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PhoneThemePage"
+      },
+      {
+        "UniqueId": "Group-Styling-Item-3",
+        "Title": "Entertainment theme",
+        "Subtitle": "Uses the Windows Entertainment app theme.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "EntertainmentThemePage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-2",
+    "Title": "Adaptive",
+    "Subtitle": "Adaptive Streaming Samples",
+    "ImagePath": "Assets/LightGray.png",
+    "Description" : "Demonstrates the various ways to use the smooth streaming SDK to support adaptive streaming",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-2-Item-3",
+        "Title": "MPEG-DASH streaming video",
+        "Subtitle": "Demonstrates basic playback of the new W3C adaptive streaming technology called DASH.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "DashPage"
+      },
+      {
+        "UniqueId": "Group-2-Item-6",
+        "Title": "HLS streaming video",
+        "Subtitle": "Demonstrates basic playback of the Apple HLS (Http Live Streaming) format.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "HlsPage"
+      },
+      {
+        "UniqueId": "Group-2-Item-6",
+        "Title": "Smooth streaming video",
+        "Subtitle": "Demonstrates basic playback of the Smooth format.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "SmoothPage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-3",
+    "Title": "Captions",
+    "Subtitle": "Closed Caption Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates the various ways to use the player framework's closed captioning and subtitles feature",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-3-Item-3",
+        "Title": "WebVTT captions (side car)",
+        "Subtitle": "Demonstrates playing WebVTT captions.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "WebVTTPage"
+      },
+      {
+        "UniqueId": "Group-3-Item-1",
+        "Title": "TTML captions (side car)",
+        "Subtitle": "Demonstrates TTML closed captions/subtitles.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "TtmlPage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-4",
+    "Title": "Advertising",
+    "Subtitle": "Advertising Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates the various ways to use the player framework's advertising feature",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-4-Item-3",
+        "Title": "Schedule VAST ads",
+        "Subtitle": "Demonstrates playing a VAST preroll, midroll, and postroll",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "AdSchedulingPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-8",
+        "Title": "VMAP ad scheduling",
+        "Subtitle": "Demonstrates using VMAP to schedule ads",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "VmapPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-9",
+        "Title": "FreeWheel SmartXML",
+        "Subtitle": "Demonstrates using FreeWheel's Smart XML to schedule and play ads",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "FreeWheelPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-1",
+        "Title": "MAST ad scheduling",
+        "Subtitle": "Demonstrates scheduling ads using MAST (Media Abstract Sequencing Template)",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "MastPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-4",
+        "Title": "Schedule simple clip",
+        "Subtitle": "Demonstrates how to schedule a simple clip (not VAST)",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ScheduleClipPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-6",
+        "Title": "Programmatic ad",
+        "Subtitle": "Demonstrates how to programmatically schedule and play an ad",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ProgrammaticAdPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-2",
+        "Title": "Nonlinear ad",
+        "Subtitle": "Demonstrates playing a VAST file that contains a linear and nonlinear ad",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "VastLinearNonlinearPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-5",
+        "Title": "Ad pod",
+        "Subtitle": "Demonstrates a VAST ad pod using VAST",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "AdPodPage"
+      },
+      {
+        "UniqueId": "Group-4-Item-7",
+        "Title": "Companion ads",
+        "Subtitle": "Demonstrates how to play an ad with companions",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "VastLinearCompanionPage"
+      }
+    ]
+  },
+  {
+    "UniqueId": "Group-5",
+    "Title": "Advanced",
+    "Subtitle": "Advanced Samples",
+    "ImagePath": "Assets/MediumGray.png",
+    "Description" : "Demonstrates advanced player framework features",
+    "Items":
+    [
+      {
+        "UniqueId": "Group-5-Item-1",
+        "Title": "Thumbnails",
+        "Subtitle": "Demonstrates how to show thumbnails during scrubbing, RW, & FF operations.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "ThumbnailPage"
+      },
+      {
+        "UniqueId": "Group-5-Item-2",
+        "Title": "Tracking",
+        "Subtitle": "Demonstrates how to get tracking events for analytics purposes.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "TrackingPage"
+      },
+      {
+        "UniqueId": "Group-5-Item-3",
+        "Title": "Timeline Markers",
+        "Subtitle": "Demonstrates showing visual markers in the timeline that the user can seek to.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "MarkersPage"
+      },
+      {
+        "UniqueId": "Group-5-Item-4",
+        "Title": "Local playback",
+        "Subtitle": "Demonstrates playing a local video and capturing input from the webcam.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "LocalPlaybackPage"
+      },
+      {
+        "UniqueId": "Group-5-Item-5",
+        "Title": "Play To",
+        "Subtitle": "Demonstrates how to use Play To, to enable users to stream media to a target device.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "PlayToPage"
+      },
+      {
+        "UniqueId": "Group-5-Item-6",
+        "Title": "Suspend & resume",
+        "Subtitle": "Demonstrates how to suspend and resume the player.",
+        "ImagePath": "Assets/MediumGray.png",
+        "Description" : "",
+        "Content" : "SuspendResumePage"
+      }
+    ]
+  }
+]
+}

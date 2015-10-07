@@ -1222,6 +1222,7 @@
                                 IsResolutionIndicatorVisible="{TemplateBinding IsResolutionIndicatorVisible}"
                                 IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}"
                                 IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}"
+                                IsCastButtonVisible="{TemplateBinding IsCastVisible}"
                                 IsZoomButtonVisible="{TemplateBinding IsZoomVisible}"
                                 IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}"
                                 IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}"

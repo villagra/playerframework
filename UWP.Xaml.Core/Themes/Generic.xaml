@@ -1054,6 +1054,11 @@
                                         <local:ZoomButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </local:MediaControls.Behavior>
                                 </AppBarButton>
+                                <AppBarButton x:Name="CastButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsCastButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
+                                    <local:MediaControls.Behavior>
+                                        <local:CastButtonBehavior ViewModel="{Binding ViewModel, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </local:MediaControls.Behavior>
+                                </AppBarButton>
                                 <local:VolumeButton x:Name="VolumeButton" PanelPosition="-9,-200,-9,10" ViewModel="{TemplateBinding ViewModel}" MuteButtonStyle="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsVolumeButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5" PanelBackground="{TemplateBinding Background}"/>
                                 <AppBarButton x:Name="MuteButton" Style="{TemplateBinding TransportBarButtonStyle}" Visibility="{Binding IsMuteButtonVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource VisibleIfConverter}}" Margin="5,5,5,5">
                                     <local:MediaControls.Behavior>
@@ -1288,6 +1293,7 @@
                                 IsSignalStrengthVisible="{TemplateBinding IsSignalStrengthVisible}"
                                 IsFullScreenButtonVisible="{TemplateBinding IsFullScreenVisible}"
                                 IsZoomButtonVisible="{TemplateBinding IsZoomVisible}"
+                                IsCastButtonVisible="{TemplateBinding IsCastVisible}"
                                 IsSlowMotionButtonVisible="{TemplateBinding IsSlowMotionVisible}"
                                 IsPlayPauseButtonVisible="{TemplateBinding IsPlayPauseVisible}"
                                 IsVolumeButtonVisible="{TemplateBinding IsVolumeVisible}"

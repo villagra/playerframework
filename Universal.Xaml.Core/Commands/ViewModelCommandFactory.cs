@@ -181,6 +181,21 @@ namespace Microsoft.PlayerFramework
         }
 #endif
 
+#if WINDOWS_UWP
+        /// <summary>
+        /// Creates a command used to bind to a zoom button.
+        /// </summary>
+        /// <returns>A special ICommand object expected to be wired to a ViewModel.</returns>
+        public static ViewModelCommand CreateCastCommand()
+        {
+            return new ViewModelCommand(
+                vm => vm.InvokeCast(),
+                vm => vm.IsCastingEnabled,
+                new HandlerReference<IInteractiveViewModel, RoutedEventHandler>((vm, eh) => vm.IsCastingEnabledChanged -= eh, (vm, eh) => vm.IsCastingEnabledChanged += eh)
+                );
+        }
+#endif
+
         /// <summary>
         /// Creates a command used to bind to a seek button. Note: the new position is expected to be passed in as a CommandParameter.
         /// </summary>

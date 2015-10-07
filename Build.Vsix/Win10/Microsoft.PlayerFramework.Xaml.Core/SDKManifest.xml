@@ -1,12 +1,12 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <FileList
   Identity = "MMP.PF.Win10.XAML.SDK, Version=1.0"
   DisplayName = "Microsoft Player Framework"
   MinVSVersion = "14.0"
   AppliesTo = "WindowsAppContainer + (CSharp | VB | VisualC)"
   TargetPlatform="UAP"           
-  TargetPlatformMinVersion="10.0.0.0" 
-  TargetPlatformVersion="10.0.0.0" 
+  TargetPlatformMinVersion="10.0.10240.0"
+  TargetPlatformVersion="10.0.10240.0"
   ReferenceManagerEnumeration = "Files">
   <File Reference="Microsoft.PlayerFramework.dll">
     <ToolboxItems VSCategory = "Toolbox.Common" BlendCategory="Media">

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Microsoft.PlayerFramework.Samples", "UWP.Js.Samples\Microsoft.PlayerFramework.Samples.jsproj", "{C5BB4344-DC39-4E97-8AA1-57D4E71CC40C}"
 EndProject
@@ -12,10 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Advertising", "UWP.Js.Advertising\Microsoft.PlayerFramework.Advertising.csproj", "{45DE3D69-D5B8-4937-939D-C3E3A2E24B9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics", "UWP.WinRT.Analytics\Microsoft.Media.Analytics.csproj", "{812F8D33-715D-4ACB-83BA-5D379E68B08D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics", "UWP.Js.Analytics\Microsoft.PlayerFramework.Analytics.csproj", "{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText", "UWP.Js.TimedText\Microsoft.PlayerFramework.TimedText.csproj", "{537691FA-DAEC-47D2-B837-58172C47C048}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.Analytics.Advertising", "UWP.WinRT.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj", "{432F6432-4324-476F-88BC-F7B02383DD20}"
 EndProject
@@ -34,6 +30,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Adaptive", "UWP.Js.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj", "{8E4969E0-7DCC-4CDE-955F-01BD930DCF2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Media.AdaptiveStreaming.Helper", "UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj", "{864210C0-E36E-4F41-8C3C-E38AED4E7A45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.Analytics", "UWP.Js.Analytics\Microsoft.PlayerFramework.Analytics.csproj", "{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.PlayerFramework.TimedText", "UWP.Js.TimedText\Microsoft.PlayerFramework.TimedText.csproj", "{537691FA-DAEC-47D2-B837-58172C47C048}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,38 +135,6 @@ Global
 		{812F8D33-715D-4ACB-83BA-5D379E68B08D}.Release|x64.Build.0 = Release|x64
 		{812F8D33-715D-4ACB-83BA-5D379E68B08D}.Release|x86.ActiveCfg = Release|x86
 		{812F8D33-715D-4ACB-83BA-5D379E68B08D}.Release|x86.Build.0 = Release|x86
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|ARM.ActiveCfg = Debug|ARM
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|ARM.Build.0 = Debug|ARM
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x64.ActiveCfg = Debug|x64
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x64.Build.0 = Debug|x64
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x86.ActiveCfg = Debug|x86
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x86.Build.0 = Debug|x86
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|ARM.ActiveCfg = Release|ARM
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|ARM.Build.0 = Release|ARM
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x64.ActiveCfg = Release|x64
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x64.Build.0 = Release|x64
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x86.ActiveCfg = Release|x86
-		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x86.Build.0 = Release|x86
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|ARM.ActiveCfg = Debug|ARM
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|ARM.Build.0 = Debug|ARM
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x64.ActiveCfg = Debug|x64
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x64.Build.0 = Debug|x64
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x86.ActiveCfg = Debug|x86
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x86.Build.0 = Debug|x86
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|Any CPU.Build.0 = Release|Any CPU
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|ARM.ActiveCfg = Release|ARM
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|ARM.Build.0 = Release|ARM
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x64.ActiveCfg = Release|x64
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x64.Build.0 = Release|x64
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x86.ActiveCfg = Release|x86
-		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x86.Build.0 = Release|x86
 		{432F6432-4324-476F-88BC-F7B02383DD20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{432F6432-4324-476F-88BC-F7B02383DD20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{432F6432-4324-476F-88BC-F7B02383DD20}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -295,6 +263,38 @@ Global
 		{864210C0-E36E-4F41-8C3C-E38AED4E7A45}.Release|x64.Build.0 = Release|x64
 		{864210C0-E36E-4F41-8C3C-E38AED4E7A45}.Release|x86.ActiveCfg = Release|x86
 		{864210C0-E36E-4F41-8C3C-E38AED4E7A45}.Release|x86.Build.0 = Release|x86
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|ARM.ActiveCfg = Debug|ARM
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|ARM.Build.0 = Debug|ARM
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x64.ActiveCfg = Debug|x64
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x64.Build.0 = Debug|x64
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x86.ActiveCfg = Debug|x86
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Debug|x86.Build.0 = Debug|x86
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|ARM.ActiveCfg = Release|ARM
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|ARM.Build.0 = Release|ARM
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x64.ActiveCfg = Release|x64
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x64.Build.0 = Release|x64
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x86.ActiveCfg = Release|x86
+		{EB1394CB-242C-4616-9DAA-8CEFD5ADF1ED}.Release|x86.Build.0 = Release|x86
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|ARM.ActiveCfg = Debug|ARM
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|ARM.Build.0 = Debug|ARM
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x64.ActiveCfg = Debug|x64
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x64.Build.0 = Debug|x64
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x86.ActiveCfg = Debug|x86
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Debug|x86.Build.0 = Debug|x86
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|ARM.ActiveCfg = Release|ARM
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|ARM.Build.0 = Release|ARM
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x64.ActiveCfg = Release|x64
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x64.Build.0 = Release|x64
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x86.ActiveCfg = Release|x86
+		{537691FA-DAEC-47D2-B837-58172C47C048}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

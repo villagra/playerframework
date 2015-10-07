@@ -441,6 +441,24 @@ namespace Microsoft.PlayerFramework
     }
 #endif
 
+#if WINDOWS_UWP
+    /// <summary>
+    /// Represents a cast button behavior that can be bound to MediaPlayer.InteractiveViewModel
+    /// </summary>
+    public class CastButtonBehavior : MediaControlBehavior
+    {
+        /// <summary>
+        /// Creates a new instance of CastButtonBehavior.
+        /// </summary>
+        public CastButtonBehavior()
+        {
+            Label = MediaPlayer.GetResourceString("CastButtonLabel");
+            Command = ViewModelCommandFactory.CreateCastCommand();
+            Content = XamlReader.Load(MediaPlayer.GetResourceString("CastButtonContent"));
+        }
+    }
+#endif
+
     /// <summary>
     /// Represents a caption selection button behavior that can be bound to MediaPlayer.InteractiveViewModel
     /// </summary>

@@ -168,6 +168,22 @@ namespace Microsoft.PlayerFramework
             set { SetValue(IsCaptionSelectionButtonVisibleProperty, value); }
         }
 
+#if WINDOWS_UWP
+        /// <summary>
+        /// Identifies the IsCaptionSelectionButtonVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsCastButtonVisibleProperty = DependencyProperty.Register("IsCastButtonVisible", typeof(bool), typeof(ControlPanel), new PropertyMetadata(false));
+
+        /// <summary>
+        /// Gets or sets if the CaptionSelectionButton is visible or not.
+        /// </summary>
+        public bool IsCastButtonVisible
+        {
+            get { return (bool)GetValue(IsCastButtonVisibleProperty); }
+            set { SetValue(IsCastButtonVisibleProperty, value); }
+        }
+#endif
+
         /// <summary>
         /// Identifies the IsTimeElapsedButtonVisible dependency property.
         /// </summary>

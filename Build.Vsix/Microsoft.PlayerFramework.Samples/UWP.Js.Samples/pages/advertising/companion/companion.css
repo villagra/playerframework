@@ -1,0 +1,15 @@
+﻿.pf-companion-ad {
+    background-color: #333;
+    margin: 10px;
+}
+
+.pf-companion-ad#companionAd1 {
+    width: 300px;
+    height: 60px;
+}
+
+.pf-companion-ad#companionAd2 {
+    display: none;
+    width: 300px;
+    height: 250px;
+}

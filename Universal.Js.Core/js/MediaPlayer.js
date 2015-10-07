@@ -23,6 +23,7 @@
         "ending",
         "error",
         "fullscreenchange",
+        "castingchange",
         "initialized",
         "interactivestatechange",
         "interactiveviewmodelchange",
@@ -220,6 +221,8 @@
             this._isFullScreen = false;
             this._isFullScreenEnabled = true;
             this._isFullScreenVisible = false;
+            this._isCastingEnabled = true;
+            this._isCastVisible = false;
             this._isStopEnabled = true;
             this._isStopVisible = false;
             this._isInfoEnabled = true;
@@ -260,7 +263,11 @@
             this._setElement(element);
             this._setOptions(options);
             this._initializePlugins();
-            this._updateCurrentSource();
+            this._updateCurrentSource();            
+            
+            this._castingPicker = null;
+            this._currentCastingConnection = null;
+            this._pausedBeforeCast = null;
 
             this.isInteractive = true;
             this.dispatchEvent("initialized");
@@ -1964,6 +1971,149 @@
                     if (oldValue !== value) {
                         this._isFullScreenVisible = value;
                         this._observableMediaPlayer.notify("isFullScreenVisible", value, oldValue);
+                    }
+                }
+            },
+
+            getAsCastingSource: function() {
+                if (this._mediaElement && this._mediaElement.msGetAsCastingSource && this.isCastingEnabled)
+                {
+                    return this._mediaElement.msGetAsCastingSource();
+                }
+            },
+
+            /// <field name="isCasting" type="Boolean">Gets or sets a value that specifies whether the player is in casting mode.</field>
+            isCasting: {
+                get: function () {
+                    return this._isCasting;
+                },
+                set: function (value) {
+                    if (this.isCastingEnabled) {
+                        var oldValue = this._isCasting;
+                        if (oldValue !== value) {
+                            this._isCasting = value;
+                            if (value) {
+                                if (this._castingPicker == null) {
+                                    var that = this;
+                                    this._castingPicker = new Windows.Media.Casting.CastingDevicePicker();
+
+                                    //Set the picker to filter to video capable casting devices
+                                    this._castingPicker.filter.supportsVideo = true;
+
+                                    //Hook up picker dismissed event 
+                                    this._castingPicker.oncastingdevicepickerdismissed = function (eventArgs) {
+                                        that.isCasting = false;
+                                        if (!that._pausedBeforeCast)
+                                            that.play();
+                                    };
+
+                                    //Hook up device selected event 
+                                    this._castingPicker.oncastingdeviceselected = function (eventArgs) {
+                                        //Create a casting conneciton from our selected casting device
+                                        that._currentCastingConnection = eventArgs.selectedCastingDevice.createCastingConnection();
+
+                                        //Hook up the casting events
+                                        that._currentCastingConnection.errorOccurred = function (eventArgs) {
+                                        }
+
+                                        that._currentCastingConnection.stateChanged = function (eventArgs) {
+                                            switch (this._currentCastingConnection.state) {
+                                                case Windows.Media.Casting.CastingConnectionState.disconnected:
+                                                    that.isCasting = false;
+                                                    that.stop();
+                                                    break;
+                                                case Windows.Media.Casting.CastingConnectionState.connected:
+                                                    if (!that._pausedBeforeCast)
+                                                        that.play();
+                                                    break;
+                                                case Windows.Media.Casting.CastingConnectionState.rendering:
+                                                    break;
+                                                case Windows.Media.Casting.CastingConnectionState.disconnecting:
+                                                    that.pause();
+                                                    break;
+                                                case Windows.Media.Casting.CastingConnectionState.connecting:
+                                                    that.pause()
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+
+                                        // Start Casting
+                                        var source = that.getAsCastingSource();
+                                        var status =
+                                            that._currentCastingConnection.requestStartCastingAsync(source);
+                                    };
+                                }
+
+                                var elms = document.getElementsByClassName('pf-cast-control');
+                                if (elms) {
+                                    var castElm = elms[0];
+                                    var box;
+
+                                    if (castElm) {
+                                        if (castElm.getBoundingClientRect) {
+                                            box = castElm.getBoundingClientRect();
+                                        }
+
+                                        if (!box) {
+                                            box.left = 0;
+                                            box.top = 0;
+                                        }
+
+                                        var rect = {
+                                            height: castElm.clientHeight,
+                                            width: castElm.clientWidth,
+                                            x: box.left,
+                                            y: box.top
+                                        };
+
+                                        this._pausedBeforeCast = this.mediaElement.paused;
+                                        if (!this.mediaElement.paused)
+                                            this.pause();
+                                        this._castingPicker.show(rect);
+                                    }
+                                }
+                            } else {
+                                //stop casting
+                                if (this._currentCastingConnection != null &&
+                                    !((this._currentCastingConnection.state == Windows.Media.Casting.CastingConnectionState.disconnected ||
+                                    this._currentCastingConnection.state == Windows.Media.Casting.CastingConnectionState.disconnecting))) {
+                                    this._currentCastingConnection.disconnectAsync();
+                                }
+                            }
+
+                            this._observableMediaPlayer.notify("isCasting", value, oldValue);
+                            this.dispatchEvent("castingchange");
+                        }
+                    }
+                }
+            },
+
+            /// <field name="isCastingEnabled" type="Boolean">Gets or sets a value that specifies whether the casting control is enabled.</field>
+            isCastingEnabled: {
+                get: function () {
+                    return this._isCastingEnabled;
+                },
+                set: function (value) {
+                    var oldValue = this._isCastingEnabled;
+                    if (oldValue !== value) {
+                        this._isCastingEnabled = value;
+                        this._observableMediaPlayer.notify("isCastingEnabled", value, oldValue);
+                    }
+                }
+            },
+
+            /// <field name="isCastVisible" type="Boolean">Gets or sets a value that specifies whether the cast control is visible.</field>
+            isCastVisible: {
+                get: function () {
+                    return this._isCastVisible;
+                },
+                set: function (value) {
+                    var oldValue = this._isCastVisible;
+                    if (oldValue !== value) {
+                        this._isCastVisible = value;
+                        this._observableMediaPlayer.notify("isCastVisible", value, oldValue);
                     }
                 }
             },

@@ -412,6 +412,19 @@ namespace Microsoft.PlayerFramework.Advertising
             get { return false; }
         }
 
+#if WINDOWS_UWP
+        /// <inheritdoc /> 
+        public override bool IsCastingEnabled
+        {
+            get { return false; }
+        }
+
+        /// <inheritdoc /> 
+        protected override void OnInvokeCast()
+        {
+        }
+#endif
+
         /// <inheritdoc /> 
         public override bool IsRewindEnabled
         {

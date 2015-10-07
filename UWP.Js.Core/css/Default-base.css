@@ -496,6 +496,11 @@
     font-size: 77%;
 }
 
+.pf-cast-control .pf-button-content {
+    font-family: "Segoe MDL2 Assets";
+    font-size: 77%;
+}
+
 .pf-zoom-control .pf-button-content {
     font-size: 77%;
 }

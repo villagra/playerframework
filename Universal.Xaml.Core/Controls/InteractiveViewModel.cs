@@ -128,6 +128,10 @@ namespace Microsoft.PlayerFramework
             MediaPlayer.SignalStrengthChanged += (s, e) => OnPropertyChanged(() => SignalStrength);
             MediaPlayer.MediaQualityChanged += (s, e) => OnPropertyChanged(() => MediaQuality);
             MediaPlayer.ThumbnailImageSourceChanged += (s, e) => OnPropertyChanged(() => ThumbnailImageSource);
+
+#if WINDOWS_UWP
+            MediaPlayer.IsCastingEnabledChanged += (s, e) => OnPropertyChanged(() => IsCastingEnabled);
+#endif
         }
 
         #region Methods
@@ -149,6 +153,14 @@ namespace Microsoft.PlayerFramework
         {
             MediaPlayer.InvokeCaptionSelection();
         }
+
+#if WINDOWS_UWP
+        /// <inheritdoc /> 
+        protected override void OnInvokeCast()
+        {
+            MediaPlayer.InvokeCast();
+        }
+#endif
 
         /// <inheritdoc /> 
         protected override void OnInvokeAudioSelection()
@@ -350,6 +362,16 @@ namespace Microsoft.PlayerFramework
         }
         #endregion
 
+#if WINDOWS_UWP
+        #region IsCastingEnabled
+        /// <inheritdoc /> 
+        public override bool IsCastingEnabled
+        {
+            get { return MediaPlayer.IsCastingEnabled; }
+        }
+        #endregion
+#endif
+
 #if !WINDOWS80
         #region IsZoomEnabled
 
@@ -531,6 +553,7 @@ namespace Microsoft.PlayerFramework
             get { return MediaPlayer.IsFullScreen; }
             set { MediaPlayer.IsFullScreen = value; }
         }
+
         /// <inheritdoc /> 
         protected override bool _IsSlowMotion
         {

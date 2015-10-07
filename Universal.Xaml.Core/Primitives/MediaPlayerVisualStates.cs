@@ -13,6 +13,9 @@ namespace Microsoft.PlayerFramework
             internal const string AdvertisingStates = "AdvertisingStates";
             internal const string PlayToStates = "PlayToStates";
             internal const string MediaTypeStates = "MediaTypeStates";
+#if WINDOWS_UWP
+            internal const string CastingStates = "CastingStates";
+#endif
         }
 
         internal static class InteractiveStates

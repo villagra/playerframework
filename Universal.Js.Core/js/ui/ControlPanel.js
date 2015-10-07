@@ -41,6 +41,7 @@
         this._volumeElement = null;
         this._muteElement = null;
         this._fullScreenElement = null;
+        this._castElement = null;
         this._stopElement = null;
         this._infoElement = null;
         this._moreElement = null;
@@ -275,6 +276,15 @@
             }
         },
 
+        isCastHidden: {
+            get: function () {
+                return this._castElement.winControl.hidden;
+            },
+            set: function (value) {
+                this._castElement.winControl.hidden = value;
+            }
+        },
+
         isStopHidden: {
             get: function () {
                 return this._stopElement.winControl.hidden;
@@ -401,6 +411,7 @@
                 this._muteElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["button", { "type": "button", "class": "pf-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: muteIcon; winControl.label: muteLabel; winControl.tooltip: muteTooltip; winControl.disabled: isMuteDisabled; winControl.onclick: toggleMuted PlayerFramework.Binding.setEventHandler;" }]);
                 this._volumeElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["button", { "type": "button", "class": "pf-volume-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: volumeIcon; winControl.label: volumeLabel; winControl.tooltip: volumeTooltip; winControl.disabled: isVolumeDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
                 this._fullScreenElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["button", { "type": "button", "class": "pf-full-screen-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: fullScreenIcon; winControl.label: fullScreenLabel; winControl.tooltip: fullScreenTooltip; winControl.disabled: isFullScreenDisabled; winControl.onclick: toggleFullScreen PlayerFramework.Binding.setEventHandler;" }]);
+                this._castElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["button", { "type": "button", "class": "pf-cast-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: castIcon; winControl.label: castLabel; winControl.tooltip: castTooltip; winControl.disabled: isCastingDisabled; winControl.onclick: toggleCast PlayerFramework.Binding.setEventHandler;" }]);
                 this._moreElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["button", { "type": "button", "class": "pf-more-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: moreIcon; winControl.label: moreLabel; winControl.tooltip: moreTooltip; winControl.disabled: isMoreDisabled; winControl.onclick: more PlayerFramework.Binding.setEventHandler;" }]);
                 this._signalStrengthElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["div", { "class": "pf-signal-strength-control", "data-win-control": "PlayerFramework.UI.Meter", "data-win-bind": "winControl.value: signalStrength; winControl.label: signalStrengthLabel; winControl.tooltip: signalStrengthTooltip; winControl.disabled: isSignalStrengthDisabled;" }]);
                 this._mediaQualityElement = PlayerFramework.Utilities.createElement(secondaryContainer, ["div", { "class": "pf-media-quality-control", "data-win-control": "PlayerFramework.UI.Indicator", "data-win-bind": "winControl.value: mediaQuality; winControl.label: mediaQualityLabel; winControl.tooltip: mediaQualityTooltip; winControl.disabled: isMediaQualityDisabled;" }]);
@@ -439,6 +450,7 @@
                 this._volumeElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-volume-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: volumeIcon; winControl.label: volumeLabel; winControl.tooltip: volumeTooltip; winControl.disabled: isVolumeDisabled;", "data-win-options": "{ type: 'flyout' }" }]);
                 this._muteElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-mute-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: muteIcon; winControl.label: muteLabel; winControl.tooltip: muteTooltip; winControl.disabled: isMuteDisabled; winControl.onclick: toggleMuted PlayerFramework.Binding.setEventHandler;" }]);
                 this._fullScreenElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-full-screen-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: fullScreenIcon; winControl.label: fullScreenLabel; winControl.tooltip: fullScreenTooltip; winControl.disabled: isFullScreenDisabled; winControl.onclick: toggleFullScreen PlayerFramework.Binding.setEventHandler;" }]);
+                this._castElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-cast-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: castIcon; winControl.label: castLabel; winControl.tooltip: castTooltip; winControl.disabled: isCastDisabled; winControl.onclick: toggleCast PlayerFramework.Binding.setEventHandler;" }]);
                 this._moreElement = PlayerFramework.Utilities.createElement(this._element, ["button", { "type": "button", "class": "pf-more-control", "data-win-control": "PlayerFramework.UI.Button", "data-win-bind": "winControl.content: moreIcon; winControl.label: moreLabel; winControl.tooltip: moreTooltip; winControl.disabled: isMoreDisabled; winControl.onclick: more PlayerFramework.Binding.setEventHandler;" }]);
                 this._signalStrengthElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-signal-strength-control", "data-win-control": "PlayerFramework.UI.Meter", "data-win-bind": "winControl.value: signalStrength; winControl.label: signalStrengthLabel; winControl.tooltip: signalStrengthTooltip; winControl.disabled: isSignalStrengthDisabled;" }]);
                 this._mediaQualityElement = PlayerFramework.Utilities.createElement(this._element, ["div", { "class": "pf-media-quality-control", "data-win-control": "PlayerFramework.UI.Indicator", "data-win-bind": "winControl.value: mediaQuality; winControl.label: mediaQualityLabel; winControl.tooltip: mediaQualityTooltip; winControl.disabled: isMediaQualityDisabled;" }]);
@@ -479,6 +491,7 @@
                 isVolumeHidden: false,
                 isMuteHidden: false,
                 isFullScreenHidden: false,
+                isCastHidden: false,
                 isStopHidden: false,
                 isInfoHidden: false,
                 isMoreHidden: false,

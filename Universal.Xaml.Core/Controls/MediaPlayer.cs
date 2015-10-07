@@ -24,7 +24,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using System.Reflection;
+#if !WINDOWS_UWP
 using Windows.Media.PlayTo;
+#endif
 using Windows.Media.Protection;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml.Data;
@@ -658,7 +660,10 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public virtual void Close()
         {
-            Source = null;
+            //Throws an AV in latest win Build?
+            //Source = null;
+            this.Stop();
+            OnMediaClosed();
         }
 
         /// <summary>
@@ -708,6 +713,150 @@ namespace Microsoft.PlayerFramework
         {
             OnInvokeCaptionSelection(new RoutedEventArgs());
         }
+
+#if WINDOWS_UWP
+        /// <summary>
+        /// Identifies the IsCasting dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsCastingProperty = RegisterDependencyProperty<bool>("IsCasting", (t, o, n) => t.OnIsCastingChanged(o, n), false);
+
+        void OnIsCastingChanged(bool oldValue, bool newValue)
+        {
+            OnIsCastingChanged(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue));
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether casting is occurring.
+        /// </summary>
+        [Category(Categories.Common)]
+        public bool IsCasting
+        {
+            get { return (bool)GetValue(IsCastingProperty); }
+            private set { SetValue(IsCastingProperty, value); }
+        }
+
+        private Windows.Media.Casting.CastingDevicePicker _CastingPicker = null;
+        private Windows.Media.Casting.CastingConnection _CurrentCastingConnection = null;
+        private MediaElementState _StateBeforeCast;
+        /// <summary>
+        /// Invokes the captions selection dialog.
+        /// </summary>
+        public void InvokeCast()
+        {
+            //Retrieve the location of the casting button
+            var castBtn = (this.ControlPanel as ControlPanel).CastButtonElement;
+            if (castBtn != null)
+            {
+                if (!this.IsCasting)
+                {
+                    if (_CastingPicker == null)
+                    {
+                        _CastingPicker = new Windows.Media.Casting.CastingDevicePicker();
+
+                        //Set the picker to filter to video capable casting devices
+                        _CastingPicker.Filter.SupportsVideo = true;
+
+                        //Hook up device selected event 
+                        _CastingPicker.CastingDeviceSelected += CastingPicker_CastingDeviceSelected;
+
+                        //Hook up device disconnected event 
+                        _CastingPicker.CastingDevicePickerDismissed += CastingPicker_CastingDevicePickerDismissed;
+                    }
+
+                    this.IsCasting = true;
+                    this._StateBeforeCast = this.CurrentState;
+                    if (this._StateBeforeCast != MediaElementState.Paused)
+                        if(this.CanPause) this.Pause();
+
+                    var transform = castBtn.TransformToVisual(Window.Current.Content as UIElement);
+                    var pt = transform.TransformPoint(new Windows.Foundation.Point(0, 0));
+
+                    //Show the picker above our casting button
+                    _CastingPicker.Show(new Windows.Foundation.Rect(pt.X, pt.Y, castBtn.ActualWidth, castBtn.ActualHeight), Windows.UI.Popups.Placement.Above);
+
+                    OnInvokeCast(new RoutedEventArgs());
+                }
+                else
+                {
+                    if(this._CurrentCastingConnection != null && 
+                        !((_CurrentCastingConnection.State == Windows.Media.Casting.CastingConnectionState.Disconnected ||
+                        _CurrentCastingConnection.State == Windows.Media.Casting.CastingConnectionState.Disconnecting)))
+                    {
+                        this._CurrentCastingConnection.DisconnectAsync();
+                    }
+                }
+            }
+        }
+
+        private async void CastingPicker_CastingDeviceSelected(Windows.Media.Casting.CastingDevicePicker sender, Windows.Media.Casting.CastingDeviceSelectedEventArgs args)
+        {
+            // This dispatches the casting calls to the UI thread. 
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            {
+                //Create a casting conneciton from our selected casting device
+                this._CurrentCastingConnection = args.SelectedCastingDevice.CreateCastingConnection();
+
+                //Hook up the casting events
+                this._CurrentCastingConnection.ErrorOccurred += CastingConnection_ErrorOccurred;
+                this._CurrentCastingConnection.StateChanged += CastingConnection_StateChanged;
+
+                // Start Casting
+                Windows.Media.Casting.CastingConnectionErrorStatus status = 
+                await this._CurrentCastingConnection.RequestStartCastingAsync(this.GetAsCastingSource());
+            });
+        }
+
+        private void CastingConnection_ErrorOccurred(Windows.Media.Casting.CastingConnection sender, Windows.Media.Casting.CastingConnectionErrorOccurredEventArgs args)
+        {
+        }
+
+        private async void CastingConnection_StateChanged(Windows.Media.Casting.CastingConnection sender, object args)
+        {
+            switch (sender.State)
+            {
+                case Windows.Media.Casting.CastingConnectionState.Disconnected:
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        this.IsCasting = false;
+                        this.Stop();
+                    });
+                    break;
+                case Windows.Media.Casting.CastingConnectionState.Connected:
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        if (this._StateBeforeCast == MediaElementState.Playing)
+                            this.Play();
+                    });
+                    break;
+                case Windows.Media.Casting.CastingConnectionState.Rendering:
+                    break;
+                case Windows.Media.Casting.CastingConnectionState.Disconnecting:
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        if(this.CanPause)  this.Pause();
+                    });
+                    break;
+                case Windows.Media.Casting.CastingConnectionState.Connecting:
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        if(this.CanPause)  this.Pause();
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private async void CastingPicker_CastingDevicePickerDismissed(Windows.Media.Casting.CastingDevicePicker sender, object args)
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                this.IsCasting = false;
+                if (this._StateBeforeCast == MediaElementState.Playing)
+                    this.Play();
+            });
+        }
+#endif
 
         /// <summary>
         /// Invokes the audio stream selection dialog.
@@ -1018,6 +1167,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public event RoutedPropertyChangedEventHandler<int?> AudioStreamIndexChanged;
 
+#if WINDOWS_UWP
+        /// <summary>
+        /// Occurs when the IsLive property changes.
+        /// </summary>
+        public event RoutedPropertyChangedEventHandler<bool> IsCastingChanged;
+#endif
+
         /// <summary>
         /// Occurs when the IsFullScreen property changes.
         /// </summary>
@@ -1128,6 +1284,13 @@ namespace Microsoft.PlayerFramework
         /// </summary>
         public event RoutedEventHandler CaptionsInvoked;
 
+#if WINDOWS_UWP
+        /// <summary>
+        /// Occurs when the InvokeCaptionSelection method is called.
+        /// </summary>
+        public event RoutedEventHandler CastInvoked;
+#endif
+
         /// <summary>
         /// Occurs when the InvokeAudioSelection method is called.
         /// </summary>
@@ -1210,6 +1373,70 @@ namespace Microsoft.PlayerFramework
             if (IsCaptionSelectionAllowedChanged != null) IsCaptionSelectionAllowedChanged(this, new RoutedEventArgs());
         }
         #endregion
+
+#if WINDOWS_UWP
+        #region Casting
+
+        /// <summary>
+        /// Occurs when the IsCastingEnabled property changes.
+        /// </summary>
+        public event RoutedEventHandler IsCastingEnabledChanged;
+
+        /// <summary>
+        /// Identifies the IsCastingEnabled dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsCastingEnabledProperty = RegisterDependencyProperty<bool>("IsCastingEnabled", (t, o, n) => t.OnIsCastingEnabledChanged(), true);
+
+        void OnIsCastingEnabledChanged()
+        {
+            if (IsCastingEnabledChanged != null) IsCastingEnabledChanged(this, new RoutedEventArgs());
+        }
+
+        /// <summary>
+        /// Gets or sets whether casting can occur.
+        /// </summary>
+        [Category(Categories.Info)]
+        public bool IsCastingEnabled
+        {
+            get { return (bool)GetValue(IsCastingEnabledProperty); }
+            set { SetValue(IsCastingEnabledProperty, value); }
+        }
+        
+        public Windows.Media.Casting.CastingSource GetAsCastingSource()
+        {
+            if (MediaElementElement != null && IsCastingEnabled)
+                return MediaElementElement.GetAsCastingSource();
+
+            return null;
+        }
+
+
+        /// <summary>
+        /// Identifies the IsCastVisible dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsCastVisibleProperty = RegisterDependencyProperty<bool>("IsCastVisible", (t, o, n) => t.OnIsCastVisibleChanged(), false);
+
+        void OnIsCastVisibleChanged()
+        {
+            if (IsCastVisibleChanged != null) IsCastVisibleChanged(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Occurs when the IsCastVisible property changes.
+        /// </summary>
+        public event EventHandler IsCastVisibleChanged;
+
+        /// <summary>
+        /// Gets or sets if the interactive Casting feature should be visible and therefore available for the user to control.
+        /// </summary>
+        [Category(Categories.Appearance)]
+        public bool IsCastVisible
+        {
+            get { return (bool)GetValue(IsCastVisibleProperty); }
+            set { SetValue(IsCastVisibleProperty, value); }
+        }
+        #endregion
+#endif
 
         #region IsFullScreenEnabled
 
@@ -3281,9 +3508,6 @@ namespace Microsoft.PlayerFramework
             }
             _IsFullScreen = newValue;
             OnIsFullScreenChanged(new RoutedPropertyChangedEventArgs<bool>(oldValue, newValue));
-#if WINDOWS_UWP
-            //mediaElement.IsFullWindow = newValue;
-#endif
         }
 
         /// <summary>
@@ -3881,6 +4105,7 @@ namespace Microsoft.PlayerFramework
 
         #endregion
 
+#if !WINDOWS_UWP
         #region PlayToSource
 
         /// <summary>
@@ -3900,6 +4125,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
+#endif
 
         #region DefaultPlaybackRate
 
@@ -4176,7 +4402,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
-
+#if !WINDOWS_UWP
         #region PlayToPreferredSourceUri
 
         /// <summary>
@@ -4200,6 +4426,7 @@ namespace Microsoft.PlayerFramework
         }
 
         #endregion
+#endif
 #endif
 #endif
 
@@ -4851,6 +5078,13 @@ namespace Microsoft.PlayerFramework
             if (CaptionsInvoked != null) CaptionsInvoked(this, e);
         }
 
+#if WINDOWS_UWP
+        void OnInvokeCast(RoutedEventArgs e)
+        {
+            if (CastInvoked != null) CastInvoked(this, e);
+        }
+#endif
+
         void OnInvokeAudioSelection(RoutedEventArgs e)
         {
             if (AudioSelectionInvoked != null) AudioSelectionInvoked(this, e);
@@ -4963,7 +5197,7 @@ namespace Microsoft.PlayerFramework
             SetValue(CanSeekProperty, _CanSeek);
 #endif
 
-#if !SILVERLIGHT
+#if !WINDOWS_UWP && !SILVERLIGHT
             if (CurrentState == MediaElementState.Opening)
             {
                 SetValue(PlayToSourceProperty, _PlayToSource);
@@ -5309,7 +5543,9 @@ namespace Microsoft.PlayerFramework
 #elif NETFX_CORE
             SetValue(AspectRatioHeightProperty, DefaultAspectRatioHeight);
             SetValue(AspectRatioWidthProperty, DefaultAspectRatioWidth);
+#if !WINDOWS_UWP
             SetValue(PlayToSourceProperty, DefaultPlayToSource);
+#endif
 #endif
             SetValue(AudioStreamCountProperty, DefaultAudioStreamCount);
             // do not actually push value into MediaElement or it will throw since media is closed.
@@ -5365,6 +5601,13 @@ namespace Microsoft.PlayerFramework
         {
             if (IsMutedChanged != null) IsMutedChanged(this, e);
         }
+
+#if WINDOWS_UWP
+        void OnIsCastingChanged(RoutedPropertyChangedEventArgs<bool> e)
+        {
+            if (IsCastingChanged != null) IsCastingChanged(this, e);
+        }
+#endif
 
         void OnIsLiveChanged(RoutedPropertyChangedEventArgs<bool> e)
         {
