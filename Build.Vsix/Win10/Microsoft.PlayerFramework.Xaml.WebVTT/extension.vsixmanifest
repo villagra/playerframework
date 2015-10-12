@@ -10,7 +10,7 @@
     <Tags>WebVTT, closed captions, Microsoft Media Platform Player Framework, Windows 10 Xaml, MMPPF</Tags>
   </Metadata>
   <Installation Scope="Global" AllUsers="true">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Xaml.WebVTT" SdkVersion="3.0.0.1" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Xaml.WebVTT.UWP" SdkVersion="3.0.0.1" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="4.5" />

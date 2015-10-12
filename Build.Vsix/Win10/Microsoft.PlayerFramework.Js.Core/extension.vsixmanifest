@@ -10,7 +10,7 @@
     <Tags>Microsoft Media Platform Player Framework Metro JavaScript, MMPPF</Tags>
   </Metadata>
   <Installation Scope="Global" AllUsers="true">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Js" SdkVersion="3.0.0.1" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Js.UWP" SdkVersion="3.0.0.1" />
   </Installation>
   <Dependencies>
     <!--<Dependency Id="Microsoft.WinJS" DisplayName="Microsoft Windows Library for JavaScript SDK" Version="0.6" />-->

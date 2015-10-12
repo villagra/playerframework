@@ -11,7 +11,7 @@
     <Tags>Microsoft Media Platform Player Framework, Xaml, MMPPF, JavaScript, Smooth Streaming, Windows, Windows Phone</Tags>
   </Metadata>
   <Installation Scope="Global" AllUsers="true">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework" SdkVersion="3.0.0.1" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.UWP" SdkVersion="3.0.0.1" />
   </Installation>
   <Dependencies>
     <Dependency Version="[2.0,4.0.0.0)" Location="Microsoft.PlayerFramework.Js.Core.Win10.vsix" DisplayName="Microsoft Player Framework for Javascript" Id="MMP.PF.Win10.JS.SDK.VSIX.aa25c41c-f27d-4f8c-acbe-b349c8a6873c" />
