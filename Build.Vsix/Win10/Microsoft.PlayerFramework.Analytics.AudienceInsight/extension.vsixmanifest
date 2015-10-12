@@ -1,6 +1,6 @@
 ﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="MMP.PF.Win10.Analytics.AudienceInsight.VSIX.CB32951C-0E92-4505-AC45-79EA3491F091" Version="1.0.0.0" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="MMP.PF.Win10.Analytics.AudienceInsight.VSIX.CB32951C-0E92-4505-AC45-79EA3491F091" Version="3.0.0.1" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework Analytics Audience Insight Adapter</DisplayName>
     <Description>Microsoft Media Platform: Player Framework Analytics Audience Insight Adapter for Windows 10 Apps</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
@@ -10,7 +10,7 @@
     <Tags>Microsoft Media Platform Player Framework, Analytics, Audience Insight, Xaml, JS, MMPPF</Tags>
   </Metadata>
   <Installation Scope="Global" AllUsers="true">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Analytics.AudienceInsight.Win10" SdkVersion="1.0.0.0" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Analytics.AudienceInsight.Win10" SdkVersion="3.0.0.1" />
   </Installation>
   <Dependencies/>
   <Assets>
