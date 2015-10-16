@@ -169,13 +169,23 @@ namespace Microsoft.Media.WebVTT
                     else if (contentObj is WebVTTContentNodeEnd)
                     {
                         var content = (WebVTTContentNodeEnd)contentObj;
-                        nodeStack.Pop();
+                        if (nodeStack != null && nodeStack.Count > 1)
+                        {
+                            nodeStack.Pop();
+                        }
                     }
                     else if (contentObj is WebVTTContentText)
                     {
                         var content = (WebVTTContentText)contentObj;
                         var child = new WebVTTTextNode() { Text = content.Text };
-                        nodeStack.Peek().Nodes.Add(child);
+                        if (nodeStack != null)
+                        {
+                            var stack = nodeStack.Peek();
+                            if(stack != null && stack.Nodes != null)
+                            {
+                                stack.Nodes.Add(child);
+                            }
+                        }
                     }
                 }
             }
