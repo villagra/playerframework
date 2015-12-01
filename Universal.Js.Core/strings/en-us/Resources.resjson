@@ -111,6 +111,10 @@
     "ExitFullScreenLabel":                  "Exit full screen",
     "ExitFullScreenTooltip":                "Exit full screen",
 
+    "CastIcon":                             "\uEC16",
+    "CastLabel":                            "Cast",
+    "CastTooltip":                          "Cast",
+
     "StopIcon":                             "\u25FC",
     "StopLabel":                            "Stop",
     "StopTooltip":                          "Stop",
