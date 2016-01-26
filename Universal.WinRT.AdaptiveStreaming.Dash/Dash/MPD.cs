@@ -6,33 +6,61 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 {
     internal class MPD
     {
-        public MPD()
+        private IList<ProgramInformation> _ProgramInformation;
+        public IList<ProgramInformation> ProgramInformation
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.Metrics = new List<Metrics>();
-            this.Period = new List<Period>();
-            this.Location = new List<string>();
-            this.BaseURL = new List<BaseURL>();
-            this.ProgramInformation = new List<ProgramInformation>();
-            this.Type = Presentation.Static;
+            get { if (_ProgramInformation == null) _ProgramInformation = new List<ProgramInformation>(); return _ProgramInformation; }
+            private set { _ProgramInformation = value; }
         }
 
-        public IList<ProgramInformation> ProgramInformation { get; private set; }
+        private IList<BaseURL> _BaseURL;
+        public IList<BaseURL> BaseURL
+        {
+            get { if (_BaseURL == null) _BaseURL = new List<BaseURL>(); return _BaseURL; }
+            private set { _BaseURL = value; }
+        }
 
-        public IList<BaseURL> BaseURL { get; private set; }
+        private IList<string> _Location;
+        public IList<string> Location
+        {
+            get { if (_Location == null) _Location = new List<string>(); return _Location; }
+            private set { _Location = value; }
+        }
 
-        public IList<string> Location { get; private set; }
+        private IList<Period> _Period;
+        public IList<Period> Period
+        {
+            get { if (_Period == null) _Period = new List<Period>(); return _Period; }
+            private set { _Period = value; }
+        }
 
-        public IList<Period> Period { get; private set; }
+        private IList<Metrics> _Metrics;
+        public IList<Metrics> Metrics
+        {
+            get { if (_Metrics == null) _Metrics = new List<Metrics>(); return _Metrics; }
+            private set { _Metrics = value; }
+        }
 
-        public IList<Metrics> Metrics { get; private set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
-        public string Id { get; set; }
+        private string _Profiles = string.Empty;
+        public string Profiles
+        {
+            get { return _Profiles; }
+            set { _Profiles = value; }
+        }
 
-        public string Profiles { get; set; }
-
-        public Presentation Type { get; set; }
+        private Presentation _Type;
+        public Presentation Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
 
         public DateTimeOffset? AvailabilityStartTime { get; set; }
 
@@ -52,32 +80,71 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         public TimeSpan? MaxSubsegmentDuration { get; set; }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class ProgramInformation
     {
-        public ProgramInformation()
+        private string _Title = string.Empty;
+        public string Title
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
+            get { return _Title; }
+            set { _Title = value; }
         }
 
-        public string Title { get; set; }
+        private string _Source = string.Empty;
+        public string Source
+        {
+            get { return _Source; }
+            set { _Source = value; }
+        }
 
-        public string Source { get; set; }
+        private string _Copyright = string.Empty;
+        public string Copyright
+        {
+            get { return _Copyright; }
+            set { _Copyright = value; }
+        }
 
-        public string Copyright { get; set; }
+        private string _Lang = string.Empty;
+        public string Lang
+        {
+            get { return _Lang; }
+            set { _Lang = value; }
+        }
 
-        public string Lang { get; set; }
+        private string _MoreInformationURL = string.Empty;
+        public string MoreInformationURL
+        {
+            get { return _MoreInformationURL; }
+            set { _MoreInformationURL = value; }
+        }
 
-        public string MoreInformationURL { get; set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class Range
@@ -89,122 +156,233 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
     internal class Metrics
     {
-        public Metrics()
+        private IList<Descriptor> _Reporting;
+        public IList<Descriptor> Reporting
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.Range = new List<Range>();
-            this.Reporting = new List<Descriptor>();
+            get { if (_Reporting == null) _Reporting = new List<Descriptor>(); return _Reporting; }
+            private set { _Reporting = value; }
         }
 
-        public IList<Descriptor> Reporting { get; private set; }
+        private IList<Range> _Range;
+        public IList<Range> Range
+        {
+            get { if (_Range == null) _Range = new List<Range>(); return _Range; }
+            private set { _Range = value; }
+        }
 
-        public IList<Range> Range { get; private set; }
+        private string _MetricsValue = string.Empty;
+        public string MetricsValue
+        {
+            get { return _MetricsValue; }
+            set { _MetricsValue = value; }
+        }
 
-        public string MetricsValue { get; set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class Descriptor
     {
-        public Descriptor()
+        private string _SchemeIdUri = string.Empty;
+        public string SchemeIdUri
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
+            get { return _SchemeIdUri; }
+            set { _SchemeIdUri = value; }
         }
 
-        public string SchemeIdUri { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
 
-        public string Value { get; set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class Subset
     {
-        public Subset()
+        private IList<uint> _Contains;
+        public IList<uint> Contains
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Contains = new List<uint>();
+            get { if (_Contains == null) _Contains = new List<uint>(); return _Contains; }
+            private set { _Contains = value; }
         }
 
-        public IList<uint> Contains { get; private set; }
-
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
     }
 
     internal class ContentComponent
     {
-        public ContentComponent()
+        private IList<Descriptor> _Accessibility;
+        public IList<Descriptor> Accessibility
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.Viewpoint = new List<Descriptor>();
-            this.Rating = new List<Descriptor>();
-            this.Role = new List<Descriptor>();
-            this.Accessibility = new List<Descriptor>();
+            get { if (_Accessibility == null) _Accessibility = new List<Descriptor>(); return _Accessibility; }
+            private set { _Accessibility = value; }
         }
 
-        public IList<Descriptor> Accessibility { get; private set; }
+        private IList<Descriptor> _Role;
+        public IList<Descriptor> Role
+        {
+            get { if (_Role == null) _Role = new List<Descriptor>(); return _Role; }
+            private set { _Role = value; }
+        }
 
-        public IList<Descriptor> Role { get; private set; }
+        private IList<Descriptor> _Rating;
+        public IList<Descriptor> Rating
+        {
+            get { if (_Rating == null) _Rating = new List<Descriptor>(); return _Rating; }
+            private set { _Rating = value; }
+        }
 
-        public IList<Descriptor> Rating { get; private set; }
-
-        public IList<Descriptor> Viewpoint { get; private set; }
+        private IList<Descriptor> _Viewpoint;
+        public IList<Descriptor> Viewpoint
+        {
+            get { if (_Viewpoint == null) _Viewpoint = new List<Descriptor>(); return _Viewpoint; }
+            private set { _Viewpoint = value; }
+        }
 
         public uint? Id { get; set; }
 
-        public string Lang { get; set; }
+        private string _Lang = string.Empty;
+        public string Lang
+        {
+            get { return _Lang; }
+            set { _Lang = value; }
+        }
 
-        public string ContentType { get; set; }
+        private string _ContentType = string.Empty;
+        public string ContentType
+        {
+            get { return _ContentType; }
+            set { _ContentType = value; }
+        }
 
-        public string Par { get; set; }
+        private string _Par = string.Empty;
+        public string Par
+        {
+            get { return _Par; }
+            set { _Par = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class RepresentationBase
     {
-        public RepresentationBase()
+        private IList<Descriptor> _FramePacking;
+        public IList<Descriptor> FramePacking
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.ContentProtection = new List<Descriptor>();
-            this.AudioChannelConfiguration = new List<Descriptor>();
-            this.FramePacking = new List<Descriptor>();
+            get { if (_FramePacking == null) _FramePacking = new List<Descriptor>(); return _FramePacking; }
+            private set { _FramePacking = value; }
         }
 
-        public IList<Descriptor> FramePacking { get; private set; }
+        private IList<Descriptor> _AudioChannelConfiguration;
+        public IList<Descriptor> AudioChannelConfiguration
+        {
+            get { if (_AudioChannelConfiguration == null) _AudioChannelConfiguration = new List<Descriptor>(); return _AudioChannelConfiguration; }
+            private set { _AudioChannelConfiguration = value; }
+        }
 
-        public IList<Descriptor> AudioChannelConfiguration { get; private set; }
+        private IList<Descriptor> _ContentProtection;
+        public IList<Descriptor> ContentProtection
+        {
+            get { if (_ContentProtection == null) _ContentProtection = new List<Descriptor>(); return _ContentProtection; }
+            private set { _ContentProtection = value; }
+        }
 
-        public IList<Descriptor> ContentProtection { get; private set; }
-
-        public string Profiles { get; set; }
+        private string _Profiles = string.Empty;
+        public string Profiles
+        {
+            get { return _Profiles; }
+            set { _Profiles = value; }
+        }
 
         public uint? Width { get; set; }
 
         public uint? Height { get; set; }
 
-        public string Sar { get; set; }
+        private string _Sar = string.Empty;
+        public string Sar
+        {
+            get { return _Sar; }
+            set { _Sar = value; }
+        }
 
-        public string FrameRate { get; set; }
+        private string _FrameRate = string.Empty;
+        public string FrameRate
+        {
+            get { return _FrameRate; }
+            set { _FrameRate = value; }
+        }
 
-        public string AudioSamplingRate { get; set; }
+        private string _AudioSamplingRate = string.Empty;
+        public string AudioSamplingRate
+        {
+            get { return _AudioSamplingRate; }
+            set { _AudioSamplingRate = value; }
+        }
 
-        public string MimeType { get; set; }
+        private string _MimeType = string.Empty;
+        public string MimeType
+        {
+            get { return _MimeType; }
+            set { _MimeType = value; }
+        }
 
-        public string SegmentProfiles { get; set; }
+        private string _SegmentProfiles = string.Empty;
+        public string SegmentProfiles
+        {
+            get { return _SegmentProfiles; }
+            set { _SegmentProfiles = value; }
+        }
 
-        public string Codecs { get; set; }
+        private string _Codecs = string.Empty;
+        public string Codecs
+        {
+            get { return _Codecs; }
+            set { _Codecs = value; }
+        }
 
         public double? MaximumSAPPeriod { get; set; }
 
@@ -216,9 +394,19 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         public VideoScan? ScanType { get; set; }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     public enum VideoScan
@@ -230,67 +418,115 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
     internal class SubRepresentation : RepresentationBase
     {
-        public SubRepresentation()
-        {
-            this.ContentComponent = new List<string>();
-            this.DependencyLevel = new List<uint>();
-        }
-
         public uint? Level { get; set; }
 
-        public IList<uint> DependencyLevel { get; private set; }
+        private IList<uint> _DependencyLevel;
+        public IList<uint> DependencyLevel
+        {
+            get { if (_DependencyLevel == null) _DependencyLevel = new List<uint>(); return _DependencyLevel; }
+            private set { _DependencyLevel = value; }
+        }
 
         public uint? Bandwidth { get; set; }
 
-        public IList<string> ContentComponent { get; set; }
+        private IList<string> _ContentComponent;
+        public IList<string> ContentComponent
+        {
+            get { if (_ContentComponent == null) _ContentComponent = new List<string>(); return _ContentComponent; }
+            private set { _ContentComponent = value; }
+        }
     }
 
     internal class Representation : RepresentationBase
     {
-        public Representation()
+        private IList<BaseURL> _BaseURL;
+        public IList<BaseURL> BaseURL
         {
-            this.MediaStreamStructureId = new List<string>();
-            this.DependencyId = new List<string>();
-            this.SegmentTemplate = new SegmentTemplate();
-            this.SegmentList = new SegmentList();
-            this.SegmentBase = new SegmentBase();
-            this.SubRepresentation = new List<SubRepresentation>();
-            this.BaseURL = new List<BaseURL>();
+            get { if (_BaseURL == null) _BaseURL = new List<BaseURL>(); return _BaseURL; }
+            private set { _BaseURL = value; }
         }
 
-        public IList<BaseURL> BaseURL { get; private set; }
+        private IList<SubRepresentation> _SubRepresentation;
+        public IList<SubRepresentation> SubRepresentation
+        {
+            get { if (_SubRepresentation == null) _SubRepresentation = new List<SubRepresentation>(); return _SubRepresentation; }
+            private set { _SubRepresentation = value; }
+        }
 
-        public IList<SubRepresentation> SubRepresentation { get; private set; }
+        private SegmentBase _SegmentBase;
+        public SegmentBase SegmentBase
+        {
+            get { return _SegmentBase; }
+            set { _SegmentBase = value; }
+        }
 
-        public SegmentBase SegmentBase { get; set; }
+        private SegmentList _SegmentList;
+        public SegmentList SegmentList
+        {
+            get { return _SegmentList; }
+            set { _SegmentList = value; }
+        }
 
-        public SegmentList SegmentList { get; set; }
+        private SegmentTemplate _SegmentTemplate;
+        public SegmentTemplate SegmentTemplate
+        {
+            get { return _SegmentTemplate; }
+            set { _SegmentTemplate = value; }
+        }
 
-        public SegmentTemplate SegmentTemplate { get; set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
-        public string Id { get; set; }
-
-        public uint Bandwidth { get; set; }
+        private uint _Bandwidth;
+        public uint Bandwidth
+        {
+            get { return _Bandwidth; }
+            set { _Bandwidth = value; }
+        }
 
         public uint? QualityRanking { get; set; }
 
-        public IList<string> DependencyId { get; private set; }
+        private IList<string> _DependencyId;
+        public IList<string> DependencyId
+        {
+            get { if (_DependencyId == null) _DependencyId = new List<string>(); return _DependencyId; }
+            private set { _DependencyId = value; }
+        }
 
-        public IList<string> MediaStreamStructureId { get; private set; }
+        private IList<string> _MediaStreamStructureId;
+        public IList<string> MediaStreamStructureId
+        {
+            get { if (_MediaStreamStructureId == null) _MediaStreamStructureId = new List<string>(); return _MediaStreamStructureId; }
+            private set { _MediaStreamStructureId = value; }
+        }
     }
 
     internal class BaseURL
     {
-        public BaseURL()
+        private string _ServiceLocation = string.Empty;
+        public string ServiceLocation
         {
-            this.AnyAttr = new List<XAttribute>();
+            get { return _ServiceLocation; }
+            set { _ServiceLocation = value; }
         }
 
-        public string ServiceLocation { get; set; }
+        private string _ByteRange = string.Empty;
+        public string ByteRange
+        {
+            get { return _ByteRange; }
+            set { _ByteRange = value; }
+        }
 
-        public string ByteRange { get; set; }
-
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
         public string Value { get; set; }
     }
@@ -305,50 +541,94 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
             this.Initialization = new URL();
         }
 
-        public URL Initialization { get; set; }
+        private URL _Initialization;
+        public URL Initialization
+        {
+            get { return _Initialization; }
+            set { _Initialization = value; }
+        }
 
-        public URL RepresentationIndex { get; set; }
+        private URL _RepresentationIndex;
+        public URL RepresentationIndex
+        {
+            get { return _RepresentationIndex; }
+            set { _RepresentationIndex = value; }
+        }
 
         public uint? Timescale { get; set; }
 
         public ulong? PresentationTimeOffset { get; set; }
 
-        public string IndexRange { get; set; }
+        private string _IndexRange;
+        public string IndexRange
+        {
+            get { return _IndexRange; }
+            set { _IndexRange = value; }
+        }
 
         public bool? IndexRangeExact { get; set; }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-        public IList<XElement> Any { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
+
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class URL
     {
-        public URL()
+        private string _SourceURL;
+        public string SourceURL
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
+            get { return _SourceURL; }
+            set { _SourceURL = value; }
         }
 
-        public string SourceURL { get; set; }
+        private string _Range;
+        public string Range
+        {
+            get { return _Range; }
+            set { _Range = value; }
+        }
 
-        public string Range { get; set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     internal class MultipleSegmentBase : SegmentBase
     {
-        public MultipleSegmentBase()
+        private SegmentTimeline _SegmentTimeline;
+        public SegmentTimeline SegmentTimeline
         {
-            this.BitstreamSwitching = new URL();
-            this.SegmentTimeline = new SegmentTimeline();
+            get { return _SegmentTimeline; }
+            set { _SegmentTimeline = value; }
         }
 
-        public SegmentTimeline SegmentTimeline { get; set; }
-
-        public URL BitstreamSwitching { get; set; }
+        private URL _BitstreamSwitching;
+        public URL BitstreamSwitching
+        {
+            get { return _BitstreamSwitching; }
+            set { _BitstreamSwitching = value; }
+        }
 
         public uint? Duration { get; set; }
 
@@ -357,18 +637,26 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
     internal class SegmentTimeline
     {
-        public SegmentTimeline()
+        private IList<SegmentTimelineS> _S;
+        public IList<SegmentTimelineS> S
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.S = new List<SegmentTimelineS>();
+            get { if (_S == null) _S = new List<SegmentTimelineS>(); return _S; }
+            private set { _S = value; }
         }
 
-        public IList<SegmentTimelineS> S { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
 
-        public IList<XElement> Any { get; private set; }
-
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
     }
 
     internal class SegmentTimelineS
@@ -381,58 +669,126 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         public ulong? T { get; set; }
 
-        public ulong D { get; set; }
+        private ulong _D;
+        public ulong D
+        {
+            get { return _D; }
+            set { _D = value; }
+        }
 
-        public uint R { get; set; }
+        private uint _R;
+        public uint R
+        {
+            get { return _R; }
+            set { _R = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
     }
 
     internal class SegmentTemplate : MultipleSegmentBase
     {
-        public string Media { get; set; }
+        private string _Media;
+        public string Media
+        {
+            get { return _Media; }
+            set { _Media = value; }
+        }
 
-        public string Index { get; set; }
+        private string _Index;
+        public string Index
+        {
+            get { return _Index; }
+            set { _Index = value; }
+        }
 
-        public string InitializationValue { get; set; }
+        private string _InitializationValue;
+        public string InitializationValue
+        {
+            get { return _InitializationValue; }
+            set { _InitializationValue = value; }
+        }
 
-        public string BitstreamSwitchingValue { get; set; }
+        private string _BitstreamSwitchingValue;
+        public string BitstreamSwitchingValue
+        {
+            get { return _BitstreamSwitchingValue; }
+            set { _BitstreamSwitchingValue = value; }
+        }
     }
 
     internal class SegmentList : MultipleSegmentBase
     {
-        public SegmentList()
+        private IList<SegmentURL> _SegmentURL;
+        public IList<SegmentURL> SegmentURL
         {
-            this.SegmentURL = new List<SegmentURL>();
-            this.Actuate = Actuate.OnRequest;
+            get { if (_SegmentURL == null) _SegmentURL = new List<SegmentURL>(); return _SegmentURL; }
+            private set { _SegmentURL = value; }
         }
 
-        public IList<SegmentURL> SegmentURL { get; private set; }
+        private string _Href;
+        public string Href
+        {
+            get { return _Href; }
+            set { _Href = value; }
+        }
 
-        public string Href { get; set; }
-
-        public Actuate Actuate { get; set; }
+        private Actuate _Actuate;
+        public Actuate Actuate
+        {
+            get { return _Actuate; }
+            set { _Actuate = value; }
+        }
     }
 
     internal class SegmentURL
     {
-        public SegmentURL()
+        private string _Media;
+        public string Media
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
+            get { return _Media; }
+            set { _Media = value; }
         }
 
-        public string Media { get; set; }
+        private string _MediaRange;
+        public string MediaRange
+        {
+            get { return _MediaRange; }
+            set { _MediaRange = value; }
+        }
 
-        public string MediaRange { get; set; }
+        private string _Index;
+        public string Index
+        {
+            get { return _Index; }
+            set { _Index = value; }
+        }
 
-        public string Index { get; set; }
+        private string _IndexRange;
+        public string IndexRange
+        {
+            get { return _IndexRange; }
+            set { _IndexRange = value; }
+        }
 
-        public string IndexRange { get; set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
-
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     public enum Actuate
@@ -445,57 +801,114 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
     internal class AdaptationSet : RepresentationBase
     {
-        public AdaptationSet()
+        private IList<Descriptor> _Accessibility;
+        public IList<Descriptor> Accessibility
         {
-            this.Representation = new List<Representation>();
-            this.SegmentTemplate = new SegmentTemplate();
-            this.SegmentList = new SegmentList();
-            this.SegmentBase = new SegmentBase();
-            this.BaseURL = new List<BaseURL>();
-            this.ContentComponent = new List<ContentComponent>();
-            this.Viewpoint = new List<Descriptor>();
-            this.Rating = new List<Descriptor>();
-            this.Role = new List<Descriptor>();
-            this.Accessibility = new List<Descriptor>();
-            this.Actuate = Actuate.OnRequest;
-            this.SegmentAlignment = "false";
-            this.SubsegmentAlignment = "false";
-            this.SubsegmentStartsWithSAP = ((uint)(0));
+            get { if (_Accessibility == null) _Accessibility = new List<Descriptor>(); return _Accessibility; }
+            private set { _Accessibility = value; }
         }
 
-        public IList<Descriptor> Accessibility { get; private set; }
+        private IList<Descriptor> _Role;
+        public IList<Descriptor> Role
+        {
+            get { if (_Role == null) _Role = new List<Descriptor>(); return _Role; }
+            private set { _Role = value; }
+        }
 
-        public IList<Descriptor> Role { get; private set; }
+        private IList<Descriptor> _Rating;
+        public IList<Descriptor> Rating
+        {
+            get { if (_Rating == null) _Rating = new List<Descriptor>(); return _Rating; }
+            private set { _Rating = value; }
+        }
 
-        public IList<Descriptor> Rating { get; private set; }
+        private IList<Descriptor> _Viewpoint;
+        public IList<Descriptor> Viewpoint
+        {
+            get { if (_Viewpoint == null) _Viewpoint = new List<Descriptor>(); return _Viewpoint; }
+            private set { _Viewpoint = value; }
+        }
 
-        public IList<Descriptor> Viewpoint { get; private set; }
+        private IList<ContentComponent> _ContentComponent;
+        public IList<ContentComponent> ContentComponent
+        {
+            get { if (_ContentComponent == null) _ContentComponent = new List<ContentComponent>(); return _ContentComponent; }
+            private set { _ContentComponent = value; }
+        }
 
-        public IList<ContentComponent> ContentComponent { get; private set; }
+        private IList<BaseURL> _BaseURL;
+        public IList<BaseURL> BaseURL
+        {
+            get { if (_BaseURL == null) _BaseURL = new List<BaseURL>(); return _BaseURL; }
+            private set { _BaseURL = value; }
+        }
 
-        public IList<BaseURL> BaseURL { get; private set; }
+        private SegmentBase _SegmentBase;
+        public SegmentBase SegmentBase
+        {
+            get { return _SegmentBase; }
+            set { _SegmentBase = value; }
+        }
 
-        public SegmentBase SegmentBase { get; set; }
+        private SegmentList _SegmentList;
+        public SegmentList SegmentList
+        {
+            get { return _SegmentList; }
+            set { _SegmentList = value; }
+        }
 
-        public SegmentList SegmentList { get; set; }
+        private SegmentTemplate _SegmentTemplate;
+        public SegmentTemplate SegmentTemplate
+        {
+            get { return _SegmentTemplate; }
+            set { _SegmentTemplate = value; }
+        }
 
-        public SegmentTemplate SegmentTemplate { get; set; }
+        private IList<Representation> _Representation;
+        public IList<Representation> Representation
+        {
+            get { if (_Representation == null) _Representation = new List<Representation>(); return _Representation; }
+            private set { _Representation = value; }
+        }
 
-        public IList<Representation> Representation { get; private set; }
+        private string _Href;
+        public string Href
+        {
+            get { return _Href; }
+            set { _Href = value; }
+        }
 
-        public string Href { get; set; }
-
-        public Actuate Actuate { get; set; }
+        private Actuate _Actuate;
+        public Actuate Actuate
+        {
+            get { return _Actuate; }
+            set { _Actuate = value; }
+        }
 
         public uint? Id { get; set; }
 
         public uint? Group { get; set; }
 
-        public string Lang { get; set; }
+        private string _Lang;
+        public string Lang
+        {
+            get { return _Lang; }
+            set { _Lang = value; }
+        }
 
-        public string ContentType { get; set; }
+        private string _ContentType;
+        public string ContentType
+        {
+            get { return _ContentType; }
+            set { _ContentType = value; }
+        }
 
-        public string Par { get; set; }
+        private string _Par;
+        public string Par
+        {
+            get { return _Par; }
+            set { _Par = value; }
+        }
 
         public uint? MinBandwidth { get; set; }
 
@@ -509,62 +922,133 @@ namespace Microsoft.Media.AdaptiveStreaming.Dash
 
         public uint? MaxHeight { get; set; }
 
-        public ConditionalUInt MinFrameRate { get; set; }
+        private ConditionalUInt _MinFrameRate;
+        public ConditionalUInt MinFrameRate
+        {
+            get { return _MinFrameRate; }
+            set { _MinFrameRate = value; }
+        }
 
-        public ConditionalUInt MaxFrameRate { get; set; }
+        private ConditionalUInt _MaxFrameRate;
+        public ConditionalUInt MaxFrameRate
+        {
+            get { return _MaxFrameRate; }
+            set { _MaxFrameRate = value; }
+        }
 
-        public string SegmentAlignment { get; set; }
+        private string _SegmentAlignment;
+        public string SegmentAlignment
+        {
+            get { return _SegmentAlignment; }
+            set { _SegmentAlignment = value; }
+        }
 
-        public string SubsegmentAlignment { get; set; }
+        private string _SubsegmentAlignment;
+        public string SubsegmentAlignment
+        {
+            get { return _SubsegmentAlignment; }
+            set { _SubsegmentAlignment = value; }
+        }
 
-        public uint SubsegmentStartsWithSAP { get; set; }
+        private uint _SubsegmentStartsWithSAP;
+        public uint SubsegmentStartsWithSAP
+        {
+            get { return _SubsegmentStartsWithSAP; }
+            set { _SubsegmentStartsWithSAP = value; }
+        }
 
         public bool? BitstreamSwitching { get; set; }
     }
 
     internal class Period
     {
-        public Period()
+        private IList<BaseURL> _BaseURL;
+        public IList<BaseURL> BaseURL
         {
-            this.AnyAttr = new List<XAttribute>();
-            this.Any = new List<XElement>();
-            this.Subset = new List<Subset>();
-            this.AdaptationSet = new List<AdaptationSet>();
-            this.SegmentTemplate = new SegmentTemplate();
-            this.SegmentList = new SegmentList();
-            this.SegmentBase = new SegmentBase();
-            this.BaseURL = new List<BaseURL>();
-            this.Actuate = Actuate.OnRequest;
-            this.BitstreamSwitching = false;
+            get { if (_BaseURL == null) _BaseURL = new List<BaseURL>(); return _BaseURL; }
+            private set { _BaseURL = value; }
         }
 
-        public IList<BaseURL> BaseURL { get; private set; }
+        private SegmentBase _SegmentBase;
+        public SegmentBase SegmentBase
+        {
+            get { return _SegmentBase; }
+            set { _SegmentBase = value; }
+        }
 
-        public SegmentBase SegmentBase { get; set; }
+        private SegmentList _SegmentList;
+        public SegmentList SegmentList
+        {
+            get { return _SegmentList; }
+            set { _SegmentList = value; }
+        }
 
-        public SegmentList SegmentList { get; set; }
+        private SegmentTemplate _SegmentTemplate;
+        public SegmentTemplate SegmentTemplate
+        {
+            get { return _SegmentTemplate; }
+            set { _SegmentTemplate = value; }
+        }
 
-        public SegmentTemplate SegmentTemplate { get; set; }
+        private IList<AdaptationSet> _AdaptationSet;
+        public IList<AdaptationSet> AdaptationSet
+        {
+            get { if (_AdaptationSet == null) _AdaptationSet = new List<AdaptationSet>(); return _AdaptationSet; }
+            private set { _AdaptationSet = value; }
+        }
 
-        public IList<AdaptationSet> AdaptationSet { get; private set; }
+        private IList<Subset> _Subset;
+        public IList<Subset> Subset
+        {
+            get { if (_Subset == null) _Subset = new List<Subset>(); return _Subset; }
+            private set { _Subset = value; }
+        }
 
-        public IList<Subset> Subset { get; private set; }
+        private string _Href;
+        public string Href
+        {
+            get { return _Href; }
+            set { _Href = value; }
+        }
 
-        public string Href { get; set; }
+        private Actuate _Actuate;
+        public Actuate Actuate
+        {
+            get { return _Actuate; }
+            set { _Actuate = value; }
+        }
 
-        public Actuate Actuate { get; set; }
-
-        public string Id { get; set; }
+        private string _Id;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
         public TimeSpan? Start { get; set; }
 
         public TimeSpan? Duration { get; set; }
 
-        public bool BitstreamSwitching { get; set; }
+        private bool _BitstreamSwitching;
+        public bool BitstreamSwitching
+        {
+            get { return _BitstreamSwitching; }
+            set { _BitstreamSwitching = value; }
+        }
 
-        public IList<XAttribute> AnyAttr { get; private set; }
+        private IList<XAttribute> _AnyAttr;
+        public IList<XAttribute> AnyAttr
+        {
+            get { if (_AnyAttr == null) _AnyAttr = new List<XAttribute>(); return _AnyAttr; }
+            private set { _AnyAttr = value; }
+        }
 
-        public IList<XElement> Any { get; private set; }
+        private IList<XElement> _Any;
+        public IList<XElement> Any
+        {
+            get { if (_Any == null) _Any = new List<XElement>(); return _Any; }
+            private set { _Any = value; }
+        }
     }
 
     public enum Presentation

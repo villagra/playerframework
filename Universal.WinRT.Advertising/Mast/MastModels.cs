@@ -4,48 +4,71 @@ namespace Microsoft.Media.Advertising
 
     public sealed class MAST
     {
-        internal MAST()
+        private IList<Trigger> _Triggers;
+        public IList<Trigger> Triggers
         {
-            Triggers = new List<Trigger>();
+            get { if (_Triggers == null) _Triggers = new List<Trigger>(); return _Triggers; }
+            private set { _Triggers = value; }
         }
-
-        public IList<Trigger> Triggers { get; private set; }
     }
 
     public sealed class Trigger
     {
-        internal Trigger()
+        private IList<Condition> _StartConditions;
+        public IList<Condition> StartConditions
         {
-            Sources = new List<Source>();
-            EndConditions = new List<Condition>();
-            StartConditions = new List<Condition>();
+            get { if (_StartConditions == null) _StartConditions = new List<Condition>(); return _StartConditions; }
+            private set { _StartConditions = value; }
         }
 
-        public IList<Condition> StartConditions { get; private set; }
+        private IList<Condition> _EndConditions;
+        public IList<Condition> EndConditions
+        {
+            get { if (_EndConditions == null) _EndConditions = new List<Condition>(); return _EndConditions; }
+            private set { _EndConditions = value; }
+        }
 
-        public IList<Condition> EndConditions { get; private set; }
+        private IList<Source> _Sources;
+        public IList<Source> Sources
+        {
+            get { if (_Sources == null) _Sources = new List<Source>(); return _Sources; }
+            private set { _Sources = value; }
+        }
 
-        public IList<Source> Sources { get; private set; }
-
-        public string Id { get; set; }
+        private string _Id;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
         public string Description { get; set; }
     }
 
     public sealed class Condition
     {
-        internal Condition()
+        private IList<Condition> _Conditions;
+        public IList<Condition> Conditions
         {
-            Conditions = new List<Condition>();
+            get { if (_Conditions == null) _Conditions = new List<Condition>(); return _Conditions; }
+            private set { _Conditions = value; }
         }
-
-        public IList<Condition> Conditions { get; private set; }
 
         public ConditionType? Type { get; set; }
 
-        public string Name { get; set; }
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
 
-        public string Value { get; set; }
+        private string _Value;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
 
         public Operator? Operator { get; set; }
     }
@@ -69,34 +92,63 @@ namespace Microsoft.Media.Advertising
 
     public sealed class Target
     {
-        internal Target()
+        private IList<Target> _Targets;
+        public IList<Target> Targets
         {
-            Targets = new List<Target>();
+            get { if (_Targets == null) _Targets = new List<Target>(); return _Targets; }
+            private set { _Targets = value; }
         }
 
-        public IList<Target> Targets { get; private set; }
+        private string _Region;
+        public string Region
+        {
+            get { return _Region; }
+            set { _Region = value; }
+        }
 
-        public string Region { get; set; }
-
-        public string Type { get; set; }
+        private string _Type;
+        public string Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
     }
 
     public sealed class Source
     {
-        internal Source()
+        private IList<Source> _Sources;
+        public IList<Source> Sources
         {
-            Targets = new List<Target>();
-            Sources = new List<Source>();
+            get { if (_Sources == null) _Sources = new List<Source>(); return _Sources; }
+            private set { _Sources = value; }
         }
 
-        public IList<Source> Sources { get; private set; }
+        private IList<Target> _Targets;
+        public IList<Target> Targets
+        {
+            get { if (_Targets == null) _Targets = new List<Target>(); return _Targets; }
+            private set { _Targets = value; }
+        }
 
-        public IList<Target> Targets { get; private set; }
+        private string _Uri;
+        public string Uri
+        {
+            get { return _Uri; }
+            set { _Uri = value; }
+        }
 
-        public string Uri { get; set; }
+        private string _AltReference;
+        public string AltReference
+        {
+            get { return _AltReference; }
+            set { _AltReference = value; }
+        }
 
-        public string AltReference { get; set; }
-
-        public string Format { get; set; }
+        private string _Format;
+        public string Format
+        {
+            get { return _Format; }
+            set { _Format = value; }
+        }
     }
 }

@@ -82,9 +82,12 @@ namespace Microsoft.Media.Advertising
 
         public void EvaluateTriggers()
         {
-            foreach (TriggerManager tm in Triggers)
+            if (Triggers != null && Triggers.Count > 0)
             {
-                Evaluate(tm);
+                foreach (TriggerManager tm in Triggers)
+                {
+                    Evaluate(tm);
+                }
             }
         }
 

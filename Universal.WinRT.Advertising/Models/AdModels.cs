@@ -5,62 +5,123 @@ namespace Microsoft.Media.Advertising
 {
     public sealed class AdDocumentPayload
     {
-        internal AdDocumentPayload()
+        private IList<AdPod> _AdPods;
+        public IList<AdPod> AdPods
         {
-            AdPods = new List<AdPod>();
+            get { if (_AdPods == null) _AdPods = new List<AdPod>(); return _AdPods; }
+            private set { _AdPods = value; }
         }
 
-        public IList<AdPod> AdPods { get; private set; }
+        private string _Version = string.Empty;
+        public string Version
+        {
+            get { return _Version; }
+            set { _Version = value; }
+        }
 
-        public string Version { get; set; }
-
-        public string Error { get; set; }
+        private string _Error = string.Empty;
+        public string Error
+        {
+            get { return _Error; }
+            set { _Error = value; }
+        }
     }
 
     public sealed class AdPod
     {
-        internal AdPod()
+        private IList<Ad> _Ads;
+        public IList<Ad> Ads
         {
-            Ads = new List<Ad>();
+            get { if (_Ads == null) _Ads = new List<Ad>(); return _Ads; }
+            private set { _Ads = value; }
         }
-
-        public IList<Ad> Ads { get; private set; }
     }
 
     public sealed class Ad
     {
-        internal Ad()
+        private string _Id = string.Empty;
+        public string Id
         {
-            Impressions = new List<string>();
-            Errors = new List<string>();
-            Creatives = new List<ICreative>();
-            Extensions = new List<Extension>();
-            FallbackAds = new List<Ad>();
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        public string Id { get; set; }
+        private AdSystem _AdSystem;
+        public AdSystem AdSystem
+        {
+            get { return _AdSystem; }
+            set { _AdSystem = value; }
+        }
 
-        public AdSystem AdSystem { get; set; }
+        private IList<string> _Impressions;
+        public IList<string> Impressions
+        {
+            get { if (_Impressions == null) _Impressions = new List<string>(); return _Impressions; }
+            private set { _Impressions = value; }
+        }
 
-        public IList<string> Impressions { get; private set; }
+        private IList<ICreative> _Creatives;
+        public IList<ICreative> Creatives
+        {
+            get { if (_Creatives == null) _Creatives = new List<ICreative>(); return _Creatives; }
+            private set { _Creatives = value; }
+        }
 
-        public IList<ICreative> Creatives { get; private set; }
+        private IList<Extension> _Extensions;
+        public IList<Extension> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<Extension>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
 
-        public IList<Extension> Extensions { get; private set; }
+        private string _Title = string.Empty;
+        public string Title
+        {
+            get { return _Title; }
+            set { _Title = value; }
+        }
 
-        public string Title { get; set; }
+        private string _Description = string.Empty;
+        public string Description
+        {
+            get { return _Description; }
+            set { _Description = value; }
+        }
 
-        public string Description { get; set; }
+        private string _Advertiser = string.Empty;
+        public string Advertiser
+        {
+            get { return _Advertiser; }
+            set { _Advertiser = value; }
+        }
 
-        public string Advertiser { get; set; }
+        private Pricing _Pricing;
+        public Pricing Pricing
+        {
+            get { return _Pricing; }
+            set { _Pricing = value; }
+        }
 
-        public Pricing Pricing { get; set; }
+        private Uri _Survey;
+        public Uri Survey
+        {
+            get { return _Survey; }
+            set { _Survey = value; }
+        }
 
-        public Uri Survey { get; set; }
+        private IList<string> _Errors;
+        public IList<string> Errors
+        {
+            get { if (_Errors == null) _Errors = new List<string>(); return _Errors; }
+            private set { _Errors = value; }
+        }
 
-        public IList<string> Errors { get; set; }
-
-        public IList<Ad> FallbackAds { get; set; } // Not part of VAST 3.0 spec; added to support additional feature.
+        private IList<Ad> _FallbackAds;
+        public IList<Ad> FallbackAds
+        {
+            get { if (_FallbackAds == null) _FallbackAds = new List<Ad>(); return _FallbackAds; }
+            private set { _FallbackAds = value; }
+        }
     }
 
     public interface ICreative
@@ -74,109 +135,194 @@ namespace Microsoft.Media.Advertising
 
     public sealed class CreativeLinear : ICreative
     {
-        internal CreativeLinear()
+        private string _Id = string.Empty;
+        public string Id
         {
-            MediaFiles = new List<MediaFile>();
-            Extensions = new List<object>();
-            Icons = new List<Icon>();
-            ClickTracking = new List<string>();
-            CustomClick = new List<Uri>();
-            TrackingEvents = new List<TrackingEvent>();
-            AdParameters = string.Empty;
-            Id = string.Empty;
-            AdId = string.Empty;
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        public string Id { get; set; }
+        private string _AdId = string.Empty;
+        public string AdId
+        {
+            get { return _AdId; }
+            set { _AdId = value; }
+        }
 
         public int? Sequence { get; set; }
 
-        public string AdId { get; set; }
-
         public TimeSpan? Duration { get; set; }
 
-        public string AdParameters { get; set; }
+        private string _AdParameters = string.Empty;
+        public string AdParameters
+        {
+            get { return _AdParameters; }
+            set { _AdParameters = value; }
+        }
 
-        public Uri ClickThrough { get; set; }
+        private Uri _ClickThrough;
+        public Uri ClickThrough
+        {
+            get { return _ClickThrough; }
+            set { _ClickThrough = value; }
+        }
 
-        public IList<MediaFile> MediaFiles { get; private set; }
+        private IList<MediaFile> _MediaFiles;
+        public IList<MediaFile> MediaFiles
+        {
+            get { if (_MediaFiles == null) _MediaFiles = new List<MediaFile>(); return _MediaFiles; }
+            private set { _MediaFiles = value; }
+        }
 
         public FlexibleOffset SkipOffset { get; set; }
 
-        public IList<object> Extensions { get; private set; }
+        private IList<object> _Extensions;
+        public IList<object> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<object>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
 
-        public IList<Icon> Icons { get; private set; }
+        private IList<Icon> _Icons;
+        public IList<Icon> Icons
+        {
+            get { if (_Icons == null) _Icons = new List<Icon>(); return _Icons; }
+            private set { _Icons = value; }
+        }
 
-        public IList<string> ClickTracking { get; private set; }
+        private IList<string> _ClickTracking;
+        public IList<string> ClickTracking
+        {
+            get { if (_ClickTracking == null) _ClickTracking = new List<string>(); return _ClickTracking; }
+            private set { _ClickTracking = value; }
+        }
 
-        public IList<Uri> CustomClick { get; private set; }
+        private IList<Uri> _CustomClick;
+        public IList<Uri> CustomClick
+        {
+            get { if (_CustomClick == null) _CustomClick = new List<Uri>(); return _CustomClick; }
+            private set { _CustomClick = value; }
+        }
 
-        public IList<TrackingEvent> TrackingEvents { get; private set; }
+        private IList<TrackingEvent> _TrackingEvents;
+        public IList<TrackingEvent> TrackingEvents
+        {
+            get { if (_TrackingEvents == null) _TrackingEvents = new List<TrackingEvent>(); return _TrackingEvents; }
+            private set { _TrackingEvents = value; }
+        }
     }
 
     public sealed class CreativeNonLinears : ICreative
     {
-        internal CreativeNonLinears()
+        private string _Id = string.Empty;
+        public string Id
         {
-            NonLinears = new List<NonLinear>();
-            TrackingEvents = new List<TrackingEvent>();
-            Id = string.Empty;
-            AdId = string.Empty;
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        public string Id { get; set; }
+        private string _AdId = string.Empty;
+        public string AdId
+        {
+            get { return _AdId; }
+            set { _AdId = value; }
+        }
 
         public int? Sequence { get; set; }
 
-        public string AdId { get; set; }
+        private IList<NonLinear> _NonLinears;
+        public IList<NonLinear> NonLinears
+        {
+            get { if (_NonLinears == null) _NonLinears = new List<NonLinear>(); return _NonLinears; }
+            private set { _NonLinears = value; }
+        }
 
-        public IList<NonLinear> NonLinears { get; private set; }
-
-        public IList<TrackingEvent> TrackingEvents { get; private set; }
+        private IList<TrackingEvent> _TrackingEvents;
+        public IList<TrackingEvent> TrackingEvents
+        {
+            get { if (_TrackingEvents == null) _TrackingEvents = new List<TrackingEvent>(); return _TrackingEvents; }
+            private set { _TrackingEvents = value; }
+        }
     }
 
     public sealed class CreativeCompanions : ICreative
     {
-        internal CreativeCompanions()
+        private string _Id = string.Empty;
+        public string Id
         {
-            Companions = new List<Companion>();
-            Id = string.Empty;
-            AdId = string.Empty;
+            get { return _Id; }
+            set { _Id = value; }
         }
-
-        public string Id { get; set; }
 
         public int? Sequence { get; set; }
 
-        public string AdId { get; set; }
+        private string _AdId = string.Empty;
+        public string AdId
+        {
+            get { return _AdId; }
+            set { _AdId = value; }
+        }
 
-        public IList<Companion> Companions { get; private set; }
+        private IList<Companion> _Companions;
+        public IList<Companion> Companions
+        {
+            get { if (_Companions == null) _Companions = new List<Companion>(); return _Companions; }
+            private set { _Companions = value; }
+        }
 
         public CompanionAdsRequired Required { get; set; }
     }
 
     public sealed class NonLinear
     {
-        internal NonLinear()
+        private IResource _Item;
+        public IResource Item
         {
-            Extensions = new List<object>();
-            ClickTracking = new List<string>();
-            AdParameters = string.Empty;
-            ApiFramework = string.Empty;
-            Id = string.Empty;
+            get { return _Item; }
+            set { _Item = value; }
         }
 
-        public IResource Item { get; set; }
+        private Uri _ClickThrough;
+        public Uri ClickThrough
+        {
+            get { return _ClickThrough; }
+            set { _ClickThrough = value; }
+        }
 
-        public Uri ClickThrough { get; set; }
+        private string _AdParameters = string.Empty;
+        public string AdParameters
+        {
+            get { return _AdParameters; }
+            set { _AdParameters = value; }
+        }
 
-        public string AdParameters { get; set; }
+        private IList<object> _Extensions;
+        public IList<object> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<object>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
 
-        public IList<object> Extensions { get; private set; }
+        private Uri _Value;
+        public Uri Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
 
-        public int Width { get; set; }
+        private int _Width;
+        public int Width
+        {
+            get { return _Width; }
+            set { _Width = value; }
+        }
 
-        public int Height { get; set; }
+        private int _Height;
+        public int Height
+        {
+            get { return _Height; }
+            set { _Height = value; }
+        }
 
         public int? ExpandedWidth { get; set; }
 
@@ -186,38 +332,66 @@ namespace Microsoft.Media.Advertising
 
         public bool? MaintainAspectRatio { get; set; }
 
-        public TimeSpan? MinSuggestedDuration { get; set; }
+        public TimeSpan? MinSuggestedDuration { get; set; }        
 
-        public string ApiFramework { get; set; }
+        private string _ApiFramework = string.Empty;
+        public string ApiFramework
+        {
+            get { return _ApiFramework; }
+            set { _ApiFramework = value; }
+        }
 
-        public IList<string> ClickTracking { get; set; }
+        private IList<string> _ClickTracking;
+        public IList<string> ClickTracking
+        {
+            get { if (_ClickTracking == null) _ClickTracking = new List<string>(); return _ClickTracking; }
+            private set { _ClickTracking = value; }
+        }
 
-        public string Id { get; set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
     }
 
     public sealed class Companion : ICompanionSource
     {
-        internal Companion()
+        private IResource _Item;
+        public IResource Item
         {
-            Extensions = new List<object>();
-            ClickTracking = new List<string>();
-            ViewTracking = new List<string>();
-            Id = string.Empty;
-            AdParameters = string.Empty;
-            AltText = string.Empty;
-            AdSlotId = string.Empty;
-            ApiFramework = string.Empty;
+            get { return _Item; }
+            set { _Item = value; }
         }
 
-        public IResource Item { get; set; }
+        private IList<object> _Extensions;
+        public IList<object> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<object>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
 
-        public IList<object> Extensions { get; private set; }
+        private Uri _ClickThrough;
+        public Uri ClickThrough
+        {
+            get { return _ClickThrough; }
+            set { _ClickThrough = value; }
+        }
 
-        public Uri ClickThrough { get; set; }
+        private string _AltText = string.Empty;
+        public string AltText
+        {
+            get { return _AltText; }
+            set { _AltText = value; }
+        }
 
-        public string AltText { get; set; }
-
-        public string AdParameters { get; set; }
+        private string _AdParameters = string.Empty;
+        public string AdParameters
+        {
+            get { return _AdParameters; }
+            set { _AdParameters = value; }
+        }
 
         public int? Width { get; set; }
 
@@ -231,15 +405,40 @@ namespace Microsoft.Media.Advertising
 
         public int? ExpandedHeight { get; set; }
 
-        public string ApiFramework { get; set; }
+        private string _ApiFramework = string.Empty;
+        public string ApiFramework
+        {
+            get { return _ApiFramework; }
+            set { _ApiFramework = value; }
+        }
 
-        public string AdSlotId { get; set; }
+        private string _AdSlotId = string.Empty;
+        public string AdSlotId
+        {
+            get { return _AdSlotId; }
+            set { _AdSlotId = value; }
+        }
 
-        public string Id { get; set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
 
-        public IList<string> ViewTracking { get; private set; }
+        private IList<string> _ViewTracking;
+        public IList<string> ViewTracking
+        {
+            get { if (_ViewTracking == null) _ViewTracking = new List<string>(); return _ViewTracking; }
+            private set { _ViewTracking = value; }
+        }
 
-        public IList<string> ClickTracking { get; private set; }
+        private IList<string> _ClickTracking;
+        public IList<string> ClickTracking
+        {
+            get { if (_ClickTracking == null) _ClickTracking = new List<string>(); return _ClickTracking; }
+            private set { _ClickTracking = value; }
+        }
 
         public string MimeType
         {
@@ -289,26 +488,43 @@ namespace Microsoft.Media.Advertising
 
     public sealed class MediaFile
     {
-        internal MediaFile()
+        #region Required
+        private string _Id = string.Empty;
+        public string Id
         {
-            Id = string.Empty;
-            Type = string.Empty;
-            ApiFramework = string.Empty;
-            Codec = string.Empty;
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        #region Required
-        public string Id { get; set; }
+        private MediaFileDelivery _Delivery;
+        public MediaFileDelivery Delivery
+        {
+            get { return _Delivery; }
+            set { _Delivery = value; }
+        }
 
-        public MediaFileDelivery Delivery { get; set; }
-
-        public string Type { get; set; }
+        private string _Type = string.Empty;
+        public string Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
 
         public Uri Value { get; set; }
 
-        public int Width { get; set; }
+        private int _Width;
+        public int Width
+        {
+            get { return _Width; }
+            set { _Width = value; }
+        }
 
-        public int Height { get; set; }
+        private int _Height;
+        public int Height
+        {
+            get { return _Height; }
+            set { _Height = value; }
+        }
         #endregion
 
         #region Optional
@@ -322,7 +538,12 @@ namespace Microsoft.Media.Advertising
 
         public bool? MaintainAspectRatio { get; set; }
 
-        public string ApiFramework { get; set; }
+        private string _ApiFramework = string.Empty;
+        public string ApiFramework
+        {
+            get { return _ApiFramework; }
+            set { _ApiFramework = value; }
+        }
 
         public string Codec { get; set; }
 
@@ -338,7 +559,12 @@ namespace Microsoft.Media.Advertising
         internal IFrameResource()
         { }
 
-        public Uri Value { get; set; }
+        private Uri _Value;
+        public Uri Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class HtmlResource : IResource
@@ -346,7 +572,12 @@ namespace Microsoft.Media.Advertising
         internal HtmlResource()
         { }
 
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class StaticResource : IResource
@@ -354,9 +585,19 @@ namespace Microsoft.Media.Advertising
         internal StaticResource()
         { }
 
-        public string CreativeType { get; set; }
+        private string _CreativeType = string.Empty;
+        public string CreativeType
+        {
+            get { return _CreativeType; }
+            set { _CreativeType = value; }
+        }
 
-        public Uri Value { get; set; }
+        private Uri _Value;
+        public Uri Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public interface IResource
@@ -367,48 +608,93 @@ namespace Microsoft.Media.Advertising
         internal TrackingEvent()
         { }
 
-        public TrackingType Type { get; set; }
+        private TrackingType _Type;
+        public TrackingType Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
 
-        public FlexibleOffset Offset { get; set; }
+        private FlexibleOffset _Offset;
+        public FlexibleOffset Offset
+        {
+            get { return _Offset; }
+            set { _Offset = value; }
+        }
 
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class Icon
     {
-        internal Icon()
+        private IResource _Item;
+        public IResource Item
         {
-            ClickTracking = new List<string>();
-            ViewTracking = new List<string>();
-            ApiFramework = string.Empty;
-            XPosition = string.Empty;
-            YPosition = string.Empty;
-            Program = string.Empty;
+            get { return _Item; }
+            set { _Item = value; }
         }
 
-        public IResource Item { get; set; }
+        private IList<string> _ClickTracking;
+        public IList<string> ClickTracking
+        {
+            get { if (_ClickTracking == null) _ClickTracking = new List<string>(); return _ClickTracking; }
+            private set { _ClickTracking = value; }
+        }
 
-        public IList<string> ClickTracking { get; private set; }
+        private Uri _ClickThrough;
+        public Uri ClickThrough
+        {
+            get { return _ClickThrough; }
+            set { _ClickThrough = value; }
+        }
 
-        public Uri ClickThrough { get; set; }
+        private IList<string> _ViewTracking;
+        public IList<string> ViewTracking
+        {
+            get { if (_ViewTracking == null) _ViewTracking = new List<string>(); return _ViewTracking; }
+            private set { _ViewTracking = value; }
+        }
 
-        public IList<string> ViewTracking { get; private set; }
-
-        public string Program { get; set; }
+        private string _Program = string.Empty;
+        public string Program
+        {
+            get { return _Program; }
+            set { _Program = value; }
+        }
 
         public int? Width { get; set; }
 
         public int? Height { get; set; }
 
-        public string XPosition { get; set; }  // allows "left", "right" or a pixel value
+        private string _XPosition = string.Empty;  // allows "left", "right" or a pixel value
+        public string XPosition
+        {
+            get { return _XPosition; }
+            set { _XPosition = value; }
+        }
 
-        public string YPosition { get; set; }  // allows "top", "bottom", or a pixel value
+        private string _YPosition = string.Empty;  // allows "top", "bottom", or a pixel value
+        public string YPosition
+        {
+            get { return _YPosition; }
+            set { _YPosition = value; }
+        }
 
         public TimeSpan? Offset { get; set; }
 
         public TimeSpan? Duration { get; set; }
 
-        public string ApiFramework { get; set; }
+        private string _ApiFramework = string.Empty;
+        public string ApiFramework
+        {
+            get { return _ApiFramework; }
+            set { _ApiFramework = value; }
+        }
     }
 
     public sealed class Extension
@@ -416,9 +702,19 @@ namespace Microsoft.Media.Advertising
         internal Extension()
         { }
 
-        public string Type { get; set; }
+        private string _Type = string.Empty;
+        public string Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
 
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class AdSystem
@@ -426,9 +722,19 @@ namespace Microsoft.Media.Advertising
         internal AdSystem()
         { }
 
-        public string Version { get; set; }
+        private string _Version = string.Empty;
+        public string Version
+        {
+            get { return _Version; }
+            set { _Version = value; }
+        }
 
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class Pricing
@@ -436,11 +742,26 @@ namespace Microsoft.Media.Advertising
         internal Pricing()
         { }
 
-        public PricingModel Model { get; set; }
+        private PricingModel _Model;
+        public PricingModel Model
+        {
+            get { return _Model; }
+            set { _Model = value; }
+        }
 
-        public string Currency { get; set; }
+        private string _Currency = string.Empty;
+        public string Currency
+        {
+            get { return _Currency; }
+            set { _Currency = value; }
+        }
 
-        public double Value { get; set; }
+        private double _Value;
+        public double Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public enum PricingModel
@@ -544,16 +865,31 @@ namespace Microsoft.Media.Advertising
         /// <summary>
         /// Gets or set whether or not the offset is absolute.
         /// </summary>
-        public bool IsAbsolute { get; set; }
+        private bool _IsAbsolute;
+        public bool IsAbsolute
+        {
+            get { return _IsAbsolute; }
+            set { _IsAbsolute = value; }
+        }
 
         /// <summary>
         /// Gets or sets the relative offset as a percentage (0-1).
         /// </summary>
-        public double RelativeOffset { get; set; }
+        private double _RelativeOffset;
+        public double RelativeOffset
+        {
+            get { return _RelativeOffset; }
+            set { _RelativeOffset = value; }
+        }
 
         /// <summary>
         /// Gets or sets the absolute offset as a TimeSpan
         /// </summary>
-        public TimeSpan AbsoluteOffset { get; set; }
+        private TimeSpan _AbsoluteOffset;
+        public TimeSpan AbsoluteOffset
+        {
+            get { return _AbsoluteOffset; }
+            set { _AbsoluteOffset = value; }
+        }
     }
 }

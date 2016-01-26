@@ -7,19 +7,31 @@ namespace System.Xml.Linq
         public static bool GetBoolAttribute(this XElement source, string name, bool defaultValue)
         {
             var attrib = source.Attribute(name);
-            return attrib == null ? defaultValue : bool.Parse(attrib.Value);
+            bool val = default(bool);
+            if (attrib != null && !string.IsNullOrWhiteSpace(attrib.Value))
+                bool.TryParse(attrib.Value, out val);
+
+            return val;
         }
 
         public static int GetIntAttribute(this XElement source, string name)
         {
             var attrib = source.Attribute(name);
-            return attrib == null ? default(int) : int.Parse(attrib.Value);
+            int val = default(int);
+            if (attrib != null && !string.IsNullOrWhiteSpace(attrib.Value))
+                int.TryParse(attrib.Value, out val);
+
+            return val;
         }
 
         public static long GetLongAttribute(this XElement source, string name)
         {
             var attrib = source.Attribute(name);
-            return attrib == null ? default(long) : long.Parse(attrib.Value);
+            long val = default(long);
+            if (attrib != null && !string.IsNullOrWhiteSpace(attrib.Value))
+                long.TryParse(attrib.Value, out val);
+
+            return val;
         }
     }
 }

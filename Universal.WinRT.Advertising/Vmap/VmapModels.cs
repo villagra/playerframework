@@ -5,59 +5,134 @@ namespace Microsoft.Media.Advertising
 {
     public sealed class Vmap
     {
-        internal Vmap()
+        private string _Version = string.Empty;
+        public string Version
         {
-            AdBreaks = new List<VmapAdBreak>();
-            Extensions = new List<VmapExtension>();
+            get { return _Version; }
+            set { _Version = value; }
         }
 
-        public string Version { get; set; }
-        public IList<VmapAdBreak> AdBreaks { get; private set; }
-        public IList<VmapExtension> Extensions { get; private set; }
+        private IList<VmapAdBreak> _AdBreaks;
+        public IList<VmapAdBreak> AdBreaks
+        {
+            get { if (_AdBreaks == null) _AdBreaks = new List<VmapAdBreak>(); return _AdBreaks; }
+            private set { _AdBreaks = value; }
+        }
+
+        private IList<VmapExtension> _Extensions;
+        public IList<VmapExtension> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<VmapExtension>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
     }
 
     public sealed class VmapAdBreak
     {
-        internal VmapAdBreak()
+        private string _TimeOffset = string.Empty;
+        public string TimeOffset
         {
-            TrackingEvents = new List<VmapTrackingEvent>();
-            Extensions = new List<VmapExtension>();
+            get { return _TimeOffset; }
+            set { _TimeOffset = value; }
         }
 
-        public string TimeOffset { get; set; }
-        public string BreakType { get; set; }
-        public string BreakId { get; set; }
-        public VmapAdSource AdSource { get; set; }
-        public IList<VmapTrackingEvent> TrackingEvents { get; private set; }
-        public IList<VmapExtension> Extensions { get; private set; }
+        private string _BreakType = string.Empty;
+        public string BreakType
+        {
+            get { return _BreakType; }
+            set { _BreakType = value; }
+        }
+
+        private string _BreakId = string.Empty;
+        public string BreakId
+        {
+            get { return _BreakId; }
+            set { _BreakId = value; }
+        }
+
+        private VmapAdSource _AdSource;
+        public VmapAdSource AdSource
+        {
+            get { return _AdSource; }
+            set { _AdSource = value; }
+        }
+
+        private IList<VmapTrackingEvent> _TrackingEvents;
+        public IList<VmapTrackingEvent> TrackingEvents
+        {
+            get { if (_TrackingEvents == null) _TrackingEvents = new List<VmapTrackingEvent>(); return _TrackingEvents; }
+            private set { _TrackingEvents = value; }
+        }
+
+        private IList<VmapExtension> _Extensions;
+        public IList<VmapExtension> Extensions
+        {
+            get { if (_Extensions == null) _Extensions = new List<VmapExtension>(); return _Extensions; }
+            private set { _Extensions = value; }
+        }
     }
 
     public sealed class VmapAdSource
     {
-        internal VmapAdSource()
+        private string _Id = string.Empty;
+        public string Id
         {
-            Id = string.Empty;
-            VastData = string.Empty;
-            CustomAdData = string.Empty;
-            CustomAdDataTemplateType = string.Empty;
-            AdTagTemplateType = string.Empty;
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        public string Id { get; set; }
-        public bool AllowMultipleAds { get; set; }
-        public bool FollowsRedirect { get; set; }
-        public string VastData { get; set; }
-        public string CustomAdData { get; set; }
-        public string CustomAdDataTemplateType { get; set; }
-        public Uri AdTag { get; set; }
-        public string AdTagTemplateType { get; set; }
+        private bool _AllowMultipleAds;
+        public bool AllowMultipleAds
+        {
+            get { return _AllowMultipleAds; }
+            set { _AllowMultipleAds = value; }
+        }
+
+        private bool _FollowsRedirect;
+        public bool FollowsRedirect
+        {
+            get { return _FollowsRedirect; }
+            set { _FollowsRedirect = value; }
+        }
+
+        private string _VastData = string.Empty;
+        public string VastData
+        {
+            get { return _VastData; }
+            set { _VastData = value; }
+        }
+
+        private string _CustomAdData = string.Empty;
+        public string CustomAdData
+        {
+            get { return _CustomAdData; }
+            set { _CustomAdData = value; }
+        }
+
+        private string _CustomAdDataTemplateType = string.Empty;
+        public string CustomAdDataTemplateType
+        {
+            get { return _CustomAdDataTemplateType; }
+            set { _CustomAdDataTemplateType = value; }
+        }
+
+        private Uri _AdTag;
+        public Uri AdTag
+        {
+            get { return _AdTag; }
+            set { _AdTag = value; }
+        }
+
+        private string _AdTagTemplateType = string.Empty;
+        public string AdTagTemplateType
+        {
+            get { return _AdTagTemplateType; }
+            set { _AdTagTemplateType = value; }
+        }
     }
 
     public sealed class VmapTrackingEvent
     {
-        internal VmapTrackingEvent()
-        { }
-
         public Uri TrackingUri { get; set; }
         public VmapTrackingEventType EventType { get; set; }
     }
@@ -71,11 +146,19 @@ namespace Microsoft.Media.Advertising
 
     public sealed class VmapExtension
     {
-        internal VmapExtension()
-        { }
+        private string _Xml = string.Empty;
+        public string Xml
+        {
+            get { return _Xml; }
+            set { _Xml = value; }
+        }
 
-        public string Xml { get; set; }
-        public string Type { get; set; }
+        private string _Type = string.Empty;
+        public string Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
     }
 }
 

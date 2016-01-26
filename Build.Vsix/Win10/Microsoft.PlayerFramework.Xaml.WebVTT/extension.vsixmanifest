@@ -1,6 +1,6 @@
 ﻿<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Id="MMP.PF.Win10.WebVTT.XAML.SDK.VSIX.ad25c61c-f211-4f8c-acbe-b349c8a6873c" Version="3.0.0.1" Language="en-US" Publisher="Microsoft" />
+    <Identity Id="MMP.PF.Win10.WebVTT.XAML.SDK.VSIX.ad25c61c-f211-4f8c-acbe-b349c8a6873c" Version="3.0.0.4" Language="en-US" Publisher="Microsoft" />
     <DisplayName>Microsoft Player Framework WebVTT Plugin</DisplayName>
     <Description>Microsoft Media Platform: Player Framework WebVTT Plugin for Windows 10 Xaml</Description>
     <MoreInfo>http://playerframework.codeplex.com/</MoreInfo>
@@ -10,7 +10,7 @@
     <Tags>WebVTT, closed captions, Microsoft Media Platform Player Framework, Windows 10 Xaml, MMPPF</Tags>
   </Metadata>
   <Installation Scope="Global" AllUsers="true">
-    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Xaml.WebVTT.UWP" SdkVersion="3.0.0.1" />
+    <InstallationTarget Id="Microsoft.ExtensionSDK" TargetPlatformIdentifier="Windows Kits" TargetPlatformVersion="10" SdkName="Microsoft.PlayerFramework.Xaml.WebVTT.UWP" SdkVersion="3.0.0.4" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="4.5" />

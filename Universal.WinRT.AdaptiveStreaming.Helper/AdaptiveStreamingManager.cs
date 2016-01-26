@@ -235,7 +235,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
                 {
                     if (IsOpen)
                     {
-                        // select all eligable tracks
+                        // select all eligible tracks
                         UpdateSelectedTracks(null);
                     }
                 }
@@ -364,7 +364,12 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
         #endregion
 
         #region Audio Streams
-        public IReadOnlyList<AdaptiveAudioStream> AvailableAudioStreams { get; private set; }
+        private IReadOnlyList<AdaptiveAudioStream> _AvailableAudioStreams;
+        public IReadOnlyList<AdaptiveAudioStream> AvailableAudioStreams
+        {
+            get { if (_AvailableAudioStreams == null) _AvailableAudioStreams = new List<AdaptiveAudioStream>(); return _AvailableAudioStreams; }
+            private set { _AvailableAudioStreams = value; }
+        }
 
         static bool IsAudioStream(IManifestStream stream)
         {
@@ -553,7 +558,7 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
                     }
                     if (preferredBitrate.HasValue)
                     {
-                        selectedTracks = selectedTracks.OrderBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).Take(1).ToList();
+                        selectedTracks = selectedTracks.GroupBy(t => Math.Abs((long)t.Bitrate - (long)preferredBitrate.Value)).First().ToList();
                     }
 
                     // offer the consumer a chance to override our choices
@@ -590,7 +595,12 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
         #endregion
 
         #region Captions
-        public IReadOnlyList<AdaptiveCaptionStream> AvailableCaptionStreams { get; private set; }
+        private IReadOnlyList<AdaptiveCaptionStream> _AvailableCaptionStreams;
+        public IReadOnlyList<AdaptiveCaptionStream> AvailableCaptionStreams
+        {
+            get { if (_AvailableCaptionStreams == null) _AvailableCaptionStreams = new List<AdaptiveCaptionStream>(); return _AvailableCaptionStreams; }
+            private set { _AvailableCaptionStreams = value; }
+        }
 
         static bool IsCaptionStream(IManifestStream stream)
         {
@@ -729,7 +739,10 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
                         }
                     }
                     catch (OperationCanceledException) { throw; }
-                    catch (Exception ex) { OnDataError(new DataErrorEventArgs(ex, stream, track)); }
+                    catch (Exception ex) {
+                        OnDataError(new DataErrorEventArgs(ex, stream, track));
+                        finished = true;
+                    }
                 } while (!finished);
             }
             catch (OperationCanceledException) { throw; }
@@ -778,8 +791,19 @@ namespace Microsoft.Media.AdaptiveStreaming.Helper
             AllTracks = allTracks;
         }
 
-        public IList<IManifestTrack> SelectedTracks { get; private set; }
-        public IList<IManifestTrack> AllTracks { get; private set; }
+        private IList<IManifestTrack> _SelectedTracks;
+        public IList<IManifestTrack> SelectedTracks
+        {
+            get { if (_SelectedTracks == null) _SelectedTracks = new List<IManifestTrack>(); return _SelectedTracks; }
+            private set { _SelectedTracks = value; }
+        }
+
+        private IList<IManifestTrack> _AllTracks;
+        public IList<IManifestTrack> AllTracks
+        {
+            get { if (_AllTracks == null) _AllTracks = new List<IManifestTrack>(); return _AllTracks; }
+            private set { _AllTracks = value; }
+        }
     }
 
     public sealed class DataReceivedEventArgs

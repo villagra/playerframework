@@ -8,69 +8,195 @@ namespace Microsoft.Media.Advertising
 {
     public sealed class FWAdResponse
     {
-        internal FWAdResponse()
+        private string _Version = string.Empty;
+        public string Version
         {
-            Errors = new List<FWError>();
-            Ads = new List<FWAd>();
-            EventCallbacks = new List<FWEventCallback>();
-            Parameters = new List<FWParameter>();
+            get { return _Version; }
+            set { _Version = value; }
         }
 
-        public string Version { get; set; }
-        public string CustomId { get; set; }
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
         public int? NetworkId { get; set; }
-        public string Diagnostic { get; set; }
-        public string CustomState { get; set; }
-        public IList<FWParameter> Parameters { get; private set; }
-        public IList<FWError> Errors { get; private set; }
-        public FWVisitor Visitor { get; set; }
-        public IList<FWAd> Ads { get; private set; }
-        public IList<FWEventCallback> EventCallbacks { get; private set; }
-        public FWSiteSection SiteSection { get; set; }
-        public string RendererManifest { get; set; }
-        public string RendererManifestVersion { get; set; }
+
+        private string _Diagnostic = string.Empty;
+        public string Diagnostic
+        {
+            get { return _Diagnostic; }
+            set { _Diagnostic = value; }
+        }
+
+        private string _CustomState = string.Empty;
+        public string CustomState
+        {
+            get { return _CustomState; }
+            set { _CustomState = value; }
+        }
+
+        private IList<FWParameter> _Parameters;
+        public IList<FWParameter> Parameters
+        {
+            get { if (_Parameters == null) _Parameters = new List<FWParameter>(); return _Parameters; }
+            private set { _Parameters = value; }
+        }
+
+        private IList<FWError> _Errors;
+        public IList<FWError> Errors
+        {
+            get { if (_Errors == null) _Errors = new List<FWError>(); return _Errors; }
+            private set { _Errors = value; }
+        }
+
+        private FWVisitor _Visitor;
+        public FWVisitor Visitor
+        {
+            get { return _Visitor; }
+            set { _Visitor = value; }
+        }
+
+        private IList<FWAd> _Ads;
+        public IList<FWAd> Ads
+        {
+            get { if (_Ads == null) _Ads = new List<FWAd>(); return _Ads; }
+            private set { _Ads = value; }
+        }
+
+        private IList<FWEventCallback> _EventCallbacks;
+        public IList<FWEventCallback> EventCallbacks
+        {
+            get { if (_EventCallbacks == null) _EventCallbacks = new List<FWEventCallback>(); return _EventCallbacks; }
+            private set { _EventCallbacks = value; }
+        }
+
+        private FWSiteSection _SiteSection;
+        public FWSiteSection SiteSection
+        {
+            get { return _SiteSection; }
+            set { _SiteSection = value; }
+        }
+
+        private string _RendererManifest = string.Empty;
+        public string RendererManifest
+        {
+            get { return _RendererManifest; }
+            set { _RendererManifest = value; }
+        }
+
+        private string _RendererManifestVersion = string.Empty;
+        public string RendererManifestVersion
+        {
+            get { return _RendererManifestVersion; }
+            set { _RendererManifestVersion = value; }
+        }
     }
 
     public sealed class FWAd
     {
-        internal FWAd()
+        private string _AdUnit = string.Empty;
+        public string AdUnit
         {
-            Creatives = new List<FWCreative>();
+            get { return _AdUnit; }
+            set { _AdUnit = value; }
         }
 
-        public string AdUnit { get; set; }
-        public string Id { get; set; }
-        public bool NoPreload { get; set; }
-        public bool NoLoad { get; set; }
-        public int BundleId { get; set; }
-        public IList<FWCreative> Creatives { get; private set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private bool _NoPreload;
+        public bool NoPreload
+        {
+            get { return _NoPreload; }
+            set { _NoPreload = value; }
+        }
+
+        private bool _NoLoad;
+        public bool NoLoad
+        {
+            get { return _NoLoad; }
+            set { _NoLoad = value; }
+        }
+
+        private int _BundleId;
+        public int BundleId
+        {
+            get { return _BundleId; }
+            set { _BundleId = value; }
+        }
+
+        private IList<FWCreative> _Creatives;
+        public IList<FWCreative> Creatives
+        {
+            get { if (_Creatives == null) _Creatives = new List<FWCreative>(); return _Creatives; }
+            private set { _Creatives = value; }
+        }
     }
 
     public sealed class FWParameter
     {
-        internal FWParameter()
-        { }
-
-        public string Name { get; set; }
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
         public string Category { get; set; }
         public string Value { get; set; }
     }
 
     public sealed class FWCreative
     {
-        internal FWCreative()
+        private string _AdUnit = string.Empty;
+        public string AdUnit
         {
-            CreativeRenditions = new List<FWCreativeRendition>();
-            Parameters = new List<FWParameter>();
+            get { return _AdUnit; }
+            set { _AdUnit = value; }
         }
 
-        public string AdUnit { get; set; }
-        public FWBaseUnit BaseUnit { get; set; }
+        private FWBaseUnit _BaseUnit;
+        public FWBaseUnit BaseUnit
+        {
+            get { return _BaseUnit; }
+            set { _BaseUnit = value; }
+        }
+
         public TimeSpan? Duration { get; set; }
-        public string Id { get; set; }
-        public string RedirectUrl { get; set; }
-        public IList<FWCreativeRendition> CreativeRenditions { get; private set; }
-        public IList<FWParameter> Parameters { get; private set; }
+
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private string _RedirectUrl = string.Empty;
+        public string RedirectUrl
+        {
+            get { return _RedirectUrl; }
+            set { _RedirectUrl = value; }
+        }
+
+        private IList<FWCreativeRendition> _CreativeRenditions;
+        public IList<FWCreativeRendition> CreativeRenditions
+        {
+            get { if (_CreativeRenditions == null) _CreativeRenditions = new List<FWCreativeRendition>(); return _CreativeRenditions; }
+            private set { _CreativeRenditions = value; }
+        }
+
+        private IList<FWParameter> _Parameters;
+        public IList<FWParameter> Parameters
+        {
+            get { if (_Parameters == null) _Parameters = new List<FWParameter>(); return _Parameters; }
+            private set { _Parameters = value; }
+        }
     }
 
     public enum FWBaseUnit
@@ -100,24 +226,89 @@ namespace Microsoft.Media.Advertising
 
     public sealed class FWCreativeRendition
     {
-        internal FWCreativeRendition()
+        private FWCreativeApi _CreativeApi;
+        public FWCreativeApi CreativeApi
         {
-            OtherAssets = new List<FWAsset>();
-            Parameters = new List<FWParameter>();
+            get { return _CreativeApi; }
+            set { _CreativeApi = value; }
         }
 
-        public FWCreativeApi CreativeApi { get; set; }
-        public string ContentType { get; set; }
-        public string WrapperType { get; set; }
-        public string WrapperUrl { get; set; }
-        public string Id { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
-        public string AdReplicaId { get; set; }
-        public FWPreference Preference { get; set; }
-        public FWAsset Asset { get; set; }
-        public IList<FWAsset> OtherAssets { get; private set; }
-        public IList<FWParameter> Parameters { get; private set; }
+        private string _ContentType = string.Empty;
+        public string ContentType
+        {
+            get { return _ContentType; }
+            set { _ContentType = value; }
+        }
+
+        private string _WrapperType = string.Empty;
+        public string WrapperType
+        {
+            get { return _WrapperType; }
+            set { _WrapperType = value; }
+        }
+
+        private string _WrapperUrl = string.Empty;
+        public string WrapperUrl
+        {
+            get { return _WrapperUrl; }
+            set { _WrapperUrl = value; }
+        }
+
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private int _Height;
+        public int Height
+        {
+            get { return _Height; }
+            set { _Height = value; }
+        }
+
+        private int _Width;
+        public int Width
+        {
+            get { return _Width; }
+            set { _Width = value; }
+        }
+
+        private string _AdReplicaId = string.Empty;
+        public string AdReplicaId
+        {
+            get { return _AdReplicaId; }
+            set { _AdReplicaId = value; }
+        }
+
+        private FWPreference _Preference;
+        public FWPreference Preference
+        {
+            get { return _Preference; }
+            set { _Preference = value; }
+        }
+
+        private FWAsset _Asset;
+        public FWAsset Asset
+        {
+            get { return _Asset; }
+            set { _Asset = value; }
+        }
+
+        private IList<FWAsset> _OtherAssets;
+        public IList<FWAsset> OtherAssets
+        {
+            get { if (_OtherAssets == null) _OtherAssets = new List<FWAsset>(); return _OtherAssets; }
+            private set { _OtherAssets = value; }
+        }
+
+        private IList<FWParameter> _Parameters;
+        public IList<FWParameter> Parameters
+        {
+            get { if (_Parameters == null) _Parameters = new List<FWParameter>(); return _Parameters; }
+            private set { _Parameters = value; }
+        }
     }
 
     public enum FWPreference
@@ -140,15 +331,47 @@ namespace Microsoft.Media.Advertising
 
     public sealed class FWAsset
     {
-        internal FWAsset()
-        { }
+        private string _Content = string.Empty;
+        public string Content
+        {
+            get { return _Content; }
+            set { _Content = value; }
+        }
 
-        public string Content { get; set; }
-        public string Id { get; set; }
-        public string ContentType { get; set; }
-        public string MimeType { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private string _ContentType = string.Empty;
+        public string ContentType
+        {
+            get { return _ContentType; }
+            set { _ContentType = value; }
+        }
+
+        private string _MimeType = string.Empty;
+        public string MimeType
+        {
+            get { return _MimeType; }
+            set { _MimeType = value; }
+        }
+
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        private string _Url = string.Empty;
+        public string Url
+        {
+            get { return _Url; }
+            set { _Url = value; }
+        }
         public int Bytes { get; set; }
     }
 
@@ -159,122 +382,327 @@ namespace Microsoft.Media.Advertising
             AdSlots = new List<FWAdSlot>();
         }
 
-        public string Id { get; set; }
-        public string CustomId { get; set; }
-        public string PageViewRandom { get; set; }
-        public FWVideoPlayer VideoPlayer { get; set; }
-        public IList<FWAdSlot> AdSlots { get; set; }
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
+        private string _PageViewRandom = string.Empty;
+        public string PageViewRandom
+        {
+            get { return _PageViewRandom; }
+            set { _PageViewRandom = value; }
+        }
+
+        private FWVideoPlayer _VideoPlayer;
+        public FWVideoPlayer VideoPlayer
+        {
+            get { return _VideoPlayer; }
+            set { _VideoPlayer = value; }
+        }
+
+        private IList<FWAdSlot> _AdSlots;
+        public IList<FWAdSlot> AdSlots
+        {
+            get { if (_AdSlots == null) _AdSlots = new List<FWAdSlot>(); return _AdSlots; }
+            private set { _AdSlots = value; }
+        }
     }
 
     public sealed class FWVideoPlayer
     {
-        internal FWVideoPlayer()
+        private FWVideoAsset _VideoAsset;
+        public FWVideoAsset VideoAsset
         {
-            AdSlots = new List<FWAdSlot>();
+            get { return _VideoAsset; }
+            set { _VideoAsset = value; }
         }
 
-        public FWVideoAsset VideoAsset { get; set; }
-        public IList<FWAdSlot> AdSlots { get; private set; }
+        private IList<FWAdSlot> _AdSlots;
+        public IList<FWAdSlot> AdSlots
+        {
+            get { if (_AdSlots == null) _AdSlots = new List<FWAdSlot>(); return _AdSlots; }
+            private set { _AdSlots = value; }
+        }
     }
 
     public sealed class FWVideoAsset
     {
-        internal FWVideoAsset()
+        private string _Id = string.Empty;
+        public string Id
         {
-            AdSlots = new List<FWTemporalAdSlot>();
-            EventCallbacks = new List<FWEventCallback>();
+            get { return _Id; }
+            set { _Id = value; }
         }
 
-        public string Id { get; set; }
-        public string CustomId { get; set; }
-        public string VideoPlayRandom { get; set; }
-        public IList<FWTemporalAdSlot> AdSlots { get; private set; }
-        public IList<FWEventCallback> EventCallbacks { get; private set; }
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
+        private string _VideoPlayRandom = string.Empty;
+        public string VideoPlayRandom
+        {
+            get { return _VideoPlayRandom; }
+            set { _VideoPlayRandom = value; }
+        }
+
+        private IList<FWTemporalAdSlot> _AdSlots;
+        public IList<FWTemporalAdSlot> AdSlots
+        {
+            get { if (_AdSlots == null) _AdSlots = new List<FWTemporalAdSlot>(); return _AdSlots; }
+            private set { _AdSlots = value; }
+        }
+
+        private IList<FWEventCallback> _EventCallbacks;
+        public IList<FWEventCallback> EventCallbacks
+        {
+            get { if (_EventCallbacks == null) _EventCallbacks = new List<FWEventCallback>(); return _EventCallbacks; }
+            private set { _EventCallbacks = value; }
+        }
     }
 
     public sealed class FWTemporalAdSlot : IFWAdSlot
     {
-        internal FWTemporalAdSlot()
-        {
-            SelectedAds = new List<FWAdReference>();
-            EventCallbacks = new List<FWEventCallback>();
-            Parameters = new List<FWParameter>();
-        }
-
         public int? Height { get; set; }
         public int? Width { get; set; }
-        public string CompatibleDimensions { get; set; }
-        public string Source { get; set; }
-        public TimeSpan MaxSlotDuration { get; set; }
-        public string TimePositionClass { get; set; }
-        public TimeSpan TimePosition { get; set; }
-        public int TimePositionSequence { get; set; }
 
-        public string CustomId { get; set; }
-        public string AdUnit { get; set; }
-        public IList<FWAdReference> SelectedAds { get; private set; }
-        public IList<FWEventCallback> EventCallbacks { get; private set; }
-        public IList<FWParameter> Parameters { get; private set; }
+        private string _CompatibleDimensions = string.Empty;
+        public string CompatibleDimensions
+        {
+            get { return _CompatibleDimensions; }
+            set { _CompatibleDimensions = value; }
+        }
+
+        private string _Source = string.Empty;
+        public string Source
+        {
+            get { return _Source; }
+            set { _Source = value; }
+        }
+
+        private TimeSpan _MaxSlotDuration;
+        public TimeSpan MaxSlotDuration
+        {
+            get { return _MaxSlotDuration; }
+            set { _MaxSlotDuration = value; }
+        }
+
+        private string _TimePositionClass = string.Empty;
+        public string TimePositionClass
+        {
+            get { return _TimePositionClass; }
+            set { _TimePositionClass = value; }
+        }
+
+        private TimeSpan _TimePosition;
+        public TimeSpan TimePosition
+        {
+            get { return _TimePosition; }
+            set { _TimePosition = value; }
+        }
+
+        private int _TimePositionSequence;
+        public int TimePositionSequence
+        {
+            get { return _TimePositionSequence; }
+            set { _TimePositionSequence = value; }
+        }
+
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
+        private string _AdUnit = string.Empty;
+        public string AdUnit
+        {
+            get { return _AdUnit; }
+            set { _AdUnit = value; }
+        }
+
+        private IList<FWAdReference> _SelectedAds;
+        public IList<FWAdReference> SelectedAds
+        {
+            get { if (_SelectedAds == null) _SelectedAds = new List<FWAdReference>(); return _SelectedAds; }
+            private set { _SelectedAds = value; }
+        }
+
+        private IList<FWEventCallback> _EventCallbacks;
+        public IList<FWEventCallback> EventCallbacks
+        {
+            get { if (_EventCallbacks == null) _EventCallbacks = new List<FWEventCallback>(); return _EventCallbacks; }
+            private set { _EventCallbacks = value; }
+        }
+
+        private IList<FWParameter> _Parameters;
+        public IList<FWParameter> Parameters
+        {
+            get { if (_Parameters == null) _Parameters = new List<FWParameter>(); return _Parameters; }
+            private set { _Parameters = value; }
+        }
     }
 
     public sealed class FWNonTemporalAdSlot : IFWAdSlot
     {
-        internal FWNonTemporalAdSlot()
-        {
-            SelectedAds = new List<FWAdReference>();
-            Parameters = new List<FWParameter>();
-        }
-
         public int? Height { get; set; }
         public int? Width { get; set; }
-        public string CompatibleDimensions { get; set; }
-        public string CustomId { get; set; }
-        public string AdUnit { get; set; }
-        public IList<FWAdReference> SelectedAds { get; private set; }
-        public IList<FWParameter> Parameters { get; private set; }
+
+        private string _CompatibleDimensions = string.Empty;
+        public string CompatibleDimensions
+        {
+            get { return _CompatibleDimensions; }
+            set { _CompatibleDimensions = value; }
+        }
+
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
+        private string _AdUnit = string.Empty;
+        public string AdUnit
+        {
+            get { return _AdUnit; }
+            set { _AdUnit = value; }
+        }
+
+        private IList<FWAdReference> _SelectedAds;
+        public IList<FWAdReference> SelectedAds
+        {
+            get { if (_SelectedAds == null) _SelectedAds = new List<FWAdReference>(); return _SelectedAds; }
+            private set { _SelectedAds = value; }
+        }
+
+        private IList<FWParameter> _Parameters;
+        public IList<FWParameter> Parameters
+        {
+            get { if (_Parameters == null) _Parameters = new List<FWParameter>(); return _Parameters; }
+            private set { _Parameters = value; }
+        }
     }
 
     public sealed class FWAdSlot : IFWAdSlot
     {
-        internal FWAdSlot()
-        {
-            SelectedAds = new List<FWAdReference>();
-        }
-
         public int? Height { get; set; }
         public int? Width { get; set; }
-        public string CompatibleDimensions { get; set; }
-        public string CustomId { get; set; }
-        public string AdUnit { get; set; }
-        public IList<FWAdReference> SelectedAds { get; private set; }
+
+        private string _CompatibleDimensions = string.Empty;
+        public string CompatibleDimensions
+        {
+            get { return _CompatibleDimensions; }
+            set { _CompatibleDimensions = value; }
+        }
+
+        private string _CustomId = string.Empty;
+        public string CustomId
+        {
+            get { return _CustomId; }
+            set { _CustomId = value; }
+        }
+
+        private string _AdUnit = string.Empty;
+        public string AdUnit
+        {
+            get { return _AdUnit; }
+            set { _AdUnit = value; }
+        }
+
+        private IList<FWAdReference> _SelectedAds;
+        public IList<FWAdReference> SelectedAds
+        {
+            get { if (_SelectedAds == null) _SelectedAds = new List<FWAdReference>(); return _SelectedAds; }
+            private set { _SelectedAds = value; }
+        }
     }
 
     public sealed class FWEventCallback
     {
-        public static string VideoView { get; private set; }
-        public static string SlotImpression { get; private set; }
-        public static string DefaultClick { get; private set; }
-        public static string DefaultImpression { get; private set; }
 
-        static FWEventCallback()
+        private static string _VideoView = "videoView";
+        public static string VideoView
         {
-            VideoView = "videoView";
-            SlotImpression = "slotImpression";
-            DefaultClick = "defaultClick";
-            DefaultImpression = "defaultImpression";
+            get { return _VideoView; }
+            set { _VideoView = value; }
         }
 
-        internal FWEventCallback()
+        private static string _SlotImpression = "slotImpression";
+        public static string SlotImpression
         {
-            TrackingUrls = new List<FWUrl>();
+            get { return _SlotImpression; }
+            set { _SlotImpression = value; }
         }
 
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public FWCallbackType Type { get; set; }
-        public bool ShowBrowser { get; set; }
-        public string Use { get; set; }
-        public IList<FWUrl> TrackingUrls { get; private set; }
+        private static string _DefaultClick = "defaultClick";
+        public static string DefaultClick
+        {
+            get { return _DefaultClick; }
+            set { _DefaultClick = value; }
+        }
+
+        private static string _DefaultImpression = "defaultImpression";
+        public static string DefaultImpression
+        {
+            get { return _DefaultImpression; }
+            set { _DefaultImpression = value; }
+        }
+
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        private string _Url = string.Empty;
+        public string Url
+        {
+            get { return _Url; }
+            set { _Url = value; }
+        }
+
+        private FWCallbackType _Type;
+        public FWCallbackType Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
+
+        private bool _ShowBrowser;
+        public bool ShowBrowser
+        {
+            get { return _ShowBrowser; }
+            set { _ShowBrowser = value; }
+        }
+
+        private string _Use = string.Empty;
+        public string Use
+        {
+            get { return _Use; }
+            set { _Use = value; }
+        }
+
+        private IList<FWUrl> _TrackingUrls;
+        public IList<FWUrl> TrackingUrls
+        {
+            get { if (_TrackingUrls == null) _TrackingUrls = new List<FWUrl>(); return _TrackingUrls; }
+            private set { _TrackingUrls = value; }
+        }
 
         public IEnumerable<string> GetUrls()
         {
@@ -288,11 +716,19 @@ namespace Microsoft.Media.Advertising
 
     public sealed class FWUrl
     {
-        internal FWUrl()
-        { }
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
 
-        public string Name { get; set; }
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public enum FWCallbackType
@@ -306,62 +742,139 @@ namespace Microsoft.Media.Advertising
 
     public sealed class FWAdReference
     {
-        internal FWAdReference()
+        private string _AdId = string.Empty;
+        public string AdId
         {
-            EventCallbacks = new List<FWEventCallback>();
-            CompanionAds = new List<FWAdReference>();
-            FallbackAds = new List<FWAdReference>();
+            get { return _AdId; }
+            set { _AdId = value; }
         }
 
-        public string AdId { get; set; }
-        public string CreativeId { get; set; }
-        public string CreativeRenditionId { get; set; }
-        public string ReplicaId { get; set; }
-        public string SlotEnv { get; set; }
-        public string SlotId { get; set; }
-        public IList<FWEventCallback> EventCallbacks { get; private set; }
-        public IList<FWAdReference> CompanionAds { get; private set; }
-        public IList<FWAdReference> FallbackAds { get; private set; }
+        private string _CreativeId = string.Empty;
+        public string CreativeId
+        {
+            get { return _CreativeId; }
+            set { _CreativeId = value; }
+        }
+
+        private string _CreativeRenditionId = string.Empty;
+        public string CreativeRenditionId
+        {
+            get { return _CreativeRenditionId; }
+            set { _CreativeRenditionId = value; }
+        }
+
+        private string _ReplicaId = string.Empty;
+        public string ReplicaId
+        {
+            get { return _ReplicaId; }
+            set { _ReplicaId = value; }
+        }
+
+        private string _SlotEnv = string.Empty;
+        public string SlotEnv
+        {
+            get { return _SlotEnv; }
+            set { _SlotEnv = value; }
+        }
+
+        private string _SlotId = string.Empty;
+        public string SlotId
+        {
+            get { return _SlotId; }
+            set { _SlotId = value; }
+        }
+
+        private IList<FWEventCallback> _EventCallbacks;
+        public IList<FWEventCallback> EventCallbacks
+        {
+            get { if (_EventCallbacks == null) _EventCallbacks = new List<FWEventCallback>(); return _EventCallbacks; }
+            private set { _EventCallbacks = value; }
+        }
+
+        private IList<FWAdReference> _CompanionAds;
+        public IList<FWAdReference> CompanionAds
+        {
+            get { if (_CompanionAds == null) _CompanionAds = new List<FWAdReference>(); return _CompanionAds; }
+            private set { _CompanionAds = value; }
+        }
+
+        private IList<FWAdReference> _FallbackAds;
+        public IList<FWAdReference> FallbackAds
+        {
+            get { if (_FallbackAds == null) _FallbackAds = new List<FWAdReference>(); return _FallbackAds; }
+            private set { _FallbackAds = value; }
+        }
     }
 
     public sealed class FWVisitor
     {
-        internal FWVisitor()
+        private string _CustomId = string.Empty;
+        public string CustomId
         {
-            HttpHeaders = new List<FWHttpHeader>();
+            get { return _CustomId; }
+            set { _CustomId = value; }
         }
 
-        public string CustomId { get; set; }
-        public IList<FWHttpHeader> HttpHeaders { get; private set; }
+        private IList<FWHttpHeader> _HttpHeaders;
+        public IList<FWHttpHeader> HttpHeaders
+        {
+            get { if (_HttpHeaders == null) _HttpHeaders = new List<FWHttpHeader>(); return _HttpHeaders; }
+            private set { _HttpHeaders = value; }
+        }
         public FWState State { get; set; }
     }
 
     public sealed class FWState
     {
-        internal FWState()
-        { }
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
 
-        public string Name { get; set; }
-        public string Value { get; set; }
+        private string _Value = string.Empty;
+        public string Value
+        {
+            get { return _Value; }
+            set { _Value = value; }
+        }
     }
 
     public sealed class FWHttpHeader
     {
-        internal FWHttpHeader()
-        { }
 
-        public string Name { get; set; }
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
         public string Value { get; set; }
     }
 
     public sealed class FWError
     {
-        internal FWError()
-        { }
+        private string _Severity = string.Empty;
+        public string Severity
+        {
+            get { return _Severity; }
+            set { _Severity = value; }
+        }
 
-        public string Severity { get; set; }
-        public string Name { get; set; }
-        public string Id { get; set; }
+        private string _Name = string.Empty;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        private string _Id = string.Empty;
+        public string Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
         public string Context { get; set; }
     }
 

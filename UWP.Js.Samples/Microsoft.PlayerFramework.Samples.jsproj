@@ -28,6 +28,7 @@
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x86">
       <Configuration>Release</Configuration>
@@ -45,8 +46,8 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Microsoft.PlayerFramework.Samples_TemporaryKey.pfx</PackageCertificateKeyFile>
@@ -145,14 +146,23 @@
     <None Include="Microsoft.PlayerFramework.Samples_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.PlayerFramework.Advertising.Analytics, Version=3.0.0.1" />
-    <SDKReference Include="Microsoft.PlayerFramework.Js, Version=3.0.0.1" />
-    <SDKReference Include="Microsoft.PlayerFramework.Js.Adaptive, Version=3.0.0.1" />
-    <SDKReference Include="Microsoft.PlayerFramework.Js.Advertising, Version=3.0.0.1" />
-    <SDKReference Include="Microsoft.PlayerFramework.Js.Analytics, Version=3.0.0.1" />
-    <SDKReference Include="Microsoft.PlayerFramework.Js.TimedText, Version=3.0.0.1" />
     <SDKReference Include="Microsoft.VCLibs, Version=14.0" />
     <SDKReference Include="Universal Smooth Streaming Client SDK, Version=1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UWP.Js.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj" />
+    <ProjectReference Include="..\UWP.Js.Advertising\Microsoft.PlayerFramework.Advertising.csproj" />
+    <ProjectReference Include="..\UWP.Js.Analytics\Microsoft.PlayerFramework.Analytics.csproj" />
+    <ProjectReference Include="..\UWP.Js.Core\Microsoft.PlayerFramework.Core.csproj" />
+    <ProjectReference Include="..\UWP.Js.TimedText\Microsoft.PlayerFramework.TimedText.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.AdaptiveStreaming.Analytics\Microsoft.Media.AdaptiveStreaming.Analytics.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.AdaptiveStreaming.Dash\Microsoft.Media.AdaptiveStreaming.Dash.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.Advertising\Microsoft.Media.Advertising.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.Analytics.Advertising\Microsoft.Media.Analytics.Advertising.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.Analytics.AudienceInsight\Microsoft.Media.Analytics.AudienceInsight.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.Analytics\Microsoft.Media.Analytics.csproj" />
+    <ProjectReference Include="..\UWP.WinRT.AudienceInsight\Microsoft.Media.AudienceInsight.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

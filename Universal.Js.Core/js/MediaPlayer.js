@@ -2739,9 +2739,7 @@
                                 this._onMediaElementError();
                             }
                         }.bind(this)
-                    );
-
-                    promise.done(
+                    ).then(
                         function () {
                             PlayerFramework.Utilities.remove(this._activePromises, promise);
                         }.bind(this),
@@ -2750,7 +2748,11 @@
                         }.bind(this)
                     );
 
+
                     this._activePromises.push(promise);
+
+                    this._mediaElement.autoplay = this.autoplay;
+                    this._mediaElement.setAttribute("src", this.src);
                 }
             },
 

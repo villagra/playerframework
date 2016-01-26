@@ -10,10 +10,8 @@ namespace Microsoft.PlayerFramework.Js.Advertising
         /// <summary>
         /// Creates a new instance of AdSource.
         /// </summary>
-        public AdSource()
-        {
-            AllowMultipleAds = true;
-        }
+        /// <param name="type">The type of the ad. Typically, this is "vast".</param>
+        public AdSource() { }
 
         /// <summary>
         /// Creates a new instance of AdSource.
@@ -37,16 +35,36 @@ namespace Microsoft.PlayerFramework.Js.Advertising
         }
 
         /// <inheritdoc /> 
-        public object Payload { get; set; }
+        private object _Payload;
+        public object Payload
+        {
+            get { return _Payload; }
+            set { _Payload = value; }
+        }
 
         /// <inheritdoc /> 
-        public string Key { get; set; }
+        private string _Key = string.Empty;
+        public string Key
+        {
+            get { return _Key; }
+            set { _Key = value; }
+        }
 
         /// <inheritdoc /> 
-        public string Type { get; set; }
+        private string _Type = string.Empty;
+        public string Type
+        {
+            get { return _Type; }
+            set { _Type = value; }
+        }
 
         /// <inheritdoc />
-        public bool AllowMultipleAds { get; set; }
+        private bool _AllowMultipleAds = true;
+        public bool AllowMultipleAds
+        {
+            get { return _AllowMultipleAds; }
+            set { _AllowMultipleAds = value; }
+        }
 
         /// <inheritdoc />
         public int? MaxRedirectDepth { get; set; }

@@ -44,7 +44,8 @@ namespace Microsoft.Media.Advertising
 #else
         public static FWAdResponse CreateFromSmartXml(IInputStream stream)
         {
-            return CreateFromSmartXml(stream.AsStreamForRead());
+            var resp = CreateFromSmartXml(stream.AsStreamForRead());
+            return resp;
         }
 
         internal static FWAdResponse CreateFromSmartXml(Stream stream)
@@ -55,27 +56,40 @@ namespace Microsoft.Media.Advertising
             var root = xDoc.Root;
             if (root == null || root.Name != "adResponse") throw new ArgumentException("Smart XML root 'adResponse' expected");
 
-            return LoadAdResponse(root);
+            var resp = LoadAdResponse(root);
+            return resp;
         }
 
         internal static FWAdResponse LoadAdResponse(XElement element)
         {
             var result = new FWAdResponse();
-            result.Version = (string)element.Attribute("version");
-            result.CustomId = (string)element.Attribute("customId");
-            var networkId = (string)element.Attribute("networkId");
-            if (networkId != null)
+            if (element.Attribute("version") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("version").Value))
+                result.Version = element.Attribute("version").Value;
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
+            if (element.Attribute("networkId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("networkId").Value))
             {
-                result.NetworkId = int.Parse(networkId);
+                int val;
+                if (int.TryParse(element.Attribute("networkId").Value, out val))
+                    result.NetworkId = element.GetIntAttribute("networkId");
             }
-            result.Diagnostic = (string)element.Element("diagnostic");
-            result.CustomState = (string)element.Element("customState");
+            if (element.Attribute("diagnostic") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("diagnostic").Value))
+                result.Diagnostic = element.Attribute("diagnostic").Value;
+            if (element.Attribute("customState") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customState").Value))
+                result.CustomState = element.Attribute("customState").Value;
 
             var rendererManifestXml = element.Element("rendererManifest");
             if (rendererManifestXml != null)
             {
                 result.RendererManifest = rendererManifestXml.Value;
-                result.RendererManifestVersion = (string)rendererManifestXml.Attribute("version");
+                if (rendererManifestXml.Attribute("version") != null &&
+                    !string.IsNullOrWhiteSpace(rendererManifestXml.Attribute("version").Value))
+                    result.RendererManifestVersion = rendererManifestXml.Attribute("version").Value;
             }
 
             var visitorXml = element.Element("visitor");
@@ -132,12 +146,23 @@ namespace Microsoft.Media.Advertising
         internal static FWEventCallback LoadEventCallback(XElement element)
         {
             var result = new FWEventCallback();
-            result.Url = (string)element.Attribute("url");
-            result.Name = (string)element.Attribute("name");
-            result.Type = (FWCallbackType)Enum.Parse(typeof(FWCallbackType), (string)element.Attribute("type"), true);
+            if (element.Attribute("url") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("url").Value))
+                result.Url = element.Attribute("url").Value;
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("type") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("type").Value))
+            {
+                FWCallbackType val;
+                if (Enum.TryParse<FWCallbackType>(element.Attribute("type").Value, true, out val))
+                    result.Type = val;
+            }
             result.ShowBrowser = element.GetBoolAttribute("showBrowser", false);
-            result.Use = (string)element.Attribute("use");
-
+            if (element.Attribute("use") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("use").Value))
+                result.Use = element.Attribute("use").Value;
             var trackingUrlsXml = element.Element("trackingURLs");
             if (trackingUrlsXml != null)
             {
@@ -153,34 +178,54 @@ namespace Microsoft.Media.Advertising
         internal static FWUrl LoadUrl(XElement element)
         {
             var result = new FWUrl();
-            result.Name = (string)element.Attribute("name");
-            result.Value = (string)element.Attribute("value");
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("value") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("value").Value))
+                result.Value = element.Attribute("value").Value;
             return result;
         }
 
         internal static FWError LoadError(XElement element)
         {
             var result = new FWError();
-            result.Id = (string)element.Attribute("id");
-            result.Severity = (string)element.Attribute("severity");
-            result.Name = (string)element.Attribute("name");
-            result.Context = (string)element.Element("context");
+            if (element.Attribute("id") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("id").Value))
+                result.Id = element.Attribute("id").Value;
+            if (element.Attribute("severity") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("severity").Value))
+                result.Severity = element.Attribute("severity").Value;
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("context") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("context").Value))
+                result.Context = element.Attribute("context").Value;
             return result;
         }
 
         internal static FWParameter LoadParameter(XElement element)
         {
             var result = new FWParameter();
-            result.Name = (string)element.Attribute("name");
-            result.Category = (string)element.Attribute("category");
-            result.Value = element.Value;
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("category") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("category").Value))
+                result.Category = element.Attribute("category").Value;
+            if (element.Attribute("value") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("value").Value))
+                result.Value = element.Attribute("value").Value;
             return result;
         }
 
         internal static FWVisitor LoadVisitor(XElement element)
         {
             var result = new FWVisitor();
-            result.CustomId = (string)element.Attribute("customId");
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
 
             var headersXml = element.Element("httpHeaders");
             if (headersXml != null)
@@ -207,9 +252,12 @@ namespace Microsoft.Media.Advertising
         internal static FWHttpHeader LoadHttpHeader(XElement element)
         {
             var result = new FWHttpHeader();
-
-            result.Name = (string)element.Attribute("name");
-            result.Value = (string)element.Attribute("value");
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("value") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("value").Value))
+                result.Value = element.Attribute("value").Value;
 
             return result;
         }
@@ -217,9 +265,12 @@ namespace Microsoft.Media.Advertising
         internal static FWState LoadState(XElement element)
         {
             var result = new FWState();
-
-            result.Name = (string)element.Attribute("name");
-            result.Value = (string)element.Attribute("value");
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("value") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("value").Value))
+                result.Value = element.Attribute("value").Value;
 
             return result;
         }
@@ -227,8 +278,12 @@ namespace Microsoft.Media.Advertising
         internal static FWAd LoadAd(XElement element)
         {
             var result = new FWAd();
-            result.Id = (string)element.Attribute("adId");
-            result.AdUnit = (string)element.Attribute("adUnit");
+            if (element.Attribute("adId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adId").Value))
+                result.Id = element.Attribute("adId").Value;
+            if (element.Attribute("adUnit") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adUnit").Value))
+                result.AdUnit = element.Attribute("adUnit").Value;
             result.BundleId = element.GetIntAttribute("bundleId");
             result.NoLoad = element.GetBoolAttribute("noLoad", false);
             result.NoPreload = element.GetBoolAttribute("noPreload", false);
@@ -249,15 +304,29 @@ namespace Microsoft.Media.Advertising
         {
             var result = new FWCreative();
 
-            result.RedirectUrl = (string)element.Attribute("redirectUrl");
-            result.AdUnit = (string)element.Attribute("adUnit");
-            result.BaseUnit = (FWBaseUnit)Enum.Parse(typeof(FWBaseUnit), ((string)element.Attribute("baseUnit")).Replace("-", "_"), true);
-            var durationString = (string)element.Attribute("duration");
-            if (!string.IsNullOrEmpty(durationString))
+            if (element.Attribute("redirectUrl") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("redirectUrl").Value))
+                result.RedirectUrl = element.Attribute("redirectUrl").Value;
+            if (element.Attribute("adUnit") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adUnit").Value))
+                result.AdUnit = element.Attribute("adUnit").Value;
+            if (element.Attribute("baseUnit") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("baseUnit").Value))
             {
-                result.Duration = TimeSpan.FromSeconds(float.Parse(durationString));
+                FWBaseUnit val;
+                if (Enum.TryParse<FWBaseUnit>(element.Attribute("baseUnit").Value.Replace("-", "_"), true, out val))
+                    result.BaseUnit = val;
             }
-            result.Id = (string)element.Attribute("creativeId");
+            if (element.Attribute("duration") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("duration").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("duration").Value, out val))
+                    result.Duration = TimeSpan.FromSeconds(val);
+            }
+            if (element.Attribute("creativeId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("creativeId").Value))
+                result.Id = element.Attribute("creativeId").Value;
 
             var creativeRenditionsXml = element.Element("creativeRenditions");
             if (creativeRenditionsXml != null)
@@ -284,16 +353,37 @@ namespace Microsoft.Media.Advertising
         {
             var result = new FWCreativeRendition();
 
-            result.Id = (string)element.Attribute("creativeRenditionId");
-            result.ContentType = (string)element.Attribute("contentType");
-            result.WrapperType = (string)element.Attribute("wrapperType");
-            result.WrapperUrl = (string)element.Attribute("wrapperUrl");
-            result.AdReplicaId = (string)element.Attribute("adReplicaId");
+            if (element.Attribute("contentType") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("contentType").Value))
+                result.ContentType = element.Attribute("contentType").Value;
+            if (element.Attribute("creativeRenditionId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("creativeRenditionId").Value))
+                result.Id = element.Attribute("creativeRenditionId").Value;
+            if (element.Attribute("wrapperType") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("wrapperType").Value))
+                result.WrapperType = element.Attribute("wrapperType").Value;
+            if (element.Attribute("wrapperUrl") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("wrapperUrl").Value))
+                result.WrapperUrl = element.Attribute("wrapperUrl").Value;
+            if (element.Attribute("adReplicaId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adReplicaId").Value))
+                result.AdReplicaId = element.Attribute("adReplicaId").Value;
             result.Width = element.GetIntAttribute("width");
             result.Height = element.GetIntAttribute("height");
-            result.Preference = (FWPreference)element.GetIntAttribute("preference");
-            result.CreativeApi = (FWCreativeApi)Enum.Parse(typeof(FWCreativeApi), (string)element.Attribute("creativeApi"), true);
-
+            if (element.Attribute("preference") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("preference").Value))
+            {
+                FWPreference val;
+                if (Enum.TryParse<FWPreference>(element.Attribute("preference").Value, true, out val))
+                    result.Preference = val;
+            }
+            if (element.Attribute("creativeApi") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("creativeApi").Value))
+            {
+                FWCreativeApi val;
+                if (Enum.TryParse<FWCreativeApi>(element.Attribute("creativeApi").Value, true, out val))
+                    result.CreativeApi = val;
+            }
             var otherAssetsXml = element.Element("otherAsset");
             if (otherAssetsXml != null)
             {
@@ -326,12 +416,24 @@ namespace Microsoft.Media.Advertising
             var result = new FWAsset();
 
             result.Bytes = element.GetIntAttribute("bytes");
-            result.ContentType = (string)element.Attribute("contentType");
-            result.Id = (string)element.Attribute("id");
-            result.Name = (string)element.Attribute("name");
-            result.Url = (string)element.Attribute("url");
-            result.MimeType = (string)element.Attribute("mimeType");
-            result.Content = (string)element.Attribute("content");
+            if (element.Attribute("contentType") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("contentType").Value))
+                result.ContentType = element.Attribute("contentType").Value;
+            if (element.Attribute("id") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("id").Value))
+                result.Id = element.Attribute("id").Value;
+            if (element.Attribute("name") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("name").Value))
+                result.Name = element.Attribute("name").Value;
+            if (element.Attribute("url") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("url").Value))
+                result.Url = element.Attribute("url").Value;
+            if (element.Attribute("mimeType") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("mimeType").Value))
+                result.MimeType = element.Attribute("mimeType").Value;
+            if (element.Attribute("content") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("content").Value))
+                result.Content = element.Attribute("content").Value;
 
             return result;
         }
@@ -339,10 +441,15 @@ namespace Microsoft.Media.Advertising
         internal static FWSiteSection LoadSiteSection(XElement element)
         {
             var result = new FWSiteSection();
-
-            result.Id = (string)element.Attribute("id");
-            result.CustomId = (string)element.Attribute("customId");
-            result.PageViewRandom = (string)element.Attribute("pageviewRandom");
+            if (element.Attribute("id") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("id").Value))
+                result.Id = element.Attribute("id").Value;
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
+            if (element.Attribute("pageviewRandom") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("pageviewRandom").Value))
+                result.PageViewRandom = element.Attribute("CustomId").Value;
             result.VideoPlayer = LoadVideoPlayer(element.Element("videoPlayer"));
 
             var adSlotsXml = element.Element("adSlots");
@@ -382,10 +489,15 @@ namespace Microsoft.Media.Advertising
         internal static FWVideoAsset LoadVideoAsset(XElement element)
         {
             var result = new FWVideoAsset();
-
-            result.Id = (string)element.Attribute("id");
-            result.CustomId = (string)element.Attribute("customId");
-            result.VideoPlayRandom = (string)element.Attribute("videoPlayRandom");
+            if (element.Attribute("id") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("id").Value))
+                result.Id = element.Attribute("id").Value;
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
+            if (element.Attribute("videoPlayRandom") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("videoPlayRandom").Value))
+                result.VideoPlayRandom = element.Attribute("videoPlayRandom").Value;
 
             var adSlotsXml = element.Element("adSlots");
             if (adSlotsXml != null)
@@ -411,13 +523,29 @@ namespace Microsoft.Media.Advertising
         internal static FWNonTemporalAdSlot LoadNonTemporalAdSlot(XElement element)
         {
             var result = new FWNonTemporalAdSlot();
-            var height = (string)element.Attribute("height");
-            if (height != null) result.Height = int.Parse(height);
-            var width = (string)element.Attribute("width");
-            if (width != null) result.Width = int.Parse(width);
-            result.CompatibleDimensions = (string)element.Attribute("compatibleDimensions");
-            result.AdUnit = (string)element.Attribute("adUnit");
-            result.CustomId = (string)element.Attribute("customId");
+            if (element.Attribute("height") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("height").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("height").Value, out val))
+                    result.Height = element.GetIntAttribute("height");
+            }
+            if (element.Attribute("width") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("width").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("width").Value, out val))
+                    result.Width = val;
+            }
+            if (element.Attribute("compatibleDimensions") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("compatibleDimensions").Value))
+                result.CompatibleDimensions = element.Attribute("compatibleDimensions").Value;
+            if (element.Attribute("adUnit") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adUnit").Value))
+                result.AdUnit = element.Attribute("adUnit").Value;
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
 
             var adsXml = element.Element("selectedAds");
             if (adsXml != null)
@@ -443,20 +571,50 @@ namespace Microsoft.Media.Advertising
         internal static FWTemporalAdSlot LoadTemporalAdSlot(XElement element)
         {
             var result = new FWTemporalAdSlot();
-            var height = (string)element.Attribute("height");
-            if (height != null) result.Height = int.Parse(height);
-            var width = (string)element.Attribute("width");
-            if (width != null) result.Width = int.Parse(width);
-            result.CompatibleDimensions = (string)element.Attribute("compatibleDimensions");
-            result.AdUnit = (string)element.Attribute("adUnit");
-            result.CustomId = (string)element.Attribute("customId");
-            result.Source = (string)element.Attribute("source");
-            result.MaxSlotDuration = TimeSpan.FromSeconds(element.GetIntAttribute("maxSlotDuration"));
-
-            var timePositionXml = (string)element.Attribute("timePosition");
-            if (timePositionXml != null) result.TimePosition = TimeSpan.FromSeconds(float.Parse(timePositionXml));
+            if (element.Attribute("height") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("height").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("height").Value, out val))
+                    result.Height = element.GetIntAttribute("height");
+            }
+            if (element.Attribute("width") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("width").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("width").Value, out val))
+                    result.Width = val;
+            }
+            if (element.Attribute("compatibleDimensions") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("compatibleDimensions").Value))
+                result.CompatibleDimensions = element.Attribute("compatibleDimensions").Value;
+            if (element.Attribute("adUnit") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("adUnit").Value))
+                result.AdUnit = element.Attribute("adUnit").Value;
+            if (element.Attribute("customId") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
+            if (element.Attribute("source") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("source").Value))
+                result.Source = element.Attribute("source").Value;
+            if (element.Attribute("maxSlotDuration") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("maxSlotDuration").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("maxSlotDuration").Value, out val))
+                    result.MaxSlotDuration = TimeSpan.FromSeconds(val);
+            }
+            if (element.Attribute("timePosition") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("timePosition").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("timePosition").Value, out val))
+                    result.TimePosition = TimeSpan.FromSeconds(val);
+            }
             result.TimePositionSequence = element.GetIntAttribute("timePositionSequence");
-            result.TimePositionClass = (string)element.Attribute("timePositionClass");
+            if (element.Attribute("timePositionClass") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("timePositionClass").Value))
+                result.TimePositionClass = element.Attribute("timePositionClass").Value;
 
             var adsXml = element.Element("selectedAds");
             if (adsXml != null)
@@ -491,12 +649,24 @@ namespace Microsoft.Media.Advertising
         internal static FWAdReference LoadAdReference(XElement element)
         {
             var result = new FWAdReference();
-            result.CreativeId = (string)element.Attribute("creativeId");
-            result.CreativeRenditionId = (string)element.Attribute("creativeRenditionId");
-            result.AdId = (string)element.Attribute("adId");
-            result.ReplicaId = (string)element.Attribute("replicaId");
-            result.SlotEnv = (string)element.Attribute("adSlotEnv");
-            result.SlotId = (string)element.Attribute("slotCustomId");
+            if (element.Attribute("creativeId") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("creativeId").Value))
+                result.CreativeId = element.Attribute("creativeId").Value;
+            if (element.Attribute("creativeRenditionId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("creativeRenditionId").Value))
+                result.CreativeRenditionId = element.Attribute("creativeRenditionId").Value;
+            if (element.Attribute("adId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adId").Value))
+                result.AdId = element.Attribute("adId").Value;
+            if (element.Attribute("replicaId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("replicaId").Value))
+                result.ReplicaId = element.Attribute("replicaId").Value;
+            if (element.Attribute("adSlotEnv") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adSlotEnv").Value))
+                result.SlotEnv = element.Attribute("adSlotEnv").Value;
+            if (element.Attribute("slotCustomId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("slotCustomId").Value))
+                result.SlotId = element.Attribute("slotCustomId").Value;
 
             var eventCallbacksXml = element.Element("eventCallbacks");
             if (eventCallbacksXml != null)
@@ -531,14 +701,29 @@ namespace Microsoft.Media.Advertising
         internal static FWAdSlot LoadAdSlot(XElement element)
         {
             var result = new FWAdSlot();
-
-            var height = (string)element.Attribute("height");
-            if (height != null) result.Height = int.Parse(height);
-            var width = (string)element.Attribute("width");
-            if (width != null) result.Width = int.Parse(width);
-            result.CompatibleDimensions = (string)element.Attribute("compatibleDimensions");
-            result.AdUnit = (string)element.Attribute("adUnit");
-            result.CustomId = (string)element.Attribute("customId");
+            if (element.Attribute("height") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("height").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("height").Value, out val))
+                    result.Height = element.GetIntAttribute("height");
+            }
+            if (element.Attribute("width") != null && 
+                !string.IsNullOrWhiteSpace(element.Attribute("width").Value))
+            {
+                int val;
+                if (int.TryParse(element.Attribute("width").Value, out val))
+                    result.Width = val;
+            }
+            if (element.Attribute("compatibleDimensions") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("compatibleDimensions").Value))
+                result.CompatibleDimensions = element.Attribute("compatibleDimensions").Value;
+            if (element.Attribute("adUnit") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("adUnit").Value))
+                result.AdUnit = element.Attribute("adUnit").Value;
+            if (element.Attribute("customId") != null &&
+                !string.IsNullOrWhiteSpace(element.Attribute("customId").Value))
+                result.CustomId = element.Attribute("customId").Value;
 
             var adsXml = element.Element("selectedAds");
             if (adsXml != null)
