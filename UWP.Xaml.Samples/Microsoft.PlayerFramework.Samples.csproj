@@ -369,30 +369,51 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.PlayerFramework.Advertising.Analytics, Version=3.0.0.1">
-      <Name>Microsoft Player Framework Advertising Analytics Adapter</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml, Version=3.0.0.1">
-      <Name>Microsoft Player Framework</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.Adaptive, Version=3.0.0.1">
-      <Name>Microsoft Player Framework Adaptive Streaming Plugin</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.Advertising, Version=3.0.0.1">
-      <Name>Microsoft Player Framework Advertising Plugin</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.Analytics, Version=3.0.0.1">
-      <Name>Microsoft Player Framework Analytics Plugin</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.TimedText, Version=3.0.0.1">
-      <Name>Microsoft Player Framework Timed Text Plugin</Name>
-    </SDKReference>
-    <SDKReference Include="Microsoft.PlayerFramework.Xaml.WebVTT, Version=3.0.0.1">
-      <Name>Microsoft Player Framework WebVTT Plugin</Name>
-    </SDKReference>
     <SDKReference Include="Universal Smooth Streaming Client SDK, Version=1.0">
       <Name>Microsoft Universal Smooth Streaming Client SDK</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
+      <Project>{864210c0-e36e-4f41-8c3c-e38aed4e7a45}</Project>
+      <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.WinRT.Advertising\Microsoft.Media.Advertising.csproj">
+      <Project>{e4066ab3-4412-4a01-854c-b68336e01e45}</Project>
+      <Name>Microsoft.Media.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.WinRT.TimedText\Microsoft.Media.TimedText.csproj">
+      <Project>{2671264b-95c5-4f5a-b190-7e6f85ecb242}</Project>
+      <Name>Microsoft.Media.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.WinRT.WebVTT\Microsoft.Media.WebVTT.csproj">
+      <Project>{d1d304f2-1302-457a-82d0-c97fb005fe01}</Project>
+      <Name>Microsoft.Media.WebVTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.Adaptive\Microsoft.PlayerFramework.Adaptive.csproj">
+      <Project>{953bf361-f4e0-4a3d-a465-fb9cf72af33c}</Project>
+      <Name>Microsoft.PlayerFramework.Adaptive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.Advertising\Microsoft.PlayerFramework.Advertising.csproj">
+      <Project>{d31d60b7-e557-4da3-b625-7789d69fd137}</Project>
+      <Name>Microsoft.PlayerFramework.Advertising</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.Analytics\Microsoft.PlayerFramework.Analytics.csproj">
+      <Project>{c1df69ca-a20b-4dc2-b025-554f5f09ebcb}</Project>
+      <Name>Microsoft.PlayerFramework.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.Core\Microsoft.PlayerFramework.Core.csproj">
+      <Project>{84a3f824-24be-4e88-abae-f228e8a40f37}</Project>
+      <Name>Microsoft.PlayerFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.TimedText\Microsoft.PlayerFramework.TimedText.csproj">
+      <Project>{1d33874f-bf6d-4a99-89a9-2833e475e16e}</Project>
+      <Name>Microsoft.PlayerFramework.TimedText</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Xaml.WebVTT\Microsoft.PlayerFramework.WebVTT.csproj">
+      <Project>{b5385142-82e5-4eb5-afab-2eba1733b6c4}</Project>
+      <Name>Microsoft.PlayerFramework.WebVTT</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

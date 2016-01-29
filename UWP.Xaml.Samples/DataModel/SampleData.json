@@ -275,11 +275,11 @@
       },
       {
         "UniqueId": "Group-5-Item-5",
-        "Title": "Play To",
-        "Subtitle": "Demonstrates how to use Play To, to enable users to stream media to a target device.",
+        "Title": "Windows 10 Casting",
+        "Subtitle": "Demonstrates how to use casting on Windows 10",
         "ImagePath": "Assets/MediumGray.png",
         "Description" : "",
-        "Content" : "PlayToPage"
+        "Content" : "CastingPage"
       },
       {
         "UniqueId": "Group-5-Item-6",

@@ -9,6 +9,7 @@
 //
 //*********************************************************
 
+using Microsoft.PlayerFramework.Samples.Advanced;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -52,9 +53,9 @@ namespace Microsoft.PlayerFramework.Samples
             new Scenario() {Title = "Tracking", Description = "Demonstrates how to get tracking events for analytics purposes.", ClassType = typeof(TrackingPage) },
             new Scenario() {Title = "Timeline Markers", Description = "Demonstrates showing visual markers in the timeline that the user can seek to.", ClassType = typeof(MarkersPage) },
             new Scenario() {Title = "Local playback", Description = "Demonstrates playing a local video and capturing input from the webcam.", ClassType = typeof(LocalPlaybackPage) },
-            new Scenario() {Title = "Play To", Description = "Demonstrates how to use Play To, to enable users to stream media to a target device.", ClassType = typeof(PlayToPage) },
-            new Scenario() {Title = "Suspend & resume", Description = "Demonstrates how to suspend and resume the player.", ClassType = typeof(SuspendResumePage) }
-            };
+            new Scenario() {Title = "Suspend & resume", Description = "Demonstrates how to suspend and resume the player.", ClassType = typeof(SuspendResumePage) },
+            new Scenario() {Title = "Windows 10 Casting", Description = "Demonstrates how to use casting on Windows 10.", ClassType = typeof(CastingPage) },
+        };
     }
 
     public class Scenario
