@@ -15,6 +15,8 @@ namespace Microsoft.Media.Advertising
 {
     public static class Extensions
     {
+        public static Object AdvertisingHttpClient { get; set; }
+
         static Extensions()
         {
 #if WINDOWS_PHONE
@@ -22,6 +24,10 @@ namespace Microsoft.Media.Advertising
             DefaultUserAgent = string.Format(userAgentMask, Environment.OSVersion.Version, Microsoft.Phone.Info.DeviceStatus.DeviceManufacturer, Microsoft.Phone.Info.DeviceStatus.DeviceName);
 #else
             DefaultUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
+            if (AdvertisingHttpClient == null)
+            {
+                AdvertisingHttpClient = new HttpClient();
+            }
 #endif
         }
 
@@ -53,18 +59,15 @@ namespace Microsoft.Media.Advertising
                 await client.GetStreamAsync(source);
             }
 #else
-            using (var client = new HttpClient())
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, source))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, source))
+                if (DefaultUserAgent != null)
                 {
-                    if (DefaultUserAgent != null)
-                    {
-                        request.Headers.UserAgent.ParseAdd(DefaultUserAgent);
-                    }
-                    using (var response = await client.SendAsync(request))
-                    {
-                        response.EnsureSuccessStatusCode();
-                    }
+                    request.Headers.UserAgent.ParseAdd(DefaultUserAgent);
+                }
+                using (var response = await (AdvertisingHttpClient as HttpClient).SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
                 }
             }
 #endif
@@ -79,24 +82,21 @@ namespace Microsoft.Media.Advertising
                 return await client.GetStreamAsync(source);
             }
 #else
-            using (var client = new HttpClient())
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, source))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, source))
+                if (DefaultUserAgent != null)
                 {
-                    if (DefaultUserAgent != null)
+                    request.Headers.UserAgent.ParseAdd(DefaultUserAgent);
+                }
+                using (var response = await (AdvertisingHttpClient as HttpClient).SendAsync(request))
+                {
+                    response.EnsureSuccessStatusCode();
+                    using (var stream = await response.Content.ReadAsStreamAsync())
                     {
-                        request.Headers.UserAgent.ParseAdd(DefaultUserAgent);
-                    }
-                    using (var response = await client.SendAsync(request))
-                    {
-                        response.EnsureSuccessStatusCode();
-                        using (var stream = await response.Content.ReadAsStreamAsync())
-                        {
-                            var result = new MemoryStream();
-                            await stream.CopyToAsync(result);
-                            result.Seek(0, SeekOrigin.Begin);
-                            return result;
-                        }
+                        var result = new MemoryStream();
+                        await stream.CopyToAsync(result);
+                        result.Seek(0, SeekOrigin.Begin);
+                        return result;
                     }
                 }
             }

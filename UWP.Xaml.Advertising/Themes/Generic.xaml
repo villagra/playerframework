@@ -39,8 +39,17 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <ContentPresenter IsHitTestVisible="False" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        <!--<HyperlinkButton x:Name="ClickThroughButton" Opacity="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>-->
+                        
+                        <HyperlinkButton x:Name="ClickThroughButton" 
+                                         HorizontalAlignment="Stretch" 
+                                         VerticalAlignment="Stretch" 
+                                         Background="Transparent"
+                                         Visibility="Collapsed"/>
+
+                        <!-- 
                         <HyperlinkButton x:Name="ClickThroughButton" Content="Learn more..." HorizontalAlignment="Center" FontSize="22" Margin="10" VerticalAlignment="Top" Visibility="Collapsed"/>
+                        -->
+                        
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

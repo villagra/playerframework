@@ -82,7 +82,7 @@ namespace Microsoft.PlayerFramework.Advertising
 #endif
                 if (ClickThroughButton.Content != null)
                 {
-                    ClickThroughButton.Content = MediaPlayer.GetResourceString("AdLinkLabel");
+                    //ClickThroughButton.Content = MediaPlayer.GetResourceString("AdLinkLabel");
                 }
             }
 
