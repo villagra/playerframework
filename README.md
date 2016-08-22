@@ -19,4 +19,5 @@ But because this is not supported in the original player framework, I've updated
     player.SetMediaStreamSource(mediaSource);
 
 How to build it:
-run: BuildSDKs.Win10.bat
+
+    run: BuildSDKs.Win10.bat in the Build.Vsix
