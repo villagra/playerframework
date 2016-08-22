@@ -171,9 +171,9 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Gets or sets the media stream source for the playlistitem
         /// </summary>
-        public Windows.Media.Core.IMediaSource MediaStreamSource
+        public Windows.Media.Playback.IMediaPlaybackSource MediaStreamSource
         {
-            get { return GetValue(MediaStreamSourceProperty) as Windows.Media.Core.IMediaSource; }
+            get { return GetValue(MediaStreamSourceProperty) as Windows.Media.Playback.IMediaPlaybackSource; }
             set { SetValue(MediaStreamSourceProperty, value); }
         }
 #endif

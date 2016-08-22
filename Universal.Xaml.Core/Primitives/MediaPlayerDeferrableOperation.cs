@@ -37,7 +37,7 @@ namespace Microsoft.PlayerFramework
         }
         
 #if !WINDOWS80
-        internal MediaLoadingEventArgs(MediaPlayerDeferrableOperation deferrableOperation, Windows.Media.Core.IMediaSource source)
+        internal MediaLoadingEventArgs(MediaPlayerDeferrableOperation deferrableOperation, Windows.Media.Playback.IMediaPlaybackSource source)
             : base(deferrableOperation)
         {
             MediaStreamSource = source;
@@ -46,7 +46,7 @@ namespace Microsoft.PlayerFramework
         /// <summary>
         /// Gets or sets the media stream source of the loading operation. This may be null if the source is a Uri.
         /// </summary>
-        public Windows.Media.Core.IMediaSource MediaStreamSource { get; set; }
+        public Windows.Media.Playback.IMediaPlaybackSource MediaStreamSource { get; set; }
 #endif
 
         /// <summary>

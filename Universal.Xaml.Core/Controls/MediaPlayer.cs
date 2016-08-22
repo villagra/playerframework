@@ -573,7 +573,7 @@ namespace Microsoft.PlayerFramework
         /// Sets the Source of the MediaElement to the specified MediaStreamSource.
         /// </summary>
         /// <param name="source">The media source.</param>
-        public void SetMediaStreamSource(Windows.Media.Core.IMediaSource source)
+        public void SetMediaStreamSource(Windows.Media.Playback.IMediaPlaybackSource source)
         {
             RegisterApplyTemplateAction(async () =>
             {
@@ -4929,7 +4929,7 @@ namespace Microsoft.PlayerFramework
         }
 
 #if !WINDOWS80
-        private async Task<MediaLoadingInstruction> OnMediaLoadingAsync(Windows.Media.Core.IMediaSource source)
+        private async Task<MediaLoadingInstruction> OnMediaLoadingAsync(Windows.Media.Playback.IMediaPlaybackSource source)
         {
             var deferrableOperation = new MediaPlayerDeferrableOperation(cts);
             var args = new MediaLoadingEventArgs(deferrableOperation, source);
@@ -5552,6 +5552,12 @@ namespace Microsoft.PlayerFramework
             SetValueWithoutCallback(AudioStreamIndexProperty, DefaultAudioStreamIndex);
             AvailableAudioStreams.Clear();
 
+            if (_playbackSource != null && _playbackSource is Windows.Media.Core.MediaSource)
+            {
+                (_playbackSource as Windows.Media.Core.MediaSource).Dispose();
+                _playbackSource = null;
+            }
+
             SetValue(CanPauseProperty, DefaultCanPause);
             SetValue(CanSeekProperty, DefaultCanSeek);
             SetValue(StartTimeProperty, TimeSpan.Zero);
@@ -5913,7 +5919,7 @@ namespace Microsoft.PlayerFramework
             public Uri Source { get; private set; }
 #if !SILVERLIGHT
 #if !WINDOWS80
-            public Windows.Media.Core.IMediaSource MediaStreamSource { get; private set; }
+            public Windows.Media.Playback.IMediaPlaybackSource MediaStreamSource { get; private set; }
 #endif
             public IRandomAccessStream SourceStream { get; private set; }
             public string MimeType { get; private set; }

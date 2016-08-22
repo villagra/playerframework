@@ -15,7 +15,6 @@
             x:Name="player" 
             IsResolutionIndicatorVisible="True"
             IsSignalStrengthVisible="True"
-            IsAudioSelectionVisible="True"
-            Source="http://mediadl.microsoft.com/mediadl/iisnet/smoothmedia/Experience/BigBuckBunny_720p.ism/Manifest"/>
+            IsAudioSelectionVisible="True" />
     </Grid>
 </Page>

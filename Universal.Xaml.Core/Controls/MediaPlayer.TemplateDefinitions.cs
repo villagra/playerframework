@@ -2004,9 +2004,17 @@ namespace Microsoft.PlayerFramework
         }
 
 #if !WINDOWS80
-        void _SetMediaStreamSource(Windows.Media.Core.IMediaSource source)
-        {
-            RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.SetMediaStreamSource(source); });
+        Windows.Media.Playback.IMediaPlaybackSource _playbackSource;
+        void _SetMediaStreamSource(Windows.Media.Playback.IMediaPlaybackSource source)
+        {            
+            RegisterApplyTemplateAction(() => 
+            {
+                if (MediaElementElement != null)
+                {
+                    _playbackSource = source;
+                    MediaElementElement.SetPlaybackSource(source);
+                }
+            });
         }
 #endif
 #endif
