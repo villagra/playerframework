@@ -100,6 +100,7 @@
   <ItemGroup>
     <Resource Include="..\..\UWP.Xaml.Core\bin\Release\Microsoft.PlayerFramework.XML">
       <Link>Microsoft.PlayerFramework.XML</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
