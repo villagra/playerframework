@@ -1441,8 +1441,31 @@ namespace Microsoft.PlayerFramework
 
         int? _AudioStreamIndex
         {
-            get { return MediaElementElement != null ? MediaElementElement.AudioStreamIndex : DefaultAudioStreamIndex; }
-            set { RegisterApplyTemplateAction(() => { if (MediaElementElement != null) MediaElementElement.AudioStreamIndex = value; }); }
+            get
+            {
+                int? idx = DefaultAudioStreamIndex;
+                try
+                {
+                    idx = MediaElementElement != null ? MediaElementElement.AudioStreamIndex : DefaultAudioStreamIndex;
+                }
+                catch (Exception)
+                {}
+
+                return idx;
+            }
+            set
+            {
+                try
+                {
+                    RegisterApplyTemplateAction(() =>
+                    {
+                        if (MediaElementElement != null)
+                            MediaElementElement.AudioStreamIndex = value;
+                    });
+                }
+                catch (Exception)
+                {}                
+            }
         }
 
         static int? DefaultAudioStreamIndex
