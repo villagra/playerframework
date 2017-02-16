@@ -17,7 +17,10 @@ namespace Microsoft.Media.Advertising
 {
     public static class VmapFactory
     {
-        static XNamespace ns = "http://www.iab.net/vmap-1.0";
+        static XNamespace[] namespaces = { "http://www.iab.net/vmap-1.0", "http://www.iab.net/videosuite/vmap" };
+
+        //static XNamespace ns2 = "http://www.iab.net/vmap-1.0";
+        //static XNamespace ns = "http://www.iab.net/videosuite/vmap";
 
 #if SILVERLIGHT
         public static async Task<Vmap> LoadSource(Uri source, CancellationToken cancellationToken)
@@ -59,14 +62,37 @@ namespace Microsoft.Media.Advertising
         {
             var version = (string)vmapXml.Attribute("version");
             if (version != "1.0") throw new ArgumentException("VMAP version not supported", "vmapXml");
-            if (vmapXml.Name != ns + "VMAP") throw new ArgumentException("Invalid VMAP xml", "vmapXml");
+
+            var ns = namespaces.SingleOrDefault(p => p == vmapXml.Name.Namespace.NamespaceName.ToLower());
+            if (ns == null)
+            {
+                throw new ArgumentException("Invalid VMAP xml", "vmapXml");
+            }
+
+            /*
+            if (!namespaces.Contains(vmapXml.Name.Namespace.NamespaceName.ToLower()))
+            {                
+            }            
+            */
+            //if (vmapXml.Name.Namespace.NamespaceName.ToLower() != ns) throw new ArgumentException("Invalid VMAP xml", "vmapXml");
+            //if (vmapXml.Name.LocalName.ToUpper() != "VMAP") throw new ArgumentException("Invalid VMAP xml", "vmapXml");
+            /*
+            if (
+                (vmapXml.Name != ns + "VMAP")
+                ||
+                (vmapXml.Name != ns2 + "VMAP")
+                )
+            {
+                throw new ArgumentException("Invalid VMAP xml", "vmapXml");
+            }
+            */
 
             var result = new Vmap();
 
             result.Version = version;
             foreach (var adBreakXml in vmapXml.Elements(ns + "AdBreak"))
             {
-                result.AdBreaks.Add(LoadAdBreak(adBreakXml));
+                result.AdBreaks.Add(LoadAdBreak(adBreakXml, ns));
             }
             var extensionsXml = vmapXml.Element(ns + "Extensions");
             if (extensionsXml != null)
@@ -80,7 +106,7 @@ namespace Microsoft.Media.Advertising
             return result;
         }
 
-        static VmapAdBreak LoadAdBreak(XElement adBreakXml)
+        static VmapAdBreak LoadAdBreak(XElement adBreakXml, XNamespace ns)
         {
             var result = new VmapAdBreak();
 
@@ -90,7 +116,7 @@ namespace Microsoft.Media.Advertising
             var adSourceXml = adBreakXml.Element(ns + "AdSource");
             if (adSourceXml != null)
             {
-                result.AdSource = LoadAdSource(adSourceXml);
+                result.AdSource = LoadAdSource(adSourceXml, ns);
             }
             var trackingEventsXml = adBreakXml.Element(ns + "TrackingEvents");
             if (trackingEventsXml != null)
@@ -112,7 +138,7 @@ namespace Microsoft.Media.Advertising
             return result;
         }
 
-        static VmapAdSource LoadAdSource(XElement adSourceXml)
+        static VmapAdSource LoadAdSource(XElement adSourceXml, XNamespace ns)
         {
             var result = new VmapAdSource();
 

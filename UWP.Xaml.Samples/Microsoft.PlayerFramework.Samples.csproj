@@ -369,11 +369,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Universal Smooth Streaming Client SDK, Version=1.0">
-      <Name>Microsoft Universal Smooth Streaming Client SDK</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\UWP.WinRT.AdaptiveStreaming.Helper\Microsoft.Media.AdaptiveStreaming.Helper.csproj">
       <Project>{864210c0-e36e-4f41-8c3c-e38aed4e7a45}</Project>
       <Name>Microsoft.Media.AdaptiveStreaming.Helper</Name>

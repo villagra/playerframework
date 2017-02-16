@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK": "1.0.161101"
   },
   "frameworks": {
     "uap10.0": {}

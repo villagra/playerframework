@@ -131,11 +131,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Universal Smooth Streaming Client SDK, Version=1.0">
-      <Name>Microsoft Universal Smooth Streaming Client SDK</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

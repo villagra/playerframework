@@ -14,7 +14,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
             <mmppf:MediaPlayer.Plugins>
-                <ads:VmapSchedulerPlugin Source="http://smf.blob.core.windows.net/samples/win8/ads/vmap.xml"/>
+                <ads:VmapSchedulerPlugin x:Name="vmapPlugin" />
                 <ads:AdHandlerPlugin/>
             </mmppf:MediaPlayer.Plugins>
         </mmppf:MediaPlayer>

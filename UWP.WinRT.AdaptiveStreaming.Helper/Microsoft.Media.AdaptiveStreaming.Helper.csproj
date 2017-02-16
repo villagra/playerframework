@@ -124,11 +124,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Universal Smooth Streaming Client SDK, Version=1.0">
-      <Name>Microsoft Universal Smooth Streaming Client SDK</Name>
-    </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Microsoft.PlayerFramework.snk" />
     <None Include="project.json" />
   </ItemGroup>

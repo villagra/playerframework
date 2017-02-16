@@ -1787,6 +1787,28 @@
             "rid": "win8-aot"
           }
         }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/native/Microsoft.Media.AdaptiveStreaming.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/native/Microsoft.Media.AdaptiveStreaming.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/native/Microsoft.Media.AdaptiveStreaming.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -3427,6 +3449,17 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Media.AdaptiveStreaming.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -5030,6 +5063,17 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Media.AdaptiveStreaming.dll": {}
         }
       }
     },
@@ -6677,6 +6721,17 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Media.AdaptiveStreaming.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -8280,6 +8335,17 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Media.AdaptiveStreaming.dll": {}
         }
       }
     },
@@ -9927,6 +9993,17 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Media.AdaptiveStreaming.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -11530,6 +11607,17 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+        "compile": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Media.AdaptiveStreaming.dll": {}
         }
       }
     }
@@ -14776,11 +14864,24 @@
         "runtime.json",
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
+    },
+    "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK/1.0.161101": {
+      "sha512": "uj8BS6xZfHVMDHs2e5Yhv/NSE4KbzLGHccocey2JrxDN0aLf/WpTtWsaZUoEFawHkz9HroqqxZEi27157PL84Q==",
+      "type": "package",
+      "files": [
+        "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK.1.0.161101.nupkg.sha512",
+        "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK.nuspec",
+        "lib/uap10.0/Microsoft.Media.AdaptiveStreaming.winmd",
+        "runtimes/win10-arm/native/Microsoft.Media.AdaptiveStreaming.dll",
+        "runtimes/win10-x64/native/Microsoft.Media.AdaptiveStreaming.dll",
+        "runtimes/win10-x86/native/Microsoft.Media.AdaptiveStreaming.dll"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "Villagra.Microsoft.Universal.Smooth.Streaming.Client.SDK >= 1.0.161101"
     ],
     "UAP,Version=v10.0": []
   }
