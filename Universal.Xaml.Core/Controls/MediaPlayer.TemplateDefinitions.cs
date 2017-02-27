@@ -1571,7 +1571,26 @@ namespace Microsoft.PlayerFramework
 
         Duration _NaturalDuration
         {
-            get { return MediaElementElement != null ? MediaElementElement.NaturalDuration : DefaultNaturalDuration; }
+            get
+            {
+                if (MediaElementElement != null && MediaElementElement.NaturalDuration == TimeSpan.MinValue)
+                {
+                    // it's hack time!
+                    return DefaultNaturalDuration;
+                }
+                else
+                {
+                    // do the normal thing
+                    return MediaElementElement != null ? MediaElementElement.NaturalDuration : DefaultNaturalDuration;
+                }
+            }
+            /*
+             * ORIGINAL CODE
+            get
+            {
+                return MediaElementElement != null ? MediaElementElement.NaturalDuration : DefaultNaturalDuration;
+            }
+            */
         }
 
         static Duration DefaultNaturalDuration
